@@ -1,0 +1,77 @@
+/* .sidebar */
+.sidebar{
+    width: 200px;
+}
+
+.admin-info, .admin-menu{
+    background-color: white;
+
+    width: 200px;
+    
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.admin-info{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 110px;
+
+    margin-bottom: 5px;
+}
+
+#info-image{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+/* 프로필 버튼 관련 스타일 */
+.profile-btn-area{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.profile-btn-area > a{
+    font-size: 12px;
+    font-weight: 800;
+    color: black;
+
+    border: 1px solid black;
+    border-radius: 5px;
+
+    height: 20px;
+    width: 60px;
+}
+
+#home{
+    background-color: yellowgreen;
+    margin-bottom: 3px;
+}
+#home:hover{
+    background-color: rgb(137, 184, 45);
+}
+#home:active{
+    border: none;
+}
+
+#logout{
+    background-color: lightcoral;
+}
+#logout:hover{
+    background-color: rgb(211, 112, 112);
+}
+#logout:active{
+    border: none;
+}
+
+/* sidebar - admin-menu */
+.admin-menu ul{
+    margin-bottom: 10px;
+}
+
+/* end .sidebar */

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="groupMapper">
+
+
+	<resultMap type="Group" id="group_rm">
+		
+		<!-- PK 컬럼은 id로 -->
+		<id property="groupNo" column="GROUP_NO" />
+		
+		<!-- 나머지 컬럼은 result로 작성 -->
+		<result property="topicCode" column="TOPIC_CODE" />
+		<result property="groupName" column="GROUP_NAME" />
+		<result property="groupDate" column="GROUP_DATE" />
+		<result property="groupImage" column="GROUP_IMAGE" />
+		<result property="groupComment" column="GROUP_COMMENT" />
+		<result property="openYN" column="OPEN_YN" />
+		<result property="groupStatus" column="GROUP_STATUS" />
+	</resultMap>
+	
+	<select id="groupList" parameterType="Group" resultMap="group_rm">
+		SELECT GROUP_NO, TOPIC_CODE, GROUP_NAME, GROUP_DATE, OPEN_YN, GROUP_STATUS
+		FROM "GROUP"
+	</select>
+	
+	
+</mapper>

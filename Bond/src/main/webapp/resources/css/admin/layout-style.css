@@ -1,0 +1,293 @@
+/* font & box-sizing */
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/* common-style */
+h6{
+    color: #BFBFBF;
+    font-weight: 400;
+}
+
+ul > li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+/* end common-style */
+
+
+/* body */
+body{ /* body의 최소 크기를 header보다 크게 */
+    min-width: 1300px; 
+}
+/* end body */
+
+/* header */
+header{
+    background-color: white;
+
+    width: 1140px;
+    height: 70px;
+
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#home-logo{
+    width: 80px;
+}
+
+.box {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 70%;
+
+    justify-content: right;
+
+    overflow: hidden;
+}
+
+#profile-photo{
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;  
+    cursor: pointer;
+}
+/* and header */
+
+/* background */
+main{ /* 배경색 및 flex */
+    background-color: #E2E2E2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* end background */
+
+
+/* 진짜 main */
+.main{
+    height: 700px;
+
+    margin: 20px 0px;
+    
+    display: flex;
+}
+/* end .main */
+
+/* .sidebar */
+.sidebar{
+    width: 200px;
+}
+
+.admin-info, .admin-menu{
+    background-color: white;
+
+    width: 200px;
+    
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.admin-info{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 110px;
+
+    margin-bottom: 5px;
+}
+
+#info-image{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+/* 프로필 버튼 관련 스타일 */
+.profile-btn-area{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.profile-btn-area > a{
+    font-size: 12px;
+    font-weight: 800;
+    color: black;
+
+    border: 1px solid black;
+    border-radius: 5px;
+
+    height: 20px;
+    width: 60px;
+}
+
+#home{
+    background-color: yellowgreen;
+    margin-bottom: 3px;
+}
+#home:hover{
+    background-color: rgb(137, 184, 45);
+}
+#home:active{
+    border: none;
+}
+
+#logout{
+    background-color: lightcoral;
+}
+#logout:hover{
+    background-color: rgb(211, 112, 112);
+}
+#logout:active{
+    border: none;
+}
+
+/* sidebar - admin-menu */
+.admin-menu ul{
+    margin-bottom: 10px;
+}
+
+
+/* end .sidebar */
+
+
+/* .content */
+.content{
+    background-color: white;
+
+    width: 920px;
+    
+    margin-left: 20px;
+    padding: 15px;
+    border-radius: 10px;
+
+    display:flex;
+    flex-direction: column;
+}
+/* end .content */
+
+
+/* .content-header */
+.content-header{
+    width: 100%;
+    height: 60px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* end .content-header */
+
+/* searchbar */
+#searchbar{
+    display: flex;
+    justify-content: space-between;
+}
+
+.keyword-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-box{
+    height: 30px;
+    width: 200px;
+    
+    border: 1px solid #BFBFBF;
+    padding: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input-box > input{
+    border: none;
+    outline: none;
+}
+.input-box:focus-within{
+    border: 1px solid black;
+}
+
+/* 버튼 */
+.keyword-box > button{
+    background-color: #E2E2E2;
+
+    height: 30px;
+    width: 40px;
+
+    border: none;
+}
+
+/* 마우스 올렸을 때 */
+.keyword-box > button:hover{
+    background-color: #BFBFBF;
+    transition-duration: 0.2s;
+}
+
+/* 버튼 눌렀을 때 */
+.keyword-box > button:active{
+    opacity: 0.9;
+    transition-duration: 0.1s;
+}
+/* end .searchbar */
+
+/* .content-body */
+.content-body{
+    margin-top: 10px;
+
+    border-top: 1px solid #BFBFBF;
+}
+
+/* end .content-body */
+
+/* footer */
+footer{
+    height: 200px;
+    background-color: #BFBFBF;
+    
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+
+footer > p{
+    font-weight: bold;
+    margin: 16px 0;
+}
+
+footer > article > *{
+    font-size: 14px;
+}
+
+footer a{
+    text-decoration: none;
+    color: black;
+}
+
+footer span{
+    padding : 0 10px;
+}
+/* end footer */

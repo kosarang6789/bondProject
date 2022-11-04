@@ -1,0 +1,251 @@
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+*{
+    box-sizing: border-box;
+
+    padding: 0;
+    margin: 0;
+    font-family: 'nanumsquare', serif;
+}
+
+body{
+    background-color: #f8f9fa;
+    display: block;
+}
+/* Header */
+
+.header-area{
+    width: 100%;
+    background-color: #fff;
+    position: fixed;
+    box-shadow: 0 1.4px 1.3px 0 rgb(62 73 89 / 7%);
+    z-index: 2000;
+    display: block;
+}
+
+header{
+    width: 1140px;
+    height: 50px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+#home-logo{
+    width: 80px;
+    padding-top: 4px;
+}
+
+.box {
+    width: 40px;
+    height: 40px;
+    border-radius: 70%;
+    overflow: hidden;
+    justify-content: right;
+}
+
+#profile-photo{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  
+    cursor: pointer;
+}
+
+button{
+    cursor: pointer;
+}
+
+/* nav */
+
+.nav-area{
+    top : 50px;
+    position: sticky;
+    display: block;
+    z-index: 1500;
+    /* margin-top: 50px; */
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+}
+
+nav{
+    display: flex;
+    width: 1140px;
+    justify-content: space-between;
+    margin: auto;
+    padding-top: 20px;
+}
+
+nav a{
+    text-decoration: none;
+    padding-bottom: 17px;
+}
+
+nav>.mainPage-menu>a{
+    font-size: 26px;
+    font-weight: 800;
+    margin-right: 20px;
+    color:#bbb;
+    display: inline-block;
+}
+
+nav>.mainPage-menu>a:hover{
+    color: #222;
+    font-weight: 800;
+}
+
+.mainPage-optionBox{
+    padding-top: 5px;
+}
+
+nav>.mainPage-optionBox>a{
+    font-size:15px;
+    font-weight: 400;
+    color: #444;
+    text-align: left;
+    padding: 0 10px;
+}
+
+/* main */
+
+main{
+    margin-top: 50px;
+    min-height: 1000px;
+    position: relative;
+    display: block;
+}
+
+.myGroup-area{
+    height: 300px;
+    padding: 40px 0;
+}
+
+.myGroup-list{
+    width: 1140px;
+    margin: auto;
+    display: flex;
+    list-style: none;
+    margin-bottom: 25px;
+    row-gap: 26px;
+    column-gap: 25px;
+}
+
+.groupCardItem{
+    display: inline-block;
+    background-color: #fff;
+    width: 186px;
+    height: 210px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 4px 4px 20px 3px #ebebeb;
+    position: relative;
+}
+
+.groupCardItem:hover{
+    transform: translateY(-3px);
+}
+
+.groupCardItem a{
+    text-decoration: none;
+}
+
+.make-icon{
+    padding: 55px 0 0;
+    text-align: center;
+}
+
+#plus-icon{
+    width: 60px;
+    height: 60px;
+    background-color: rgba(238,239,240,.8);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fa-plus{
+    color : rgba(71,78,96,.76);
+    font-size: 30px;
+}
+
+.groupCardItem img{
+    width: 186px;
+    height: 135px;
+}
+
+.groupInfo{
+    height: 75px;
+    padding: 9px 12px 14px;
+}
+
+/* 내 그룹 font */
+.make-text{
+    text-align: center;
+    padding-top: 20px;
+}
+
+.groupInfo .make-group{
+    color : #222;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.groupInfo>p{
+    font-size: 14px;
+    color: #222;
+}
+
+.groupInfo>span{
+    font-size: 12px;
+    font-weight: 400;
+    color: #777;
+}
+
+.myGroup-schedule{
+    width: 1140px;
+    margin: auto;
+    font-size: 20px;
+    font-weight: 600;
+    color: #222;
+}
+
+.schedule{
+    background-color: #fff;
+    border-radius: 20px;
+    width: 1140px;
+    height: 200px;
+    margin: 20px 0;
+}
+
+
+/* footer */
+footer{
+    width: 100%;
+    height: 200px;
+    background-color: #BFBFBF;
+    
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+
+footer > p{
+    font-weight: 800;
+    margin: 16px 0;
+}
+
+footer > article > *{
+    font-size: 14px;
+}
+
+footer a{
+    text-decoration: none;
+    color: black;
+}
+
+footer span{
+    padding : 0 10px;
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="memberMapper">
+	<!-- namespace 속성 : 현재 공간(영역)에 대한 이름, 반드시 지정! -->
+	<!-- mapper is sql -->
+	
+	<!-- 
+		* resultMap 태그?
+		- 자바 객체의 필드 명과 컬럼명이 다를 경우, 값을 어디에 세팅할지 작성
+		- type : 연결할 VO 객채의 타입(패지키+클래스명 or 별칭) 별칭은 mybatis-config.xml 에서 지정
+		- id : resultMap을 식별할 이름
+	
+	-->
+	
+	<resultMap type="Member" id="member_rm">
+		
+		<!-- PK 컬럼은 id로 -->
+		<id property="memberNo" column="MEMBER_NO" />
+		
+		<!-- 나머지 컬럼은 result로 작성 -->
+		<result property="memberEmail" column="MEMBER_EMAIL" />
+		<result property="memberPw" column="MEMBER_PW" />
+		<result property="memberName" column="MEMBER_NAME" />
+		<result property="memberBirth" column="MEMBER_BIRTH" />
+		<result property="memberTel" column="MEMBER_TEL" />
+		<result property="profileImage" column="PROFILE_IMG" />
+		<result property="authority" column="AUTHORITY" />
+		<result property="memberStatus" column="MEMBER_STATUS" />
+		<result property="signUpDate" column="SIGNUP_DATE" />
+		<result property="delDate" column="DEL_DATE" />
+	</resultMap>
+	
+	<!-- 로그인 -->
+	<select id="login" parameterType="String" resultMap="member_rm">
+		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NAME, MEMBER_BIRTH, MEMBER_TEL, PROFILE_IMG, SIGNUP_DATE, AUTHORITY
+		FROM "MEMBER"
+		WHERE MEMBER_STATUS != '2'
+		AND MEMBER_EMAIL = #{memberEmail}
+		AND MEMBER_PW = #{memberPw}
+	</select>
+	
+	<!-- 회원 정보 불러오기 -->
+	<select id='memberList' parameterType="Member" resultMap="member_rm">
+		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NAME, MEMBER_STATUS, SIGNUP_DATE
+		FROM "MEMBER"
+	</select>
+</mapper>

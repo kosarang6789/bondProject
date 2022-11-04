@@ -1,0 +1,55 @@
+/* searchbar */
+#searchbar{
+    display: flex;
+    justify-content: space-between;
+}
+
+.keyword-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-box{
+    height: 20px;
+    width: 170px;
+    
+    border: 1px solid #BFBFBF;
+    padding: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-box > input{
+    border: none;
+    outline: none;
+}
+
+.input-box:focus-within{
+    border: 1px solid black;
+}
+
+/* 버튼 */
+.keyword-box > button{
+    background-color: #E2E2E2;
+
+    height: 20px;
+    width: 40px;
+
+    border: none;
+}
+
+/* 마우스 올렸을 때 */
+.keyword-box > button:hover{
+    background-color: #BFBFBF;
+    transition-duration: 0.2s;
+}
+
+/* 버튼 눌렀을 때 */
+.keyword-box > button:active{
+    opacity: 0.9;
+    transition-duration: 0.1s;
+}
+/* end .searchbar */

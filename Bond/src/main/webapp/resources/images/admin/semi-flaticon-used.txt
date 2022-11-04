@@ -1,0 +1,37 @@
+[flaticon 사용목록]
+
+1. landing-page.png
+- 수정한 파일명 : admin-page-icon.png
+- 주소 : <a href="https://www.flaticon.com/free-icons/landing-page" title="landing page icons">Landing page icons created by deemakdaksina - Flaticon</a>
+
+2. group.png
+- 수정한 파일명 : admin-group-icon.png
+- 주소 : <a href="https://www.flaticon.com/free-icons/people" title="people icons">People icons created by Freepik - Flaticon</a>
+
+3. statistic.png
+- 수정한 파일명 : admin-analytics-icon.png
+- 주소 : <a href="https://www.flaticon.com/free-icons/graph" title="graph icons">Graph icons created by Becris - Flaticon</a>
+
+4. information.png
+- 수정한 파일명 : admin-member-icon.png
+- 주소 : <a href="https://www.flaticon.com/free-icons/information" title="information icons">Information icons created by Tanah Basah - Flaticon</a>
+
+5. admin.png
+- 수정한 파일명 : admin-profile-icon.png
+- 주소 : <a href="https://www.flaticon.com/free-icons/admin" title="admin icons">Admin icons created by Freepik - Flaticon</a>
+
+6. bar-chart.png
+- 수정한 파일명 : sample-chart.png
+- 주소 : <a href="https://www.flaticon.com/free-icons/graph" title="graph icons">Graph icons created by Vectors Market - Flaticon</a>
+
+7. pie-chart.png
+- 수정한 파일명 : sample-chart2.png
+- 주소 : <a href="https://www.flaticon.com/free-icons/pie-chart" title="pie chart icons">Pie chart icons created by Pixel perfect - Flaticon</a>
+
+8. organization-chart.png
+- 수정한 파일명 : sample-chart3.png
+- 주소 : <a href="https://www.flaticon.com/free-icons/organization" title="organization icons">Organization icons created by Freepik - Flaticon</a>
+
+9. next.png
+
+- 주소 :  <a href="https://www.flaticon.com/free-icons/arrow" title="arrow icons">Arrow icons created by Handicon - Flaticon</a>

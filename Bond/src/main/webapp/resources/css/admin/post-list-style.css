@@ -1,0 +1,204 @@
+/* font & box-sizing */
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/* common-style */
+h6{
+    color: #BFBFBF;
+    font-weight: 400;
+}
+
+ul > li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+/* end common-style */
+
+
+/* body */
+body{ /* body의 최소 크기를 header보다 크게 */
+    min-width: 1300px; 
+}
+/* end body */
+
+/* header */
+header{
+    background-color: white;
+
+    width: 1140px;
+    height: 70px;
+
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#home-logo{
+    width: 80px;
+}
+
+.box {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 70%;
+
+    justify-content: right;
+
+    overflow: hidden;
+}
+
+#profile-photo{
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;  
+    cursor: pointer;
+}
+/* and header */
+
+/* background */
+main{ /* 배경색 및 flex */
+    background-color: #E2E2E2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* end background */
+
+
+/* 진짜 main */
+.main{
+    height: 700px;
+
+    margin: 20px 0px;
+    
+    display: flex;
+}
+/* end .main */
+
+/* .content */
+.content{
+    background-color: white;
+
+    width: 920px;
+    
+    margin-left: 20px;
+    padding: 15px;
+    border-radius: 10px;
+
+    display:flex;
+    flex-direction: column;
+}
+/* end .content */
+
+
+/* .content-header */
+.content-header{
+    width: 100%;
+    height: 60px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* end .content-header */
+
+
+
+
+
+/* searchbar */
+
+/* end .searchbar */
+
+
+
+
+
+
+/* .content-body */
+.content-body{
+    margin-top: 10px;
+    border-top: 1px solid #BFBFBF;
+	
+	height:80%;
+}
+
+/* list */
+.list-header{
+    display: flex;
+    margin-top: 10px;
+}
+
+.postNo{ flex-basis: 15%; }
+.memberNo{ flex-basis: 15%; }
+.groupNo{ flex-basis: 15%;}
+.postContent{ flex-basis: 35%;}
+.postDate{ flex-basis: 10%;}
+.postDelYN{ flex-basis: 10%;}
+
+.list-btn{
+    margin-top: 10px;
+    
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-start;
+    text-align: start;
+    border: none;
+}
+
+/* end .content-body */
+
+
+
+/* content-footer */
+.content-footer{
+	display:flex;
+	justify-content: center;
+}
+/* footer */
+footer{
+    height: 200px;
+    background-color: #BFBFBF;
+    
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+
+footer > p{
+    font-weight: bold;
+    margin: 16px 0;
+}
+
+footer > article > *{
+    font-size: 14px;
+}
+
+footer a{
+    text-decoration: none;
+    color: black;
+}
+
+footer span{
+    padding : 0 10px;
+}
+/* end footer */
