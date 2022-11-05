@@ -20,7 +20,7 @@
 		</section>
 		<section class="top-menu">
 			<ul>
-				<li><a href="#" class="signUp">회원가입</a></li>
+				<li><a href="/member/signUp" class="signUp">회원가입</a></li>
 				<li><a href="/login" class="login">로그인</a></li>
 			</ul>
 		</section>
@@ -37,7 +37,7 @@
                     <p>당신의 취미도 BOND로 시작하세요.</p>
                     <div class="login-button">
                         <a href="/login" id="login">로그인</a>
-                        <a href="#" id="signUp">회원가입</a>
+                        <a href="/signUp" id="signUp">회원가입</a>
                     </div>
                 </div>
             </div>

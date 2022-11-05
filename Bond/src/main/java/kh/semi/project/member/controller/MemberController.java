@@ -110,4 +110,13 @@ public class MemberController {
 		
 		return "redirect:/";
 	}
+	
+	/** 회원가입 하기
+	 * @return
+	 */
+	@GetMapping("/member/signUp")
+	public String signUpPage() {
+		return "member/signUp";
+	}
+	
 }
