@@ -176,6 +176,7 @@ memberTel.addEventListener("input", function(){
 });
 
 // 생일 유효검사
+/*
 const memberBirth = document.getElementById("memberBirth");
 const birthConfirm = document.getElementById("birthConfirm");
 
@@ -186,3 +187,4 @@ memberBirth.addEventListener("input", function(){
         birthConfirm.classList.remove("confirm");
     }
 });
+*/
