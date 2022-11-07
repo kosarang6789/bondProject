@@ -20,7 +20,7 @@ document.getElementById("signUpFrm").addEventListener("submit", function(event){
                 case "memberPwConfirm" : str="비밀번호 확인이 유효하지 않습니다."; break;
                 case "memberName" : str="닉네임이 유효하지 않습니다."; break;
                 case "memberTel" : str="전화번호가 유효하지 않습니다."; break;
-                case "memberBirth" : str="생년월일이 유효하지 않습니다."; break;
+                case "memberBirth" : str="생일을 입력해주세요."; break;
             }
             alert(str);
             document.getElementById(key).focus();
@@ -176,7 +176,7 @@ memberTel.addEventListener("input", function(){
 });
 
 // 생일 유효검사
-/*
+
 const memberBirth = document.getElementById("memberBirth");
 const birthConfirm = document.getElementById("birthConfirm");
 
@@ -185,6 +185,13 @@ memberBirth.addEventListener("input", function(){
         birthConfirm.innerText = "생년월일을 입력해주세요.";
         birthConfirm.classList.add("error");
         birthConfirm.classList.remove("confirm");
+        checkObj.memberBirth=false;
+        return;
+    }else{
+        birthConfirm.classList.add("confirm");
+        birthConfirm.classList.remove("error");
+        checkObj.memberBirth=true;
+        return;
+
     }
 });
-*/
