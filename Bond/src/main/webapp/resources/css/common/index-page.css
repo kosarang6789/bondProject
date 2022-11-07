@@ -143,7 +143,7 @@ header .top-menu a{
 
 /* 메인 소개 이미지 */
 .images-section{
-    background-image: url("resources/images/index-main.jpg");
+    background-image: url("../../images/common/index/index-main.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     height: 540px;
