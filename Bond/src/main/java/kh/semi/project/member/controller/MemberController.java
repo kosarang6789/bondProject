@@ -1,5 +1,8 @@
 package kh.semi.project.member.controller;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -14,7 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kh.semi.project.member.model.service.MemberService;
 import kh.semi.project.member.model.vo.Member;
 
-@SessionAttributes("loginMember")
+@SessionAttributes({"loginMember", "message"})
 @Controller
 public class MemberController {
 	
@@ -62,21 +66,34 @@ public class MemberController {
 	public String login(/*@ModelAttributes*/ Member inputMember // Member 객체를 얻어옴
 					  , Model model // Model : 데이터를 Map 형태로 저장, 전달하는 객체로 request scope를 기본값으로 가짐
 					  , RedirectAttributes ra // redirect 시 값을 전달할 때 사용하는 객체로 request scope에 위치하나, redirect 시에만 session scope로 이동함
-					  , @RequestHeader(value="referer") String referer ) {
+					  , @RequestHeader(value="referer") String referer
+					  , @RequestParam(value="saveId", required = false) String saveId
+					  , HttpServletResponse resp) {
 		Member loginMember = service.login(inputMember); // ModelAttribute를 사용하고 있어서, 별도의 세팅 작업이 필요하지 않음
 		
 		String path = null;
 		
 		if(loginMember != null) {
-			if(loginMember.getAuthority().equals("1")) { 
+			if(loginMember.getAuthority().equals("1")) { // 관리자
 				path= "/admin/memberList"; 
-			};
+//				model.addAttribute("loginMember", loginMember);
+			}
 			
-			if(loginMember.getAuthority().equals("0")) { 
+			if(loginMember.getAuthority().equals("0")) { // 회원
 				path= "/member/mainPage";
-			};
+//				model.addAttribute("loginMember", loginMember);
+				
+				Cookie cookie = new Cookie("saveId", loginMember.getMemberEmail());
+				if(saveId != null) {
+					cookie.setMaxAge(60*60*24*90); // 90일 동안 유지
+				}else {
+					cookie.setMaxAge(0);
+				}
+				cookie.setPath("/");
+				resp.addCookie(cookie);
+			}
+				model.addAttribute("loginMember", loginMember);
 			
-			model.addAttribute("loginMember", loginMember);
 			
 		} else {
 			path = referer;
@@ -110,4 +127,48 @@ public class MemberController {
 		
 		return "redirect:/";
 	}
+	
+	/** 회원가입 페이지 이동
+	 * @return
+	 */
+	@GetMapping("/signUp")
+	public String signUpPage() {
+		return "/member/signUp";
+	}
+	
+	@PostMapping("/signUp")
+	public String signUp(Member inputMember, RedirectAttributes ra, 
+				@RequestHeader("referer") String referer) {
+		
+		int result = service.signUp(inputMember);
+		
+		String path = null;
+		String message = null;
+		
+		if(result>0) {
+			path = "/member/signUpOk";
+			message="회원 가입 성공!";
+		}else { // 실패 시
+			path=referer;
+			message="회원 가입 실패...";
+			
+			// 이전 페이지로 돌아갔을 때 입력했던 값을 같이 전달
+			inputMember.setMemberPw(null); // 비밀번호 삭제
+			ra.addFlashAttribute("tempMember",inputMember);
+		}
+		
+		ra.addFlashAttribute("message",message);
+		
+		return "redirect:"+path;
+		
+	}
+	
+	/** 회원가입 후 페이지 이동
+	 * @return
+	 */
+	@GetMapping("/member/signUpOk")
+	public String goSignUpOkPage() {
+		return "/member/signUpOk";
+	}
+	
 }

@@ -12,7 +12,7 @@ body{
     padding: 20px;
 }
 main{
-    width: 60vh;
+    width: 70vh;
 }
 .top-logo{
     border-bottom: solid 1px #ddd;
@@ -56,22 +56,45 @@ main{
     border-radius: 5px;
     background-color: #21c531;
     color: white;
-    margin-bottom: 20px;
+    margin: 20px 0 20px 0;
 }
 .login-btn:active{
     transform: scale(0.95);
 }
-main #saveId {
+.saveId-area{
+    margin-bottom: 15px;
+}
+.saveIdArea{
+    display: inline-block;
     border: 1px solid #777;
     border-radius: 50%;
-    margin-bottom: 20px;
+    width: 26px;
+    height: 26px;
+    margin-right: 8px;
+}
+.fa-check{
+    font-size: 18px;
+    padding-left: 3px;
+    padding-top: 3px;
+}
+.idOk{
+    background-color: #21c531;
+    color: white;
+    border: none;
+    padding-left: 1px;
+    padding-top: 1px;
+}
+
+
+#saveId{
+    display: none;
 }
 main label{
     font-size: 20px;
     color: #777;
 }
 main .text-area{
-    font-size: 18px;
+    font-size: 17px;
     margin-bottom: 10px;
 }
 main .text-area a{
@@ -83,4 +106,10 @@ main .text-area a{
 
 main .text-area a:hover{
     text-decoration-line: underline;
+}
+
+.error{
+    color: red;
+    margin-top: 20px;
+    padding-left: 30px;
 }

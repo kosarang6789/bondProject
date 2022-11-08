@@ -20,7 +20,7 @@
 		</section>
 		<section class="top-menu">
 			<ul>
-				<li><a href="#" class="signUp">회원가입</a></li>
+				<li><a href="/member/signUp" class="signUp">회원가입</a></li>
 				<li><a href="/login" class="login">로그인</a></li>
 			</ul>
 		</section>
@@ -37,7 +37,7 @@
                     <p>당신의 취미도 BOND로 시작하세요.</p>
                     <div class="login-button">
                         <a href="/login" id="login">로그인</a>
-                        <a href="#" id="signUp">회원가입</a>
+                        <a href="/signUp" id="signUp">회원가입</a>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@
             
             <ul class="intro-list">
                 <li>
-                    <img src="/resources/images/common/intro1.jpg">
+                    <img src="/resources/images/common/index/intro1.jpg">
                     <div class="list-text">
                         <h3>어떤 모임이라도!</h3>
                         <p>친구, 가족, 동료 등 함께 하고 싶은 사람과<br>
@@ -61,7 +61,7 @@
                     </div>
                 </li>
                 <li>
-                    <img src="/resources/images/common/intro2.jpg">
+                    <img src="/resources/images/common/index/intro2.jpg">
                     <div class="list-text">
                         <h3>모임에 딱 맞는 기능들</h3>
                         <p>투표로 의견을 모으고, 함께 일정을 공유하며<br>
@@ -69,7 +69,7 @@
                     </div>
                 </li>
                 <li>
-                    <img src="/resources/images/common/intro3.jpg">
+                    <img src="/resources/images/common/index/intro3.jpg">
                     <div class="list-text">
                         <h3>내가 원하는 모임 찾기</h3>
                         <p>취미, 스포츠, 또래 모임 등<br>
