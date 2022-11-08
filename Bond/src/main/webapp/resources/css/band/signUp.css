@@ -1,0 +1,138 @@
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'nanumsquare', serif;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+main{
+    width: 60%;
+    min-width: 500px;
+    max-width: 600px;
+}
+.top-logo{
+    border-bottom: solid 1px #ddd;
+    margin-bottom: 70px;
+    width: 100%;
+    text-align: center;
+}
+.top-logo #home-logo{
+    width: 100px;
+    padding-bottom: 20px;
+}
+.signUp-title{
+    font-size: 48px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 50px;
+
+}
+.signUp-area>div{
+    font-size: 20px;
+}
+.signUp-area{
+    margin-bottom: 20px;
+}
+.signUp-area input{
+    border: none;
+    margin: 25px 20px 10px 20px;
+    border-bottom: 1px solid #ddd;
+    padding: 0 0 8px 15px;
+    font-size: 30px;
+    width: 100%;
+}
+.signUp-area #memberBirth{
+    color: #777;
+}
+.signUp-area input:focus{
+    outline: none;
+    border-bottom: 1px solid #21c531;
+}
+.signUp-btn{
+    margin-bottom: 5px;
+    background-color: #21c531;
+    color: white;
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.signUp-btn:active{
+    transform: scale(0.95);
+}
+
+
+.con-title{
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 60px;
+    font-size: 21px;
+    min-width: 465px;
+
+}
+.con-subtitle{
+    text-align: center;
+    margin-bottom: 70px;
+}
+.con-subtitle>h3{
+    margin: 15px 0;
+}
+.move{
+    display: flex;
+    justify-content: center;
+}
+.move div{
+    border: 1px solid #21c531;
+    width: 200px;
+    height: 70px;
+    text-align: center;
+    font-size: 25px;
+    margin: 10px;
+    border-radius: 3px;
+    padding-top: 20px;
+    cursor: pointer;
+    color: #21c531;
+}
+.move a{
+    text-decoration: none;
+
+}
+.move div:hover{
+    background-color: #21c531;
+    color: white;
+}
+
+
+
+.signUp-area>.coner{
+    margin-left: 40px;
+    font-size: 14px;
+
+}
+.confirm{
+    color: #21c531;
+    font-size: 14px;
+}
+.error{
+    color: red;
+    font-size: 14px;
+}
+.no{
+    color: black;
+    font-size: 14px;
+}
+
+#birthConfirm{
+    margin-bottom: 20px;
+}

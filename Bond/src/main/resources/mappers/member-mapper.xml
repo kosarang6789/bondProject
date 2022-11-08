@@ -32,11 +32,10 @@
 	
 	<!-- 로그인 -->
 	<select id="login" parameterType="String" resultMap="member_rm">
-		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NAME, MEMBER_BIRTH, MEMBER_TEL, PROFILE_IMG, SIGNUP_DATE, AUTHORITY
+		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_PW, MEMBER_NAME, MEMBER_BIRTH, MEMBER_TEL, PROFILE_IMG, SIGNUP_DATE, AUTHORITY
 		FROM "MEMBER"
 		WHERE MEMBER_STATUS != '2'
 		AND MEMBER_EMAIL = #{memberEmail}
-		AND MEMBER_PW = #{memberPw}
 	</select>
 	
 	<!-- 회원 정보 불러오기 -->
@@ -44,4 +43,12 @@
 		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NAME, MEMBER_STATUS, SIGNUP_DATE
 		FROM "MEMBER"
 	</select>
+	
+	<!-- 회원가입 -->
+	<insert id="signUp" parameterType="Member">
+		INSERT INTO "MEMBER"
+		VALUES(SEQ_MEMBER_NO.NEXTVAL, 
+			#{memberEmail}, #{memberPw}, #{memberName}, #{memberBirth}, #{memberTel},
+			DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT )
+	</insert>
 </mapper>

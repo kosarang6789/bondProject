@@ -12,9 +12,13 @@ public class MemberDAO {
 	// DBCP + 마이바티스 이용 객체 DI(의존성 주입)
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	
-	public Member login(Member inputMember) {
-		return sqlSession.selectOne("memberMapper.login", inputMember);
+
+	public Member login(String memberEmail) {
+		return sqlSession.selectOne("memberMapper.login", memberEmail);
+	}
+
+	public int signUp(Member inputMember) {
+		return sqlSession.insert("memberMapper.signUp", inputMember);
 	}
 
 }
