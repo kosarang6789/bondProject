@@ -80,7 +80,7 @@ public class MemberController {
 			}
 			
 			if(loginMember.getAuthority().equals("0")) { // 회원
-				path= "/member/mainPage";
+				path= "/member/mainPage1";
 //				model.addAttribute("loginMember", loginMember);
 				
 				Cookie cookie = new Cookie("saveId", loginMember.getMemberEmail());
@@ -112,9 +112,9 @@ public class MemberController {
 	/** 로그인 후 회원 메인 페이지로 이동
 	 * @return
 	 */
-	@GetMapping("/member/mainPage")
+	@GetMapping("/member/mainPage1")
 	public String goMainPage() {
-		return "/member/mainPage";
+		return "/member/mainPage1";
 	}
 	
 	/** 로그아웃 하기
