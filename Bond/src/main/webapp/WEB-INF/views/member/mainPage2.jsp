@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Page</title>
 
-    <link rel="stylesheet" href="css/main-page2.css">
+    <link rel="stylesheet" href="/resources/css/member/main-page2.css">
     <script src="https://kit.fontawesome.com/345198b845.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -18,14 +18,14 @@
             <div>
                 <!-- 클릭 시 메인으로 이동하는 로고  -->
                 <a href="#">
-                    <img src="images/home-logo.png" id="home-logo">
+                    <img src="/resources/images/common/home-logo.png" id="home-logo">
                 </a>
             </div>
     
             <div class="profile">
                 <!-- 내 정보 사진 -->
                 <button type="button" class="box">
-                    <img src="images/profile-photo.png" id="profile-photo">
+                    <img src="/resources/images/common/profile-photo.png" id="profile-photo">
                 </button>
             </div>
         </header>
@@ -57,49 +57,49 @@
                     <ul>
                         <li class="category-list">
                             <a href="#">
-                                <img src="images/group-category/1_exercise.jpg">
+                                <img src="/resources/images/member/main1/group-category/1_exercise.jpg">
                                 <p>운동</p>
                             </a>
                         </li>
                         <li class="category-list">
                             <a href="#">
-                                <img src="images/group-category/2_craft.jpg">
+                                <img src="/resources/images/member/main1/group-category/2_craft.jpg">
                                 <p>공예</p>
                             </a>
                         </li>
                         <li class="category-list">
                             <a href="#">
-                                <img src="images/group-category/3_game.jpg">
+                                <img src="/resources/images/member/main1/group-category/3_game.jpg">
                                 <p>게임</p>
                             </a>
                         </li>
                         <li class="category-list">
                             <a href="#">
-                                <img src="images/group-category/4_art.jpg">
+                                <img src="/resources/images/member/main1/group-category/4_art.jpg">
                                 <p>문화/예술</p>
                             </a>
                         </li>
                         <li class="category-list">
                             <a href="#">
-                                <img src="images/group-category/5_self-improvement.jpg">
+                                <img src="/resources/images/member/main1/group-category/5_self-improvement.jpg">
                                 <p>자기개발</p>
                             </a>
                         </li>
                         <li class="category-list">
                             <a href="#">
-                                <img src="images/group-category/6_camping.jpg">
+                                <img src="/resources/images/member/main1/group-category/6_camping.jpg">
                                 <p>여행/캠핑</p>
                             </a>
                         </li>
                         <li class="category-list">
                             <a href="#">
-                                <img src="images/group-category/7_camera.jpg">
+                                <img src="/resources/images/member/main1/group-category/7_camera.jpg">
                                 <p>사진</p>
                             </a>
                         </li>
                         <li class="category-list">
                             <a href="#">
-                                <img src="images/group-category/8_farming.jpg">
+                                <img src="/resources/images/member/main1/group-category/8_farming.jpg">
                                 <p>자연/귀농</p>
                             </a>
                         </li>
@@ -137,7 +137,7 @@
                     <li class="group">
                         <a href="#" class="bandUri">
                             <div class="group-img">
-                                <img src="images/group-english.jpg">
+                                <img src="/resources/images/member/main1/group-recommend/group-english.jpg">
                             </div>
                             <div>
                                 <strong>영어가 술술 스피킹</strong>
@@ -148,7 +148,7 @@
                     <li class="group">
                         <a href="#" class="bandUri">
                             <div class="group-img">
-                                <img src="images/group-coding.jpg">
+                                <img src="/resources/images/member/main1/group-recommend/group-coding.jpg">
                             </div>
                             <div>
                                 <strong>코사랑 동호회</strong>
@@ -159,7 +159,7 @@
                     <li class="group">
                         <a href="#" class="bandUri">
                             <div class="group-img">
-                                <img src="images/group-riding.jpg">
+                                <img src="/resources/images/member/main1/group-recommend/group-riding.jpg">
                             </div>
                             <div>
                                 <strong>자전거 따릉따릉</strong>
@@ -170,7 +170,7 @@
                     <li class="group">
                         <a href="#" class="bandUri">
                             <div class="group-img">
-                                <img src="images/group-spaceout.jpg">
+                                <img src="/resources/images/member/main1/group-recommend/group-spaceout.jpg">
                             </div>
                             <div>
                                 <strong>멍때리기 대회 준비</strong>
@@ -200,6 +200,13 @@
         </article>
 
     </footer>
+
+    <h3>session scope 확인</h3>
+  이름 : "${loginMember.memberName}";
+  생일 : "${loginMember.memberBirth}";
+  전화번호 : "${loginMember.memberTel}";
+  
+  	  <a href="/logout">로그아웃</a>
 
 </body>
 </html>
