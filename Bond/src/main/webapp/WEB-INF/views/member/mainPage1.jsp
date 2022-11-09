@@ -9,11 +9,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Page</title>
 
-    <link rel="stylesheet" href="/resources/css/band/main-page.css">
+    <link rel="stylesheet" href="/resources/css/band/main-page1.css">
     <script src="https://kit.fontawesome.com/345198b845.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <jsp:include page="/WEB-INF/views/common/header.jsp" />
+    <section class="header-area">
+        <header>
+            <div>
+                <!-- 클릭 시 메인으로 이동하는 로고  -->
+                <a href="#">
+                    <img src="/resources/images/common/home-logo.png" id="home-logo">
+                </a>
+            </div>
+    
+            <div class="profile">
+                <!-- 내 정보 사진 -->
+                <button type="button" class="box">
+                    <img src="/resources/images/common/home-logo-white.png" id="profile-photo">
+                </button>
+            </div>
+        </header>
+    </section>
 
     <!-- 네비게이션 -->
     <section class="nav-area">
@@ -49,7 +65,7 @@
                 </li>
                 <li class="groupCardItem">
                     <a href="#">
-                        <img src="/resources/images/band/group1.jpg">
+                        <img src="/resources/images/member/main1/group1.jpg">
                         <div class="groupInfo">
                             <p>KH 팀프로젝트</p>
                             <span>멤버 5</span>
@@ -58,7 +74,7 @@
                 </li>
                 <li class="groupCardItem">
                     <a href="#">
-                        <img src="/resources/images/band/group2.jpg">
+                        <img src="/resources/images/member/main1/group2.jpg">
                         <div class="groupInfo">
                             <p>여행 가즈아</p>
                             <span>멤버 20</span>
@@ -67,7 +83,7 @@
                 </li>
                 <li class="groupCardItem">
                     <a href="#">
-                        <img src="/resources/images/band/group3.jpg">
+                        <img src="/resources/images/member/main1/group3.jpg">
                         <div class="groupInfo">
                             <p>맛집 탐사대</p>
                             <span>멤버 10</span>
@@ -84,7 +100,22 @@
         </section>
     </main>
     
-	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+    <footer>
+        <p>
+            BOND &copy; 2022
+        </p>
+
+        <article>
+            <a href="#">블로그</a>
+            <span>|</span>
+            <a href="#">이용약관</a>
+            <span>|</span>
+            <a href="#">개인정보처리방침</a>
+            <span>|</span>
+            <a href="#">고객센터</a>
+        </article>
+
+    </footer>
     
       <h3>session scope 확인</h3>
   이름 : "${loginMember.memberName}";
