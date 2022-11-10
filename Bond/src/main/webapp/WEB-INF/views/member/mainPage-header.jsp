@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <section class="header-area">
     <header>
         <div>
@@ -14,19 +17,4 @@
             </button>
         </div>
     </header>
-</section>
-
-<!-- 네비게이션 -->
-<section class="nav-area">
-    <nav>
-        <div class="mainPage-menu">
-            <a href="#">내 모임</a>
-            <a href="#">모임찾기</a>
-        </div>
-
-        <div class="mainPage-optionBox">
-            <a href="#">목록 편집</a>
-            <a href="#">본드 가이드</a>
-        </div>
-    </nav>
 </section>
