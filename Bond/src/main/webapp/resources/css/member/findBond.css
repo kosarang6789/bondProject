@@ -92,6 +92,21 @@ nav>.mainPage-menu>a{
     display: inline-block;
 }
 
+/* nav 수정! */
+nav>.mainPage-menu>.active{
+    color:#222;
+    position: relative;
+}
+
+nav>.mainPage-menu>.active::after{
+    content: "";
+    border-top: 4px solid #333;
+    width: 100%;
+    display: block;
+    position: absolute;
+    bottom: 2px;
+}
+
 nav>.mainPage-menu>a:hover{
     color: #222;
     font-weight: 800;
