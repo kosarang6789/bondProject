@@ -20,7 +20,7 @@
 		</section>
 		<section class="top-menu">
 			<ul>
-				<li><a href="/member/signUp" class="signUp">회원가입</a></li>
+				<li><a href="/signUp" class="signUp">회원가입</a></li>
 				<li><a href="/login" class="login">로그인</a></li>
 			</ul>
 		</section>
