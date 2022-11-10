@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Page</title>
 
-    <link rel="stylesheet" href="/resources/css/member/main-page2.css">
+    <link rel="stylesheet" href="/resources/css/member/main-page.css">
     <script src="https://kit.fontawesome.com/345198b845.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -46,142 +46,58 @@
         </nav>
     </section>
 
+
     <main>
-        <section class="category-area">
-            <div class="find-band-category">
-                <h2>주제별 본드를 찾아보세요</h2>
-                <div class="group-category">
-                    <button id="left-btn">
-                        <i class="fa-sharp fa-solid fa-chevron-left"></i>
-                    </button>
-                    <ul>
-                        <li class="category-list">
-                            <a href="#">
-                                <img src="/resources/images/member/main1/group-category/1_exercise.jpg">
-                                <p>운동</p>
-                            </a>
-                        </li>
-                        <li class="category-list">
-                            <a href="#">
-                                <img src="/resources/images/member/main1/group-category/2_craft.jpg">
-                                <p>공예</p>
-                            </a>
-                        </li>
-                        <li class="category-list">
-                            <a href="#">
-                                <img src="/resources/images/member/main1/group-category/3_game.jpg">
-                                <p>게임</p>
-                            </a>
-                        </li>
-                        <li class="category-list">
-                            <a href="#">
-                                <img src="/resources/images/member/main1/group-category/4_art.jpg">
-                                <p>문화/예술</p>
-                            </a>
-                        </li>
-                        <li class="category-list">
-                            <a href="#">
-                                <img src="/resources/images/member/main1/group-category/5_self-improvement.jpg">
-                                <p>자기개발</p>
-                            </a>
-                        </li>
-                        <li class="category-list">
-                            <a href="#">
-                                <img src="/resources/images/member/main1/group-category/6_camping.jpg">
-                                <p>여행/캠핑</p>
-                            </a>
-                        </li>
-                        <li class="category-list">
-                            <a href="#">
-                                <img src="/resources/images/member/main1/group-category/7_camera.jpg">
-                                <p>사진</p>
-                            </a>
-                        </li>
-                        <li class="category-list">
-                            <a href="#">
-                                <img src="/resources/images/member/main1/group-category/8_farming.jpg">
-                                <p>자연/귀농</p>
-                            </a>
-                        </li>
-                    </ul>
-                    <button id="right-btn">
-                        <i class="fa-sharp fa-solid fa-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-
-
+        <!-- 내 모임 리스트 -->
+        <section class="myGroup-area">
+            <ul class="myGroup-list">
+                <li class="groupCardItem">
+                    <a href="#">
+                        <div class="make-icon">
+                            <span id="plus-icon">
+                                <i class="fa-solid fa-plus"></i>
+                            </span>
+                        </div>
+                        <div class="groupInfo make-text">
+                            <span class="make-group">만들기</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="groupCardItem">
+                    <a href="#">
+                        <img src="/resources/images/member/main1/group1.jpg">
+                        <div class="groupInfo">
+                            <p>KH 팀프로젝트</p>
+                            <span>멤버 5</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="groupCardItem">
+                    <a href="#">
+                        <img src="/resources/images/member/main1/group2.jpg">
+                        <div class="groupInfo">
+                            <p>여행 가즈아</p>
+                            <span>멤버 20</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="groupCardItem">
+                    <a href="#">
+                        <img src="/resources/images/member/main1/group3.jpg">
+                        <div class="groupInfo">
+                            <p>맛집 탐사대</p>
+                            <span>멤버 10</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
         </section>
-        
-        <section class="search-area">
-            <article>
-                <h2>BOND 찾기</h2>
-                <form action="#">
-                    <fieldset>
-                        <input type="text" id="query" name="query"
-                        placeholder="원하는 모임을 검색하세요">
-
-                        <button type="submit" id="search-btn"
-                        class="fa-solid fa-magnifying-glass">
-
-                        </button>
-                    </fieldset>
-                </form>
-            </article>
-        </section>
-
-        <section class="recommend-area">
-            <div class="group-recommend">
-                <h3>이런 모임은 어때요</h3>
-                <ul class="group-list">
-                    <li class="group">
-                        <a href="#" class="bandUri">
-                            <div class="group-img">
-                                <img src="/resources/images/member/main1/group-recommend/group-english.jpg">
-                            </div>
-                            <div>
-                                <strong>영어가 술술 스피킹</strong>
-                                <p>원어민처럼 말하는 그날까지 같이 공부해요!</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="group">
-                        <a href="#" class="bandUri">
-                            <div class="group-img">
-                                <img src="/resources/images/member/main1/group-recommend/group-coding.jpg">
-                            </div>
-                            <div>
-                                <strong>코사랑 동호회</strong>
-                                <p>코잘알이 되는 날까지 hello world! 에러는 싫어요 404는 이제 그만</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="group">
-                        <a href="#" class="bandUri">
-                            <div class="group-img">
-                                <img src="/resources/images/member/main1/group-recommend/group-riding.jpg">
-                            </div>
-                            <div>
-                                <strong>자전거 따릉따릉</strong>
-                                <p>자전거를 통한 체력 단련으로 건강 되찾기, 따릉이도 환영합니다</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="group">
-                        <a href="#" class="bandUri">
-                            <div class="group-img">
-                                <img src="/resources/images/member/main1/group-recommend/group-spaceout.jpg">
-                            </div>
-                            <div>
-                                <strong>멍때리기 대회 준비</strong>
-                                <p>멍때리기를 통해 내면을 다스립니다 Inner Peace</p>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
+        <section class="myGroup-schedule">
+            <h3>내 모임 정모</h3>
+            <div class="schedule">
+                
             </div>
         </section>
-        
     </main>
     
     <footer>
@@ -200,8 +116,8 @@
         </article>
 
     </footer>
-
-    <h3>session scope 확인</h3>
+    
+      <h3>session scope 확인</h3>
   이름 : "${loginMember.memberName}";
   생일 : "${loginMember.memberBirth}";
   전화번호 : "${loginMember.memberTel}";
