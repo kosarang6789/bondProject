@@ -1,0 +1,328 @@
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+*{
+    box-sizing: border-box;
+
+    padding: 0;
+    margin: 0;
+    font-family: 'nanumsquare', serif;
+}
+
+ul{list-style: none;}
+
+a{text-decoration: none;}
+
+body{
+    background-color: #f8f9fa;
+    display: block;
+}
+/* Header */
+
+.header-area{
+    width: 100%;
+    background-color: #fff;
+    position: fixed;
+    box-shadow: 0 1.4px 1.3px 0 rgb(62 73 89 / 7%);
+    z-index: 2000;
+    display: block;
+}
+
+header{
+    width: 1140px;
+    height: 50px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+#home-logo{
+    width: 80px;
+    padding-top: 4px;
+}
+
+.box {
+    width: 40px;
+    height: 40px;
+    border-radius: 70%;
+    overflow: hidden;
+    justify-content: right;
+}
+
+#profile-photo{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  
+    cursor: pointer;
+}
+
+button{
+    cursor: pointer;
+}
+
+/* nav */
+
+.nav-area{
+    top : 50px;
+    position: sticky;
+    display: block;
+    z-index: 1500;
+    /* margin-top: 50px; */
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+}
+
+nav{
+    display: flex;
+    width: 1140px;
+    justify-content: space-between;
+    margin: auto;
+    padding-top: 20px;
+}
+
+nav a{
+    padding-bottom: 17px;
+}
+
+nav>.mainPage-menu>a{
+    font-size: 26px;
+    font-weight: 800;
+    margin-right: 20px;
+    color:#bbb;
+    display: inline-block;
+}
+
+nav>.mainPage-menu>a:hover{
+    color: #222;
+    font-weight: 800;
+}
+
+.mainPage-optionBox{
+    padding-top: 5px;
+}
+
+nav>.mainPage-optionBox>a{
+    font-size:15px;
+    font-weight: 400;
+    color: #444;
+    text-align: left;
+    padding: 0 10px;
+}
+
+/* main */
+
+/* 모임 카테고리 */
+.category-area{
+    padding: 29px 0 23px;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(235,235,235,.8);
+}
+
+.find-band-category{
+    position: relative;
+    width: 1034px;
+    margin: 0 auto;
+}
+
+.find-band-category>h2{
+    font-size: 22px;
+    font-weight: 600;
+    color: #222;
+    margin: 5px 0 22px;
+}
+
+main{
+    margin-top: 50px;
+    /* min-height: 1000px; */
+    position: relative;
+    display: block;
+}
+
+.group-category{
+    width: 1040px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.group-category>button{
+    border: none;
+    background-color: #fff;
+    display: inline-block;
+    height: 100%;
+    position: absolute;
+    top: -18px;
+}
+
+.group-category i{
+    font-size: 24px;
+    line-height: 100%;
+    vertical-align: middle;
+    color: #BFBFBF;
+}
+
+.group-category>ul{
+    display: inline-block;
+    margin-left: 40px;
+}
+
+.category-list{
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    width: 98px;
+    height: 140px;
+    vertical-align: top;
+    margin-right: 22px;
+}
+
+.category-list img{
+    width: 98px;
+    height: 98px;
+    border-radius: 50%;
+}
+
+.category-list p{
+    font-size: 16px;
+    margin-top: 7px;
+    vertical-align: middle;
+    font-weight: 600;
+    color: #222;
+    text-align: center;
+}
+
+/* 모임 검색창 */
+.search-area{
+    width: 1140px;
+    height: 260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 0 0 40px;
+}
+
+.search-area article{
+    width: 700px;
+}
+
+.search-area h2{
+    font-size: 22px;
+    font-weight: 600;
+    color: #222;
+    margin: 10px 0 10px 10px;
+}
+
+.search-area fieldset{
+    background-color: #fff;
+    padding: 2px;
+    margin: 0;
+    border: 2px solid #222;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#query{
+    padding: 20px 330px 18px 30px;
+    font-size: 22px;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    
+}
+
+#search-btn{
+    width:10%;
+    background-color: white;
+    border: none;
+    font-size: 1.2em;
+    color:#444;
+    cursor: pointer;
+}
+
+/* 모임 추천 영역 */
+
+.recommend-area{
+    background-color: #eef0f3;
+    padding: 35px 0 25px 0;
+}
+
+.group-recommend{
+    width: 1040px;
+    margin: auto;
+}
+
+.group-recommend>h3{
+    margin-bottom: 20px;
+}
+
+.group-list{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.group{
+    width: 50%;
+    padding-right: 20px;
+    margin-bottom: 30px;
+}
+
+.group>a{
+    color: #222;
+}
+
+.bandUri{
+    display: flex;
+    align-items: center;
+}
+
+.bandUri>div>p{
+    margin-top: 5px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #666;
+}
+
+.group-img{
+    display: inline-block;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-right: 12px;
+}
+
+.group-img>img{
+    width: 80px;
+    height: 80px;
+}
+
+
+/* footer */
+
+footer{
+    width: 100%;
+    height: 200px;
+    background-color: #BFBFBF;
+    
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+
+footer > p{
+    font-weight: 800;
+    margin: 16px 0;
+}
+
+footer > article > *{
+    font-size: 14px;
+}
+
+footer a{
+    color: black;
+}
+
+footer span{
+    padding : 0 10px;
+}
