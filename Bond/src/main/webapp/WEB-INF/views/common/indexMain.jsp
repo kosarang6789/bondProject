@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index Page</title>
-    <link rel="stylesheet" href="/resources/css/common/index-page.css">
+    <link rel="stylesheet" href="/resources/css/common/indexPage.css">
 </head>
 <body>
 	<header>
@@ -20,7 +20,7 @@
 		</section>
 		<section class="top-menu">
 			<ul>
-				<li><a href="/member/signUp" class="signUp">회원가입</a></li>
+				<li><a href="/signUp" class="signUp">회원가입</a></li>
 				<li><a href="/login" class="login">로그인</a></li>
 			</ul>
 		</section>
@@ -79,12 +79,10 @@
             </ul>    
         </section>
         
-          <h3>session scope 확인</h3>
-  이름 : "${loginMember.memberName}";
-  생일 : "${loginMember.memberBirth}";
-  전화번호 : "${loginMember.memberTel}";
-
-    
+    <h3>session scope 확인</h3>
+    이름 : "${loginMember.memberName}";
+    생일 : "${loginMember.memberBirth}";
+    전화번호 : "${loginMember.memberTel}";
 
     </main>
     

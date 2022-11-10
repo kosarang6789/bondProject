@@ -117,6 +117,11 @@ public class MemberController {
 		return "/member/mainPage";
 	}
 	
+	@GetMapping("/member/findBond")
+	public String findBondPage() {
+		return "/member/findBond";
+	}
+	
 	/** 로그아웃 하기
 	 * @return
 	 */
