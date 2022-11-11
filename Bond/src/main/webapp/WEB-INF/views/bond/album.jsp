@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모임이 쉬워진다 | BOND</title>
 
-    <link rel="stylesheet" href="css/album.css">
+    <link rel="stylesheet" href="/resources/css/bond/album.css">
     <script src="https://kit.fontawesome.com/1ce4f19a7a.js" crossorigin="anonymous"></script>
 
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
@@ -17,7 +17,7 @@
 </head>
 
 <body>    
-<jsp:include page="/WEB-INF/views/bond/headerBond.jsp"/>  
+	<jsp:include page="/WEB-INF/views/bond/headerBond.jsp"/>  
 
         <div id="container">
             <!-- 1번 영역 -->
@@ -25,7 +25,7 @@
                 <div id="info-inner">
                     <div class="side-cover">
                         <a href="#" class="cover">
-                            <img src="images/side-cover.png" id="cover-img">
+                            <img src="/resources/images/bond/side-cover.png" id="cover-img">
                         </a>
                     </div>
 
@@ -123,17 +123,17 @@
                         <ul class="album-images">
                             <li class="album">
                                 <a href="#">
-                                    <img src="images/album1.png" class="album-img">
+                                    <img src="/resources/images/bond/album1.png" class="album-img">
                                 </a>
                             </li>
                             <li class="album">
                                 <a href="#">
-                                    <img src="images/album2.png" class="album-img">
+                                    <img src="/resources/images/bond/album2.png" class="album-img">
                                 </a>
                             </li>
                             <li class="album">
                                 <a href="#">
-                                    <img src="images/album3.png" class="album-img">
+                                    <img src="/resources/images/bond/album3.png" class="album-img">
                                 </a>
                             </li>
                             <li class="album"><a href="#">4</a></li>
@@ -174,17 +174,17 @@
                                 <ul class="album-images">
                                     <li class="album-bottom">
                                         <a href="#">
-                                            <img src="images/album1.png" class="album-img">
+                                            <img src="/resources/images/bond/album1.png" class="album-img">
                                         </a>
                                     </li>
                                     <li class="album-bottom">
                                         <a href="#">
-                                            <img src="images/album2.png" class="album-img">
+                                            <img src="/resources/images/bond/album2.png" class="album-img">
                                         </a>
                                     </li>
                                     <li class="album-bottom">
                                         <a href="#">
-                                            <img src="images/album3.png" class="album-img">
+                                            <img src="/resources/images/bond/album3.png" class="album-img">
                                         </a>
                                     </li>
                                     <li class="album-bottom"><a href="#">4</a></li>
@@ -203,7 +203,7 @@
                         <div class="photo-body">
                             <div class="photo-list">
                                 <a href="#" class="banner-box">
-                                    <img src="images/banner.jpeg" class="banner-img">
+                                    <img src="/resources/images/bond/banner.jpeg" class="banner-img">
                                 </a>
                                 <span class="no-img"></span>
                                 <span class="no-img"></span>

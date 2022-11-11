@@ -9,12 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모임이 쉬워진다 | BOND</title>
 
-    <link rel="stylesheet" href="css/meeting.css">
+    <link rel="stylesheet" href="/resources/css/bond/meetingAfterLogin.css">
     <script src="https://kit.fontawesome.com/1ce4f19a7a.js" crossorigin="anonymous"></script>
 
-
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -25,7 +22,7 @@
                 <div id="info-inner">
                     <div class="side-cover">
                         <a href="#" class="cover">
-                            <img src="images/side-cover.png" id="cover-img">
+                            <img src="/resources/images/bond/side-cover.png" id="cover-img">
                         </a>
                     </div>
 
@@ -234,7 +231,7 @@
                         <div class="photo-body">
                             <div class="photo-list">
                                 <a href="#" class="banner-box">
-                                    <img src="images/banner.jpeg" class="banner-img">
+                                    <img src="/resources/images/bond/banner.jpeg" class="banner-img">
                                 </a>
                                 <span class="no-img"></span>
                                 <span class="no-img"></span>

@@ -9,11 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모임이 쉬워진다 | BOND</title>
 
-    <link rel="stylesheet" href="css/meeting-x.css">
+    <link rel="stylesheet" href="/resources/css/bond//meetingBeforeLogin.css">
     <script src="https://kit.fontawesome.com/1ce4f19a7a.js" crossorigin="anonymous"></script>
 
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -25,7 +23,7 @@
                 <div id="info-inner">
                     <div class="side-cover">
                         <a href="#" class="cover">
-                            <img src="images/side-cover.png" id="cover-img">
+                            <img src="/resources/images/bond/side-cover.png" id="cover-img">
                         </a>
                     </div>
 
@@ -85,22 +83,22 @@
                     <ul class="intro-photo collage">
                         <li class="collage-photo">
                             <a href="#">
-                                <img src="images/intro-photo1.PNG">
+                                <img src="/resources/images/bond/intro-photo1.PNG">
                             </a>
                         </li>
                         <li class="collage-photo">
                             <a href="#">
-                                <img src="images/intro-photo2.PNG">
+                                <img src="/resources/images/bond/intro-photo2.PNG">
                             </a>
                         </li>
                         <li class="collage-photo">
                             <a href="#">
-                                <img src="images/intro-photo3.PNG">
+                                <img src="/resources/images/bond/intro-photo3.PNG">
                             </a>
                         </li>
                         <li class="collage-photo">
                             <a href="#">
-                                <img src="images/intro-photo4.PNG">
+                                <img src="/resources/images/bond/intro-photo4.PNG">
                             </a>
                         </li>
                     </ul>

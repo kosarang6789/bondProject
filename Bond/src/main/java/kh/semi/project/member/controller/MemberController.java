@@ -176,4 +176,14 @@ public class MemberController {
 		return "/member/signUpOk";
 	}
 	
+	/** 내 밴드 클릭 시 본드 페이지 이동
+	 * @return
+	 */
+	@GetMapping("/bond/meetingAfterLogin")
+	public String meetingAfterLogin() {
+		return "/bond/meetingAfterLogin";
+	}
+	
+
+	
 }
