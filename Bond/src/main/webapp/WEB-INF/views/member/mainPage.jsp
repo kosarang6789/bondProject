@@ -51,7 +51,7 @@
                     </a>
                 </li>
                 <li class="groupCardItem">
-                    <a href="#">
+                    <a href="/bond/meetingAfterLogin">
                         <img src="/resources/images/member/main1/group1.jpg">
 
                         <div class="groupInfo">
