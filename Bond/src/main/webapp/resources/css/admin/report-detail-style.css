@@ -1,0 +1,234 @@
+/* .content */
+.content{
+    background-color: white;
+
+    width: 920px;
+    
+    margin-left: 20px;
+    border-radius: 10px;
+
+    display:flex;
+    flex-direction: column;
+}
+/* end .content */
+
+
+/* .content-header */
+.content-header{
+    width: 100%;
+    height: 60px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding:0px 30px;
+    margin-bottom: 20px;;
+    border-bottom: 1px solid #BFBFBF;
+}
+
+.content-body{
+    padding: 0px 0px 0px 30px;
+    min-height: 700px;
+}
+
+/* .content-body */
+
+/* 목록 버튼 */
+#list-btn{
+    margin-left: 30px;
+    width: 50px;
+    float:left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#list-btn:hover{
+    background-color: #bfbfbf31;
+}
+#list-btn:active{
+    background-color: #bfbfbf41;
+    color: black;
+}
+
+#list-btn > img{
+    width: 15px;
+    height: 100%;
+}
+
+/* 전체 */
+.detail-info{
+    float: right;
+    width: 650px;
+    margin-bottom: 20px;
+}
+
+/* 행 */
+.detail-info-row{
+    border-top: 1px solid #BFBFBF;
+    width: 650px;
+    height: 100%;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    background-color: #E2E2E250;
+}
+
+
+.detail-info-row:last-child{
+    border-bottom: 1px solid #BFBFBF;
+}
+
+/* 라벨 */
+.detail-info-row > label{
+    font-weight: 800;
+    
+    padding-left: 10px;
+    
+    width: 150px;
+    
+    display: flex;
+    align-items: center;
+}
+
+/* 라벨이 아닌 열 */
+.detail-info-col{
+    display: flex;
+    align-items: center;
+    padding: 0px 20px;
+    width: 500px;
+    background-color: white;
+    height: 100%;
+    min-height: 50px;
+}
+
+.detail-info-col2{
+    display: flex;
+    align-items: center;
+    padding: 0px 20px;
+    width: 175px;
+    background-color: white;
+    height: 100%;
+    min-height: 50px;
+}
+
+#memberImage{
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+
+/* join count */
+.report-count, .join-count{
+    min-width: 85%;
+    margin-right: 5px;
+    display: flex;
+}
+
+/* 모달 버튼 */
+#openModal{
+    border: none;
+    border-radius: 10px;
+    background-color: #E2E2E250;
+    height: 35px;
+    width: 45px;
+
+    cursor: pointer;
+}
+
+#openModal:hover{
+    opacity: 0.7;
+}
+
+#openModal:active{
+    opacity: 0.5;
+}
+
+
+/* 모달창 */
+body{
+    position: relative;
+}
+
+#modalDim{
+    background-color: rgb(0,0,0,0.8);
+    width: 100vw;
+    height: 100vmax;
+    
+    position: absolute;
+    top: 0;
+}
+
+#modalBox{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    position: relative;
+    
+    z-index: 15000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#modal{
+    background-color: white;
+    
+    width: 500px;
+
+    position: absolute;
+    z-index: 20000;
+    position: relative;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#closeModal{
+    font-size: 20px;
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    cursor: pointer;
+}
+
+.report-modal-row{
+    font-size: 12px;
+
+    width: 100%;
+    height: 30px;
+    border-bottom: 1px solid #E2E2E2;
+    display: flex;
+}
+
+.report-no{ flex-basis : 20% }
+.report-request{ flex-basis : 20%}
+.report-reason{ flex-basis : 50%}
+.report-result{ flex-basis : 20%}
+
+/* modal 내 표 */
+.report-modal-row > span{
+    display: flex;
+    align-items: center;
+    padding: 0px 10px;
+}
+
+.report-modal-row:first-of-type{
+    background-color: #CCC;
+}
+
+#resultSelect{
+    height: 30px;
+}
+
+#resultBtn{
+    height: 30px;
+    width: 50px;
+    margin-left: 10px;
+}
+
+/* end .content-body */
+
+

@@ -19,7 +19,7 @@
 </head>
 <body>
 
-    <jsp:include page="/WEB-INF/views/common/header.jsp" />
+    <jsp:include page="/WEB-INF/views/admin/adminPage-header.jsp" />
 
     <main> <!-- for background-color -->
 
