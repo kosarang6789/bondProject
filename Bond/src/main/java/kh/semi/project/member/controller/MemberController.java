@@ -117,6 +117,11 @@ public class MemberController {
 		return "/member/mainPage";
 	}
 	
+	@GetMapping("/member/findBond")
+	public String findBondPage() {
+		return "/member/findBond";
+	}
+	
 	/** 로그아웃 하기
 	 * @return
 	 */
@@ -170,5 +175,15 @@ public class MemberController {
 	public String goSignUpOkPage() {
 		return "/member/signUpOk";
 	}
+	
+	/** 내 밴드 클릭 시 본드 페이지 이동
+	 * @return
+	 */
+	@GetMapping("/bond/meetingAfterLogin")
+	public String meetingAfterLogin() {
+		return "/bond/meetingAfterLogin";
+	}
+	
+
 	
 }
