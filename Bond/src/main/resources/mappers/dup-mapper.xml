@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dupMapper">
+
+	<resultMap type="Member" id="member_rm">
+		
+		<!-- PK 컬럼은 id로 -->
+		<id property="memberNo" column="MEMBER_NO" />
+		
+		<!-- 나머지 컬럼은 result로 작성 -->
+		<result property="memberEmail" column="MEMBER_EMAIL" />
+		<result property="memberPw" column="MEMBER_PW" />
+		<result property="memberName" column="MEMBER_NAME" />
+		<result property="memberBirth" column="MEMBER_BIRTH" />
+		<result property="memberTel" column="MEMBER_TEL" />
+		<result property="profileImage" column="PROFILE_IMG" />
+		<result property="authority" column="AUTHORITY" />
+		<result property="memberStatus" column="MEMBER_STATUS" />
+		<result property="signUpDate" column="SIGNUP_DATE" />
+		<result property="delDate" column="DEL_DATE" />
+	</resultMap>
+
+	<!-- 회원가입 이메일 중복 검사 -->
+	<select id="emailDupCheck" parameterType="string" resultType="_int">
+		SELECT COUNT(*) FROM "MEMBER"
+		WHERE MEMBER_EMAIL = #{memberEmail}
+		AND MEMBER_STATUS = '0'
+	</select>
+	
+	
+	<!-- 회원가입 이름 중복 검사 -->
+	<select id="nameDupCheck" parameterType="string" resultType="_int">
+		SELECT COUNT(*) FROM "MEMBER"
+		WHERE MEMBER_NAME = #{memberName}
+		AND MEMBER_STATUS = '0'
+	</select>
+	
+</mapper>

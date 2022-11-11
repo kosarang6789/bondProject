@@ -20,7 +20,6 @@ document.getElementById("signUpFrm").addEventListener("submit", function(event){
                 case "memberPwConfirm" : str="비밀번호 확인이 유효하지 않습니다."; break;
                 case "memberName" : str="닉네임이 유효하지 않습니다."; break;
                 case "memberTel" : str="전화번호가 유효하지 않습니다."; break;
-                case "memberBirth" : str="생일을 입력해주세요."; break;
             }
             alert(str);
             document.getElementById(key).focus();
@@ -47,10 +46,6 @@ memberEmail.addEventListener("input", function(){
     const regEx = /^[a-zA-Z\d\_\-]{4,}@[가-힇\w\-\_]+(\.\w+){1,3}$/;
 
     if(regEx.test(memberEmail.value)){
-        // emailConfirm.innerText = "유효한 이메일 입니다.";
-        // emailConfirm.classList.add("confirm");
-        // emailConfirm.classList.remove("error");
-        // checkObj.memberEmail = true;
 
         $.ajax({
             url : "/emailDupCheck",
@@ -157,10 +152,27 @@ memberName.addEventListener("input", function(){
     }
     const regEx = /^[\w가-힇]{2,10}$/;
     if(regEx.test(memberName.value)){
-        nameConfirm.innerText = "유효한 이름입니다.";
-        nameConfirm.classList.add("confirm");
-        nameConfirm.classList.remove("error");
-        checkObj.memberName=true;
+
+        $.ajax({
+            url : "/nameDupCheck",
+            data : {"memberName" : memberName.value},
+            success : (result)=>{
+                if(result == 0){ // 사용 가능
+                    nameConfirm.innerText="사용 가능한 이름입니다.";
+                    nameConfirm.classList.add("confirm");
+                    nameConfirm.classList.remove("error");
+                    checkObj.memberName=true;
+                }else{
+                    nameConfirm.innerText="사용 중인 이름입니다.";
+                    nameConfirm.classList.add("error");
+                    nameConfirm.classList.remove("confirm");
+                    checkObj.memberName=false;
+                }
+            },
+            error : ()=>{
+                console.log("ajax 통신 실패");
+            }
+        })
     }else{
         nameConfirm.innerText="이름 형식이 유효하지 않습니다.";
         nameConfirm.classList.add("error");
@@ -192,27 +204,6 @@ memberTel.addEventListener("input", function(){
         telConfirm.classList.add("error");
         telConfirm.classList.remove("confirm");
         checkObj.memberTel=false;
-
-    }
-});
-
-// 생일 유효검사
-
-const memberBirth = document.getElementById("memberBirth");
-const birthConfirm = document.getElementById("birthConfirm");
-
-memberBirth.addEventListener("input", function(){
-    if(memberBirth.value.trim().length == 0){
-        birthConfirm.innerText = "생년월일을 입력해주세요.";
-        birthConfirm.classList.add("error");
-        birthConfirm.classList.remove("confirm");
-        checkObj.memberBirth=false;
-        return;
-    }else{
-        birthConfirm.classList.add("confirm");
-        birthConfirm.classList.remove("error");
-        checkObj.memberBirth=true;
-        return;
 
     }
 });

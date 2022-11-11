@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>본드 | 회원가입</title>
-    <link rel="stylesheet" href="/resources/css/member/signUp.css">
+    <link rel="stylesheet" href="/resources/css/band/signUp.css">
 </head>
 <body>
     <div class="top-logo">
@@ -20,7 +20,7 @@
         <div class="signUp-title">회원 가입</div>
         <form action="/signUp" method="post" id="signUpFrm">
             <section class="signUp-area">
-                <input type="text" name="memberEmail" id="memberEmail" placeholder="이메일" 
+                <input type="text" name="memberEmail" id="memberEmail" placeholder="이메일"
                 autocomplete="off" maxlegnth="50">
                 <div id="emailConfirm" class="coner"></div>
             </section>

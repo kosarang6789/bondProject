@@ -28,6 +28,7 @@
 		<mapper resource="/mappers/member-mapper.xml"/>
 		<mapper resource="/mappers/post-mapper.xml"/>
 		<mapper resource="/mappers/group-mapper.xml"/>
+		<mapper resource="/mappers/dup-mapper.xml"/>
 		<!-- resources 폴더 -->
 	</mappers>
 </configuration>
