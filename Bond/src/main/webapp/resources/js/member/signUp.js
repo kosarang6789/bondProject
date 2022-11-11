@@ -47,10 +47,31 @@ memberEmail.addEventListener("input", function(){
     const regEx = /^[a-zA-Z\d\_\-]{4,}@[가-힇\w\-\_]+(\.\w+){1,3}$/;
 
     if(regEx.test(memberEmail.value)){
-        emailConfirm.innerText = "유효한 이메일 입니다.";
-        emailConfirm.classList.add("confirm");
-        emailConfirm.classList.remove("error");
-        checkObj.memberEmail = true;
+        // emailConfirm.innerText = "유효한 이메일 입니다.";
+        // emailConfirm.classList.add("confirm");
+        // emailConfirm.classList.remove("error");
+        // checkObj.memberEmail = true;
+
+        $.ajax({
+            url : "/emailDupCheck",
+            data : {"memberEmail" : memberEmail.value},
+            success : (result) => {
+                if(result == 0){
+                    emailConfirm.innerText="사용 가능한 이메일입니다.";
+                    emailConfirm.classList.add("confirm");
+                    emailConfirm.classList.remove("error");
+                    checkObj.memberEmail = true;
+                }else{
+                    emailConfirm.innerText="이미 사용 중인 이메일입니다.";
+                    emailConfirm.classList.add("error");
+                    emailConfirm.classList.remove("confirm");
+                    checkObj.memberEmail = false;
+                }
+            },
+            error : () => {console.log("ajax 통신 실패");},
+            // complete : () => {console.log("중복 검사 수행 완료");}
+
+        });
     }else{
         emailConfirm.innerText = "유효하지 않는 이메일 입니다.";
         emailConfirm.classList.add("error");
