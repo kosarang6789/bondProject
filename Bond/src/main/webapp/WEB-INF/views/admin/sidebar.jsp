@@ -6,7 +6,7 @@
 
     <article class="admin-info"> <!-- admin-info  -->
         <div class="info-image-area">
-            <img id="info-image" src="/resources/images/admin-profile-icon.png">
+            <img id="info-image" src="/resources/images/admin/admin-profile-icon.png">
         </div>
         <span>관리자1</span>
         <div class="profile-btn-area">
@@ -17,7 +17,7 @@
     
     <nav class="admin-menu">
         <ul>
-            <a href="#">공지사항</a>
+            <a href="/admin/noticeList">공지사항</a>
         </ul>
             
         <ul> 밴드 관리
@@ -27,7 +27,7 @@
         </ul>
 
         <ul>
-            <a href="#">신고</a>
+            <a href="/admin/reportList">신고</a>
         </ul>
 
     </nav>

@@ -9,17 +9,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>관리자 | 회원 관리</title>
+    <title>관리자 | 공지사항</title>
 
     <link rel="stylesheet" href="/resources/css/admin/layout-style.css">
-    <link rel="stylesheet" href="/resources/css/admin/member-list-style.css">
+    <link rel="stylesheet" href="/resources/css/admin/notice-list-style.css">
     <link rel="stylesheet" href="/resources/css/admin/searchbar-style.css">
     <link rel="stylesheet" href="/resources/css/admin/sidebar-style.css">
     
 </head>
 <body>
 
-    <jsp:include page="/WEB-INF/views/admin/adminPage-header.jsp" /> />
+    <jsp:include page="/WEB-INF/views/admin/adminPage-header.jsp" />
 
     <main> <!-- for background-color -->
 
@@ -30,8 +30,8 @@
 
             <section class="content">
                 <div class="content-header">
-                    <h6>밴드 관리 / 회원 관리</h6>
-                    <h3>회원 검색</h3>
+                    <h6>공지사항 / 목록</h6>
+                    <h3>공지사항</h3>
                 </div>
                 
 				<form id="searchbar" action="/printMemberList" method="GET">
@@ -58,22 +58,22 @@
                 <div class="content-body">
                     
                     <div class="list-header">
-                        <span class="memberNo">번호</span>
-                        <span class="memberEmail">이메일</span>
-                        <span class="memberName">이름</span>
-                        <span class="memberDate">가입일</span>
-                        <span class="memberStatus">상태</span>
+                        <span class="noticeNo">번호</span>
+                        <span class="noticeDate">작성일</span>
+                        <span class="noticeTitle">제목</span>
+                        <span class="noticeContent">내용</span>
+                        <span class="noticeStatus">상태</span>
                     </div>
 					
 					<!-- 목록 불러오기 반복문 -->
-                    <c:forEach var="member" items="${memberList}">
-                    <form action="/printMemberList" class="list-frm" method="GET">
+                    <c:forEach var="notice" items="${noticeList}">
+                    <form action="/printNoticeList" class="list-frm" method="GET">
                         <button class="list-btn">
-                            <span class="memberNo">${member.memberNo}</span>
-                            <span class="memberEmail">${member.memberEmail}</span>
-                            <span class="memberName">${member.memberName}</span>
-                            <span class="signUpDate">${member.signUpDate}</span>
-                            <span class="memberStatus">${member.memberStatus}</span>
+                            <span class="noticeNo">${notice.noticeNo}</span>
+                            <span class="noticeDate">${notice.noticeDate}</span>
+                            <span class="noticeTitle">${notice.noticeTitle}</span>
+                            <span class="noticeContent">${notice.noticeContent}</span>
+                            <span class="noticeStatus">${notice.noticeStatus}</span>
                         </button>
                     </form>
 					</c:forEach>

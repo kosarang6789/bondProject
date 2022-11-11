@@ -1,0 +1,152 @@
+/* .content */
+.content{
+    background-color: white;
+
+    width: 920px;
+    
+    margin-left: 20px;
+    border-radius: 10px;
+
+    display:flex;
+    flex-direction: column;
+}
+/* end .content */
+
+/* .content-header */
+.content-header{
+    width: 100%;
+    height: 60px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding:0px 30px;
+    margin-bottom: 20px;;
+    border-bottom: 1px solid #BFBFBF;
+}
+
+/* end .content-header */
+
+/* .content-body */
+.content-body{
+    margin-top: 10px;
+    padding: 0px 20px;
+	height: 100%;
+}
+
+/* 목록 버튼 */
+#list-btn{
+    margin-left: 30px;
+    width: 50px;
+    float:left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#list-btn:hover{
+    background-color: #bfbfbf31;
+}
+#list-btn:active{
+    background-color: #bfbfbf41;
+    color: black;
+}
+
+#list-btn > img{
+    width: 15px;
+    height: 100%;
+}
+
+/* notice-detail */
+.post-detail{
+    width: 750px;
+    margin-bottom: 10px;
+    float: right;
+    height: 100%;
+}
+
+/* list */
+.title-area{
+    display: flex;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+/* 리스트 내 div */
+.title-area > div{
+    margin-left: 3px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+/* 항목별 비율 */
+.postNo{ flex-basis: 10%; }
+.postDelYN{ flex-basis: 10%; }
+.groupNo{ flex-basis: 20%; }
+.groupName{ flex-basis: 60%; }
+
+.postDate{ flex-basis: 20%; }
+.memberNo{ flex-basis: 20%; }
+.memberName{ flex-basis: 60%; }
+
+/* 글번호, 글상태, 작성일 */
+.postNo, .postDelYN, .postDate{
+    justify-content: center;
+}
+
+/* 그룹번호, 그룹이름, 회원번호, 회원이름 */
+.groupNo, .groupName, .memberNo, .memberName{
+    justify-content: flex-start;
+}
+
+/* 항목별 컬러 */
+.postNo, .postDate, .postDelYN{
+    background-color: #E2E2E2;
+}
+
+.groupNo, .groupName{
+    background-color: #4AA8D8;
+    color: white;
+}
+
+.memberNo, .memberName{
+    background-color: #36454F;
+    color: white;
+}
+
+
+/* 본문이 들어가는 영역 */
+.content-area{
+    margin: 10px 0px;
+    width: 100%;
+    min-height: 500px;
+    border-bottom : 1px solid #BFBFBF;
+}
+
+/* 이미지가 들어가는 영역 */
+.img-area{
+    display: flex;
+    justify-content: space-between;
+}
+
+.img-box{
+    background-color: #E2E2E2;
+    width: 120px;
+    height: 120px;
+    border: 1px solid #E2E2E2;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-box > img{
+    width: 30%;
+    height: 30%;
+    overflow: hidden;
+
+}
+
+/* end .content-body */
