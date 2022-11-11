@@ -20,7 +20,7 @@
         <div class="signUp-title">회원 가입</div>
         <form action="/signUp" method="post" id="signUpFrm">
             <section class="signUp-area">
-                <input type="text" name="memberEmail" id="memberEmail" placeholder="이메일"
+                <input type="text" name="memberEmail" id="memberEmail" placeholder="이메일" 
                 autocomplete="off" maxlegnth="50">
                 <div id="emailConfirm" class="coner"></div>
             </section>
@@ -47,6 +47,7 @@
         </form>
     </main>
         
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="/resources/js/member/signUp.js"></script> 
 </body>
 </html>
