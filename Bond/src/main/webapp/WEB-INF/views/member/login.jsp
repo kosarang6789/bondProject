@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>본드 | 로그인</title>
     <script src="https://kit.fontawesome.com/785870d879.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/resources/css/band/login.css">
+    <link rel="stylesheet" href="/resources/css/member/login.css">
 </head>
 <body>
     <div class="top-logo">
