@@ -39,7 +39,7 @@
                 <label for="saveId">
                     <div class="saveIdArea" id="idCheck">
                         <i class="fa-solid fa-check" id="idCheck2">
-                            <input type="checkbox" name="saveId" id="saveId"> 
+                            <input type="checkbox" name="saveId" id="saveId" ${temp}> 
                         </i>
                     </div>아이디 저장
                 </label> 

@@ -76,12 +76,12 @@ public class MemberController {
 		if(loginMember != null) {
 			if(loginMember.getAuthority().equals("1")) { // 관리자
 				path= "/admin/memberList"; 
-//				model.addAttribute("loginMember", loginMember);
+				model.addAttribute("loginMember", loginMember);
 			}
 			
 			if(loginMember.getAuthority().equals("0")) { // 회원
 				path= "/member/mainPage";
-//				model.addAttribute("loginMember", loginMember);
+				model.addAttribute("loginMember", loginMember);
 				
 				Cookie cookie = new Cookie("saveId", loginMember.getMemberEmail());
 				if(saveId != null) {
@@ -92,7 +92,7 @@ public class MemberController {
 				cookie.setPath("/");
 				resp.addCookie(cookie);
 			}
-				model.addAttribute("loginMember", loginMember);
+//				model.addAttribute("loginMember", loginMember);
 			
 			
 		} else {
