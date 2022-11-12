@@ -18,8 +18,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kh.semi.project.member.model.service.MemberService;
 import kh.semi.project.member.model.vo.Member;
 
-@SessionAttributes({"loginMember", "message"})
 @Controller
+@SessionAttributes({"loginMember", "message"})
 public class MemberController {
 	
 	@Autowired
@@ -76,12 +76,12 @@ public class MemberController {
 		if(loginMember != null) {
 			if(loginMember.getAuthority().equals("1")) { // 관리자
 				path= "/admin/memberList"; 
-//				model.addAttribute("loginMember", loginMember);
+				model.addAttribute("loginMember", loginMember);
 			}
 			
 			if(loginMember.getAuthority().equals("0")) { // 회원
 				path= "/member/mainPage";
-//				model.addAttribute("loginMember", loginMember);
+				model.addAttribute("loginMember", loginMember);
 				
 				Cookie cookie = new Cookie("saveId", loginMember.getMemberEmail());
 				if(saveId != null) {
@@ -92,7 +92,7 @@ public class MemberController {
 				cookie.setPath("/");
 				resp.addCookie(cookie);
 			}
-				model.addAttribute("loginMember", loginMember);
+//				model.addAttribute("loginMember", loginMember);
 			
 			
 		} else {
@@ -152,7 +152,7 @@ public class MemberController {
 		
 		if(result>0) {
 			path = "/member/signUpOk";
-			message="회원 가입 성공!";
+//			message="회원 가입 성공!";
 		}else { // 실패 시
 			path=referer;
 			message="회원 가입 실패...";
