@@ -6,6 +6,7 @@
     
     margin-left: 20px;
     border-radius: 10px;
+    padding: 15px;
 
     display:flex;
     flex-direction: column;
@@ -16,35 +17,36 @@
 /* .content-header */
 .content-header{
     width: 100%;
-    height: 60px;
+    height: 40px;
     
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding:0px 30px;
-    margin-bottom: 20px;;
-    border-bottom: 1px solid #BFBFBF;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 .content-body{
-    padding: 0px 0px 0px 30px;
+    border-top: 1px solid #BFBFBF;
+    padding-top: 15px;
     min-height: 700px;
+	height:100%;
 }
 
 /* .content-body */
 
 /* 목록 버튼 */
 #list-btn{
-    margin-left: 30px;
     width: 50px;
-    float:left;
+    height: 30px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    background-color: #BFBFBF31;
+    border-radius: 5px;
 }
 
 #list-btn:hover{
-    background-color: #bfbfbf31;
+    background-color: #bfbfbf21;
 }
 #list-btn:active{
     background-color: #bfbfbf41;
@@ -58,15 +60,14 @@
 
 /* 전체 */
 .detail-info{
-    float: right;
-    width: 650px;
+    width: 100%;
     margin-bottom: 20px;
 }
 
 /* 행 */
 .detail-info-row{
     border-top: 1px solid #BFBFBF;
-    width: 650px;
+    width: 100%;
     height: 100%;
     min-height: 50px;
     display: flex;
@@ -110,8 +111,7 @@
 
 /* join count */
 .report-count{
-    min-width: 85%;
-    margin-right: 5px;
+    margin-right: 10px;
     display: flex;
 }
 
@@ -172,6 +172,7 @@ body{
 
     display: flex;
     flex-direction: column;
+    
 }
 
 #closeModal{
