@@ -30,13 +30,12 @@
             <section class="content">
                 <div class="content-header">
                     <h3>회원 정보</h3>
+                    <a href="/admin/memberList" id="list-btn">
+                        목록
+                    </a>
                 </div>
 
                 <div class="content-body">
-                    <a href="/admin/memberList" id="list-btn">
-                        <img src="/resources/images/admin/go-back-list.png">
-                        목록
-                    </a>
                     
                     <div class="detail-info">
                         <div class="detail-info-row">
@@ -109,7 +108,7 @@
 
     <div id="modalDim">
         <div id="modalBox">
-            <div id="modal">
+            <div id="modal" tabindex="0">
                 <div id="closeModal">&times;</div>
                 <h3>신고 기록</h3>
                 <div class="report-modal-row">

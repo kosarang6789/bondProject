@@ -3,13 +3,18 @@
     width: 200px;
 }
 
-.admin-info, .admin-menu{
+.admin-info{
     background-color: white;
-
     width: 200px;
-    
-    padding: 15px;
     border-radius: 10px;
+    padding: 0 5px;
+}
+
+.admin-menu{
+    background-color: white;
+    width: 200px;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .admin-info{
@@ -24,9 +29,14 @@
 }
 
 #info-image{
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
+    margin-top: 5px;
+}
+
+#admin-name{
+    padding: 0px 7px;
 }
 
 /* 프로필 버튼 관련 스타일 */
@@ -45,7 +55,7 @@
     border-radius: 5px;
 
     height: 20px;
-    width: 60px;
+    width: 55px;
 }
 
 #home{
@@ -70,8 +80,56 @@
 }
 
 /* sidebar - admin-menu */
-.admin-menu ul{
-    margin-bottom: 10px;
+.drop-down{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #E2E2E2;
+
+    overflow: hidden;
+}
+
+.top-menu{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.drop-down > li{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sub-menu{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #E2E2E2;
+}
+
+/* with js */
+
+.selected{
+    background-color: #E2E2E220;
+    font-weight: 800;
+}
+
+.hide{
+    display: none;
+}
+
+.opened{
+    display: flex;
 }
 
 /* end .sidebar */

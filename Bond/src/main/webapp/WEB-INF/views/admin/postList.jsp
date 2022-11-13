@@ -96,6 +96,6 @@
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	
-    <script src="/resources/js/sidebar.js"></script>
+    <script src="/resources/js/admin/sidebar.js"></script>
 </body>
 </html>

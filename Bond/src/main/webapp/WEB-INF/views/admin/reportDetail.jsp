@@ -30,13 +30,12 @@
             <section class="content">
                 <div class="content-header">
                     <h3>게시물 제목</h3>
+                    <a href="/admin/reportList" id="list-btn">
+                        목록
+                    </a>
                 </div>
                 
                 <div class="content-body">
-                    <a href="/admin/reportList" id="list-btn">
-                        <img src="/resources/images/admin/go-back-list.png">
-                        목록
-                    </a>
 
                     <div class="detail-info">
                         <div class="detail-info-row">
@@ -97,6 +96,6 @@
     
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	
-    <script src="/resources/js/sidebar.js"></script>
+    <script src="/resources/js/admin/sidebar.js"></script>
 </body>
 </html>

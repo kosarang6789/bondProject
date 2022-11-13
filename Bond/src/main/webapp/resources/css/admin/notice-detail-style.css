@@ -6,6 +6,7 @@
     
     margin-left: 20px;
     border-radius: 10px;
+    padding: 15px;
 
     display:flex;
     flex-direction: column;
@@ -16,30 +17,32 @@
 /* .content-header */
 .content-header{
     width: 100%;
-    height: 60px;
+    height: 40px;
     
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding:0px 30px;
-    margin-bottom: 20px;;
-    border-bottom: 1px solid #BFBFBF;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 .content-body{
-    padding: 0px 20px;
+    border-top: 1px solid #BFBFBF;
+    padding-top: 15px;
+    min-height: 700px;
+	height:100%;
 }
 
 /* .content-body */
 
 /* 목록 버튼 */
 #list-btn{
-    margin-left: 30px;
     width: 50px;
-    float:left;
+    height: 30px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    background-color: #BFBFBF31;
+    border-radius: 5px;
 }
 
 #list-btn:hover{
@@ -57,10 +60,10 @@
 
 /* notice-detail */
 .notice-detail{
-    width: 750px;
+    width: 100%;
     margin-bottom: 10px;
-    float: right;
     height: 100%;
+    padding: 0 10px;
 }
 
 /* 공개여부 */
