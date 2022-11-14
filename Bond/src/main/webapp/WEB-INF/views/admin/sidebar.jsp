@@ -8,7 +8,7 @@
         <div class="info-image-area">
             <img id="info-image" src="/resources/images/admin/admin-profile-icon.png">
         </div>
-        <span>관리자1</span>
+        <span id="admin-name">관리자1</span>
         <div class="profile-btn-area">
             <a href="#" id="home">밴드 홈</a>
             <a href="/logout" id="logout">로그아웃</a>
@@ -16,18 +16,24 @@
     </article> <!-- admin-profile end -->
     
     <nav class="admin-menu">
-        <ul>
-            <a href="/admin/noticeList">공지사항</a>
+
+        <ul class="drop-down">
+            <div class="top-menu">
+                <a href="/admin/noticeList">공지사항</a>
+            </div>
         </ul>
             
-        <ul> 밴드 관리
-            <li><a href="/admin/memberList">- 회원</a></li>
-            <li><a href="/admin/groupList">- 소모임</a></li>
-            <li><a href="/admin/postList">- 게시글</a></li>
+        <ul class="drop-down"> 
+            <div class="top-menu">밴드 관리</div>
+            <li><a class="sub-menu hide" href="/admin/memberList">회원</a></li>
+            <li><a class="sub-menu hide" href="/admin/groupList">소모임</a></li>
+            <li><a class="sub-menu hide" href="/admin/postList">게시글</a></li>
         </ul>
 
-        <ul>
-            <a href="/admin/reportList">신고</a>
+        <ul class="drop-down">
+            <div class="top-menu">
+                <a href="/admin/reportList">신고</a>
+            </div>
         </ul>
 
     </nav>
