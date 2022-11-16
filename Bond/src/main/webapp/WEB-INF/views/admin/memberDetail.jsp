@@ -11,21 +11,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 | 회원 관리</title>
 
-    <link rel="stylesheet" href="/resources/css/admin/layout-style.css">
+    <link rel="stylesheet" href="/resources/css/admin/layout/layout-detail-style.css">
     <link rel="stylesheet" href="/resources/css/admin/member-detail-style.css">
-    <link rel="stylesheet" href="/resources/css/admin/searchbar-style.css">
-    <link rel="stylesheet" href="/resources/css/admin/sidebar-style.css">
+    <link rel="stylesheet" href="/resources/css/admin/add/searchbar-style.css">
+    <link rel="stylesheet" href="/resources/css/admin/add/sidebar-style.css">
     
 </head>
 <body>
 
-    <jsp:include page="/WEB-INF/views/admin/adminPage-header.jsp" />
+    <jsp:include page="/WEB-INF/views/admin/add/adminPage-header.jsp" />
 
     <main> <!-- for background-color -->
 
         <section class="main"> 
             
-            <jsp:include page="/WEB-INF/views/admin/sidebar.jsp" />
+            <jsp:include page="/WEB-INF/views/admin/add/sidebar.jsp" />
 
             <section class="content">
                 <div class="content-header">
@@ -83,7 +83,7 @@
                             <label>정지 기록</label>
                             <div class="detail-info-col">
                                 <span class="report-count">3회</span>
-                                <button id="openModal">조회</button>
+                                <button id="openModal" class="modalBtn">조회</button>
                             </div>
                         </div>
                     </div>
@@ -93,7 +93,7 @@
                             <label>모임 프로필</label>
                             <div class="detail-info-col">
                                 <span class="join-count">10개</span>
-                                <button id="openModal234">조회</button>
+                                <button id="openModal2" class="modalBtn">조회</button>
                             </div>
                         </div>
                     </div>
