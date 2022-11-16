@@ -252,20 +252,6 @@
             </a>
         </div>
         
-    <!-- <footer>
-            <p>
-                BOND &copy; 2022
-            </p>
-    
-            <article>
-                <a href="#">블로그</a>
-                <span>|</span>
-                <a href="#">이용약관</a>
-                <span>|</span>
-                <a href="#">개인정보처리방침</a>
-                <span>|</span>
-                <a href="#">고객센터</a>
-            </article>
-    </footer> -->
 
+    <script src="/resources/js/member/meetingAfterLogin.js"></script>
 </body>
