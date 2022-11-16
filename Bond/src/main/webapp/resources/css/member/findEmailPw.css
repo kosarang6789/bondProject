@@ -78,7 +78,7 @@ main{
     position: absolute;
     top: 0;
     left: 0;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
 }
@@ -103,22 +103,22 @@ main{
 }
 .btnArea{
     margin-left: 50px;
+    display: flex;
 }
-.btnArea > button{
+.btnArea a{
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+}
+.btns{
     width: 130px;
     height: 50px;
     border: 1px solid black;
-    font-size: 20px;
+    margin: 0 5px;
+    text-align: center;
+    padding-top: 14px;
+    border-radius: 3px;
 }
-/* #mainBtn{
-    width: 130px;
-    height: 40px;
-    border: 1px solid black;
-    font-size: 20px;
+.modalO{
+    display: flex;
 }
-#loginSignUpBtn{
-    width: 130px;
-    height: 40px;
-    border: 1px solid black;
-    font-size: 20px;
-} */

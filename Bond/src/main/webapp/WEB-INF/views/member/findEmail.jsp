@@ -34,8 +34,12 @@
                     <div class="findEmailTitle">이메일 찾기</div>
                     <div id="findEmailResult">등록된 아이디가 없습니다.</div>
                     <div class="btnArea">
-                        <button id="mainBtn">메인페이지</button>
-                        <button id="loginSignUpBtn">rr</button>
+                        <div class="btns">
+                            <a href="/" id="mainBtn">메인페이지</a>
+                        </div>
+                        <div class="btns">
+                            <a href="/login" id="loginSignUpBtn">rr</a>
+                        </div>
                     </div>
                 </div>
             </div>

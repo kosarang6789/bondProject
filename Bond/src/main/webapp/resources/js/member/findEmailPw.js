@@ -1,5 +1,5 @@
 // findEmail
-document.getElementById("findEmail-frm").addEventListener("click", (e)=>{
+document.getElementById("findEmail-frm").addEventListener("submit", (e)=>{
     const inputName = document.getElementById("e-inputName");
     const inputTel = document.getElementById("e-inputTel");
 
@@ -17,10 +17,27 @@ document.getElementById("findEmail-frm").addEventListener("click", (e)=>{
         return;
     }
 
+    const btnArea = document.getElementById("btnArea");
+    const findEmailResult = document.getElementById("findEmailResult");
+    const loginSignUpBtn = document.getElementById("loginSignUpBtn");
+    const modal = document.getElementById("modal");
+    const btns = document.getElementById("btns");
+
     $.ajax({
-        url : "",
+        url : "/",
         data : "",
-        success : ()=>{},
-        error : ()=>{}
+        success : ()=>{
+            // 로그인 나오게 하기
+            findEmailResult.innerText = "${memberEmail}"+"입니다.";
+            loginSignUpBtn.innerText = "로그인";
+            modal.classList.add = "modalO";
+            btnArea.append(btns);
+        },
+        error : ()=>{
+            // 회원가입 나오게 하기
+            t.innerText = "등록된 이메일이 없습니다.";
+            loginSignUpBtn.innerText = "회원가입";
+            modal.classList.add = "modalO";
+        }
     });
 });
