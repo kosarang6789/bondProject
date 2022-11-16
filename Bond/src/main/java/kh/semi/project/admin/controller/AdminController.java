@@ -21,55 +21,6 @@ public class AdminController {
 	@Autowired
 	private AdminService service;
 	
-	/** 관리자 메인 화면(noticeList)
-	 * @return
-	 */
-	@GetMapping("/admin/memberList")
-	public String goMemberListPage() {
-		return "/admin/temp";
-	}
-
-	/** 공지사항 리스트 페이지로 이동
-	 * @return
-	 */
-	@GetMapping("/admin/noticeList")
-	public String goNoticeList(){
-		return "/admin/noticeList";
-	}
-	
-
-	/** 회원 리스트 페이지로 이동
-	 * @return
-	 */
-	@GetMapping("/admin/memberListPage")
-	public String goMemberList() {
-		return "/admin/memberList";
-	}
-	
-	/** 게시글 리스트 페이지로 이동
-	 * @return
-	 */
-	@GetMapping("/admin/postList")
-	public String goPostList() {
-		return "/admin/postList";
-	}
-	
-	/** 모임 리스트 페이지로 이동
-	 * @return
-	 */
-	@GetMapping("/admin/groupList")
-	public String goGroupList() {
-		return "/admin/groupList";
-	}
-	
-	/** 신고 리스트 페이지로 이동
-	 * @return
-	 */
-	@GetMapping("/admin/reportList")
-	public String reportLIst() {
-		return "/admin/reportList";
-	}
-	
 	/*
 	   		- 일반 for + 추가 기능
    		
