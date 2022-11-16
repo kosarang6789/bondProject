@@ -23,21 +23,25 @@ document.getElementById("findEmail-frm").addEventListener("submit", (e)=>{
     const modal = document.getElementById("modal");
     const btns = document.getElementById("btns");
 
-    $.ajax({
-        url : "/",
-        data : "",
-        success : ()=>{
-            // 로그인 나오게 하기
-            findEmailResult.innerText = "${memberEmail}"+"입니다.";
-            loginSignUpBtn.innerText = "로그인";
-            modal.classList.add = "modalO";
-            btnArea.append(btns);
-        },
-        error : ()=>{
-            // 회원가입 나오게 하기
-            t.innerText = "등록된 이메일이 없습니다.";
-            loginSignUpBtn.innerText = "회원가입";
-            modal.classList.add = "modalO";
-        }
-    });
+    // $.ajax({
+    //     url : "/",
+    //     data : "",
+    //     success : ()=>{
+    //         // 로그인 나오게 하기
+            // findEmailResult.innerText = "${memberEmail}"+"입니다.";
+            if(inputName.value.trim().length != 0 && inputTel.value.trim().length != 0){
+                loginSignUpBtn.innerText = "로그인";
+                modal.classList.add("modalO");
+                // btnArea.append(btns);
+                e.preventDefault();
+                return;
+            }
+    //     },
+    //     error : ()=>{
+    //         // 회원가입 나오게 하기
+    //         t.innerText = "등록된 이메일이 없습니다.";
+    //         loginSignUpBtn.innerText = "회원가입";
+    //         modal.classList.add = "modalO";
+    //     }
+    // });
 });
