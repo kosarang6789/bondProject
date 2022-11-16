@@ -19,6 +19,8 @@
     justify-content: flex-start;
     text-align: start;
     border: none;
+
+    cursor: pointer;
 }
 
 /* end .content-body */

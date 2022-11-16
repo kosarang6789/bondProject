@@ -95,5 +95,9 @@ public class AdminForwardController {
 		return "admin/reportList";
 	}
 	
+	@GetMapping("/memberDetail")
+	public String goMemberDetail() {
+		return "admin/memberDetail";
+	}
 	
 }

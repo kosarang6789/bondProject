@@ -75,7 +75,7 @@ public class MemberController {
 		
 		if(loginMember != null) {
 			if(loginMember.getAuthority().equals("1")) { // 관리자
-				path= "/admin/adminMainPage"; 
+				path= "/admin/mainPage"; 
 				model.addAttribute("loginMember", loginMember);
 			}
 			
