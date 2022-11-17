@@ -1,15 +1,22 @@
 package kh.semi.project.member.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import kh.semi.project.member.model.service.FindEPService;
+import kh.semi.project.member.model.vo.Member;
 
 // 이메일 비밀번호 찾기
 
 @Controller
 @RequestMapping("/member")
 public class FindEPController {
+	
+	@Autowired
+	private FindEPService service;
 
 	
 	/** 이메일 찾기 페이지 이동
@@ -21,7 +28,11 @@ public class FindEPController {
 	}
 	
 	@PostMapping("/findEmail")
-	public String findEmail() {
+	public String findEmail(Member inputMember) {
+		
+		Member member = service.findEmail(inputMember);
+		
+		
 		return null;
 	}
 	

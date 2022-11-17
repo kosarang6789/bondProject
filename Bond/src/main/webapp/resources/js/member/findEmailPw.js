@@ -19,25 +19,46 @@ document.getElementById("findEmail-frm").addEventListener("submit", (e)=>{
 
     const btnArea = document.getElementById("btnArea");
     const findEmailResult = document.getElementById("findEmailResult");
-    const loginSignUpBtn = document.getElementById("loginSignUpBtn");
     const modal = document.getElementById("modal");
-    const btns = document.getElementById("btns");
+    const div = document.createElement("div");
+    // 4,5 번째 줄을 위로 빼면 실행 되는지도 봐보자 -> 중복 코드가 있으니까 줄여보자
+    if(memberEmail != null){
+        // 로그인 나오게 하기
+        findEmailResult.innerText = "${memberEmail}"+"입니다.";
+        modal.classList.add = "modalO";
+        btnArea.append(div);
+        div.setAttribute("class", "btns");
+        div.innerHTML = "<a herf='/login'>로그인</a>";
+    }else{
+        // 회원가입 나오게 하기
+        findEmailResult.innerText = "등록된 이메일이 없습니다.";
+        modal.classList.add = "modalO";
+        btnArea.append(div);
+        div.setAttribute("class", "btns");
+        div.innerHTML = "<a herf='/signUp'>회원가입</a>";
+    }
 
-    $.ajax({
-        url : "/",
-        data : "",
-        success : ()=>{
-            // 로그인 나오게 하기
-            findEmailResult.innerText = "${memberEmail}"+"입니다.";
-            loginSignUpBtn.innerText = "로그인";
-            modal.classList.add = "modalO";
-            btnArea.append(btns);
-        },
-        error : ()=>{
-            // 회원가입 나오게 하기
-            t.innerText = "등록된 이메일이 없습니다.";
-            loginSignUpBtn.innerText = "회원가입";
-            modal.classList.add = "modalO";
-        }
-    });
+
+    // $.ajax({
+    //     url : "/",
+    //     data : "",
+    //     success : ()=>{
+    //         // 로그인 나오게 하기
+    //         findEmailResult.innerText = "${memberEmail}"+"입니다.";
+    //         modal.classList.add = "modalO";
+    //         btnArea.append(div);
+    //         div.innerHTML = "<a herf='/login'>로그인</a>";
+    //     },
+    //     error : ()=>{
+    //         // 회원가입 나오게 하기
+    //         // t.innerText = "등록된 이메일이 없습니다.";
+    //         // loginSignUpBtn.innerText = "회원가입";
+    //         // modal.classList.add = "modalO";
+    //         findEmailResult.innerText = "등록된 이메일이 없습니다.";
+    //         modal.classList.add = "modalO";
+    //         btnArea.append(div);
+    //         div.innerHTML = "<a herf='/signUp'>회원가입</a>";
+
+    //     }
+    // });
 });
