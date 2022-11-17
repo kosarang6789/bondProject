@@ -16,9 +16,6 @@
 <body>
     <jsp:include page="/WEB-INF/views/member/mainPage-header.jsp" />
 
-
-
-
     <!-- 네비게이션 -->
     <section class="nav-area">
         <nav>
@@ -98,7 +95,7 @@
     <a href="/logout">로그아웃</a>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
-
+    <script src="/resources/js/member/mainPage.js"></script>
 </body>
 </html>
 
