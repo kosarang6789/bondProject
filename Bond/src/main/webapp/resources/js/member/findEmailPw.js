@@ -38,7 +38,6 @@ document.getElementById("findEmail-frm").addEventListener("submit", (e)=>{
         div.innerHTML = "<a herf='/signUp'>회원가입</a>";
     }
 
-
     // $.ajax({
     //     url : "/",
     //     data : "",
@@ -47,7 +46,6 @@ document.getElementById("findEmail-frm").addEventListener("submit", (e)=>{
     //         findEmailResult.innerText = "${memberEmail}"+"입니다.";
     //         modal.classList.add = "modalO";
     //         btnArea.append(div);
-    //         div.innerHTML = "<a herf='/login'>로그인</a>";
     //     },
     //     error : ()=>{
     //         // 회원가입 나오게 하기
@@ -58,7 +56,6 @@ document.getElementById("findEmail-frm").addEventListener("submit", (e)=>{
     //         modal.classList.add = "modalO";
     //         btnArea.append(div);
     //         div.innerHTML = "<a herf='/signUp'>회원가입</a>";
-
-    //     }
-    // });
-});
+            // findEmailResult.innerText = "${memberEmail}"+"입니다.";
+            if(inputName.value.trim().length != 0 && inputTel.value.trim().length != 0){
+                loginSignUpBtn.innerText = "로그인";
