@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="band-name">
-                        <a href="#" class="uri-text">KH 팀프로젝트</a>
+                        <a href="#" class="uri-text">${groupName}</a>
                     </div>
 
                     <p class="member">
@@ -240,7 +240,7 @@
                                 <span class="no-img"></span>
                             </div>
                         </div>
-                        <a href="#" class="more-button">더보기</a>
+                        <a href="/bond/album" class="more-button">더보기</a>
                     </section>
                 </div>
             </div>

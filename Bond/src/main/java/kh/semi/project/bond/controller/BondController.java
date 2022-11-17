@@ -12,6 +12,8 @@ public class BondController {
 		return "/bond/album";
 	}
 	
+	@GetMapping("/bond/{}")
+	
 	
 }
 
