@@ -27,7 +27,7 @@
                     autocomplete="off" maxlength="11">
                     <p class="noInput-">- 빼고 입력해주세요.</p>
             </section>
-            <button class="inputbox findEmail-btn">이메일 찾기</button>
+            <button class="inputbox findEmail-btn" id="findEmail-btn">이메일 찾기</button>
 
             <div id="modal" class="modal">
                 <div class="modalArea">

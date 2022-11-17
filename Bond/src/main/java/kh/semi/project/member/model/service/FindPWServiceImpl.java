@@ -12,13 +12,12 @@ public class FindPWServiceImpl implements FindEPService{
 	@Autowired
 	private FindEPDAO dao;
 
-	
 	/**
 	 * 이메일 찾기
 	 */
 	@Override
-	public Member findEmail(Member inputMember) {
-		return dao.findEmail(inputMember);
+	public Member findEmail(String inputName, String inputTel) {
+		return dao.findEmail(inputName, inputTel);
 	}
 	
 	

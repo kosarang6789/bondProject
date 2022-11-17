@@ -5,6 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.Gson;
 
 import kh.semi.project.member.model.service.FindEPService;
 import kh.semi.project.member.model.vo.Member;
@@ -28,12 +31,12 @@ public class FindEPController {
 	}
 	
 	@PostMapping("/findEmail")
-	public String findEmail(Member inputMember) {
+	@ResponseBody
+	public String findEmail(String inputName, String inputTel) {
 		
-		Member member = service.findEmail(inputMember);
-		
-		
-		return null;
+		Member member = service.findEmail(inputName, inputTel);
+
+		return new Gson().toJson(member);
 	}
 	
 
