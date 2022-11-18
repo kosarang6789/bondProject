@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -11,8 +12,8 @@
 </head>
 <body>
     <div class="top-logo">
-        <a href="/html/main.html">
-            <img src="/resources/images/common/home-logo.png" id="home-logo">
+        <a href="/">
+            <img src="/resources/images/common/home-logo.png"  id="home-logo">
         </a>
     </div>
     <main>
@@ -29,20 +30,48 @@
             </section>
             <button class="inputbox findEmail-btn" id="findEmail-btn">이메일 찾기</button>
 
-            <div id="modal" class="modal">
+            <c:if test="${not empty emailCheck }">
+                <c:set var="check" value="modalO"/>
+            </c:if>
+
+            <div id="modal" class="modal ${check}">
                 <div class="modalArea">
                     <div class="findEmailTitle">이메일 찾기</div>
-                    <div id="findEmailResult"></div>
+                    <div id="findEmailResult">
+                        <c:choose>
+                            <c:when test="${not empty memberEmail}">
+                                ${memberEmail} 입니다.
+                            </c:when>
+                            <c:otherwise>
+                                등록된 이메일이 없습니다.
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
+
                     <div class="btnArea">
-                        <div class="btns">
-                            <a href="/" id="mainBtn">메인페이지</a>
-                        </div>
-                        <%-- <div class="btns">
-                            <a href="/login" id="loginSignUpBtn">dd</a>
-                        </div> --%>
+                        <a href="/" id="mainBtn">
+                            <div class="btns">
+                                메인페이지
+                            </div>
+                        </a>
+                        
+                        <c:choose>
+                            <c:when test="${!empty memberEmail}">
+                                <a href="/login">
+                                    <div class="btns">로그인</div>
+                                </a>
+                            </c:when>
+                            <c:otherwise>
+                                <a href="/login">
+                                    <div class="btns">회원가입</div>
+                                </a>
+                            </c:otherwise>
+                        </c:choose>
+                        
                     </div>
                 </div>
             </div>
+
 
         </form>
     </main>

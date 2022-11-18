@@ -53,7 +53,7 @@
 	</insert>
 	
 	<!-- 이메일 찾기 -->
- 	<select id="findEmail" parameterType="Member" resultMap="member_rm">
+ 	<select id="findEmail" resultMap="member_rm">
 		SELECT MEMBER_EMAIL FROM "MEMBER"
 		WHERE MEMBER_NAME = #{memberName}
 		AND MEMBER_TEL = #{memberTel}

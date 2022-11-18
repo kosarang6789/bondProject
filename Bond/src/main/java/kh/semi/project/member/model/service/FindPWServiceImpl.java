@@ -16,8 +16,8 @@ public class FindPWServiceImpl implements FindEPService{
 	 * 이메일 찾기
 	 */
 	@Override
-	public Member findEmail(String inputName, String inputTel) {
-		return dao.findEmail(inputName, inputTel);
+	public Member findEmail(Member inputMember) {
+		return dao.findEmail(inputMember);
 	}
 	
 	

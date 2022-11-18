@@ -2,10 +2,12 @@ package kh.semi.project.member.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.google.gson.Gson;
 
@@ -31,12 +33,17 @@ public class FindEPController {
 	}
 	
 	@PostMapping("/findEmail")
-	@ResponseBody
-	public String findEmail(String inputName, String inputTel) {
+	public String findEmail(Member inputMember, Model model) {
 		
-		Member member = service.findEmail(inputName, inputTel);
+		Member selectMember = service.findEmail(inputMember);
+		String memberEmail=null;
+		if(selectMember != null) {
+			memberEmail = selectMember.getMemberEmail();
+			model.addAttribute("memberEmail", memberEmail);
+		}
+		model.addAttribute("emailCheck", 0);
 
-		return new Gson().toJson(member);
+		return "/member/findEmail";
 	}
 	
 

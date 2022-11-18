@@ -12,17 +12,13 @@ public class FindEPDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	public Member findEmail(Member inputMember) {
-		return sqlSession.selectOne("memberMapper.findEmail", inputMember);
-	}
-
 	/** 이메일 찾기
 	 * @param inputName
 	 * @param inputTel
 	 * @return
 	 */
-	public Member findEmail(String inputName, String inputTel) {
-		return sqlSession.selectOne("memberMapper.findEmail", inputName, inputTel);
+	public Member findEmail(Member inputMember) {
+		return sqlSession.selectOne("memberMapper.findEmail", inputMember);
 	}
 
 }
