@@ -58,4 +58,8 @@
 		WHERE MEMBER_NAME = #{memberName}
 		AND MEMBER_TEL = #{memberTel}
 	</select>
+	
+	
+	<!-- 비밀번호 찾기 -->
+
 </mapper>

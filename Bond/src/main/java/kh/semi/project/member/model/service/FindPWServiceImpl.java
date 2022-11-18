@@ -19,6 +19,18 @@ public class FindPWServiceImpl implements FindEPService{
 	public Member findEmail(Member inputMember) {
 		return dao.findEmail(inputMember);
 	}
+
+
+	
+	/**
+	 * 비밀번호 찾기
+	 */
+	@Override
+	public Member findPw(Member inputMember) {
+		return dao.findPw(inputMember);
+	}
+	
+	
 	
 	
 }

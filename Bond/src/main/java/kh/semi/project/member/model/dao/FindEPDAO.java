@@ -21,4 +21,12 @@ public class FindEPDAO {
 		return sqlSession.selectOne("memberMapper.findEmail", inputMember);
 	}
 
+	/** 비밀번호 찾기
+	 * @param inputMember
+	 * @return
+	 */
+	public Member findPw(Member inputMember) {
+		return sqlSession.selectOne("memberMapper.findPw", inputMember);
+	}
+
 }
