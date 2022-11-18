@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
+    <title>본드 홈 | 본드</title>
 
 
     <link rel="stylesheet" href="/resources/css/member/mainPage.css">
@@ -47,17 +47,26 @@
                         </div>
                     </a>
                 </li>
-                <li class="groupCardItem">
-                    <a href="/bond/meetingAfterLogin">
-                        <img src="/resources/images/member/main1/group1.jpg">
-
-                        <div class="groupInfo">
-                            <p>KH 팀프로젝트</p>
-                            <span>멤버 5</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="groupCardItem">
+                <c:forEach var="myGroup" items="${myGroupList}">
+                    <li class="groupCardItem">
+                        <a href="/bond/${myGroup.groupNo}">
+                            <c:choose>
+                                <c:when test="${not empty myGroup.groupImage}">
+                                    <img src="${myGroup.groupImage}">
+                                </c:when>
+                                <c:otherwise>
+                                    <img src="/resources/images/bond/profile/non-profile.png">
+                                </c:otherwise>
+                            </c:choose>
+                            <div class="groupInfo">
+                                <p>${myGroup.groupName}</p>
+                                <span>멤버 ${myGroup.memberCount}</span>
+                            </div>
+                        </a>
+                    </li>
+                </c:forEach>
+                <%-- <li class="groupCardItem">
+                
                     <a href="#">
                         <img src="/resources/images/member/main1/group2.jpg">
 
@@ -76,7 +85,7 @@
                             <span>멤버 10</span>
                         </div>
                     </a>
-                </li>
+                </li> --%>
             </ul>
         </section>
         <section class="myGroup-schedule">
