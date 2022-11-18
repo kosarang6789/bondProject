@@ -212,7 +212,7 @@ main{
 }
 
 .myGroup-area{
-    height: 300px;
+    min-height: 300px;
     padding: 40px 0;
 }
 
@@ -224,6 +224,7 @@ main{
     margin-bottom: 25px;
     row-gap: 26px;
     column-gap: 25px;
+    flex-wrap: wrap;
 }
 
 .groupCardItem{
@@ -235,6 +236,7 @@ main{
     overflow: hidden;
     box-shadow: 4px 4px 20px 3px #ebebeb;
     position: relative;
+    margin-bottom: 10px;
 }
 
 .groupCardItem:hover{
