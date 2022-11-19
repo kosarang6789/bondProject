@@ -1,5 +1,8 @@
 package kh.semi.project.member.model.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -19,6 +22,10 @@ public class MemberDAO {
 
 	public int signUp(Member inputMember) {
 		return sqlSession.insert("memberMapper.signUp", inputMember);
+	}
+
+	public List<Map<String, Object>> selectMyGroup(int memberNo) {
+		return sqlSession.selectList("groupMapper.selectMyGroup", memberNo);
 	}
 
 }

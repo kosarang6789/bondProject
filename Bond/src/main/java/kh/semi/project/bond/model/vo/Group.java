@@ -1,4 +1,4 @@
-package kh.semi.project.band.model.vo;
+package kh.semi.project.bond.model.vo;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,6 +11,7 @@ public class Group {
 
 	private int groupNo;
 	private int topicCode;
+	private int memberCount;
 	private String groupName;
 	private String groupDate;
 	private String groupImage;
