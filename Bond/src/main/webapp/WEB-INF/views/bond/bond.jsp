@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모임이 쉬워진다 | BOND</title>
 
-    <link rel="stylesheet" href="/resources/css/bond/meetingAfterLogin.css">
+    <link rel="stylesheet" href="/resources/css/bond/bond.css">
     <script src="https://kit.fontawesome.com/1ce4f19a7a.js" crossorigin="anonymous"></script>
 
 </head>
@@ -93,7 +93,7 @@
                         </form>
                     </div>
                     
-                    <section class="main-content">   
+                    <div class="main-content">   
                         <div>
                             <button type="button" class="content-button"></button>
                             <div class="content-editor">
@@ -115,100 +115,97 @@
                                 </li>
                             </ul>
                         </div>
-                    </section> 
+                    </div> 
 
-                        <div class="module-box">
-                            <div class="post-wrap">
-                                <h2 class="post-wrap-title">모든 게시글</h2>
-                                <div data-viewname="post-list-view" class="post-wrap">
-                                    <div class="content-card">
-                                        <div class="post-list-view">
-                                            <div class="post-author-region">
-                                                <div class="post-author-view">
-                                                    <a href="#" role="button" class="uprofile">
-                                                        <span class="uprofile-inner"></span>
+                    <div class="post-wrap">
+                        <h2 class="post-wrap-title">모든 게시글</h2>
+                        <div data-viewname="post-list-view" class="post-wrap">
+                            <div class="content-card">
+                                <div class="post-list-view">
+                                    <div class="post-author-region">
+                                        <div class="post-author-view">
+                                            <a href="#" role="button" class="uprofile">
+                                                <span class="uprofile-inner"></span>
+                                            </a>
+
+                                            <div class="post-info">
+                                                <span class="ellipsis">
+                                                    <strong class="post-infot-name">서도은</strong>
+                                                </span>
+                                            
+
+                                                <div class="post-list-info">
+                                                    <a href="#" class="post-info-date">2022년 10월 31일 오후 12:33</a>
+                                                </div>
+                                            </div>    
+                                        </div>
+                                    </div>
+
+                                    <div class="post-main">
+                                        <div class="post-body">
+                                            <div class="post-text-view">
+                                                <div class="post-text" tabindex="-1">
+                                                    <p class="text-body">
+                                                        동물의 왕국
+                                                        무슨 동물이든 환영 
+                                                        사진 좋아요
+                                                    </p>
+                                                    <a href="#" class="more-link">...더보기</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="post-count-view">
+                                        <div class="post-count">
+                                            <div class="post-count-left">
+                                                <span class="face-comment">
+                                                    <button type="button" class="emotion-view">
+                                                        <span class="emotion-wrap">
+                                                            <span class="icon">
+                                                                <i class="fa-regular fa-face-kiss-wink-heart face-icon"></i>
+                                                            </span>
+                                                        </span>
+                                                        <span class="count">1</span>
+                                                    </button>
+                                                    <button type="button" class="comment">
+                                                        댓글
+                                                        <span class="count">1</span>
+                                                    </button>
+                                                    <button type="button" class="comment-toggle">
+                                                        <i class="fa-solid fa-angle-down"></i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                            <div class="post-count-right">
+                                                <span class="share-read">
+                                                    <span class="gSrOnly">읽음</span>
+                                                    <i class="fa-solid fa-eye" style="color: #555;"></i>
+                                                    <span class="count">2</span>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="post-added">
+                                            <div class="post-add-box">
+                                                <div class="add-col">
+                                                    <a href="#" class="emotion-main-btn">
+                                                        <span class="icon-face-emotion">
+                                                            <i class="fa-regular fa-face-smile"></i>
+                                                        </span>
+                                                        <span class="post-text">좋아요</span>
                                                     </a>
-
-                                                    <div class="post-info">
-                                                        <span class="ellipsis">
-                                                            <strong class="post-infot-name">서도은</strong>
-                                                        </span>
-                                                    
-
-                                                        <div class="post-list-info">
-                                                            <a href="#" class="post-info-date">2022년 10월 31일 오후 12:33</a>
-                                                        </div>
-                                                    </div>    
                                                 </div>
-                                            </div>
-
-                                            <div class="post-main">
-                                                <div class="post-body">
-                                                    <div class="post-text-view">
-                                                        <div class="post-text" tabindex="-1">
-                                                            <p class="text-body">
-                                                                동물의 왕국
-                                                                무슨 동물이든 환영 
-                                                                사진 좋아요
-                                                            </p>
-                                                            <a href="#" class="more-link">...더보기</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="post-count-view">
-                                                <div class="post-count">
-                                                    <div class="post-count-left">
-                                                        <span class="face-comment">
-                                                            <button type="button" class="emotion-view">
-                                                                <span class="emotion-wrap">
-                                                                    <span class="icon">
-                                                                        <i class="fa-regular fa-face-kiss-wink-heart face-icon"></i>
-                                                                    </span>
-                                                                </span>
-                                                                <span class="count">1</span>
-                                                            </button>
-                                                            <button type="button" class="comment">
-                                                                댓글
-                                                                <span class="count">1</span>
-                                                            </button>
-                                                            <button type="button" class="comment-toggle">
-                                                                <i class="fa-solid fa-angle-down"></i>
-                                                            </button>
+                                                <div class="add-col">
+                                                    <a href="#" class="comment-main-btn">
+                                                        <span class="comment">
+                                                            <span class="icon-comment">
+                                                                <i class="fa-regular fa-message"></i>
+                                                            </span>
+                                                            <span class="post-text">댓글쓰기</span>
                                                         </span>
-                                                    </div>
-                                                    <div class="post-count-right">
-                                                        <span class="share-read">
-                                                            <span class="gSrOnly">읽음</span>
-                                                            <i class="fa-solid fa-eye" style="color: #555;"></i>
-                                                            <span class="count">2</span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="post-added">
-                                                    <div class="post-add-box">
-                                                        <div class="add-col">
-                                                            <a href="#" class="emotion-main-btn">
-                                                                <span class="icon-face-emotion">
-                                                                    <i class="fa-regular fa-face-smile"></i>
-                                                                </span>
-                                                                <span class="post-text">좋아요</span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="add-col">
-                                                            <a href="#" class="comment-main-btn">
-                                                                <span class="comment">
-                                                                    <span class="icon-comment">
-                                                                        <i class="fa-regular fa-message"></i>
-                                                                    </span>
-                                                                    <span class="post-text">댓글쓰기</span>
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -216,12 +213,13 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </div>
             </main>
 
             <!-- 3번 영역 -->
             <div id="banner">
-                <div class="band-photo-area">
+                <div id="band-photo-area">
                     <section class="band-photo">
                         <h2 class="tit">최근 사진</h2>
                         <div class="photo-body">
@@ -248,20 +246,8 @@
             </a>
         </div>
         
-    <!-- <footer>
-            <p>
-                BOND &copy; 2022
-            </p>
-    
-            <article>
-                <a href="#">블로그</a>
-                <span>|</span>
-                <a href="#">이용약관</a>
-                <span>|</span>
-                <a href="#">개인정보처리방침</a>
-                <span>|</span>
-                <a href="#">고객센터</a>
-            </article>
-    </footer> -->
+
+        <script src="/resources/js/bond/bond.js"></script>
+
 
 </body>

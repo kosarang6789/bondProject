@@ -38,10 +38,9 @@ public class BondController {
 	// 사진첩 페이지로 이동 
 	@GetMapping("/bond/{groupNo}/album")
 	public String albumPage() {
-		return "/bond/album";
+		return "bond/album";
 	}
 	
-	@GetMapping("/bond/{}")
 	
 	
 }
