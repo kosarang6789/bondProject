@@ -12,7 +12,6 @@
 		<result property="topicCode" column="TOPIC_CODE" />
 		<result property="groupName" column="GROUP_NAME" />
 		<result property="groupDate" column="GROUP_DATE" />
-		<result property="groupImage" column="GROUP_IMAGE" />
 		<result property="groupComment" column="GROUP_COMMENT" />
 		<result property="openYN" column="OPEN_YN" />
 		<result property="groupStatus" column="GROUP_STATUS" />
