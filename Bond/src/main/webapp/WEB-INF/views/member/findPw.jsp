@@ -21,20 +21,23 @@
         <form action="/member/findPw" method="post" id="findPw-frm">
             <section class="inputbox">
                 <input type="text" name="inputName" name="memberName"
-                    placeholder="이름 입력" required autocomplete="off">
+                    placeholder="이름 입력" autocomplete="off">
             </section>
             <section class="inputbox">
                 <input type="text" name="inputTel" name="memberTel"
-                    placeholder="전화번호 입력" required autocomplete="off">
+                    placeholder="전화번호 입력" autocomplete="off">
                     <p class="noInput-">- 빼고 입력해주세요.</p>
             </section>
             <section class="inputbox">
-                <input type="text" name="inputEmail" name="memberEmail"
-                    placeholder="이메일 입력" required autocomplete="off">
+                <input type="text" name="inputEmail" id="memberEmail"
+                    placeholder="이메일 입력" autocomplete="off">
+                <button id="sendKey" type="button">인증번호 전송</button>
             </section>
             <section class="inputbox">
-                <input type="text" name="inputEmail" name="inputEmail"
-                    placeholder="인증번호 입력" required autocomplete="off">
+                <input type="text" name="inputKey" id="inputKey"
+                    placeholder="인증번호 입력" autocomplete="off">
+                <span id="authKeyMessage" class="signUp-message"></span>
+                <button id="checkKey" type="button">인증번호 확인</button>
             </section>
             <button class="inputbox findPw-btn">비밀번호 찾기</button>
 

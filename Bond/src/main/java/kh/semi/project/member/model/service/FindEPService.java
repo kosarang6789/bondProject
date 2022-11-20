@@ -10,4 +10,11 @@ public interface FindEPService {
 	// 비밀번호 찾기
 	Member findPw(Member inputMember);
 
+	// 인증번호 보내기
+	String sendKey(String memberEmail);
+	
+	// 인증번호 만들기
+	String createAuthKey();
+	
+
 }

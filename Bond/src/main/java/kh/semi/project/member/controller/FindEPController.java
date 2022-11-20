@@ -6,6 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.support.SessionStatus;
 
 import kh.semi.project.member.model.service.FindEPService;
 import kh.semi.project.member.model.vo.Member;
@@ -51,13 +54,49 @@ public class FindEPController {
 		return "/member/findPw";
 	}
 	
-//	@PostMapping("/findPw")
-//	public String findPw(Model model, Member inputMember) {
-//		
-//		Member selectMember = service.findPw(inputMember);
-//		
-//		return "member/findPw";
-//	}
+	@GetMapping("/findPw/sendKey")
+	@ResponseBody
+	public int sendKey(Model model, Member inputMember) {
+		
+		String memberEmail = null;
+		
+		Member selectMember = service.findPw(inputMember);
+		if(selectMember != null) { // 일치 회원 있음
+			memberEmail = selectMember.getMemberEmail();
+			String authKey = service.sendKey(memberEmail);
+			if(authKey != null) { // 인증번호 O
+				model.addAttribute("authKey", authKey);
+				return 2;
+			}else {
+				return 1;
+			}
+		}else { // 일치 회원 없음
+			return 0;
+		}
+	}
+	
+	// 인증번호 확인
+    @GetMapping("/findPw/checkKey")
+    @ResponseBody
+    public int checkAuthKey(String inputKey, @SessionAttribute("authKey") String authKey, 
+            SessionStatus status){
+        
+        if(inputKey.equals(authKey)) {
+            status.setComplete();
+            return 1;
+        }
+        
+        return 0;
+    }
+	
+	@PostMapping("/findPw")
+	public String findPw(Member inputMember, Model model) {
+		
+		
+		
+		
+		return "member/findPw";
+	}
 	
 
 	
