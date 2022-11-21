@@ -12,7 +12,6 @@ a{
     text-decoration: none;
 }
 
-
 /* Header */
 header{
     background-color: #737373;
@@ -63,25 +62,22 @@ header{
     font-size: 1.2em;
 }
 
-
-.box {
-    border: none;
-    width: 30px;
-    height: 30px;
-    border-radius: 70%;
-    overflow: hidden;
+label[for='header-menu-toggle']{
+    position: relative;
 }
 
-
-#profile-photo{
+.box {
     width: 100%;
     height: 100%;
-    object-fit: cover;  
+    display: flex;
+    background-color: white;
+    border: none;
     cursor: pointer;
 }
 
 .widget-item{
-    width: 50px;
+    width: 33.3%;
+    height: 100%;
 }
 
 .caret-icon{
@@ -93,11 +89,6 @@ header{
     color: #999;
 }
 
-label[for='header-menu-toggle']{
-    cursor: pointer;
-    display: flex;
-
-}
 
 
 #header-menu-toggle{
@@ -221,16 +212,22 @@ nav li > a:hover {
 }
 
 
-#side-cover{
-    display: inline-block;
-    position: relative;
-    vertical-align: top;
+#info-inner{
+    position: fixed;
+    width: 232px;
+}
+
+.side-cover{
+    width: 232px;
+    height: 174px;
+    overflow: hidden;
 }
 
 
 #cover-img{
     width: 100%;
     height: 100%;
+    object-fit: cover;
     border: 1px solid rgba(0,0,0,.05);
     border-radius: 3px;
 }
@@ -357,7 +354,6 @@ nav li > a:hover {
 
 /* 글쓰기 영역 */
 .post-write-form{
-    position: relative;
     padding-bottom: 46px;
     
 }
@@ -430,6 +426,7 @@ nav li > a:hover {
 
 .main-content{
     position: relative;
+    margin-bottom: 55px;
 }
 
 .content-button{
@@ -440,8 +437,6 @@ nav li > a:hover {
     background-color: white;
     opacity: 0;
 
-
-    
     cursor: pointer;
 }
 
@@ -475,9 +470,6 @@ nav li > a:hover {
     cursor: pointer;
 }
 
-.module-box{
-    margin-top: 55px;
-}
 
 .post-wrap-title{
     display: none;
@@ -668,12 +660,12 @@ button{
 /* banner */
 #banner{
     display: flex;
-
     margin-left: 18px;
 }
 
-.band-photo-area{
+#band-photo-area{
     width: 240px; 
+    position: fixed;
 }
 
 .toolbar{
@@ -791,35 +783,3 @@ button{
 }
 
 
-
-
-/* footer */
-footer{
-    height: 200px;
-    background-color: #BFBFBF;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    z-index: 10000;
-}
-
-
-footer p{
-    font-weight: bold;
-    margin: 16px 0;
-}
-
-footer > article > *{
-    font-size: 14px;
-}
-
-footer a{
-    text-decoration: none;
-    color: black;
-}
-
-footer > article span{
-    padding : 0 10px;
-}
