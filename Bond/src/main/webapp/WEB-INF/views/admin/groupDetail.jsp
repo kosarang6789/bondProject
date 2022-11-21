@@ -11,33 +11,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 | 모임 관리</title>
 
-    <link rel="stylesheet" href="/resources/css/admin/layout-style.css">
+    <link rel="stylesheet" href="/resources/css/admin/layout/layout-detail-style.css">
     <link rel="stylesheet" href="/resources/css/admin/group-detail-style.css">
-    <link rel="stylesheet" href="/resources/css/admin/searchbar-style.css">
-    <link rel="stylesheet" href="/resources/css/admin/sidebar-style.css">
+    <link rel="stylesheet" href="/resources/css/admin/add/searchbar-style.css">
+    <link rel="stylesheet" href="/resources/css/admin/add/sidebar-style.css">
     
 </head>
 <body>
 
-    <jsp:include page="/WEB-INF/views/admin/adminPage-header.jsp" />
+    <jsp:include page="/WEB-INF/views/admin/add/adminPage-header.jsp" />
 
     <main> <!-- for background-color -->
 
         <section class="main"> 
             
-            <jsp:include page="/WEB-INF/views/admin/sidebar.jsp" />
+            <jsp:include page="/WEB-INF/views/admin/add/sidebar.jsp" />
 
 
             <section class="content">
                 <div class="content-header">
                     <h3>모임 정보</h3>
+                    <a href="/admin/groupList" id="list-btn">
+                        목록
+                    </a>
                 </div>
 
                 <div class="content-body">
-                    <a href="/admin/groupList" id="list-btn">
-                      <img src="/resources/images/admin/go-back-list.png">
-                        목록
-                    </a>
                     
                     <div class="detail-info">
                         <div class="detail-info-row">
@@ -120,7 +119,7 @@
                                 <span class="report-count">
                                     3회
                                 </span>
-                                <button id="openModal">조회</button>
+                                <button id="openModal" class="modalBtn">조회</button>
                             </div>
                         </div>
                     </div>
@@ -134,7 +133,7 @@
 
     <div id="modalDim">
         <div id="modalBox">
-            <div id="modal">
+            <div id="modal" tabindex="0">
                 <div id="closeModal">&times;</div>
                 <h3>신고 기록</h3>
                 <div class="report-modal-row">

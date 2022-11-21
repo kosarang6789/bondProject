@@ -11,21 +11,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 | 신고 관리</title>
 
-    <link rel="stylesheet" href="../../../resources/css/admin/layout-style.css">
-    <link rel="stylesheet" href="../../../resources/css/admin/report-list-style.css">
-    <link rel="stylesheet" href="../../../resources/css/admin/searchbar-style.css">
-    <link rel="stylesheet" href="../../../resources/css/admin/sidebar-style.css">
+    <link rel="stylesheet" href="/resources/css/admin/layout/layout-list-style.css">
+    <link rel="stylesheet" href="/resources/css/admin/report-list-style.css">
+    <link rel="stylesheet" href="/resources/css/admin/add/searchbar-style.css">
+    <link rel="stylesheet" href="/resources/css/admin/add/sidebar-style.css">
     
 </head>
 <body>
 
-    <jsp:include page="/WEB-INF/views/admin/adminPage-header.jsp" />
+    <jsp:include page="/WEB-INF/views/admin/add/adminPage-header.jsp" />
 
     <main> <!-- for background-color -->
 
         <section class="main"> 
             
-	<jsp:include page="/WEB-INF/views/admin/sidebar.jsp" />
+	<jsp:include page="/WEB-INF/views/admin/add/sidebar.jsp" />
 
             <section class="content">
                 <div class="content-header">
@@ -96,6 +96,6 @@
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	
-    <script src="/resources/js/sidebar.js"></script>
+    <script src="/resources/js/admin/sidebar.js"></script>
 </body>
 </html>

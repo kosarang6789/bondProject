@@ -1,67 +1,6 @@
-/* .content */
-.content{
-    background-color: white;
-
-    width: 920px;
-    
-    margin-left: 20px;
-    border-radius: 10px;
-
-    display:flex;
-    flex-direction: column;
-}
-/* end .content */
-
-/* .content-header */
-.content-header{
-    width: 100%;
-    height: 60px;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding:0px 30px;
-    margin-bottom: 20px;;
-    border-bottom: 1px solid #BFBFBF;
-}
-
-/* end .content-header */
-
-/* .content-body */
-.content-body{
-    margin-top: 10px;
-    padding: 0px 20px;
-	height: 100%;
-}
-
-/* 목록 버튼 */
-#list-btn{
-    margin-left: 30px;
-    width: 50px;
-    float:left;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#list-btn:hover{
-    background-color: #bfbfbf31;
-}
-#list-btn:active{
-    background-color: #bfbfbf41;
-    color: black;
-}
-
-#list-btn > img{
-    width: 15px;
-    height: 100%;
-}
-
 /* notice-detail */
 .post-detail{
-    width: 750px;
-    margin-bottom: 10px;
-    float: right;
+    width: 100%;
     height: 100%;
 }
 

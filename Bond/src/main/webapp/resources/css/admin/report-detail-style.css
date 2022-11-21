@@ -1,72 +1,13 @@
-/* .content */
-.content{
-    background-color: white;
-
-    width: 920px;
-    
-    margin-left: 20px;
-    border-radius: 10px;
-
-    display:flex;
-    flex-direction: column;
-}
-/* end .content */
-
-
-/* .content-header */
-.content-header{
-    width: 100%;
-    height: 60px;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding:0px 30px;
-    margin-bottom: 20px;;
-    border-bottom: 1px solid #BFBFBF;
-}
-
-.content-body{
-    padding: 0px 0px 0px 30px;
-    min-height: 700px;
-}
-
-/* .content-body */
-
-/* 목록 버튼 */
-#list-btn{
-    margin-left: 30px;
-    width: 50px;
-    float:left;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#list-btn:hover{
-    background-color: #bfbfbf31;
-}
-#list-btn:active{
-    background-color: #bfbfbf41;
-    color: black;
-}
-
-#list-btn > img{
-    width: 15px;
-    height: 100%;
-}
-
 /* 전체 */
 .detail-info{
-    float: right;
-    width: 650px;
+    width: 100%;
     margin-bottom: 20px;
 }
 
 /* 행 */
 .detail-info-row{
     border-top: 1px solid #BFBFBF;
-    width: 650px;
+    width: 100%;
     height: 100%;
     min-height: 50px;
     display: flex;
@@ -85,7 +26,7 @@
     
     padding-left: 10px;
     
-    width: 150px;
+    width: 15%;
     
     display: flex;
     align-items: center;
@@ -96,7 +37,7 @@
     display: flex;
     align-items: center;
     padding: 0px 20px;
-    width: 500px;
+    width: 85%;
     background-color: white;
     height: 100%;
     min-height: 50px;
@@ -106,7 +47,7 @@
     display: flex;
     align-items: center;
     padding: 0px 20px;
-    width: 175px;
+    width: 35%;
     background-color: white;
     height: 100%;
     min-height: 50px;
@@ -224,9 +165,21 @@ body{
 }
 
 #resultBtn{
+    border: none;
+    border-radius: 5px;
+    background-color: #E2E2E250;
     height: 30px;
-    width: 50px;
-    margin-left: 10px;
+    width: 45px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#resultBtn:hover{
+    opacity: 0.7;
+}
+
+#resultBtn:active{
+    opacity: 0.5;
 }
 
 /* end .content-body */

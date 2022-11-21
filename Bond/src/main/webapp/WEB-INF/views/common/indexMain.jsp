@@ -30,7 +30,7 @@
         <section class="index-menu">
             <div class="index-menu-area">
                 <div class="index-logo-area">
-                    <img src="/resources/images/common/home-logo-white.png" id="index-logo">
+                    <img src="/resources/images/common/index-logo-white.png" id="index-logo">
                 </div>
                 <div id="login-title">
                     <h2>취미가 쉬워진다! <br> 끼리끼리 본드</h2>

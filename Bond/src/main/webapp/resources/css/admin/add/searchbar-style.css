@@ -13,9 +13,10 @@
 .input-box{
     height: 20px;
     width: 150px;
-    
+    border-radius: 5px;
     border: 1px solid #BFBFBF;
     padding: 5px;
+    margin-right: 5px;
 
     display: flex;
     justify-content: center;
@@ -25,6 +26,7 @@
 .input-box > input{
     border: none;
     outline: none;
+    width: 100%;
 }
 
 .input-box:focus-within{
@@ -39,6 +41,7 @@
     width: 40px;
 
     border: none;
+    border-radius: 5px;
 }
 
 /* 마우스 올렸을 때 */

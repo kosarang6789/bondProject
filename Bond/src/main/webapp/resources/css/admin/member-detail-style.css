@@ -1,79 +1,20 @@
-/* .content */
-.content{
-    background-color: white;
-
-    width: 920px;
-    
-    margin-left: 20px;
-    border-radius: 10px;
-
-    display:flex;
-    flex-direction: column;
-}
-/* end .content */
-
-
-/* .content-header */
-.content-header{
-    width: 100%;
-    height: 60px;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding:0px 30px;
-    margin-bottom: 20px;;
-    border-bottom: 1px solid #BFBFBF;
-}
-
-.content-body{
-    padding: 0px 0px 0px 30px;
-    min-height: 700px;
-}
-
-/* .content-body */
-
-/* 목록 버튼 */
-#list-btn{
-    margin-left: 30px;
-    width: 50px;
-    float:left;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#list-btn:hover{
-    background-color: #bfbfbf31;
-}
-#list-btn:active{
-    background-color: #bfbfbf41;
-    color: black;
-}
-
-#list-btn > img{
-    width: 15px;
-    height: 100%;
-}
-
 /* 전체 */
 .detail-info{
     float: right;
-    width: 650px;
+    width: 100%;
     margin-bottom: 20px;
 }
 
 /* 행 */
 .detail-info-row{
     border-top: 1px solid #BFBFBF;
-    width: 650px;
+    width: 100%;
     height: 100%;
     min-height: 50px;
     display: flex;
     align-items: center;
     background-color: #E2E2E250;
 }
-
 
 .detail-info-row:last-child{
     border-bottom: 1px solid #BFBFBF;
@@ -110,13 +51,13 @@
 
 /* join count */
 .report-count, .join-count{
-    min-width: 85%;
+    min-width: 50px;
     margin-right: 5px;
     display: flex;
 }
 
 /* 모달 버튼 */
-#openModal{
+.modalBtn{
     border: none;
     border-radius: 10px;
     background-color: #E2E2E250;
@@ -126,23 +67,26 @@
     cursor: pointer;
 }
 
-#openModal:hover{
+.modalBtn:hover{
     opacity: 0.7;
 }
 
-#openModal:active{
+.modalBtn:active{
     opacity: 0.5;
 }
 
-/* 모달창 */
+/* for 모달창 */
 body{
     position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
 }
 
 #modalDim{
-    background-color: rgb(0,0,0,0.8);
-    width: 100vw;
-    height: 100vmax;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
     
     z-index: 10000;
     position: absolute;
@@ -150,8 +94,10 @@ body{
 }
 
 #modalBox{
+    background-color: rgb(0,0,0,0.8);
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    min-height: 100vh;
     position: fixed;
     position: relative;
     
@@ -159,7 +105,6 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 
 #modal{
@@ -167,13 +112,15 @@ body{
     
     width: 500px;
 
-    position: absolute;
     z-index: 20000;
-    position: relative;
     padding: 20px;
 
     display: flex;
     flex-direction: column;
+
+    position: fixed; 
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #closeModal{
@@ -193,10 +140,6 @@ body{
     display: flex;
 }
 
-.report-no{ flex-basis : 20% }
-.report-request{ flex-basis : 20%}
-.report-reason{ flex-basis : 50%}
-.report-result{ flex-basis : 20%}
 
 /* modal 내 표 */
 .report-modal-row > span{
@@ -209,6 +152,10 @@ body{
     background-color: #CCC;
 }
 
-/* end .content-body */
 
+.report-no{ flex-basis : 20% }
+.report-request{ flex-basis : 20%}
+.report-reason{ flex-basis : 50%}
+.report-result{ flex-basis : 20%}
 
+/* end modal */

@@ -82,11 +82,15 @@ main{ /* 배경색 및 flex */
 
 /* 진짜 main */
 .main{
+    height: 100%;
+
     margin: 20px 0px;
     
     display: flex;
 }
 /* end .main */
+
+/* sidebar-style.css */
 
 /* .content */
 .content{
@@ -95,8 +99,8 @@ main{ /* 배경색 및 flex */
     width: 920px;
     
     margin-left: 20px;
-    padding: 15px;
     border-radius: 10px;
+    padding: 15px;
 
     display:flex;
     flex-direction: column;
@@ -108,69 +112,43 @@ main{ /* 배경색 및 flex */
 .content-header{
     width: 100%;
     height: 40px;
-    margin-bottom: 10px;
     
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
-/* end .content-header */
-
-
-
-
-
-/* searchbar */
-
-/* end .searchbar */
-
-
-
-
-
-
-/* .content-body */
 .content-body{
-    margin-top: 10px;
     border-top: 1px solid #BFBFBF;
-	
+    padding: 25px 15px 15px;
+    min-height: 700px;
 	height:100%;
 }
 
-/* list */
-.list-header{
+/* 목록 버튼 */
+#list-btn{
+    width: 50px;
+    height: 30px;
     display: flex;
-    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    background-color: #BFBFBF31;
+    border-radius: 5px;
 }
 
-.groupNo{ flex-basis: 15%; }
-.topicCode{ flex-basis: 15%; }
-.groupName{ flex-basis: 30%;}
-.groupDate{ flex-basis: 20%;}
-.openYN{ flex-basis: 10%;}
-.groupStatus{ flex-basis: 10%;}
-
-.list-btn{
-    margin-top: 10px;
-    
-    width: 100%;
-
-    display: flex;
-    justify-content: flex-start;
-    text-align: start;
-    border: none;
+#list-btn:hover{
+    background-color: #bfbfbf31;
+}
+#list-btn:active{
+    background-color: #bfbfbf41;
+    color: black;
 }
 
-/* end .content-body */
+/* .content-body */
 
+/* 개별-detail-style.css */
 
-
-/* content-footer */
-.content-footer{
-	display:flex;
-	justify-content: center;
-}
 /* footer */
 footer{
     height: 200px;

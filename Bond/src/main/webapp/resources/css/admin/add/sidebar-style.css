@@ -1,0 +1,142 @@
+/* .sidebar */
+.sidebar{
+    width: 200px;
+}
+
+.admin-info{
+    background-color: white;
+    width: 200px;
+    border-radius: 10px;
+    padding: 0 5px;
+}
+
+.admin-menu{
+    background-color: white;
+    width: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.admin-info{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+
+    margin-bottom: 5px;
+}
+
+#info-image{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-top: 5px;
+}
+
+#admin-name{
+    padding: 0px 7px;
+}
+
+/* 프로필 버튼 관련 스타일 */
+.profile-btn-area{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.profile-btn-area > a{
+    font-size: 12px;
+    font-weight: 800;
+    color: black;
+
+    border: 1px solid black;
+    border-radius: 5px;
+
+    height: 20px;
+    width: 55px;
+}
+
+#home{
+    background-color: yellowgreen;
+    margin-bottom: 3px;
+}
+#home:hover{
+    background-color: rgb(137, 184, 45);
+}
+#home:active{
+    border: none;
+}
+
+#logout{
+    background-color: lightcoral;
+}
+#logout:hover{
+    background-color: rgb(211, 112, 112);
+}
+#logout:active{
+    border: none;
+}
+
+/* sidebar - admin-menu */
+.drop-down{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #E2E2E2;
+
+    overflow: hidden;
+}
+
+.top-menu{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.drop-down > li{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sub-menu{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #E2E2E2;
+}
+
+/* with js */
+
+.selected{
+    background-color: #E2E2E220;
+    font-weight: 800;
+    transition-duration: 0.1s;
+    padding-bottom: 3px;
+}
+
+.hide{
+    /* display: none; */
+    opacity: 0;
+    height: 0;
+    visibility: hidden;
+    transition-duration: 0.3s;
+}
+
+.opened{
+    visibility: visible;
+    transition-duration: 0.3s;
+}
+
+/* end .sidebar */

@@ -11,32 +11,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 | 공지사항</title>
 
-    <link rel="stylesheet" href="/resources/css/admin/layout-style.css">
+    <link rel="stylesheet" href="/resources/css/admin/layout/layout-detail-style.css">
     <link rel="stylesheet" href="/resources/css/admin/notice-detail-style.css">
-    <link rel="stylesheet" href="/resources/css/admin/searchbar-style.css">
-    <link rel="stylesheet" href="/resources/css/admin/sidebar-style.css">
+    <link rel="stylesheet" href="/resources/css/admin/add/searchbar-style.css">
+    <link rel="stylesheet" href="/resources/css/admin/add/sidebar-style.css">
     
 </head>
 <body>
 
-    <jsp:include page="/WEB-INF/views/admin/adminPage-header.jsp" />
+    <jsp:include page="/WEB-INF/views/admin/add/adminPage-header.jsp" />
 
     <main> <!-- for background-color -->
 
         <section class="main"> 
             
-	<jsp:include page="/WEB-INF/views/admin/sidebar.jsp" />
+	<jsp:include page="/WEB-INF/views/admin/add/sidebar.jsp" />
 
             <section class="content">
                 <div class="content-header">
                     <h3>공지사항</h3>
+                    <a href="noticeList.html" id="list-btn">
+                        목록
+                    </a>
                 </div>
                 
                 <div class="content-body">
-                    <a href="noticeList.html" id="list-btn">
-                        <img src="/resources/images/admin/go-back-list.png">
-                        목록
-                    </a>
                     
                     <div class="notice-detail">
                         <h3 id="noticeTitle">개인정보는 누구에게도 알려주지 마세요.</h3>
@@ -62,6 +61,5 @@
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	
-    <script src="/resources/js/sidebar.js"></script>
-</body>
+    <script src="/resources/js/admin/sidebar.js"></script></body>
 </html>
