@@ -27,7 +27,7 @@ main{
 }
 .find-title{
     font-size: 48px;
-    text-align: center;
+    text-align: center; 
     width: 100%;
     margin-bottom: 50px;
 
@@ -134,4 +134,21 @@ main{
 }
 .modalO{
     display: flex;
+}
+
+
+
+.confirm{
+    color: #21c531;
+    font-size: 14px;
+}
+.error{
+    color: red;
+    font-size: 14px;
+}
+
+
+.memberPw{
+    width: 200px;
+    height: 50px;
 }

@@ -108,7 +108,7 @@ checkKey.addEventListener("click",(e)=>{
                             e.preventDefault();
                             break;
                         case 0 :
-                            authKeyMessage.innerText="등록된 회원이 아닙니다.";  
+                            alert("등록된 회원이 아닙니다.");  
                             e.preventDefault();
                             break;
                 }
@@ -119,5 +119,72 @@ checkKey.addEventListener("click",(e)=>{
         })
     }else{
         alert("인증시간이 만료되었습니다. 다시 시도해주세요.")
+    }
+})
+
+// 비밀번호 유효 검사
+const memberPw = document.getElementById("memberPw");
+const memberPwConfirm = document.getElementById("memberPwConfirm");
+const pwConfirm = document.getElementById("pwConfirm");
+
+memberPw.addEventListener("input", function(e){
+    if(memberPw.value.trim().length == 0){
+        pwConfirm.innerText="영어, 숫자, 특수문자(!,@,#,-,_) 8~20글자 사이로 입력해주세요.";
+        memberPw.value="";
+        memberPw.classList.remove("error", "confrim");
+        memberPw.focus();
+        e.preventDefault();
+        return;
+    }
+
+    const regEx = /^[a-zA-Z\d!@#\-\_]{8,20}$/;
+
+    if(regEx.test(memberPw.value)){
+
+        if(memberPwConfirm.value.trim().length == 0){
+            pwConfirm.innerText="유효한 비밀번호 입니다.";
+            pwConfirm.classList.add("confirm");
+            pwConfirm.classList.remove("error");
+        }else{
+            if(memberPw.value == memberPwConfirm.value){
+                checkObj.memberPwConfirm=true;
+                pwConfirm.innerText="비밀번호가 일치합니다.";
+                pwConfirm.classList.add("confirm");
+                pwConfirm.classList.remove("error");
+            }else{
+                checkObj.memberPwConfirm=false;
+                pwConfirm.innerText="비밀번호가 일치하지 않습니다.";
+                pwConfirm.classList.add("error");
+                pwConfirm.classList.remove("confirm");
+            }
+        }
+    }else{
+        pwConfirm.innerText="비밀번호 형식이 유효하지 않습니다.";
+        pwConfirm.classList.add("error");
+        pwConfirm.classList.remove("confirm");
+        e.preventDefault();
+        memberPw.focus();
+        return;
+    }
+});
+
+memberPwConfirm.addEventListener("input", function(e){
+    if(checkObj.memberPw){
+        if(memberPw.value == memberPwConfirm.value){
+            pwConfirm.innerText="비밀번호가 일치합니다.";
+            pwConfirm.classList.add("confirm");
+            pwConfirm.classList.remove("error");
+        }else{
+            pwConfirm.innerText="비밀번호가 일치하지 않습니다.";
+            pwConfirm.classList.add("error");
+            pwConfirm.classList.remove("confirm");
+            e.preventDefault();
+            memberPwConfirm.focus();
+            return;
+        }
+    }else{
+        e.preventDefault();
+        memberPwConfirm.focus();
+        return;
     }
 })

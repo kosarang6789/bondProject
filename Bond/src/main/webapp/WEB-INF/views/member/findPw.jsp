@@ -41,7 +41,7 @@
             </section>
             <button class="inputbox findPw-btn">비밀번호 찾기</button>
 
-            <c:if test="${not empty emailCheck}">
+            <c:if test="${not empty pwCheck}">
                 <c:set var="check" value="modalO"/>
             </c:if>
 
@@ -50,16 +50,11 @@
 
             <div id="modal" class="modal ${check}">
                 <div class="modalArea">
-                    <div class="findEmailTitle">이메일 찾기</div>
-                    <div id="findEmailResult">
-                        <c:choose>
-                            <c:when test="${not empty memberEmail}">
-                                ${memberEmail} 입니다.
-                            </c:when>
-                            <c:otherwise>
-                                등록된 이메일이 없습니다.
-                            </c:otherwise>
-                        </c:choose>
+                    <div class="findPwTitle">비밀번호 변경</div>
+                    <div id="changePw">
+                        <input type="password" name="memberPw" id="memberPw" class="memberPw" placeholder="변경 비밀번호 입력" maxlegnth="20">
+                        <input type="password" name="memberPwConfirm" id="memberPwConfirm" class="memberPwConfirm" placeholder="비밀번호 확인" maxlegnth="20">
+                        <div id="pwConfirm" class="coner">영어, 숫자, 특수문자(!,@,#,-,_) 8~20글자 사이로 입력해주세요.</div>
                     </div>
 
                     <div class="btnArea">
@@ -68,20 +63,9 @@
                                 메인페이지
                             </div>
                         </a>
-                        
-                        <c:choose>
-                            <c:when test="${!empty memberEmail}">
-                                <a href="/login">
-                                    <div class="btns">로그인</div>
-                                </a>
-                            </c:when>
-                            <c:otherwise>
-                                <a href="/login">
-                                    <div class="btns">회원가입</div>
-                                </a>
-                            </c:otherwise>
-                        </c:choose>
-                        
+                        <a href="/login">
+                            <div class="btns">로그인</div>
+                        </a>
                     </div>
                 </div>
             </div>
