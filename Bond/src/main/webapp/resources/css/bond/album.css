@@ -807,34 +807,3 @@ button{
     text-decoration: underline;
 }
 
-
-/* footer */
-footer{
-    height: 200px;
-    background-color: #BFBFBF;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    z-index: 10000;
-}
-
-
-footer p{
-    font-weight: bold;
-    margin: 16px 0;
-}
-
-footer > article > *{
-    font-size: 14px;
-}
-
-footer a{
-    text-decoration: none;
-    color: black;
-}
-
-footer > article span{
-    padding : 0 10px;
-}

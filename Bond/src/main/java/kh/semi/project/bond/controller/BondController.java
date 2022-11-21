@@ -37,7 +37,15 @@ public class BondController {
 	
 	// 사진첩 페이지로 이동 
 	@GetMapping("/bond/{groupNo}/album")
-	public String albumPage() {
+	public String albumPage(
+			@PathVariable("groupNo") int groupNo,
+			Model model) {
+		
+		// 본드 기본정보 불러오기(이름, 사진, 멤버수, 소개글)
+		Group groupInfo = service.selectGroupInfo(groupNo);
+		
+		model.addAttribute("groupInfo", groupInfo);
+		
 		return "bond/album";
 	}
 	

@@ -62,22 +62,25 @@ header{
     font-size: 1.2em;
 }
 
-label[for='header-menu-toggle']{
-    position: relative;
-}
 
 .box {
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 70%;
+    overflow: hidden;
+}
+
+
+#profile-photo{
     width: 100%;
     height: 100%;
-    display: flex;
-    background-color: white;
-    border: none;
+    object-fit: cover;  
     cursor: pointer;
 }
 
 .widget-item{
-    width: 33.3%;
-    height: 100%;
+    width: 50px;
 }
 
 .caret-icon{
@@ -89,6 +92,11 @@ label[for='header-menu-toggle']{
     color: #999;
 }
 
+label[for='header-menu-toggle']{
+    cursor: pointer;
+    display: flex;
+
+}
 
 
 #header-menu-toggle{
@@ -212,22 +220,16 @@ nav li > a:hover {
 }
 
 
-#info-inner{
-    position: fixed;
-    width: 232px;
-}
-
-.side-cover{
-    width: 232px;
-    height: 174px;
-    overflow: hidden;
+#side-cover{
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
 }
 
 
 #cover-img{
     width: 100%;
     height: 100%;
-    object-fit: cover;
     border: 1px solid rgba(0,0,0,.05);
     border-radius: 3px;
 }
@@ -355,7 +357,6 @@ nav li > a:hover {
 /* 글쓰기 영역 */
 .post-write-form{
     padding-bottom: 46px;
-    
 }
 
 .board-search{
@@ -663,9 +664,8 @@ button{
     margin-left: 18px;
 }
 
-#band-photo-area{
+.band-photo-area{
     width: 240px; 
-    position: fixed;
 }
 
 .toolbar{
@@ -781,5 +781,91 @@ button{
 .btn-go-to-top:hover > .go-to-top-icon{
     color: white;
 }
+
+.post-count{
+    overflow: hidden;
+    padding: 15px 22px 10px;
+    margin-top: -17px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.face-comment{
+    font-size: 13px;
+    font-weight: 400;
+    color: #555;
+    position: relative;
+}
+
+.emotion-view{
+    margin-right: 7px;
+}
+
+button{
+    border: 0;
+    background-color: transparent;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.face-icon{
+    font-size: 1.1em;
+}
+
+.count{
+    margin-left: 3px;
+    font-size: 12px;
+    line-height: 24px;
+    font-weight: 500;
+}
+
+.comment{
+    font-size: 13px;
+    font-weight: 400;
+    color: #555;
+    line-height: 23px;
+    vertical-align: top;
+}
+
+.comment-toggle{
+    margin-top: 3px;
+    width: 17px;
+    height: 17px;
+    overflow: hidden;
+
+}
+
+.share-read{
+    line-height: 23px;
+    vertical-align: top;
+}
+
+.post-added{
+    height: 45px;
+    position: relative;
+    border-top: 1px soid #888;
+    border-radius: 0 0 4px 4px;
+    white-space: nowrap;
+}
+
+.post-add-box{
+    display: flex;
+    width: 100%;
+    height: 45px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.post-text{
+    font-weight: 500;
+    font-size: 15px;
+    color: #222;
+}
+
+.post-text:hover{
+    text-decoration: underline;
+}
+
+
 
 

@@ -45,8 +45,8 @@
 <nav class="bg nav-fixed">
     <div id="list-nav">
         <ul>
-        <li><a href="/bond/bond">게시글</a></li>
-        <li><a href="/bond/album">사진첩</a></li>
+        <li><a href="/bond/${groupNo}">게시글</a></li>
+        <li><a href="/bond/${groupNo}/album">사진첩</a></li>
         <li><a href="#">일정</a></li>
         <li><a href="#">멤버</a></li>
         </ul>

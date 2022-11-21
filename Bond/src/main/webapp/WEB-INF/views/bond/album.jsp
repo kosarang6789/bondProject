@@ -25,31 +25,27 @@
                 <div id="info-inner">
                     <div class="side-cover">
                         <a href="#" class="cover">
-                            <img src="/resources/images/bond/side-cover.png" id="cover-img">
+                            <c:choose>
+                                <c:when test="${not empty groupInfo.groupImage}">
+                                    <img src="${groupInfo.groupImage}" id="cover-img">  
+                                </c:when>
+                                <c:otherwise>
+                                    <img src="/resources/images/bond/profile/non-profile.png">
+                                </c:otherwise>
+                            </c:choose>
                         </a>
                     </div>
 
                     <div class="band-name">
-                        <a href="#" class="uri-text">KH 팀프로젝트</a>
+                        <a href="#" class="uri-text">${groupInfo.groupName}</a>
                     </div>
 
                     <p class="member">
-                        <a href="#" class="member-count">멤버 5</a>
+                        <a href="#" class="member-count">멤버 ${groupInfo.memberCount}</a>
                     </p>
 
                     <div class="band-info">
-                        <p class="band-description">KH 팀프로젝트 소개글입니다아아아아아아아아아
-                            아아아아아아아아아아아아아아-----------------------------------------
-                            ---------------------------------------------------------------------
-                            ---------------------------------------------------------------------
-                            ---------------------------------------------------------------------
-                            ---------------------------------------------------------------------
-                            ---------------------------------------------------------------------
-                            ---------------------------------------------------------------------
-                            ---------------------------------------------------------------------
-                            ---------------------------------------------------------------------
-                            ---------------------------------------------------------------------
-                        </p>
+                        <p class="band-description">${groupInfo.groupComment}</p>
                         <a href="#" class="more-link">...더보기</a>
                     </div>
 
@@ -223,4 +219,6 @@
                 </button>
             </a>
         </div>
+
+        <script src="/resources/js/bond/bond.js"></script>
 </body>

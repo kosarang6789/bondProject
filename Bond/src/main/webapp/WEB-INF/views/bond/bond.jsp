@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <jsp:include page="/WEB-INF/views/bond/headerBond.jsp"/>  
+    <jsp:include page="/WEB-INF/views/bond/headerBond.jsp"/> 
         <div id="container">
             <!-- 1번 영역 -->
             <aside id="info">
