@@ -223,10 +223,13 @@ nav li > a:hover {
 
 /* side-bar */
 #info{
-    width: 232px;
     padding-bottom: 20px;
     margin-right: 18px;
-    
+}
+
+
+#info-inner{
+    width: 232px;
 }
 
 
