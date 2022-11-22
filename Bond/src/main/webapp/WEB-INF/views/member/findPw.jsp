@@ -41,7 +41,7 @@
             </section>
             <button type="submit" class="inputbox findPw-btn">비밀번호 찾기</button>
 
-            <c:if test="${not empty pwCheck}">
+            <%-- <c:if test="${not empty pwCheck}">
                 <c:set var="check" value="modalO"/>
             </c:if>
 
@@ -68,9 +68,10 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> --%>
         </form>
     </main>
-    <script src="/resources/js/member/findEmailPw.js"></script>
+     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="/resources/js/member/findPw.js"></script>
 </body>
 </html>

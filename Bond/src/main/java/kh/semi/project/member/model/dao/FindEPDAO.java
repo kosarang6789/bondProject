@@ -25,7 +25,7 @@ public class FindEPDAO {
 	 * @param inputMember
 	 * @return
 	 */
-	public Member findPw(Member inputMember) {
+	public String findPw(Member inputMember) {
 		return sqlSession.selectOne("memberMapper.findPw", inputMember);
 	}
 

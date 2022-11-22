@@ -19,6 +19,7 @@ document.getElementById("findEmail-frm").addEventListener("submit", (e)=>{
 });
 
 
+
 // findPw
 document.getElementById("findPw-frm").addEventListener("submit", (e)=>{
     const inputName = document.getElementById("inputName");
@@ -57,12 +58,12 @@ sendKey.addEventListener("click", ()=>{
     authSec=59;
     $.ajax({
         url:"/member/findPw/sendKey",
-        data:{"memberEmail":memberEmail.value, "memberName":memberName.value, "memberTel":memberTel.value},
+        data:{"inputEmail":memberEmail.value, "inputName":memberName.value, "inputTel":memberTel.value},
         success:(res)=>{
-            if(res>0){
-                alert("인증번호 발송")
-            }else{
-                alert("인증번호 발생 실패")
+            switch(res){
+                case 2 : alert("인증번호 발송"); break;
+                case 1 : alert("인증번호 발생 실패"); break;
+                case 0 : alert("일치하는 회원이 없습니다."); break;
             }
         },
         error:()=>{
@@ -100,17 +101,14 @@ checkKey.addEventListener("click",(e)=>{
             url : "/member/findPw/checkKey",
             data : {"inputKey":inputKey.value},
             success : (res)=>{
-                switch(res){
-                    case 2 : clearInterval(authTimer);
-                            authKeyMessage.innerText="인증되었습니다."; break;
-                        case 1 : 
-                            authKeyMessage.innerText="인증번호가 일치하지 않습니다."; 
-                            e.preventDefault();
-                            break;
-                        case 0 :
-                            alert("등록된 회원이 아닙니다.");  
-                            e.preventDefault();
-                            break;
+                if(res>0){
+                    clearInterval(authTimer);
+                    authKeyMessage.innerText="인증되었습니다.";
+                    return;
+                }else{
+                    authKeyMessage.innerText="인증번호가 일치하지 않습니다."; 
+                    e.preventDefault();
+                    return;
                 }
             },
             error : ()=>{

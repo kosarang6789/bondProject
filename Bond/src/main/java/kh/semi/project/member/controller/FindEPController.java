@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import kh.semi.project.member.model.service.FindEPService;
@@ -17,6 +18,7 @@ import kh.semi.project.member.model.vo.Member;
 
 @Controller
 @RequestMapping("/member")
+@SessionAttributes("authKey")
 public class FindEPController {
 	
 	@Autowired
@@ -54,16 +56,22 @@ public class FindEPController {
 		return "/member/findPw";
 	}
 	
+	// 인증번호 전송
 	@GetMapping("/findPw/sendKey")
 	@ResponseBody
-	public int sendKey(Model model, Member inputMember) {
+	public int sendKey(Model model, String inputEmail, String inputName, String inputTel) {
 		
-		String memberEmail = null;
+		Member inputMember = new Member();
 		
-		Member selectMember = service.findPw(inputMember);
-		if(selectMember != null) { // 일치 회원 있음
-			memberEmail = selectMember.getMemberEmail();
-			String authKey = service.sendKey(memberEmail);
+		inputMember.setMemberEmail(inputEmail);
+		inputMember.setMemberName(inputName);
+		inputMember.setMemberTel(inputTel);
+		
+		
+		String sendEmail = service.findPw(inputMember);
+		
+		if(sendEmail != null) { // 일치 회원 있음
+			String authKey = service.sendKey(sendEmail);
 			if(authKey != null) { // 인증번호 O
 				model.addAttribute("authKey", authKey);
 				return 2;
@@ -89,15 +97,15 @@ public class FindEPController {
         return 0;
     }
 	
-	@PostMapping("/findPw")
-	public String findPw(Member inputMember, Model model) {
-		
-		
-		
-		
-		return "member/findPw";
-	}
-	
+//	@PostMapping("/findPw")
+//	public String findPw(Member inputMember, Model model) {
+//		
+//		
+//		
+//		
+//		return "member/findPw";
+//	}
+//	
 
 	
 }

@@ -8,10 +8,10 @@ public interface FindEPService {
 	Member findEmail(Member inputMember);
 
 	// 비밀번호 찾기
-	Member findPw(Member inputMember);
+	String findPw(Member inputMember);
 
 	// 인증번호 보내기
-	String sendKey(String memberEmail);
+	String sendKey(String sendEmail);
 	
 	// 인증번호 만들기
 	String createAuthKey();

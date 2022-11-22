@@ -6,7 +6,6 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailSender;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,14 +36,11 @@ public class FindPWServiceImpl implements FindEPService{
 	 * 비밀번호 찾기
 	 */
 	@Override
-	public Member findPw(Member inputMember) {
+	public String findPw(Member inputMember) {
 		return dao.findPw(inputMember);
 	}
 
 
-	
-	private String fromEmail = "khbond6789@gmail.com";
-	private String fromUserName = "본드 이메일 인증";
 	
 	
 
@@ -72,13 +68,17 @@ public class FindPWServiceImpl implements FindEPService{
 		return key;
 	}	
 	
+	private String fromEmail = "khbond6789@gmail.com";
+	private String fromUserName = "본드 이메일 인증";
+	
 
 	/**
 	 * 인증번호 보내기
 	 */
 	@Transactional
 	@Override
-	public String sendKey(String memberEmail) {
+	public String sendKey(String sendEmail) {
+		
 		
 		String authKey = createAuthKey();
 		try {
@@ -96,7 +96,7 @@ public class FindPWServiceImpl implements FindEPService{
 			// 송신자
 			mail.setFrom(new InternetAddress(fromEmail, fromUserName));
 			// 수신자
-			mail.addRecipient(Message.RecipientType.TO, new InternetAddress(memberEmail));
+			mail.addRecipient(Message.RecipientType.TO, new InternetAddress(sendEmail));
 			// 이메일 제목
 			mail.setSubject(subject, charset);
 			// 내용

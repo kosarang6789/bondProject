@@ -61,7 +61,7 @@
 	
 	
 	<!-- 비밀번호 찾기 -->
- 	<select id="findPw" resultMap="member_rm">
+ 	<select id="findPw" resultType="string">
 		SELECT MEMBER_PW FROM "MEMBER"
 		WHERE MEMBER_NAME = #{memberName}
 		AND MEMBER_TEL = #{memberTel}
