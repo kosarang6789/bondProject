@@ -49,7 +49,7 @@
 		INSERT INTO "MEMBER"
 		VALUES(SEQ_MEMBER_NO.NEXTVAL, 
 			#{memberEmail}, #{memberPw}, #{memberName}, #{memberBirth}, #{memberTel},
-			DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT )
+			DEFAULT, DEFAULT, DEFAULT, DEFAULT)
 	</insert>
 	
 	<!-- 이메일 찾기 -->
