@@ -1,5 +1,7 @@
 package kh.semi.project.member.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,10 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kh.semi.project.member.model.service.FindEPService;
 import kh.semi.project.member.model.vo.Member;
@@ -19,7 +23,7 @@ import kh.semi.project.member.model.vo.Member;
 
 @Controller
 @RequestMapping("/member")
-@SessionAttributes("authKey")
+@SessionAttributes({"authKey", "memNo"})
 public class FindEPController {
 	
 	@Autowired
@@ -69,11 +73,13 @@ public class FindEPController {
 		inputMember.setMemberTel(inputTel);
 		
 		
-		String sendEmail = service.findPw(inputMember);
+		Member selectMem = service.findPw(inputMember);
 		
-		if(sendEmail != null) { // 일치 회원 있음
-			model.addAttribute(sendEmail);
-			String authKey = service.sendKey(sendEmail);
+		
+		if(selectMem != null) { // 일치 회원 있음
+			int memNo = selectMem.getMemberNo();
+			model.addAttribute("memNo", memNo);
+			String authKey = service.sendKey(selectMem.getMemberEmail());
 			if(authKey != null) { // 인증번호 O
 				model.addAttribute("authKey", authKey);
 				return 2;
@@ -88,11 +94,14 @@ public class FindEPController {
 	// 인증번호 확인
     @GetMapping("/findPw/checkKey")
     @ResponseBody
-    public int checkAuthKey(String inputKey, @SessionAttribute("authKey") String authKey, 
-            SessionStatus status){
+    public int checkAuthKey(String inputKey, 
+    		@SessionAttribute("authKey") String authKey, 
+            SessionStatus status, Model model){
         
         if(inputKey.equals(authKey)) {
             status.setComplete();
+
+            model.addAttribute("pwCheck", 0);
             return 1;
         }
         
@@ -101,15 +110,25 @@ public class FindEPController {
 	
     // 비밀번호 찾기 -> 변경
 	@PostMapping("/findPw")
-	public String changePw(Model model, Member inputMember,
-			@RequestAttribute("sendEmail") String sendEmail) {
+	public String changePw(Model model,
+			@SessionAttribute("memNo") int memNo,
+			@RequestParam Map<String, Object> paramMap,
+			RedirectAttributes ra) {
 		
-		inputMember.setMemberEmail(sendEmail);
+		paramMap.put("memNo", memNo);
 		
-		int result = service.changePw(inputMember);
+		int result = service.changePw(paramMap);
 		
-		model.addAttribute("pwCheck", 0);
 		
+		String message = null;
+		
+		if(result>0) {
+			model.addAttribute("changePwOk", 0);
+		}else {
+			message = "비밀번호 변경에 실패했습니다.";
+		}
+		ra.addFlashAttribute("message", message);
+
 		return "member/findPw";
 	}
 	

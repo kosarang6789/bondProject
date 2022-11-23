@@ -1,5 +1,7 @@
 package kh.semi.project.member.model.service;
 
+import java.util.Map;
+
 import kh.semi.project.member.model.vo.Member;
 
 public interface FindEPService {
@@ -8,7 +10,7 @@ public interface FindEPService {
 	Member findEmail(Member inputMember);
 
 	// 비밀번호 찾기
-	String findPw(Member inputMember);
+	Member findPw(Member inputMember);
 
 	// 인증번호 보내기
 	String sendKey(String sendEmail);
@@ -17,7 +19,7 @@ public interface FindEPService {
 	String createAuthKey();
 
 	// 비밀번호 찾기 -> 변경
-	int changePw(Member inputMember);
+	int changePw(Map<String, Object> paramMap);
 	
 
 }

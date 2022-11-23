@@ -36,44 +36,52 @@
             <section class="inputbox">
                 <input type="text" name="inputKey" id="inputKey"
                     placeholder="인증번호 입력" autocomplete="off">
-                <span id="authKeyMessage" class="signUp-message"></span>
                 <button id="checkKey" type="button">인증번호 확인</button>
+                <span id="authKeyMessage" class="signUp-message"></span>
             </section>
             <button class="inputbox findPw-btn">비밀번호 찾기</button>
+            
 
-            <c:if test="${not empty pwCheck}">
+            <c:if test="${!empty pwCheck}">
                 <c:set var="check" value="modalO"/>
             </c:if>
 
-                <div id="modal" class="modal ${check}">
-                    <div class="modalArea">
-                        <div class="findPwTitle">비밀번호 변경</div>
-                        <div id="changePw">
-                            <input type="password" name="memberPw" id="memberPw" placeholder="변경 비밀번호 입력" maxlegnth="20">
-                            <input type="password" name="memberPwConfirm" id="memberPwConfirm" placeholder="비밀번호 확인" maxlegnth="20">
-                            <div id="pwConfirm" class="coner">영어, 숫자, 특수문자(!,@,#,-,_) 8~20글자로 입력해주세요.</div>
-                        </div>
-
-                        <div class="btnArea">
-                            <button>비밀번호 변경</button>
-                        </div>
-
-                </div>
-
-                        <%-- <div class="btnArea">
-                            <a href="/" id="mainBtn">
-                                <div class="btns">
-                                    메인페이지
-                                </div>
-                            </a>
-                            <a href="/login">
-                                <div class="btns">로그인</div>
-                            </a>
-                        </div> --%>
+            <div id="modal" class="modal ${check}">
+                <div class="modalArea">
+                    <div class="findPwTitle">비밀번호 변경</div>
+                    <div id="changePw">
+                        <input type="password" name="memberPw" id="memberPw" placeholder="변경 비밀번호 입력" maxlegnth="20">
+                        <input type="password" name="memberPwConfirm" id="memberPwConfirm" placeholder="비밀번호 확인" maxlegnth="20">
+                        <div id="pwConfirm" class="coner">영어, 숫자, 특수문자(!,@,#,-,_) 8~20글자로 입력해주세요.</div>
                     </div>
+                    <c:choose>
+                        <c:when test="${empty changePwOk}">
+                            <div class="btnArea">
+                                <button id="changePW">비밀번호 변경</button>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="btnArea">
+                                <a href="/" id="mainBtn">
+                                    <div class="btns">
+                                        메인페이지
+                                    </div>
+                                </a>
+                                <a href="/login">
+                                    <div class="btns">로그인</div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        </c:otherwise>
+                    </c:choose>
+
+
+            </div>
         </form>
+
     </main>
-     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="/resources/js/member/findPw.js"></script>
 </body>
 </html>

@@ -1,6 +1,8 @@
 package kh.semi.project.member.model.service;
 
 
+import java.util.Map;
+
 import javax.mail.Message;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -37,7 +39,7 @@ public class FindPWServiceImpl implements FindEPService{
 	 * 비밀번호 찾기
 	 */
 	@Override
-	public String findPw(Member inputMember) {
+	public Member findPw(Member inputMember) {
 		return dao.findPw(inputMember);
 	}
 
@@ -117,13 +119,13 @@ public class FindPWServiceImpl implements FindEPService{
 
 	// 비밀번호 찾기 -> 변경
 	@Override
-	public int changePw(Member inputMember) {
+	public int changePw(Map<String, Object> paramMap) {
 		
-		String encPw = bcrypt.encode(inputMember.getMemberPw());
+		String newPw = bcrypt.encode((String)paramMap.get("memberPw"));
 		
-		inputMember.setMemberPw(encPw);
+		paramMap.put("newPw", newPw);
 		
-		int result = dao.changePw(inputMember);
+		int result = dao.changePw(paramMap);
 		
 		return result;
 	}

@@ -2,11 +2,11 @@ const inputName = document.getElementById("inputName");
 const inputEmail = document.getElementById("inputEmail");
 const inputTel = document.getElementById("inputTel");
 
+const inputKey = document.getElementById("inputKey");
 const keyTF = {"inputKey" : false};
 
 // findPw
 document.getElementById("findPw-frm").addEventListener("submit", (e)=>{
-    const inputKey = document.getElementById("inputKey");
     
     if(inputName.value.trim().length == 0){
         alert("이름을 입력해주세요");
@@ -32,7 +32,7 @@ document.getElementById("findPw-frm").addEventListener("submit", (e)=>{
         e.preventDefault();
         return;
     }
-    if(!keyTF[key]){
+    if(!keyTF.inputKey){
         e.preventDefault();
         return;
     }
@@ -186,3 +186,4 @@ memberPwConfirm.addEventListener("input", function(e){
         return;
     }
 })
+

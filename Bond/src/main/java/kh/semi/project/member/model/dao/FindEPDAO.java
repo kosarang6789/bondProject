@@ -1,5 +1,7 @@
 package kh.semi.project.member.model.dao;
 
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -25,16 +27,16 @@ public class FindEPDAO {
 	 * @param inputMember
 	 * @return
 	 */
-	public String findPw(Member inputMember) {
+	public Member findPw(Member inputMember) {
 		return sqlSession.selectOne("memberMapper.findPw", inputMember);
 	}
 
 	/** 비밀번호 찾기 -> 변경
-	 * @param inputMember
+	 * @param paramMap
 	 * @return result
 	 */
-	public int changePw(Member inputMember) {
-		return sqlSession.update("memberMapper.changePW", inputMember);
+	public int changePw(Map<String, Object> paramMap) {
+		return sqlSession.update("memberMapper.changePW", paramMap);
 	}
 
 }
