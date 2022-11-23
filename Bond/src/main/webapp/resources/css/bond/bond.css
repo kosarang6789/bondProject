@@ -50,7 +50,7 @@ header{
     list-style: none;
     display: flex;
     align-items: center;
-
+    width: 160px;
     position: relative;
 }
 
@@ -62,6 +62,25 @@ header{
     font-size: 1.2em;
 }
 
+
+/* 프로필 정보 */
+.widget-item{
+    width: 33.3%;
+    height: 100%;
+}
+
+#dropdown{
+    position: relative;
+    display: flex;
+}
+
+#dropdown span {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    background-color: #888;
+}
 
 .box {
     border: 2px solid #999;
@@ -75,43 +94,17 @@ header{
 #profile-photo{
     width: 100%;
     height: 100%;
-    object-fit: cover;  
-    cursor: pointer;
-}
-
-.widget-item{
-    width: 50px;
-}
-
-.caret-icon{
-    padding-left: 7px;
-    padding-top: 8px;
-    color: #999;
-}
-
-.caret-icon:hover{
-}
-
-label[for='header-menu-toggle']{
-    cursor: pointer;
     display: flex;
-
+    border: none;
+    cursor: pointer;
 }
 
-
-#header-menu-toggle{
-    display: none;
-}
-
-#header-menu-toggle + div{
-    display: none;
-}
-
-#header-menu-toggle:checked + div{
-    display: block;
+#header-menu > a:hover{
+    background-color: #f8f9fa;
 }
 
 #header-menu{
+    display: none;
     position: absolute;
     z-index: 1000;
     width: 100px;
@@ -120,8 +113,10 @@ label[for='header-menu-toggle']{
     background-color: white;
     border-radius: 14px;
 
-    top: 35px;
-    right: 8px;
+    overflow: hidden;
+
+    top: 42px;
+    right: -2px;
 }
 
 #header-menu > a{
@@ -129,25 +124,34 @@ label[for='header-menu-toggle']{
     height: 50%;
     justify-content: center;
     align-items: center;
-
     text-decoration: none;
     color: #555;
     font-size: 14px;
+    font-weight: 600;
 }
 
 #header-menu > a:first-child{
     border-bottom: 1px solid #ccc;
 }
 
-#header-menu > a:hover{
-    color: #222;
-    font-weight: 600;
 
+#profile-photo{
+    width: 100%;
+    height: 100%;
 }
 
-body{
-    background-color: #F2F2F2;
+#triangle-icon{
+    margin-top: 9px;
+    padding-left: 8px;
+    color: #999;
 }
+
+.show1 {display: block;}
+
+.rotate {transform: perspective(500px) rotateX(180deg);}
+
+
+
 
 /* Nav */
 nav{
@@ -209,6 +213,10 @@ nav li > a:hover {
     align-items: flex-start;
     
 
+}
+
+body{
+    background-color: #F2F2F2;
 }
 
 /* side-bar */

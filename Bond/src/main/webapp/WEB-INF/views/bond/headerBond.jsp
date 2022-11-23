@@ -25,17 +25,19 @@
                 </li>
 
                 <li class="widget-item">
-                        <label for="header-menu-toggle">
+                        <div id="dropdown">
                             <button type="button" class="box" onclick="dropdown()">
-                                <img src="/resources/images/common/user-icon.png" id="profile-photo">
+                                <span>
+                                    <img src="/resources/images/common/user-icon.png" id="profile-photo">
+                                </span>
+                                <i class="fßa-solid fa-caret-down caret-icon" id="triangle-icon"></i>
                             </button> 
                             
-                            <i class="fa-solid fa-caret-down caret-icon" id="triangle-icon"></i>
                             <div id="header-menu" class="dropdown-content">
                                 <a href="#">내정보</a>
                                 <a href="/logout">로그아웃</a>
                             </div>
-                        </label>
+                        </div>
                 </li>
             </ul>
         </div>
