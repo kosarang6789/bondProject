@@ -66,8 +66,10 @@
                         <span class="groupStatus">상태</span>
                     </div>
 					
+                    <!-- ajax -->
+
 					<!-- 목록 불러오기 반복문 -->
-                    <c:forEach var="group" items="${groupList}">
+                    <!-- <c:forEach var="group" items="${groupList}">
                     <form action="/printGroupList" class="list-frm" method="GET">
                         <button class="list-btn">
                             <span class="groupNo">${group.groupNo}</span>
@@ -78,10 +80,9 @@
                             <span class="groupStatus">${group.groupStatus}</span>
                         </button>
                     </form>
-					</c:forEach>
+					</c:forEach> -->
 					
                 </div>
-
 
             <div class="content-footer">
             	<span>prev</span>
@@ -96,6 +97,10 @@
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	
+    <%-- jQuery CDN 방식으로 추가 --%>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
     <script src="/resources/js/admin/sidebar.js"></script>
+    <script src="/resources/js/admin/groupList.js"></script>
 </body>
 </html>
