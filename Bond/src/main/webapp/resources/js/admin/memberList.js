@@ -15,9 +15,12 @@ selectBtn.addEventListener("click", () => {
                 // 폼
                 const frm = document.createElement("form");
                 frm.classList.add("list-frm");
-                frm.setAttribute("action","/admin/selectMemberDetail");
-                frm.setAttribute("method", "POST");
+                // frm.setAttribute("action","/admin/selectMember/{memberNo}");
+                const thisPath = "/admin/selectMember/" + item.memberNo;
+                frm.setAttribute("action", thisPath);
+                frm.setAttribute("method", "GET");
                 frm.setAttribute("name", "memberInfo");
+                
                 // 버튼
                 const bt = document.createElement("button");
                 bt.classList.add("list-btn");
