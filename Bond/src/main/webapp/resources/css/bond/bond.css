@@ -223,10 +223,12 @@ body{
 #info{
     padding-bottom: 20px;
     margin-right: 18px;
+    width: 232px;
 }
 
 
 #info-inner{
+    position: fixed;
     width: 232px;
 }
 
@@ -674,8 +676,9 @@ button{
     margin-left: 18px;
 }
 
-.band-photo-area{
+#band-photo-area{
     width: 240px; 
+    position: fixed;
 }
 
 .toolbar{
