@@ -215,16 +215,16 @@ nav li > a:hover {
 #info{
     padding-bottom: 20px;
     margin-right: 18px;
+    width: 232px;
 }
 
 
 #info-inner{
-    width: 232px;
     position: fixed;
+    width: 232px;
 }
 
-
-#side-cover{
+.side-cover{
     display: inline-block;
     position: relative;
     vertical-align: top;
@@ -352,7 +352,7 @@ nav li > a:hover {
 }
 
 /* main */
-#content{
+#board-list{
     width: 632px;
     margin-bottom: 11px;
     flex: 0 0 auto;
@@ -372,8 +372,6 @@ nav li > a:hover {
 
 .header-wrap-fixed{
     z-index: 100;
-    position: sticky;
-    top: 104px;
     background-color: white;
 }
 
@@ -597,9 +595,10 @@ nav li > a:hover {
 #banner{
     display: flex;
     margin-left: 18px;
+    width: 240px; 
 }
 
-.band-photo-area{
+#band-photo-area{
     width: 240px; 
     position: fixed;
 }

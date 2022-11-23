@@ -218,7 +218,7 @@ body{
     width: 232px;
 }
 
-#side-cover{
+.side-cover{
     display: inline-block;
     position: relative;
     vertical-align: top;

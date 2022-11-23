@@ -11,9 +11,6 @@
 
     <link rel="stylesheet" href="/resources/css/bond/album.css">
     <script src="https://kit.fontawesome.com/1ce4f19a7a.js" crossorigin="anonymous"></script>
-
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
 
 <body>    
@@ -83,7 +80,7 @@
             </aside>
 
             <!-- 2번 영역 -->
-            <main id="content">
+            <main id="board-list">
                 <div class="album-section">
                     <div class="header-wrap header-wrap-fixed">
                         <div class="header-main">
@@ -193,7 +190,7 @@
 
             <!-- 3번 영역 -->
             <div id="banner">
-                <div class="band-photo-area">
+                <div id="band-photo-area">
                     <section class="band-photo">
                         <h2 class="tit">최근 사진</h2>
                         <div class="photo-body">
@@ -220,6 +217,6 @@
             </a>
         </div>
 
+        
     <script src="/resources/js/bond/bond.js"></script>
-    
 </body>
