@@ -130,12 +130,12 @@
 
                                             <div class="post-info">
                                                 <span class="ellipsis">
-                                                    <strong class="post-infot-name">서도은</strong>
+                                                    <strong class="post-infot-name">${member.memberName}</strong>
                                                 </span>
                                             
 
                                                 <div class="post-list-info">
-                                                    <a href="#" class="post-info-date">2022년 10월 31일 오후 12:33</a>
+                                                    <a href="#" class="post-info-date">${post.postDate}</a>
                                                 </div>
                                             </div>    
                                         </div>
@@ -146,9 +146,7 @@
                                             <div class="post-text-view">
                                                 <div class="post-text" tabindex="-1">
                                                     <p class="text-body">
-                                                        동물의 왕국
-                                                        무슨 동물이든 환영 
-                                                        사진 좋아요
+                                                        ${post.postcontent}
                                                     </p>
                                                     <a href="#" class="more-link">...더보기</a>
                                                 </div>
@@ -167,7 +165,7 @@
                                                                 <i class="fa-regular fa-face-kiss-wink-heart face-icon"></i>
                                                             </span>
                                                         </span>
-                                                        <span class="count">1</span>
+                                                        <span class="count">${post.}</span>
                                                     </button>
                                                     <button type="button" class="comment">
                                                         댓글
