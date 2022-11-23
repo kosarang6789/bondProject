@@ -29,4 +29,12 @@ public class FindEPDAO {
 		return sqlSession.selectOne("memberMapper.findPw", inputMember);
 	}
 
+	/** 비밀번호 찾기 -> 변경
+	 * @param inputMember
+	 * @return result
+	 */
+	public int changePw(Member inputMember) {
+		return sqlSession.update("memberMapper.changePW", inputMember);
+	}
+
 }

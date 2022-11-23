@@ -15,6 +15,9 @@ public interface FindEPService {
 	
 	// 인증번호 만들기
 	String createAuthKey();
+
+	// 비밀번호 찾기 -> 변경
+	int changePw(Member inputMember);
 	
 
 }

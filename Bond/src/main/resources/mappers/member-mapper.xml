@@ -62,11 +62,18 @@
 	
 	<!-- 비밀번호 찾기 -->
  	<select id="findPw" resultType="string">
-		SELECT MEMBER_PW FROM "MEMBER"
+		SELECT MEMBER_EMAIL FROM "MEMBER"
 		WHERE MEMBER_NAME = #{memberName}
 		AND MEMBER_TEL = #{memberTel}
 		AND MEMBER_EMAIL = #{memberEmail}
 	</select>
+	
+	<!-- 비밀번호 찾기 -> 변경 -->
+	<update id="changePw">
+		UPDATE MEMBER SET
+		MEMBER_PW = #{}
+		WHERE MEMBER_EMAIL = #{memberEmail}
+	</update>
 	
 
 </mapper>

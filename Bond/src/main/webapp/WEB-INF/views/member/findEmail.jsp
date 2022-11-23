@@ -75,6 +75,6 @@
 
         </form>
     </main>
-    <script src="/resources/js/member/findEmailPw.js"></script>
+    <script src="/resources/js/member/findEmail.js"></script>
 </body>
 </html>

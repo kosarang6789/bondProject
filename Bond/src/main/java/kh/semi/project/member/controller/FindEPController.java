@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -71,6 +72,7 @@ public class FindEPController {
 		String sendEmail = service.findPw(inputMember);
 		
 		if(sendEmail != null) { // 일치 회원 있음
+			model.addAttribute(sendEmail);
 			String authKey = service.sendKey(sendEmail);
 			if(authKey != null) { // 인증번호 O
 				model.addAttribute("authKey", authKey);
@@ -97,15 +99,20 @@ public class FindEPController {
         return 0;
     }
 	
-//	@PostMapping("/findPw")
-//	public String findPw(Member inputMember, Model model) {
-//		
-//		
-//		
-//		
-//		return "member/findPw";
-//	}
-//	
+    // 비밀번호 찾기 -> 변경
+	@PostMapping("/findPw")
+	public String changePw(Model model, Member inputMember,
+			@RequestAttribute("sendEmail") String sendEmail) {
+		
+		inputMember.setMemberEmail(sendEmail);
+		
+		int result = service.changePw(inputMember);
+		
+		model.addAttribute("pwCheck", 0);
+		
+		return "member/findPw";
+	}
+	
 
 	
 }

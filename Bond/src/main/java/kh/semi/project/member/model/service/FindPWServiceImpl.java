@@ -7,6 +7,7 @@ import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -111,7 +112,24 @@ public class FindPWServiceImpl implements FindEPService{
 		return authKey;
 	}
 
+	@Autowired
+	private BCryptPasswordEncoder bcrypt;
 
+	// 비밀번호 찾기 -> 변경
+	@Override
+	public int changePw(Member inputMember) {
+		
+		String encPw = bcrypt.encode(inputMember.getMemberPw());
+		
+		inputMember.setMemberPw(encPw);
+		
+		int result = dao.changePw(inputMember);
+		
+		return result;
+	}
+
+
+	
 	
 	
 	
