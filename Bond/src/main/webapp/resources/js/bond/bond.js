@@ -28,20 +28,20 @@ window.addEventListener("scroll", function () {
     }
 });
 
-const headerMenu = document.getElementById("header-menu");
+const myDropdown = document.getElementById("myDropdown");
 const icon = document.getElementById("triangle-icon");
 
 function dropDown(){
-    headerMenu.classList.toggle("show1");
+    myDropdown.classList.toggle("show1");
     icon.classList.toggle("rotate");
 };
 
-window.onclick = function(e){
-    if(!e.target.matches(".box, .box*")){
+window.onclick=function(e){
+    if(!e.target.matches(".dropbtn, .dropbtn *")){
 
-        if(headerMenu.classList.contains("show1")){
-            headerMenu.classList.remove("show1");
+        if(myDropdown.classList.contains("show1")){
+            myDropdown.classList.remove("show1");
             icon.classList.remove("rotate");
-        }
+        }   
     }
 };

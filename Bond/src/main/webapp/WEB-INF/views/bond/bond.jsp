@@ -246,6 +246,7 @@
             </a>
         </div>
         
-        <script src="/resources/js/Bond/bond.js"></script>
 
+    <script src="/resources/js/bond/bond.js"></script>
+    
 </body>

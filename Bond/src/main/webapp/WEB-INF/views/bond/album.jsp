@@ -220,4 +220,6 @@
             </a>
         </div>
 
+    <script src="/resources/js/bond/bond.js"></script>
+    
 </body>
