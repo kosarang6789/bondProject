@@ -28,4 +28,6 @@ public class Post {
 	private String memberImage;
 	
 	private List<Post> postList;
+	
+	private String groupName;
 }
