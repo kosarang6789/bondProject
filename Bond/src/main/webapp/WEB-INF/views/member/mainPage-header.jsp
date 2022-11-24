@@ -37,7 +37,7 @@
                         </button> 
                         
                         <div id="myDropdown" class="dropdown-content">
-                            <a href="#">내정보</a>
+                            <a href="/myPage/myPage">내정보</a>
                             <a href="/logout">로그아웃</a>
                         </div>
                     </div>
