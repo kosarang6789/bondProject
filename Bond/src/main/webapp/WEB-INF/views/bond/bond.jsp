@@ -122,98 +122,115 @@
 
                     <div class="post-wrap">
                         <h2 class="post-wrap-title">모든 게시글</h2>
-                        <div data-viewname="post-list-view" class="post-wrap">
-                            <div class="content-card">
-                                <div class="post-list-view">
-                                    <div class="post-author-region">
-                                        <div class="post-author-view">
-                                                <div class="uprofile">
-                                                    <img class="uprofile-inner" src="${post.profileImage}"/>
-                                                </div>
+                        
+                        <c:choose>
+                            <c:when test="${empty postList}">
+                                <!-- 게시글 목록 조회 결과가 비어있다면 -->
+                                <tr>
+                                    <th colspan="6">게시글이 존재하지 않습니다.</th>
+                                </tr>
+                            </c:when>
 
-                                            <div class="post-info">
-                                                <span class="ellipsis">
-                                                    <strong class="post-info-name">${post.memberName}</strong>
-                                                </span>
-                                            
+                            <c:otherwise>
+                                <!-- 게시글 목록 조회 결과가 있다면 -->
+                                <c:forEach var="post" items="${postList}">
+                                    <div data-viewname="post-list-view" class="post-wrap">
+                                        <div class="content-card">
+                                            <div class="post-list-view">
+                                                <div class="post-author-region">
+                                                    <div class="post-author-view">
+                                                            <div class="uprofile">
+                                                                <img class="uprofile-inner" src="${post.memberImage}"/>
+                                                            </div>
 
-                                                <div class="post-list-info">
-                                                    <a href="#" class="post-info-date">${post.postDate}</a>
-                                                </div>
-                                            </div>    
-                                        </div>
-                                    </div>
-
-                                    <div class="post-main">
-                                        <div class="post-body">
-                                            <div class="post-text-view">
-                                                <div class="post-text">
-                                                    <p class="text-body">
-                                                        ${post.postContent}
-                                                    </p>
-                                                    <a href="#" class="more-link">...더보기</a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="post-count-view">
-                                        <div class="post-count">
-                                            <div class="post-count-left">
-                                                <span class="face-comment">
-                                                    <button type="button" class="emotion-view">
-                                                        <span class="emotion-wrap">
-                                                            <span class="icon">
-                                                                <i class="fa-regular fa-face-kiss-wink-heart face-icon"></i>
+                                                        <div class="post-info">
+                                                            <span class="ellipsis">
+                                                                <strong class="post-info-name">${post.memberName}</strong>
                                                             </span>
-                                                        </span>
-                                                        <span class="count"></span>
-                                                    </button>
-                                                    <button type="button" class="comment">
-                                                        댓글
-                                                        <span class="count">1</span>
-                                                    </button>
-                                                    <button type="button" class="comment-toggle">
-                                                        <i class="fa-solid fa-angle-down"></i>
-                                                    </button>
-                                                </span>
-                                            </div>
-                                            <div class="post-count-right">
-                                                <span class="share-read">
-                                                    <span class="gSrOnly">읽음</span>
-                                                    <i class="fa-solid fa-eye" style="color: #555;"></i>
-                                                    <span class="count">2</span>
-                                                </span>
-                                            </div>
-                                        </div>
+                                                        
 
-                                        <div class="post-added">
-                                            <div class="post-add-box">
-                                                <div class="add-col">
-                                                    <a href="#" class="emotion-main-btn">
-                                                        <span class="icon-face-emotion">
-                                                            <i class="fa-regular fa-face-smile"></i>
-                                                        </span>
-                                                        <span class="post-text">좋아요</span>
-                                                    </a>
+                                                            <div class="post-list-info">
+                                                                <a href="#" class="post-info-date">${post.postDate}</a>
+                                                            </div>
+                                                        </div>    
+                                                    </div>
                                                 </div>
-                                                <div class="add-col">
-                                                    <a href="#" class="comment-main-btn">
-                                                        <span class="comment">
-                                                            <span class="icon-comment">
-                                                                <i class="fa-regular fa-message"></i>
+
+                                                <div class="post-main">
+                                                    <div class="post-body">
+                                                        <div class="post-text-view">
+                                                            <div class="post-text">
+                                                                <p class="text-body">
+                                                                    ${post.postContent}
+                                                                </p>
+                                                                <a href="#" class="more-link">...더보기</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="post-count-view">
+                                                    <div class="post-count">
+                                                        <div class="post-count-left">
+                                                            <span class="face-comment">
+                                                                <button type="button" class="emotion-view">
+                                                                    <span class="emotion-wrap">
+                                                                        <span class="icon">
+                                                                            <i class="fa-regular fa-face-kiss-wink-heart face-icon"></i>
+                                                                        </span>
+                                                                    </span>
+                                                                    <span class="count"></span>
+                                                                </button>
+                                                                <button type="button" class="comment">
+                                                                    댓글
+                                                                    <span class="count">1</span>
+                                                                </button>
+                                                                <button type="button" class="comment-toggle">
+                                                                    <i class="fa-solid fa-angle-down"></i>
+                                                                </button>
                                                             </span>
-                                                            <span class="post-text">댓글쓰기</span>
-                                                        </span>
-                                                    </a>
+                                                        </div>
+                                                        <div class="post-count-right">
+                                                            <span class="share-read">
+                                                                <span class="gSrOnly">읽음</span>
+                                                                <i class="fa-solid fa-eye" style="color: #555;"></i>
+                                                                <span class="count">2</span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="post-added">
+                                                        <div class="post-add-box">
+                                                            <div class="add-col">
+                                                                <a href="#" class="emotion-main-btn">
+                                                                    <span class="icon-face-emotion">
+                                                                        <i class="fa-regular fa-face-smile"></i>
+                                                                    </span>
+                                                                    <span class="post-text">좋아요</span>
+                                                                </a>
+                                                            </div>
+                                                            <div class="add-col">
+                                                                <a href="#" class="comment-main-btn">
+                                                                    <span class="comment">
+                                                                        <span class="icon-comment">
+                                                                            <i class="fa-regular fa-message"></i>
+                                                                        </span>
+                                                                        <span class="post-text">댓글쓰기</span>
+                                                                    </span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
+                                </c:forEach>
+                            </c:otherwise>
+                        </c:choose>
+
+
                     </div>
                 </div>
             </main>

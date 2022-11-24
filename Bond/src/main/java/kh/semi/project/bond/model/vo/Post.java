@@ -25,6 +25,7 @@ public class Post {
 	private String informYN;
 	private String postDelYN;
 	private String memberName;
+	private String memberImage;
 	
 	private List<Post> postList;
 }

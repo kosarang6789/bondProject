@@ -29,17 +29,18 @@ public class BondServiceImpl implements BondService{
     // 게시물 불러오기
 	@Override
 	public Map<String, Object> selectBoardDetail(int groupNo, int cp) {
-		// 1. 전체 게시물 수 조회
-		int listCount = dao.getPostCount(groupNo);
-		
-		// 2. 전체 게시글 수  + cp 이용해서 페이징 처리 객체 생성
-		Pagination pagination = new Pagination(listCount, cp);
-		
+//		// 1. 전체 게시물 수 조회
+//		int listCount = dao.getPostCount(groupNo);
+//		
+//		// 2. 전체 게시글 수  + cp 이용해서 페이징 처리 객체 생성
+//		Pagination pagination = new Pagination(listCount, cp);
+//		
 		// 3. 페이징 처리 객체를 이용해서 게시글 조회
-		List<Post> postList = dao.selectBoardDetail(pagination, groupNo);
+//		List<Post> postList = dao.selectBoardDetail(groupNo);
+		List<Post> postList = dao.selectBoardDetail(groupNo, cp);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("pagination", pagination);
+//		map.put("pagination", pagination);
 		map.put("postList", postList);
 		
 		return map;

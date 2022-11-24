@@ -39,11 +39,20 @@ public class BondDAO {
 	 * @param groupNo
 	 * @return
 	 */
-	public List<Post> selectBoardDetail(Pagination pagination, int groupNo) {
-		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
-		
-		RowBounds rowBounds = new  RowBounds(offset, pagination.getLimit());
-		
+//	public List<Post> selectBoardDetail(Pagination pagination, int groupNo) {
+//		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+//		
+//		RowBounds rowBounds = new  RowBounds(offset, pagination.getLimit());
+//		
+//		return sqlSession.selectList("postMapper.selectBoardDetail", groupNo, rowBounds);
+//	}
+
+	public List<Post> selectBoardDetail(int groupNo) {
+		return sqlSession.selectList("postMapper.selectBoardDetail", groupNo);
+	}
+	public List<Post> selectBoardDetail(int groupNo, int cp) {
+		RowBounds rowBounds = new RowBounds((cp-1) * 20, 20); 
+				
 		return sqlSession.selectList("postMapper.selectBoardDetail", groupNo, rowBounds);
 	}
 

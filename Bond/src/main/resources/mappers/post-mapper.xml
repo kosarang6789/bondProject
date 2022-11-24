@@ -28,6 +28,7 @@
 		<result property="informYN" column="INFORM_YN" />
 		<result property="postDelYN" column="POST_DEL_YN" />
 		<result property="memberName" column="MEMBER_NAME" />
+		<result property="memberImage" column="MEMBER_IMG" />
 	</resultMap>
 	
 	<!-- 게시글 목록 불러오기
@@ -48,12 +49,15 @@
 	<!-- 게시글 조회 -->
 	<select id="selectBoardDetail"  resultMap="post_rm">
 		SELECT MEMBER_NAME, POST_CONTENT, POST_VIEW, 
-	TO_CHAR(POST_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') POST_DATE,
-	TO_CHAR(EDIT_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') EDIT_DATE
-	FROM POST
-	JOIN MEMBER USING(MEMBER_NO)
-	WHERE POST_NO = #{groupNo}
-	AND POST_DEL_YN = 'N'
+			TO_CHAR(POST_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') POST_DATE,
+			TO_CHAR(EDIT_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') EDIT_DATE,
+			(SELECT MEMBER_IMG_PATH || MEMBER_IMG_RENAME 
+			FROM MEMBER_IMG MI
+			WHERE MI.MEMBER_NO = P.MEMBER_NO) MEMBER_IMG
+		FROM POST P
+		JOIN MEMBER M ON(P.MEMBER_NO = M.MEMBER_NO)
+		WHERE GROUP_NO = #{groupNo}
+		AND POST_DEL_YN = 'N'
 	</select>
 	
 </mapper>
