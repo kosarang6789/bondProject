@@ -19,4 +19,9 @@ public class Group {
 	private String openYN;
 	private String groupStatus;
 	
+	//
+	private String topicName;
+	private String leaderName;
+	private int postCount;
+	
 }

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="adminMapper">
-
+	
+	<!-- MemberVO -->
 	<resultMap type="Member" id="member_rm">
 		<id property="memberNo" column="MEMBER_NO" />
 		<result property="memberEmail" column="MEMBER_EMAIL" />
@@ -15,13 +16,31 @@
 		<result property="delDate" column="DEL_DATE" />
 	</resultMap>
 	
+	<!-- GroupVO -->
+	<resultMap type="Group" id="group_rm">
+		<id property="groupNo" column="GROUP_NO" />
+		<result property="topicCode" column="TOPIC_CODE" />
+		<result property="groupName" column="GROUP_NAME" />
+		<result property="groupDate" column="GROUP_DATE" />
+		<result property="groupComment" column="GROUP_COMMENT" />
+		<result property="openYN" column="OPEN_YN" />
+		<result property="groupStatus" column="GROUP_STATUS" />
+		<result property="topicName" column="TOPIC_NAME" />
+		<result property="leaderName" column="LEADER_NAME" />
+		<result property="memberCount" column="MEMBER_COUNT" />
+		<result property="postCount" column="POST_COUNT" />
+	</resultMap>
+	
 	<!-- 회원 목록 조회 -->
 	<select id="selectMemberList" parameterType="string" resultMap="member_rm">
 		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NAME, SIGNUP_DATE, MEMBER_STATUS
 		FROM "MEMBER"
-		WHERE MEMBER_EMAIL LIKE '%' || #{keyword} || '%'
+		WHERE ${condition}
+		
+		<!-- MEMBER_EMAIL LIKE '%' || #{keyword} || '%'
 		OR  MEMBER_NAME LIKE '%' || #{keyword} || '%'
-		OR  MEMBER_NO = #{keyword}
+		OR  MEMBER_NO = #{keyword} -->
+		
 	</select>
 
 	<!-- 회원 상세 조회 -->
@@ -29,6 +48,39 @@
 		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NAME, MEMBER_TEL, MEMBER_BIRTH, MEMBER_STATUS, SIGNUP_DATE, DEL_DATE
 		FROM "MEMBER"
 		WHERE MEMBER_NO = #{inputMemberNo}
+	</select>
+	
+	
+	<!-- 모임 목록 조회 -->
+	<select id="selectGroupList" parameterType="string" resultMap="group_rm">
+		SELECT GROUP_NO, TOPIC_NAME, GROUP_NAME, GROUP_DATE, OPEN_YN, GROUP_STATUS
+		FROM "GROUP"
+		JOIN "GROUP_TOPIC" USING(TOPIC_CODE)
+		WHERE ${condition}
+		<!-- GROUP_NAME LIKE '%' || #{keyword} || '%' -->
+	</select>
+	
+	<!-- 모임 상세 조회 -->
+	<select id="selectGroupDetail" parameterType="_int" resultMap="group_rm">
+		SELECT GROUP_NO, TOPIC_NAME, GROUP_NAME, OPEN_YN, GROUP_STATUS, GROUP_COMMENT, GROUP_DATE,
+				-- 리더 이름 --
+				(SELECT MEMBER_NAME
+				 FROM MEMBER_JOIN J
+				 JOIN "MEMBER" USING(MEMBER_NO)
+				 WHERE LEADER_YN = 'Y'
+				 AND J.GROUP_NO = G.GROUP_NO) LEADER_NAME,
+				 -- 회원 수 --
+				(SELECT COUNT(*)
+				 FROM MEMBER_JOIN J
+				 WHERE JOIN_STATUS = 0
+				 AND J.GROUP_NO = G.GROUP_NO) MEMBER_COUNT,
+				 -- 게시글 수 --
+				(SELECT COUNT(*)
+				 FROM "POST" P
+				 WHERE P.GROUP_NO = G.GROUP_NO) POST_COUNT
+		FROM "GROUP" G
+		JOIN "GROUP_TOPIC" USING(TOPIC_CODE)
+		WHERE G.GROUP_NO = #{inputGroupNo}
 	</select>
 
 </mapper>
