@@ -34,17 +34,17 @@
                     <h3>게시물 검색</h3>
                 </div>
                 
-				<form id="searchbar" action="/printPostList" method="GET">
+				<div id="searchbar">
 				
-				    <select name="type">
-				        <option value="">분류1</option>
-				        <option value="">분류2</option>
-				        <option value="">분류3</option>
+				    <select name="opt" id="opt">
+				        <option value="1" selected>내용</option>
+				        <option value="2">모임</option>
+				        <option value="2">작성자</option>
 				    </select>
 				
 				    <div class="keyword-box">
-				        <div class="input-box"><input type="text" name="keyword"></div>
-				        <button class="btn">검색</button>
+				        <div class="input-box"><input type="text" name="keyword" id="keyword"></div>
+				        <button class="btn" id="selectBtn">검색</button>
 				    </div>
 				
 				    <select name="number">
@@ -53,7 +53,7 @@
 				        <option value="">50</option>
 				    </select>
 				
-				</form> <!-- end .searchbar -->
+				</div> <!-- end .searchbar -->
 
                 <div class="content-body">
                     

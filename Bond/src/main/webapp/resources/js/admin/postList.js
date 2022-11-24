@@ -18,11 +18,11 @@ selectBtn.addEventListener("click", () => {
 
     let fL = 1;
 
-    if(opt.value == 1) {
+    /* if(opt.value == 1) {
         if(!regEx.test(keyword.value)) {
             fL = 2;
         }
-    }
+    } */
 
     if(fL == 1) {
         listBody.innerHTML = "";
@@ -72,12 +72,12 @@ function ajax(keywordValue, optValue){
                 // 회원 번호
                 const row2 = document.createElement("span");
                 row2.classList.add("memberNo");
-                row2.innerText = item.memberNo;
+                row2.innerText = item.memberName;
     
                 // 모임 번호
                 const row3 = document.createElement("span");
                 row3.classList.add("groupNo");
-                row3.innerText = item.groupNo;
+                row3.innerText = item.groupName;
     
                 // 글 내용
                 const row4 = document.createElement("span");
