@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import kh.semi.project.admin.model.service.AdminDetailService;
 import kh.semi.project.bond.model.vo.Group;
+import kh.semi.project.bond.model.vo.Post;
 import kh.semi.project.member.model.vo.Member;
 
 @Controller
@@ -55,6 +56,26 @@ public class AdminDetailController {
 		
 		model.addAttribute("group", group);
 		return "admin/groupDetail";
+		
+	}
+	
+	/** 게시글 상세 조회
+	 * @param groupNo
+	 * @param model
+	 * @return
+	 */
+	@GetMapping("/post/{postNo}")
+	public String selectPostDetail(
+			@PathVariable("postNo") String postNo,
+			Model model
+			) {
+		
+		int inputPostNo = Integer.parseInt(postNo);
+		
+		Post post = service.selectPostDetail(inputPostNo);
+		
+		model.addAttribute("post", post);
+		return "admin/postDetail";
 		
 	}
 	
