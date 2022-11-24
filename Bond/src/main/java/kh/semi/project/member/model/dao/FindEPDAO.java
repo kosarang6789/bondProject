@@ -36,7 +36,7 @@ public class FindEPDAO {
 	 * @return result
 	 */
 	public int changePw(Map<String, Object> paramMap) {
-		return sqlSession.update("memberMapper.changePW", paramMap);
+		return sqlSession.update("memberMapper.changePw", paramMap);
 	}
 
 }

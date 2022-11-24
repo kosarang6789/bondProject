@@ -71,7 +71,7 @@
 	
 	<!-- 비밀번호 찾기 -> 변경 -->
 	<update id="changePw">
-		UPDATE MEMBER SET
+		UPDATE "MEMBER" SET
 		MEMBER_PW = #{newPw}
 		WHERE MEMBER_NO = #{memberNo}
 	</update>

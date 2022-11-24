@@ -118,10 +118,11 @@ public class FindPWServiceImpl implements FindEPService{
 	private BCryptPasswordEncoder bcrypt;
 
 	// 비밀번호 찾기 -> 변경
+	@Transactional
 	@Override
 	public int changePw(Map<String, Object> paramMap) {
 		
-		String newPw = bcrypt.encode((String)paramMap.get("memberPw"));
+		String newPw = bcrypt.encode((String)paramMap.get("newPw"));
 		
 		paramMap.put("newPw", newPw);
 		

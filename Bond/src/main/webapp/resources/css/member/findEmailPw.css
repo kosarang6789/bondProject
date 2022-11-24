@@ -74,7 +74,7 @@ main{
     width: 100%;
     height: 100%;
     z-index: 10000;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     display: none;
@@ -89,7 +89,6 @@ main{
     height: 380px;
     position: absolute;
     margin: auto;
-    top: 210px;
 }
 .findPwTitle{
     font-size: 40px;
@@ -101,7 +100,7 @@ main{
     font-size: 20px;
     margin: 75px 0;
 }
-.btnArea{
+.btnArea1, .btnArea2{
     margin-left: 50px;
     display: flex;
 }
@@ -158,7 +157,7 @@ main{
     margin: 15px 0 0 5px;
     font-size: 12px;
 }
-.btnArea>button{
+.btnArea1>button{
     width: 270px;
     height: 60px;
     font-size: 20px;
@@ -181,7 +180,7 @@ main{
 }
 
 
-#memberPw{
+#newPw{
     /* width: 200px;
     height: 50px; */
     margin-bottom: 5px;
