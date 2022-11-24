@@ -37,8 +37,8 @@
 				<div id="searchbar">
 				
 				    <select name="opt" id="opt">
-				        <option value="1" selected>번호</option>
-				        <option value="2">이름</option>
+				        <option value="1">번호</option>
+				        <option value="2" selected>이름</option>
 				        <option value="3">이메일</option>
 				    </select>
 
