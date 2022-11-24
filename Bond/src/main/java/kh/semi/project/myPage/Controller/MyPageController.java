@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -49,7 +50,8 @@ public class MyPageController {
 			String memberPw,
 			SessionStatus status,
 			@SessionAttribute("loginMember") Member loginMember,
-			RedirectAttributes ra) {
+			RedirectAttributes ra,
+			@RequestHeader("referer") String referer) {
 		
 		int result = service.secession(memberPw, loginMember.getMemberNo());
 		
@@ -62,7 +64,7 @@ public class MyPageController {
 			status.setComplete();
 		}else {
 			message = "비밀번호가 일치하지 않습니다.";
-			path = "myPage/myPage-secession";
+			path = referer;
 		}
 		
 		ra.addFlashAttribute("message", message);

@@ -23,6 +23,13 @@ if(secessionFrm != null){
             e.preventDefault();
             return;
         }
+
+        // if(message=='ok'){
+        //     alert("탈퇴 성공");
+        // }
+        // if(message == 'no'){
+        //     alert("비밀번호가 일치하지 않습니다");
+        // }
     });
 
 
