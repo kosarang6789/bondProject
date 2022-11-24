@@ -7,8 +7,8 @@
 .postNo{ flex-basis: 15%; }
 .memberNo{ flex-basis: 15%; }
 .groupNo{ flex-basis: 15%;}
-.postContent{ flex-basis: 35%;}
-.postDate{ flex-basis: 10%;}
+.postContent{ flex-basis: 25%;}
+.postDate{ flex-basis: 20%;}
 .postDelYN{ flex-basis: 10%;}
 
 .list-btn{
@@ -18,8 +18,17 @@
 
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     text-align: start;
     border: none;
+
+    background-color: #E2E2E230;
+
+    cursor: pointer;
+}
+
+.list-btn:hover{
+    background-color: #E2E2E250;
 }
 
 /* end .content-body */
