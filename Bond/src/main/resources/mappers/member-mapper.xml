@@ -51,5 +51,11 @@
 			#{memberEmail}, #{memberPw}, #{memberName}, #{memberBirth}, #{memberTel},
 			DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT )
 	</insert>
-
+	
+	<!-- 이메일 찾기 -->
+ 	<select id="findEmail" resultMap="member_rm">
+		SELECT MEMBER_EMAIL FROM "MEMBER"
+		WHERE MEMBER_NAME = #{memberName}
+		AND MEMBER_TEL = #{memberTel}
+	</select>
 </mapper>

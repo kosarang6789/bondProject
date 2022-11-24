@@ -49,6 +49,10 @@ main{
     font-size: 30px;
     width: 100%;
 }
+.birth-title{
+    margin-top: 40px;
+    padding-left: 30px;
+}
 .signUp-area #memberBirth{
     color: #777;
 }
@@ -57,16 +61,16 @@ main{
     border-bottom: 1px solid #21c531;
 }
 .signUp-btn{
-    margin-bottom: 5px;
+    border: 0;
+    cursor: pointer;
+    width: 100%;
+    font-size: 20px;
+    display: block;
+    padding: 15px;
+    border-radius: 5px;
     background-color: #21c531;
     color: white;
-    width: 100%;
-    height: 50px;
-    font-size: 20px;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
+    margin: 20px 20px 80px;
 }
 .signUp-btn:active{
     transform: scale(0.95);

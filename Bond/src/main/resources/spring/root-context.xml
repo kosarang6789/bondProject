@@ -70,6 +70,14 @@
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	
+	
+	<!-- 파일 업로드 관련 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+       <property name="maxUploadSize" value="104857600"/>
+       <property name="maxUploadSizePerFile" value="104857600"/>
+       <property name="maxInMemorySize" value="104857600"/>
+   	</bean>
 
 
 </beans>
