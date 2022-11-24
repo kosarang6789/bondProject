@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kh.semi.project.admin.model.service.AdminDetailService;
+import kh.semi.project.bond.model.vo.Group;
 import kh.semi.project.member.model.vo.Member;
 
 @Controller
@@ -23,10 +24,11 @@ public class AdminDetailController {
 	 * @param model
 	 * @return
 	 */
-	@GetMapping("/selectMember/{memberNo}")
-	public String selectMemberDetail(@PathVariable("memberNo") String memberNo, Model model) {
-		
-		System.out.println(memberNo);
+	@GetMapping("/member/{memberNo}")
+	public String selectMemberDetail(
+			@PathVariable("memberNo") String memberNo, 
+			Model model
+			) {
 		
 		int inputMemberNo = Integer.parseInt(memberNo);
 		
@@ -34,6 +36,26 @@ public class AdminDetailController {
 		
 		model.addAttribute("member", member);
 		return "admin/memberDetail";
+	}
+	
+	/** 모임 상세 조회
+	 * @param groupNo
+	 * @param model
+	 * @return
+	 */
+	@GetMapping("/group/{groupNo}")
+	public String selectGroupDetail(
+			@PathVariable("groupNo") String groupNo,
+			Model model
+			) {
+		
+		int inputGroupNo = Integer.parseInt(groupNo);
+		
+		Group group = service.selectGroupDetail(inputGroupNo);
+		
+		model.addAttribute("group", group);
+		return "admin/groupDetail";
+		
 	}
 	
 }
