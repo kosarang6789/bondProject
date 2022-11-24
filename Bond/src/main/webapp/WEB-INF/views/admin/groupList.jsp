@@ -34,17 +34,16 @@
                     <h3>모임 검색</h3>
                 </div>
                 
-				<form id="searchbar" action="/printGroupList" method="GET">
-				
-				    <select name="type">
-				        <option value="">분류1</option>
-				        <option value="">분류2</option>
-				        <option value="">분류3</option>
+				<%-- <form id="searchbar"> --%>
+                    <div id='searchbar'>
+				    <select name="opt" id="opt">
+				        <option value="1">번호</option>
+				        <option value="2" selected>이름</option>
 				    </select>
 				
 				    <div class="keyword-box">
-				        <div class="input-box"><input type="text" name="keyword"></div>
-				        <button class="btn">검색</button>
+				        <div class="input-box"><input type="text" name="keyword" id="keyword"></div>
+				        <button type="button" class="btn" id="selectBtn">검색</button>
 				    </div>
 				
 				    <select name="number">
@@ -52,21 +51,28 @@
 				        <option value="">20</option>
 				        <option value="">50</option>
 				    </select>
+                    </div>
 				
-				</form> <!-- end .searchbar -->
+				<%-- </form>  --%>
+                <!-- end .searchbar -->
 
                 <div class="content-body">
                     
                     <div class="list-header">
                         <span class="groupNo">번호</span>
-                        <span class="topicCode">주제코드</span>
+                        <span class="topicCode">주제</span>
                         <span class="groupName">모임이름</span>
                         <span class="groupDate">생성일</span>
                         <span class="openYN">공개여부</span>
                         <span class="groupStatus">상태</span>
                     </div>
 					
-                    <!-- ajax -->
+
+                    <div class="list-body">
+
+                    <!-- ajax를 이용해 불러온 리스트가 들어갈 영역 -->
+
+                    </div>
 
 					<!-- 목록 불러오기 반복문 -->
                     <!-- <c:forEach var="group" items="${groupList}">
