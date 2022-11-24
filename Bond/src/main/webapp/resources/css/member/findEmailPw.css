@@ -27,7 +27,7 @@ main{
 }
 .find-title{
     font-size: 48px;
-    text-align: center;
+    text-align: center; 
     width: 100%;
     margin-bottom: 50px;
 
@@ -70,12 +70,11 @@ main{
 }
 
 .modal{
-    border: 1px solid black;
     background-color: rgba(0, 0, 0, 0.4);
     width: 100%;
     height: 100%;
     z-index: 10000;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     display: none;
@@ -83,25 +82,25 @@ main{
     align-items: center;
 }
 .modalArea{
+    border: 1px solid black;
     background-color: white;
     z-index: 11000;
     width: 380px;
     height: 380px;
     position: absolute;
     margin: auto;
-    top: 210px;
 }
-.findEmailTitle{
+.findPwTitle{
     font-size: 40px;
-    margin-top: 70px;
+    margin: 40px 0 20px;
     text-align: center;
 }
-#findEmailResult{
+#findPwResult{
     text-align: center;
     font-size: 20px;
     margin: 75px 0;
 }
-.btnArea{
+.btnArea1, .btnArea2{
     margin-left: 50px;
     display: flex;
 }
@@ -135,4 +134,54 @@ main{
 }
 .modalO{
     display: flex;
+}
+#changePw{
+    padding: 20px 40px;
+}
+#changePw > input{
+    width: 275px;
+    height: 45px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    padding-left: 10px;
+    font-size: 20px;
+}
+#changePw > input:focus{
+    outline: none;
+}
+#pwConfirm{
+    margin: 15px 0 0 5px;
+    font-size: 12px;
+}
+.btnArea1>button{
+    width: 270px;
+    height: 60px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    background-color: #21c531;
+    color: white;
+    border: none;
+}
+
+.confirm{
+    color: #21c531;
+    font-size: 14px;
+}
+.error{
+    color: red;
+    font-size: 14px;
+}
+
+
+#newPw{
+    /* width: 200px;
+    height: 50px; */
+    margin-bottom: 5px;
 }
