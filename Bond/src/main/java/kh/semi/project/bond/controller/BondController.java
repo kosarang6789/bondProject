@@ -25,21 +25,17 @@ public class BondController {
 	@Autowired 
 	private BondService service;
 	
-	/** 본드 클릭 시 본드 페이지 이동
-	 * @return
-	 */
-	@GetMapping("/bond/{groupNo}")
-	public String meetingAfterLogin(
-		@PathVariable("groupNo") int groupNo,
-		Model model) {
-		
-		// 본드 기본정보 불러오기(이름, 사진, 멤버수, 소개글)
-		Group groupInfo = service.selectGroupInfo(groupNo);
-		
-		model.addAttribute("groupInfo", groupInfo);
-		
-		return "bond/bond";
-	}
+//	/** 본드 클릭 시 본드 페이지 이동
+//	 * @return
+//	 */
+//	@GetMapping("/bond/{groupNo}")
+//	public String meetingAfterLogin(
+//		@PathVariable("groupNo") int groupNo,
+//		Model model) {
+//
+//		
+//		return "bond/bond";
+//	}
 	
 	// 사진첩 페이지로 이동 
 	@GetMapping("/bond/{groupNo}/album")
@@ -55,17 +51,30 @@ public class BondController {
 		return "bond/album";
 	}
 	
-	// 게시글 목록 + 상세조회 
-	@GetMapping("/bond/{groupNo}/{postNo}")
-	public String boardDetail(@PathVariable("groupNo") int groupNo,
-			                  @PathVariable("postNo") int postNo,
-			                  @RequestParam(value="cp", required=false, defaultValue="1") int cp,
-			                  Model model,
-			                  HttpServletRequest req, HttpServletResponse resp,
-			                  @SessionAttribute(value="loginMeber", required=false) Member loginMember) {
+
+	// 게시글 상세 조회를 목록 형식으로 
+	@GetMapping("/bond/{groupNo}")
+	public String selectBoardDetail(
+			@PathVariable("groupNo") int groupNo,
+			Model model,
+			@RequestParam(value="cp", required=false, defaultValue= "1") int cp,
+			HttpServletRequest req, HttpServletResponse resp,
+			@SessionAttribute(value="loginMember", required=false) Member loginMember) {
 		
 		
-		return null;
+		// 본드 기본정보 불러오기(이름, 사진, 멤버수, 소개글)
+		Group groupInfo = service.selectGroupInfo(groupNo);
+		
+		model.addAttribute("groupInfo", groupInfo);
+		
+		
+		// 게시글 불러오기
+		Map<String, Object> map = service.selectBoardDetail(groupNo, cp);
+		
+		model.addAttribute("map",map);
+		
+		
+		return"bond/bond";
 	}
 	
 	

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%-- map에 저장된 값을 꺼내어 각각 변수에 저장 --%>
+<c:set var="postList" value="${map.postList}"/>
+<c:set var="pagination" value="${map.pagination}"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -124,13 +127,13 @@
                                 <div class="post-list-view">
                                     <div class="post-author-region">
                                         <div class="post-author-view">
-                                            <a href="#" role="button" class="uprofile">
-                                                <span class="uprofile-inner"></span>
-                                            </a>
+                                                <div class="uprofile">
+                                                    <img class="uprofile-inner" src="${post.profileImage}"/>
+                                                </div>
 
                                             <div class="post-info">
                                                 <span class="ellipsis">
-                                                    <strong class="post-infot-name">${member.memberName}</strong>
+                                                    <strong class="post-info-name">${post.memberName}</strong>
                                                 </span>
                                             
 
@@ -144,9 +147,9 @@
                                     <div class="post-main">
                                         <div class="post-body">
                                             <div class="post-text-view">
-                                                <div class="post-text" tabindex="-1">
+                                                <div class="post-text">
                                                     <p class="text-body">
-                                                        ${post.postcontent}
+                                                        ${post.postContent}
                                                     </p>
                                                     <a href="#" class="more-link">...더보기</a>
                                                 </div>
@@ -165,7 +168,7 @@
                                                                 <i class="fa-regular fa-face-kiss-wink-heart face-icon"></i>
                                                             </span>
                                                         </span>
-                                                        <span class="count">${post.}</span>
+                                                        <span class="count"></span>
                                                     </button>
                                                     <button type="button" class="comment">
                                                         댓글
