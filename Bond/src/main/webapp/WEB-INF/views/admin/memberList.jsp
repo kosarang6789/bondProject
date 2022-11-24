@@ -34,14 +34,14 @@
                     <h3>회원 검색</h3>
                 </div>
                 
-				<form id="searchbar" action="/selectMemberList" method="POST">
+				<div id="searchbar">
 				
-				    <select name="type">
-				        <option value="">분류1</option>
-				        <option value="">분류2</option>
-				        <option value="">분류3</option>
+				    <select name="opt" id="opt">
+				        <option value="1" selected>번호</option>
+				        <option value="2">이름</option>
+				        <option value="3">이메일</option>
 				    </select>
-				
+
 				    <div class="keyword-box">
 				        <div class="input-box"><input type="text" name="keyword" id="keyword"></div>
 				        <button type="button" class="btn" id="selectBtn">검색</button>
@@ -53,7 +53,7 @@
 				        <option value="">50</option>
 				    </select>
 				
-				</form> <!-- end .searchbar -->
+				</div> <!-- end .searchbar -->
 
                 <div class="content-body">
                     
@@ -65,7 +65,12 @@
                         <span class="memberStatus">상태</span>
                     </div>
 
-                    <!-- ajax 버전 목록 불러오기 -->
+                    <div class="list-body">
+
+                    <!-- ajax를 이용해 불러온 리스트가 들어갈 영역 -->
+
+                    </div>
+
 					
 					<!-- 목록 불러오기 반복문 -->
                     <!-- <c:forEach var="member" items="${memberList}">
