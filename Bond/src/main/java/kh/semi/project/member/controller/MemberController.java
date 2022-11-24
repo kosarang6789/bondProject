@@ -1,5 +1,8 @@
 package kh.semi.project.member.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,15 +14,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kh.semi.project.bond.model.vo.Group;
 import kh.semi.project.member.model.service.MemberService;
 import kh.semi.project.member.model.vo.Member;
 
 @Controller
-@SessionAttributes({"loginMember", "message"})
+@SessionAttributes({"loginMember", "message", "myGroupList"})
 public class MemberController {
 	
 	@Autowired
@@ -52,13 +57,13 @@ public class MemberController {
 	// 로그인 전 화면
 	@GetMapping("/index/main")
 	public String main() {
-		return "/common/indexMain";
+		return "common/indexMain";
 	}
 	
 	// 로그인 화면
 	@GetMapping("/login")
 	public String loginPage() {
-		return "/member/login";
+		return "member/login";
 	}
 	
 	// 로그인 하기
@@ -109,18 +114,6 @@ public class MemberController {
 		
 	}
 	
-	/** 로그인 후 회원 메인 페이지로 이동
-	 * @return
-	 */
-	@GetMapping("/member/mainPage")
-	public String goMainPage() {
-		return "/member/mainPage";
-	}
-	
-	@GetMapping("/member/findBond")
-	public String findBondPage() {
-		return "/member/findBond";
-	}
 	
 	/** 로그아웃 하기
 	 * @return
@@ -173,16 +166,33 @@ public class MemberController {
 	 */
 	@GetMapping("/member/signUpOk")
 	public String goSignUpOkPage() {
-		return "/member/signUpOk";
+		return "member/signUpOk";
 	}
 	
-	/** 내 밴드 클릭 시 본드 페이지 이동
+	
+	/** 로그인 후 회원 메인 페이지로 이동
 	 * @return
 	 */
-	@GetMapping("/bond/meetingAfterLogin")
-	public String meetingAfterLogin() {
-		return "/bond/meetingAfterLogin";
+	@GetMapping("/member/mainPage")
+	public String goMainPage(@SessionAttribute("loginMember") Member loginMember,
+							Model model) {
+		// 가입한 그룹(본드) 리스트 정보 불러오기(조회)
+		List<Map<String, Object>> myGroupList = service.selectMyGroup(loginMember.getMemberNo());
+		
+		if(myGroupList != null) {
+			model.addAttribute("myGroupList", myGroupList);
+		}
+		
+		return "member/mainPage";
 	}
+	
+	
+	@GetMapping("/member/findBond")
+	public String findBondPage() {
+		return "member/findBond";
+	}
+	
+
 	
 
 	

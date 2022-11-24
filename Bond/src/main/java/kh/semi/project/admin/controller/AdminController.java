@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import kh.semi.project.admin.model.service.AdminService;
-import kh.semi.project.band.model.vo.Group;
-import kh.semi.project.band.model.vo.Post;
+import kh.semi.project.bond.model.vo.Group;
+import kh.semi.project.bond.model.vo.Post;
 import kh.semi.project.member.model.vo.Member;
 
 // 여러개를 적을 때는 중괄호 안에 배열 형태로 작성
