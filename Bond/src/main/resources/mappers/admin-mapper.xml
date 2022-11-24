@@ -5,6 +5,7 @@
 	<!-- MemberVO -->
 	<resultMap type="Member" id="member_rm">
 		<id property="memberNo" column="MEMBER_NO" />
+		
 		<result property="memberEmail" column="MEMBER_EMAIL" />
 		<result property="memberPw" column="MEMBER_PW" />
 		<result property="memberName" column="MEMBER_NAME" />
@@ -19,6 +20,7 @@
 	<!-- GroupVO -->
 	<resultMap type="Group" id="group_rm">
 		<id property="groupNo" column="GROUP_NO" />
+		
 		<result property="topicCode" column="TOPIC_CODE" />
 		<result property="groupName" column="GROUP_NAME" />
 		<result property="groupDate" column="GROUP_DATE" />
@@ -29,6 +31,25 @@
 		<result property="leaderName" column="LEADER_NAME" />
 		<result property="memberCount" column="MEMBER_COUNT" />
 		<result property="postCount" column="POST_COUNT" />
+	</resultMap>
+	
+	<!-- Post VO -->
+	<resultMap type="Post" id="post_rm">
+		
+		<id property="postNo" column="POST_NO" />
+		
+		<result property="memberNo" column="MEMBER_NO" />
+		<result property="groupNo" column="GROUP_NO" />
+		<result property="groupName" column="GROUP_NAME" />
+		<result property="postContent" column="POST_CONTENT" />
+		<result property="postView" column="POST_VIEW" />
+		<result property="replyYN" column="REPLY_YN" />
+		<result property="postDate" column="POST_DATE" />
+		<result property="editDate" column="EDIT_DATE" />
+		<result property="informYN" column="INFORM_YN" />
+		<result property="postDelYN" column="POST_DEL_YN" />
+		<result property="memberName" column="MEMBER_NAME" />
+		<result property="memberImage" column="MEMBER_IMG" />
 	</resultMap>
 	
 	<!-- 회원 목록 조회 -->
@@ -82,5 +103,27 @@
 		JOIN "GROUP_TOPIC" USING(TOPIC_CODE)
 		WHERE G.GROUP_NO = #{inputGroupNo}
 	</select>
-
+	
+	<!-- 게시글 목록 조회 -->
+	<select id="selectPostList" parameterType="string" resultMap="post_rm">
+		SELECT POST_NO, MEMBER_NAME, GROUP_NAME, POST_DEL_YN,
+		       TO_CHAR(POST_DATE, 'YYYY-MM-DD HH24:MI:SS') POST_DATE,
+		       SUBSTR(POST_CONTENT, 0, 30) POST_CONTENT
+		FROM "POST"
+		JOIN "MEMBER" USING(MEMBER_NO)
+		JOIN "GROUP" USING(GROUP_NO)
+		WHERE ${condition}
+	</select>
+	
+	<select id="selectPostDetail" parameterType="_int" resultMap="post_rm">
+		SELECT POST_NO, GROUP_NO, GROUP_NAME, POST_DEL_YN, 
+		       MEMBER_NO, MEMBER_NAME, 
+		       TO_CHAR(POST_DATE, 'YYYY-MM-DD HH24:MI:SS') POST_DATE,
+		       POST_CONTENT
+		FROM "POST"
+		JOIN "MEMBER" USING(MEMBER_NO)
+		JOIN "GROUP" USING(GROUP_NO)
+		WHERE POST_NO = ${inputPostNo}
+	</select>
+	
 </mapper>
