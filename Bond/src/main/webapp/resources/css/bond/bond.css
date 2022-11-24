@@ -12,107 +12,83 @@ a{
     text-decoration: none;
 }
 
-
+body{
+    background-color: #f8f9fa;
+    display: block;
+}
 /* Header */
-header{
-    background-color: #737373;
 
+.header-area{
+    width: 100%;
+    background-color: #737373;
+    position: fixed;
+    box-shadow: 0 1.4px 1.3px 0 rgb(62 73 89 / 7%);
+    z-index: 2000;
+    display: block;
 }
 
-.header-section{
+header{
     width: 1140px;
-    height: 57px;
+    height: 50px;
     margin: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-.header-fixed{
-    position: fixed;
-    z-index: 1000;
-
-    top: 0;
-    left: 0;
-    right: 0;
+    position: relative;
 }
 
 #home-logo{
     width: 80px;
-    margin-top: 8px;
+    padding-top: 4px;
 }
 
 .header-widget-area{
     display: block;
-    margin-top: 8px;
 }
 
 .widget-list{
     list-style: none;
     display: flex;
     align-items: center;
-
+    width: 160px;
     position: relative;
+    top: 2px;
 }
 
 .chat-icon{
-    font-size: 1.2em;
+    font-size: 1.15em;
+    line-height: 1;
 }
 
 .bell-icon{
-    font-size: 1.2em;
-}
-
-
-.box {
-    border: none;
-    width: 30px;
-    height: 30px;
-    border-radius: 70%;
-    overflow: hidden;
-}
-
-
-#profile-photo{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;  
-    cursor: pointer;
+    font-size: 1.15em;
+    line-height: 1;
 }
 
 .widget-item{
-    width: 50px;
+    width: 33.3%;
 }
 
-.caret-icon{
-    padding-left: 5px;
-    padding-top: 8px;
+
+/* 프로필 사진 클릭 메뉴 */
+
+.dropdown{
+    position: relative;
 }
 
-.caret-icon:hover{
-    color: #999;
-}
-
-label[for='header-menu-toggle']{
-    cursor: pointer;
+.dropbtn{
+    width: 100%;
+    height: 100%;
     display: flex;
-
+    border: none;
+    cursor: pointer;
+    margin-bottom: 1px;
 }
-
-
-#header-menu-toggle{
+.dropdown-content>a:hover{
+    background-color: #f8f9fa;
+}
+.dropdown-content{
     display: none;
-}
-
-#header-menu-toggle + div{
-    display: none;
-}
-
-#header-menu-toggle:checked + div{
-    display: block;
-}
-
-#header-menu{
     position: absolute;
     z-index: 1000;
     width: 100px;
@@ -120,35 +96,48 @@ label[for='header-menu-toggle']{
     border: 1px solid #ccc;
     background-color: white;
     border-radius: 14px;
-
-    top: 35px;
-    right: 8px;
+    overflow: hidden;
+    top: 42px;
+    right: -2px;
 }
 
-#header-menu > a{
+#myDropdown > a{
     display: flex;
     height: 50%;
     justify-content: center;
     align-items: center;
-
     text-decoration: none;
     color: #555;
     font-size: 14px;
+    font-weight: 600;
 }
 
-#header-menu > a:first-child{
+#myDropdown > a:first-child{
     border-bottom: 1px solid #ccc;
 }
 
-#header-menu > a:hover{
-    color: #222;
-    font-weight: 600;
-
+.dropdown span{
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    border: 1px solid #999;
+    background-color: #999;
 }
 
-body{
-    background-color: #F2F2F2;
+#profile-photo{
+    width: 100%;
+    height: 100%;
 }
+
+.caret-icon{
+    margin-top: 7px;
+    padding-left: 8px;
+    color: #999;
+}
+
+.show1 {display: block;}
+
+.rotate {transform: perspective(500px) rotateX(180deg);}
 
 /* Nav */
 nav{
@@ -158,7 +147,7 @@ nav{
     min-width: 1034px;
     height: 35px;
     left: 0;
-    top: 57px;
+    top: 50px;
     background-color: #8C8C8C;
     text-align: center;
 }
@@ -212,16 +201,24 @@ nav li > a:hover {
 
 }
 
+body{
+    background-color: #F2F2F2;
+}
+
 /* side-bar */
 #info{
-    width: 232px;
     padding-bottom: 20px;
     margin-right: 18px;
-    
+    width: 232px;
 }
 
 
-#side-cover{
+#info-inner{
+    position: fixed;
+    width: 232px;
+}
+
+.side-cover{
     display: inline-block;
     position: relative;
     vertical-align: top;
@@ -357,9 +354,7 @@ nav li > a:hover {
 
 /* 글쓰기 영역 */
 .post-write-form{
-    position: relative;
     padding-bottom: 46px;
-    
 }
 
 .board-search{
@@ -430,6 +425,7 @@ nav li > a:hover {
 
 .main-content{
     position: relative;
+    margin-bottom: 55px;
 }
 
 .content-button{
@@ -440,8 +436,6 @@ nav li > a:hover {
     background-color: white;
     opacity: 0;
 
-
-    
     cursor: pointer;
 }
 
@@ -475,9 +469,6 @@ nav li > a:hover {
     cursor: pointer;
 }
 
-.module-box{
-    margin-top: 55px;
-}
 
 .post-wrap-title{
     display: none;
@@ -668,12 +659,12 @@ button{
 /* banner */
 #banner{
     display: flex;
-
     margin-left: 18px;
 }
 
-.band-photo-area{
+#band-photo-area{
     width: 240px; 
+    position: fixed;
 }
 
 .toolbar{
@@ -790,36 +781,90 @@ button{
     color: white;
 }
 
-
-
-
-/* footer */
-footer{
-    height: 200px;
-    background-color: #BFBFBF;
+.post-count{
+    overflow: hidden;
+    padding: 15px 22px 10px;
+    margin-top: -17px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+}
+
+.face-comment{
+    font-size: 13px;
+    font-weight: 400;
+    color: #555;
+    position: relative;
+}
+
+.emotion-view{
+    margin-right: 7px;
+}
+
+button{
+    border: 0;
+    background-color: transparent;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.face-icon{
+    font-size: 1.1em;
+}
+
+.count{
+    margin-left: 3px;
+    font-size: 12px;
+    line-height: 24px;
+    font-weight: 500;
+}
+
+.comment{
+    font-size: 13px;
+    font-weight: 400;
+    color: #555;
+    line-height: 23px;
+    vertical-align: top;
+}
+
+.comment-toggle{
+    margin-top: 3px;
+    width: 17px;
+    height: 17px;
+    overflow: hidden;
+
+}
+
+.share-read{
+    line-height: 23px;
+    vertical-align: top;
+}
+
+.post-added{
+    height: 45px;
+    position: relative;
+    border-top: 1px soid #888;
+    border-radius: 0 0 4px 4px;
+    white-space: nowrap;
+}
+
+.post-add-box{
+    display: flex;
+    width: 100%;
+    height: 45px;
+    justify-content: space-around;
     align-items: center;
+}
 
-    z-index: 10000;
+.post-text{
+    font-weight: 500;
+    font-size: 15px;
+    color: #222;
+}
+
+.post-text:hover{
+    text-decoration: underline;
 }
 
 
-footer p{
-    font-weight: bold;
-    margin: 16px 0;
-}
 
-footer > article > *{
-    font-size: 14px;
-}
 
-footer a{
-    text-decoration: none;
-    color: black;
-}
-
-footer > article span{
-    padding : 0 10px;
-}
