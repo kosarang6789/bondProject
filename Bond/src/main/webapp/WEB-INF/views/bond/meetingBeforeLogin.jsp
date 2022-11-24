@@ -23,16 +23,23 @@
                 <div id="info-inner">
                     <div class="side-cover">
                         <a href="#" class="cover">
-                            <img src="/resources/images/bond/side-cover.png" id="cover-img">
+                            <c:choose>
+                                <c:when test="${not empty groupInfo.groupImage}">
+                                    <img src="${groupInfo.groupImage}" id="cover-img">  
+                                </c:when>
+                                <c:otherwise>
+                                    <img src="/resources/images/bond/profile/non-profile.png">
+                                </c:otherwise>
+                            </c:choose>
                         </a>
                     </div>
 
                     <div class="band-name">
-                        <a href="#" class="uri-text">KH 팀프로젝트</a>
+                        <a href="#" class="uri-text">${groupInfo.groupName}</a>
                     </div>
 
                     <p class="member">
-                        <a href="#" class="member-count">멤버 5</a>
+                        <a href="#" class="member-count">멤버 ${groupInfo.memberCount}</a>
                     </p>
 
                     <div class="share">
@@ -64,11 +71,7 @@
                 <div class="band-intro">
                     <h2 class="band-intro-title">밴드 소개</h2>
                     <div class="band-intro-detail">
-                        <p class="desc">
-                            🧙‍♂️ 타로카드 공부방 소개 <br>
-                            ▶️ 타로 입문자, 숙련자 모두가 함께 공부하는 공간입니다. <br>
-                            올바른 지식과 근거를 나누며 성장하는 커뮤니티로서 타로에 대한 식견을 교환하고 연구하는 것을 지향합니다. 
-                        </p>
+                        <p class="desc">${groupInfo.groupComment}</p>
                         <div class="intro-option">
                             <div class="intro-option-box">
                                 <ul class="select-keyword-list">
@@ -108,7 +111,7 @@
                         <div class="intro-info-wrap">
                             <p class="intro-desc">
                                 개설일
-                                <span class="intro-desc-data">2022년 1월</span>
+                                <span class="intro-desc-data">${groupInfo.groupDate}</span>
                             </p>
                             <p class="intro-desc">
                                 최근 새글
