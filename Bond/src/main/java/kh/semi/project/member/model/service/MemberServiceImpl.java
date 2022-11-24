@@ -1,5 +1,8 @@
 package kh.semi.project.member.model.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -41,6 +44,13 @@ public class MemberServiceImpl implements MemberService{
 		inputMember.setMemberPw(encPw);
 		int result = dao.signUp(inputMember);
 		return result;
+	}
+
+
+	@Override
+	public List<Map<String, Object>> selectMyGroup(int memberNo) {
+
+		return dao.selectMyGroup(memberNo);
 	}
 	
 	

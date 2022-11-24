@@ -1,4 +1,6 @@
-package kh.semi.project.band.model.vo;
+package kh.semi.project.bond.model.vo;
+
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
@@ -22,6 +24,8 @@ public class Post {
 	private String editDate;
 	private String informYN;
 	private String postDelYN;
+	private String memberName;
+	private String memberImage;
 	
-	
+	private List<Post> postList;
 }

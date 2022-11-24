@@ -12,10 +12,11 @@
 		<result property="topicCode" column="TOPIC_CODE" />
 		<result property="groupName" column="GROUP_NAME" />
 		<result property="groupDate" column="GROUP_DATE" />
-		<result property="groupImage" column="GROUP_IMAGE" />
+		<result property="groupImage" column="GROUP_IMG" />
 		<result property="groupComment" column="GROUP_COMMENT" />
 		<result property="openYN" column="OPEN_YN" />
 		<result property="groupStatus" column="GROUP_STATUS" />
+		<result property="memberCount" column="MEMBER_COUNT" />
 	</resultMap>
 	
 	<select id="groupList" parameterType="Group" resultMap="group_rm">
@@ -23,5 +24,24 @@
 		FROM "GROUP"
 	</select>
 	
+	<select id="selectMyGroup" parameterType="Member" resultMap="group_rm">
+		SELECT G.GROUP_NO, GROUP_NAME, 
+			(SELECT COUNT(*) FROM MEMBER_JOIN M
+			WHERE M.GROUP_NO = G.GROUP_NO) MEMBER_COUNT,
+			(SELECT GROUP_IMG_PATH || GROUP_IMG_RENAME FROM GROUP_IMG GI
+			WHERE GI.GROUP_NO = G.GROUP_NO) GROUP_IMG
+		FROM "GROUP" G
+		JOIN MEMBER_JOIN M ON(M.GROUP_NO = G.GROUP_NO)
+		WHERE MEMBER_NO = #{memberNo}
+	</select>
 	
+	<select id="selectGroup" parameterType="_int" resultMap="group_rm">
+		SELECT GROUP_NAME, GROUP_COMMENT,
+			(SELECT COUNT(MEMBER_NO) FROM MEMBER_JOIN M
+			WHERE M.GROUP_NO = G.GROUP_NO) MEMBER_COUNT,
+			(SELECT GROUP_IMG_PATH || GROUP_IMG_RENAME FROM GROUP_IMG GI
+			WHERE GI.GROUP_NO = G.GROUP_NO) GROUP_IMG
+		FROM "GROUP" G
+		WHERE GROUP_NO = #{groupNo}
+	</select>
 </mapper>

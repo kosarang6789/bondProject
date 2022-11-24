@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kh.semi.project.admin.model.dao.AdminDAO;
-import kh.semi.project.band.model.vo.Group;
-import kh.semi.project.band.model.vo.Post;
+import kh.semi.project.bond.model.vo.Group;
+import kh.semi.project.bond.model.vo.Post;
 import kh.semi.project.member.model.vo.Member;
 
 @Service

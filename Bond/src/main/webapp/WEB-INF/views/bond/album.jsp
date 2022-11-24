@@ -11,9 +11,6 @@
 
     <link rel="stylesheet" href="/resources/css/bond/album.css">
     <script src="https://kit.fontawesome.com/1ce4f19a7a.js" crossorigin="anonymous"></script>
-
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
 
 <body>    
@@ -25,31 +22,27 @@
                 <div id="info-inner">
                     <div class="side-cover">
                         <a href="#" class="cover">
-                            <img src="/resources/images/bond/side-cover.png" id="cover-img">
+                            <c:choose>
+                                <c:when test="${not empty groupInfo.groupImage}">
+                                    <img src="${groupInfo.groupImage}" id="cover-img">  
+                                </c:when>
+                                <c:otherwise>
+                                    <img src="/resources/images/bond/profile/non-profile.png">
+                                </c:otherwise>
+                            </c:choose>
                         </a>
                     </div>
 
                     <div class="band-name">
-                        <a href="#" class="uri-text">KH 팀프로젝트</a>
+                        <a href="#" class="uri-text">${groupInfo.groupName}</a>
                     </div>
 
                     <p class="member">
-                        <a href="#" class="member-count">멤버 5</a>
+                        <a href="#" class="member-count">멤버 ${groupInfo.memberCount}</a>
                     </p>
 
                     <div class="band-info">
-                        <p class="band-description">KH 팀프로젝트 소개글입니다아아아아아아아아아
-                            아아아아아아아아아아아아아아-----------------------------------------
-                            ---------------------------------------------------------------------
-                            ---------------------------------------------------------------------
-                            ---------------------------------------------------------------------
-                            ---------------------------------------------------------------------
-                            ---------------------------------------------------------------------
-                            ---------------------------------------------------------------------
-                            ---------------------------------------------------------------------
-                            ---------------------------------------------------------------------
-                            ---------------------------------------------------------------------
-                        </p>
+                        <p class="band-description">${groupInfo.groupComment}</p>
                         <a href="#" class="more-link">...더보기</a>
                     </div>
 
@@ -87,7 +80,7 @@
             </aside>
 
             <!-- 2번 영역 -->
-            <main id="content">
+            <main id="board-list">
                 <div class="album-section">
                     <div class="header-wrap header-wrap-fixed">
                         <div class="header-main">
@@ -197,7 +190,7 @@
 
             <!-- 3번 영역 -->
             <div id="banner">
-                <div class="band-photo-area">
+                <div id="band-photo-area">
                     <section class="band-photo">
                         <h2 class="tit">최근 사진</h2>
                         <div class="photo-body">
@@ -223,4 +216,7 @@
                 </button>
             </a>
         </div>
+
+        
+    <script src="/resources/js/bond/bond.js"></script>
 </body>
