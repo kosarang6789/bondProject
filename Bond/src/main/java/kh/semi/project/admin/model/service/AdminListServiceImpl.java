@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kh.semi.project.admin.model.dao.AdminListDAO;
 import kh.semi.project.bond.model.vo.Group;
+import kh.semi.project.bond.model.vo.Post;
 import kh.semi.project.member.model.vo.Member;
 
 @Service
@@ -25,6 +26,12 @@ public class AdminListServiceImpl implements AdminListService{
 	@Override
 	public List<Group> selectGroupList(String keyword, int opt) {
 		return dao.selectGroupList(keyword, opt);
+	}
+
+	// 게시글 목록 출력(ajax)
+	@Override
+	public List<Post> selectPostList(String keyword, int opt) {
+		return dao.selectPostList(keyword, opt);
 	}
 
 }

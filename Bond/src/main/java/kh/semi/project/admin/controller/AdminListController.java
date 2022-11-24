@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 
 import kh.semi.project.admin.model.service.AdminListService;
 import kh.semi.project.bond.model.vo.Group;
+import kh.semi.project.bond.model.vo.Post;
 import kh.semi.project.member.model.vo.Member;
 
 @Controller
@@ -26,6 +27,7 @@ public class AdminListController {
 	
 	/** 회원 목록 출력(ajax)
 	 * @param keyword
+	 * @param opt
 	 * @return memberList
 	 */
 	@GetMapping("/member/list")
@@ -40,6 +42,7 @@ public class AdminListController {
 	
 	/** 모임 목록 출력(ajax)
 	 * @param keyword
+	 * @param opt
 	 * @return groupList
 	 */
 	@GetMapping("/group/list")
@@ -50,5 +53,19 @@ public class AdminListController {
 		
 		return new Gson().toJson(groupList);
 		
+	}
+	
+	/**
+	 * @param keyword
+	 * @param opt
+	 * @return
+	 */
+	@GetMapping("/post/list")
+	@ResponseBody
+	public String selectPostList(String keyword, int opt) {
+		
+		List<Post> postList = service.selectPostList(keyword, opt);
+		
+		return new Gson().toJson(postList);
 	}
 }
