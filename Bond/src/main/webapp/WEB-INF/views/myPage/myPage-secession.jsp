@@ -52,7 +52,7 @@
             </div>
 
             <div class="content-body">
-                <form action="#" method="post" name="secession">
+                <form action="/myPage/secession" method="post" name="secession" id="secessionFrm">
                     <div class="secession-terms">
                         <h4>계정을 삭제하면 : </h4>
                         <pre>
@@ -76,16 +76,18 @@
                     
                     <div class="myPage-row secession-pw">
                         <label>비밀번호</label>
-                        <input type="password" name="memberPw" maxlength="20">
+                        <input type="password" id="memberPw" name="memberPw" maxlength="20">
                         <button class="secession-submit">탈퇴</button>
                     </div>
-                    
-                
+
                 </form>
             </div>
         </main>
     </section>
-    <script src="/resources/js/myPage/myPage-secession"></script>
+    <%-- <script>
+        const message = "${message}";
+    </script> --%>
+    <script src="/resources/js/myPage/myPage-secession.js"></script>
 
 </body>
 </html>
