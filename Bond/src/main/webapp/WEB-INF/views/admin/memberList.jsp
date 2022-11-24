@@ -61,7 +61,7 @@
                         <span class="memberNo">번호</span>
                         <span class="memberEmail">이메일</span>
                         <span class="memberName">이름</span>
-                        <span class="memberDate">가입일</span>
+                        <span class="signUpDate">가입일</span>
                         <span class="memberStatus">상태</span>
                     </div>
 
