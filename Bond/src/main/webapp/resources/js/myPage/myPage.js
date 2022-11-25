@@ -142,3 +142,39 @@ if(changePwFrm != null){
         }
     })
 };
+
+
+
+// 프로필 이미지 수정
+const profile = document.getElementById("profile");
+
+const profileImg = document.getElementById("profile-image");
+const inputImg = document.getElementById("image-input");
+
+let initCheck; // 이미지 업로드 O : true / 기본 이미지 : false
+let deleteCheck = -1; // -1 : 초기값(취소) / 0 : 프로필 삭제 / 1 : 이미지 업로드
+
+const originalImg = profileImg.getAttribute("src");
+
+if(profile != null){
+
+    if(profileImg.getAttribute(src) == "/resources/images/member/profile/defaultProfile.png"){
+        initCheck = false;
+    }else{
+        initCheck = true;
+    }
+
+    inputImg.addEventListener("change", e=>{
+        if(e.target.files[0] != undefined){ // 선택된 파일 o
+            const reader = new FileReader(); // 파일을 읽음
+            reader.readAsDataURL(e.target.files[0]); // 지정된 파일 읽기 시작
+            reader.onload = event =>{
+                profileImg.setAttribute("src", event.target.result);
+                deleteCheck = 1;
+            }else{ // 사진 업로드 취소 버튼 클릭
+                profileImg.setAttribute("src", originalImg);
+                deleteCheck = -1;
+            }
+        }
+    })
+}

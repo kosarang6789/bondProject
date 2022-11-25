@@ -56,22 +56,24 @@
             <div class="content-body">
                 <div class="image-area">
                     <label>프로필 이미지</label>
-                    <div class="update-image">
-                        <c:if test="${!loginMember.profileImage}}">
-                            <img src="/resources/images/member/profile/defaultProfile.png">
-                        </c:if>
-                        <c:if test="${loginMember.profileImage}">
-                            <img src="${loginMember.profileImage}" alt="">
-                        </c:if>
+                    <form action="/myPage/profile" id="profile">
+                        <div class="update-image">
+                            <c:if test="${!loginMember.profileImage}}">
+                                <img src="/resources/images/member/profile/defaultProfile.png" id="profile-image">
+                            </c:if>
+                            <c:if test="${loginMember.profileImage}">
+                                <img src="${loginMember.profileImage}" id="profile-image">
+                            </c:if>
 
-                    </div>
-                    <div class="profile-btn-area">
-                        <label for="image-input">이미지 변경</label>
-                        <p></p>
-                        <!-- accept 속성 : 업로드 가능한 파일 타입을 제한하는 속성 -->
-                        <input type="file" name="profileImage" id="image-input" accept="image/*">
-                        <button>이미지 삭제</button>
-                    </div>
+                        </div>
+                        <div class="profile-btn-area">
+                            <label for="image-input">이미지 변경</label>
+                            <p></p>
+                            <!-- accept 속성 : 업로드 가능한 파일 타입을 제한하는 속성 -->
+                            <input type="file" name="profileImage" id="image-input" accept="image/*">
+                            <button>이미지 삭제</button>
+                        </div>
+                    </form>
                 </div>
                 
                 <div class="update-profile">
