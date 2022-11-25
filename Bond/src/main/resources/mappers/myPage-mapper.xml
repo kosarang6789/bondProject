@@ -42,6 +42,15 @@
 		MEMBER_PW = #{newPw}
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
+	
+	
+	<!-- 마이페이지 내정보 - 이미지 -->
+	<select id="">
+		SELECT (MEMBER_IMG_PATH || MEMBER_IMG_RENAME) PROFILE_IMG
+		FROM "MEMBER"
+		JOIN "MEMBER_IMG" USING(MEMBER_NO)
+		WHERE MEMBER_NO = #{memberNo}
+	</select>
 
 	
 	

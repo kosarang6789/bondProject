@@ -101,5 +101,9 @@ public class MyPageController {
 		
 		return "redirect:/myPage/myPage-changePw";
 	}
+	
+	
+	
+	
 
 }

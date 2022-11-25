@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -56,7 +57,13 @@
                 <div class="image-area">
                     <label>프로필 이미지</label>
                     <div class="update-image">
-                        <img src="/images/profile-photo.png">
+                        <c:if test="${!loginMember.profileImage}}">
+                            <img src="/resources/images/member/profile/defaultProfile.png">
+                        </c:if>
+                        <c:if test="${loginMember.profileImage}">
+                            <img src="${loginMember.profileImage}" alt="">
+                        </c:if>
+
                     </div>
                     <div class="profile-btn-area">
                         <label for="image-input">이미지 변경</label>
@@ -86,9 +93,13 @@
                         <button>변경</button>
                     </div>
                     
+                    <c:if test="${!empty loginMember.memberTel}">
+                        <c:set var="memberTel" value="${loginMember.memberTel}"/>
+                    </c:if>
+
                     <div class="myPage-row">
                         <label>전화번호</label>
-                        <span>+82 ${loginMember.memberTel}</span>
+                        <span>+82 ${fn:substring(memberTel, 1, 3)}-${fn:substring(memberTel,3,7)}-${fn:substring(memberTel,7,11)}</span>
                         <button>변경</button>
                     </div>
                 </div>
