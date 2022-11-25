@@ -67,8 +67,8 @@
 
 
 
-            <div class="content-footer">
-            </div>
+                <div class="content-footer">
+                </div>
 
             </section> <!-- admin-content end -->
         </section> <!-- main-content end -->

@@ -29,6 +29,6 @@ public interface AdminListService {
 	 * @param opt
 	 * @return
 	 */
-	Map<String, Object> selectPostList(String keyword, int opt, int cp);
+	Map<String, Object> selectPostList(String keyword, int count, int opt, int cp);
 	
 }

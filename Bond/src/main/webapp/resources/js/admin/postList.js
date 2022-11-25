@@ -2,12 +2,11 @@ const selectBtn = document.getElementById("selectBtn");
 const contentBody = document.querySelector(".content-body");
 const listBody = document.querySelector(".list-body");
 const contentFooter = document.querySelector(".content-footer");
-
-
+const count = document.getElementById("count");
 
 // 화면 이동 시 즉시 실행 함수
 (() => {
-    ajax("", 2)
+    ajax("", 2, 10)
 })()
 
 // 목록 검색
@@ -15,15 +14,14 @@ selectBtn.addEventListener("click", () => {
 
     const keyword = document.getElementById("keyword");
     const opt = document.getElementById("opt");
+    const count = document.getElementById("count");
     
     regEx = /^\d+$/;
 
     let fL = 1;
 
     if(fL == 1) {
-        listBody.innerHTML = "";
-
-        ajax(keyword.value, opt.value);
+        ajax(keyword.value, opt.value, count.value);
 
     } else {
         alert("숫자만 입력해주세요.")
@@ -32,19 +30,22 @@ selectBtn.addEventListener("click", () => {
 })
 
 // ajax 실행 함수
-function ajax(keywordValue, optValue, cp){
+function ajax(keywordValue, optValue, countValue, cp){
+
+    listBody.innerHTML = "";
+    contentFooter.innerHTML = "";
+
     if(cp==null) {
         cp=1;
     }
     
     $.ajax({
         url : "/admin/post/list?cp=" + cp, // 요청 주소
-        data : {"keyword": keywordValue, "opt": optValue}, // 파라미터
+        data : {"keyword": keywordValue, "opt": optValue, "count":countValue}, // 파라미터
         type : "GET",
         dataType : "JSON",
 
         success : (map) => {
-
 
             for(let item of map.postList) {
 
@@ -104,50 +105,53 @@ function ajax(keywordValue, optValue, cp){
 
             /* 페이지 묶음 */
 
-            // 이전 페이지 묶음의 맨 앞 페이지 번호
-            const prevPage = document.createElement("a");
-            prevPage.innerHTML = "&lt;";
-            prevPage.setAttribute("href", "/admin/postList?cp=" + map.pagination.prevPage)
-            contentFooter.append(prevPage);
-
-            // 페이지 묶음 목록
+            // 페이지용 변수 선언
             const startPage = map.pagination.startPage; // 현재 페이지 묶음의 맨 앞 번호
             const currentPage = map.pagination.currentPage; // 현재 페이지
             const endPage = map.pagination.endPage; // 현재 페이지 묶음의 마지막 번호
 
+            const prevPageValue = map.pagination.prevPage; // 이전 페이지 묶음의 맨 뒤 페이지 번호
+            const nextPageValue = map.pagination.nextPage; // 다음 페이지 묶음의 맨 앞 페이지 번호
+            const maxPageValue = map.pagination.maxPage; // 전체 페이지 묶음의 마지막 페이지 번호
+
+            // firstPage
+            const firstPage = document.createElement("button");
+            pageMake(firstPage, "&lt;&lt;", 1);
+
+            // prevPage
+            const prevPage = document.createElement("button");
+            pageMake(prevPage, "&lt;", prevPageValue);
+
+            // startPage, currentPage, endPage
             for(let i=startPage; i<=endPage; i++) {
-                const pageNum = document.createElement("a");
+                const pageNum = document.createElement("button");
                 pageNum.innerText = i;
-                pageNum.classList.add("page");
                 
                 if(i==currentPage) {
                     pageNum.classList.add("currentPage");
                 } else {
-                    // pageNum.setAttribute("href", "/admin/postList?cp=" + i);
+                    pageNum.classList.add("page");
+                    pageNum.setAttribute("value", i);
                 }
                 contentFooter.append(pageNum);
-                
             }
-            // 이후 페이지 묶음의 맨 뒤 페이지 번호
-            const nextPage = document.createElement("a");
-            nextPage.innerHTML = "&gt";
-            nextPage.setAttribute("href", "/admin/postList?cp=" + map.pagination.nextPage)
-            contentFooter.append(nextPage);
 
-            // 마지막 페이지
-            const maxPage = document.createElement("a");
-            maxPage.innerText = map.pagination.maxPage;
-            contentFooter.append(maxPage);
+            // nextPage
+            const nextPage = document.createElement("button");
+            pageMake(nextPage, "&gt;", nextPageValue);
 
-            // 페이지 이동
+            // maxPage
+            const maxPage = document.createElement("button");
+            pageMake(maxPage, "&gt;&gt;", maxPageValue);
+
+            // page class 추가
             const page = document.getElementsByClassName("page");
 
+            // 페이지에 페이지 이동 이벤트 추가
             for(let i=0; i<page.length; i++) {
                 page[i].addEventListener("click", () => {
-                    const cp = page[i].innerText;
-                    listBody.innerHTML = "";
-                    contentFooter.innerHTML = "";
-                    ajax(keywordValue, optValue, cp);
+                    const cp = page[i].value;
+                    ajax(keywordValue, optValue, countValue, cp);
                 })
             }
         },
@@ -159,6 +163,13 @@ function ajax(keywordValue, optValue, cp){
 
 }
 
+// firstPage, prevPage, nextPage, maxPage 생성 함수
+function pageMake(pageName, pageText, pageValue){
+    pageName.classList.add("page");
+    pageName.innerHTML = pageText;
+    pageName.setAttribute("value", pageValue);
+    contentFooter.append(pageName);
+}
 
 
 	

@@ -112,6 +112,15 @@ public class AdminPagination {
 		
 		makePagination();
 	}
+
+	// 전달받은 전체 아이템 개수, 현재 페이지 정보를 이용해서 페이지 객체를 생성함
+	public AdminPagination(int listCount, int currentPage, int limit) {
+		this.listCount = listCount;
+		this.currentPage = currentPage;
+		this.limit = limit;
+		
+		makePagination();
+	}
 	
 	
 	// 전달받은 전체 아이템 개수, 현재 페이지 정보를 이용해서 페이지 객체를 생성함
@@ -158,8 +167,9 @@ public class AdminPagination {
 		// 5. nextPage 이후 페이지
 		if(endPage == maxPage ) {
 			nextPage = maxPage;
+		} else {
+			nextPage = endPage + 1;
 		}
-		nextPage = endPage + 1;
 	}
 	
 	

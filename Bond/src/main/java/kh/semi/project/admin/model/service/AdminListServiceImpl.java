@@ -34,13 +34,13 @@ public class AdminListServiceImpl implements AdminListService{
 
 	// 게시글 목록 출력(ajax)
 	@Override
-	public Map<String, Object> selectPostList(String keyword, int opt, int cp) {
+	public Map<String, Object> selectPostList(String keyword, int count, int opt, int cp) {
 		
 		// 1. 전체 게시글 개수를 확인
 		int listCount = dao.getPostListCount(keyword, opt);
 		
 		// 2. 가져온 listCount를 이용해서 페이지네이션 객체를 생성
-		AdminPagination pagination = new AdminPagination(listCount, cp);
+		AdminPagination pagination = new AdminPagination(listCount, cp, count);
 		
 		// 3. 페이징 처리를 이용해서 게시글 목록을 조회
 		List<Post> postList = dao.selectPostList(keyword, opt, pagination);

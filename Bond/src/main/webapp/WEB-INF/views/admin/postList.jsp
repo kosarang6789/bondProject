@@ -47,10 +47,10 @@
 				        <button class="btn" id="selectBtn">검색</button>
 				    </div>
 				
-				    <select name="number">
-				        <option value="">10</option>
-				        <option value="">20</option>
-				        <option value="">50</option>
+				    <select name="count" id="count">
+				        <option value="10">10개</option>
+				        <option value="20">20개</option>
+				        <option value="50">50개</option>
 				    </select>
 				
 				</div> <!-- end .searchbar -->
@@ -89,10 +89,9 @@
                 </div>
 
 
-            <%-- pagenation-area --%>
-            <div class="content-footer">
+                <div class="content-footer">
             
-            </div>
+                </div>
             </section> <!-- admin-content end -->
         </section> <!-- main-content end -->
     </main>
