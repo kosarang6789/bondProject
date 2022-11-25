@@ -58,6 +58,7 @@
 		JOIN MEMBER M ON(P.MEMBER_NO = M.MEMBER_NO)
 		WHERE GROUP_NO = #{groupNo}
 		AND POST_DEL_YN = 'N'
+		ORDER BY POST_DATE DESC
 	</select>
 	
 </mapper>
