@@ -305,13 +305,13 @@ body{
     color: #222222;
 }
 
-#conMessage{
+#pwConfirm{
     margin: 10px 0 0 300px;
     font-size: 14px;
 }
 
 .confirm{
-    color : green;
+    color : #21c531;
 }
 .error{
     color : red;

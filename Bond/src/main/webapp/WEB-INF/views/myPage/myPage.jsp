@@ -76,19 +76,19 @@
     
                     <div class="myPage-row">
                         <label>이름</label>
-                        <span>김길자</span>
+                        <span>${loginMember.memberName}</span>
                         <button>변경</button>
                     </div>
 
                     <div class="myPage-row">
                         <label>생년월일</label>
-                        <span>2000년 12월 25일</span>
+                        <span>${loginMember.memberBirth}</span>
                         <button>변경</button>
                     </div>
                     
                     <div class="myPage-row">
                         <label>전화번호</label>
-                        <span>+82 10-1234-5678</span>
+                        <span>+82 ${loginMember.memberTel}</span>
                         <button>변경</button>
                     </div>
                 </div>

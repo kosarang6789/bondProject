@@ -99,7 +99,7 @@ public class MyPageController {
 		
 		ra.addFlashAttribute("message", message);
 		
-		return "myPage/myPage-changePw";
+		return "redirect:/myPage/myPage-changePw";
 	}
 
 }

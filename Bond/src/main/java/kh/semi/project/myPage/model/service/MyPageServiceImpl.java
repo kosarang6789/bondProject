@@ -41,7 +41,7 @@ public class MyPageServiceImpl implements MyPageService{
 		
 		String encPw = dao.selectEncPw(memberNo);
 		
-		if(bcrypt.matches(encPw, (String)map.get("currentPw"))) {
+		if(bcrypt.matches((String)map.get("currentPw"), encPw)) {
 			String newPw = bcrypt.encode((String)map.get("newPw"));
 			map.put("newPw", newPw);
 			int result = dao.changePw(map);

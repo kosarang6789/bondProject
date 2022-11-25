@@ -69,7 +69,7 @@
                             <input type="password" id="newPwConfirm" name="newPwConfirm" maxlength="20">
                         </div>
 
-                        <div id="pwConfirm"></div>
+                        <div id="pwConfirm">영어, 숫자, 특수문자(!,@,#,-,_) 8~20글자로 입력해주세요.</div>
 
                         <button class="myPage-submit" id="chPw">변경하기</button>
                     </div>
