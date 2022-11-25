@@ -2,10 +2,12 @@ package kh.semi.project.admin.model.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kh.semi.project.admin.model.vo.AdminPagination;
 import kh.semi.project.bond.model.vo.Group;
 import kh.semi.project.bond.model.vo.Post;
 import kh.semi.project.member.model.vo.Member;
@@ -46,13 +48,37 @@ public class AdminListDAO {
 		
 		return sqlSession.selectList("adminMapper.selectGroupList", condition);
 	}
-
-	/** 게시글 목록 출력(ajax)
+	
+	
+	/** 게시글 개수 확인
 	 * @param keyword
 	 * @param opt
 	 * @return
 	 */
-	public List<Post> selectPostList(String keyword, int opt) {
+	public int getPostListCount(String keyword, int opt) {
+		String condition = null;
+		
+		if(opt==1) condition = "POST_CONTENT LIKE '%' || '" +  keyword + "' || '%'";
+		if(opt==2) condition = "GROUP_NAME LIKE '%' || '" +  keyword + "' || '%'";
+		if(opt==3) condition = "MEMBER_NAME LIKE '%' || '" +  keyword + "' || '%'";
+		
+		return sqlSession.selectOne("adminMapper.getPostListCount", condition);
+	}
+
+	/** 게시글 목록 검색ajax)
+	 * @param keyword
+	 * @param opt
+	 * @return
+	 */
+	public List<Post> selectPostList(String keyword, int opt, AdminPagination pagination) {
+		
+		// RowBounds 객체 (마이바티스)
+		// - 여러 행 조회 결과 중 특정 위치부터 지정된 행의 개수만 조회
+		//                    (몇 행을 건너 뛸 것인가?)
+		
+		int offset = ( pagination.getCurrentPage() - 1 ) * pagination.getLimit();
+	
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		
 		String condition = null;
 		
@@ -60,7 +86,9 @@ public class AdminListDAO {
 		if(opt==2) condition = "GROUP_NAME LIKE '%' || '" +  keyword + "' || '%'";
 		if(opt==3) condition = "MEMBER_NAME LIKE '%' || '" +  keyword + "' || '%'";
 		
-		return sqlSession.selectList("adminMapper.selectPostList", condition);
+		return sqlSession.selectList("adminMapper.selectPostList", condition, rowBounds);
 	}
+
+
 
 }

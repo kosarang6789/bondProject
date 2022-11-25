@@ -1,8 +1,10 @@
 package kh.semi.project.admin.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 // 페이지 이동(forward)용 컨트롤러
 @Controller
@@ -95,9 +97,9 @@ public class AdminForwardController {
 		return "admin/reportList";
 	}
 	
-	@GetMapping("/memberDetail")
-	public String goMemberDetail() {
-		return "admin/memberDetail";
-	}
+//	@GetMapping("/memberDetail")
+//	public String goMemberDetail() {
+//		return "admin/memberDetail";
+//	}
 	
 }

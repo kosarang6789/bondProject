@@ -68,7 +68,7 @@
 
                     <div class="list-body">
 
-                    <!-- ajax를 이용해 불러온 리스트가 들어갈 영역 -->    
+                        <!-- ajax를 이용해 불러온 리스트가 들어갈 영역 -->    
 
                     </div>
 					
@@ -89,12 +89,9 @@
                 </div>
 
 
+            <%-- pagenation-area --%>
             <div class="content-footer">
-            	<span>prev</span>
-            	<span>1</span>
-            	<span>2</span>
-            	<span>3</span>
-            	<span>next</span>
+            
             </div>
             </section> <!-- admin-content end -->
         </section> <!-- main-content end -->

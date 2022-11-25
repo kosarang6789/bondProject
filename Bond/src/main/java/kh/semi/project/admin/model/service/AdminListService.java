@@ -1,6 +1,7 @@
 package kh.semi.project.admin.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import kh.semi.project.bond.model.vo.Group;
 import kh.semi.project.bond.model.vo.Post;
@@ -28,6 +29,6 @@ public interface AdminListService {
 	 * @param opt
 	 * @return
 	 */
-	List<Post> selectPostList(String keyword, int opt);
+	Map<String, Object> selectPostList(String keyword, int opt, int cp);
 	
 }
