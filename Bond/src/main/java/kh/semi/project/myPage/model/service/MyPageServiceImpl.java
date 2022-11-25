@@ -1,5 +1,7 @@
 package kh.semi.project.myPage.model.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,25 @@ public class MyPageServiceImpl implements MyPageService{
 		
 		if(bcrypt.matches(memberPw, encPw)) {
 			return dao.secession(memberNo);
+		}
+		
+		return 0;
+	}
+
+
+	// 비밀번호 변경
+	@Override
+	public int changePw(Map<String, Object> map) {
+		
+		int memberNo = (int)map.get("memberNo");
+		
+		String encPw = dao.selectEncPw(memberNo);
+		
+		if(bcrypt.matches(encPw, (String)map.get("currentPw"))) {
+			String newPw = bcrypt.encode((String)map.get("newPw"));
+			map.put("newPw", newPw);
+			int result = dao.changePw(map);
+			return result;
 		}
 		
 		return 0;

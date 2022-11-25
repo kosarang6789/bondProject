@@ -17,8 +17,8 @@
         <header>
             <div>
                 <!-- 클릭 시 메인으로 이동하는 로고  -->
-                <a href="#">
-                    <img src="images/home-logo.png" id="home-logo">
+                <a href="/member/mainPage">
+                    <img src="/resources/images/common/home-logo.png"  id="home-logo">
                 </a>
             </div>
     
@@ -84,10 +84,15 @@
             </div>
         </main>
     </section>
-    <%-- <script>
-        const message = "${message}";
-    </script> --%>
-    <script src="/resources/js/myPage/myPage-secession.js"></script>
+
+    <c:if test="${!empty message}">
+        <script>
+            alert("${message}");
+        </script>
+
+        <c:remove var="message"/>
+    </c:if>
+    <script src="/resources/js/myPage/myPage.js"></script>
 
 </body>
 </html>

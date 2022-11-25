@@ -36,6 +36,14 @@
 	</update>
 	
 	
+	<!-- 비밀번호 변경 -->
+	<update id="myPageMapper">
+		UPDATE "MEMBER" SET
+		MEMBER_PW = #{newPw}
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+
+	
 	
 	
 </mapper>

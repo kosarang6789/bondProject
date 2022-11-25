@@ -1,12 +1,16 @@
 package kh.semi.project.myPage.Controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
@@ -18,7 +22,7 @@ import kh.semi.project.myPage.model.service.MyPageService;
 
 
 @RequestMapping("/myPage")
-@SessionAttributes("loginMember")
+@SessionAttributes({"loginMember"})
 @Controller
 public class MyPageController {
 	
@@ -44,7 +48,7 @@ public class MyPageController {
 	}
 	
 	
-	// 마이페이지 비밀번호 변경
+	// 마이페이지 탈퇴
 	@PostMapping("/secession")
 	public String secession(
 			String memberPw,
@@ -70,6 +74,32 @@ public class MyPageController {
 		ra.addFlashAttribute("message", message);
 		
 		return "redirect:" + path;
+	}
+	
+	
+	// 마이페이지 비밀번호 변경
+	@PostMapping("/changePw")
+	public String changePw(
+			@RequestParam Map<String, Object> map,
+			RedirectAttributes ra,
+			@SessionAttribute("loginMember") Member loginMember) {
+		
+		map.put("memberNo", loginMember.getMemberNo());
+		
+		int result = service.changePw(map);
+		
+		
+		String message = null;
+		
+		if(result>0) { // 비밀번호 변경 성공
+			message = "비밀번호 변경에 성공하셨습니다.";
+		}else {
+			message = "현재 비밀번호가 일치하지 않습니다.";
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "myPage/myPage-changePw";
 	}
 
 }

@@ -17,8 +17,8 @@
         <header>
             <div>
                 <!-- 클릭 시 메인으로 이동하는 로고  -->
-                <a href="#">
-                    <img src="images/home-logo.png" id="home-logo">
+                <a href="/member/mainPage">
+                    <img src="/resources/images/common/home-logo.png"  id="home-logo">
                 </a>
             </div>
     
@@ -52,27 +52,39 @@
             </div>
 
             <div class="content-body">
-                <div class="changePw">
-                    <div class="myPage-row pw-row">
-                        <label>현재 비밀번호</label>
-                        <input type="password" name="currentPw" maxlength="20">
-                    </div>
-    
-                    <div class="myPage-row pw-row">
-                        <label>새 비밀번호</label>
-                        <input type="password" name="newPw" maxlength="20">
-                    </div>
+                <form action="/myPage/changePw" method="post" id="changePwFrm">
+                    <div class="changePw">
+                        <div class="myPage-row pw-row">
+                            <label>현재 비밀번호</label>
+                            <input type="password" id="currentPw" name="currentPw" maxlength="20">
+                        </div>
+        
+                        <div class="myPage-row pw-row">
+                            <label>새 비밀번호</label>
+                            <input type="password" id="newPw" name="newPw" maxlength="20">
+                        </div>
 
-                    <div class="myPage-row pw-row">
-                        <label>새 비밀번호 확인</label>
-                        <input type="password" name="newPwConfirm" maxlength="20">
+                        <div class="myPage-row pw-row">
+                            <label>새 비밀번호 확인</label>
+                            <input type="password" id="newPwConfirm" name="newPwConfirm" maxlength="20">
+                        </div>
+
+                        <div id="pwConfirm"></div>
+
+                        <button class="myPage-submit" id="chPw">변경하기</button>
                     </div>
-                    
-                    <button class="myPage-submit">변경하기</button>
-                </div>
+                </form>
             </div>
         </main>
     </section>
 
+    <c:if test="${!empty message}">
+        <script>
+            alert("${message}");
+        </script>
+
+        <c:remove var="message"/>
+    </c:if>
+    <script src="/resources/js/myPage/myPage.js"></script>
 </body>
 </html>
