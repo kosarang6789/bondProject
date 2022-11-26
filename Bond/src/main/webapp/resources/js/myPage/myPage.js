@@ -148,17 +148,19 @@ if(changePwFrm != null){
 // 프로필 이미지 수정
 const profile = document.getElementById("profile");
 
-const profileImg = document.getElementById("profile-image");
-const inputImg = document.getElementById("image-input");
-
-let initCheck; // 이미지 업로드 O : true / 기본 이미지 : false
-let deleteCheck = -1; // -1 : 초기값(취소) / 0 : 프로필 삭제 / 1 : 이미지 업로드
-
-const originalImg = profileImg.getAttribute("src");
-
 if(profile != null){
 
-    if(profileImg.getAttribute(src) == "/resources/images/member/profile/defaultProfile.png"){
+    const profileImg = document.getElementById("profile-image");
+    const inputImg = document.getElementById("image-input");
+    const deleteBtn = document.getElementById("deleteBtn");
+    
+    let initCheck; // 이미지 업로드 O : true / 기본 이미지 : false
+    let deleteCheck = -1; // -1 : 초기값(취소) / 0 : 프로필 삭제 / 1 : 이미지 업로드
+    
+    const originalImg = profileImg.getAttribute("src");
+    const defaultImg = "/resources/images/member/profile/defaultProfile.png";
+
+    if(profileImg.getAttribute(src) == defaultImg){
         initCheck = false;
     }else{
         initCheck = true;
@@ -171,10 +173,20 @@ if(profile != null){
             reader.onload = event =>{
                 profileImg.setAttribute("src", event.target.result);
                 deleteCheck = 1;
-            }else{ // 사진 업로드 취소 버튼 클릭
+            }
+        }else{ // 사진 업로드 취소 버튼 클릭
                 profileImg.setAttribute("src", originalImg);
                 deleteCheck = -1;
             }
-        }
-    })
+    });
+
+    deleteBtn.addEventListener("click", ()=>{
+        profileImg.setAttribute("src", defaultImg);
+        profileImg.value="";
+        deleteCheck = 0;
+    });
+
+    function profileValidate(){
+        
+    }
 }

@@ -5,7 +5,10 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import kh.semi.project.member.model.vo.Member;
 import kh.semi.project.myPage.model.dao.MyPageDAO;
 
 @Service
@@ -50,5 +53,26 @@ public class MyPageServiceImpl implements MyPageService{
 		
 		return 0;
 	}
+
+
+	// 내 정보 수정
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int profile(String webPath, String filePath, MultipartFile profileImage, Member inputMember) {
+
+		String temp = inputMember.getProfileImage();
+		String rename = null;
+		
+		if(profileImage.getSize() == 0) { // 업로드 파일 x
+			inputMember.setProfileImage(null);
+		}else { // 업로드 파일 o
+//			rename = 
+		}
+		return 0;
+	}
+
+
+	
+
 
 }
