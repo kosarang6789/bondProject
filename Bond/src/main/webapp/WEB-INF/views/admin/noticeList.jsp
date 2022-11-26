@@ -47,10 +47,10 @@
 				        <button class="btn">검색</button>
 				    </div>
 				
-				    <select name="number">
-				        <option value="">10</option>
-				        <option value="">20</option>
-				        <option value="">50</option>
+				    <select name="count" id="count">
+				        <option value="10" selected>10개</option>
+				        <option value="20">20개</option>
+				        <option value="50">50개</option>
 				    </select>
 				
 				</form> <!-- end .searchbar -->
@@ -66,7 +66,7 @@
                     </div>
 					
 					<!-- 목록 불러오기 반복문 -->
-                    <c:forEach var="notice" items="${noticeList}">
+                    <!-- <c:forEach var="notice" items="${noticeList}">
                     <form action="/printNoticeList" class="list-frm" method="GET">
                         <button class="list-btn">
                             <span class="noticeNo">${notice.noticeNo}</span>
@@ -76,18 +76,20 @@
                             <span class="noticeStatus">${notice.noticeStatus}</span>
                         </button>
                     </form>
-					</c:forEach>
+					</c:forEach> -->
+
+                    <div class="list-body">
+
+                        <!-- ajax를 이용해 불러온 리스트가 들어갈 영역 -->
+                                                
+                    </div>
 					
                 </div>
 
 
-            <div class="content-footer">
-            	<span>prev</span>
-            	<span>1</span>
-            	<span>2</span>
-            	<span>3</span>
-            	<span>next</span>
-            </div>
+                <div class="content-footer">
+                </div>
+
             </section> <!-- admin-content end -->
         </section> <!-- main-content end -->
     </main>
