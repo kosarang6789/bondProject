@@ -103,6 +103,38 @@
                                 <p>자연/귀농</p>
                             </a>
                         </li>
+                        <li class="category-list">
+                            <a href="#">
+                                <div class="categoryImageWrap">
+                                    <img src="/resources/images/member/main2/group-category/11_fan.jpg" class="categoryImage">
+                                </div>
+                                <p>팬클럽</p>
+                            </a>
+                        </li>
+                        <li class="category-list">
+                            <a href="#">
+                                <div class="categoryImageWrap">
+                                    <img src="/resources/images/member/main2/group-category/9_cooking.jpg" class="categoryImage">
+                                </div>
+                                <p>요리</p>
+                            </a>
+                        </li>
+                        <li class="category-list">
+                            <a href="#">
+                                <div class="categoryImageWrap">
+                                    <img src="/resources/images/member/main2/group-category/12_economy.jpg" class="categoryImage">
+                                </div>
+                                <p>경제/재태크</p>
+                            </a>
+                        </li>
+                        <li class="category-list">
+                            <a href="#">
+                                <div class="categoryImageWrap">
+                                    <img src="/resources/images/member/main2/group-category/10_interior.jpg" class="categoryImage">
+                                </div>
+                                <p>인테리어</p>
+                            </a>
+                        </li>
                     </ul>
                     <button id="right-btn">
                         <i class="fa-sharp fa-solid fa-chevron-right"></i>
