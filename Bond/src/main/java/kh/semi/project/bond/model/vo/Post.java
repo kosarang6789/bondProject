@@ -29,5 +29,6 @@ public class Post {
 	
 	private List<Post> postList;
 	
+	// 추가
 	private String groupName;
 }
