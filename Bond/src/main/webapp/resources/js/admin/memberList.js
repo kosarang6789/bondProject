@@ -12,7 +12,7 @@ const count = document.getElementById("count");
 
 // 화면 이동 시 ajax 1회 실행해서 전체 목록 출력
 (() => {
-    ajax("", 2, 10)
+    ajax("", 1, 10)
 })()
 
 // 버튼에 목록 검색 이벤트 추가
@@ -70,9 +70,6 @@ function ajax(keywordValue, optValue, countValue, cp){
         dataType : "JSON",
 
         success : (map) => {
-            
-            console.log(map.pagination)
-
             if(map.memberList.length == 0) { // 검색 결과가 없으면
                 // 검색 결과 없음 상자
                 const emptyBox = document.createElement("div");
