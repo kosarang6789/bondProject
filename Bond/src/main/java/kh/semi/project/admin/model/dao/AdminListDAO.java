@@ -28,9 +28,9 @@ public class AdminListDAO {
 	public int getMemberListCount(String keyword, int opt) {
 		String condition = null;
 		
-		if(opt==1) condition = "MEMBER_NO = '" + keyword + "'";
-		if(opt==2) condition = "MEMBER_NAME LIKE '%' || '" +  keyword + "' || '%'";
-		if(opt==3) condition = "MEMBER_EMAIL LIKE '%' || '" +  keyword + "' || '%'";
+		if(opt==0) condition = "MEMBER_NO = '" + keyword + "'";
+		if(opt==1) condition = "MEMBER_NAME LIKE '%' || '" +  keyword + "' || '%'";
+		if(opt==2) condition = "MEMBER_EMAIL LIKE '%' || '" +  keyword + "' || '%'";
 		
 		return sqlSession.selectOne("adminMapper.getMemberListCount", condition);
 	}
@@ -48,9 +48,9 @@ public class AdminListDAO {
 		
 		String condition = null;
 		
-		if(opt==1) condition = "MEMBER_NO = '" + keyword + "'";
-		if(opt==2) condition = "MEMBER_NAME LIKE '%' || '" +  keyword + "' || '%'";
-		if(opt==3) condition = "MEMBER_EMAIL LIKE '%' || '" +  keyword + "' || '%'";
+		if(opt==0) condition = "MEMBER_NO = '" + keyword + "'";
+		if(opt==1) condition = "MEMBER_NAME LIKE '%' || '" +  keyword + "' || '%'";
+		if(opt==2) condition = "MEMBER_EMAIL LIKE '%' || '" +  keyword + "' || '%'";
 		
 		return sqlSession.selectList("adminMapper.selectMemberList", condition, rowBounds);
 	}
@@ -64,8 +64,8 @@ public class AdminListDAO {
 		
 		String condition = null;
 		
-		if(opt==1) condition = "GROUP_NO = '" + keyword + "'";
-		if(opt==2) condition = "GROUP_NAME LIKE '%' || '" +  keyword + "' || '%'";
+		if(opt==0) condition = "GROUP_NO = '" + keyword + "'";
+		if(opt==1) condition = "GROUP_NAME LIKE '%' || '" +  keyword + "' || '%'";
 		
 		return sqlSession.selectOne("adminMapper.getGroupListCount", condition);
 	}
@@ -83,8 +83,8 @@ public class AdminListDAO {
 		
 		String condition = null;
 		
-		if(opt==1) condition = "GROUP_NO = '" + keyword + "'";
-		if(opt==2) condition = "GROUP_NAME LIKE '%' || '" +  keyword + "' || '%'";
+		if(opt==0) condition = "GROUP_NO = '" + keyword + "'";
+		if(opt==1) condition = "GROUP_NAME LIKE '%' || '" +  keyword + "' || '%'";
 		
 		return sqlSession.selectList("adminMapper.selectGroupList", condition, rowBounds);
 	}
@@ -98,9 +98,10 @@ public class AdminListDAO {
 	public int getPostListCount(String keyword, int opt) {
 		String condition = null;
 		
-		if(opt==1) condition = "POST_CONTENT LIKE '%' || '" +  keyword + "' || '%'";
-		if(opt==2) condition = "GROUP_NAME LIKE '%' || '" +  keyword + "' || '%'";
-		if(opt==3) condition = "MEMBER_NAME LIKE '%' || '" +  keyword + "' || '%'";
+		if(opt==0) condition = "POST_NO = '" + keyword + "'";
+		if(opt==1) condition = "GROUP_NAME LIKE '%' || '" +  keyword + "' || '%'";
+		if(opt==2) condition = "MEMBER_NAME LIKE '%' || '" +  keyword + "' || '%'";
+		if(opt==3) condition = "POST_CONTENT LIKE '%' || '" +  keyword + "' || '%'";
 		
 		return sqlSession.selectOne("adminMapper.getPostListCount", condition);
 	}
@@ -122,9 +123,10 @@ public class AdminListDAO {
 		
 		String condition = null;
 		
-		if(opt==1) condition = "POST_CONTENT LIKE '%' || '" +  keyword + "' || '%'";
-		if(opt==2) condition = "GROUP_NAME LIKE '%' || '" +  keyword + "' || '%'";
-		if(opt==3) condition = "MEMBER_NAME LIKE '%' || '" +  keyword + "' || '%'";
+		if(opt==0) condition = "POST_NO = '" + keyword + "'";
+		if(opt==1) condition = "GROUP_NAME LIKE '%' || '" +  keyword + "' || '%'";
+		if(opt==2) condition = "MEMBER_NAME LIKE '%' || '" +  keyword + "' || '%'";
+		if(opt==3) condition = "POST_CONTENT LIKE '%' || '" +  keyword + "' || '%'";
 		
 		return sqlSession.selectList("adminMapper.selectPostList", condition, rowBounds);
 	}
