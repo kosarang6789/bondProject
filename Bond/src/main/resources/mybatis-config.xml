@@ -31,6 +31,7 @@
 		<mapper resource="/mappers/group-mapper.xml"/>
 		<mapper resource="/mappers/dup-mapper.xml"/>
 		<mapper resource="/mappers/myPage-mapper.xml"/>
+		<mapper resource="/mappers/admin-mapper.xml"/>
 		<!-- resources 폴더 -->
 	</mappers>
 </configuration>
