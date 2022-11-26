@@ -19,20 +19,20 @@
 
         <ul class="drop-down">
             <div class="top-menu">
-                <a href="/admin/noticeList">공지사항</a>
+                <a href="/admin/notice/list">공지사항</a>
             </div>
         </ul>
             
         <ul class="drop-down"> 
             <div class="top-menu">밴드 관리</div>
-            <li><a class="sub-menu hide" href="/admin/memberList">회원</a></li>
-            <li><a class="sub-menu hide" href="/admin/groupList">소모임</a></li>
-            <li><a class="sub-menu hide" href="/admin/postList">게시글</a></li>
+            <li><a class="sub-menu hide" href="/admin/member/list">회원</a></li>
+            <li><a class="sub-menu hide" href="/admin/group/list">소모임</a></li>
+            <li><a class="sub-menu hide" href="/admin/post/list">게시글</a></li>
         </ul>
 
         <ul class="drop-down">
             <div class="top-menu">
-                <a href="/admin/reportList">신고</a>
+                <a href="/admin/report/list">신고</a>
             </div>
         </ul>
 
