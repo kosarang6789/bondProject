@@ -139,9 +139,9 @@
                                             <div class="post-list-view">
                                                 <div class="post-author-region">
                                                     <div class="post-author-view">
-                                                            <div class="uprofile">
-                                                                <img class="uprofile-inner" src="${post.memberImage}"/>
-                                                            </div>
+                                                        <div class="uprofile">
+                                                            <img class="uprofile-inner" src="${post.memberImage}"/>
+                                                        </div>
 
                                                         <div class="post-info">
                                                             <span class="ellipsis">
