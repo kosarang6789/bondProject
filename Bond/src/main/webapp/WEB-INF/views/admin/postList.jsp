@@ -37,9 +37,10 @@
 				<div id="searchbar">
 				
 				    <select name="opt" id="opt">
-				        <option value="1" selected>내용</option>
+				        <option value="0">번호</option>
+				        <option value="1" selected>작성자</option>
 				        <option value="2">모임</option>
-				        <option value="2">작성자</option>
+				        <option value="3">내용</option>
 				    </select>
 				
 				    <div class="keyword-box">
@@ -90,7 +91,7 @@
 
 
                 <div class="content-footer">
-                    
+
                 </div>
 
             </section> <!-- admin-content end -->

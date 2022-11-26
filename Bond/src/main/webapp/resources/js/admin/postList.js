@@ -12,7 +12,7 @@ const count = document.getElementById("count");
 
 // 화면 이동 시 ajax 1회 실행해서 전체 목록 출력
 (() => {
-    ajax("", 2, 10)
+    ajax("", 1, 10)
 })()
 
 // 버튼에 목록 검색 이벤트 추가
