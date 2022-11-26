@@ -114,6 +114,7 @@ public class AdminPagination {
 	}
 
 	// 전달받은 전체 아이템 개수, 현재 페이지 정보를 이용해서 페이지 객체를 생성함
+	// + 한 페이지에 출력할 목록 개수 조절
 	public AdminPagination(int listCount, int currentPage, int limit) {
 		this.listCount = listCount;
 		this.currentPage = currentPage;
@@ -124,7 +125,8 @@ public class AdminPagination {
 	
 	
 	// 전달받은 전체 아이템 개수, 현재 페이지 정보를 이용해서 페이지 객체를 생성함
-	// + 한 페이지에 보이게 할 아이템의 개수를 조절하려는 경우 사용하는 생성자
+	// + 한 페이지에 출력할 데이터 목록 개수 조절
+	// + 페이지 묶음 목록 개수 조절 (<< < 1 2 3 4 5 > >>)
 	public AdminPagination(int listCount, int currentPage, int limit, int pageSize) {
 		this.listCount = listCount;
 		this.currentPage = currentPage;
