@@ -24,10 +24,10 @@
                 <a href="/member/findBond">모임찾기</a>
             </div>
 
-            <div class="mainPage-optionBox">
+            <%-- <div class="mainPage-optionBox">
                 <a href="#">목록 편집</a>
                 <a href="#">본드 가이드</a>
-            </div>
+            </div> --%>
         </nav>
     </section>
 
@@ -36,7 +36,7 @@
         <section class="myGroup-area">
             <ul class="myGroup-list">
                 <li class="groupCardItem">
-                    <a href="#">
+                    <a href="/bond-create">
                         <div class="make-icon">
                             <span id="plus-icon">
                                 <i class="fa-solid fa-plus"></i>
@@ -102,6 +102,14 @@
     전화번호 : "${loginMember.memberTel}";
 
     <a href="/logout">로그아웃</a>
+
+    <c:if test="${!empty message}">
+        <script>
+            alert("${message}");
+        </script>
+        <%-- message 1회 출력 후 모든 scope에서 message 삭제 --%>
+        <c:remove var="message" />
+    </c:if>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
     <script src="/resources/js/member/mainPage.js"></script>

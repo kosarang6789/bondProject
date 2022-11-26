@@ -1,0 +1,422 @@
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+*{
+    box-sizing: border-box;
+
+    padding: 0;
+    margin: 0;
+    font-family: 'nanumsquare', serif;
+}
+
+ul{list-style : none;}
+a{
+    text-decoration: none;
+}
+
+body{
+    background-color: #f8f9fa;
+    display: block;
+}
+/* Header */
+
+.header-area{
+    width: 100%;
+    background-color: #737373;
+    position: fixed;
+    box-shadow: 0 1.4px 1.3px 0 rgb(62 73 89 / 7%);
+    z-index: 2000;
+    display: block;
+}
+
+header{
+    width: 1140px;
+    height: 50px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+#home-logo{
+    width: 80px;
+    padding-top: 4px;
+}
+
+.header-widget-area{
+    display: block;
+}
+
+.widget-list{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    width: 160px;
+    position: relative;
+    top: 2px;
+}
+
+.chat-icon{
+    font-size: 1.15em;
+    line-height: 1;
+}
+
+.bell-icon{
+    font-size: 1.15em;
+    line-height: 1;
+}
+
+.widget-item{
+    width: 33.3%;
+}
+
+
+/* 프로필 사진 클릭 메뉴 */
+
+.dropdown{
+    position: relative;
+}
+
+.dropbtn{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 1px;
+    background-color: #737373;
+}
+.dropdown-content>a:hover{
+    background-color: #f8f9fa;
+}
+.dropdown-content{
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    width: 100px;
+    height: 75px;
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 14px;
+    overflow: hidden;
+    top: 42px;
+    right: -2px;
+}
+
+#myDropdown > a{
+    display: flex;
+    height: 50%;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #555;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#myDropdown > a:first-child{
+    border-bottom: 1px solid #ccc;
+}
+
+.dropdown span{
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    border: 1px solid #999;
+    background-color: #999;
+}
+
+#profile-photo{
+    width: 100%;
+    height: 100%;
+}
+
+.caret-icon{
+    margin-top: 7px;
+    padding-left: 8px;
+    color: #999;
+}
+
+.show1 {display: block;}
+
+.rotate {transform: perspective(500px) rotateX(180deg);}
+
+
+/* main */
+main{
+    height: 100vh;
+    width: 100%;
+}
+
+/* 모임 생성 */
+.create-band{
+    width: 850px;
+    margin: 0 auto;
+    padding-top: 80px;
+}
+
+.create-band h4{
+    display: block;
+    margin-bottom: 19px;
+}
+
+fieldset {border: none;}
+
+/* 밴드 이름 입력 */
+
+.bandName{ height: 54px;}
+
+.bandName>input{
+    line-height: 54px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    font-size: 30px;
+    font-weight: 400;
+    color: #777;
+    display: block;
+    width: 850px;
+    margin-right: 0;
+    background-color: #f8f9fa;
+    outline: none;
+}
+
+.select-bandInfo{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+fieldset h4{
+    font-size: 18px;
+}
+
+/* 밴드 사진 */
+.bandImage{
+    width: 300px;
+    height: 225px;
+    position: relative;
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 1px rgb(0 0 0 / 20%), 0 1px 2px rgb(0 0 0 / 8%);
+}
+
+.bandImage>label{
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: pointer;
+    position: relative;
+}
+
+#delete-image{
+    position: absolute;
+    top: 7px;
+    right: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+    cursor: pointer;
+}
+
+#select-photo{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#bandImage-input{ display: none;}
+
+/* 밴드 카테고리 */
+.bandCategory{
+    width: 540px;
+    height: 225px;
+    background-color: #f8f9fa;
+    margin-left: 30px;
+}
+
+.bandCategory>p{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.select-category{
+    height: 202px;
+}
+
+.select-category>ul{
+    height: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-end;
+}
+
+
+.select-category li{
+    display: inline-block;
+    width: 15%;
+    height: 85px;
+    text-align: center;
+    border-radius: 3px;
+    margin-top: 16px;
+    box-shadow: 0 0 1px rgb(0 0 0 / 20%), 0 1px 2px rgb(0 0 0 / 8%);
+    overflow: hidden;
+}
+
+.select-category label{
+    display: block;
+    height: 100%;
+    background-color: #fff;
+    line-height: 100%;
+}
+
+.select-category label:hover{
+    /* background-color: #ebebeb; */
+    background-color: rgba(235, 235, 235, 0.3);
+    cursor: pointer;
+}
+
+.select-category li>input:checked ~ label{
+    background-color: rgba(33, 197, 49, 0.8);
+    color: white;
+    font-weight: 600;
+}
+
+.select-category li>input:checked ~ label>i{
+    color: white;
+}
+
+.select-category i{
+    padding: 18px 0 12px 0;
+    display: block;
+    font-size: 25px;
+    color: #ccc;
+    z-index: 300000;
+}
+
+.select-category li:nth-child(1) i{color:rgb(247, 205, 70);}
+.select-category li:nth-child(2) i{color:rgb(234, 169, 59);}
+.select-category li:nth-child(3) i{color:rgb(226, 134, 49);}
+.select-category li:nth-child(4) i{color:rgb(217, 87, 44);}
+.select-category li:nth-child(5) i{color:rgb(209, 46, 38);}
+.select-category li:nth-child(6) i{color:rgb(183, 39, 124);}
+.select-category li:nth-child(7) i{color:rgb(102, 40, 126);}
+.select-category li:nth-child(8) i{color:rgb(33, 79, 153);}
+.select-category li:nth-child(9) i{color:rgb(52, 120, 191);}
+.select-category li:nth-child(10) i{color:rgb(69, 153, 163);}
+.select-category li:nth-child(11) i{color:rgb(66, 149, 76);}
+.select-category li:nth-child(12) i{color:rgb(157, 186, 65);}
+
+.select-category label{
+    font-size: 14px;
+    color: #333;
+}
+
+.category-list{display: none;}
+
+fieldset>span{
+    display: block;
+    font-size: 12px;
+    color: #333;
+    margin-top: 12px;
+    padding-left: 26px;
+}
+
+/* 밴드 공개범위 */
+.bandOpen{
+    margin-top: 48px;
+}
+
+.openType-area{
+    width: 850px;
+    height: 130px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.openType-area>ul{
+    display: flex;
+    height: 130px;
+    padding : 28px 20px 24px 45px;
+}
+
+.typeList{width: 50%;}
+
+.typeList>label{
+    cursor: pointer;
+}
+
+.openType-area>ul>li:nth-child(2){padding-left : 30px;}
+
+.typeList input{display: none;}
+
+.check-label{
+    display: flex;
+    height: 100%;
+}
+
+.check-icon>i{
+    border: 1.5px solid #ccc;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    padding: 3px 0 0 0;
+    font-size:14px;
+    color: #ccc;
+    background-color: white;
+}
+
+.check-text{
+    margin-left: 12px;
+}
+
+.check-text>strong{
+    display: inline-block;
+    margin: 3px 0 7px;
+    color: #333;
+}
+
+.check-text>p{
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: -0.5px;
+    color: #777;
+}
+
+/* 체크시 아이콘 색상 변경 */
+
+input[name="openYN"]:checked+span i{
+    background-color: #21c531;
+    color: white;
+    border: white;
+    padding-top: 5px;
+}
+
+/* 제출 버튼 */
+.create-btn{
+    text-align: center;
+    margin: 50px 0 80px;
+    padding-right: 20px;
+}
+
+.create-btn>*{
+    width: 140px;
+    height: 44px;
+    padding: 0 30px;
+    font-size: 14px;
+    font-weight: 600;
+    /* letter-spacing: 1.1px; */
+}
+
+button[type="reset"] {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #666;
+    
+}
+
+button[type="submit"]{
+    border: none;
+    background-color: #888;
+    color: white;
+}

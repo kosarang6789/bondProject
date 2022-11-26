@@ -23,10 +23,10 @@
                 <a class="active" href="/member/findBond">모임찾기</a>
             </div>
 
-            <div class="mainPage-optionBox">
+            <%-- <div class="mainPage-optionBox">
                 <a href="#">목록 편집</a>
                 <a href="#">본드 가이드</a>
-            </div>
+            </div> --%>
         </nav>
     </section>
 
