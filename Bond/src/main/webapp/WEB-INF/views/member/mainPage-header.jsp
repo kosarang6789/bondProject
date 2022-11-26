@@ -31,7 +31,9 @@
                     <div class="dropdown">
                         <button type="button" class="dropbtn" onclick="dropDown()">
                             <span>
-                                <img src="/resources/images/common/user-icon.png" id="profile-photo">
+                                <div class="profile"> 
+                                    <i class="fa-solid fa-user" id="profile-photo"> </i>
+                                </div>
                             </span>
                             <i class="fa-solid fa-caret-down caret-icon" id="triangle-icon"></i>
                         </button> 
