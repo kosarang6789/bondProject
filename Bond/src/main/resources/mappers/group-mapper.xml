@@ -19,11 +19,45 @@
 		<result property="memberCount" column="MEMBER_COUNT" />
 	</resultMap>
 	
+	<!-- 그룹이미지 -->
+	<resultMap type="GroupImage" id="groupImage_rm">
+      <id property="groupImageNo" column="GROUP_IMG_NO"/>
+      <result property="groupNo" column="GROUP_NO"/>
+      <result property="groupImageOrigin" column="GROUP_IMG_ORIGIN"/>
+      <result property="groupImageRename" column="GROUP_IMG_RENAME"/>
+      <result property="groupImagePath" column="GROUP_IMG_PATH"/>
+   </resultMap>
+	
+	
+	<!-- 본드 만들기 -->
+	<insert id="createGroup" parameterType="Group" useGeneratedKeys="true">
+		<selectKey keyProperty="groupNo" resultType="_int" order="BEFORE">
+			SELECT SEQ_GROUP_NO.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO "GROUP" 
+		VALUES(#{groupNo}, #{topicCode}, #{groupName}, DEFAULT, NULL, #{openYN}, DEFAULT)
+	</insert>
+	
+	<!-- 만든 멤버 삽입 -->
+	<insert id="insertJoinMember">
+		INSERT INTO "MEMBER_JOIN" 
+		VALUES(SEQ_MEMBER_JOIN_NO.NEXTVAL, #{groupNo}, #{memberNo}, 'Y', DEFAULT, 0, NULL)	
+	</insert>
+	
+	<!-- 본드 프로필 사진 삽입 -->
+	<insert id="updateGroupImage" parameterType="GroupImage">
+		INSERT INTO GROUP_IMG VALUES
+		(SEQ_GROUP_IMG_NO.NEXTVAL, #{groupNo}, #{groupImageOrigin}, 
+		#{groupImageRename}, #{groupImagePath})
+	</insert>
+	
+	<!-- 본드 기본정보 조회(본드사이드바) -->
 	<select id="groupList" parameterType="Group" resultMap="group_rm">
 		SELECT GROUP_NO, TOPIC_CODE, GROUP_NAME, GROUP_DATE, OPEN_YN, GROUP_STATUS
 		FROM "GROUP"
 	</select>
 	
+	<!-- 내 본드 조회 -->
 	<select id="selectMyGroup" parameterType="Member" resultMap="group_rm">
 		SELECT G.GROUP_NO, GROUP_NAME, 
 			(SELECT COUNT(*) FROM MEMBER_JOIN M
@@ -35,6 +69,7 @@
 		WHERE MEMBER_NO = #{memberNo}
 	</select>
 	
+	<!-- 본드 정보 조회 -->
 	<select id="selectGroup" parameterType="_int" resultMap="group_rm">
 		SELECT GROUP_NAME, GROUP_COMMENT,
 			(SELECT COUNT(MEMBER_NO) FROM MEMBER_JOIN M
@@ -44,4 +79,9 @@
 		FROM "GROUP" G
 		WHERE GROUP_NO = #{groupNo}
 	</select>
+	
+
+	
+	
+	
 </mapper>
