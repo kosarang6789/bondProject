@@ -43,12 +43,12 @@
 				    </select>
 				
 				    <div class="keyword-box">
-				        <div class="input-box"><input type="text" name="keyword" id="keyword"></div>
+				        <div class="input-box"><input type="text" name="keyword" id="keyword" required></div>
 				        <button class="btn" id="selectBtn">검색</button>
 				    </div>
 				
 				    <select name="count" id="count">
-				        <option value="10">10개</option>
+				        <option value="10" selected>10개</option>
 				        <option value="20">20개</option>
 				        <option value="50">50개</option>
 				    </select>
@@ -59,8 +59,8 @@
                     
                     <div class="list-header">
                         <span class="postNo">번호</span>
-                        <span class="memberNo">회원번호</span>
-                        <span class="groupNo">모임번호</span>
+                        <span class="memberNo">회원이름</span>
+                        <span class="groupNo">모임명</span>
                         <span class="postContent">내용</span>
                         <span class="postDate">작성일</span>
                         <span class="postDelYN">상태</span>
@@ -90,8 +90,9 @@
 
 
                 <div class="content-footer">
-            
+                    
                 </div>
+
             </section> <!-- admin-content end -->
         </section> <!-- main-content end -->
     </main>
