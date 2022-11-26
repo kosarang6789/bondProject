@@ -34,23 +34,22 @@
                     <h3>모임 검색</h3>
                 </div>
                 
-				<%-- <form id="searchbar"> --%>
                     <div id='searchbar'>
-				    <select name="opt" id="opt">
-				        <option value="1">번호</option>
-				        <option value="2" selected>이름</option>
-				    </select>
+				        <select name="opt" id="opt">
+				            <option value="0">번호</option>
+				            <option value="1" selected>모임</option>
+				        </select>
 				
-				    <div class="keyword-box">
-				        <div class="input-box"><input type="text" name="keyword" id="keyword"></div>
-				        <button type="button" class="btn" id="selectBtn">검색</button>
-				    </div>
+				        <div class="keyword-box">
+				            <div class="input-box"><input type="text" name="keyword" id="keyword"></div>
+				            <button type="button" class="btn" id="selectBtn">검색</button>
+				        </div>
 				
-				    <select name="count" id="count">
-				        <option value="10" selected>10개</option>
-				        <option value="20">20개</option>
-				        <option value="50">50개</option>
-				    </select>
+				        <select name="count" id="count">
+				            <option value="10" selected>10개</option>
+				            <option value="20">20개</option>
+				            <option value="50">50개</option>
+				        </select>
                     </div>
 				
 				<%-- </form>  --%>
