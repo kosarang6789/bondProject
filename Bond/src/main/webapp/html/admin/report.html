@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신고하기</title>
+
+    <link rel="stylesheet" href="../../resources/css/admin/temp/report-style.css">
+</head>
+<body>
+    <!-- 신고하기 영역 -->
+    <div class="report-page">
+        <header class="report-head"> 신고하기 </header>
+        <form class="report-frm" action="#">
+            <div class="report-who">
+                <p>
+                    <strong>소모임명</strong>
+                    <span id="who">코사랑 동호회</span>
+                </p>
+                <p>
+                    <strong>소개글</strong>
+                    <span id="content">신고 내용은 이용약관 및 정책에 의해서 처리되며, 허위신고 시 서비스 이용이 제한될 수 있습니다.</span>
+                </p>
+            </div> <!-- report-who end -->
+            <ul>
+                <li class="report-why">
+                    <button class="report-btn" name="reason1">
+                        <span>신고사유</span>
+                        <img src="../resources/images/right-arrow.png">
+                    </button>
+                </li>
+                <li class="report-why">
+                    <button class="report-btn" name="reason2">
+                        <span>신고사유</span>
+                        <img src="../resources/images/right-arrow.png">
+                    </button>
+                </li>
+                <li class="report-why">
+                    <button class="report-btn" name="reason3">
+                        <span>신고사유</span>
+                        <img src="../resources/images/right-arrow.png">
+                    </button>
+                </li>
+            </ul> <!-- ul end -->
+        </form> <!-- report-frm end -->
+    </div>
+
+    <div class="report-confirm">
+        <div>
+            신고 내용은 이용약관 및 정책에 의해서 처리되며, 허위신고 시 서비스 이용이 제한될 수 있습니다.
+        </div>
+        <div class="report-confirm-btn">
+            <button class="report-cancel">취소</button>
+            <button class="report-agree">신고하기</button>
+        </div>
+    </div>
+</body>
+</html>

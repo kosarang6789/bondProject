@@ -4,13 +4,21 @@
     margin-top: 10px;
 }
 
-.postNo{ flex-basis: 15%; }
+.postNo{ flex-basis: 10%; }
 .memberNo{ flex-basis: 15%; }
 .groupNo{ flex-basis: 15%;}
-.postContent{ flex-basis: 35%;}
-.postDate{ flex-basis: 10%;}
+.postContent{ flex-basis: 30%;}
+.postDate{ flex-basis: 20%;}
 .postDelYN{ flex-basis: 10%;}
 
+/* 게시글 내용 .... 처리 */
+.postContent{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 버튼 */
 .list-btn{
     margin-top: 10px;
     
@@ -18,19 +26,26 @@
 
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     text-align: start;
     border: none;
+
+    background-color: #E2E2E230;
+
+    cursor: pointer;
+}
+
+.list-btn:hover{
+    background-color: #E2E2E250;
 }
 
 /* end .content-body */
 
-
-
-/* content-footer */
+/* 페이지 묶음 css */
 .content-footer{
-	display:flex;
-	justify-content: center;
+    margin-top: 20px;
 }
+
 /* footer */
 footer{
     height: 200px;

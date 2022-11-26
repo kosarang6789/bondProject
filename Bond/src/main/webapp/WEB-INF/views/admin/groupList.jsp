@@ -34,40 +34,47 @@
                     <h3>모임 검색</h3>
                 </div>
                 
-				<form id="searchbar" action="/printGroupList" method="GET">
+                    <div id='searchbar'>
+				        <select name="opt" id="opt">
+				            <option value="0">번호</option>
+				            <option value="1" selected>모임</option>
+				        </select>
 				
-				    <select name="type">
-				        <option value="">분류1</option>
-				        <option value="">분류2</option>
-				        <option value="">분류3</option>
-				    </select>
+				        <div class="keyword-box">
+				            <div class="input-box"><input type="text" name="keyword" id="keyword"></div>
+				            <button type="button" class="btn" id="selectBtn">검색</button>
+				        </div>
 				
-				    <div class="keyword-box">
-				        <div class="input-box"><input type="text" name="keyword"></div>
-				        <button class="btn">검색</button>
-				    </div>
+				        <select name="count" id="count">
+				            <option value="10" selected>10개</option>
+				            <option value="20">20개</option>
+				            <option value="50">50개</option>
+				        </select>
+                    </div>
 				
-				    <select name="number">
-				        <option value="">10</option>
-				        <option value="">20</option>
-				        <option value="">50</option>
-				    </select>
-				
-				</form> <!-- end .searchbar -->
+				<%-- </form>  --%>
+                <!-- end .searchbar -->
 
                 <div class="content-body">
                     
                     <div class="list-header">
                         <span class="groupNo">번호</span>
-                        <span class="topicCode">주제코드</span>
+                        <span class="topicCode">주제</span>
                         <span class="groupName">모임이름</span>
                         <span class="groupDate">생성일</span>
                         <span class="openYN">공개여부</span>
                         <span class="groupStatus">상태</span>
                     </div>
 					
+
+                    <div class="list-body">
+
+                    <!-- ajax를 이용해 불러온 리스트가 들어갈 영역 -->
+
+                    </div>
+
 					<!-- 목록 불러오기 반복문 -->
-                    <c:forEach var="group" items="${groupList}">
+                    <!-- <c:forEach var="group" items="${groupList}">
                     <form action="/printGroupList" class="list-frm" method="GET">
                         <button class="list-btn">
                             <span class="groupNo">${group.groupNo}</span>
@@ -78,24 +85,24 @@
                             <span class="groupStatus">${group.groupStatus}</span>
                         </button>
                     </form>
-					</c:forEach>
+					</c:forEach> -->
 					
                 </div>
 
-
             <div class="content-footer">
-            	<span>prev</span>
-            	<span>1</span>
-            	<span>2</span>
-            	<span>3</span>
-            	<span>next</span>
+
             </div>
+
             </section> <!-- admin-content end -->
         </section> <!-- main-content end -->
     </main>
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	
+    <%-- jQuery CDN 방식으로 추가 --%>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
     <script src="/resources/js/admin/sidebar.js"></script>
+    <script src="/resources/js/admin/groupList.js"></script>
 </body>
 </html>

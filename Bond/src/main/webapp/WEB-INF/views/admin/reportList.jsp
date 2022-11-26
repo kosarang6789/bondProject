@@ -35,10 +35,11 @@
                 
 				<form id="searchbar" action="/printReportList" method="GET">
 				
-				    <select name="type">
-				        <option value="">분류1</option>
-				        <option value="">분류2</option>
-				        <option value="">분류3</option>
+				    <select name="opt" id="opt">
+				        <option value="0">번호</option>
+				        <option value="1" selected>회원</option>
+				        <option value="2">모임</option>
+				        <option value="3">게시글</option>
 				    </select>
 				
 				    <div class="keyword-box">
@@ -46,10 +47,10 @@
 				        <button class="btn">검색</button>
 				    </div>
 				
-				    <select name="number">
-				        <option value="">10</option>
-				        <option value="">20</option>
-				        <option value="">50</option>
+				    <select name="count" id="count">
+				        <option value="10" selected>10개</option>
+				        <option value="20">20개</option>
+				        <option value="50">50개</option>
 				    </select>
 				
 				</form> <!-- end .searchbar -->
@@ -67,7 +68,7 @@
                     </div>
 					
 					<!-- 목록 불러오기 반복문 -->
-                    <c:forEach var="report" items="${reportList}">
+                    <!-- <c:forEach var="report" items="${reportList}">
                     <form action="/printReportList" class="list-frm" method="GET">
                         <button class="list-btn">
                             <span class="reportNo">${report.reportNo}</span>
@@ -79,17 +80,13 @@
                             <span class="processDate">${report.processDate}</span>
                         </button>
                     </form>
-					</c:forEach>
+					</c:forEach> -->
 					
                 </div>
 
-            <div class="content-footer">
-            	<span>prev</span>
-            	<span>1</span>
-            	<span>2</span>
-            	<span>3</span>
-            	<span>next</span>
-            </div>
+                <div class="content-footer">
+                </div>
+
             </section> <!-- admin-content end -->
         </section> <!-- main-content end -->
     </main>

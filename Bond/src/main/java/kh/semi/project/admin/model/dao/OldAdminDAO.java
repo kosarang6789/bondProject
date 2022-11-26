@@ -11,7 +11,7 @@ import kh.semi.project.bond.model.vo.Post;
 import kh.semi.project.member.model.vo.Member;
 
 @Repository
-public class AdminDAO {
+public class OldAdminDAO {
 
 	@Autowired
 	private SqlSession sqlSession;
