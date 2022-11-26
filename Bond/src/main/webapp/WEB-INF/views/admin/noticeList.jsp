@@ -36,14 +36,14 @@
                 
 				<form id="searchbar" action="/printMemberList" method="GET">
 				
-				    <select name="type">
-				        <option value="">분류1</option>
-				        <option value="">분류2</option>
-				        <option value="">분류3</option>
+				    <select name="opt" id="opt">
+				        <option value="0">번호</option>
+				        <option value="1" selected>제목</option>
+				        <option value="2">내용</option>
 				    </select>
 				
 				    <div class="keyword-box">
-				        <div class="input-box"><input type="text" name="keyword"></div>
+				        <div class="input-box"><input type="text" name="keyword" id="keyword"></div>
 				        <button class="btn">검색</button>
 				    </div>
 				
@@ -81,7 +81,7 @@
                     <div class="list-body">
 
                         <!-- ajax를 이용해 불러온 리스트가 들어갈 영역 -->
-                                                
+
                     </div>
 					
                 </div>
