@@ -52,6 +52,13 @@
 		<result property="memberImage" column="MEMBER_IMG" />
 	</resultMap>
 	
+	<!-- 회원 목록 개수 조회 -->
+	<select id="getMemberListCount" parameterType="string" resultType="_int">
+		SELECT COUNT(*)
+		FROM "MEMBER"
+		WHERE ${condition}
+	</select>
+	
 	<!-- 회원 목록 조회 -->
 	<select id="selectMemberList" parameterType="string" resultMap="member_rm">
 		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NAME, SIGNUP_DATE, MEMBER_STATUS
@@ -71,6 +78,12 @@
 		WHERE MEMBER_NO = #{inputMemberNo}
 	</select>
 	
+	<!-- 모임 목록 개수 조회 -->
+	<select id="getGroupListCount" parameterType="string" resultType="_int">
+		SELECT COUNT(*)
+		FROM "GROUP"
+		WHERE ${condition}
+	</select> 
 	
 	<!-- 모임 목록 조회 -->
 	<select id="selectGroupList" parameterType="string" resultMap="group_rm">
