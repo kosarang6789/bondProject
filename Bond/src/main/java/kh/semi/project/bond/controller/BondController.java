@@ -10,9 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
+import com.google.gson.Gson;
 
 import kh.semi.project.bond.model.service.BondService;
 import kh.semi.project.bond.model.vo.Group;
@@ -24,18 +28,6 @@ public class BondController {
 
 	@Autowired 
 	private BondService service;
-	
-//	/** 본드 클릭 시 본드 페이지 이동
-//	 * @return
-//	 */
-//	@GetMapping("/bond/{groupNo}")
-//	public String meetingAfterLogin(
-//		@PathVariable("groupNo") int groupNo,
-//		Model model) {
-//
-//		
-//		return "bond/bond";
-//	}
 	
 	// 사진첩 페이지로 이동 
 	@GetMapping("/bond/{groupNo}/album")
@@ -76,6 +68,27 @@ public class BondController {
 		
 		return"bond/bond";
 	}
+	
+	
+	// 게시물 조회 무한스크롤
+	@PostMapping("/bond/{groupNo}")
+	@ResponseBody
+	public String selectBoardScroll(
+			@PathVariable("groupNo") int groupNo,
+			Model model,
+			@RequestParam(value="cp", required=false, defaultValue= "1") int cp,
+			HttpServletRequest req, HttpServletResponse resp,
+			@SessionAttribute(value="loginMember", required=false) Member loginMember
+			) {
+		
+		// 게시글 불러오기
+		Map<String, Object> map = service.selectBoardDetail(groupNo, cp);
+		
+		model.addAttribute("map",map);
+		
+		return new Gson().toJson(map);
+	}
+	
 	
 	
 }

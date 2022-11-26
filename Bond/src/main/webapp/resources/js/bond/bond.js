@@ -1,3 +1,4 @@
+// 양 옆 고정 + 가운데만 스크롤 가능
 const leftSide = document.getElementById("info-inner");
 const center= document.getElementById("board-list");
 const rightSide = document.getElementById("band-photo-area");
@@ -28,6 +29,8 @@ window.addEventListener("scroll", function () {
     }
 });
 
+
+// 프로필 드롭다운
 const myDropdown = document.getElementById("myDropdown");
 const icon = document.getElementById("triangle-icon");
 
@@ -45,3 +48,57 @@ window.onclick=function(e){
         }   
     }
 };
+
+// 게시물 무한 스크롤
+//const list = document.querySelectorAll("[data-viewname='post-list-view']");
+//let target = list[list.length-1];
+const option = {
+    root: null,
+    rootMargin: "0px 0px 0px 0px",
+    thredhold: 1,
+}
+
+const observer = new IntersectionObserver(selectBoardScroll, option);
+const target = document.getElementById("pageTarget");
+observer.observe(target);
+
+let flag = true;
+function selectBoardScroll(){
+    if(cp == 0 ){
+        cp++;
+    }else{
+        if(flag){
+            console.log(cp);
+            $.ajax({
+                url : "/bond/"+ groupNo,
+                data : {"cp" : ++cp},
+                type : "POST",
+                dataType : "JSON",
+                success : function(map){
+                    if( map != null ){
+                        console.log(map.postList);
+                        const postWrap = document.querySelector(".post-wrap");
+    
+                        for(let post of map.postList){
+                            const content = document.createElement("div");
+                            content.setAttribute("data-viewname","post-list-view")
+                            content.innerHTML = post.postContent;
+                            postWrap.append(content);
+                        }
+                    } else{ // 실패
+                        alert("게시물을 불러올 수 없습니다.");
+                    }
+                },
+                error : function(req, status, error){
+                    console.log("에러 발생");
+                }
+            });
+            flag = false;
+
+        }else{
+            flag = true;
+        }
+    }
+
+
+}
