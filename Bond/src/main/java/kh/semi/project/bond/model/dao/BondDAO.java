@@ -9,15 +9,53 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kh.semi.project.bond.model.vo.Group;
+import kh.semi.project.bond.model.vo.GroupImage;
 import kh.semi.project.bond.model.vo.Pagination;
 import kh.semi.project.bond.model.vo.Post;
+import kh.semi.project.member.model.vo.Member;
 
 @Repository
 public class BondDAO {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	/**
+	
+	
+	/** 본드 만들기
+	 * @param newGroup
+	 * @return groupNo
+	 */
+	public int createGroup(Group newGroup) {
+		int result = sqlSession.insert("groupMapper.createGroup", newGroup);
+
+		// 메인 쿼리(INSERT) 성공 시
+		if(result>0) result = newGroup.getGroupNo();
+		// (실패 시 0을 반환해줌)
+		return result; // 0 또는 새로운 본드 번호
+	}
+	
+	/** 만든 멤버 삽입
+	 * @param leaderMember
+	 * @return
+	 */
+	public int insertJoinMember(Map<String, Object> leaderMember) {
+
+		return sqlSession.insert("groupMapper.insertJoinMember", leaderMember);
+	}
+
+	/** 본드 이미지 삽입
+	 * @param img
+	 * @return
+	 */
+	public int updateGroupImage(GroupImage img) {
+		
+		return sqlSession.insert("groupMapper.updateGroupImage", img);
+	}
+	
+	
+
+	
+	/** 본드 정보 조회
 	 * @param groupNo
 	 * @return
 	 */
@@ -55,5 +93,14 @@ public class BondDAO {
 				
 		return sqlSession.selectList("postMapper.selectBoardDetail", groupNo, rowBounds);
 	}
+
+
+
+
+
+
+
+
+
 
 }
