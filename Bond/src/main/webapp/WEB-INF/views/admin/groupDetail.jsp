@@ -41,15 +41,15 @@
                     <div class="detail-info">
                         <div class="detail-info-row">
                             <label>모임 번호</label>
-                            <div class="detail-info-col">01</div>
+                            <div class="detail-info-col">${group.groupNo}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>모임 이름</label>
-                            <div class="detail-info-col">스터디 소모임</div>
+                            <div class="detail-info-col">${group.groupName}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>모임 주제</label>
-                            <div class="detail-info-col">자기개발</div>
+                            <div class="detail-info-col">${group.topicName}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>모임 이미지</label>
@@ -59,27 +59,27 @@
                         </div>
                         <div class="detail-info-row">
                             <label>모임 리더</label>
-                            <div class="detail-info-col">김철수</div>
+                            <div class="detail-info-col">${group.leaderName}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>모임 개설일</label>
-                            <div class="detail-info-col">2022-11-09</div>
+                            <div class="detail-info-col">${group.groupDate}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>회원 수</label>
-                            <div class="detail-info-col">127명</div>
+                            <div class="detail-info-col">${group.memberCount}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>게시글 수</label>
-                            <div class="detail-info-col">502개</div>
+                            <div class="detail-info-col">${group.postCount}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>모임 공개 여부</label>
-                            <div class="detail-info-col">공개</div>
+                            <div class="detail-info-col">${group.openYN}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>모임 상태</label>
-                            <div class="detail-info-col">정지</div>
+                            <div class="detail-info-col">${group.groupStatus}</div>
                         </div>
                     </div>
 
@@ -87,27 +87,7 @@
                         <div class="detail-info-row">
                             <label>모임 소개글</label>
                             <div class="detail-info-col">
-                                안녕하세요. 자기개발 소모임입니다.
-                                높이 확인중입니다.
-                                동해 물과 백두산이 마르고 닳도록
-                                하느님이 보우하사 우리나라 만세.
-                                무궁화 삼천리 화려 강산
-                                대한 사람, 대한으로 길이 보전하세.
-                                <br>
-                                남산 위에 저 소나무, 철갑을 두른 듯
-                                바람 서리 불변함은 우리 기상일세.
-                                무궁화 삼천리 화려 강산
-                                대한 사람, 대한으로 길이 보전하세.
-                                <br>
-                                가을 하늘 공활한데 높고 구름 없이
-                                밝은 달은 우리 가슴 일편단심일세.
-                                무궁화 삼천리 화려 강산
-                                대한 사람, 대한으로 길이 보전하세.
-                                <br>
-                                이 기상과 이 맘으로 충성을 다하여
-                                괴로우나 즐거우나 나라 사랑하세.
-                                무궁화 삼천리 화려 강산
-                                대한 사람, 대한으로 길이 보전하세.
+                                ${group.groupComment}
                             </div>
                         </div>
                     </div>

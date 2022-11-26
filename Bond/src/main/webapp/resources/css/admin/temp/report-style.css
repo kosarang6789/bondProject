@@ -1,0 +1,140 @@
+
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100%;
+    min-height: 100%;
+    position: relative;
+}
+
+/* -------------------------------------------------------------- */
+
+/* 신고 페이지 전체 영역 */
+.report-page{
+    height: 500px;
+}
+
+/* 신고 페이지 머리말 */
+.report-head{
+    font-weight: bold;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* 신고 페이지 본문 */
+.report-frm{
+    width: 100%;
+    height: 390px;
+    font-size: 14px;
+}
+/* 신고 페이지 정보 영역 */
+.report-who{
+    background-color: #BFBFBF30;
+    border-top: 1px solid #E2E2E2;
+    border-bottom: 1px solid #E2E2E2;
+    padding: 0px 20px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.report-who > p{
+    height: 25px;
+    display: flex;
+}
+.report-who > p > strong{
+    min-width: 70px;
+    color:gray;
+    font-weight: 400;
+}
+.report-who > p > span{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/* 신고 페이지 사유 영역 */
+.report-why{
+    list-style: none;
+}
+/* 신고 사유 리스트 */
+.report-frm > ul{
+    padding: 0 20px;
+    border-bottom: 1px solid #E2E2E2;
+}
+.report-frm > ul > li{
+    border-bottom: 1px solid #E2E2E2;
+}
+.report-frm > ul > li:last-child{
+    border-bottom: none;
+}
+
+/* 신고 버튼 */
+.report-btn{
+    font-weight: 800;
+    background-color: white;
+
+    border: none;
+
+    width: 100%;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+}
+.report-btn > span{
+    flex-basis: 100%;
+    text-align: start;
+}
+.report-btn > img{
+    width: 10px;
+    height: 10px;
+}
+
+/* --------------------------------------------------------------------------------- */
+
+
+
+/* ----------------- 버튼 팝업 창 -------------------- */
+.report-confirm{
+    width: 340px;
+    height: auto;
+    border: 1px solid #666;
+    padding: 20px;
+    font-size: 14px;
+    position: absolute;
+
+}
+
+.report-confirm-btn{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.report-confirm button{
+    width: 90px;
+    height: 35px;
+    border: 1px solid #BFBFBF;
+    font-weight: 800;
+    margin: 0px 5px;
+}
+
+.report-agree{
+    background-color: #515161;
+    color: white;
+}
+
+.report-cancel{
+    color: grey;
+}

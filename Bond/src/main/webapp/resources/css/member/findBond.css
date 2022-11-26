@@ -69,6 +69,7 @@ header{
 }
 
 
+
 /* 프로필 사진 클릭 메뉴 */
 
 .dropdown{
@@ -79,9 +80,10 @@ header{
     width: 100%;
     height: 100%;
     display: flex;
-    background-color: white;
     border: none;
     cursor: pointer;
+    margin-bottom: 1px;
+    background-color: white;
 }
 .dropdown-content>a:hover{
     background-color: #f8f9fa;
@@ -116,20 +118,24 @@ header{
 }
 
 .dropdown span{
-    width: 35px;
-    height: 35px;
+    width: 23px;
+    height: 23px;
     border-radius: 50%;
-    border: 1px solid #ccc;
-    background-color: #ebebeb;
+    border: 1px solid #999;
+    background-color: #999;
+}
+
+.profile{
+    margin-top: 3px;
 }
 
 #profile-photo{
-    width: 100%;
-    height: 100%;
+    font-size: 1em;
+    color: white;
 }
 
 .caret-icon{
-    margin-top: 9px;
+    margin-top: 7px;
     padding-left: 8px;
     color: #999;
 }
@@ -245,6 +251,7 @@ main{
     height: 100%;
     position: absolute;
     top: -18px;
+    cursor: pointer;
 }
 
 .group-category i{
@@ -269,10 +276,17 @@ main{
     margin-right: 21px;
 }
 
-.category-list img{
+.categoryImageWrap{
     width: 98px;
     height: 98px;
     border-radius: 50%;
+    overflow: hidden;
+}
+
+.category-list img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .category-list p{
@@ -311,7 +325,7 @@ main{
     padding: 2px;
     margin: 0;
     border: 2px solid #222;
-    border-radius: 20px;
+    border-radius: 40px;
     overflow: hidden;
 }
 
@@ -382,11 +396,14 @@ main{
     border-radius: 12px;
     overflow: hidden;
     margin-right: 12px;
+    width: 80px;
+    height: 80px;
 }
 
 .group-img>img{
-    width: 80px;
-    height: 80px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 

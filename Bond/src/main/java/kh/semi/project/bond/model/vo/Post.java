@@ -28,4 +28,7 @@ public class Post {
 	private String memberImage;
 	
 	private List<Post> postList;
+	
+	// 추가
+	private String groupName;
 }

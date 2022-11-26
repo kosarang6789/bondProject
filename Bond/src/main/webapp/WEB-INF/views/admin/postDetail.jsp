@@ -39,20 +39,20 @@
                     
                     <div class="post-detail">
                         <div class="title-area">
-                            <div class="postNo">50</div>
-                            <div class="groupNo">12345</div>
-                            <div class="groupName">여행모임</div>
-                            <div class="postDelYN">게시</div>
+                            <div class="postNo">${post.postNo}</div>
+                            <div class="groupNo">${post.groupNo}</div>
+                            <div class="groupName">${post.groupName}</div>
+                            <div class="postDelYN">${post.postDelYN}</div>
                         </div>
 
                         <div class="title-area">
-                            <div class="memberNo">1</div>
-                            <div class="memberName">김일일</div>
-                            <div class="postDate">2022-11-07</div>
+                            <div class="memberNo">${post.memberNo}</div>
+                            <div class="memberName">${post.memberName}</div>
+                            <div class="postDate">${post.postDate}</div>
                         </div>
 
                         <div class="content-area">
-                            <div class="postContent">내용이 들어갈 영역</div>
+                            <div class="postContent">${post.postContent}</div>
                         </div>
 
                         <div class="img-area">
@@ -67,8 +67,8 @@
 
 
 
-            <div class="content-footer">
-            </div>
+                <div class="content-footer">
+                </div>
 
             </section> <!-- admin-content end -->
         </section> <!-- main-content end -->

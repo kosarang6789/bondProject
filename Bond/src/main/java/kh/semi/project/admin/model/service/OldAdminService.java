@@ -5,16 +5,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kh.semi.project.admin.model.dao.AdminDAO;
+import kh.semi.project.admin.model.dao.OldAdminDAO;
 import kh.semi.project.bond.model.vo.Group;
 import kh.semi.project.bond.model.vo.Post;
 import kh.semi.project.member.model.vo.Member;
 
 @Service
-public class AdminService {
+public class OldAdminService {
 	
 	@Autowired
-	private AdminDAO dao;
+	private OldAdminDAO dao;
 
 	
 	/** 회원 리스트
