@@ -35,3 +35,7 @@
 9. next.png
 
 - 주소 :  <a href="https://www.flaticon.com/free-icons/arrow" title="arrow icons">Arrow icons created by Handicon - Flaticon</a>
+
+10. empty-box.png
+
+- 주소 : <a href="https://www.flaticon.com/free-icons/empty" title="empty icons">Empty icons created by Ghozi Muhtarom - Flaticon</a>

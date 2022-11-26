@@ -34,40 +34,47 @@
                     <h3>게시물 검색</h3>
                 </div>
                 
-				<form id="searchbar" action="/printPostList" method="GET">
+				<div id="searchbar">
 				
-				    <select name="type">
-				        <option value="">분류1</option>
-				        <option value="">분류2</option>
-				        <option value="">분류3</option>
+				    <select name="opt" id="opt">
+				        <option value="0">번호</option>
+				        <option value="1" selected>작성자</option>
+				        <option value="2">모임</option>
+				        <option value="3">내용</option>
 				    </select>
 				
 				    <div class="keyword-box">
-				        <div class="input-box"><input type="text" name="keyword"></div>
-				        <button class="btn">검색</button>
+				        <div class="input-box"><input type="text" name="keyword" id="keyword" required></div>
+				        <button class="btn" id="selectBtn">검색</button>
 				    </div>
 				
-				    <select name="number">
-				        <option value="">10</option>
-				        <option value="">20</option>
-				        <option value="">50</option>
+				    <select name="count" id="count">
+				        <option value="10" selected>10개</option>
+				        <option value="20">20개</option>
+				        <option value="50">50개</option>
 				    </select>
 				
-				</form> <!-- end .searchbar -->
+				</div> <!-- end .searchbar -->
 
                 <div class="content-body">
                     
                     <div class="list-header">
                         <span class="postNo">번호</span>
-                        <span class="memberNo">회원번호</span>
-                        <span class="groupNo">모임번호</span>
+                        <span class="memberNo">회원이름</span>
+                        <span class="groupNo">모임명</span>
                         <span class="postContent">내용</span>
                         <span class="postDate">작성일</span>
                         <span class="postDelYN">상태</span>
                     </div>
+
+                    <div class="list-body">
+
+                        <!-- ajax를 이용해 불러온 리스트가 들어갈 영역 -->    
+
+                    </div>
 					
 					<!-- 목록 불러오기 반복문 -->
-                    <c:forEach var="post" items="${postList}">
+<%--                     <c:forEach var="post" items="${postList}">
                     <form action="/printPostList" class="list-frm" method="GET">
                         <button class="list-btn">
                             <span class="postNo">${post.postNo}</span>
@@ -78,24 +85,27 @@
                             <span class="postDelYN">${post.postDelYN}</span>
                         </button>
                     </form>
-					</c:forEach>
+					</c:forEach> --%>
 					
                 </div>
 
 
-            <div class="content-footer">
-            	<span>prev</span>
-            	<span>1</span>
-            	<span>2</span>
-            	<span>3</span>
-            	<span>next</span>
-            </div>
+                <div class="content-footer">
+
+                </div>
+
             </section> <!-- admin-content end -->
         </section> <!-- main-content end -->
     </main>
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
+    <%-- jQuery CDN 방식으로 추가 --%>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 	
     <script src="/resources/js/admin/sidebar.js"></script>
+    
+    <script src="/resources/js/admin/postList.js"></script>
+
 </body>
 </html>

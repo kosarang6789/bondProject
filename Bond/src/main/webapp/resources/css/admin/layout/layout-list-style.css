@@ -134,6 +134,52 @@ main{ /* 배경색 및 flex */
 
 /* 개별-list-style.css */
 
+/* 검색 결과 없음 상자*/
+.emptyBox{
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.emptyImage{
+    width: 300px;
+    height: 300px;
+
+    margin-bottom: 30px;
+}
+
+.emptyMessage{
+    font-size: 15px;
+}
+
+/* 페이지 */
+.page{
+    width: 30px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+/* 현재 페이지만 */
+.currentPage{
+    width: 30px;
+    border: none;
+    background-color: white;
+    font-weight: 900;
+}
+
+/* content-footer */
+.content-footer{
+	display:flex;
+	justify-content: center;
+}
+
 /* footer */
 footer{
     height: 200px;

@@ -40,15 +40,15 @@
                     <div class="detail-info">
                         <div class="detail-info-row">
                             <label>회원 번호</label>
-                            <div class="detail-info-col">01</div>
+                            <div class="detail-info-col">${member.memberNo}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>회원 이메일</label>
-                            <div class="detail-info-col">one@kosaran</div>
+                            <div class="detail-info-col">${member.memberEmail}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>회원 이름</label>
-                            <div class="detail-info-col">김철수</div>
+                            <div class="detail-info-col">${member.memberName}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>기본 프로필</label>
@@ -58,23 +58,23 @@
                         </div>
                         <div class="detail-info-row">
                             <label>회원 전화번호</label>
-                            <div class="detail-info-col">010-****-****</div>
+                            <div class="detail-info-col">${member.memberTel}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>회원 생일</label>
-                            <div class="detail-info-col">1990-11-09</div>
+                            <div class="detail-info-col">${member.memberBirth}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>회원 상태</label>
-                            <div class="detail-info-col">정상</div>
+                            <div class="detail-info-col">${member.memberStatus}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>가입일</label>
-                            <div class="detail-info-col">2022-10-01</div>
+                            <div class="detail-info-col">${member.signUpDate}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>탈퇴일</label>
-                            <div class="detail-info-col">-</div>
+                            <div class="detail-info-col">${member.delDate}</div>
                         </div>
                     </div>
 
@@ -84,16 +84,6 @@
                             <div class="detail-info-col">
                                 <span class="report-count">3회</span>
                                 <button id="openModal" class="modalBtn">조회</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="detail-info">
-                        <div class="detail-info-row">
-                            <label>모임 프로필</label>
-                            <div class="detail-info-col">
-                                <span class="join-count">10개</span>
-                                <button id="openModal2" class="modalBtn">조회</button>
                             </div>
                         </div>
                     </div>

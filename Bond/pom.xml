@@ -101,6 +101,13 @@
 		    <version>2.14.0</version>
 		</dependency>
 
+		<!-- GSON 라이브러리 -->
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency>
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
+		    <version>2.10</version>
+		</dependency>
 		
 	    <!-- GSON 라이브러리 -->
 	    <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->

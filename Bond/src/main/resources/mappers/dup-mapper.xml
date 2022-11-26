@@ -13,7 +13,6 @@
 		<result property="memberName" column="MEMBER_NAME" />
 		<result property="memberBirth" column="MEMBER_BIRTH" />
 		<result property="memberTel" column="MEMBER_TEL" />
-		<result property="profileImage" column="PROFILE_IMG" />
 		<result property="authority" column="AUTHORITY" />
 		<result property="memberStatus" column="MEMBER_STATUS" />
 		<result property="signUpDate" column="SIGNUP_DATE" />
