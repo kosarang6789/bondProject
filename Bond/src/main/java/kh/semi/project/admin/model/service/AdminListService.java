@@ -15,14 +15,14 @@ public interface AdminListService {
 	 * @param opt
 	 * @return
 	 */
-	List<Member> selectMemberList(String keyword, int opt);
+	Map<String, Object> selectMemberList(String keyword, int count, int opt, int cp);
 
 	/** 모임 목록 출력(ajax)
 	 * @param keyword
 	 * @param opt
 	 * @return
 	 */
-	List<Group> selectGroupList(String keyword, int opt);
+	Map<String, Object> selectGroupList(String keyword, int count, int opt, int cp);
 
 	/** 게시글 목록 출력(ajax)
 	 * @param keyword

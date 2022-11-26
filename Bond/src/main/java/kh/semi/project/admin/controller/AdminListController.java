@@ -1,5 +1,6 @@
 package kh.semi.project.admin.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -27,46 +28,54 @@ public class AdminListController {
 	@Autowired
 	private AdminListService service;
 	
-	
 	/** 회원 목록 출력(ajax)
 	 * @param keyword
 	 * @param opt
-	 * @return memberList
+	 * @param cp
+	 * @return
 	 */
-	@GetMapping("/member/list")
+	@PostMapping("/member/list")
 	@ResponseBody
-	public String selectMemberList(String keyword, int opt){
+	public String selectMemberList(
+			String keyword, 
+			@RequestParam(value="count", required=false, defaultValue="10") int count, // 현재 페이지 번호, 얻어온 파라미터가 없는 경우 기본값으로 1 부여
+			@RequestParam(value="opt", required=false, defaultValue="1") int opt,
+			@RequestParam(value="cp", required=false, defaultValue="1") int cp, // 현재 페이지 번호, 얻어온 파라미터가 없는 경우 기본값으로 1 부여
+			@RequestParam Map<String, Object> pm
+			) {
 		
-		List<Member> memberList = service.selectMemberList(keyword, opt);
+		Map<String, Object> map = service.selectMemberList(keyword, count, opt, cp);
 		
-		return new Gson().toJson(memberList);
+		return new Gson().toJson(map);
 	}
-	
 	
 	/** 모임 목록 출력(ajax)
 	 * @param keyword
 	 * @param opt
-	 * @return groupList
+	 * @param cp
+	 * @return
 	 */
-	@GetMapping("/group/list")
+	@PostMapping("/group/list")
 	@ResponseBody
 	public String selectGroupList(
-			String keyword, // 검색어 
-			int opt // 검색 조건
-			){
+			String keyword, 
+			@RequestParam(value="count", required=false, defaultValue="10") int count, // 현재 페이지 번호, 얻어온 파라미터가 없는 경우 기본값으로 1 부여
+			@RequestParam(value="opt", required=false, defaultValue="1") int opt,
+			@RequestParam(value="cp", required=false, defaultValue="1") int cp, // 현재 페이지 번호, 얻어온 파라미터가 없는 경우 기본값으로 1 부여
+			@RequestParam Map<String, Object> pm
+			) {
 		
-		List<Group> groupList =  service.selectGroupList(keyword, opt);
+		Map<String, Object> map = service.selectGroupList(keyword, count, opt, cp);
 		
-		return new Gson().toJson(groupList);
-		
+		return new Gson().toJson(map);
 	}
 	
-	/**
+	/** 게시글 목록 출력(ajax)
 	 * @param keyword
 	 * @param opt
 	 * @return
 	 */
-	@GetMapping("/post/list")
+	@PostMapping("/post/list")
 	@ResponseBody
 	public String selectPostList(
 			String keyword, 

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import kh.semi.project.admin.model.vo.AdminPagination;
 import kh.semi.project.bond.model.vo.Group;
+import kh.semi.project.bond.model.vo.Pagination;
 import kh.semi.project.bond.model.vo.Post;
 import kh.semi.project.member.model.vo.Member;
 
@@ -18,12 +19,32 @@ public class AdminListDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	/** 회원 목록 출력(ajax)
+	
+	/** 회원 목록 개수 확인
+	 * @param keyword
+	 * @param opt
+	 * @return
+	 */
+	public int getMemberListCount(String keyword, int opt) {
+		String condition = null;
+		
+		if(opt==1) condition = "MEMBER_NO = '" + keyword + "'";
+		if(opt==2) condition = "MEMBER_NAME LIKE '%' || '" +  keyword + "' || '%'";
+		if(opt==3) condition = "MEMBER_EMAIL LIKE '%' || '" +  keyword + "' || '%'";
+		
+		return sqlSession.selectOne("adminMapper.getMemberListCount", condition);
+	}
+	
+	/** 회원 목록 검색(ajax)
 	 * @param keyword
 	 * @param opt
 	 * @return memberList
 	 */
-	public List<Member> selectMemberList(String keyword, int opt) {
+	public List<Member> selectMemberList(String keyword, int opt, AdminPagination pagination) {
+		
+		int offset = ( pagination.getCurrentPage() - 1 ) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		
 		String condition = null;
 		
@@ -31,7 +52,22 @@ public class AdminListDAO {
 		if(opt==2) condition = "MEMBER_NAME LIKE '%' || '" +  keyword + "' || '%'";
 		if(opt==3) condition = "MEMBER_EMAIL LIKE '%' || '" +  keyword + "' || '%'";
 		
-		return sqlSession.selectList("adminMapper.selectMemberList", condition);
+		return sqlSession.selectList("adminMapper.selectMemberList", condition, rowBounds);
+	}
+	
+	/** 모임 목록 개수 확인
+	 * @param keyword
+	 * @param opt
+	 * @return
+	 */
+	public int getGroupListCount(String keyword, int opt) {
+		
+		String condition = null;
+		
+		if(opt==1) condition = "GROUP_NO = '" + keyword + "'";
+		if(opt==2) condition = "GROUP_NAME LIKE '%' || '" +  keyword + "' || '%'";
+		
+		return sqlSession.selectOne("adminMapper.getGroupListCount", condition);
 	}
 
 	/** 모임 목록 출력(ajax)
@@ -39,18 +75,22 @@ public class AdminListDAO {
 	 * @param opt
 	 * @return groupList
 	 */
-	public List<Group> selectGroupList(String keyword, int opt) {
+	public List<Group> selectGroupList(String keyword, int opt, AdminPagination pagination) {
+		
+		int offset = ( pagination.getCurrentPage() - 1 ) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		
 		String condition = null;
 		
 		if(opt==1) condition = "GROUP_NO = '" + keyword + "'";
 		if(opt==2) condition = "GROUP_NAME LIKE '%' || '" +  keyword + "' || '%'";
 		
-		return sqlSession.selectList("adminMapper.selectGroupList", condition);
+		return sqlSession.selectList("adminMapper.selectGroupList", condition, rowBounds);
 	}
 	
 	
-	/** 게시글 개수 확인
+	/** 게시글 목록 개수 확인
 	 * @param keyword
 	 * @param opt
 	 * @return
@@ -65,7 +105,7 @@ public class AdminListDAO {
 		return sqlSession.selectOne("adminMapper.getPostListCount", condition);
 	}
 
-	/** 게시글 목록 검색ajax)
+	/** 게시글 목록 검색 (ajax)
 	 * @param keyword
 	 * @param opt
 	 * @return
