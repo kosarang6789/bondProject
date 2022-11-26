@@ -1,22 +1,66 @@
 package kh.semi.project.bond.model.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import kh.semi.project.bond.model.dao.BondDAO;
 import kh.semi.project.bond.model.vo.Group;
+import kh.semi.project.bond.model.vo.GroupImage;
 import kh.semi.project.bond.model.vo.Pagination;
 import kh.semi.project.bond.model.vo.Post;
+import kh.semi.project.common.Util;
+import kh.semi.project.member.model.vo.Member;
 
 @Service
 public class BondServiceImpl implements BondService{
 	
 	@Autowired
 	private BondDAO dao;
+	
+	// 본드 만들기
+	@Transactional
+	@Override
+	public int createGroup(Group newGroup, MultipartFile groupImage, 
+			String webPath, String folderPath, int memberNo) throws Exception {
+		int groupNo = dao.createGroup(newGroup);
+		
+		if(groupNo>0) {
+			GroupImage img = new GroupImage();
+			String rename = null;
+			
+			Map<String, Object> leaderMember = new HashMap<String, Object>();
+			leaderMember.put("memberNo", memberNo);
+			leaderMember.put("groupNo", groupNo);
+			
+			int leaderResult = dao.insertJoinMember(leaderMember);
+			if(leaderResult>0) {
+				if(groupImage.getSize()!=0) {
+					img.setGroupImagePath(webPath);
+					
+					rename = Util.fileRename(groupImage.getOriginalFilename());
+					
+					img.setGroupImageRename(rename);
+					img.setGroupImageOrigin(groupImage.getOriginalFilename());
+					img.setGroupNo(groupNo);
+					
+					int result = dao.updateGroupImage(img);
+					
+					if(result>0) {
+						groupImage.transferTo(new File(folderPath+rename));
+					}		
+				}
+			}
+		}
+		return groupNo;
+	}
 	
 	// 본드 정보 불러오기
 	@Override
@@ -45,6 +89,9 @@ public class BondServiceImpl implements BondService{
 		
 		return map;
 	}
+
+
+
 
 	
 	

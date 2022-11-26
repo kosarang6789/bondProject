@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>모임이 쉬워진다 | BOND</title>
+    <title>${groupInfo.groupName} | BOND</title>
 
     <link rel="stylesheet" href="/resources/css/bond/bond.css">
     <script src="https://kit.fontawesome.com/1ce4f19a7a.js" crossorigin="anonymous"></script>
@@ -266,6 +266,14 @@
             </a>
         </div>
     
+    <c:if test="${!empty message}">
+        <script>
+            alert("${message}");
+        </script>
+        <%-- message 1회 출력 후 모든 scope에서 message 삭제 --%>
+        <c:remove var="message" />
+    </c:if>
+
     <script>
         let cp = 0;
         const groupNo = "${groupNo}"

@@ -1,9 +1,11 @@
 package kh.semi.project.bond.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,10 +13,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 
@@ -28,6 +33,48 @@ public class BondController {
 
 	@Autowired 
 	private BondService service;
+	
+	// 본드 생성 페이지 이동
+	@GetMapping("/bond-create")
+	public String createBond() {
+		return "bond/createBond";
+	}
+	
+	// 본드 생성 페이지
+	@PostMapping("/bond-create")
+	public String createBond(
+			String groupName, String openYN, int topicCode,
+			@RequestParam(value="groupImage", required=false) MultipartFile groupImage,
+			RedirectAttributes ra, HttpSession session,
+			@RequestHeader("referer") String referer,
+			@SessionAttribute("loginMember") Member loginMember
+			) throws Exception {
+		
+		Group newGroup = new Group();
+		newGroup.setGroupName(groupName);
+		newGroup.setTopicCode(topicCode);
+		newGroup.setOpenYN(openYN);
+		
+		String webPath = "/resources/images/bond/profile/";
+		String folderPath = session.getServletContext().getRealPath(webPath);
+		
+		// 만든 회원 번호 -> join group에 삽입
+		int memberNo = loginMember.getMemberNo();
+		int groupNo = service.createGroup(newGroup, groupImage, webPath, folderPath, memberNo);
+		
+		String message = null;
+		String path = null;
+		
+		if(groupNo>0) {
+			message = "본드가 생성되었습니다!";
+			path = "/bond/" + groupNo;
+		} else {
+			message = "본드 만들기 실패";
+			path = referer;
+		}
+		ra.addFlashAttribute("message",message);
+		return "redirect:"+path;
+	}
 	
 	// 사진첩 페이지로 이동 
 	@GetMapping("/bond/{groupNo}/album")
@@ -89,6 +136,7 @@ public class BondController {
 		return new Gson().toJson(map);
 	}
 	
+
 	
 	
 }
