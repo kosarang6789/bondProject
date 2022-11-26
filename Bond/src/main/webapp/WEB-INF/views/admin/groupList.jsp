@@ -46,10 +46,10 @@
 				        <button type="button" class="btn" id="selectBtn">검색</button>
 				    </div>
 				
-				    <select name="number">
-				        <option value="">10</option>
-				        <option value="">20</option>
-				        <option value="">50</option>
+				    <select name="count" id="count">
+				        <option value="10" selected>10개</option>
+				        <option value="20">20개</option>
+				        <option value="50">50개</option>
 				    </select>
                     </div>
 				
@@ -91,12 +91,9 @@
                 </div>
 
             <div class="content-footer">
-            	<span>prev</span>
-            	<span>1</span>
-            	<span>2</span>
-            	<span>3</span>
-            	<span>next</span>
+
             </div>
+
             </section> <!-- admin-content end -->
         </section> <!-- main-content end -->
     </main>

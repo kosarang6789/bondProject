@@ -32,13 +32,8 @@
 
 /* end .content-body */
 
-
-
 /* content-footer */
-.content-footer{
-	display:flex;
-	justify-content: center;
-}
+
 /* footer */
 footer{
     height: 200px;
