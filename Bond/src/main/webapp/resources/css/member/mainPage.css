@@ -79,9 +79,10 @@ header{
     width: 100%;
     height: 100%;
     display: flex;
-    background-color: white;
     border: none;
     cursor: pointer;
+    margin-bottom: 1px;
+    background-color: white;
 }
 .dropdown-content>a:hover{
     background-color: #f8f9fa;
@@ -116,20 +117,24 @@ header{
 }
 
 .dropdown span{
-    width: 35px;
-    height: 35px;
+    width: 23px;
+    height: 23px;
     border-radius: 50%;
-    border: 1px solid #ccc;
-    background-color: #ebebeb;
+    border: 1px solid #999;
+    background-color: #999;
+}
+
+.profile{
+    margin-top: 3px;
 }
 
 #profile-photo{
-    width: 100%;
-    height: 100%;
+    font-size: 1em;
+    color: white;
 }
 
 .caret-icon{
-    margin-top: 9px;
+    margin-top: 7px;
     padding-left: 8px;
     color: #999;
 }
@@ -267,9 +272,16 @@ main{
     font-size: 30px;
 }
 
-.groupCardItem img{
+.groupImageWrap{
     width: 186px;
     height: 135px;
+    overflow: hidden;
+}
+
+.groupImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .groupInfo{

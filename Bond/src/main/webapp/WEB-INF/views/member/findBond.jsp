@@ -41,49 +41,65 @@
                     <ul>
                         <li class="category-list">
                             <a href="#">
-                                <img src="/resources/images/member/main2/group-category/1_exercise.jpg">
+                                <div class="categoryImageWrap">
+                                    <img src="/resources/images/member/main2/group-category/1_exercise.jpg" class="categoryImage">
+                                </div>
                                 <p>운동</p>
                             </a>
                         </li>
                         <li class="category-list">
                             <a href="#">
-                                <img src="/resources/images/member/main2/group-category/2_craft.jpg">
+                                <div class="categoryImageWrap">
+                                    <img src="/resources/images/member/main2/group-category/2_craft.jpg" class="categoryImage">
+                                </div>
                                 <p>공예</p>
                             </a>
                         </li>
                         <li class="category-list">
                             <a href="#">
-                                <img src="/resources/images/member/main2/group-category/3_game.jpg">
+                                <div class="categoryImageWrap">
+                                    <img src="/resources/images/member/main2/group-category/3_game.jpg" class="categoryImage">
+                                </div>
                                 <p>게임</p>
                             </a>
                         </li>
                         <li class="category-list">
                             <a href="#">
-                                <img src="/resources/images/member/main2/group-category/4_art.jpg">
+                                <div class="categoryImageWrap">
+                                    <img src="/resources/images/member/main2/group-category/4_art.jpg" class="categoryImage">
+                                </div>
                                 <p>문화/예술</p>
                             </a>
                         </li>
                         <li class="category-list">
                             <a href="#">
-                                <img src="/resources/images/member/main2/group-category/5_self-improvement.jpg">
+                                <div class="categoryImageWrap">
+                                    <img src="/resources/images/member/main2/group-category/5_self-improvement.jpg" class="categoryImage">
+                                </div>
                                 <p>자기개발</p>
                             </a>
                         </li>
                         <li class="category-list">
                             <a href="#">
-                                <img src="/resources/images/member/main2/group-category/6_camping.jpg">
+                                <div class="categoryImageWrap">
+                                    <img src="/resources/images/member/main2/group-category/6_camping.jpg" class="categoryImage">
+                                </div>
                                 <p>여행/캠핑</p>
                             </a>
                         </li>
                         <li class="category-list">
                             <a href="#">
-                                <img src="/resources/images/member/main2/group-category/7_camera.jpg">
+                                <div class="categoryImageWrap">
+                                    <img src="/resources/images/member/main2/group-category/7_camera.jpg" class="categoryImage">
+                                </div>
                                 <p>사진</p>
                             </a>
                         </li>
                         <li class="category-list">
                             <a href="#">
-                                <img src="/resources/images/member/main2/group-category/8_farming.jpg">
+                                <div class="categoryImageWrap">
+                                    <img src="/resources/images/member/main2/group-category/8_farming.jpg" class="categoryImage">
+                                </div>
                                 <p>자연/귀농</p>
                             </a>
                         </li>

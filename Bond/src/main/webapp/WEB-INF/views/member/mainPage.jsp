@@ -24,10 +24,10 @@
                 <a href="/member/findBond">모임찾기</a>
             </div>
 
-            <div class="mainPage-optionBox">
+            <!-- <div class="mainPage-optionBox">
                 <a href="#">목록 편집</a>
                 <a href="#">본드 가이드</a>
-            </div>
+            </div> -->
         </nav>
     </section>
 
@@ -36,7 +36,7 @@
         <section class="myGroup-area">
             <ul class="myGroup-list">
                 <li class="groupCardItem">
-                    <a href="#">
+                    <a href="/bond-create">
                         <div class="make-icon">
                             <span id="plus-icon">
                                 <i class="fa-solid fa-plus"></i>
@@ -52,10 +52,14 @@
                         <a href="/bond/${myGroup.groupNo}">
                             <c:choose>
                                 <c:when test="${not empty myGroup.groupImage}">
-                                    <img src="${myGroup.groupImage}">
+                                <div class="groupImageWrap">
+                                    <img src="${myGroup.groupImage}" class="groupImage">
+                                </div>    
                                 </c:when>
                                 <c:otherwise>
-                                    <img src="/resources/images/bond/profile/non-profile.png">
+                                <div class="groupImageWrap">
+                                    <img src="/resources/images/bond/profile/no-profile.png" class="groupImage">
+                                </div>  
                                 </c:otherwise>
                             </c:choose>
                             <div class="groupInfo">
