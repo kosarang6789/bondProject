@@ -261,6 +261,10 @@ body{
     color: white;
     border: none;
 }
+#confirmMessage{
+    margin-left: 150px;
+    font-size: 13px;
+}
 
 /* 행 제목 */
 
