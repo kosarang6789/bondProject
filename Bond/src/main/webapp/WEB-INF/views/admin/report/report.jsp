@@ -1,0 +1,74 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신고하기</title>
+
+    <link rel="stylesheet" href="/resources/css/admin/temp/report-style.css">
+</head>
+<body>
+    <!-- 신고하기 영역 -->
+    <div class="report-page">
+        <header class="report-head"> 신고하기 </header>
+        <form id="reportFrm" method="POST">
+            <div class="report-who">
+                <c:if test="${target.equals('member')}">
+                    <p>
+                        <strong>회원명</strong>
+                        <span id="who">${map.member.memberName}</span>
+                    </p>
+                </c:if>
+                <c:if test="${target.equals('group')}">
+                    <p>
+                        <strong>소모임명</strong>
+                        <span id="who">${map.group.groupName}</span>
+                    </p>
+                    <p>
+                        <strong>소개글</strong>
+                        <span id="content">${map.group.groupComment}</span>
+                    </p>
+                </c:if>
+                <c:if test="${target.equals('post')}">
+                    <p>
+                        <strong>작성자</strong>
+                        <span id="who">${map.post.memberName}</span>
+                    </p>
+                    <p>
+                        <strong>내용</strong>
+                        <span id="content">${map.post.postContent}</span>
+                    </p>
+                </c:if>
+            </div> <!-- report-who end -->
+            <c:forEach var="reason" items="${map.reasonList}">
+                <ul>
+                    <li class="report-why">
+                        <button type="button" class="reasonBtn" name="${reason.reasonCode}" >
+                            ${reason.reasonDetails}
+                        </button>
+                    </li>
+                </ul> <!-- ul end -->
+            </c:forEach>
+
+            <div class="report-confirm">
+                <div>
+                    신고 내용은 이용약관 및 정책에 의해서 처리되며, 허위신고 시 서비스 이용이 제한될 수 있습니다.
+                </div>
+                <div class="report-confirm-btn">
+                    <button id="reportCancelBtn">취소</button>
+                    <button id="reportAgreeBtn">신고하기</button>
+                </div>
+            </div>
+
+        </div> <!-- report-frm end -->
+    </form>
+
+    <script src="/resources/js/admin/report.js"></script>
+</body>
+</html>
