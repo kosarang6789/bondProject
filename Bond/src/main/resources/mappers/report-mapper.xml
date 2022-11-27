@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="reportMapper">
+	
+	<!-- MemberVO -->
+	<resultMap type="Member" id="member_rm">
+		<id property="memberNo" column="MEMBER_NO" />
+		
+		<result property="memberEmail" column="MEMBER_EMAIL" />
+		<result property="memberPw" column="MEMBER_PW" />
+		<result property="memberName" column="MEMBER_NAME" />
+		<result property="memberBirth" column="MEMBER_BIRTH" />
+		<result property="memberTel" column="MEMBER_TEL" />
+		<result property="authority" column="AUTHORITY" />
+		<result property="memberStatus" column="MEMBER_STATUS" />
+		<result property="signUpDate" column="SIGNUP_DATE" />
+		<result property="delDate" column="DEL_DATE" />
+	</resultMap>
+	
+	<!-- GroupVO -->
+	<resultMap type="Group" id="group_rm">
+		<id property="groupNo" column="GROUP_NO" />
+		
+		<result property="topicCode" column="TOPIC_CODE" />
+		<result property="groupName" column="GROUP_NAME" />
+		<result property="groupDate" column="GROUP_DATE" />
+		<result property="groupComment" column="GROUP_COMMENT" />
+		<result property="openYN" column="OPEN_YN" />
+		<result property="groupStatus" column="GROUP_STATUS" />
+		<result property="topicName" column="TOPIC_NAME" />
+		<result property="leaderName" column="LEADER_NAME" />
+		<result property="memberCount" column="MEMBER_COUNT" />
+		<result property="postCount" column="POST_COUNT" />
+	</resultMap>
+	
+	<!-- Post VO -->
+	<resultMap type="Post" id="post_rm">
+		
+		<id property="postNo" column="POST_NO" />
+		
+		<result property="memberNo" column="MEMBER_NO" />
+		<result property="groupNo" column="GROUP_NO" />
+		<result property="groupName" column="GROUP_NAME" />
+		<result property="postContent" column="POST_CONTENT" />
+		<result property="postView" column="POST_VIEW" />
+		<result property="replyYN" column="REPLY_YN" />
+		<result property="postDate" column="POST_DATE" />
+		<result property="editDate" column="EDIT_DATE" />
+		<result property="informYN" column="INFORM_YN" />
+		<result property="postDelYN" column="POST_DEL_YN" />
+		<result property="memberName" column="MEMBER_NAME" />
+		<result property="memberImage" column="MEMBER_IMG" />
+	</resultMap>
+	
+	<!-- reason VO -->
+	<resultMap type="Report" id="reason_rm">
+		
+		<id property="reasonCode" column="REASON_CODE" />
+		
+		<result property="reasonDetails" column="REASON_DETAILS" />
+		
+	</resultMap>
+	
+	<!-- 스케줄러를 이용한 신고 테이블 자동 업데이트 -->
+	<update id="autoReportUpdate">
+		UPDATE "REPORT" SET
+		EXPIRE_YN = 'Y'
+		<![CDATA[
+		WHERE RESULT_CODE != 0
+		AND PROCESS_YN = 'Y'
+		AND EXPIRE_DATE < SYSDATE
+		AND EXPIRE_YN = 'N'
+		]]>
+	</update>
+	
+	<!-- 신고 대상이 회원인 경우 -->
+	<select id="getMemberInfo" parameterType="_int" resultMap="member_rm">
+		SELECT MEMBER_NO, MEMBER_NAME
+		FROM "MEMBER"
+		WHERE MEMBER_NO = #{input}
+	</select>
+	
+	<!-- 신고 대상이 모임인 경우 -->
+	<select id="getGroupInfo" parameterType="_int" resultMap="group_rm">
+		SELECT GROUP_NO, GROUP_NAME, GROUP_COMMENT
+		FROM "GROUP"
+		WHERE GROUP_NO = #{input}
+	</select>
+	
+	<!-- 신고 대상이 게시글인 경우 -->
+	<select id="getPostInfo" parameterType="_int" resultMap="post_rm">
+		SELECT POST_NO, POST_CONTENT, MEMBER_NAME
+		FROM "POST"
+		JOIN "MEMBER" USING("MEMBER_NO")
+		WHERE POST_NO = #{input}
+	</select>
+	
+	<!-- 신고 사유 가져오기 -->
+	<select id="getReportReasonList" parameterType="_int" resultMap="reason_rm">
+		SELECT REASON_CODE, REASON_DETAILS
+		FROM "REPORT_REASON"
+		WHERE TYPE_CODE = #{typeCode}
+	</select>
+	
+	<!-- 신고하기 -->
+	<insert id="makeReport">
+		INSERT INTO "REPORT"
+		VALUES(SEQ_REPORT_NO.NEXTVAL,
+			   ${reasonCode},
+			   ${typeCode},
+			   ${memberNo},
+			   ${targetNo},
+			   DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT)
+	</insert>
+</mapper>
