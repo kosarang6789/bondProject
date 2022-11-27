@@ -52,6 +52,13 @@ public class MemberServiceImpl implements MemberService{
 
 		return dao.selectMyGroup(memberNo);
 	}
+
+
+	// 신고 여부 조회
+	@Override
+	public String checkReport(int memberNo) {
+		return dao.checkReport(memberNo);
+	}
 	
 	
 	

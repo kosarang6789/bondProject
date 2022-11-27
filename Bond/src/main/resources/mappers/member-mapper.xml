@@ -29,6 +29,7 @@
 		<result property="delDate" column="DEL_DATE" />
 	</resultMap>
 	
+	
 	<!-- 로그인 -->
 	<select id="login" parameterType="String" resultMap="member_rm">
 		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_PW, MEMBER_NAME, MEMBER_BIRTH, MEMBER_TEL, SIGNUP_DATE, AUTHORITY
@@ -74,6 +75,15 @@
 		MEMBER_PW = #{newPw}
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
+	
+	<!-- 신고 여부 조회 -->
+	<select id="checkReport" parameterType="_int" resultType="string">
+		SELECT TO_CHAR(EXPIRE_DATE, 'YYYY-MM-DD HH24:MI:SS') EXPIRE_DATE
+		FROM "REPORT"
+		WHERE TYPE_CODE = 1 
+		AND TARGET_NO = ${memberNo}
+		AND EXPIRE_YN = 'N'
+	</select>
 	
 
 </mapper>

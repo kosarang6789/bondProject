@@ -19,4 +19,7 @@ public interface MemberService {
 
 	// 가입한 그룹 조회
 	public abstract List<Map<String, Object>> selectMyGroup(int memberNo);
+	
+	// 신고 여부 조회
+	public abstract String checkReport(int memberNo);
 }
