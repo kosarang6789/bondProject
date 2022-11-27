@@ -53,64 +53,83 @@
                 <h2>내 정보 수정</h2>
             </div>
 
-            <form action="/myPage/myPage" id="profile" method="post" 
-                enctype="multipart/form-data">
                 <div class="content-body">
-                    <div class="image-area">
-                        <label>프로필 이미지</label>
-                            <div class="update-image">
-                                <c:if test="${!loginMember.profileImage}}">
-                                    <img src="/resources/images/member/profile/defaultProfile.png" id="profile-image">
-                                </c:if>
-                                <c:if test="${loginMember.profileImage}">
-                                    <img src="${loginMember.profileImage}" id="profile-image">
-                                </c:if>
+                    <form action="/myPage/myPageImage" id="imgFrm" method="post" 
+                        enctype="multipart/form-data" onsubmit = "return profileValidate()">
+                            <div class="image-area">
+                                <label>프로필 이미지</label>
+                                    <div class="update-image">
+                                        <c:if test="${empty loginMember.profileImage}">
+                                            <img src="/resources/images/member/profile/defaultProfile.png" id="profile-image">
+                                        </c:if>
+                                        <c:if test="${!empty loginMember.profileImage}">
+                                            <img src="${loginMember.profileImage}" id="profile-image">
+                                        </c:if>
 
+                                    </div>
+                                    <div class="profile-btn-area">
+                                        <label for="image-input">이미지 변경</label>
+                                        <p></p>
+                                        <!-- accept 속성 : 업로드 가능한 파일 타입을 제한하는 속성 -->
+                                        <input type="file" name="profileImage" id="image-input" accept="image/*">
+                                        <button type="button" id="deleteBtn">이미지 삭제</button>
+                                    </div>
                             </div>
-                            <div class="profile-btn-area">
-                                <label for="image-input">이미지 변경</label>
-                                <p></p>
-                                <!-- accept 속성 : 업로드 가능한 파일 타입을 제한하는 속성 -->
-                                <input type="file" name="profileImage" id="image-input" accept="image/*">
-                                <button type="button" id="deleteBtn">이미지 삭제</button>
-                            </div>
-                        
-                    </div>
+                            <button class="imageBtn">이미지 수정하기</button>
+                    </form>
+
+                    <div class="line"></div>
                     
-                    <div class="update-profile">
-                        <div class="myPage-row">
-                            <label>이메일</label>
-                            <span>${loginMember.memberEmail}</span>
-                        </div>
-        
-                        <div class="myPage-row">
-                            <label>이름</label>
-                            <span><input type="text" value="${loginMember.memberName}"></span>
-                            <%-- <button>변경</button> --%>
-                        </div>
-                        
+                    <form action="/myPage/myPageProfile" id="profileFrm" method="post" onsubmit="return checkValidate()">
+                        <div class="update-profile">
+                            <div class="myPage-row">
+                                <label>이메일</label>
+                                <span>${loginMember.memberEmail}</span>
+                            </div>
+            
+                            <div class="myPage-row">
+                                <label>이름</label>
+                                <span><input type="text" name="memberName" value="${loginMember.memberName}" id="name"></span>
+                                <%-- <button>변경</button> --%>
+                            </div>
+                            
 
-                        <div class="myPage-row">
-                            <label>생년월일</label>
-                            <span><input type="text" value="${loginMember.memberBirth}"></span>
-                            <%-- <button>변경</button> --%>
+                            <div class="myPage-row">
+                                <label>생년월일</label>
+                                <span><input type="date" name="memberBirth" value="${loginMember.memberBirth}" id="birth"></span>
+                                <%-- <button>변경</button> --%>
+                            </div>
+                            
+                            <c:if test="${!empty loginMember.memberTel}">
+                                <c:set var="memberTel" value="${loginMember.memberTel}"/>
+                            </c:if>
+                            
+                            <div class="myPage-row">
+                                <label>전화번호</label>
+                                <span><input type="text" name="memberTel" id="tel" value="${loginMember.memberTel}" maxlength="11"></span>
+                            </div>
+                            <div id="confirmMessage"></div>
+                            <button class="subBtn">내 정보 수정하기</button>
                         </div>
-                        
-                        <c:if test="${!empty loginMember.memberTel}">
-                            <c:set var="memberTel" value="${loginMember.memberTel}"/>
-                        </c:if>
-
-                        <div class="myPage-row">
-                            <label>전화번호</label>
-                            <span><input type="text" value="+82 ${fn:substring(memberTel, 1, 3)}-${fn:substring(memberTel,3,7)}-${fn:substring(memberTel,7,11)}"></span>
-                        </div>
-                    </div>
+                    </form>
                 </div>
-                <button class="subBtn">내 정보 수정하기</button>
-            </form>
+
         </main>
     </section>
 
+    <c:if test="${!empty message}">
+        <script>
+            alert("${message}");
+        </script>
+
+        <c:remove var="message"/>
+    </c:if>
+    <script>
+        const oriName = "${loginMember.memberName}";
+        const oriBirth = "${loginMember.memberBirth}";
+        const oriTel = "${loginMember.memberTel}";
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="/resources/js/myPage/myPage.js"></script>
 </body>
 </html>

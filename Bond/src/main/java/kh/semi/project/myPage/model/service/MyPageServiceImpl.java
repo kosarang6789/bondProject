@@ -1,5 +1,8 @@
 package kh.semi.project.myPage.model.service;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import kh.semi.project.common.Util;
 import kh.semi.project.member.model.vo.Member;
+import kh.semi.project.member.model.vo.MemberImage;
 import kh.semi.project.myPage.model.dao.MyPageDAO;
 
 @Service
@@ -55,24 +60,68 @@ public class MyPageServiceImpl implements MyPageService{
 	}
 
 
-	// 내 정보 수정
+	
+	
+	// 내 정보 수정 - 이미지 변경
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public int profile(String webPath, String filePath, MultipartFile profileImage, Member inputMember) {
+	public int updateImage(String webPath, String filePath, Member loginMember, MultipartFile profileImage) throws Exception {
 
-		String temp = inputMember.getProfileImage();
+		MemberImage img = new MemberImage();
 		String rename = null;
 		
-		if(profileImage.getSize() == 0) { // 업로드 파일 x
-			inputMember.setProfileImage(null);
-		}else { // 업로드 파일 o
-//			rename = 
+		int checkImg = dao.checkImg(loginMember);
+		
+		int result = 0;
+		
+		img.setMemberImgPath(webPath);
+		rename = Util.fileRename(profileImage.getOriginalFilename());
+		img.setMemberImgRename(rename);
+		img.setMemberImgOrigin(profileImage.getOriginalFilename());
+		img.setMemberNo(loginMember.getMemberNo());
+		
+		loginMember.setProfileImage(webPath+rename);
+		
+		if(checkImg>0) { // 이미지 있으면 수정
+			
+			String temp = loginMember.getProfileImage();
+			
+			result = dao.updateImg(img);
+			if(result>0) { // 수정 성공
+				if(rename != null) {
+					profileImage.transferTo(new File(filePath + rename));
+					
+				}else {
+					loginMember.setProfileImage(temp);
+					throw new Exception("이미지 업로드 실패");
+				}
+			}
+			
+		}else { // 이미지 없으면 추가
+			
+			if(profileImage.getSize() != 0) {
+				
+				result = dao.insertImg(img);
+				
+				if(result>0) { // 추가 성공
+					profileImage.transferTo(new File(filePath+rename));
+				}
+			}
 		}
-		return 0;
+		
+		return result;
 	}
 
 
 	
+	
+	// 내 정보 수정 - 내 정보들
+	@Override
+	public int updateProfile(Member inputMember) {
+		return dao.updateProfile(inputMember);
+	}
+
+
 
 
 }

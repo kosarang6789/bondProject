@@ -145,48 +145,141 @@ if(changePwFrm != null){
 
 
 
-// 프로필 이미지 수정
-const profile = document.getElementById("profile");
+// 내정보 수정
+const imgFrm = document.getElementById("imgFrm");
+const profileFrm = document.getElementById("profileFrm");
 
-if(profile != null){
-
-    const profileImg = document.getElementById("profile-image");
+if(imgFrm != null){
+    
+    const profileImage = document.getElementById("profile-image");
     const inputImg = document.getElementById("image-input");
     const deleteBtn = document.getElementById("deleteBtn");
-    
-    let initCheck; // 이미지 업로드 O : true / 기본 이미지 : false
-    let deleteCheck = -1; // -1 : 초기값(취소) / 0 : 프로필 삭제 / 1 : 이미지 업로드
-    
-    const originalImg = profileImg.getAttribute("src");
+
+    const originalImg = profileImage.getAttribute("src");
     const defaultImg = "/resources/images/member/profile/defaultProfile.png";
-
-    if(profileImg.getAttribute(src) == defaultImg){
-        initCheck = false;
-    }else{
-        initCheck = true;
-    }
-
     inputImg.addEventListener("change", e=>{
         if(e.target.files[0] != undefined){ // 선택된 파일 o
             const reader = new FileReader(); // 파일을 읽음
             reader.readAsDataURL(e.target.files[0]); // 지정된 파일 읽기 시작
             reader.onload = event =>{
-                profileImg.setAttribute("src", event.target.result);
-                deleteCheck = 1;
+                profileImage.setAttribute("src", event.target.result);
             }
         }else{ // 사진 업로드 취소 버튼 클릭
-                profileImg.setAttribute("src", originalImg);
-                deleteCheck = -1;
-            }
+            profileImage.setAttribute("src", originalImg);
+        }
     });
-
+    
     deleteBtn.addEventListener("click", ()=>{
-        profileImg.setAttribute("src", defaultImg);
-        profileImg.value="";
-        deleteCheck = 0;
+        profileImage.setAttribute("src", defaultImg);
+        profileImage.value="";
+
+    });
+}
+
+if(profileFrm != null){
+
+    const name = document.getElementById("name");
+    const birth = document.getElementById("birth");
+    const tel = document.getElementById("tel");
+    const confirmMessage = document.getElementById("confirmMessage");
+
+    name.addEventListener("click", ()=>{
+        confirmMessage.innerText="한글, 영어, 숫자로만 2~10글자 입력해주세요.";
+        confirmMessage.classList.remove("confirm");
+        confirmMessage.classList.add("error");
+    });
+    tel.addEventListener("click", ()=>{
+        confirmMessage.innerText="- 빼고 입력해주세요.";
+        confirmMessage.classList.remove("confirm");
+        confirmMessage.classList.add("error");
     });
 
-    function profileValidate(){
-        
+    const ntcheck = {
+        "name" : false,
+        "tel" : false
     }
+    
+
+    name.addEventListener("input", ()=>{
+        const regEx = /^[\w가-힇]{2,10}$/;
+        if(regEx.test(name.value)){
+            $.ajax({
+                url : "/nameDupCheck",
+                data : {"memberName" : name.value},
+                success : result => {
+                    if(result == 0){
+                        confirmMessage.innerText = "사용 가능한 이름입니다.";
+                        confirmMessage.classList.add("confirm");
+                        confirmMessage.classList.remove("error");
+                        ntcheck.name = true;
+                    }else{
+                        confirmMessage.innerText="사용 중인 이름입니다.";
+                        confirmMessage.classList.add("error");
+                        confirmMessage.classList.remove("confirm");
+                        ntcheck.name = false;
+                    }
+                },
+                error : ()=>{
+                    alert("ajax 통신 중 오류 발생 - 이름 수정");
+                    ntcheck.name = false;
+                }
+            })
+        }else{
+            confirmMessage.innerText="이름 형식이 유효하지 않습니다.";
+            confirmMessage.classList.add("error");
+            confirmMessage.classList.remove("confirm");
+            ntcheck.name = false;
+        }
+    });
+
+    tel.addEventListener("input", ()=>{
+        const regEx = /^0(1[01679]|2|[3-6][1-5]|70)[1-9]\d{2,3}\d{4}$/;
+        if(regEx.test(tel.value)){
+            confirmMessage.innerText="유효한 전화번호 형식입니다.";
+            confirmMessage.classList.add("confirm");
+            confirmMessage.classList.remove("error");
+            ntcheck.tel = true;
+        }else{
+            confirmMessage.innerText="전화번호 형식이 유효하지 않습니다.";
+            confirmMessage.classList.add("error");
+            confirmMessage.classList.remove("confirm");
+            ntcheck.tel = false;
+
+        }
+    });
+
+
+    function checkValidate(){
+        
+        if(oriName == name.value && oriTel == tel.value && oriBirth == birth.value){
+            alert("변경 사항이 없습니다.");
+            return false;
+        }
+        if(name.value.trim().length == 0){
+            alert("이름을 입력해주세요");
+            return false;
+        }
+        if(birth.value.trim().length == 0){
+            alert("생일을 입력해주세요");
+            return false;
+        }
+        if(tel.value.trim().length == 0){
+            alert("전화번호를 입력해주세요");
+            return false;
+        }
+
+        if(ntcheck.name == false){
+            alert("이름을 다시 입력해주세요.");
+            return false;
+        };
+        
+        if(ntcheck.tel == false){
+            alert("전화번호를 다시 입력해주세요.");
+            return false;
+        };
+        
+
+
+    }
+    
 }

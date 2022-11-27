@@ -20,6 +20,14 @@
 		<result property="delDate" column="DEL_DATE" />
 	</resultMap>
 	
+	<resultMap type="MemberImage" id="memberImg_rm">
+		<id property="memberNo" column="MEMBER_NO"/>
+		
+		<result property="memberImgOrigin" column="MEMBER_IMG_ORIGIN"/>
+		<result property="memberImgRename" column="MEMBER_IMG_RENAME"/>
+		<result property="memberImgPath" column="MEMBER_IMG_PATH"/>
+	</resultMap>
+	
 	
 	
 	<!-- 암호화 된 비밀번호 조회 -->
@@ -42,15 +50,40 @@
 		MEMBER_PW = #{newPw}
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
-	
-	
-	<!-- 마이페이지 내정보 - 이미지 -->
-	<select id="">
-		SELECT (MEMBER_IMG_PATH || MEMBER_IMG_RENAME) PROFILE_IMG
-		FROM "MEMBER"
-		JOIN "MEMBER_IMG" USING(MEMBER_NO)
+
+
+
+	<!-- 이미지 있는지 조회 -->
+	<select id="checkImg" resultType="_int">
+		SELECT COUNT(*) FROM MEMBER_IMG
 		WHERE MEMBER_NO = #{memberNo}
 	</select>
+
+	
+	<!-- 마이페이지 - 이미지 삽입 -->
+	<insert id="insertImg">
+		INSERT INTO "MEMBER_IMG"
+		VALUES (SEQ_MEMBER_IMG_NO.NEXTVAL, #{memberNo}, #{memberImgOrigin}, 
+			#{memberImgRename}, #{memberImgPath})
+	</insert>
+	
+	<!-- 마이페이지 - 이미지 수정 -->
+	<update id="updateImg">
+		UPDATE "MEMBER_IMG" SET
+		MEMBER_IMG_ORIGIN = #{memberImgOrigin},
+		MEMBER_IMG_RENAME = #{memberImgRename},
+		MEMBER_IMG_PATH = #{memberImgPath}
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+
+	<!-- 마이페이지 내 정보 수정 -->
+	<update id="updateProfile">
+		UPDATE "MEMBER" SET
+		MEMBER_TEL = #{memberTel},
+		MEMBER_BIRTH = #{memberBirth},
+		MEMBER_NAME = #{memberName}
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
 
 	
 	

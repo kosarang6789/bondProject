@@ -3,8 +3,10 @@ package kh.semi.project.myPage.Controller;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -106,34 +108,55 @@ public class MyPageController {
 	}
 	
 	
-	// 마이페이지 내 정보 수정
-	@PostMapping("/myPage")
-	public String profile(
-			Member inputMember,
+	// 마이페이지 내 정보 수정 - 이미지
+	@PostMapping("/myPageImage")
+	public String updateImage(
 			@SessionAttribute("loginMember") Member loginMember,
+			@RequestParam(value = "profileImage") MultipartFile profileImage,
 			RedirectAttributes ra,
-			@RequestParam("profileImage") MultipartFile profileImage,
-			HttpServletRequest req) {
-		
-		inputMember.setMemberNo(loginMember.getMemberNo());
-		inputMember.setProfileImage(loginMember.getProfileImage());
+			HttpServletRequest req) throws Exception {
 		
 		String webPath = "/resources/images/member/profile/";
 		String filePath = req.getSession().getServletContext().getRealPath(webPath);
 		
-		int result = service.profile(webPath,filePath,profileImage,inputMember);
+		int result = service.updateImage(webPath, filePath, loginMember, profileImage);
 		
 		String message = null;
 		
 		if(result>0) {
-			message = "회원 정보가 수정되었습니다.";
-		}else {
-			message = "회원 정보 수정이 실패되었습니다.";
+
+			message = "프로필 이미지가 변경되었습니다.";
 		}
+		else		message = "프로필 이미지 변경이 실패했습니다.";
 		
 		ra.addFlashAttribute("message", message);
 		
-		return "redirect:myPage/myPage";
+		return "redirect:myPage";
+	}
+	
+	// 마이페이지 내 정보 수정 - 내 정보들
+	@PostMapping("/myPageProfile")
+	public String updateProfile(
+			@SessionAttribute("loginMember") Member loginMember,
+			Member inputMember,
+			RedirectAttributes ra) {
+		
+		inputMember.setMemberNo(loginMember.getMemberNo());
+		int result = service.updateProfile(inputMember);
+		
+		String message = null;
+		
+		if(result>0) {
+			loginMember.setMemberName(inputMember.getMemberName());
+			loginMember.setMemberTel(inputMember.getMemberTel());
+			loginMember.setMemberBirth(inputMember.getMemberBirth());
+			message = "내 정보가 수정되었습니다.";
+		}
+		else		 message = "내 정보 수정이 실패되었습니다.";
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:myPage";
 	}
 	
 

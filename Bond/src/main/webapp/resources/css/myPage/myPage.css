@@ -145,17 +145,21 @@ body{
     flex-wrap: nowrap;
     padding-left: 10px;
 }
-.content-body>form{
-    width: 100%;
+.content-body>#profileFrm{
+    width: 60%;
+    height: 100%;
+}
+.content-body>#imgFrm{
+    width: 40%;
     height: 100%;
 }
 .image-area{
-    width: 35%;
-    margin: 35px 10px 0;
+    width: 80%;
+    margin: 20px auto;
 }
 
 .update-image{
-    margin: 60px auto 0;
+    margin: 45px auto 0;
     width: 145px;
     height: 145px;
     /* border: 6px solid #BFBFBF; */
@@ -208,18 +212,16 @@ body{
 #image-input{display: none;}
 
 .subBtn{
-    width: 200px;
-    height: 58px;
-    font-size: 18px;
-    margin: auto;
-    background-color: white;
-    border: 2px solid #bfbfbf;
-    font-weight: bold;
+    width: 238px;
+    height: 44px;
+    border: 1px solid black;
     border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 521px;
+    border: 2px solid #BFBFBF;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: white;
+    margin-left: 86px;
+    margin-top: 22px;
 }
 .subBtn:hover{
     background-color: #21c531;
@@ -239,14 +241,29 @@ body{
 }
 
 .update-profile{
-    width: 65%;
-    margin: 60px 25px 0 30px;
+    width: 85%;
+    margin: 55px auto;
+}
+
+.imageBtn{
+    width: 238px;
+    height: 44px;
+    border: 1px solid black;
+    border-radius: 10px;
+    border: 2px solid #BFBFBF;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: white;
+    margin-left: 39px;
+}
+.imageBtn:hover{
+    background-color: #21c531;
+    color: white;
+    border: none;
 }
 
 /* 행 제목 */
-.image-area>label{
-    padding-left: 22px;
-}
+
 .myPage-row>label, .image-area>label{
     color: #21c531;
     font-size: 18px;
@@ -294,6 +311,13 @@ body{
 }
 .myPage-row>button:hover{
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 15%);
+}
+
+.line{
+    border: 1px solid #BFBFBF;
+    background-color: #BFBFBF;
+    height: 95%;
+    margin: auto;
 }
 
 /* 패스워드 변경 */

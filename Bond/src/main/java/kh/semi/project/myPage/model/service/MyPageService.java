@@ -14,7 +14,13 @@ public interface MyPageService {
 	// 비밀번호 변경
 	int changePw(Map<String, Object> map);
 
-	// 내 정보 수정
-	int profile(String webPath, String filePath, MultipartFile profileImage, Member inputMember);
+	// 내 정보 수정 - 프로필 수정
+	int updateImage(String webPath, String filePath, Member loginMember, MultipartFile profileImage) throws Exception;
+
+	// 내 정보 수정 - 내 정보들
+	int updateProfile(Member inputMember);
+
+
+
 
 }
