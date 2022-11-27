@@ -195,41 +195,46 @@ if(profileFrm != null){
     });
 
     const ntcheck = {
-        "name" : false,
-        "tel" : false
+        "name" : true,
+        "tel" : true
     }
     
 
     name.addEventListener("input", ()=>{
         const regEx = /^[\w가-힇]{2,10}$/;
-        if(regEx.test(name.value)){
-            $.ajax({
-                url : "/nameDupCheck",
-                data : {"memberName" : name.value},
-                success : result => {
-                    if(result == 0){
-                        confirmMessage.innerText = "사용 가능한 이름입니다.";
-                        confirmMessage.classList.add("confirm");
-                        confirmMessage.classList.remove("error");
-                        ntcheck.name = true;
-                    }else{
-                        confirmMessage.innerText="사용 중인 이름입니다.";
-                        confirmMessage.classList.add("error");
-                        confirmMessage.classList.remove("confirm");
+
+        if(oriName != name.value){
+
+            if(regEx.test(name.value)){
+                $.ajax({
+                    url : "/nameDupCheck",
+                    data : {"memberName" : name.value},
+                    success : result => {
+                        if(result == 0){
+                            confirmMessage.innerText = "사용 가능한 이름입니다.";
+                            confirmMessage.classList.add("confirm");
+                            confirmMessage.classList.remove("error");
+                            ntcheck.name = true;
+                        }else{
+                            confirmMessage.innerText="사용 중인 이름입니다.";
+                            confirmMessage.classList.add("error");
+                            confirmMessage.classList.remove("confirm");
+                            ntcheck.name = false;
+                        }
+                    },
+                    error : ()=>{
+                        alert("ajax 통신 중 오류 발생 - 이름 수정");
                         ntcheck.name = false;
                     }
-                },
-                error : ()=>{
-                    alert("ajax 통신 중 오류 발생 - 이름 수정");
-                    ntcheck.name = false;
-                }
-            })
-        }else{
-            confirmMessage.innerText="이름 형식이 유효하지 않습니다.";
-            confirmMessage.classList.add("error");
-            confirmMessage.classList.remove("confirm");
-            ntcheck.name = false;
+                })
+            }else{
+                confirmMessage.innerText="이름 형식이 유효하지 않습니다.";
+                confirmMessage.classList.add("error");
+                confirmMessage.classList.remove("confirm");
+                ntcheck.name = false;
+            }
         }
+        
     });
 
     tel.addEventListener("input", ()=>{
@@ -268,7 +273,7 @@ if(profileFrm != null){
             return false;
         }
 
-        if(ntcheck.name == false){
+        if(!ntcheck.name){
             alert("이름을 다시 입력해주세요.");
             return false;
         };
@@ -282,4 +287,4 @@ if(profileFrm != null){
 
     }
     
-}
+};
