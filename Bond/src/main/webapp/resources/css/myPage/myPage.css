@@ -250,7 +250,7 @@ body{
 }
 .image-area{
     width: 80%;
-    margin: 20px auto;
+    margin: 22px auto 0;
 }
 
 .update-image{
@@ -307,7 +307,7 @@ body{
 #image-input{display: none;}
 
 .subBtn{
-    width: 238px;
+    width: 218px;
     height: 44px;
     border: 1px solid black;
     border-radius: 10px;
@@ -315,8 +315,7 @@ body{
     font-size: 16px;
     font-weight: bold;
     background-color: white;
-    margin-left: 86px;
-    margin-top: 22px;
+    margin : 14px 0 0 120px;
 }
 .subBtn:hover{
     background-color: #21c531;
@@ -337,11 +336,11 @@ body{
 
 .update-profile{
     width: 85%;
-    margin: 42px auto;
+    margin: 39px 0 0 20px;
 }
 
 .imageBtn{
-    width: 238px;
+    width: 218px;
     height: 44px;
     border: 1px solid black;
     border-radius: 10px;
@@ -349,7 +348,7 @@ body{
     font-size: 16px;
     font-weight: bold;
     background-color: white;
-    margin-left: 39px;
+    margin: 10px 0 0 50px;
 }
 .imageBtn:hover{
     background-color: #21c531;
@@ -418,8 +417,8 @@ body{
 .line{
     border: 1px solid #BFBFBF;
     background-color: #BFBFBF;
-    height: 95%;
-    margin: auto;
+    height: 81%;
+    margin-top: 42px;
 }
 
 /* 패스워드 변경 */
