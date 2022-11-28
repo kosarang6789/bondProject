@@ -150,6 +150,9 @@ const imgFrm = document.getElementById("imgFrm");
 const profileFrm = document.getElementById("profileFrm");
 
 if(imgFrm != null){
+
+    let initCheck;
+    let deleteCheck=-1;
     
     const profileImage = document.getElementById("profile-image");
     const inputImg = document.getElementById("image-input");
@@ -157,23 +160,40 @@ if(imgFrm != null){
 
     const originalImg = profileImage.getAttribute("src");
     const defaultImg = "/resources/images/member/profile/defaultProfile.png";
+
+    if(profileImage.getAttribute("src") == defaultImg){
+        initCheck = false;
+    }else{
+        initCheck = true;
+    }
+
     inputImg.addEventListener("change", e=>{
         if(e.target.files[0] != undefined){ // 선택된 파일 o
             const reader = new FileReader(); // 파일을 읽음
             reader.readAsDataURL(e.target.files[0]); // 지정된 파일 읽기 시작
             reader.onload = event =>{
                 profileImage.setAttribute("src", event.target.result);
+                deleteCheck=1;
             }
         }else{ // 사진 업로드 취소 버튼 클릭
             profileImage.setAttribute("src", originalImg);
+            deleteCheck=-1;
         }
     });
-    
     deleteBtn.addEventListener("click", ()=>{
         profileImage.setAttribute("src", defaultImg);
-        profileImage.value="";
-
+        inputImg.value="";
+        deleteCheck=0;
     });
+
+    function profileValidate(){
+        if(!initCheck && deleteCheck==1){return true;}
+        if(initCheck && deleteCheck==0){return true;}
+        if(initCheck && deleteCheck==1){return true;}
+        alert("이미지 변경 후 클릭하세요");
+        return false;
+    }
+    
 }
 
 if(profileFrm != null){
