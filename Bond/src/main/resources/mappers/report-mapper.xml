@@ -61,17 +61,6 @@
 		
 	</resultMap>
 	
-	<!-- 스케줄러를 이용한 신고 테이블 자동 업데이트 -->
-	<update id="autoReportUpdate">
-		UPDATE "REPORT" SET
-		EXPIRE_YN = 'Y'
-		<![CDATA[
-		WHERE RESULT_CODE != 0
-		AND PROCESS_YN = 'Y'
-		AND EXPIRE_DATE < SYSDATE
-		AND EXPIRE_YN = 'N'
-		]]>
-	</update>
 	
 	<!-- 신고 대상이 회원인 경우 -->
 	<select id="getMemberInfo" parameterType="_int" resultMap="member_rm">
