@@ -44,7 +44,7 @@ public class ReportServiceImpl implements ReportService {
 	}
 
 	// 신고하기
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int makeReport(Map<String, Object> infoMap) {
 		return dao.makeReport(infoMap);
