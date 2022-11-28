@@ -16,50 +16,145 @@ input{
     border : none;
     outline: none;
 }
+
+ul{list-style : none;}
+
+a{text-decoration: none;}
+
+body{
+background-color: #f8f9fa;
+display: block;
+}
 /* Header */
 
 .header-area{
-    width: 100%;
-    background-color: #fff;
-    position: fixed;
-    box-shadow: 0 1.4px 1.3px 0 rgb(62 73 89 / 7%);
-    z-index: 2000;
-    display: block;
+width: 100%;
+background-color: #fff;
+position: fixed;
+box-shadow: 0 1.4px 1.3px 0 rgb(62 73 89 / 7%);
+z-index: 2000;
+display: block;
 }
 
 header{
-    width: 1140px;
-    height: 50px;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
+width: 1140px;
+height: 50px;
+margin: auto;
+display: flex;
+align-items: center;
+justify-content: space-between;
+position: relative;
 }
 
 #home-logo{
-    width: 80px;
-    padding-top: 4px;
+width: 80px;
+padding-top: 4px;
 }
 
-.box {
-    width: 40px;
-    height: 40px;
-    border-radius: 70%;
-    overflow: hidden;
-    justify-content: right;
+.header-widget-area{
+display: block;
+}
+
+.widget-list{
+list-style: none;
+display: flex;
+align-items: center;
+width: 160px;
+position: relative;
+}
+
+.chat-icon{
+font-size: 1.1em;
+width: 30%;
+}
+
+.bell-icon{
+font-size: 1.1em;
+width: 30%;
+}
+
+.widget-item{
+width: 33.3%;
+height: 100%;
+}
+
+
+/* 프로필 사진 클릭 메뉴 */
+
+.dropdown{
+position: relative;
+}
+
+.dropbtn{
+width: 100%;
+height: 100%;
+display: flex;
+border: none;
+cursor: pointer;
+margin-bottom: 1px;
+background-color: white;
+}
+.dropdown-content>a:hover{
+background-color: #f8f9fa;
+}
+.dropdown-content{
+display: none;
+position: absolute;
+z-index: 1000;
+width: 100px;
+height: 75px;
+border: 1px solid #ccc;
+background-color: white;
+border-radius: 14px;
+overflow: hidden;
+top: 42px;
+right: -2px;
+}
+
+#myDropdown > a{
+display: flex;
+height: 50%;
+justify-content: center;
+align-items: center;
+text-decoration: none;
+color: #555;
+font-size: 14px;
+font-weight: 600;
+}
+
+#myDropdown > a:first-child{
+border-bottom: 1px solid #ccc;
+}
+
+.dropdown span{
+width: 23px;
+height: 23px;
+border-radius: 50%;
+border: 1px solid #999;
+/* background-color: #999; */
+}
+
+#headerProfile{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
 }
 
 #profile-photo{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;  
-    cursor: pointer;
+font-size: 1em;
+color: white;
 }
 
-button{
-    cursor: pointer;
+.caret-icon{
+margin-top: 7px;
+padding-left: 8px;
+color: #999;
 }
+
+.show1 {display: block;}
+
+.rotate {transform: perspective(500px) rotateX(180deg);}
+
 
 /* body */
 body{
@@ -155,7 +250,7 @@ body{
 }
 .image-area{
     width: 80%;
-    margin: 20px auto;
+    margin: 22px auto 0;
 }
 
 .update-image{
@@ -212,7 +307,7 @@ body{
 #image-input{display: none;}
 
 .subBtn{
-    width: 238px;
+    width: 218px;
     height: 44px;
     border: 1px solid black;
     border-radius: 10px;
@@ -220,8 +315,7 @@ body{
     font-size: 16px;
     font-weight: bold;
     background-color: white;
-    margin-left: 86px;
-    margin-top: 22px;
+    margin : 14px 0 0 120px;
 }
 .subBtn:hover{
     background-color: #21c531;
@@ -242,11 +336,11 @@ body{
 
 .update-profile{
     width: 85%;
-    margin: 55px auto;
+    margin: 39px 0 0 20px;
 }
 
 .imageBtn{
-    width: 238px;
+    width: 218px;
     height: 44px;
     border: 1px solid black;
     border-radius: 10px;
@@ -254,7 +348,7 @@ body{
     font-size: 16px;
     font-weight: bold;
     background-color: white;
-    margin-left: 39px;
+    margin: 10px 0 0 50px;
 }
 .imageBtn:hover{
     background-color: #21c531;
@@ -262,8 +356,11 @@ body{
     border: none;
 }
 #confirmMessage{
-    margin-left: 150px;
+    margin-left: 13px;
     font-size: 13px;
+    height: 17px;
+    display: flex;
+    justify-content: center;
 }
 
 /* 행 제목 */
@@ -320,8 +417,8 @@ body{
 .line{
     border: 1px solid #BFBFBF;
     background-color: #BFBFBF;
-    height: 95%;
-    margin: auto;
+    height: 81%;
+    margin-top: 42px;
 }
 
 /* 패스워드 변경 */
