@@ -127,7 +127,7 @@ public class MyPageController {
 
 			message = "프로필 이미지가 변경되었습니다.";
 		}
-		else		message = "프로필 이미지 변경이 실패했습니다.";
+		else {		message = "프로필 이미지 변경이 실패했습니다.";}
 		
 		ra.addFlashAttribute("message", message);
 		
