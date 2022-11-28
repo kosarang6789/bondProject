@@ -176,12 +176,15 @@
 	
 	<!-- 신고 목록 개수 조회 -->
 	<select id="getReportListCount" parameterType="string" resultType="_int">
-		SELECT COUNT(*)
-		FROM "REPORT" R
-		JOIN "MEMBER" M ON (R.TARGET_NO = M.MEMBER_NO)
-		JOIN "GROUP" G ON (R.TARGET_NO = G.GROUP_NO)
-		JOIN "POST" P ON(R.TARGET_NO = P.POST_NO)
-		WHERE ${condition}
+		SELECT COUNT(*) FROM (
+			SELECT REPORT_NO,
+					CASE 
+						WHEN TYPE_CODE = 1 THEN (SELECT MEMBER_NAME FROM "MEMBER" WHERE MEMBER_NO = TARGET_NO)
+						WHEN TYPE_CODE = 2 THEN (SELECT GROUP_NAME FROM "GROUP" WHERE GROUP_NO = TARGET_NO)
+						WHEN TYPE_CODE = 3 THEN (SELECT POST_CONTENT FROM "POST" WHERE POST_NO = TARGET_NO)
+					END TARGET_NAME
+			FROM "REPORT"
+		) WHERE ${condition}
 	</select>
 	
 	<!-- 신고 목록 조회 -->
