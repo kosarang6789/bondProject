@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>글쓰기</title>
-    <link rel="stylesheet" href="/resources/css/postWrite.css">
+    <link rel="stylesheet" href="/resources/css/postSelect.css">
     <script src="https://kit.fontawesome.com/785870d879.js" crossorigin="anonymous"></script>
 </head>
 
