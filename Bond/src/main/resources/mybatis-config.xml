@@ -23,7 +23,7 @@
 		<typeAlias type="kh.semi.project.bond.model.vo.Group" alias="Group"/>
 		<typeAlias type="kh.semi.project.bond.model.vo.GroupImage" alias="GroupImage"/>		
 		<typeAlias type="kh.semi.project.member.model.vo.MemberImage" alias="MemberImage"/>		
-		<typeAlias type="kh.semi.project.admin.model.vo.Report" alias="Report"/>		
+		<typeAlias type="kh.semi.project.report.model.vo.Report" alias="Report"/>		
 	</typeAliases>
 	
 	<!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->
