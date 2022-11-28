@@ -11,26 +11,11 @@
     <title>마이페이지</title>
 
     <link rel="stylesheet" href="/resources/css/myPage/myPage.css">
+    <%-- <link rel="stylesheet" href="/resources/css/member/mainPage.css"> --%>
     <script src="https://kit.fontawesome.com/345198b845.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <section class="header-area">
-        <header>
-            <div>
-                <!-- 클릭 시 메인으로 이동하는 로고  -->
-                <a href="/member/mainPage">
-                    <img src="/resources/images/common/home-logo.png"  id="home-logo">
-                </a>
-            </div>
-    
-            <div class="profile">
-                <!-- 내 정보 사진 -->
-                <button type="button" class="box">
-                    <img src="images/profile-photo.png" id="profile-photo">
-                </button>
-            </div>
-        </header>
-    </section>
+<jsp:include page="/WEB-INF/views/member/mainPage-header.jsp" />
 
     <section class="myPage-layout">
         <aside class="myPage-sidebar">
@@ -90,14 +75,12 @@
                             <div class="myPage-row">
                                 <label>이름</label>
                                 <span><input type="text" name="memberName" value="${loginMember.memberName}" id="name"></span>
-                                <%-- <button>변경</button> --%>
                             </div>
                             
 
                             <div class="myPage-row">
                                 <label>생년월일</label>
                                 <span><input type="date" name="memberBirth" value="${loginMember.memberBirth}" id="birth"></span>
-                                <%-- <button>변경</button> --%>
                             </div>
                             
                             <c:if test="${!empty loginMember.memberTel}">
@@ -108,7 +91,7 @@
                                 <label>전화번호</label>
                                 <span><input type="text" name="memberTel" id="tel" value="${loginMember.memberTel}" maxlength="11"></span>
                             </div>
-                            <div id="confirmMessage"></div>
+                            <div id="confirmMessage"> </div>
                             <button class="subBtn">내 정보 수정하기</button>
                         </div>
                     </form>
@@ -130,6 +113,7 @@
         const oriTel = "${loginMember.memberTel}";
     </script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="/resources/js/member/mainPage.js"></script>
     <script src="/resources/js/myPage/myPage.js"></script>
 </body>
 </html>
