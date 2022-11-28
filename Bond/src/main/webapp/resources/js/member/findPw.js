@@ -130,10 +130,9 @@ changePwFrm.addEventListener("submit", (e)=>{
             alert("비밀번호가 일치하지 않습니다.");
             e.preventDefault();
             return;
-        }else{
-            alert("비밀번호 변경에 성공했습니다.");
         }
     }
+    alert("비밀번호 변경에 성공했습니다.");
 });
 
 

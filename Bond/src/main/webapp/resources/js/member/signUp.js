@@ -146,7 +146,7 @@ const nameConfirm = document.getElementById("nameConfirm");
 
 memberName.addEventListener("input", function(){
     if(memberName.value.trim().length == 0){
-        nameConfirm.innerText = "한글, 영어 숫자로만 2~10글자 입력해주세요.";
+        nameConfirm.innerText = "한글, 영어, 숫자로만 2~10글자 입력해주세요.";
         nameConfirm.classList.remove("confirm", "error");
         checkObj.memberName = false;
         return;

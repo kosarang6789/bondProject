@@ -1,0 +1,413 @@
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+*{
+    box-sizing: border-box;
+
+    padding: 0;
+    margin: 0;
+    font-family: 'nanumsquare', serif;
+}
+
+body{
+    background-color: #f8f9fa;
+    display: block;
+}
+
+input{
+    border : none;
+    outline: none;
+}
+/* Header */
+
+.header-area{
+    width: 100%;
+    background-color: #fff;
+    position: fixed;
+    box-shadow: 0 1.4px 1.3px 0 rgb(62 73 89 / 7%);
+    z-index: 2000;
+    display: block;
+}
+
+header{
+    width: 1140px;
+    height: 50px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+#home-logo{
+    width: 80px;
+    padding-top: 4px;
+}
+
+.box {
+    width: 40px;
+    height: 40px;
+    border-radius: 70%;
+    overflow: hidden;
+    justify-content: right;
+}
+
+#profile-photo{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  
+    cursor: pointer;
+}
+
+button{
+    cursor: pointer;
+}
+
+/* body */
+body{
+    background-color: #eef0f3;
+}
+
+.myPage-layout{
+    display: flex;
+    align-items: flex-start;
+    width: 1034px;   
+    margin: 0 auto;
+    padding: 70px 0 0;
+    height: 664px;
+}
+
+/* 메뉴 사이드바 */
+.myPage-sidebar {
+    width: 208px;
+    background-color: white;
+    border-radius: 10px;
+    /* padding: 15px; */
+    overflow: hidden;
+}
+
+.myPage-menu {
+    font-size: 16px;
+    color: #222222;
+}
+
+.myPage-menu ul{
+    list-style: none;
+}
+
+.myPage-menu>p{
+    background-color: #f7f8f9;
+    display: block;
+    padding: 15px 30px 10px 20px;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(0,0,0,.04);
+}
+
+.myPage-menu a{
+    text-decoration: none;
+    padding: 10px 15px 10px 25px;
+    display: block;
+    color: #222222;
+    border-bottom: 1px solid rgba(0,0,0,.04);
+}
+
+.myPage-menu>a{
+    background-color: #f8f9fa;
+    padding: 12px 30px 15px 20px;
+    font-weight: 600;
+}
+
+/* content */
+.content-area{
+    background-color: white;
+    margin: 0 0 20px 20px;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 920px;
+    height: 80%;
+}
+
+.content-header{
+    height: 56px;
+    padding: 0 15px;
+    border-bottom: 1px solid #e3e3e3;
+    line-height: 48px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #222;
+}
+
+/* 내정보 수정 */
+.content-body{
+    display: flex;
+    width: 100%;
+    height: 85%;
+    flex-wrap: nowrap;
+    padding-left: 10px;
+}
+.content-body>#profileFrm{
+    width: 60%;
+    height: 100%;
+}
+.content-body>#imgFrm{
+    width: 40%;
+    height: 100%;
+}
+.image-area{
+    width: 80%;
+    margin: 20px auto;
+}
+
+.update-image{
+    margin: 45px auto 0;
+    width: 145px;
+    height: 145px;
+    /* border: 6px solid #BFBFBF; */
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.update-image>img{
+    width: 100%;
+    display: block;
+}
+
+.profile-btn-area{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.profile-btn-area{
+    margin-top: 30px;
+}
+
+.profile-btn-area>p{
+    width: 2%;
+}
+
+.profile-btn-area>*:not(:nth-child(2)){
+    width: 42%;
+    height: 33px;
+    padding: 6px 5px;
+    border: 2px solid #bfbfbf;
+    background-color: #bfbfbf;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+}
+
+.profile-btn-area>*:not(:nth-child(2)):hover{
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 15%);
+}
+
+.profile-btn-area>label:first-child{
+    background-color: white;
+    color: #222222;
+}
+
+#image-input{display: none;}
+
+.subBtn{
+    width: 238px;
+    height: 44px;
+    border: 1px solid black;
+    border-radius: 10px;
+    border: 2px solid #BFBFBF;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: white;
+    margin-left: 86px;
+    margin-top: 22px;
+}
+.subBtn:hover{
+    background-color: #21c531;
+    color: white;
+    border: none;
+}
+
+/* 프로필 수정 */
+.myPage-row{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    margin-bottom: 9px;
+}
+
+.update-profile{
+    width: 85%;
+    margin: 55px auto;
+}
+
+.imageBtn{
+    width: 238px;
+    height: 44px;
+    border: 1px solid black;
+    border-radius: 10px;
+    border: 2px solid #BFBFBF;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: white;
+    margin-left: 39px;
+}
+.imageBtn:hover{
+    background-color: #21c531;
+    color: white;
+    border: none;
+}
+#confirmMessage{
+    margin-left: 150px;
+    font-size: 13px;
+}
+
+/* 행 제목 */
+
+.myPage-row>label, .image-area>label{
+    color: #21c531;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.myPage-row>label{
+    width: 30%;
+}
+
+.myPage-row>span{
+    width: 55%;
+    border-bottom: 1px solid rgba(0,0,0,0.4);
+    padding :5px 7px;
+}
+.myPage-row>span>input{
+    width: 100%;
+    font-size: 16px;
+}
+
+.myPage-row>*:nth-child(3){
+    width: 10%;
+}
+
+.profile-image-area{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    position: relative;
+}
+
+#profile-image{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.myPage-row>button{
+    background-color: #bfbfbf;
+    border: 2px solid #BFBFBF;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    line-height: 20px;
+}
+.myPage-row>button:hover{
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 15%);
+}
+
+.line{
+    border: 1px solid #BFBFBF;
+    background-color: #BFBFBF;
+    height: 95%;
+    margin: auto;
+}
+
+/* 패스워드 변경 */
+.changePw{
+    width: 100%;
+    padding: 32px 0;
+}
+
+.content-body>#changePwFrm{
+    margin: 0 auto;
+    width: 100%;
+}
+
+.myPage-row>input[type="password"]{
+    width: 43%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 1.5px solid rgba(0,0,0,0.4);
+}
+
+.myPage-row>input[type="password"]:focus-within{
+    border-bottom-color: #21c531;
+}
+
+.pw-row{
+    height: 60px;
+}
+
+.pw-row>label{
+    width: 20%;
+}
+
+.changePw>button{
+    width: 180px;
+    height: 50px;
+    display: block;
+    margin: 35px auto 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #222222;
+}
+
+#pwConfirm{
+    margin: 10px 0 0 300px;
+    font-size: 14px;
+}
+
+.confirm{
+    color : #21c531;
+}
+.error{
+    color : red;
+}
+
+
+/* 서비스 탈퇴 */
+.content-body>form[name="secession"]{
+    margin: 0 auto;
+}
+
+.secession-terms{
+    padding-top: 10px;
+    font-size: 14px;
+    line-height: 1.3;
+}
+
+.secession-terms>h4{
+    margin: 12px 0;
+    color: #21c531;
+    font-size: 16px;
+}
+
+.secession-agree{
+    margin: 0 0 5px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.secession-pw>label{
+    width: 15%;
+}
+
+.secession-submit{
+    font-size: 16px;
+    margin-left: 20px;
+}

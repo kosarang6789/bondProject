@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="myPageMapper">
+
+	<resultMap type="Member" id="member_rm">
+		
+		<!-- PK 컬럼은 id로 -->
+		<id property="memberNo" column="MEMBER_NO" />
+		
+		<!-- 나머지 컬럼은 result로 작성 -->
+		<result property="memberEmail" column="MEMBER_EMAIL" />
+		<result property="memberPw" column="MEMBER_PW" />
+		<result property="memberName" column="MEMBER_NAME" />
+		<result property="memberBirth" column="MEMBER_BIRTH" />
+		<result property="memberTel" column="MEMBER_TEL" />
+		<result property="profileImage" column="PROFILE_IMG" />
+		<result property="authority" column="AUTHORITY" />
+		<result property="memberStatus" column="MEMBER_STATUS" />
+		<result property="signUpDate" column="SIGNUP_DATE" />
+		<result property="delDate" column="DEL_DATE" />
+	</resultMap>
+	
+	<resultMap type="MemberImage" id="memberImg_rm">
+		<id property="memberNo" column="MEMBER_NO"/>
+		
+		<result property="memberImgOrigin" column="MEMBER_IMG_ORIGIN"/>
+		<result property="memberImgRename" column="MEMBER_IMG_RENAME"/>
+		<result property="memberImgPath" column="MEMBER_IMG_PATH"/>
+	</resultMap>
+	
+	
+	
+	<!-- 암호화 된 비밀번호 조회 -->
+	<select id="selectEncPw" resultType="string">
+		SELECT MEMBER_PW FROM "MEMBER"
+		WHERE MEMBER_NO = #{memberNo}
+	</select>
+	
+	<!-- 회원 탈퇴 -->
+	<update id="secession">
+		UPDATE MEMBER SET
+		MEMBER_STATUS = '2'
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+	
+	
+	<!-- 비밀번호 변경 -->
+	<update id="myPageMapper">
+		UPDATE "MEMBER" SET
+		MEMBER_PW = #{newPw}
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+
+
+
+	<!-- 이미지 있는지 조회 -->
+	<select id="checkImg" resultType="_int">
+		SELECT COUNT(*) FROM MEMBER_IMG
+		WHERE MEMBER_NO = #{memberNo}
+	</select>
+
+	
+	<!-- 마이페이지 - 이미지 삽입 -->
+	<insert id="insertImg">
+		INSERT INTO "MEMBER_IMG"
+		VALUES (SEQ_MEMBER_IMG_NO.NEXTVAL, #{memberNo}, #{memberImgOrigin}, 
+			#{memberImgRename}, #{memberImgPath})
+	</insert>
+	
+	<!-- 마이페이지 - 이미지 수정 -->
+	<update id="updateImg">
+		UPDATE "MEMBER_IMG" SET
+		MEMBER_IMG_ORIGIN = #{memberImgOrigin},
+		MEMBER_IMG_RENAME = #{memberImgRename},
+		MEMBER_IMG_PATH = #{memberImgPath}
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+
+	<!-- 마이페이지 내 정보 수정 -->
+	<update id="updateProfile">
+		UPDATE "MEMBER" SET
+		MEMBER_TEL = #{memberTel},
+		MEMBER_BIRTH = #{memberBirth},
+		MEMBER_NAME = #{memberName}
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+
+	
+	
+	
+</mapper>
