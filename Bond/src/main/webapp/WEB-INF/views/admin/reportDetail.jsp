@@ -29,7 +29,7 @@
 
             <section class="content">
                 <div class="content-header">
-                    <h3>게시물 제목</h3>
+                    <h3>신고 관리</h3>
                     <a href="/admin/report/list/" id="list-btn">
                         목록
                     </a>
@@ -46,7 +46,7 @@
                         </div>
                         <div class="detail-info-row">
                             <label>신고일</label>
-                            <div class="detail-info-col2">${report.reportDate}</div>
+                            <div class="detail-info-col">${report.reportDate}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>신고자</label>
@@ -54,18 +54,22 @@
                         </div>
                         <div class="detail-info-row">
                             <label>신고 대상</label>
-                            <div class="detail-info-col2">${report.targetName}</div>
+                            <div class="detail-info-col">${report.targetName}</div>
+                        </div>
+                        <div class="detail-info-row">
                             <label>신고 사유</label>
-                            <div class="detail-info-col2">${report.reasonDetails}</div>
+                            <div class="detail-info-col">${report.reasonDetails}</div>
                         </div>
                     </div>
                     <div class="detail-info">
                         <div class="detail-info-row">
                             <label>처리여부</label>
-                            <div class="detail-info-col2">${report.processYN}</div>
-                            <c:if test="${report.processYN.equals('접수')}">
+                            <div class="detail-info-col">${report.processYN}</div>
+                        </div>
+                        <c:if test="${report.processYN.equals('접수')}">
+                            <div class="detail-info-row">
                                 <label>결과선택</label>
-                                <div class="detail-info-col2">
+                                <div class="detail-info-col">
                                     <form action="/admin/report/process" method="POST">
                                         <select id="resultSelect" name="process">
                                             <option value="suspend">정지</option>
@@ -74,8 +78,8 @@
                                         <button id="resultBtn" name="resultBtn">확인</button>
                                     </form>
                                 </div>
-                            </c:if>
-                        </div>
+                            </div>
+                        </c:if>
                     </div>
                     <c:if test="${report.processYN.equals('완료')}">
                         <div class="detail-info">
