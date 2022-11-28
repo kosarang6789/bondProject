@@ -359,3 +359,7 @@ footer a{
 footer span{
     padding : 0 10px;
 }
+
+#confirmMessage{
+    height: 14px;
+}

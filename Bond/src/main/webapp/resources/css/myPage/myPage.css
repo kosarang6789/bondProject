@@ -18,7 +18,7 @@ input{
 }
 /* Header */
 
-.header-area{
+/* .header-area{
     width: 100%;
     background-color: #fff;
     position: fixed;
@@ -59,7 +59,147 @@ header{
 
 button{
     cursor: pointer;
+} */
+margin: 0;
+font-family: 'nanumsquare', serif;
 }
+
+ul{list-style : none;}
+
+a{text-decoration: none;}
+
+body{
+background-color: #f8f9fa;
+display: block;
+}
+/* Header */
+
+.header-area{
+width: 100%;
+background-color: #fff;
+position: fixed;
+box-shadow: 0 1.4px 1.3px 0 rgb(62 73 89 / 7%);
+z-index: 2000;
+display: block;
+}
+
+header{
+width: 1140px;
+height: 50px;
+margin: auto;
+display: flex;
+align-items: center;
+justify-content: space-between;
+position: relative;
+}
+
+#home-logo{
+width: 80px;
+padding-top: 4px;
+}
+
+.header-widget-area{
+display: block;
+}
+
+.widget-list{
+list-style: none;
+display: flex;
+align-items: center;
+width: 160px;
+position: relative;
+}
+
+.chat-icon{
+font-size: 1.1em;
+width: 30%;
+}
+
+.bell-icon{
+font-size: 1.1em;
+width: 30%;
+}
+
+.widget-item{
+width: 33.3%;
+height: 100%;
+}
+
+
+/* 프로필 사진 클릭 메뉴 */
+
+.dropdown{
+position: relative;
+}
+
+.dropbtn{
+width: 100%;
+height: 100%;
+display: flex;
+border: none;
+cursor: pointer;
+margin-bottom: 1px;
+background-color: white;
+}
+.dropdown-content>a:hover{
+background-color: #f8f9fa;
+}
+.dropdown-content{
+display: none;
+position: absolute;
+z-index: 1000;
+width: 100px;
+height: 75px;
+border: 1px solid #ccc;
+background-color: white;
+border-radius: 14px;
+overflow: hidden;
+top: 42px;
+right: -2px;
+}
+
+#myDropdown > a{
+display: flex;
+height: 50%;
+justify-content: center;
+align-items: center;
+text-decoration: none;
+color: #555;
+font-size: 14px;
+font-weight: 600;
+}
+
+#myDropdown > a:first-child{
+border-bottom: 1px solid #ccc;
+}
+
+.dropdown span{
+width: 23px;
+height: 23px;
+border-radius: 50%;
+border: 1px solid #999;
+background-color: #999;
+}
+
+.profile{
+margin-top: 3px;
+}
+
+#profile-photo{
+font-size: 1em;
+color: white;
+}
+
+.caret-icon{
+margin-top: 7px;
+padding-left: 8px;
+color: #999;
+}
+
+.show1 {display: block;}
+
+.rotate {transform: perspective(500px) rotateX(180deg);}
+
 
 /* body */
 body{
@@ -242,7 +382,7 @@ body{
 
 .update-profile{
     width: 85%;
-    margin: 55px auto;
+    margin: 42px auto;
 }
 
 .imageBtn{
@@ -262,8 +402,11 @@ body{
     border: none;
 }
 #confirmMessage{
-    margin-left: 150px;
+    margin-left: 13px;
     font-size: 13px;
+    height: 17px;
+    display: flex;
+    justify-content: center;
 }
 
 /* 행 제목 */

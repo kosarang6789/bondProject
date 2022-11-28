@@ -5,7 +5,7 @@
     <header>
         <div>
             <!-- 클릭 시 메인으로 이동하는 로고  -->
-            <a href="#">
+            <a href="/member/mainPage">
                 <img src="/resources/images/common/home-logo.png" id="home-logo">
             </a>
         </div>

@@ -185,13 +185,11 @@ if(profileFrm != null){
 
     name.addEventListener("click", ()=>{
         confirmMessage.innerText="한글, 영어, 숫자로만 2~10글자 입력해주세요.";
-        confirmMessage.classList.remove("confirm");
-        confirmMessage.classList.add("error");
+        confirmMessage.classList.remove("confirm", "error");
     });
     tel.addEventListener("click", ()=>{
         confirmMessage.innerText="- 빼고 입력해주세요.";
-        confirmMessage.classList.remove("confirm");
-        confirmMessage.classList.add("error");
+        confirmMessage.classList.remove("confirm", "error");
     });
 
     const ntcheck = {
@@ -204,6 +202,9 @@ if(profileFrm != null){
         const regEx = /^[\w가-힇]{2,10}$/;
 
         if(oriName != name.value){
+            // confirmMessage.innerText="한글, 영어, 숫자로만 2~10글자 입력해주세요.";
+            // confirmMessage.classList.remove("confirm");
+            // confirmMessage.classList.add("error");
 
             if(regEx.test(name.value)){
                 $.ajax({
@@ -238,6 +239,9 @@ if(profileFrm != null){
     });
 
     tel.addEventListener("input", ()=>{
+        // confirmMessage.innerText="- 빼고 입력해주세요.";
+        // confirmMessage.classList.remove("confirm");
+        // confirmMessage.classList.add("error");
         const regEx = /^0(1[01679]|2|[3-6][1-5]|70)[1-9]\d{2,3}\d{4}$/;
         if(regEx.test(tel.value)){
             confirmMessage.innerText="유효한 전화번호 형식입니다.";
