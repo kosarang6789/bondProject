@@ -1,5 +1,6 @@
 package kh.semi.project.admin.model.service;
 
+import kh.semi.project.admin.model.vo.Report;
 import kh.semi.project.bond.model.vo.Group;
 import kh.semi.project.bond.model.vo.Post;
 import kh.semi.project.member.model.vo.Member;
@@ -23,5 +24,11 @@ public interface AdminDetailService {
 	 * @return
 	 */
 	Post selectPostDetail(int inputPostNo);
+
+	/** 신고 내역 상세 조회
+	 * @param inputReportNo
+	 * @return
+	 */
+	Report selectReportDetail(int inputReportNo);
 
 }

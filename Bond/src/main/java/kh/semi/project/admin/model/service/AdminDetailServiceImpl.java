@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kh.semi.project.admin.model.dao.AdminDetailDAO;
+import kh.semi.project.admin.model.vo.Report;
 import kh.semi.project.bond.model.vo.Group;
 import kh.semi.project.bond.model.vo.Post;
 import kh.semi.project.member.model.vo.Member;
@@ -30,6 +31,12 @@ public class AdminDetailServiceImpl implements AdminDetailService{
 	@Override
 	public Post selectPostDetail(int inputPostNo) {
 		return dao.selectPostDetail(inputPostNo);
+	}
+	
+	// 신고 내역 상세 조회
+	@Override
+	public Report selectReportDetail(int inputReportNo) {
+		return dao.selectReportDetail(inputReportNo);
 	}
 
 }
