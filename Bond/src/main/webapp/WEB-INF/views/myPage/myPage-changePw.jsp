@@ -48,38 +48,31 @@
         </aside>
         <main class="content-area">
             <div class="content-header">
-                <h2>서비스 탈퇴</h2>
+                <h2>비밀번호 수정</h2>
             </div>
 
             <div class="content-body">
-                <form action="/myPage/secession" method="post" name="secession" id="secessionFrm">
-                    <div class="secession-terms">
-                        <h4>계정을 삭제하면 : </h4>
-                        <pre>
-- 내 프로필, 초대이력, 유료상품 구매 및 다운로드 내역, 무료 스티커 다운로드 내역, 
-  밴드게임 계정이 모두 사라지고, 애드포스트 미디어 등록이 해제되며 복구가 불가능합니다.
-                            
-- 참여 중인 모든 밴드와 페이지에서 탈퇴됩니다. 밴드 서비스 내에서 작성한 콘텐츠를 
-  삭제하거나 수정할 수 없으니, 원하시면 계정 삭제 전에 지우거나 수정하시기 바랍니다.
-                            
-- 밴드 파트너센터를 이용중인 경우, 밴드 계정 삭제 시 밴드 파트너센터에서도 탈퇴가 진행됩니다.
-                            
-* 가입한 밴드 중 하나만 탈퇴하고 싶다면?
-  탈퇴하고 싶은 밴드에 들어가서 [밴드 탈퇴하기]를 선택하세요.
-                        </pre>
-                    </div>
-                    
-                    <div class="secession-agree">
-                        <input type="checkbox" name="agree" id="agree">
-                        <label for="agree">위 약관에 동의합니다.</label>
-                    </div>
-                    
-                    <div class="myPage-row secession-pw">
-                        <label>비밀번호</label>
-                        <input type="password" id="memberPw" name="memberPw" maxlength="20">
-                        <button class="secession-submit">탈퇴</button>
-                    </div>
+                <form action="/myPage/changePw" method="post" id="changePwFrm">
+                    <div class="changePw">
+                        <div class="myPage-row pw-row">
+                            <label>현재 비밀번호</label>
+                            <input type="password" id="currentPw" name="currentPw" maxlength="20">
+                        </div>
+        
+                        <div class="myPage-row pw-row">
+                            <label>새 비밀번호</label>
+                            <input type="password" id="newPw" name="newPw" maxlength="20">
+                        </div>
 
+                        <div class="myPage-row pw-row">
+                            <label>새 비밀번호 확인</label>
+                            <input type="password" id="newPwConfirm" name="newPwConfirm" maxlength="20">
+                        </div>
+
+                        <div id="pwConfirm">영어, 숫자, 특수문자(!,@,#,-,_) 8~20글자로 입력해주세요.</div>
+
+                        <button class="myPage-submit" id="chPw">변경하기</button>
+                    </div>
                 </form>
             </div>
         </main>
@@ -93,6 +86,5 @@
         <c:remove var="message"/>
     </c:if>
     <script src="/resources/js/myPage/myPage.js"></script>
-
 </body>
 </html>
