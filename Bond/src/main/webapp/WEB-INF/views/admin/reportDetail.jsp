@@ -40,49 +40,59 @@
                     <div class="detail-info">
                         <div class="detail-info-row">
                             <label>신고번호</label>
-                            <div class="detail-info-col2">01</div>
-                            <label>신고일</label>
-                            <div class="detail-info-col2">2022-11-01</div>
-                        </div>
-                        <div class="detail-info-row">
+                            <div class="detail-info-col2">${report.reportNo}</div>
                             <label>신고 유형</label>
-                            <div class="detail-info-col">회원</div>
+                            <div class="detail-info-col2">${report.typeDetails} 신고</div>
                         </div>
                         <div class="detail-info-row">
-                            <label>신고 사유</label>
-                            <div class="detail-info-col">마음에 안듦</div>
+                            <label>신고일</label>
+                            <div class="detail-info-col2">${report.reportDate}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>신고자</label>
-                            <div class="detail-info-col">철수</div>
+                            <div class="detail-info-col">${report.memberName}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>신고 대상</label>
-                            <div class="detail-info-col">짱구</div>
+                            <div class="detail-info-col2">${report.targetName}</div>
+                            <label>신고 사유</label>
+                            <div class="detail-info-col2">${report.reasonDetails}</div>
                         </div>
                     </div>
                     <div class="detail-info">
                         <div class="detail-info-row">
                             <label>처리여부</label>
-                            <div class="detail-info-col2">N</div>
-                            <label>결과선택</label>
-                            <div class="detail-info-col2">
-                                <select id="resultSelect" name="result">
-                                    <option value="suspend">정지</option>
-                                    <option value="reject">반려</option>
-                                </select>
-                                <button id="resultBtn" name="resultBtn">확인</button>
+                            <div class="detail-info-col2">${report.processYN}</div>
+                            <c:if test="${report.processYN.equals('접수')}">
+                                <label>결과선택</label>
+                                <div class="detail-info-col2">
+                                    <form action="/admin/report/process" method="POST">
+                                        <select id="resultSelect" name="process">
+                                            <option value="suspend">정지</option>
+                                            <option value="reject">반려</option>
+                                        </select>
+                                        <button id="resultBtn" name="resultBtn">확인</button>
+                                    </form>
+                                </div>
+                            </c:if>
+                        </div>
+                    </div>
+                    <c:if test="${report.processYN.equals('완료')}">
+                        <div class="detail-info">
+                            <div class="detail-info-row">
+                                <label>처리일</label>
+                                <div class="detail-info-col">${report.processDate}</div>
+                            </div>
+                            <div class="detail-info-row">
+                                <label>결과</label>
+                                <div class="detail-info-col">${report.resultDetails}</div>
+                            </div>
+                            <div class="detail-info-row">
+                                <label>정지기간</label>
+                                <div class="detail-info-col">${report.processDate} - ${report.expireDate}</div>
                             </div>
                         </div>
-                    </div>
-                    <div class="detail-info">
-                        <div class="detail-info-row">
-                            <label>처리일</label>
-                            <div class="detail-info-col2">2022-11-11</div>
-                            <label>결과</label>
-                            <div class="detail-info-col2">7일 정지</div>
-                        </div>
-                    </div>
+                    </c:if>
                 </div>
 
 
