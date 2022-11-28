@@ -27,29 +27,39 @@ public class BondIntroServiceImpl implements BondIntroService{
 	public int bondIntro(Group groupInfo, String webPath, String filePath, Group inputGroup,
 			MultipartFile groupImage) throws Exception {
 
-//		groupInfo.setGroupName(inputGroup.getGroupName());
-//		groupInfo.setGroupComment(inputGroup.getGroupComment());
-		
-		
-//		String image = groupInfo.getGroupImage();
+		groupInfo.setGroupName(inputGroup.getGroupName());
+		groupInfo.setGroupComment(inputGroup.getGroupComment());
+
 
 		inputGroup.setGroupNo(groupInfo.getGroupNo());
-		GroupImage img = new GroupImage();
-		String rename = null;
+		inputGroup.setGroupName(Util.XSSHandling(inputGroup.getGroupName()));
+		inputGroup.setGroupComment(Util.XSSHandling(inputGroup.getGroupComment()));
+		inputGroup.setGroupComment(Util.newLineHandling(inputGroup.getGroupComment()));
+		
 		
 		int result = dao.bondIntro(inputGroup);
 		
-		rename = Util.fileRename(groupImage.getOriginalFilename());
-		img.setGroupNo(groupInfo.getGroupNo());
-		img.setGroupImagePath(webPath);
-		img.setGroupImageRename(rename);
-		img.setGroupImageOrigin(groupImage.getOriginalFilename());
-		
-		groupInfo.setGroupImage(webPath+rename);
 		
 		if(result>0) {
 			
-			String temp = groupInfo.getGroupImage();
+			String temp = groupInfo.getGroupImage(); // 실패 대비 값 저장
+			
+			GroupImage img = new GroupImage();
+			String rename = null;
+			groupInfo.setGroupImage(webPath+rename);
+			
+			if(groupImage.getSize() == 0) { // 업로드 파일 x
+				groupInfo.setGroupImage(null);
+			}else {
+				
+				rename = Util.fileRename(groupImage.getOriginalFilename());
+				
+				img.setGroupNo(groupInfo.getGroupNo());
+				img.setGroupImagePath(webPath);
+				img.setGroupImageRename(rename);
+				img.setGroupImageOrigin(groupImage.getOriginalFilename());
+				groupInfo.setGroupImage(webPath+rename);
+			}
 			
 			result = dao.updateImg(img);
 			

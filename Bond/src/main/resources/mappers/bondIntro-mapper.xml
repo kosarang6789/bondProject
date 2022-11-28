@@ -32,7 +32,7 @@
    
    <!-- 본드 소개 수정 -->
    <update id="bondIntro">
-   		UPDATE "BOND" SET
+   		UPDATE "GROUP" SET
    		GROUP_NAME = #{groupName},
    		GROUP_COMMENT = #{groupComment}
    		WHERE GROUP_NO = #{groupNo}
@@ -41,7 +41,7 @@
    
    <!-- 본드 소개 이미지 수정 -->
    <update id="updateImg">
-   		UPDATE "BOND_IMG" SET
+   		UPDATE "GROUP_IMG" SET
    		GROUP_IMG_ORIGIN = #{groupImageOrigin},
    		GROUP_IMG_RENAME = #{groupImageRename},
    		GROUP_IMG_PATH = #{groupImagePath}

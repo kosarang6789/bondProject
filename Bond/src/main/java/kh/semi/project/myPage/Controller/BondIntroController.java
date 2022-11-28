@@ -1,6 +1,6 @@
 package kh.semi.project.myPage.Controller;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import kh.semi.project.bond.model.service.BondService;
 import kh.semi.project.bond.model.vo.Group;
-import kh.semi.project.member.model.vo.Member;
 import kh.semi.project.myPage.model.service.BondIntroService;
 
 @Controller
@@ -31,16 +29,16 @@ public class BondIntroController {
 	}
 	
 	// 본드 소개 수정
-	@PostMapping("/bond/bondInfo")
+	@PostMapping("/bond/bondIntro")
 	public String bondIntro(
 			@SessionAttribute("groupInfo") Group groupInfo,
 			RedirectAttributes ra,
 			Group inputGroup,
 			@RequestParam(value="groupImage") MultipartFile groupImage,
-			HttpServletRequest req) throws Exception {
+			HttpSession session) throws Exception {
 		
 		String webPath = "/resources/images/bond/profile/";
-		String filePath = req.getSession().getServletContext().getRealPath(webPath);
+		String filePath = session.getServletContext().getRealPath(webPath);
 
 		
 		int result = service.bondIntro(groupInfo, webPath, filePath, inputGroup, groupImage);

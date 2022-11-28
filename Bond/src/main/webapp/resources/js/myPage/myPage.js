@@ -306,8 +306,6 @@ if(profileFrm != null){
             alert("전화번호를 다시 입력해주세요.");
             return false;
         };
-        
-
 
     }
     
