@@ -1,0 +1,151 @@
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+*{
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'nanumsquare', serif;
+}
+.postWrite-section{
+    width: 80%; 
+    height: 550px;
+    max-width: 600px;
+    border: 1px solid black;
+    margin: auto;
+    margin-top: 130px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+.postWrite-section>.postWrite{
+    margin: auto;
+    width: 90%;
+    height: 100%;
+}
+
+.postWrite-title{
+    position: relative;
+    display: flex;
+}
+.title-area{
+    width: 80%;
+    font-size: 23x;
+    text-align: center;
+    padding: 35px 0px 15px 120px;
+}
+.close-btn{ 
+    border: none;
+    font-size: 18px;
+    background-color: white;
+    cursor: pointer;
+    font-weight: bold;
+    position: absolute;
+    right: 29px;
+    bottom: 15px;
+}
+
+.postWrite-content{
+    height: 330px;
+    max-height: 500px;
+    /*border: 1px solid red;*/
+    margin-bottom: 13px;
+}
+textarea{
+    resize: none;
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    padding: 25px 45px;
+    border: none;
+    line-height: 24px;
+}
+textarea:focus{
+    outline: none;
+}
+.postWrite-toolbar{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.postWrite-bottom{
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #ddd;
+    height: 80px;
+
+}
+
+.postWrite-btn:active{
+    transform: scale(0.95);
+}
+.setup-btn{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.write-setup{
+    cursor: pointer;
+    display: none;
+}
+.fa-toggle-off{
+    font-size: 20px;
+    padding-right: 15px;
+    margin-left: 20px;
+    color: #777;
+    cursor: pointer;
+}
+
+.postWrite-btn{
+    background-color: #21c531;
+    border: none;
+    color: white;
+    height: 40px;
+    cursor: pointer;
+    width: 110px;
+    margin-right: 20px;
+    border-radius: 5px;
+}
+
+.postWrite-btn>p{
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 10px;
+    padding: 2px 0 0 10px;
+}
+
+.submit-btn{
+    display: flex;
+    align-items: center;
+}
+
+.ok{
+    color: #21c531;
+}
+.no{
+    color: #777;
+}
+
+
+.postWrite-toolbar{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.toolbarList{
+    margin-left: 10px;
+}
+
+.toolbarListItem{
+    list-style: none;
+    display: inline;
+    margin-left:10px;
+}
+#photoInput{display: none;}
+
+.toolbarListItem>i{
+    font-size: 22px;
+    cursor: pointer;
+    margin: 10px;
+    color: #777;
+}

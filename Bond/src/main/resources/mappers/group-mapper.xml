@@ -67,6 +67,7 @@
 		FROM "GROUP" G
 		JOIN MEMBER_JOIN M ON(M.GROUP_NO = G.GROUP_NO)
 		WHERE MEMBER_NO = #{memberNo}
+		AND GROUP_STATUS = 0
 	</select>
 	
 	<!-- 본드 정보 조회 -->
