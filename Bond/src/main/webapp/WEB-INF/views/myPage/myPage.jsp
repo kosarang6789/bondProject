@@ -14,8 +14,8 @@
     <%-- <link rel="stylesheet" href="/resources/css/member/mainPage.css"> --%>
     <script src="https://kit.fontawesome.com/345198b845.js" crossorigin="anonymous"></script>
 </head>
-<jsp:include page="/WEB-INF/views/member/mainPage-header.jsp" />
 <body>
+<jsp:include page="/WEB-INF/views/member/mainPage-header.jsp" />
 
     <section class="myPage-layout">
         <aside class="myPage-sidebar">
@@ -75,14 +75,12 @@
                             <div class="myPage-row">
                                 <label>이름</label>
                                 <span><input type="text" name="memberName" value="${loginMember.memberName}" id="name"></span>
-                                <%-- <button>변경</button> --%>
                             </div>
                             
 
                             <div class="myPage-row">
                                 <label>생년월일</label>
                                 <span><input type="date" name="memberBirth" value="${loginMember.memberBirth}" id="birth"></span>
-                                <%-- <button>변경</button> --%>
                             </div>
                             
                             <c:if test="${!empty loginMember.memberTel}">
