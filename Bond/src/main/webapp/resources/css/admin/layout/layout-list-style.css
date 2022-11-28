@@ -132,7 +132,30 @@ main{ /* 배경색 및 flex */
 	height:100%;
 }
 
+/* 게시글 내용 .... 처리 */
+.postContent{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 /* 개별-list-style.css */
+.list-btn{
+    margin-top: 10px;
+    
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-start;
+    text-align: start;
+    border: none;
+
+    cursor: pointer;
+}
+
+.list-btn:hover{
+    background-color: #E2E2E250;
+}
 
 /* 검색 결과 없음 상자*/
 .emptyBox{

@@ -11,25 +11,6 @@
 .openYN{ flex-basis: 10%;}
 .groupStatus{ flex-basis: 10%;}
 
-.list-btn{
-    margin-top: 10px;
-    
-    width: 100%;
-
-    display: flex;
-    justify-content: flex-start;
-    text-align: start;
-    border: none;
-
-    background-color: #E2E2E230;
-
-    cursor: pointer;
-}
-
-.list-btn:hover{
-    background-color: #E2E2E250;
-}
-
 /* end .content-body */
 
 /* content-footer */
