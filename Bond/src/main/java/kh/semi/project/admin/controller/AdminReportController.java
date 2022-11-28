@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import kh.semi.project.admin.model.service.AdminReportService;
-import kh.semi.project.admin.model.vo.Report;
+import kh.semi.project.report.model.vo.Report;
 
 @Controller
 @RequestMapping("/admin")
@@ -20,6 +20,10 @@ public class AdminReportController {
 	@Autowired
 	private AdminReportService service;
 	
+	// 스케줄러를 이용한 자동 업데이트
+	public int autoReportUpdate() {
+		return service.autoReportUpdate();
+	}
 	
 	/** 신고 처리
 	 * @return

@@ -164,13 +164,12 @@ public class AdminListDAO {
 		String condition = null;
 		
 		if(opt==0) condition = "REPORT_NO = '" + keyword + "'";
-		if(opt==1) condition = "MEMBER_NAME LIKE '%' || '" +  keyword + "' || '%'";
-		if(opt==2) condition = "GROUP_NAME LIKE '%' || '" +  keyword + "' || '%'";
-		if(opt==3) condition = "POST_CONTENT LIKE '%' || '" +  keyword + "' || '%'";
+		if(opt==1) condition = "TARGET_NAME LIKE '%' || '" +  keyword + "' || '%'";
+		if(opt==2) condition = "TARGET_NAME LIKE '%' || '" +  keyword + "' || '%'";
+		if(opt==3) condition = "TARGET_NAME LIKE '%' || '" +  keyword + "' || '%'";
 		
 		return sqlSession.selectList("adminMapper.selectReportList", condition, rowBounds);
+		
 	}
-
-
 
 }

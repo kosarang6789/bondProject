@@ -1,9 +1,9 @@
 package kh.semi.project.admin.model.service;
 
-import kh.semi.project.admin.model.vo.Report;
 import kh.semi.project.bond.model.vo.Group;
 import kh.semi.project.bond.model.vo.Post;
 import kh.semi.project.member.model.vo.Member;
+import kh.semi.project.report.model.vo.Report;
 
 public interface AdminDetailService {
 

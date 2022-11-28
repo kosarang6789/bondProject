@@ -4,13 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kh.semi.project.admin.model.dao.AdminReportDAO;
-import kh.semi.project.admin.model.vo.Report;
+import kh.semi.project.report.model.vo.Report;
 
 @Service
 public class AdminReportServiceImpl implements AdminReportService {
 	
 	@Autowired
 	private AdminReportDAO dao;
+	
+	// 스케줄러를 이용한 신고 테이블 자동 업데이트
+	@Override
+	public int autoReportUpdate() {
+		return dao.autoReportUpdate();
+	}
 	
 	// 신고 처리
 	@Override
@@ -34,7 +40,14 @@ public class AdminReportServiceImpl implements AdminReportService {
 		}
 		
 		// 처리
-		return dao.reportProcess(report);
+		int result = 0;
+		int reportProcess = dao.updateResultCode(report);
+		
+		if(reportProcess > 0) {
+			result = dao.updateExpireDate(report);
+		}
+		
+		return result;
 		
 	}
 }

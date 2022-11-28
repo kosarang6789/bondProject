@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import kh.semi.project.admin.model.service.AdminDetailService;
-import kh.semi.project.admin.model.vo.Report;
 import kh.semi.project.bond.model.vo.Group;
 import kh.semi.project.bond.model.vo.Post;
 import kh.semi.project.member.model.vo.Member;
+import kh.semi.project.report.model.vo.Report;
 
 @Controller
 @RequestMapping("/admin") // 공통 링크 작성

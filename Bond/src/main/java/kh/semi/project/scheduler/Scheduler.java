@@ -8,13 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import kh.semi.project.admin.controller.ReportController;
+import kh.semi.project.admin.controller.AdminReportController;
 
 @Component
 public class Scheduler {
 	
 	@Autowired
-	private ReportController reportController;
+	private AdminReportController reportController;
 	
 	/** 신고 테이블 자동 업데이트
 	 *  - 신고 기간이 지난 회원을 찾아 신고를 만료시킴
