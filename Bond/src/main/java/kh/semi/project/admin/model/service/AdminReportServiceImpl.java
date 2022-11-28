@@ -2,6 +2,7 @@ package kh.semi.project.admin.model.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kh.semi.project.admin.model.dao.AdminReportDAO;
 import kh.semi.project.report.model.vo.Report;
@@ -13,12 +14,14 @@ public class AdminReportServiceImpl implements AdminReportService {
 	private AdminReportDAO dao;
 	
 	// 스케줄러를 이용한 신고 테이블 자동 업데이트
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int autoReportUpdate() {
 		return dao.autoReportUpdate();
 	}
 	
 	// 신고 처리
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int reportProcess(Report report, String process) {
 		

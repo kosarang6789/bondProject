@@ -1,11 +1,6 @@
 package kh.semi.project.admin.model.service;
 
-import java.util.List;
 import java.util.Map;
-
-import kh.semi.project.bond.model.vo.Group;
-import kh.semi.project.bond.model.vo.Post;
-import kh.semi.project.member.model.vo.Member;
 
 public interface AdminListService {
 
