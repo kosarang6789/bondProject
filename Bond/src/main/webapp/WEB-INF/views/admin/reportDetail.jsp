@@ -30,7 +30,7 @@
             <section class="content">
                 <div class="content-header">
                     <h3>게시물 제목</h3>
-                    <a href="/admin/reportList" id="list-btn">
+                    <a href="/admin/report/list/" id="list-btn">
                         목록
                     </a>
                 </div>
@@ -87,10 +87,12 @@
                                 <label>결과</label>
                                 <div class="detail-info-col">${report.resultDetails}</div>
                             </div>
-                            <div class="detail-info-row">
-                                <label>정지기간</label>
-                                <div class="detail-info-col">${report.processDate} - ${report.expireDate}</div>
-                            </div>
+                            <c:if test="${!report.resultDetails.equals('반려')}">
+                                <div class="detail-info-row">
+                                    <label>정지기간</label>
+                                    <div class="detail-info-col">${report.processDate} - ${report.expireDate}</div>
+                                </div>
+                            </c:if>
                         </div>
                     </c:if>
                 </div>

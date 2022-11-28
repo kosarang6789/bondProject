@@ -1,17 +1,17 @@
-const reportConfirm = document.querySelector(".report-confirm");
+const modal = document.querySelector(".modal");
 
-(function hidden (){
-    reportConfirm.style.display="none";
+// modal창 숨기기(즉시 실행 함수)
+(function hiddenModal (){
+    modal.style.display="none";
 })()
 
-
 // 사유 버튼을 누르면
-const reasonBtn = document.getElementsByClassName("reasonBtn")
+const reasonBtn = document.getElementsByClassName("reasonBtn");
 
 for(let item of reasonBtn){
     item.addEventListener("click", () => {
         const reasonCode = item.getAttribute("name");
-        reportConfirm.style.display="block";
+        modal.style.display="block";
 
         // 주소 만들기
         const pathName = location.pathname;
@@ -23,3 +23,10 @@ for(let item of reasonBtn){
 
     })
 }
+
+// 취소 버튼을 누르면
+const cancelBtn = document.getElementById("cancelBtn");
+
+cancelBtn.addEventListener("click", () => {
+    modal.style.display="none";
+})

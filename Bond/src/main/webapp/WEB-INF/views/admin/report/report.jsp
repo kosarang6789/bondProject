@@ -50,25 +50,41 @@
                 <ul>
                     <li class="report-why">
                         <button type="button" class="reasonBtn" name="${reason.reasonCode}" >
-                            ${reason.reasonDetails}
+                            <span class="reasonDetail">
+                                ${reason.reasonDetails}
+                            </span>
+                            <span class="icon">
+                                &gt;
+                            </span>
                         </button>
                     </li>
                 </ul> <!-- ul end -->
             </c:forEach>
 
-            <div class="report-confirm">
-                <div>
-                    신고 내용은 이용약관 및 정책에 의해서 처리되며, 허위신고 시 서비스 이용이 제한될 수 있습니다.
-                </div>
-                <div class="report-confirm-btn">
-                    <button id="reportCancelBtn">취소</button>
-                    <button id="reportAgreeBtn">신고하기</button>
+            <div class="modal">
+                <div class="window">
+                    <div>
+                        신고 내용은 이용약관 및 정책에 의해서 처리되며, 허위신고 시 서비스 이용이 제한될 수 있습니다.
+                    </div>
+                    <div class="report-confirm-btn">
+                        <button id="cancelBtn" type="button">취소</button>
+                        <button id="reportBtn" typpe="submit">신고하기</button>
+                    </div>
                 </div>
             </div>
 
-        </div> <!-- report-frm end -->
-    </form>
+        </form> <!-- report-frm end -->
+    </div>
+
+    <c:if test="${!empty message}">
+        <script>
+            alert("${message}");
+            close();
+        </script>
+        <c:remove var="message" />
+    </c:if>
 
     <script src="/resources/js/admin/report.js"></script>
+
 </body>
 </html>
