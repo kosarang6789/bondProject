@@ -30,8 +30,10 @@ public class AdminListController {
 	
 	/** 회원 목록 출력(ajax)
 	 * @param keyword
+	 * @param count
 	 * @param opt
 	 * @param cp
+	 * @param pm
 	 * @return
 	 */
 	@PostMapping("/member/list")
@@ -51,8 +53,10 @@ public class AdminListController {
 	
 	/** 모임 목록 출력(ajax)
 	 * @param keyword
+	 * @param count
 	 * @param opt
 	 * @param cp
+	 * @param pm
 	 * @return
 	 */
 	@PostMapping("/group/list")
@@ -72,7 +76,10 @@ public class AdminListController {
 	
 	/** 게시글 목록 출력(ajax)
 	 * @param keyword
+	 * @param count
 	 * @param opt
+	 * @param cp
+	 * @param pm
 	 * @return
 	 */
 	@PostMapping("/post/list")
@@ -86,6 +93,30 @@ public class AdminListController {
 			) {
 		
 		Map<String, Object> map = service.selectPostList(keyword, count, opt, cp);
+		
+		return new Gson().toJson(map);
+	}
+	
+	
+	/** 신고 목록 출력(ajax)
+	 * @param keyword
+	 * @param count
+	 * @param opt
+	 * @param cp
+	 * @param pm
+	 * @return
+	 */
+	@PostMapping("/report/list")
+	@ResponseBody
+	public String selectReportList(
+			String keyword, 
+			@RequestParam(value="count", required=false, defaultValue="10") int count, // 현재 페이지 번호, 얻어온 파라미터가 없는 경우 기본값으로 1 부여
+			@RequestParam(value="opt", required=false, defaultValue="1") int opt,
+			@RequestParam(value="cp", required=false, defaultValue="1") int cp, // 현재 페이지 번호, 얻어온 파라미터가 없는 경우 기본값으로 1 부여
+			@RequestParam Map<String, Object> pm
+			) {
+		
+		Map<String, Object> map = service.selectReportList(keyword, count, opt, cp);
 		
 		return new Gson().toJson(map);
 	}

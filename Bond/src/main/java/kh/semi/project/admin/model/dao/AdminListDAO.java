@@ -1,6 +1,8 @@
 package kh.semi.project.admin.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -99,8 +101,8 @@ public class AdminListDAO {
 		String condition = null;
 		
 		if(opt==0) condition = "POST_NO = '" + keyword + "'";
-		if(opt==1) condition = "GROUP_NAME LIKE '%' || '" +  keyword + "' || '%'";
-		if(opt==2) condition = "MEMBER_NAME LIKE '%' || '" +  keyword + "' || '%'";
+		if(opt==1) condition = "MEMBER_NAME LIKE '%' || '" +  keyword + "' || '%'";
+		if(opt==2) condition = "GROUP_NAME LIKE '%' || '" +  keyword + "' || '%'";
 		if(opt==3) condition = "POST_CONTENT LIKE '%' || '" +  keyword + "' || '%'";
 		
 		return sqlSession.selectOne("adminMapper.getPostListCount", condition);
@@ -124,11 +126,49 @@ public class AdminListDAO {
 		String condition = null;
 		
 		if(opt==0) condition = "POST_NO = '" + keyword + "'";
-		if(opt==1) condition = "GROUP_NAME LIKE '%' || '" +  keyword + "' || '%'";
-		if(opt==2) condition = "MEMBER_NAME LIKE '%' || '" +  keyword + "' || '%'";
+		if(opt==1) condition = "MEMBER_NAME LIKE '%' || '" +  keyword + "' || '%'";
+		if(opt==2) condition = "GROUP_NAME LIKE '%' || '" +  keyword + "' || '%'";
 		if(opt==3) condition = "POST_CONTENT LIKE '%' || '" +  keyword + "' || '%'";
 		
 		return sqlSession.selectList("adminMapper.selectPostList", condition, rowBounds);
+	}
+
+	/** 신고 목록 개수 확인
+	 * @param keyword
+	 * @param opt
+	 * @return
+	 */
+	public int getReportListCount(String keyword, int opt) {
+		
+		String condition = null;
+		
+		if(opt==0) condition = "REPORT_NO = '" + keyword + "'";
+		if(opt==1) condition = "MEMBER_NAME LIKE '%' || '" +  keyword + "' || '%'";
+		if(opt==2) condition = "GROUP_NAME LIKE '%' || '" +  keyword + "' || '%'";
+		if(opt==3) condition = "POST_CONTENT LIKE '%' || '" +  keyword + "' || '%'";
+		
+		return sqlSession.selectOne("adminMapper.getReportListCount", condition);
+	}
+ 
+	/** 신고 목록 조회(ajax)
+	 * @param keyword
+	 * @param opt
+	 * @param pagination
+	 * @return
+	 */
+	public List<Post> selectReportList(String keyword, int opt, AdminPagination pagination) {
+		int offset = ( pagination.getCurrentPage() - 1 ) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		String condition = null;
+		
+		if(opt==0) condition = "REPORT_NO = '" + keyword + "'";
+		if(opt==1) condition = "MEMBER_NAME LIKE '%' || '" +  keyword + "' || '%'";
+		if(opt==2) condition = "GROUP_NAME LIKE '%' || '" +  keyword + "' || '%'";
+		if(opt==3) condition = "POST_CONTENT LIKE '%' || '" +  keyword + "' || '%'";
+		
+		return sqlSession.selectList("adminMapper.selectReportList", condition, rowBounds);
 	}
 
 
