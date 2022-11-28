@@ -25,7 +25,7 @@
 
 
 
-    <script src="/resources/js/admin/tempReport.js"></script>
+    <script src="/resources/js/report/tempReport.js"></script>
 
 </body>
 </html>
