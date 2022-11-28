@@ -4,6 +4,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kh.semi.project.admin.model.vo.Report;
 import kh.semi.project.bond.model.vo.Group;
 import kh.semi.project.bond.model.vo.Post;
 import kh.semi.project.member.model.vo.Member;
@@ -36,6 +37,14 @@ public class AdminDetailDAO {
 	 */
 	public Post selectPostDetail(int inputPostNo) {
 		return sqlSession.selectOne("adminMapper.selectPostDetail", inputPostNo);
+	}
+
+	/** 신고 내역 상세 조회
+	 * @param inputReportNo
+	 * @return
+	 */
+	public Report selectReportDetail(int inputReportNo) {
+		return sqlSession.selectOne("adminMapper.selectReportDetail", inputReportNo);
 	}
 	
 	
