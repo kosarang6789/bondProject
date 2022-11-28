@@ -52,6 +52,35 @@
 		<result property="memberImage" column="MEMBER_IMG" />
 	</resultMap>
 	
+	<!-- Report VO -->
+	<resultMap type="Report" id="report_rm">
+		<id property="reportNo" column="REPORT_NO" />
+		
+		<result property="reasonCode" column="REASON_CODE" />
+		<result property="typeCode" column="TYPE_CODE" />
+		<result property="memberNo" column="MEMBER_NO" />
+		<result property="targetNo" column="TARGET_NO" />
+		<result property="reportDate" column="REPORT_DATE" />
+		<result property="resultCode" column="RESULT_CODE" />
+		<result property="processYN" column="PROCESS_YN" />
+		<result property="processDate" column="PROCESS_DATE" />
+		<result property="expireDate" column="EXPIRE_DATE" />
+		<result property="expireYN" column="EXPIRE_YN" />
+		
+		<result property="memberName" column="MEMBER_NAME" />
+		<result property="groupName" column="GROUP_NAME" />
+		<result property="postContent" column="POST_CONTENT" />
+		
+		<result property="reasonDetails" column="REASON_DETAILS" />
+
+		<result property="typeDetails" column="TYPE_DETAILS" />
+
+		<result property="resultDetails" column="RESULT_DETAILS" />
+		
+		<result property="targetName" column="TARGET_NAME" />
+	
+	</resultMap>
+	
 	<!-- 회원 목록 개수 조회 -->
 	<select id="getMemberListCount" parameterType="string" resultType="_int">
 		SELECT COUNT(*)
@@ -64,11 +93,6 @@
 		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NAME, SIGNUP_DATE, MEMBER_STATUS
 		FROM "MEMBER"
 		WHERE ${condition}
-		
-		<!-- MEMBER_EMAIL LIKE '%' || #{keyword} || '%'
-		OR  MEMBER_NAME LIKE '%' || #{keyword} || '%'
-		OR  MEMBER_NO = #{keyword} -->
-		
 	</select>
 
 	<!-- 회원 상세 조회 -->
@@ -149,5 +173,82 @@
 		JOIN "GROUP" USING(GROUP_NO)
 		WHERE POST_NO = ${inputPostNo}
 	</select>
+	
+	<!-- 신고 목록 개수 조회 -->
+	<select id="getReportListCount" parameterType="string" resultType="_int">
+		SELECT COUNT(*)
+		FROM "REPORT" R
+		JOIN "MEMBER" M ON (R.TARGET_NO = M.MEMBER_NO)
+		JOIN "GROUP" G ON (R.TARGET_NO = G.GROUP_NO)
+		JOIN "POST" P ON(R.TARGET_NO = P.POST_NO)
+		WHERE ${condition}
+	</select>
+	
+	<!-- 신고 목록 조회 -->
+	<select id="selectReportList" parameterType="string" resultMap="report_rm">
+		SELECT REPORT_NO, TYPE_DETAILS,
+			   (SELECT MEMBER_NAME FROM "MEMBER" SUB WHERE R.MEMBER_NO = SUB.MEMBER_NO) MEMBER_NAME,
+			   MEMBER_NAME AS TARGET_NAME, 
+			   TARGET_NO, REPORT_DATE, PROCESS_YN, 
+			   TO_CHAR(PROCESS_DATE, 'YYYY-MM-DD HH24:MI:SS') PROCESS_DATE
+		FROM "REPORT" R
+		JOIN "REPORT_TYPE" USING(TYPE_CODE)
+		JOIN "MEMBER" M ON (R.TARGET_NO = M.MEMBER_NO)
+		JOIN "GROUP" G ON (R.TARGET_NO = G.GROUP_NO)
+		JOIN "POST" P ON(R.TARGET_NO = P.POST_NO)
+		WHERE ${condition}
+	</select>
+	
+	<!-- 신고 내역 상세 조회 -->
+	<select id="selectReportDetail" parameterType="_int" resultMap="report_rm">
+		SELECT REPORT_NO, 
+			   TO_CHAR(REPORT_DATE, 'YYYY-MM-DD HH24:MI:SS') REPORT_DATE,
+			   R.TYPE_CODE, TYPE_DETAILS, REASON_DETAILS,
+			   (SELECT MEMBER_NAME FROM "MEMBER" SUB WHERE R.MEMBER_NO = SUB.MEMBER_NO) MEMBER_NAME,
+				MEMBER_NAME AS TARGET_NAME,
+			   DECODE(PROCESS_YN, 'Y', '완료', 'N', '접수') PROCESS_YN,
+			   TO_CHAR(PROCESS_DATE, 'YYYY-MM-DD HH24:MI:SS') PROCESS_DATE,
+			   TO_CHAR(EXPIRE_DATE, 'YYYY-MM-DD HH24:MI:SS') EXPIRE_DATE,
+			   RESULT_DETAILS
+		FROM "REPORT" R
+		JOIN "REPORT_TYPE" RT ON (R.TYPE_CODE = RT.TYPE_CODE)
+		JOIN "REPORT_REASON" USING(REASON_CODE)
+		JOIN "REPORT_RESULT" USING(RESULT_CODE)
+		JOIN "MEMBER" M ON (R.TARGET_NO = M.MEMBER_NO)
+		JOIN "GROUP" G ON (R.TARGET_NO = G.GROUP_NO)
+		JOIN "POST" P ON(R.TARGET_NO = P.POST_NO)
+		WHERE REPORT_NO = ${reportNo}
+	</select>
+	
+	<!-- 대상의 피신고 기록 조회 -->
+	<select id="getReportRecordCount" parameterType="Report" resultType="_int">
+		SELECT COUNT(*)
+		FROM "REPORT"
+		WHERE TYPE_CODE = 1
+		AND TARGET_NO = 10
+		AND RESULT_CODE NOT IN (0,1)
+	</select>
+	
+	<!-- 신고 : 결과 코드 업데이트  -->
+	<update id="reportProcess">
+		UPDATE "REPORT" SET
+		RESULT_CODE = ${resultCode},
+		PROCESS_YN = 'Y'.
+		PROCESS_DATE = SYSDATE
+		WHERE REPORT_NO = ${reportNo}
+	</update>
+	
+	<!-- 신고 : 정지 기간 업데이트 -->
+	<update id="updateReport">
+		UPDATE "REPORT" SET
+		EXPIRE_DATE = CASE
+			  	  		WHEN RESULT_CODE = 1 THEN NULL
+			  	  		WHEN RESULT_CODE = 2 THEN SYSDATE + 7
+			  	  		WHEN RESULT_CODE = 3 THEN SYSDATE + 30
+			  	  		WHEN RESULT_CODE = 4 THEN TO_DATE('9999.12.31')
+			  	  		WHEN RESULT_CODE = 5 THEN NULL
+			  		  END
+		WHERE REPORT_NO = ${reportNo}
+	</update>
 	
 </mapper>
