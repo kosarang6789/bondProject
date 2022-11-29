@@ -65,7 +65,7 @@
                         <div class="band-setting-list">
                             <ul class="band-setting-item">
                                 <li>
-                                    <a href="#" class="report-band sidebar-font">
+                                    <a class="report-band sidebar-font" id="reportBtn">
                                         <i class="fa-solid fa-bell sidbar-icon"></i>신고하기
                                     </a>
                                 </li>

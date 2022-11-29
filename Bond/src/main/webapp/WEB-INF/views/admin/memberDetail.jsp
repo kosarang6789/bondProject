@@ -30,7 +30,7 @@
             <section class="content">
                 <div class="content-header">
                     <h3>회원 정보</h3>
-                    <a href="/admin/memberList" id="list-btn">
+                    <a href="/admin/member/list" id="list-btn">
                         목록
                     </a>
                 </div>
@@ -40,15 +40,15 @@
                     <div class="detail-info">
                         <div class="detail-info-row">
                             <label>회원 번호</label>
-                            <div class="detail-info-col">${member.memberNo}</div>
+                            <div class="detail-info-col">${memberInfo.member.memberNo}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>회원 이메일</label>
-                            <div class="detail-info-col">${member.memberEmail}</div>
+                            <div class="detail-info-col">${memberInfo.member.memberEmail}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>회원 이름</label>
-                            <div class="detail-info-col">${member.memberName}</div>
+                            <div class="detail-info-col">${memberInfo.member.memberName}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>기본 프로필</label>
@@ -58,23 +58,23 @@
                         </div>
                         <div class="detail-info-row">
                             <label>회원 전화번호</label>
-                            <div class="detail-info-col">${member.memberTel}</div>
+                            <div class="detail-info-col">${memberInfo.member.memberTel}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>회원 생일</label>
-                            <div class="detail-info-col">${member.memberBirth}</div>
+                            <div class="detail-info-col">${memberInfo.member.memberBirth}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>회원 상태</label>
-                            <div class="detail-info-col">${member.memberStatus}</div>
+                            <div class="detail-info-col">${memberInfo.member.memberStatus}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>가입일</label>
-                            <div class="detail-info-col">${member.signUpDate}</div>
+                            <div class="detail-info-col">${memberInfo.member.signUpDate}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>탈퇴일</label>
-                            <div class="detail-info-col">${member.delDate}</div>
+                            <div class="detail-info-col">${memberInfo.member.delDate}</div>
                         </div>
                     </div>
 
@@ -82,8 +82,10 @@
                         <div class="detail-info-row">
                             <label>정지 기록</label>
                             <div class="detail-info-col">
-                                <span class="report-count">3회</span>
-                                <button id="openModal" class="modalBtn">조회</button>
+                                <span class="report-count">${memberInfo.reportCount}회</span>
+                                <c:if test="${memberInfo.reportCount > 0}">
+                                    <button id="openModal" class="modalBtn">조회</button>
+                                </c:if>
                             </div>
                         </div>
                     </div>
@@ -107,18 +109,15 @@
                     <span class="report-reason">신고사유</span>
                     <span class="report-result">처리결과</span>
                 </div>
-                <div class="report-modal-row">
-                    <span class="report-no">1</span>
-                    <span class="report-request">2</span>
-                    <span class="report-reason">3</span>
-                    <span class="report-result">4</span>
-                </div>
-                <div class="report-modal-row">
-                    <span class="report-no">1</span>
-                    <span class="report-request">2</span>
-                    <span class="report-reason">3</span>
-                    <span class="report-result">4</span>
-                </div>
+                <%-- 반복문 추가하기 --%>
+                <c:forEach var="report" items="${memberInfo.reportList}">
+                    <div class="report-modal-row">
+                        <span class="report-no">${report.reportNo}</span>
+                        <span class="report-request">${report.memberName}</span>
+                        <span class="report-reason">${report.reasonDetails}</span>
+                        <span class="report-result">${report.resultDetails}</span>
+                    </div>
+                </c:forEach>
             </div>
         </div>
     </div>

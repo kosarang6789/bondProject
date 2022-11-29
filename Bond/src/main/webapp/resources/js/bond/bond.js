@@ -359,3 +359,13 @@ document.getElementById("postWrite-btn").addEventListener("click", function() {
     // 모달창 띄우기
     modal('postWrite-modal');
 });
+
+
+// 신고하기 버튼
+const reportBtn = document.getElementById("reportBtn");
+
+// 신고 버튼 클릭 시 팝업창
+reportBtn.addEventListener("click", () => {
+    const url = "/report/group/" + groupNo; 
+    open(url, "신고하기", "width=500px, height=600px")
+})

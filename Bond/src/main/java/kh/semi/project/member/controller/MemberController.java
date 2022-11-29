@@ -85,17 +85,30 @@ public class MemberController {
 			}
 			
 			if(loginMember.getAuthority().equals("0")) { // 회원
-				path= "/member/mainPage";
-				model.addAttribute("loginMember", loginMember);
+				// 신고 여부 조회
+				String checkReport = service.checkReport(loginMember.getMemberNo());
 				
-				Cookie cookie = new Cookie("saveId", loginMember.getMemberEmail());
-				if(saveId != null) {
-					cookie.setMaxAge(60*60*24*90); // 90일 동안 유지
-				}else {
-					cookie.setMaxAge(0);
+				if(checkReport == null) { // 신고 기록이 없으면
+					path= "/member/mainPage";
+					model.addAttribute("loginMember", loginMember);
+					
+					Cookie cookie = new Cookie("saveId", loginMember.getMemberEmail());
+					if(saveId != null) {
+						cookie.setMaxAge(60*60*24*90); // 90일 동안 유지
+					}else {
+						cookie.setMaxAge(0);
+					}
+					cookie.setPath("/");
+					resp.addCookie(cookie);
+					
+				} else { // 신고 기록이 있으면
+					path = referer;
+					
+					String notice = "계정 사용 중지됨"
+							+ "(기간 : " + checkReport
+							+ ") 자세한 사항은 고객센터(help@kosaran)으로 문의 바랍니다.";
+					ra.addFlashAttribute("message", notice);
 				}
-				cookie.setPath("/");
-				resp.addCookie(cookie);
 			}
 //				model.addAttribute("loginMember", loginMember);
 			

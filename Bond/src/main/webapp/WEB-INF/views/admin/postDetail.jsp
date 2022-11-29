@@ -30,7 +30,7 @@
             <section class="content">
                 <div class="content-header">
                     <h3>게시물 제목</h3>
-                    <a href="/admin/noticeList" id="list-btn">
+                    <a href="/admin/notice/list" id="list-btn">
                         목록
                     </a>
                 </div>

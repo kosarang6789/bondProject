@@ -847,6 +847,7 @@ button{
     text-decoration: underline;
 }
 
+
 /* 모달 창 관련 */
 .modal-closeBtn{ 
     border: none;
@@ -861,4 +862,9 @@ button{
 iframe{
     border: none;
 }
+
+#reportBtn{
+    cursor: pointer;
+}
+
 

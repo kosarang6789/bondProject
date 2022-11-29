@@ -98,22 +98,41 @@ public class BondController {
 			Model model,
 			@RequestParam(value="cp", required=false, defaultValue= "1") int cp,
 			HttpServletRequest req, HttpServletResponse resp,
-			@SessionAttribute(value="loginMember", required=false) Member loginMember) {
+			@SessionAttribute(value="loginMember", required=false) Member loginMember,
+			RedirectAttributes ra
+			) {
 		
 		
 		// 본드 기본정보 불러오기(이름, 사진, 멤버수, 소개글)
 		Group groupInfo = service.selectGroupInfo(groupNo);
 		
-		model.addAttribute("groupInfo", groupInfo);
+		// 신고 기록 조회
+		String checkReport = service.checkReport(groupNo);
+		String path = "";
+		String message = "";
+		
+		if(checkReport == null) { // 신고 기록이 없으면
+			model.addAttribute("groupInfo", groupInfo);
+			
+			
+			// 게시글 불러오기
+			Map<String, Object> map = service.selectBoardDetail(groupNo, cp);
+			
+			model.addAttribute("map",map);
+			
+			path = "bond/bond";
+			
+		} else { // 신고 기록이 있으면
+			String notice = "모임 이용 중지됨"
+					+ "(기간 : " + checkReport
+					+ ") 자세한 사항은 고객센터(help@kosaran)으로 문의 바랍니다.";
+			ra.addFlashAttribute("message", notice);
+			
+			path = "redirect:/member/mainPage";
+		}
 		
 		
-		// 게시글 불러오기
-		Map<String, Object> map = service.selectBoardDetail(groupNo, cp);
-		
-		model.addAttribute("map",map);
-		
-		
-		return"bond/bond";
+		return path;
 	}
 	
 	

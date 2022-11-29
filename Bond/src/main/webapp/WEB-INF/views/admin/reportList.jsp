@@ -33,7 +33,7 @@
                     <h3>신고 조회</h3>
                 </div>
                 
-				<form id="searchbar" action="/printReportList" method="GET">
+				<div id="searchbar">
 				
 				    <select name="opt" id="opt">
 				        <option value="0">번호</option>
@@ -43,8 +43,8 @@
 				    </select>
 				
 				    <div class="keyword-box">
-				        <div class="input-box"><input type="text" name="keyword"></div>
-				        <button class="btn">검색</button>
+				        <div class="input-box"><input type="text" name="keyword" id="keyword"></div>
+				        <button class="btn" id="selectBtn">검색</button>
 				    </div>
 				
 				    <select name="count" id="count">
@@ -53,13 +53,13 @@
 				        <option value="50">50개</option>
 				    </select>
 				
-				</form> <!-- end .searchbar -->
+				</div> <!-- end .searchbar -->
 
                 <div class="content-body">
                     
                     <div class="list-header">
                         <span class="reportNo">번호</span>
-                        <span class="reportType">유형</span>
+                        <span class="typeDetails">유형</span>
                         <span class="memberName">신고자</span>
                         <span class="targetName">신고대상</span>
                         <span class="reportDate">신고일</span>
@@ -82,6 +82,10 @@
                     </form>
 					</c:forEach> -->
 					
+                    <div class="list-body">
+                        <%-- ajax로 검색한 목록이 들어갈 영역 --%>
+                    </div>
+
                 </div>
 
                 <div class="content-footer">
@@ -92,7 +96,11 @@
     </main>
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
+    <%-- jQuery CDN 방식으로 추가 --%>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 	
+    <script src="/resources/js/admin/reportList.js"></script>
     <script src="/resources/js/admin/sidebar.js"></script>
 </body>
 </html>
