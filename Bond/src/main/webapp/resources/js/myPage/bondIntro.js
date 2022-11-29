@@ -9,8 +9,8 @@ const deleteImg = document.getElementById("deleteImg");
 let initCheck;
 let deleteCheck=-1; 
 
-const originalImg = groupImg.getAttribute("src");
-const defaultImg = "/resources/images/bond/side-cover.png";
+//const originalImg = groupImg.getAttribute("src");
+const defaultImg = "/resources/images/bond/profile/no-profile.png";
 
 const checkObj = {
     "groupName" : true,
@@ -48,7 +48,7 @@ inputImg.addEventListener("change", e=>{
             deleteCheck = 1;
         }
     }else{ // 파일 선택 시 취소
-        groupImg.setAttribute("src", originalImg);
+        groupImg.setAttribute("src", bOriginalImg);
         deleteCheck = -1;
     }
 });
@@ -62,7 +62,7 @@ deleteImg.addEventListener("click",()=>{ // 이미지 삭제
 function introValidate(){
     
     if(bOriName == groupName.value && bOriComment == groupComment.value && 
-        originalImg==groupImg.getAttribute("src")){
+        bOriginalImg==groupImg.getAttribute("src")){
         alert("변경 사항이 없습니다.");
         return false;
     };

@@ -27,12 +27,7 @@ public class BondIntroServiceImpl implements BondIntroService{
 	public int bondIntro(Group groupInfo, String webPath, String filePath, Group newGroup,
 			MultipartFile groupImage2) throws Exception {
 
-
-//		groupInfo.setGroupName(inputGroup.getGroupName());
-//		groupInfo.setGroupComment(inputGroup.getGroupComment());
-
 		// XSS처리
-//		newGroup.setGroupNo(groupInfo.getGroupNo());
 		newGroup.setGroupName(Util.XSSHandling(newGroup.getGroupName()));
 		if(newGroup.getGroupComment()!=null) {
 			newGroup.setGroupComment(Util.XSSHandling(newGroup.getGroupComment()));
@@ -42,7 +37,6 @@ public class BondIntroServiceImpl implements BondIntroService{
 		
 		int result = dao.bondIntro(newGroup);
 		
-		int result2 = 0;		
 		if(result>0) {
 			
 			String temp = groupInfo.getGroupImage(); // 실패 대비 값 저장
@@ -62,22 +56,24 @@ public class BondIntroServiceImpl implements BondIntroService{
 				img.setGroupImageOrigin(groupImage2.getOriginalFilename());
 				
 				groupInfo.setGroupImage(webPath+rename);
-			}
-			
-			result2 = dao.updateImg(img);
-			
-			if(result2>0) { // 이미지 수정 성공
-				if(rename != null) {
-					groupImage2.transferTo(new File(filePath+rename));
-				}
-			}else { // 이미지 수정 실패
-				groupInfo.setGroupImage(temp);
+				
+				result = dao.updateImg(img);
+				
+				if(result>0) { // 이미지 수정 성공
+					if(rename != null) {
+						groupImage2.transferTo(new File(filePath+rename));
+					}
+				}else { // 이미지 수정 실패
+					groupInfo.setGroupImage(temp);
 				throw new Exception("이미지 업로드 실패");
+				}
 			}
+			
 			
 		}
 
-		return result2;
+//		return result2;
+		return result;
 	}
 	
 

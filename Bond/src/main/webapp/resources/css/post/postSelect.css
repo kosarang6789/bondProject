@@ -1,0 +1,154 @@
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+*{
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'nanumsquare', serif;
+}
+
+a{text-decoration: none;}
+
+main{
+    min-width: 369px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 작성자 정보 */
+.postMemberAll{
+    width: 100%;
+    height: 100px;
+    padding: 20px;
+    display: flex;
+    border-bottom: 1px solid #E7E7E7;
+    position : sticky;
+}
+
+.postMember-img{
+    border-radius: 50%;
+    width: 38px;
+    min-width: 38px;
+    height: 38px;
+    margin-right: 20px;
+    border: 1px solid #777;
+    background-color: white;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.postMember-img>#profile-img{
+    width: 100%;  
+    height: 100%;
+}
+
+.postMember{
+    width: 82%;
+    min-width: 213px;
+    /* margin-right: 20px; */
+    padding-top: 13px;
+}
+
+.postMember>#memberName{
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.postMember>.postDate-read{
+    font-size: 12px;
+    color: #777;
+}
+
+.moreView{
+    text-align: center;
+    font-size: 16px;
+    align-items: center;
+    color: #D5D6E1;
+    position: relative;
+}
+
+.moreView:hover{
+    color: #999;
+}
+
+#postmoreView{
+    padding-top: 15px;
+    width: 5%;
+}
+
+.fa-solid{
+    cursor: pointer;
+}
+
+
+/* 게시글 작성 */
+.post-content{
+    padding: 25px 40px 16px;
+    line-height: 23px;
+    min-height: 200px;
+    font-size: 14px;
+}
+
+/* 댓글, 좋아요 수 */
+.count{
+    margin: 25px 40px;
+    font-size: 13px;
+}
+
+.like-replyBtn{
+    text-align: center;
+    padding: 16px 40px 16px;
+    display: flex;
+    background-color: #FCFCFC;
+    border-top: 1px solid #E7E7E7;
+    border-bottom: 1px solid #E7E7E7;
+}
+
+.like-replyBtn>div{
+    width: 50%;
+}
+
+.like-replyBtn>div:hover{
+    color: #21c531;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.like-replyBtn span{
+    font-size: 14px;
+}
+
+
+/* 더보기 리스트 */
+.moreView-menu{
+    display: none;
+    list-style: none;
+    border: 1px solid #D5D6E1;
+    background-color: white;
+    border-radius: 5px;
+    width: 120px;
+    position: absolute;
+    top: 0px;
+    right: 30px;
+    box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.15),
+    0px 0px 2px 1px rgba(0, 0, 0, 0.02);
+}
+
+.moreView-menu>li:nth-child(2), li:nth-child(3){
+    border-top: 1px solid #D5D6E1;
+}
+
+
+.moreView-menu a{
+    font-size: 13px;
+    font-weight: 400;
+    color: #222;
+    display: block;
+    min-height: 37px;
+    padding: 12px 17px 11px;
+    line-height: 1.2;
+    text-align: left;
+}
+
+.moreView-menu a:hover{
+    background-color: #eee;
+    font-weight: 600;
+}
