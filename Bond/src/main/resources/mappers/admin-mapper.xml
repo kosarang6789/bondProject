@@ -31,6 +31,8 @@
 		<result property="leaderName" column="LEADER_NAME" />
 		<result property="memberCount" column="MEMBER_COUNT" />
 		<result property="postCount" column="POST_COUNT" />
+		
+		<result property="groupImage" column="GROUP_IMG" />
 	</resultMap>
 	
 	<!-- Post VO -->
@@ -86,6 +88,7 @@
 		SELECT COUNT(*)
 		FROM "MEMBER"
 		WHERE ${condition}
+		AND AUTHORITY = 0
 	</select>
 	
 	<!-- 회원 목록 조회 -->
@@ -93,6 +96,8 @@
 		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NAME, SIGNUP_DATE, MEMBER_STATUS
 		FROM "MEMBER"
 		WHERE ${condition}
+		AND AUTHORITY = 0
+		ORDER BY MEMBER_NO
 	</select>
 
 	<!-- 회원 상세 조회 -->
@@ -115,7 +120,7 @@
 		FROM "GROUP"
 		JOIN "GROUP_TOPIC" USING(TOPIC_CODE)
 		WHERE ${condition}
-		<!-- GROUP_NAME LIKE '%' || #{keyword} || '%' -->
+		ORDER BY GROUP_NO
 	</select>
 	
 	<!-- 모임 상세 조회 -->
@@ -135,7 +140,10 @@
 				 -- 게시글 수 --
 				(SELECT COUNT(*)
 				 FROM "POST" P
-				 WHERE P.GROUP_NO = G.GROUP_NO) POST_COUNT
+				 WHERE P.GROUP_NO = G.GROUP_NO) POST_COUNT,
+				 -- 사진 --
+				 (SELECT GROUP_IMG_PATH || GROUP_IMG_RENAME FROM GROUP_IMG GI
+				 WHERE GI.GROUP_NO = G.GROUP_NO) GROUP_IMG
 		FROM "GROUP" G
 		JOIN "GROUP_TOPIC" USING(TOPIC_CODE)
 		WHERE G.GROUP_NO = #{inputGroupNo}
@@ -230,7 +238,7 @@
 	
 	<!-- 신고 내역 상세 조회 -->
 	<select id="selectReportDetail" parameterType="_int" resultMap="report_rm">
-		SELECT REPORT_NO, MEMBER_NAME, TYPE_DETAILS, TARGET_NO, 
+		SELECT REPORT_NO, MEMBER_NAME, TYPE_DETAILS, TARGET_NO, TYPE_CODE,
 				CASE 
 					WHEN R.TYPE_CODE = 1 THEN (SELECT MEMBER_NAME FROM "MEMBER" WHERE MEMBER_NO = TARGET_NO)
 					WHEN R.TYPE_CODE = 2 THEN (SELECT GROUP_NAME FROM "GROUP" WHERE GROUP_NO = TARGET_NO)
@@ -256,8 +264,8 @@
 	<select id="getReportRecordCount" parameterType="Report" resultType="_int">
 		SELECT COUNT(*)
 		FROM "REPORT"
-		WHERE TYPE_CODE = 1
-		AND TARGET_NO = 10
+		WHERE TYPE_CODE = ${typeCode}
+		AND TARGET_NO = ${targetNo}
 		AND RESULT_CODE NOT IN (0,1)
 	</select>
 	
