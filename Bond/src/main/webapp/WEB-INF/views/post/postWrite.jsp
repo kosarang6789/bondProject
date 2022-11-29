@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>글쓰기</title>
-    <link rel="stylesheet" href="/resources/css/postWrite.css">
+    <link rel="stylesheet" href="/resources/css/post/postWrite.css">
     <script src="https://kit.fontawesome.com/785870d879.js" crossorigin="anonymous"></script>
 </head>
 
@@ -19,9 +19,6 @@
             <form action="#" id="postWriteFrm">
                 <section class="postWrite-title">
                     <h3 class="title-area">글쓰기</h3>
-                    <button type="button" class="close-btn">
-                        <i class="fa-solid fa-x"></i>
-                    </button>
                 </section>
                 
                 <section class="postWrite">
@@ -29,7 +26,7 @@
                     <!-- 게시글 작성 -->
                     <div class="postWrite-content">
                         <textarea name="content" id="content" placeholder="새로운 소식을 남겨보세요.
-    공개밴드에 남긴 글은 누구나 볼 수 있습니다."></textarea>
+공개밴드에 남긴 글은 누구나 볼 수 있습니다."></textarea>
                     </div>
 
                     <!-- 이미지 삽입 -->
@@ -68,7 +65,7 @@
             </form>
         </section>
     </main>
-    <script src="/resources/js/member/postWrite.js"></script>
+    <script src="/resources/js/post/postWrite.js"></script>
 </body>
 
 </html>

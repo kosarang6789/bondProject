@@ -15,60 +15,70 @@
 
 <body>
     <main>
-        <section class="postWrite-section">
-            <form action="#" id="postWriteFrm">
-                <section class="postWrite-title">
-                    <h3 class="title-area">글쓰기</h3>
-                    <button type="button" class="close-btn">
-                        <i class="fa-solid fa-x"></i>
-                    </button>
-                </section>
-                
-                <section class="postWrite">
-
-                    <!-- 게시글 작성 -->
-                    <div class="postWrite-content">
-                        <textarea name="content" id="content" placeholder="새로운 소식을 남겨보세요.
-    공개밴드에 남긴 글은 누구나 볼 수 있습니다."></textarea>
-                    </div>
-
-                    <!-- 이미지 삽입 -->
-                    
-                    <!-- 툴바 -->
-                    <div class="postWrite-toolbar">
-                        <ul class="toolbarList">
-                            <li class="toolbarListItem">
-                                <input type="file" id="photoInput">
-                                <i class="fa-regular fa-image"></i><!-- 이미지첨부 -->
-                            </li>
-                            <li class="toolbarListItem">
-                                <i class="fa-solid fa-check-to-slot"></i><!-- 투표 -->
-                            </li>
-                            <li class="toolbarListItem">
-                                <i class="fa-solid fa-divide"></i><!-- N빵 -->
-                            </li>
-                            <li class="toolbarListItem">
-                                <i class="fa-regular fa-calendar"></i><!-- 일정 -->
-                            </li>
-                        </ul>
-                    </div>
-                </section>
-                
-                <div class="postWrite-bottom">
-                    <div class="setup-btn">
-                        <label for="reply-yn"><i class="fa-solid fa-toggle-off"></i><!-- 설정 --></label>
-                        <input type="checkbox" class="write-setup" id="reply-yn" name="replayYN">댓글 사용</input>
-                    </div>
-                    <div class="submit-btn">
-                        <button class="postWrite-btn">
-                            <p>게시</p>
-                        </button>
-                    </div>
+        <!-- 작성자 정보 -->
+        <div class="postMemberAll">
+            <!-- 작성자 사진 -->
+            <div class="postMember-img">
+                <img src="images/user-icon.png" class="memberImage" name="profile-img" id="profile-img">
+            </div>
+            <!-- 작성자 이름, 게시일, 조회수 -->
+            <div class="postMember">
+                <div class="postMember-name" name="member" id="memberName">회원이름</div>
+                <div class="postDate-read">
+                    <span class="postDate" name="post" id="postDate">2022년 10월 29일 오후 11:42</span>
+                    <span class="read"  name="post" id="postView"> | ? 읽음</span>
                 </div>
-            </form>
-        </section>
+            </div>
+            <!-- 더보기 -->
+            <div class="moreView" id="postmoreView">
+                <label for="post-moreView-icon" name="moreView" >
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </label>
+                <ul class="moreView-menu">
+                    <li>
+                        <a href="">글 수정</a>
+                    </li> 
+                    <li>
+                        <a href="">삭제하기</a>
+                    </li>
+                    <li>
+                        <a href="">신고하기</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 게시글 내용 -->
+        <div class="post-content" name="post" id="postContent">
+            <pre>작성한 글들이 나올거야
+                원래는 p태그를 썼던데 나중에 바꿔야겠지?<br><br><br>ssss<br><br><br>sss<br><br><br>
+                <br><br><br>ss<br><br><br>dd<br><br><br>sss<br><br><br>ss<br><br><br>ss<br><br><br>
+                ss<br><br><br>ss<br><br><br>
+                ss<br><br><br>
+                ss<br><br><br>ss<br><br><br>ss<br><br><br>
+                ss<br><br><br></pre>
+        </div>
+
+        <!-- 댓글, 좋아요 수 -->
+        <div class="count">
+            <span>댓글 ?</span>
+            <span>좋아요 ?</span>
+        </div>
+        
+        <!-- 좋아요, 댓글쓰기 클릭 -->
+        <div class="like-replyBtn">
+            <div class="likeBtn">
+                <span><i class="fa-regular fa-thumbs-up"></i></span>
+                <span class="likeEmpty"></span>
+                <span>좋아요</span>
+            </div>
+            <div class="replyBtn">
+                <span><i class="fa-regular fa-comment"></i></span>
+                <span>댓글쓰기</span>
+            </div>
+        </div>
+        
     </main>
-    <script src="/resources/js/member/postWrite.js"></script>
 </body>
 
 </html>

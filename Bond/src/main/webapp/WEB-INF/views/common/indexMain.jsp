@@ -84,12 +84,6 @@
     생일 : "${loginMember.memberBirth}";
     전화번호 : "${loginMember.memberTel}";
 
-    <div id="postWrite-modal">
-        <iframe width="500px" height="600px" src="/bond/postWrite" id="postWrite-iframe">게시글 작성</iframe>
-        <a class="modal-closeBtn">닫기</a>
-    </div>
-
-    <button id="postWrite-btn">모달 확인</button>
     </main>
     
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />

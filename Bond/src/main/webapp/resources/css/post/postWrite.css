@@ -8,7 +8,6 @@
 body{
     width: 600px;
     height: 700px;
-    border: 1px solid black;
 }
 
 .postWrite-section{
@@ -144,15 +143,4 @@ textarea:focus{ outline: none; }
     cursor: pointer;
     margin: 10px;
     color: #777;
-}
-
-.close-btn{ 
-    border: none;
-    font-size: 16px;
-    color: #777;
-    background-color: white;
-    cursor: pointer;
-    position: absolute;
-    right: 10px;
-    top: 10px;
 }

@@ -8,4 +8,3 @@ replyYN.addEventListener("change", ()=>{
         replyYN.classList.add("no");
     }
 });
-
