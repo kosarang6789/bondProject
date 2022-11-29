@@ -31,7 +31,7 @@
             <section class="content">
                 <div class="content-header">
                     <h3>모임 정보</h3>
-                    <a href="/admin/groupList" id="list-btn">
+                    <a href="/admin/group/list" id="list-btn">
                         목록
                     </a>
                 </div>
@@ -41,45 +41,52 @@
                     <div class="detail-info">
                         <div class="detail-info-row">
                             <label>모임 번호</label>
-                            <div class="detail-info-col">${group.groupNo}</div>
+                            <div class="detail-info-col">${groupInfo.group.groupNo}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>모임 이름</label>
-                            <div class="detail-info-col">${group.groupName}</div>
+                            <div class="detail-info-col">${groupInfo.group.groupName}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>모임 주제</label>
-                            <div class="detail-info-col">${group.topicName}</div>
+                            <div class="detail-info-col">${groupInfo.group.topicName}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>모임 이미지</label>
                             <div class="detail-info-col">
-                                <img id="groupImage" src="/resources/images/admin/admin-group-icon.png">
+                                <div id="imageBox">
+                                    <c:if test="${!empty groupInfo.group.groupImage}">
+                                        <img id="groupImage" src="${groupInfo.group.groupImage}">
+                                    </c:if>
+                                    <c:if test="${empty groupInfo.group.groupImage}">
+                                        <img id="groupImage" src="/resources/images/bond/profile/no-profile.png">
+                                    </c:if>
+                                </div> <%-- end imageBox --%>
                             </div>
                         </div>
                         <div class="detail-info-row">
                             <label>모임 리더</label>
-                            <div class="detail-info-col">${group.leaderName}</div>
+                            <div class="detail-info-col">${groupInfo.group.leaderName}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>모임 개설일</label>
-                            <div class="detail-info-col">${group.groupDate}</div>
+                            <div class="detail-info-col">${groupInfo.group.groupDate}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>회원 수</label>
-                            <div class="detail-info-col">${group.memberCount}</div>
+                            <div class="detail-info-col">${groupInfo.group.memberCount}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>게시글 수</label>
-                            <div class="detail-info-col">${group.postCount}</div>
+                            <div class="detail-info-col">${groupInfo.group.postCount}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>모임 공개 여부</label>
-                            <div class="detail-info-col">${group.openYN}</div>
+                            <div class="detail-info-col">${groupInfo.group.openYN}</div>
                         </div>
                         <div class="detail-info-row">
                             <label>모임 상태</label>
-                            <div class="detail-info-col">${group.groupStatus}</div>
+                            <div class="detail-info-col">${groupInfo.group.groupStatus}</div>
                         </div>
                     </div>
 
@@ -87,7 +94,7 @@
                         <div class="detail-info-row">
                             <label>모임 소개글</label>
                             <div class="detail-info-col">
-                                ${group.groupComment}
+                                ${groupInfo.group.groupComment}
                             </div>
                         </div>
                     </div>
@@ -96,10 +103,10 @@
                         <div class="detail-info-row">
                             <label>정지 기록</label>
                             <div class="detail-info-col">
-                                <span class="report-count">
-                                    3회
-                                </span>
-                                <button id="openModal" class="modalBtn">조회</button>
+                                <span class="report-count">${groupInfo.reportCount}회</span>
+                                <c:if test="${groupInfo.reportCount > 0}">
+                                    <button id="openModal" class="modalBtn">조회</button>
+                                </c:if> 
                             </div>
                         </div>
                     </div>
@@ -122,18 +129,15 @@
                     <span class="report-reason">신고사유</span>
                     <span class="report-result">처리결과</span>
                 </div>
-                <div class="report-modal-row">
-                    <span class="report-no">1</span>
-                    <span class="report-request">2</span>
-                    <span class="report-reason">3</span>
-                    <span class="report-result">4</span>
-                </div>
-                <div class="report-modal-row">
-                    <span class="report-no">1</span>
-                    <span class="report-request">2</span>
-                    <span class="report-reason">3</span>
-                    <span class="report-result">4</span>
-                </div>
+                <%-- 반복문 추가하기 --%>
+               <c:forEach var="report" items="${groupInfo.reportList}">
+                    <div class="report-modal-row">
+                        <span class="report-no">${report.reportNo}</span>
+                        <span class="report-request">${report.memberName}</span>
+                        <span class="report-reason">${report.reasonDetails}</span>
+                        <span class="report-result">${report.resultDetails}</span>
+                    </div>
+                </c:forEach>
             </div>
         </div>
     </div>    
