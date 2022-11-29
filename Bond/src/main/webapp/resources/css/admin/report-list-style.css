@@ -4,34 +4,27 @@
     margin-top: 10px;
 }
 
-.reportNo{ flex-basis: 10%; }
-.reportType{ flex-basis: 10%; }
-.memberName{ flex-basis: 25%; }
-.targetName{ flex-basis: 25%; }
-.reportDate{ flex-basis: 10%; }
+.reportNo{ flex-basis: 8%; }
+.typeDetails{ flex-basis: 7%; }
+.memberName{ flex-basis: 15%; }
+.targetName{ flex-basis: 20%; }
+.reportDate{ flex-basis: 20%; }
 .processYN{ flex-basis: 10%; }
-.processDate{ flex-basis: 10%; }
+.processDate{ flex-basis: 20%; }
 
-.list-btn{
-    margin-top: 10px;
-    
-    width: 100%;
-
-    display: flex;
-    justify-content: flex-start;
-    text-align: start;
-    border: none;
+/* 게시글 내용 .... 처리 */
+.postContent{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
+
+/* 버튼 */
 
 /* end .content-body */
 
-
-
 /* content-footer */
-.content-footer{
-	display:flex;
-	justify-content: center;
-}
+
 /* footer */
 footer{
     height: 200px;

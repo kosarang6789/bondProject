@@ -10,56 +10,12 @@
 .signUpDate{ flex-basis: 20%;}
 .memberStatus{ flex-basis: 10%;}
 
-.list-btn{
-    margin-top: 10px;
-    
-    width: 100%;
-
-    display: flex;
-    justify-content: flex-start;
-    text-align: start;
-    border: none;
-
-    background-color: #E2E2E230;
-
-    cursor: pointer;
-}
-
-.list-btn:hover{
-    background-color: #E2E2E250;
-}
-
 /* end .content-body */
 
-
-
 /* content-footer */
+
 /* 페이지 묶음 css */
-.content-footer{
-    margin-top: 20px;
-}
 
-/* 페이지 */
-.page{
-    width: 30px;
-    border: none;
-    background-color: white;
-    cursor: pointer;
-}
-
-/* 현재 페이지만 */
-.currentPage{
-    width: 30px;
-    border: none;
-    background-color: white;
-    font-weight: 900;
-}
-
-/* content-footer */
-.content-footer{
-	display:flex;
-	justify-content: center;
-}
 
 /* footer */
 footer{

@@ -842,6 +842,8 @@ button{
     text-decoration: underline;
 }
 
-
+#reportBtn{
+    cursor: pointer;
+}
 
 
