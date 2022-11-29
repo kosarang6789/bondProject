@@ -15,12 +15,8 @@ public class ReportUpdateScheduling {
 	@Autowired
 	private AdminReportController reportController;
 	
-	/** 신고 테이블 자동 업데이트
-	 *  - 신고 기간이 지난 회원을 찾아 신고를 만료시킴
-	 */
 	@Scheduled(cron = "0 0/1 * * * *")
 	public void autoReportUpdate() {
-		
 		int result = reportController.autoReportUpdate();
 		
 		Date date = new Date();
@@ -31,7 +27,6 @@ public class ReportUpdateScheduling {
 		if(result > 0) {
 			System.out.println("[autoReportUpdate] : " + result + "건의 정보가 업데이트되었습니다.");
 		}
-		
 		
 	}
 }
