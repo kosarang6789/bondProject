@@ -90,6 +90,12 @@ public class BondServiceImpl implements BondService{
 		return map;
 	}
 
+	// 신고 여부 조회
+	@Override
+	public String checkReport(int groupNo) {
+		return dao.checkReport(groupNo);
+	}
+
 
 
 

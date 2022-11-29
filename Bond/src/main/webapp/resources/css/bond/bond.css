@@ -469,11 +469,7 @@ body{
     cursor: pointer;
 }
 
-
-.post-wrap-title{
-    display: none;
-}
-
+/* 게시물 영역 */
 .content-card{
     margin-bottom: 11px;
     position: relative;
@@ -508,15 +504,6 @@ body{
     border-radius: 50%;
 }
 
-.ellipsis, .post-list-info{
-    display: block;
-    overflow: hidden;
-    max-width: 100%;
-    white-space: nowrap;
-    word-break: normal;
-    text-overflow: ellipsis;
-
-}
 
 .post-info{
     display: block;
@@ -544,25 +531,15 @@ body{
     margin-top: 3px;
 }
 
-.post-main{
-    position: relative;
-    display: block;
-}
-
 .post-body{
     padding: 0 22px 17px;
 }
 
 .post-text{
-    overflow-wrap: break-word;
-    word-break: break-word;
-    padding-top: 8px;
     cursor: pointer;
 }
 
 .text-body{
-    overflow-wrap: break-word;
-    word-break: break-word;
     font-size: 14px;
     line-height: 1.43;
     white-space: pre-line;
@@ -865,6 +842,8 @@ button{
     text-decoration: underline;
 }
 
-
+#reportBtn{
+    cursor: pointer;
+}
 
 

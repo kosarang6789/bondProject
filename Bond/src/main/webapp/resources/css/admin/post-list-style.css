@@ -11,40 +11,9 @@
 .postDate{ flex-basis: 20%;}
 .postDelYN{ flex-basis: 10%;}
 
-/* 게시글 내용 .... 처리 */
-.postContent{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
 /* 버튼 */
-.list-btn{
-    margin-top: 10px;
-    
-    width: 100%;
-
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: start;
-    border: none;
-
-    background-color: #E2E2E230;
-
-    cursor: pointer;
-}
-
-.list-btn:hover{
-    background-color: #E2E2E250;
-}
 
 /* end .content-body */
-
-/* 페이지 묶음 css */
-.content-footer{
-    margin-top: 20px;
-}
 
 /* footer */
 footer{

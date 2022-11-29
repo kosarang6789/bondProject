@@ -94,6 +94,15 @@ public class BondDAO {
 		return sqlSession.selectList("postMapper.selectBoardDetail", groupNo, rowBounds);
 	}
 
+	 
+	/** 모임 신고 내역 조회
+	 * @param groupNo
+	 * @return
+	 */
+	public String checkReport(int groupNo) {
+		return sqlSession.selectOne("groupMapper.checkReport", groupNo);
+	}
+
 
 
 

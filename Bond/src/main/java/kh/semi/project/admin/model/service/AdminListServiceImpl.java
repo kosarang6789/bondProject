@@ -90,4 +90,25 @@ public class AdminListServiceImpl implements AdminListService{
 		return map;
 	}
 
+	// 신고 목록 출력(ajax)
+	@Override
+	public Map<String, Object> selectReportList(String keyword, int count, int opt, int cp) {
+		
+		// 1. 전체 게시글 개수를 확인
+		int listCount = dao.getReportListCount(keyword, opt);
+		
+		// 2. 가져온 listCount를 이용해서 페이지네이션 객체를 생성
+		AdminPagination pagination = new AdminPagination(listCount, cp, count);
+		
+		// 3. 페이징 처리를 이용해서 게시글 목록을 조회
+		List<Post> reportList = dao.selectReportList(keyword, opt, pagination);
+		
+		// 5. 값을 넣어서 전송
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("reportList", reportList);
+		map.put("pagination", pagination);
+		
+		return map;
+	}
+
 }

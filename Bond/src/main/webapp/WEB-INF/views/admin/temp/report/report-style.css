@@ -1,0 +1,166 @@
+
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100%;
+    min-height: 100%;
+}
+
+/* -------------------------------------------------------------- */
+
+/* 신고 페이지 전체 영역 */
+.report-page{
+    height: 500px;
+    position: relative;
+}
+
+/* 신고 페이지 머리말 */
+.report-head{
+    font-weight: bold;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* 신고 페이지 본문 */
+#reportFrm{
+    width: 100%;
+    height: 390px;
+    font-size: 14px;
+
+}
+/* 신고 페이지 정보 영역 */
+.report-who{
+    background-color: #BFBFBF30;
+    border-top: 1px solid #E2E2E2;
+    border-bottom: 1px solid #E2E2E2;
+    padding: 0px 20px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.report-who > p{
+    height: 25px;
+    display: flex;
+}
+.report-who > p > strong{
+    min-width: 70px;
+    color:gray;
+    font-weight: 400;
+}
+.report-who > p > span{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/* 신고 페이지 사유 영역 */
+.report-why{
+    list-style: none;
+}
+/* 신고 사유 리스트 */
+.report-frm > ul{
+    padding: 0 20px;
+    border-bottom: 1px solid #E2E2E2;
+}
+.report-frm > ul > li{
+    border-bottom: 1px solid #E2E2E2;
+}
+.report-frm > ul > li:last-child{
+    border-bottom: none;
+}
+
+/* 신고 버튼 */
+.reasonBtn{
+    background-color: white;
+    padding: 0px 20px;
+    border: none;
+
+    width: 100%;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    cursor: pointer;
+}
+.reasonDetail{
+    flex-basis: 100%;
+    text-align: start;
+}
+
+/* --------------------------------------------------------------------------------- */
+
+/* 모달창 디자인 */
+.modal{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(0,0,0,0.7);
+
+    position: absolute;
+
+    top: 0;
+    z-index: 10000;
+}
+
+
+/* ----------------- 버튼 팝업 창 디자인 -------------------- */
+.window{
+    font-size: 13px;
+    width: 340px;
+    height: auto;
+    border: 1px solid #666;
+    padding: 20px;
+
+    z-index: 20000;
+    background-color: white;
+
+    position: fixed; 
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.report-confirm-btn{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal button{
+    width: 90px;
+    height: 35px;
+    border: 1px solid #BFBFBF;
+    font-weight: 800;
+    margin: 0px 5px;
+}
+
+#reportBtn{
+    background-color: #515161;
+    color: white;
+}
+
+#reportBtn:hover{
+    background-color: #212131;
+    transition-duration: 0.1s;
+}
+
+#cancelBtn{
+    background-color: white;
+    color: grey;
+}
+
+#cancelBtn:hover{
+    background-color: #E2E2E2;
+    color: black;
+    transition-duration: 0.1s;
+}
