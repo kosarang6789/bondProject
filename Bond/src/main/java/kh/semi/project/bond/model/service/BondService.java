@@ -18,6 +18,9 @@ public interface BondService {
 	// 게시물 불러오기
 	Map<String, Object> selectBoardDetail(int groupNo, int cp);
 
+	// 신고 기록 조회
+	String checkReport(int groupNo);
+
 	
 
 
