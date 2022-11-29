@@ -65,7 +65,7 @@
                         <div class="band-setting-list">
                             <ul class="band-setting-item">
                                 <li>
-                                    <a href="#" class="report-band sidebar-font">
+                                    <a class="report-band sidebar-font" id="reportBtn">
                                         <i class="fa-solid fa-bell sidbar-icon"></i>신고하기
                                     </a>
                                 </li>
@@ -77,7 +77,6 @@
                                 </li>
                             </ul>
                         </div>  
-                        </div>
                     </div>
                 </div>
             </aside>
@@ -98,7 +97,7 @@
                     
                     <div class="main-content">   
                         <div>
-                            <button type="button" class="content-button"></button>
+                            <button id="postWrite-btn" class="content-button"></button>
                             <div class="content-editor">
                                 새로운 소식을 남겨보세요. <br>
                                 공개 밴드에 남긴 글은 누구나 볼 수 있습니다.
@@ -120,6 +119,7 @@
                         </div>
                     </div> 
 
+                    <%-- 게시물 조회 --%>
                     <div class="post-wrap">
                         <c:choose>
                             <c:when test="${empty postList}">
@@ -136,19 +136,31 @@
                                         <div class="content-card">
                                             <div class="post-list-view">
                                                 <div class="post-author-view">
+                                                    <%-- 작성자 프로필 이미지 --%>
                                                     <div class="uprofile">
-                                                        <img class="uprofile-inner" src="${post.memberImage}"/>
+                                                        
+                                                        <c:if test="${empty post.memberImage}">
+                                                            <%-- 프로필 이미지가 없을 경우 --%>
+                                                            <img class="uprofile-inner" 
+                                                            src="/resources/images/member/profile/defaultProfile.png" />
+                                                        </c:if>
+                                                        <c:if test="${!empty post.memberImage}">
+                                                            <%-- 프로필 이미지가 있을 경우 --%>
+                                                            <img class="uprofile-inner" src="${post.memberImage}"/>
+                                                        </c:if>
                                                     </div>
 
                                                     <div class="post-info">
+                                                        <%-- 작성자 이름 --%>
                                                         <strong class="post-info-name">${post.memberName}</strong>
-                                                    
+                                                        <%-- 작성 날짜 --%>
                                                         <div class="post-list-info">
                                                             <a href="#" class="post-info-date">${post.postDate}</a>
                                                         </div>
                                                     </div>    
                                                 </div>
 
+                                                <%-- 게시물 내용 --%>
                                                 <div class="post-body">
                                                     <div class="post-text">
                                                         <p class="text-body">
@@ -162,22 +174,25 @@
                                                 <div class="post-count-view">
                                                     <div class="post-count">
                                                         <span class="face-comment">
+                                                            <%-- 좋아요 --%>
                                                             <button type="button" class="emotion-view">
                                                                 <span class="emotion-wrap">
                                                                     <span class="icon">
                                                                         <i class="fa-regular fa-face-kiss-wink-heart face-icon"></i>
                                                                     </span>
                                                                 </span>
-                                                                <span class="count"></span>
+                                                                <span class="count">1</span>
                                                             </button>
+                                                            <%-- 댓글 --%>
                                                             <button type="button" class="comment">
                                                                 댓글 <span class="count">1</span>
                                                             </button>
+                                                            <%-- 댓글 더보기 --%>
                                                             <button type="button" class="comment-toggle">
                                                                 <i class="fa-solid fa-angle-down"></i>
                                                             </button>
                                                         </span>
-
+                                                        <%-- 조회수 --%>
                                                         <span class="share-read">
                                                             <span class="gSrOnly">읽음</span>
                                                             <i class="fa-solid fa-eye" style="color: #555;"></i>
@@ -259,6 +274,18 @@
         <c:remove var="message" />
     </c:if>
 
+    <div id="postWrite-modal">
+        <iframe width="620px" height="720px" src="/bond/postWrite"
+        id="postWrite-iframe"></iframe>
+        <button class="modal-closeBtn">
+            <i class="fa-solid fa-x"></i>
+        </button>
+    </div>
+
+    <div id="postSelect-modal">
+        
+    </div>
+
     <script>
         let cp = 0;
         const groupNo = "${groupNo}"
@@ -271,3 +298,4 @@
     <script src="/resources/js/bond/bond.js"></script>
     
 </body>
+</html>

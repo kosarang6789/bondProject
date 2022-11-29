@@ -13,7 +13,6 @@ const count = document.getElementById("count");
 // 화면 이동 시 ajax 1회 실행해서 전체 목록 출력
 (() => {
     ajax("", 1, 10)
-    ajax("", 1, 10)
 })()
 
 // 버튼에 목록 검색 이벤트 추가
@@ -65,14 +64,14 @@ function ajax(keywordValue, optValue, countValue, cp){
     
     // ajax
     $.ajax({
-        url : "/admin/group/list?cp=" + cp, // 요청 주소
+        url : "/admin/report/list?cp=" + cp, // 요청 주소
         data : {"keyword": keywordValue, "opt": optValue, "count":countValue}, // 파라미터
         type : "POST",
         dataType : "JSON",
 
         success : (map) => {
 
-            if(map.groupList.length == 0) { // 검색 결과가 없으면
+            if(map.reportList.length == 0) { // 검색 결과가 없으면
                 // 검색 결과 없음 상자
                 const emptyBox = document.createElement("div");
                 emptyBox.classList.add("emptyBox");
@@ -94,17 +93,17 @@ function ajax(keywordValue, optValue, countValue, cp){
                 listBody.append(emptyBox);
 
             } else { // 검색 결과가 있으면
-                for(let item of map.groupList) {
+                for(let item of map.reportList) {
 
                     // 폼
                     const frm = document.createElement("form");
                     frm.classList.add("list-frm");
     
-                    const thisPath = "/admin/group/" + item.groupNo;
+                    const thisPath = "/admin/report/" + item.reportNo;
     
                     frm.setAttribute("action", thisPath);
                     frm.setAttribute("method", "GET");
-                    frm.setAttribute("name", "groupInfo");
+                    frm.setAttribute("name", "reportInfo");
                     
                     // 버튼
                     const bt = document.createElement("button");
@@ -112,37 +111,49 @@ function ajax(keywordValue, optValue, countValue, cp){
         
                     // 번호
                     const row1 = document.createElement("span");
-                    row1.classList.add("groupNo");
-                    row1.setAttribute("name","groupNo");
-                    row1.innerText = item.groupNo;
+                    row1.classList.add("reportNo");
+                    row1.setAttribute("name","reportNo");
+                    row1.innerText = item.reportNo;
         
-                    // 주제코드
+                    // 유형
                     const row2 = document.createElement("span");
-                    row2.classList.add("topicCode");
-                    row2.innerText = item.topicName;
-        
-                    // 이름
+                    row2.classList.add("typeDetails");
+                    row2.innerText = item.typeDetails;
+                    
+                    // 신고자
                     const row3 = document.createElement("span");
-                    row3.classList.add("groupName");
-                    row3.innerText = item.groupName;
+                    row3.classList.add("memberName");
+                    row3.innerText = item.memberName;
         
-                    // 모임 생성일
+                    // 신고대상
                     const row4 = document.createElement("span");
-                    row4.classList.add("groupDate");
-                    row4.innerText = item.groupDate;
+                    row4.classList.add("targetName");
+
+                    if(item.typeCode == 3) row4.classList.add("postContent"); // 신고 대상이 게시글인 경우
+
+                    row4.innerText = item.targetName;
         
-                    // 공개 여부
+                    // 신고일
                     const row5 = document.createElement("span");
-                    row5.classList.add("openYN");
-                    row5.innerText = item.openYN;
+                    row5.classList.add("reportDate");
+                    row5.innerText = item.reportDate;
     
-                    // 모임 상태
+                    // 처리 여부
                     const row6 = document.createElement("span");
-                    row6.classList.add("groupStatus");
-                    row6.innerText = item.groupStatus;
+                    row6.classList.add("processYN");
+                    row6.innerText = item.processYN;
+
+                    // 처리일
+                    const row7 = document.createElement("span");
+                    row7.classList.add("processDate");
+                    if(item.processDate == null) { // 처리 결과가 없으면
+                        row7.innerText = "-";
+                    } else {
+                        row7.innerText = item.processDate;
+                    }
                     
                     // 버튼에 번호 ~ 가입 상태 추가
-                    bt.append(row1, row2, row3, row4, row5, row6);
+                    bt.append(row1, row2, row3, row4, row5, row6, row7);
         
                     // 폼에 버튼 추가
                     frm.append(bt);

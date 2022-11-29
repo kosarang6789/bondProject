@@ -439,6 +439,11 @@ body{
     cursor: pointer;
 }
 
+/* iframe 모달창 */
+#postWrite-modal{
+    display:none;
+}
+
 .content-editor{
     min-height: 84px;
     color: #999;
@@ -843,5 +848,23 @@ button{
 }
 
 
+/* 모달 창 관련 */
+.modal-closeBtn{ 
+    border: none;
+    font-size: 18px;
+    color: #777;
+    cursor: pointer;
+    position: absolute;
+    right: 40px;
+    top: 20px;
+}
+
+iframe{
+    border: none;
+}
+
+#reportBtn{
+    cursor: pointer;
+}
 
 

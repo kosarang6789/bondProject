@@ -67,6 +67,7 @@
 		FROM "GROUP" G
 		JOIN MEMBER_JOIN M ON(M.GROUP_NO = G.GROUP_NO)
 		WHERE MEMBER_NO = #{memberNo}
+		AND GROUP_STATUS = 0
 	</select>
 	
 	<!-- 본드 정보 조회 -->
@@ -78,6 +79,18 @@
 			WHERE GI.GROUP_NO = G.GROUP_NO) GROUP_IMG
 		FROM "GROUP" G
 		WHERE GROUP_NO = #{groupNo}
+	</select>
+	
+	<!-- 신고 여부 조회 -->
+	<select id="checkReport" parameterType="_int" resultType="string">
+		SELECT TO_CHAR(EXPIRE_DATE, 'YYYY-MM-DD HH24:MI:SS') EXPIRE_DATE
+		FROM "REPORT"
+		WHERE TYPE_CODE = 2 
+		AND TARGET_NO = ${groupNo}
+		AND RESULT_CODE IN (2, 3, 4)
+		AND EXPIRE_YN = 'N'
+		AND ROWNUM = 1
+		ORDER BY EXPIRE_DATE DESC
 	</select>
 	
 

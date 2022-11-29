@@ -1,0 +1,84 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글쓰기</title>
+    <link rel="stylesheet" href="/resources/css/postSelect.css">
+    <script src="https://kit.fontawesome.com/785870d879.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <main>
+        <!-- 작성자 정보 -->
+        <div class="postMemberAll">
+            <!-- 작성자 사진 -->
+            <div class="postMember-img">
+                <img src="images/user-icon.png" class="memberImage" name="profile-img" id="profile-img">
+            </div>
+            <!-- 작성자 이름, 게시일, 조회수 -->
+            <div class="postMember">
+                <div class="postMember-name" name="member" id="memberName">회원이름</div>
+                <div class="postDate-read">
+                    <span class="postDate" name="post" id="postDate">2022년 10월 29일 오후 11:42</span>
+                    <span class="read"  name="post" id="postView"> | ? 읽음</span>
+                </div>
+            </div>
+            <!-- 더보기 -->
+            <div class="moreView" id="postmoreView">
+                <label for="post-moreView-icon" name="moreView" >
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </label>
+                <ul class="moreView-menu">
+                    <li>
+                        <a href="">글 수정</a>
+                    </li> 
+                    <li>
+                        <a href="">삭제하기</a>
+                    </li>
+                    <li>
+                        <a href="">신고하기</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 게시글 내용 -->
+        <div class="post-content" name="post" id="postContent">
+            <pre>작성한 글들이 나올거야
+                원래는 p태그를 썼던데 나중에 바꿔야겠지?<br><br><br>ssss<br><br><br>sss<br><br><br>
+                <br><br><br>ss<br><br><br>dd<br><br><br>sss<br><br><br>ss<br><br><br>ss<br><br><br>
+                ss<br><br><br>ss<br><br><br>
+                ss<br><br><br>
+                ss<br><br><br>ss<br><br><br>ss<br><br><br>
+                ss<br><br><br></pre>
+        </div>
+
+        <!-- 댓글, 좋아요 수 -->
+        <div class="count">
+            <span>댓글 ?</span>
+            <span>좋아요 ?</span>
+        </div>
+        
+        <!-- 좋아요, 댓글쓰기 클릭 -->
+        <div class="like-replyBtn">
+            <div class="likeBtn">
+                <span><i class="fa-regular fa-thumbs-up"></i></span>
+                <span class="likeEmpty"></span>
+                <span>좋아요</span>
+            </div>
+            <div class="replyBtn">
+                <span><i class="fa-regular fa-comment"></i></span>
+                <span>댓글쓰기</span>
+            </div>
+        </div>
+        
+    </main>
+</body>
+
+</html>

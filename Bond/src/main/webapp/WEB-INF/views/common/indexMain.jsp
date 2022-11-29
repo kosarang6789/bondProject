@@ -87,6 +87,7 @@
     </main>
     
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+    <script src="/resources/js/test.js"></script>
 
 </body>
 </html>

@@ -28,4 +28,11 @@ public class MemberDAO {
 		return sqlSession.selectList("groupMapper.selectMyGroup", memberNo);
 	}
 
+	/** 신고 여부 조회
+	 * @return result(조회한 컬럼 개수)
+	 */
+	public String checkReport(int memberNo) {
+		return sqlSession.selectOne("memberMapper.checkReport", memberNo);
+	}
+
 }
