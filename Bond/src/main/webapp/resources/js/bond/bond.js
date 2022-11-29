@@ -84,61 +84,61 @@ function selectBoardScroll(){
                             
                             const contentCard = document.createElement("div");
                             contentCard.classList.add("content-card");
-                           
+                            
                             const postListView = document.createElement("div");
                             postListView.classList.add("post-list-view");
-                           
+                            
                             const postAuthorView = document.createElement("div");
                             postAuthorView.classList.add("post-author-view");
-                           
+                            
                             const uprofile = document.createElement("div");
                             uprofile.classList.add("uprofile");
-                           
+                            
                             const postInfo = document.createElement("div");
                             postInfo.classList.add("post-info");
-                           
+                            
                             const ellipsis = document.createElement("span");
                             ellipsis.classList.add("ellipsis");
-                           
+                            
                             const postMain = document.createElement("div");
                             postMain.classList.add("post-main");
-                           
+                            
                             const postBody = document.createElement("div");
                             postBody.classList.add("post-body");
-                           
+                            
                             const postTextView = document.createElement("div");
                             postTextView.classList.add("post-text-view");
-                           
+                            
                             const postText = document.createElement("div");
                             postText.classList.add("post-text");
-                           
+                            
                             const moreLink = document.createElement("a");
                             moreLink.classList.add("more-link");
-                           
+                            
                             const postCountView = document.createElement("div");
                             postCountView.classList.add("post-count-view");
-                           
+                            
                             const postCount = document.createElement("div");
                             postCount.classList.add("post-count");
-                           
+                            
                             const postCountLeft = document.createElement("div");
                             postCountLeft.classList.add("post-count-left");
-                           
+                            
                             const faceComment = document.createElement("span");
                             faceComment.classList.add("face-comment");
-                           
+                            
                             const emotionView = document.createElement("button");
                             emotionView.classList.add("emotion-view");
-                           
+                            
                             const emotionWrap = document.createElement("span");
                             emotionWrap.classList.add("emotion-wrap");
-                           
+                            
                             const icon = document.createElement("span");
                             icon.classList.add("icon");
-                           
+                            
                             const faceIcon = document.createElement("i");
                             faceIcon.classList.add("face-icon");
-                           
+                            
                             const count = document.createElement("span");
                             count.classList.add("count");
 
@@ -170,13 +170,12 @@ function selectBoardScroll(){
                             // postMain.append(postBody, postTextView, postText, moreLink);
 
 
-                            // , postAuthorView,
-                            //      postMain,
-                            //     , postCountView,
+                            //     postAuthorView,
+                            //     postMain,postCountView,
                             //     postCount, postCountLeft, faceComment, emotionView, emotionWrap,
                             //     icon, faceIcon, count
 
-   
+    
                         }
                     } else{ // 실패
                         alert("게시물을 불러올 수 없습니다.");
