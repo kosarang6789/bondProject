@@ -10,7 +10,8 @@ let initCheck;
 let deleteCheck=-1; 
 
 const originalImg = groupImg.getAttribute("src");
-const defaultImg = "/resources/images/bond/side-cover.png";
+//const defaultImg = "/resources/images/bond/side-cover.png";/
+const defaultImg = "/resources/images/bond/profile/no-profile.png";
 
 const checkObj = {
     "groupName" : true,

@@ -26,9 +26,9 @@ public class BondIntroController {
 	private BondIntroService service;
 	
 	// 본드 소개 페이지 이동
-	@GetMapping("/bond/bondIntro")
+	@GetMapping("/bond-bondIntro")
 	public String goBodnIntro() {
-		return "/myPage/bondIntro";
+		return "/bond/bond-bondIntro";
 	}
 	
 	// 본드 소개 수정

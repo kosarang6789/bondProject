@@ -58,7 +58,8 @@
 
                     <div class="sidebar-under-icon">
                         <div class="band-setting-section">
-                            <a href="/bond/bondIntro" class="band-setting-link sidebar-font"> 
+                            <!--<a href="/bond/bondIntro" class="band-setting-link sidebar-font"> -->
+                            <a href="/bond-bondIntro" class="band-setting-link sidebar-font"> 
                                 <i class="fa-solid fa-gear sidbar-icon"></i>밴드 설정
                             </a>
                             
