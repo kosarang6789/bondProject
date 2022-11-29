@@ -1,5 +1,7 @@
 package kh.semi.project.admin.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,9 +37,11 @@ public class AdminDetailController {
 		
 		int inputMemberNo = Integer.parseInt(memberNo);
 		
-		Member member = service.selectMemberDetail(inputMemberNo);
+		// 회원 정보 조회
+		Map<String, Object> memberInfo = service.selectMemberDetail(inputMemberNo);
 		
-		model.addAttribute("member", member);
+		model.addAttribute("memberInfo", memberInfo);
+		
 		return "admin/memberDetail";
 	}
 	
@@ -54,9 +58,9 @@ public class AdminDetailController {
 		
 		int inputGroupNo = Integer.parseInt(groupNo);
 		
-		Group group = service.selectGroupDetail(inputGroupNo);
+		Map<String, Object> groupInfo = service.selectGroupDetail(inputGroupNo);
 		
-		model.addAttribute("group", group);
+		model.addAttribute("groupInfo", groupInfo);
 		return "admin/groupDetail";
 		
 	}

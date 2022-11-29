@@ -1,5 +1,8 @@
 package kh.semi.project.admin.model.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,7 +25,7 @@ public class AdminDetailDAO {
 	public Member selectMemberDetail(int inputMemberNo) {
 		return sqlSession.selectOne("adminMapper.selectMemberDetail", inputMemberNo);
 	}
-
+	
 	/** 모임 상세 조회
 	 * @param inputGroupNo
 	 * @return
@@ -46,6 +49,25 @@ public class AdminDetailDAO {
 	public Report selectReportDetail(int inputReportNo) {
 		return sqlSession.selectOne("adminMapper.selectReportDetail", inputReportNo);
 	}
+	
+	
+	/** 신고 기록 개수 조회(detail 페이지용)
+	 * @param targetNo
+	 * @return
+	 */
+	public int getReportListCount(Map<String, Object> infoMap) {
+		return sqlSession.selectOne("adminMapper.getReportListCount_detail", infoMap);
+	}
+	
+	/** 신고 기록 내역 조회(detail 페이지용)
+	 * @param targetNo
+	 * @return
+	 */
+	public List<Report> getReportList(Map<String, Object> infoMap) {
+		return sqlSession.selectList("adminMapper.getReportList_detail", infoMap);
+	}
+	
+	
 	
 	
 
