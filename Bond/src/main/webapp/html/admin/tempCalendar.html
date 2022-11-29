@@ -2,25 +2,25 @@
 <html lang='en'>
   <head>
     <meta charset='utf-8' />
-    <link href="../../resources/fullcalendar/main.css" rel='stylesheet' />
-    <link href="tempCalendar.css" rel='stylesheet' />
-    <script src="../../resources/fullcalendar/main.js"></script>
-    <link href="tempCalendar.css" rel='stylesheet' />
-    <script>
 
-      document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth'
-        });
-        calendar.render();
-      });
+    <!-- fullcalendar js cdn-->
+    <script src="https://cdn.jsdelivr.net/combine/npm/fullcalendar@5.11.3/main.min.js,npm/fullcalendar@5.11.3,npm/fullcalendar@5.11.3/locales-all.min.js,npm/fullcalendar@5.11.3/locales-all.min.js"></script>
+    
+    <!-- fullcalendar css cdn -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/fullcalendar@5.11.3/main.min.css,npm/fullcalendar@5.11.3/main.min.css">
+    
+    <!-- css -->
+    <link rel="stylesheet" href="tempCalendar.css">
 
-    </script>
   </head>
+  
   <body>
     <div id="calendarBox">
         <div id='calendar'></div>
     </div>
+
+
+    <!-- script -->
+    <script src="tempCalendar.js"></script>
   </body>
 </html>
