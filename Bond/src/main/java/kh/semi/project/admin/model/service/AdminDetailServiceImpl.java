@@ -70,14 +70,14 @@ public class AdminDetailServiceImpl implements AdminDetailService{
 		List<Report> reportList = dao.getReportList(infoMap);
 		
 		// 4. map에 저장
-		Map<String, Object> memberInfo = new HashMap<String, Object>();
+		Map<String, Object> groupInfo = new HashMap<String, Object>();
 		
-		memberInfo.put("group", group);
-		memberInfo.put("reportCount", reportCount);
-		memberInfo.put("reportList", reportList);
+		groupInfo.put("group", group);
+		groupInfo.put("reportCount", reportCount);
+		groupInfo.put("reportList", reportList);
 		
 		// 5. map에 반환
-		return memberInfo; 
+		return groupInfo; 
 	}
 	
 	// 게시글 상세 조회

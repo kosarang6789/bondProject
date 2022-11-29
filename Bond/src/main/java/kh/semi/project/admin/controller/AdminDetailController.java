@@ -58,9 +58,11 @@ public class AdminDetailController {
 		
 		int inputGroupNo = Integer.parseInt(groupNo);
 		
+		// 모임 정보 조회
 		Map<String, Object> groupInfo = service.selectGroupDetail(inputGroupNo);
 		
 		model.addAttribute("groupInfo", groupInfo);
+		
 		return "admin/groupDetail";
 		
 	}

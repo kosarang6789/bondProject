@@ -44,6 +44,7 @@ public class AdminReportServiceImpl implements AdminReportService {
 		
 		// 처리
 		int result = 0;
+		
 		int reportProcess = dao.updateResultCode(report);
 		
 		if(reportProcess > 0) {
