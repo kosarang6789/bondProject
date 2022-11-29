@@ -26,7 +26,7 @@
                 </div>
                 <div class="introWrite">
                     <div class="writeTitle">본드 소개글</div>
-                    <textarea name="introWrite" name="groupComment" id="groupComment">${groupInfo.groupComment}</textarea>
+                    <textarea name="groupComment" id="groupComment">${groupInfo.groupComment}</textarea>
                 </div>
                 <div class="imgTitle">본드 대표 이미지</div>
 
@@ -41,7 +41,7 @@
                     </div>
                     <div class="btnArea">
                         <div class="inputImg">
-                            <input type="file" id="inputImg" name="groupImage">
+                            <input type="file" id="inputImg" name="groupImage2">
                             <label for="inputImg">이미지 수정</label>
                         </div>
                         <div class="deleteImg" id="deleteImg">

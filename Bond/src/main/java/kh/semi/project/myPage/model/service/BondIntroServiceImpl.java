@@ -24,57 +24,61 @@ public class BondIntroServiceImpl implements BondIntroService{
 	// 본드 소개 수정
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public int bondIntro(Group groupInfo, String webPath, String filePath, Group inputGroup,
-			MultipartFile groupImage) throws Exception {
-
-		groupInfo.setGroupName(inputGroup.getGroupName());
-		groupInfo.setGroupComment(inputGroup.getGroupComment());
+	public int bondIntro(Group groupInfo, String webPath, String filePath, Group newGroup,
+			MultipartFile groupImage2) throws Exception {
 
 
-		inputGroup.setGroupNo(groupInfo.getGroupNo());
-		inputGroup.setGroupName(Util.XSSHandling(inputGroup.getGroupName()));
-		inputGroup.setGroupComment(Util.XSSHandling(inputGroup.getGroupComment()));
-		inputGroup.setGroupComment(Util.newLineHandling(inputGroup.getGroupComment()));
+//		groupInfo.setGroupName(inputGroup.getGroupName());
+//		groupInfo.setGroupComment(inputGroup.getGroupComment());
+
+		// XSS처리
+//		newGroup.setGroupNo(groupInfo.getGroupNo());
+		newGroup.setGroupName(Util.XSSHandling(newGroup.getGroupName()));
+		if(newGroup.getGroupComment()!=null) {
+			newGroup.setGroupComment(Util.XSSHandling(newGroup.getGroupComment()));
+			newGroup.setGroupComment(Util.newLineHandling(newGroup.getGroupComment()));
+		}
 		
 		
-		int result = dao.bondIntro(inputGroup);
+		int result = dao.bondIntro(newGroup);
 		
-		
+		int result2 = 0;		
 		if(result>0) {
 			
 			String temp = groupInfo.getGroupImage(); // 실패 대비 값 저장
 			
 			GroupImage img = new GroupImage();
 			String rename = null;
-			groupInfo.setGroupImage(webPath+rename);
 			
-			if(groupImage.getSize() == 0) { // 업로드 파일 x
+			if(groupImage2.getSize() == 0) { // 업로드 파일 x
 				groupInfo.setGroupImage(null);
 			}else {
 				
-				rename = Util.fileRename(groupImage.getOriginalFilename());
+				rename = Util.fileRename(groupImage2.getOriginalFilename());
 				
 				img.setGroupNo(groupInfo.getGroupNo());
 				img.setGroupImagePath(webPath);
 				img.setGroupImageRename(rename);
-				img.setGroupImageOrigin(groupImage.getOriginalFilename());
+				img.setGroupImageOrigin(groupImage2.getOriginalFilename());
 				groupInfo.setGroupImage(webPath+rename);
 			}
 			
-			result = dao.updateImg(img);
+			result2 = dao.updateImg(img);
 			
-			if(result>0) { // 이미지 수정 성공
+			if(result2>0) { // 이미지 수정 성공
 				if(rename != null) {
-					groupImage.transferTo(new File(filePath+rename));
-				}else { // 이미지 수정 실패
-					groupInfo.setGroupImage(temp);
-					throw new Exception("이미지 업로드 실패");
+					groupImage2.transferTo(new File(filePath+rename));
 				}
+			}else { // 이미지 수정 실패
+				groupInfo.setGroupImage(temp);
+				throw new Exception("이미지 업로드 실패");
 			}
 			
+		}else {
+			result2 = 0;
 		}
 
-		return result;
+		return result2;
 	}
 	
 

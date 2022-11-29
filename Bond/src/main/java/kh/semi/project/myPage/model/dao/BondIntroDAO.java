@@ -14,8 +14,8 @@ public class BondIntroDAO {
 	private SqlSessionTemplate sqlSession;
 
 	// 본드 소개 - 이름, 글 수정
-	public int bondIntro(Group inputGroup) {
-		return sqlSession.update("bondIntroMapper.bondIntro", inputGroup);
+	public int bondIntro(Group newGroup) {
+		return sqlSession.update("bondIntroMapper.bondIntro", newGroup);
 	}
 
 	// 본드 소개 - 이미지 수정

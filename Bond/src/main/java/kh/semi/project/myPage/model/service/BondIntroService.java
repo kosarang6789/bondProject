@@ -9,7 +9,7 @@ public interface BondIntroService {
 
 	
 	// 본드 소개 수정
-	int bondIntro(Group groupInfo, String webPath, String filePath, Group inputGroup,
-			MultipartFile groupImage)  throws Exception ;
+	int bondIntro(Group groupInfo, String webPath, String filePath, Group newGroup,
+			MultipartFile groupImage2)  throws Exception ;
 
 }

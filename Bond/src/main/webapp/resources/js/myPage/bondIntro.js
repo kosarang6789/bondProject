@@ -71,7 +71,7 @@ function introValidate(){
     if(initCheck && deleteCheck==1){return true};
     if(initCheck && deleteCheck==0){return true};
 
-    if(!checkObj.groupName){ return false; }
-    if(!checkObj.groupComment){ return false; }
+    if(checkObj.groupName){ return true; }
+    if(checkObj.groupComment){ return true; }
 
 }
