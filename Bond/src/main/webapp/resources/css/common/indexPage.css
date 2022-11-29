@@ -236,3 +236,8 @@ footer a{
 footer span{
     padding : 0 10px;
 }
+
+/* modal test용 */
+#postWrite-modal{
+    display:none;
+}
