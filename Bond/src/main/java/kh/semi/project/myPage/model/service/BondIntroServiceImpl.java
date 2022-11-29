@@ -37,7 +37,6 @@ public class BondIntroServiceImpl implements BondIntroService{
 		
 		int result = dao.bondIntro(newGroup);
 		
-//		int result2 = 0;		
 		if(result>0) {
 			
 			String temp = groupInfo.getGroupImage(); // 실패 대비 값 저장
@@ -58,17 +57,15 @@ public class BondIntroServiceImpl implements BondIntroService{
 				
 				groupInfo.setGroupImage(webPath+rename);
 				
-//			result2 = dao.updateImg(img);
 				result = dao.updateImg(img);
 				
-//			if(result2>0) { // 이미지 수정 성공
 				if(result>0) { // 이미지 수정 성공
 					if(rename != null) {
 						groupImage2.transferTo(new File(filePath+rename));
 					}
 				}else { // 이미지 수정 실패
 					groupInfo.setGroupImage(temp);
-//				throw new Exception("이미지 업로드 실패");
+				throw new Exception("이미지 업로드 실패");
 				}
 			}
 			

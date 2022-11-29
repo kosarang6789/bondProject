@@ -30,7 +30,7 @@
                                     <img src="${groupInfo.groupImage}" id="cover-img">  
                                 </c:when>
                                 <c:otherwise>
-                                    <img src="/resources/images/bond/profile/non-profile.png">
+                                    <img src="/resources/images/bond/profile/no-profile.png" id="cover-img">
                                 </c:otherwise>
                             </c:choose>
                         </a>
@@ -140,7 +140,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>    
 
-    <script src="/resources/js/bond/samplePage.js"></script>
+    <%-- <script src="/resources/js/bond/samplePage.js"></script> --%>
     
 </body>
 </html>

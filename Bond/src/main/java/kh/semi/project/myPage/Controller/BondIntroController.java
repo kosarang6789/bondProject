@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kh.semi.project.member.model.vo.Member;
 import kh.semi.project.bond.model.vo.Group;
+import kh.semi.project.common.Util;
 import kh.semi.project.myPage.model.service.BondIntroService;
 
 @Controller
@@ -26,13 +28,19 @@ public class BondIntroController {
 	private BondIntroService service;
 	
 	// 본드 소개 페이지 이동
+//	@GetMapping("/bond-bondIntro")
+//	public String goBodnIntro() {
+//		return "/bond/bond-bondIntro";
+//	}
 	@GetMapping("/bond-bondIntro")
-	public String goBodnIntro() {
+	public String goBodnIntro(@SessionAttribute("groupInfo") Group groupInfo,Model model) {
+		groupInfo.setGroupComment(Util.newLineClear(groupInfo.getGroupComment()));
+		model.addAttribute("groupInfo", groupInfo);
 		return "/bond/bond-bondIntro";
 	}
 	
 	// 본드 소개 수정
-	@PostMapping("/bond/bondIntro")
+	@PostMapping("/bond-bondIntro")
 	public String bondIntro(
 //			@PathVariable("groupNo") int groupNo,
 			@SessionAttribute("groupInfo") Group groupInfo,
@@ -40,7 +48,8 @@ public class BondIntroController {
 			Group inputGroup,
 			@RequestParam(value="groupImage2") MultipartFile groupImage2,
 			HttpSession session,
-			@RequestHeader("referer")String referer) throws Exception {
+			@RequestHeader("referer")String referer,
+			Model model) throws Exception {
 		
 		String webPath = "/resources/images/bond/profile/";
 		String filePath = session.getServletContext().getRealPath(webPath);
@@ -48,6 +57,7 @@ public class BondIntroController {
 		Group newGroup = new Group();
 		newGroup.setGroupName(inputGroup.getGroupName());
 		newGroup.setGroupComment(inputGroup.getGroupComment());
+
 		newGroup.setGroupNo(groupInfo.getGroupNo());
 		
 		int result = service.bondIntro(groupInfo, webPath, filePath, newGroup, groupImage2);
@@ -55,8 +65,12 @@ public class BondIntroController {
 		String message = null;
 		
 		if(result>0) {
-			groupInfo.setGroupName(inputGroup.getGroupName());
-			groupInfo.setGroupComment(inputGroup.getGroupComment());
+			groupInfo.setGroupName(newGroup.getGroupName());
+			groupInfo.setGroupComment(Util.newLineClear(newGroup.getGroupComment()));
+
+
+			model.addAttribute("groupInfo", groupInfo);
+			
 			message = "본드 소개 수정 완료 되었습니다.";
 		}else { message = "본드 소개 수정이 실패했습니다."; }
 		

@@ -15,7 +15,7 @@
 </head>
 <body>
     <main>
-        <form action="/bond/bondIntro" class="bandIntro" id="bandIntroFrm" method="post"
+        <form action="/bond-bondIntro" class="bandIntro" id="bandIntroFrm" method="post"
             enctype="multipart/form-data" onsubmit="return introValidate()">
             <div class="introTitle">본드 소개</div>
             <div class="introArea">
@@ -41,7 +41,7 @@
                     </div>
                     <div class="btnArea">
                         <div class="inputImg">
-                            <input type="file" id="inputImg" name="groupImage2">
+                            <input type="file" id="inputImg" name="groupImage2" accept="image/*">
                             <label for="inputImg">이미지 수정</label>
                         </div>
                         <div class="deleteImg">
@@ -68,6 +68,7 @@
     <script>
         const bOriName = "${groupInfo.groupName}";
         const bOriComment = "${groupInfo.groupComment}";
+        const bOriginalImg = "${groupInfo.groupImage}";
     </script>
     <script src="/resources/js/myPage/bondIntro.js"></script>
 </body>
