@@ -56,10 +56,11 @@ public class BondIntroServiceImpl implements BondIntroService{
 				
 				rename = Util.fileRename(groupImage2.getOriginalFilename());
 				
-				img.setGroupNo(groupInfo.getGroupNo());
+				img.setGroupNo(newGroup.getGroupNo());
 				img.setGroupImagePath(webPath);
 				img.setGroupImageRename(rename);
 				img.setGroupImageOrigin(groupImage2.getOriginalFilename());
+				
 				groupInfo.setGroupImage(webPath+rename);
 			}
 			
@@ -74,8 +75,6 @@ public class BondIntroServiceImpl implements BondIntroService{
 				throw new Exception("이미지 업로드 실패");
 			}
 			
-		}else {
-			result2 = 0;
 		}
 
 		return result2;

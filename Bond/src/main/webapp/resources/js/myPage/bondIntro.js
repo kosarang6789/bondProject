@@ -10,7 +10,7 @@ let initCheck;
 let deleteCheck=-1; 
 
 const originalImg = groupImg.getAttribute("src");
-const defaultImg = "/resources/images/bond/profile/no-profile.png";
+const defaultImg = "/resources/images/bond/side-cover.png";
 
 const checkObj = {
     "groupName" : true,
@@ -74,4 +74,5 @@ function introValidate(){
     if(checkObj.groupName){ return true; }
     if(checkObj.groupComment){ return true; }
 
+    return true;
 }

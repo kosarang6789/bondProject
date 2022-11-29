@@ -44,8 +44,8 @@
                             <input type="file" id="inputImg" name="groupImage2">
                             <label for="inputImg">이미지 수정</label>
                         </div>
-                        <div class="deleteImg" id="deleteImg">
-                            <button type="button">이미지 삭제</button>
+                        <div class="deleteImg">
+                            <button type="button" id="deleteImg">이미지 삭제</button>
                         </div>
 
                     </div>
