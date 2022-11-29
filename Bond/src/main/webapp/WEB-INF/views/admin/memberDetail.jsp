@@ -30,7 +30,7 @@
             <section class="content">
                 <div class="content-header">
                     <h3>회원 정보</h3>
-                    <a href="/admin/memberList" id="list-btn">
+                    <a href="/admin/member/list" id="list-btn">
                         목록
                     </a>
                 </div>
