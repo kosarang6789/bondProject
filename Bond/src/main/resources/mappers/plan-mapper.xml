@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="planMapper">
+	
+	<!-- PLAN VO -->
+	<resultMap type="Plan" id="plan_rm">
+		<id property="planNo" column="PLAN_NO" />
+		
+		<result property="postNo" column="PLAN_NO" />
+		<result property="planTitle" column="PLAN_TITLE" />
+		<result property="planContent" column="PLAN_CONTENT" />
+		<result property="planStart" column="PLAN_START" />
+		<result property="planEnd" column="PLAN_END" />
+		<result property="planColor" column="PLAN_COLOR" />
+	</resultMap>
+	
+	<select id="getPlanList" resultMap="plan_rm">
+		SELECT *
+		FROM "POST_PLAN"
+	</select>
+	
+	<insert id="planInsert">
+		INSERT INTO "POST_PLAN" 
+		VALUES(SEQ_PLAN_NO.NEXTVAL, 1, #{planTitle}, #{planContent},
+				#{planStart}, #{planEnd}, #{planColor})
+	</insert>
+	
+</mapper>
