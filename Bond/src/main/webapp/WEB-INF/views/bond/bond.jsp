@@ -58,14 +58,15 @@
 
                     <div class="sidebar-under-icon">
                         <div class="band-setting-section">
-                            <a href="#" class="band-setting-link sidebar-font"> 
+                            <!--<a href="/bond/bondIntro" class="band-setting-link sidebar-font"> -->
+                            <a href="/bond-bondIntro" class="band-setting-link sidebar-font"> 
                                 <i class="fa-solid fa-gear sidbar-icon"></i>밴드 설정
                             </a>
                             
                         <div class="band-setting-list">
                             <ul class="band-setting-item">
                                 <li>
-                                    <a class="report-band sidebar-font" id="reportBtn">
+                                    <a href="#" class="report-band sidebar-font">
                                         <i class="fa-solid fa-bell sidbar-icon"></i>신고하기
                                     </a>
                                 </li>
@@ -121,6 +122,8 @@
 
                     <%-- 게시물 조회 --%>
                     <div class="post-wrap">
+                        <h2 class="post-wrap-title">모든 게시글</h2>
+                        
                         <c:choose>
                             <c:when test="${empty postList}">
                                 <!-- 게시글 목록 조회 결과가 비어있다면 -->
@@ -132,7 +135,7 @@
                             <c:otherwise>
                                 <!-- 게시글 목록 조회 결과가 있다면 -->
                                 <c:forEach var="post" items="${postList}">
-                                    <div class="post-wrap">
+                                    <div data-viewname="post-list-view" class="post-wrap">
                                         <div class="content-card">
                                             <div class="post-list-view">
                                                 <div class="post-author-view">
@@ -168,8 +171,8 @@
                                                         </p>
                                                         <a href="#" class="more-link">...더보기</a>
                                                     </div>
-                                                </div>
 
+                                                </div>
 
                                                 <div class="post-count-view">
                                                     <div class="post-count">
@@ -260,7 +263,6 @@
             </div>
 
             <a href="#">
-                <button type="button" class="btn-go-to-top">
                     <i class="fa-solid fa-arrow-up go-to-top-icon"></i>
                 </button>
             </a>

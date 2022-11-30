@@ -9,13 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모임이 쉬워진다 | BOND</title>
 
-    <link rel="stylesheet" href="/resources/css/bond//meetingBeforeLogin.css">
+    <link rel="stylesheet" href="/resources/css/bond//openYes.css">
     <script src="https://kit.fontawesome.com/1ce4f19a7a.js" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
-    <jsp:include page="/WEB-INF/views/bond/headerBond.jsp"/>    
+    <jsp:include page="/WEB-INF/views/bond/headerBondX.jsp"/>    
 
         <div id="container">
             <!-- 1번 영역 -->

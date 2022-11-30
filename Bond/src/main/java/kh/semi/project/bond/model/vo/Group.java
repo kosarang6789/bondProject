@@ -3,10 +3,12 @@ package kh.semi.project.bond.model.vo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class Group {
 
 	private int groupNo;
@@ -23,5 +25,6 @@ public class Group {
 	private String topicName;
 	private String leaderName;
 	private int postCount;
+	
 	
 }
