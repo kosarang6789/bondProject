@@ -30,8 +30,6 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
             // 확인 버튼 클릭 시 이벤트
             const confirmButton = document.getElementById("confirmButton");
 
-
-
             confirmButton.addEventListener("click", () => {
                 const inputTitle = document.getElementById("inputTitle").value; /* 제목 */
                 const inputContent = document.getElementById("inputContent").value; /* 내용 */
@@ -68,6 +66,10 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
                 // var endDate = new Date(inputEndDate + 'T' + inputEndTime); // will be in local time
                 
                 modal.style.display="none"
+                
+                // 화면 재요청
+                const url = location.href;
+                location.href = url;
 
             })
 
