@@ -120,24 +120,27 @@ public class BondController {
 			Map<String, Object> map = service.selectBoardDetail(groupNo, cp);
 			
 			model.addAttribute("map",map);
+			int memberNo = loginMember.getMemberNo();
 			
-//			Map<K, V>
-//			int result = service.selectJoinNo(loginMember.getMemberNo());
-//			
-//			// 밴드 가입 여부
-//			if(result == 0) { // 가입X
-//				String resultYN = service.selectOpenYN(groupNo);
-//				// 게시물 공개 여부
-//				if(resultYN.equals("Y")) { // 공개X
-//					path = "/";
-//					
-//				} else { // 공개O
-//					path = "bond/openYes";
-//				}
-//			} else { // 가입O
-//				path = "bond/bond";
-//				
-//			}
+			Map<String, Object> map1;
+			map1.put("groupNo", groupNo);
+			map1.put("memberNo", memberNo);
+			int result1 = service.selectJoinNo(map1);
+			
+			// 밴드 가입 여부
+			if(result1 > 0) { // 가입X
+				String resultYN = service.selectOpenYN(groupNo);
+				// 게시물 공개 여부
+				if(resultYN.equals("Y")) { // 공개X
+					path = "/";
+					
+				} else { // 공개O
+					path = "bond/openYes";
+				}
+			} else { // 가입O
+				path = "bond/bond";
+				
+			}
 			
 			path = "bond/openYes";
 			
