@@ -36,6 +36,7 @@
 		<mapper resource="/mappers/admin-mapper.xml"/>
 		<mapper resource="/mappers/bondIntro-mapper.xml"/>
 		<mapper resource="/mappers/report-mapper.xml"/>
+		<mapper resource="/mappers/bondMember-mapper.xml"/>
 		<!-- resources 폴더 -->
 	</mappers>
 </configuration>
