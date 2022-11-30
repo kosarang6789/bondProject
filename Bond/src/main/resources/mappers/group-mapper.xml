@@ -94,7 +94,7 @@
 	</select>
 
 	<!-- 본드 가입 여부 조회 -->
-	<select id="selectJoinNo" parameterType="_map" resultType="_int">
+	<select id="selectJoinNo" parameterType="map" resultType="_int">
 		SELECT COUNT(*)
 		FROM MEMBER_JOIN 
 		JOIN "GROUP" USING(GROUP_NO)
