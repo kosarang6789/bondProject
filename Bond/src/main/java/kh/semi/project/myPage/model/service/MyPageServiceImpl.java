@@ -68,34 +68,51 @@ public class MyPageServiceImpl implements MyPageService{
 	public int updateImage(String webPath, String filePath, Member loginMember, MultipartFile profileImage) throws Exception {
 
 		MemberImage img = new MemberImage();
-		String rename = null;
 		
 		int checkImg = dao.checkImg(loginMember);
 		
 		int result = 0;
 		
-		img.setMemberImgPath(webPath);
-		rename = Util.fileRename(profileImage.getOriginalFilename());
-		img.setMemberImgRename(rename);
-		img.setMemberImgOrigin(profileImage.getOriginalFilename());
-		img.setMemberNo(loginMember.getMemberNo());
+		String rename = null;
 		
-		loginMember.setProfileImage(webPath+rename);
+		img.setMemberNo(loginMember.getMemberNo());
 		
 		if(checkImg>0) { // 이미지 있으면 수정
 			
 			String temp = loginMember.getProfileImage();
 			
-			result = dao.updateImg(img);
-			if(result>0) { // 수정 성공
-				if(rename != null) {
-					profileImage.transferTo(new File(filePath + rename));
-					
-				}else {
-					loginMember.setProfileImage(temp);
-					throw new Exception("이미지 업로드 실패");
+			if(profileImage.getSize()==0) {
+				img.setMemberImgPath("/resources/images/member/profile/");
+				img.setMemberImgRename("defaultProfile.png");
+				img.setMemberImgOrigin("defaultProfile.png");
+				
+				loginMember.setProfileImage("/resources/images/member/profile/defaultProfile.png");
+				
+				result = dao.updateImg(img);
+				
+			}else {
+				
+				rename = Util.fileRename(profileImage.getOriginalFilename());
+				
+				img.setMemberImgPath(webPath);
+				img.setMemberImgRename(rename);
+				img.setMemberImgOrigin(profileImage.getOriginalFilename());
+				
+				loginMember.setProfileImage(webPath+rename);
+				
+				result = dao.updateImg(img);
+				
+				if(result>0) { // 수정 성공
+					if(rename != null) {
+						profileImage.transferTo(new File(filePath + rename));
+						
+					}else {
+						loginMember.setProfileImage(temp);
+//					throw new Exception("이미지 업로드 실패");
+					}
 				}
 			}
+			
 			
 		}else { // 이미지 없으면 추가
 			

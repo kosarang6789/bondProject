@@ -35,6 +35,7 @@
 		<mapper resource="/mappers/dup-mapper.xml"/>
 		<mapper resource="/mappers/myPage-mapper.xml"/>
 		<mapper resource="/mappers/admin-mapper.xml"/>
+		<mapper resource="/mappers/bondIntro-mapper.xml"/>
 		<mapper resource="/mappers/report-mapper.xml"/>
 		<mapper resource="/mappers/plan-mapper.xml"/>
 		<!-- resources 폴더 -->

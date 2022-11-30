@@ -30,16 +30,16 @@
                     <!-- 내 정보 사진 -->
                     <div class="dropdown">
                         <button type="button" class="dropbtn" onclick="dropDown()">
-                            <span>
-                                
-                                    <c:if test="${empty loginMember.profileImage}">
-                                        <img src="/resources/images/member/profile/defaultProfile.png" id="headerProfile">
-                                    </c:if>
-                                    <c:if test="${!empty loginMember.profileImage}">
-                                        <img src="${loginMember.profileImage}" id="headerProfile">
-                                    </c:if>
-                                
-                            </span>
+                            <c:if test="${empty loginMember.profileImage}">
+                                <span>
+                                    <div class="profile"><i class="fa-solid fa-user" id="profile-photo"></i></div>
+                                </span>
+                            </c:if>
+                            <c:if test="${!empty loginMember.profileImage}"> 
+                                <span>
+                                    <img src="${loginMember.profileImage}" id="login-profile-photo">
+                                </span>
+                            </c:if>
                             <i class="fa-solid fa-caret-down caret-icon" id="triangle-icon"></i>
                         </button> 
                         
