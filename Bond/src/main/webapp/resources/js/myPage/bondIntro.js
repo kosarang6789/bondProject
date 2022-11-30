@@ -6,10 +6,13 @@ const groupImg = document.getElementById("group-img");
 const inputImg = document.getElementById("inputImg");
 const deleteImg = document.getElementById("deleteImg");
 
+let bOriComment = document.getElementById("groupComment").value;
+
 let initCheck;
 let deleteCheck=-1; 
 
-//const originalImg = groupImg.getAttribute("src");
+let deleteYN = 0;
+
 const defaultImg = "/resources/images/bond/profile/no-profile.png";
 
 const checkObj = {
@@ -56,23 +59,25 @@ inputImg.addEventListener("change", e=>{
 deleteImg.addEventListener("click",()=>{ // 이미지 삭제
     groupImg.setAttribute("src", defaultImg);
     inputImg.value="";
+    deleteYN = 1;
     deleteCheck=0;
 })
 
 function introValidate(){
     
-    if(bOriName == groupName.value && bOriComment == groupComment.value && 
-        bOriginalImg==groupImg.getAttribute("src")){
+    if( (bOriName == groupName.value) && (bOriComment == groupComment.value )
+        && (bOriginalImg==groupImg.getAttribute("src"))){
         alert("변경 사항이 없습니다.");
         return false;
     };
-
-    if(!initCheck && deleteCheck==1){return true};
-    if(initCheck && deleteCheck==1){return true};
-    if(initCheck && deleteCheck==0){return true};
-
-    if(checkObj.groupName){ return true; }
-    if(checkObj.groupComment){ return true; }
-
+     
+    // if(!initCheck && deleteCheck==1){return true};
+    // if(initCheck && deleteCheck==1){return true};
+    // if(initCheck && deleteCheck==0){return true};
+    
+    // if(checkObj.groupName){ return true; }
+    // if(checkObj.groupComment){ return true; }
+    
+    document.getElementById("deleteYN").value=deleteYN;
     return true;
 }

@@ -55,6 +55,9 @@
             <div class="intro-btn">
                 <button>본드 소개 저장</button>
             </div>
+
+            <input type="hidden" name="deleteYN" id="deleteYN" value="">
+        
         </form>
     </main>
     
@@ -67,9 +70,8 @@
     </c:if>
     <script>
         const bOriName = "${groupInfo.groupName}";
-        const bOriComment = "${groupInfo.groupComment}";
         const bOriginalImg = "${groupInfo.groupImage}";
     </script>
-    <script src="/resources/js/myPage/bondIntro.js"></script>
+    <%-- <script src="/resources/js/myPage/bondIntro.js"></script> --%>
 </body>
 </html>

@@ -12,9 +12,9 @@ public class Util {
 		int ranNum = (int) (Math.random() * 100000); // 5자리 랜덤 숫자 생성
 
 		String str = "_" + String.format("%05d", ranNum);
-
+		System.out.println(originFileName);
 		String ext = originFileName.substring(originFileName.lastIndexOf("."));
-
+		
 		return date + str + ext;
 	}
 	

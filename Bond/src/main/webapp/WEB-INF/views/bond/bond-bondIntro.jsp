@@ -86,28 +86,6 @@
                 <jsp:include page="/WEB-INF/views/myPage/bondIntro.jsp"/>
             </main>
 
-            <!-- 3번 영역 -->
-            <div id="banner">
-                <div id="band-photo-area">
-                    <section class="band-photo">
-                        <h2 class="tit">최근 사진</h2>
-                        <div class="photo-body">
-                            <div class="photo-list">
-                                <a href="#" class="banner-box">
-                                    <img src="/resources/images/bond/banner.jpeg" class="banner-img">
-                                </a>
-                                <span class="no-img"></span>
-                                <span class="no-img"></span>
-                                <span class="no-img"></span>
-                                <span class="no-img"></span>
-                                <span class="no-img"></span>
-                            </div>
-                        </div>
-                        <a href="#" class="more-button">더보기</a>
-                    </section>
-                </div>
-            </div>
-
             <a href="#">
                 <button type="button" class="btn-go-to-top">
                     <i class="fa-solid fa-arrow-up go-to-top-icon"></i>
@@ -123,14 +101,6 @@
         <c:remove var="message" />
     </c:if>
 
-    <div id="postWrite-modal">
-        <iframe width="620px" height="720px" src="/bond/postWrite"
-        id="postWrite-iframe"></iframe>
-        <button class="modal-closeBtn">
-            <i class="fa-solid fa-x"></i>
-        </button>
-    </div>
-
     <script>
         let cp = 0;
         const groupNo = "${groupNo}"
@@ -140,7 +110,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>    
 
-    <%-- <script src="/resources/js/bond/samplePage.js"></script> --%>
+    <script src="/resources/js/myPage/bondIntro.js"></script>
     
 </body>
 </html>

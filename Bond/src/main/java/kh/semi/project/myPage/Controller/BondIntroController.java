@@ -34,7 +34,12 @@ public class BondIntroController {
 //	}
 	@GetMapping("/bond-bondIntro")
 	public String goBodnIntro(@SessionAttribute("groupInfo") Group groupInfo,Model model) {
-		groupInfo.setGroupComment(Util.newLineClear(groupInfo.getGroupComment()));
+		
+		if(groupInfo.getGroupComment() != null) {
+			
+			groupInfo.setGroupComment(Util.newLineClear(groupInfo.getGroupComment()));
+		}
+		
 		model.addAttribute("groupInfo", groupInfo);
 		return "/bond/bond-bondIntro";
 	}
@@ -49,7 +54,8 @@ public class BondIntroController {
 			@RequestParam(value="groupImage2") MultipartFile groupImage2,
 			HttpSession session,
 			@RequestHeader("referer")String referer,
-			Model model) throws Exception {
+			Model model,
+			@RequestParam(value="deleteYN", required = false) int deleteYN) throws Exception {
 		
 		String webPath = "/resources/images/bond/profile/";
 		String filePath = session.getServletContext().getRealPath(webPath);
@@ -60,14 +66,14 @@ public class BondIntroController {
 
 		newGroup.setGroupNo(groupInfo.getGroupNo());
 		
-		int result = service.bondIntro(groupInfo, webPath, filePath, newGroup, groupImage2);
+		int result = service.bondIntro(groupInfo, webPath, filePath, newGroup, groupImage2, deleteYN);
 		
 		String message = null;
 		
 		if(result>0) {
 			groupInfo.setGroupName(newGroup.getGroupName());
 			groupInfo.setGroupComment(Util.newLineClear(newGroup.getGroupComment()));
-
+//			groupInfo.setGroupImage(groupImage2.getName());
 
 			model.addAttribute("groupInfo", groupInfo);
 			
