@@ -20,21 +20,10 @@ const checkObj = {
     "groupComment" : true
 };
 
-groupName.addEventListener("input", ()=>{
-    if(groupName.value.trim().length == 0){
-        alert("밴드 이름을 작성해주세요.");
-        groupName.focus();
-        checkObj.groupName = false;
-    }
-});
-
-groupComment.addEventListener("input", ()=>{
-    if(groupComment.value.trim().length == 0){
-        alert("밴드 소개를 작성해주세요.");
-        groupName.focus();
-        checkObj.groupComment = false;
-    }
-});
+document.getElementById("xBtn").addEventListener("click", ()=>{
+    groupName.focus();
+    groupName.value="";
+})
 
 if(defaultImg == groupImg.getAttribute("src")){
     initCheck = false;
@@ -63,6 +52,7 @@ deleteImg.addEventListener("click",()=>{ // 이미지 삭제
     deleteCheck=0;
 })
 
+
 function introValidate(){
     
     if( (bOriName == groupName.value) && (bOriComment == groupComment.value )
@@ -70,14 +60,30 @@ function introValidate(){
         alert("변경 사항이 없습니다.");
         return false;
     };
-     
-    // if(!initCheck && deleteCheck==1){return true};
-    // if(initCheck && deleteCheck==1){return true};
-    // if(initCheck && deleteCheck==0){return true};
-    
-    // if(checkObj.groupName){ return true; }
-    // if(checkObj.groupComment){ return true; }
-    
+
+    if(groupComment.value.trim().length >= 1){
+        
+        $(document).keydown(e=>{
+            if(e.target.nodeName === "textarea"){
+                if(e.keyCode===8){
+                    return false;
+                }
+            }
+        });
+    }
+
+    if(groupName.value.trim().length == 0){
+        alert("밴드 이름을 작성해주세요.");
+        groupName.focus();
+        return false;
+    }
+
+    if(groupComment.value.trim().length == 0){
+        alert("밴드 소개를 작성해주세요.");
+        groupComment.focus();
+        return false;
+    }
+
     document.getElementById("deleteYN").value=deleteYN;
     return true;
 }

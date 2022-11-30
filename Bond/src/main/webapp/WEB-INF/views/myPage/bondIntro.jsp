@@ -22,7 +22,7 @@
                 <div class="namearea">
                     <div class="nameTitle">본드 이름</div>
                     <input type="text" id="groupName" name="groupName" class="nameWrite" value="${groupInfo.groupName}">
-                    <button type="reset"><i class="fa-solid fa-xmark"></i></button>
+                    <button type="button" id="xBtn"><i class="fa-solid fa-xmark" ></i></button>
                 </div>
                 <div class="introWrite">
                     <div class="writeTitle">본드 소개글</div>
