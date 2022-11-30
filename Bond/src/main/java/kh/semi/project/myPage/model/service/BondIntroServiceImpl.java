@@ -47,8 +47,6 @@ public class BondIntroServiceImpl implements BondIntroService{
 			String temp = groupInfo.getGroupImage(); // 실패 대비 값 저장
 			
 			if(deleteYN == 1) { // 삭제를 했다
-				
-//				if(groupImage2.getSize() == 0) { // 업로드 파일 x
 					
 					img.setGroupImagePath("/resources/images/bond/profile/");
 					img.setGroupImageRename("no-profile.png");
@@ -57,8 +55,7 @@ public class BondIntroServiceImpl implements BondIntroService{
 					groupInfo.setGroupImage("/resources/images/bond/profile/no-profile.png");
 					
 					result = dao.updateImg(img);
-					
-//				}
+
 				}else { // 삭제를 안했다
 					if(groupImage2.getSize() == 0) { // 업로드 파일 x
 						groupInfo.setGroupImage(temp);
@@ -84,8 +81,6 @@ public class BondIntroServiceImpl implements BondIntroService{
 						}
 					}
 				}
-			
-			
 		}
 
 		return result;
