@@ -78,6 +78,10 @@ width: 33.3%;
 height: 100%;
 }
 
+.dropbtn #login-profile-photo{
+    width: 100%;
+    height: 100%;
+}
 
 /* 프로필 사진 클릭 메뉴 */
 

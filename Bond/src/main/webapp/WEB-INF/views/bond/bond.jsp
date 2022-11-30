@@ -41,7 +41,7 @@
                     </div>
 
                     <p class="member">
-                        <a href="#" class="member-count">멤버 ${groupInfo.memberCount}</a>
+                        <a href="/bond/memberList" class="member-count">멤버 ${groupInfo.memberCount}</a>
                     </p>
 
                     <div class="band-info">
