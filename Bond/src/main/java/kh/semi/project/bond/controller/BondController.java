@@ -122,7 +122,7 @@ public class BondController {
 			model.addAttribute("map",map);
 			int memberNo = loginMember.getMemberNo();
 			
-			Map<String, Object> map1;
+			Map<String, Object> map1 = new HashMap<String, Object>();
 			map1.put("groupNo", groupNo);
 			map1.put("memberNo", memberNo);
 			int result1 = service.selectJoinNo(map1);

@@ -24,4 +24,5 @@ public class Group {
 	private String leaderName;
 	private int postCount;
 	
+	
 }

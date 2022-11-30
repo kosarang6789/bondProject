@@ -99,15 +99,17 @@ public class BondServiceImpl implements BondService{
 	
 	// 본드 가입 여부 조회
 	@Override
-	public int selectJoinNo(int memberNo) {
-		return dao.selectJoinNo(memberNo);
+	public int selectJoinNo(Map<String, Object> map1) {
+		return dao.selectJoinNo(map1);
 	}
+
 
 	// 게시물 공개 여부
 	@Override
 	public String selectOpenYN(int groupNo) {
 		return dao.selectOpenYN(groupNo);
 	}
+
 
 	
 	
