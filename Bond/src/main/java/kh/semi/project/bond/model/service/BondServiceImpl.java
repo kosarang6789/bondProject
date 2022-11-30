@@ -96,6 +96,21 @@ public class BondServiceImpl implements BondService{
 		return dao.checkReport(groupNo);
 	}
 
+	
+	// 본드 가입 여부 조회
+	@Override
+	public int selectJoinNo(int memberNo) {
+		return dao.selectJoinNo(memberNo);
+	}
+
+	// 게시물 공개 여부
+	@Override
+	public String selectOpenYN(int groupNo) {
+		return dao.selectOpenYN(groupNo);
+	}
+
+	
+	
 
 
 

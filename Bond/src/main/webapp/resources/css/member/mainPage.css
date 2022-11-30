@@ -99,6 +99,7 @@ header{
     overflow: hidden;
     top: 42px;
     right: -2px;
+    box-shadow: 4px 4px 20px 3px #ebebeb;
 }
 
 #myDropdown > a{

@@ -1,5 +1,6 @@
 package kh.semi.project.bond.model.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -20,6 +21,14 @@ public interface BondService {
 
 	// 신고 기록 조회
 	String checkReport(int groupNo);
+
+	// 본드 가입 여부 조회
+	int selectJoinNo(int memberNo);
+
+	// 게시물 공개 여부 조회
+	String selectOpenYN(int groupNo);
+
+
 
 	
 

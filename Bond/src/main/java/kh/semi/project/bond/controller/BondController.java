@@ -1,6 +1,7 @@
 package kh.semi.project.bond.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -120,7 +121,25 @@ public class BondController {
 			
 			model.addAttribute("map",map);
 			
-			path = "bond/bond";
+//			Map<K, V>
+//			int result = service.selectJoinNo(loginMember.getMemberNo());
+//			
+//			// 밴드 가입 여부
+//			if(result == 0) { // 가입X
+//				String resultYN = service.selectOpenYN(groupNo);
+//				// 게시물 공개 여부
+//				if(resultYN.equals("Y")) { // 공개X
+//					path = "/";
+//					
+//				} else { // 공개O
+//					path = "bond/openYes";
+//				}
+//			} else { // 가입O
+//				path = "bond/bond";
+//				
+//			}
+			
+			path = "bond/openYes";
 			
 		} else { // 신고 기록이 있으면
 			String notice = "모임 이용 중지됨"
