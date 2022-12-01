@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- map에 저장된 값을 꺼내어 각각 변수에 저장 --%>
-<c:set var="postList" value="${map.postList}"/>
-<c:set var="pagination" value="${map.pagination}"/>
+<c:set var="memList" value="${memMap.memList}"/>
+<c:set var="pagination" value="${memMap.pagination}"/>
 
 <!DOCTYPE html>
 <html lang="en">

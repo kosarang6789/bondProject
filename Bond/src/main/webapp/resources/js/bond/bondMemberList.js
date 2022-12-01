@@ -17,3 +17,35 @@ window.onclick=function(e){
         }   
     }
 };
+
+
+// 무한스크롤
+
+const option = {
+    root: null,
+    rootMargind: "0px 0px 0px 0px",
+    thredhold: 1
+}
+
+const observer = new IntersectionObserver(selectBoardScroll, option);
+const target = document.getElementById("pageTarget");
+observer.observe(target);
+
+let flag = true;
+function selectBoardScroll (){
+    if(cp==0){ cp++; }
+    else{
+        if(flag){
+            $.ajax({
+                url : "/bondMemberList",
+                data : {"cp":++cp},
+                dataType : "JSON",
+                success : function(map){
+                    if(map != null){
+                        console.log(map.mem);
+                    }
+                }
+            })
+        }
+    }
+} 

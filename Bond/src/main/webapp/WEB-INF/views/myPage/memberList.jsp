@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<c:set var="memberList" value="${memMap.memList}"/>
+<c:set var="memList" value="${memMap.memList}"/>
+<c:set var="pagination" value="${memMap.pagination}"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,17 +36,17 @@
 
             <div class="member-all">
                 <div class="member-title">멤버</div>
-                <c:forEach var="memberList" items="${memberList}">
+                <c:forEach var="memberList" items="${memList}">
                     
                         <c:if test="{loginMember.memberNo == groupMemberList.memberNo}">
                             <c:when test="groupMemberList.leaderYN == 'Y'">
                                 <div class="member-list">
                                     <div class="member-image">
-                                        <c:if test="${empty groupMemberList.memberImage}">
+                                        <c:if test="${empty GroupMemberList.memberImage}">
                                             <img src="/resources/images/user.png">
                                         </c:if>
-                                        <c:if test="${!empty groupMemberList.memberImage}">
-                                            <img src="${groupMemberList.memberImage}" id="profile-img">
+                                        <c:if test="${!empty GroupMemberList.memberImage}">
+                                            <img src="${GroupMemberList.memberImage}" id="profile-img">
                                         </c:if>
                                     </div>
                                     <div class="member-name" name="memberName" id="memberName">${memList.memberName}</div>
@@ -105,6 +106,8 @@
                     </div>
                 </div> --%>
             </div>
+
+            <div id="pageTarget" style="height:10px"></div>
             
             <div class="member-invite-bottom">
                 <div class="invite-icon"><i class="fa-solid fa-user-plus"></i></div>
