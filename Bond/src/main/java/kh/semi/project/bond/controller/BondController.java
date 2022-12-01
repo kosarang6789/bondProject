@@ -128,7 +128,7 @@ public class BondController {
 			int result1 = service.selectJoinNo(map1);
 			
 			// 밴드 가입 여부
-			if(result1 > 0) { // 가입X
+			if(result1 == 0) { // 가입X
 				String resultYN = service.selectOpenYN(groupNo);
 				// 게시물 공개 여부
 				if(resultYN.equals("Y")) { // 공개X
@@ -142,7 +142,6 @@ public class BondController {
 				
 			}
 			
-			path = "bond/openYes";
 			
 		} else { // 신고 기록이 있으면
 			String notice = "모임 이용 중지됨"

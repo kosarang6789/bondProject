@@ -103,7 +103,7 @@
 	</select>
 	
 	<!-- 게시물 공개 여부 조회 -->
-	<select id="selectOpenYN" parameterType="_int" resultType="_int">
+	<select id="selectOpenYN" parameterType="_int" resultType="string">
 		SELECT OPEN_YN
 		FROM "GROUP"
 		WHERE GROUP_NO = #{groupNo}

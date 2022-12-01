@@ -1,5 +1,31 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+    (() => {
+        ajax()
+    })()
+    
+    function ajax(){
+        $.ajax({
+            url : "/plan/list",
+            data : {"groupNo": 1},
+            type : "POST",
+            dataType : "JSON",
+    
+            success : (calenderList) => {
+            for(let item of calenderList) {
+                console.log(calenderList);
+                calendar.addEvent({
+                    title: item.planTitle,
+                    start: item.planStart,
+                    end : item.planEnd,
+                    allDay: true,
+                    backgroundColor: item.planColor
+                });
+            }
+            }
+        })
+    }
+
 // fullcalendar 관련
 var calendarEl = document.getElementById('calendar');
 
@@ -65,11 +91,10 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
                 // var startDate = new Date(inputStartDate + 'T' + inputStartTime); // will be in local time
                 // var endDate = new Date(inputEndDate + 'T' + inputEndTime); // will be in local time
                 
-                modal.style.display="none"
+                modal.style.display="none";
                 
-                // 화면 재요청
-                const url = location.href;
-                location.href = url;
+                // 화면에 정보 다시 뿌리기
+                ajax();
 
             })
 
@@ -90,31 +115,7 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
 
 // 달력에 정보 뿌리기...
 
-(() => {
-    ajax()
-})()
 
-function ajax(){
-    $.ajax({
-        url : "/plan/list",
-        data : {"groupNo": 1},
-        type : "POST",
-        dataType : "JSON",
-
-        success : (calenderList) => {
-        for(let item of calenderList) {
-            console.log(calenderList);
-            calendar.addEvent({
-                title: item.planTitle,
-                start: item.planStart,
-                end : item.planEnd,
-                allDay: true,
-                backgroundColor: item.planColor
-            });
-        }
-        }
-    })
-}
 
 calendar.render();
 
