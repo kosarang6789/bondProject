@@ -11,11 +11,10 @@ public class Plan {
 	
 	private int planNo;				// 일정 번호
 	private int groupNo;				// 일정이 있는 모임 번호
-	private int postNo;				// 일정이 있는 게시글 번호
 	private String planTitle;		// 일정 이름
 	private String planContent;		// 일정 내용
 	private String planStart;		// 일정 시작 날짜
 	private String planEnd;			// 일정 종료 날짜
 	private String planColor;		// 일정 색깔
-	
+	private String planAllday;      // 하루 종일 여부
 }

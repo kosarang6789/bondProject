@@ -29,7 +29,7 @@ function loadCalendar(){
                     click: function() {
 
                         const insertModal = document.getElementById("insertModal");
-                        insertModal.style.display="block";
+                        insertModal.classList.toggle("closed");
 
                         makeInsertBody();
                     }
@@ -41,7 +41,7 @@ function loadCalendar(){
                 const thisId = info.event.id;
 
                 const detailModal = document.getElementById("detailModal");
-                detailModal.style.display="block";
+                detailModal.classList.toggle("closed");
 
                 makePlanDetail(thisId);
             }
@@ -51,21 +51,35 @@ function loadCalendar(){
         // 달력에 정보를 뿌리는 함수 getAllPlan
         function getAllPlan(){
             $.ajax({
-                url : "/plan/list",
+                url : "/plan/select/list",
                 data : {"groupNo": 1},
                 type : "POST",
                 dataType : "JSON",
 
                 success : (planList) => {
                 for(let item of planList) {
-                    calendar.addEvent({
-                        id: item.planNo,
-                        title: item.planTitle,
-                        start: item.planStart,
-                        end : item.planEnd,
-                        allDay: true,
-                        backgroundColor: item.planColor
-                    });
+
+                    if(item.planAllday==='Y') { // 시간을 설정 안한경우
+                        calendar.addEvent({
+                            id: item.planNo,
+                            title: item.planTitle,
+                            start: item.planStart,
+                            end : item.planEnd,
+                            allDay: true,
+                            backgroundColor: item.planColor,
+                        });
+                    }
+
+                    if(item.planAllday==='F') { // 시간을 설정한 경우
+                        calendar.addEvent({
+                            id: item.planNo,
+                            title: item.planTitle,
+                            start: item.planStart,
+                            end : item.planEnd,
+                            allDay: false,
+                            backgroundColor: item.planColor,
+                        });
+                    }
                 }
                 }
             })
@@ -93,62 +107,70 @@ function loadCalendar(){
 const closeInsertModal = document.getElementById("closeInsertModal");
 
 closeInsertModal.addEventListener("click", () => {
-    insertModal.style.display="none";
+    insertModal.classList.toggle("closed");
     clearInsertBody();
 })
-
 
 // 모달창에서 확인 버튼을 누르면 일정을 업데이트함
-const confirmButton = document.getElementById("confirmButton");
+const confirmBtn = document.getElementById("confirmBtn");
 
-confirmButton.addEventListener("click", () => {
+if(confirmBtn != null) {
 
-    const inputTitle = document.getElementById("inputTitle").value;
-    const inputContent = document.getElementById("inputContent").value;
-    const inputStart = document.getElementById("inputStartDate").value;
-    const inputEnd = document.getElementById("inputEndDate").value;
-    const inputColor = document.querySelector("input[name='planColor']:checked").value;
+    confirmBtn.addEventListener("click", () => {
+    
+        const inputTitle = document.getElementById("inputTitle").value;
+        const inputContent = document.getElementById("inputContent").value;
+        let inputStart = document.getElementById("inputStartDate").value;
+        let inputEnd = document.getElementById("inputEndDate").value;
+        const inputColor = document.querySelector("input[name='planColor']:checked").value;
+    
+        const inputCheckbox = document.getElementById("inputCheckbox");
+        
+        let inputAllday = 'Y';
 
-    const checkAllDay = document.getElementById("checkAllDay");
+        // 하루종일이 체크되지 않은 경우
+        if(!inputCheckbox.checked) {
+            const inputStartTime = document.getElementById("inputStartTime").value;
+            const inputEndTime = document.getElementById("inputEndTime").value;
 
-    // 하루종일이 체크되지 않은 경우
-    if(!checkAllDay.checked) {
-        const inputStartTime = document.getElementById("inputStartTime").value;
-        const inputEndTime = document.getElementById("inputEndTime").value;
+            inputStart += "T" + inputStartTime + ":00";
+            inputEnd += "T" + inputEndTime + ":00";
 
-        inputStart += inputStartTime;
-        inputEnd += inputEndTime;
-    }
-
-
-    // 비동기로 일정 업데이트(ajax)
-    $.ajax({
-        url : "/plan/insert",
-        data : {
-                "inputTitle" : inputTitle,
-                "inputContent" : inputContent,
-                "inputStart" : inputStart,
-                "inputEnd" : inputEnd,
-                "inputColor" : inputColor
-                },
-        type : "POST",
-        dataType : "JSON",
-
-        success : (message) => {
-            loadCalendar();
-
-            // 성공 시 화면에 정보를 다시 뿌림
-            alert(message);
-        },
-        error : (message) => {
-            alert(message);
+            inputAllday = 'F';
         }
+
+        // 비동기로 일정 업데이트(ajax)
+        $.ajax({
+            url : "/plan/insert",
+            data : {
+                    "groupNo" : 1,
+                    "inputTitle" : inputTitle,
+                    "inputContent" : inputContent,
+                    "inputStart" : inputStart,
+                    "inputEnd" : inputEnd,
+                    "inputColor" : inputColor,
+                    "inputAllday" :inputAllday
+                    },
+            type : "POST",
+            dataType : "JSON",
+    
+            success : (message) => {
+                loadCalendar();
+    
+                // 성공 시 화면에 정보를 다시 뿌림
+                alert(message);
+            },
+            error : (message) => {
+                alert(message);
+            }
+        })
+    
+        // 결과와 상관 없이 모달창을 닫고 초기화함
+        insertModal.style.display="none";
+        clearInsertBody();
     })
 
-    // 결과와 상관 없이 모달창을 닫고 초기화함
-    insertModal.style.display="none";
-    clearInsertBody();
-})
+}
 
 // InsertBody 화면 만들기 함수
 function makeInsertBody(){
@@ -158,7 +180,7 @@ function makeInsertBody(){
     titleBox.id = "titleBox";
 
     // 제목 상자 input
-    const inputTitle = document.createElement("input");t
+    const inputTitle = document.createElement("input");
     inputTitle.id = 'inputTitle';
 
     // 제목 상자 text
@@ -194,7 +216,7 @@ function makeInsertBody(){
         radio.setAttribute("value", paletteArr[i]);
 
         if(i==0) {
-            radio.checked;
+            radio.checked = true;
         }
 
         const palette = document.createElement("div");
@@ -227,6 +249,8 @@ function makeInsertBody(){
     // 시작 날짜 상자에 text, date, time 추가
     startBox.append(startBoxText, inputStartDate, inputStartTime);
 
+
+
     // 3-2. endBox
     const endBox = document.createElement("div");
     endBox.classList.add("dateBoxRow");
@@ -249,6 +273,7 @@ function makeInsertBody(){
     // 종료 날짜 상자에 text, date, time 추가
     endBox.append(endBoxText, inputEndDate, inputEndTime);
 
+
     // 3-3. allDayBox
     const allDayBox = document.createElement("div");
     allDayBox.classList.add("dateBoxRow");
@@ -258,6 +283,21 @@ function makeInsertBody(){
     const inputCheckbox = document.createElement("input");
     inputCheckbox.setAttribute("type", "checkbox");
     inputCheckbox.id = "inputCheckbox";
+
+    inputCheckbox.addEventListener("change", () => {
+        if(inputCheckbox.checked==true) {
+            inputStartTime.disabled = true;
+            inputEndTime.disabled = true;
+            return;
+        }
+
+        if(inputCheckbox.checked==false) {
+            inputStartTime.disabled = false;
+            inputEndTime.disabled = false;
+            return;
+        }
+
+    })
 
     // 하루종일 상자 text
     const allDayBoxText = document.createElement("div");
@@ -271,6 +311,8 @@ function makeInsertBody(){
     const dateBox = document.createElement("div");
     dateBox.id = "dateBox";
     dateBox.append(startBox, endBox, allDayBox);
+
+
 
     // 4. contentBox
     const contentBox = document.createElement("div");
@@ -287,18 +329,9 @@ function makeInsertBody(){
     // 내용 상자에 text, input 추가
     contentBox.append(contentBoxText, inputContent);
 
-    // 5. buttonBox
-    const btnBox = document.createElement("div");
-    btnBox.id = "btnBox";
-
-    // 확인 버튼 상자 button
-    const confirmBtn = document.createElement("button");
-    confirmBtn.setAttribute("type", "button");
-    confirmBtn.id = confirmBtn;
-
     // insertBody에 전부 추가
     const insertBody = document.getElementById("insertBody");
-    insertBody.append(titleBox, colorBox, dateBox, contentBox, btnBox);
+    insertBody.append(titleBox, colorBox, dateBox, contentBox);
 
 }
 
@@ -311,24 +344,83 @@ function clearInsertBody(){
 
 /* 일정 조회 모달창 js */
 
-// 일정 조회 모달창 닫기
-const closeDetailModal = document.getElementById("closeDetailModal");
+// // 일정 조회 모달창 닫기
+// const closeDetailModal = document.getElementById("closeDetailModal");
 
-closeDetailModal.addEventListener("click", () => {
-    detailModal.style.display="none";
+// closeDetailModal.addEventListener("click", () => {
+//     detailModal.style.display="none";
+// })
+
+
+const openDetailModalMenu = document.getElementById("openDetailModalMenu");
+
+openDetailModalMenu.addEventListener("click", () => {
+    detailModalMenu.classList.toggle("closed")
 })
 
 // 일정 열면 데이터를 가져옴
 function makePlanDetail(planNo){
 
     $.ajax({
-        url : "plan/detail",
+        url : "plan/select/detail",
         data : {"planNo":planNo},
         type : "POST",
         dataType : "JSON",
 
         success : (plan) => {
             // plan.planNo, plan.planTitle, plan.planContent, plan.planStart, plan.planEnd, plan.planColor
+            console.log(plan.planNo);
+            console.log(plan.planTitle);
+        },
+        error : () => {
+            alert("데이터 전송에 실패하였습니다.")
+        }
+    })
+}
+
+// 일정 수정 관련
+function updatePlan(planNo){
+
+    $.ajax({
+        url : "plan/update",
+        data : {
+                "planNo" : planNo,
+                "inputTitle" : inputTitle,
+                "inputContent" : inputContent,
+                "inputStart" : inputStart,
+                "inputEnd" : inputEnd,
+                "inputColor" : inputColor,
+                "inputAllday" :inputAllday
+                },
+        type : "POST",
+        dataType : "JSON",
+
+        success : (message) => {
+            alert(message);
+            loadCalendar();
+        },
+        error : () => {
+            alert("데이터 전송에 실패하였습니다.")
+        }
+        
+    })
+
+
+}
+
+/* 일정 삭제 관련 js */
+
+function deletePlan(planNo){
+
+    $.ajax({
+        url : "plan/delete",
+        data : {"planNo":planNo},
+        type : "POST",
+        dataType : "JSON",
+
+        success : (message) => {
+            alert(message);
+            loadCalendar();
         },
         error : () => {
             alert("데이터 전송에 실패하였습니다.")

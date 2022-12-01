@@ -16,13 +16,20 @@ public class PlanServiceImpl implements PlanService {
 
 	// 일정 목록 가져오기
 	@Override
-	public List<Plan> getPlanList() {
-		return dao.getPlanList();
+	public List<Plan> planSelectList() {
+		return dao.planSelectList();
 	}
 	
+	// 일정 상세 조회
+	@Override
+	public Plan planSelectDetail(int planNo) {
+		return dao.planSelectDetail(planNo);
+		
+	}
 	// 일정 추가하기
 	@Override
 	public int planInsert(Plan plan) {
 		return dao.planInsert(plan);
 	}
+	
 }

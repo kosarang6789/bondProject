@@ -27,58 +27,69 @@ public class PlanController {
 		return "plan/plan";
 	}
 	
+	
+	// 캘린더에 일정 뿌리기
+	@PostMapping("/plan/select/list")
+	@ResponseBody
+	public String planSelectList() {
+		
+		List<Plan> planList = service.planSelectList();
+		
+		return new Gson().toJson(planList);
+	}
+	
+	// 캘린더 일정 하나 정보 가져오기
+	@PostMapping("/plan/select/detail")
+	@ResponseBody
+	public String planSelectDetail(
+			@RequestParam(value="planNo", required=false) int planNo
+			) {
+		
+		Plan plan = service.planSelectDetail(planNo);
+		
+		return new Gson().toJson(plan);
+	}
+	
+	
 	// 캘린더에 일정 등록
 	@PostMapping("/plan/insert")
 	@ResponseBody
 	public String planInsert(
-			@RequestParam(value="inputTitle") String inputTitle,
-			@RequestParam(value="inputContent") String inputContent,
-			@RequestParam(value="inputStartDate") String inputStartDate,
-			@RequestParam(value="inputStartTime") String inputStartTime,
-			@RequestParam(value="inputEndDate") String inputEndDate,
-			@RequestParam(value="inputEndTime", required=false, defaultValue="NULL") String inputEndTime,
-			@RequestParam(value="inputColor") String inputColor
+			@RequestParam(value="groupNo", required=false) int groupNo,
+			@RequestParam(value="inputTitle", required=false, defaultValue="-1") String inputTitle,
+			@RequestParam(value="inputContent", required=false, defaultValue="-1") String inputContent,
+			@RequestParam(value="inputStart", required=false, defaultValue="-1") String inputStart,
+			@RequestParam(value="inputEnd", required=false, defaultValue="NULL") String inputEnd,
+			@RequestParam(value="inputColor", required=false, defaultValue="-1") String inputColor,
+			@RequestParam(value="inputAllday", required=false, defaultValue="Y") String inputAllday
 			){
 		
-		Plan plan = new Plan();
-		plan.setPostNo(1);
-		plan.setPlanTitle(inputTitle);
-		plan.setPlanContent(inputContent);
-		plan.setPlanStart(inputStartDate);
-		plan.setPlanEnd(inputEndDate);
-		plan.setPlanColor(inputColor);
+		String message = "데이터 전송 실패";
 		
-		int result = service.planInsert(plan);
 		
-		String message = "";
-		
-		if(result > 0) {
-			message = "일정이 추가되었습니다.";
-		} else {
-			message = "데이터 전송 실패";
+		if(!inputTitle.equals("-1") || !inputContent.equals("-1") || !inputStart.equals("-1") || !inputColor.equals("1") ) {
+			
+			Plan plan = new Plan();
+			plan.setGroupNo(groupNo);
+			plan.setPlanTitle(inputTitle);
+			plan.setPlanContent(inputContent);
+			plan.setPlanStart(inputStart);
+			plan.setPlanEnd(inputEnd);
+			plan.setPlanColor(inputColor);
+			plan.setPlanAllday(inputAllday);
+			
+			int result = service.planInsert(plan);
+			
+			
+			if(result > 0) {
+				message = "일정이 추가되었습니다.";
+			}
+			
 		}
 		
 		return new Gson().toJson(message);
 		
 	}
 	
-	// 캘린더에 일정 뿌리기
-	@PostMapping("/plan/list")
-	@ResponseBody
-	public String getPlanList() {
-		
-		List<Plan> planList = service.getPlanList();
-		
-		return new Gson().toJson(planList);
-	}
-	
-//	// 캘린더 일정 하나 정보 가져오기
-//	@PostMapping("/plan/Detail")
-//	@ResponseBody
-//	public String getPlanDetail() {
-//		
-//		Plan plan = service.getPlanDetail();
-//		
-//		return new Gson().toJson(plan);
-//	}
+
 }

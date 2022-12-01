@@ -11,6 +11,11 @@ body{
     position: relative;
 }
 
+/* 복합기능 */
+.closed{
+    display: none;
+}
+
 /* insertModal */
 
 /* insertModal 배경 */
@@ -114,10 +119,11 @@ input[name="planColor"]:checked + .palette{
 
 }
 
-/* 모달창 닫기 버튼 */
-#closeDetailModal{
+/* 모달창 드롭다운 메뉴 */
+#openDetailModalMenu{
     cursor: pointer;
     position: absolute;
     right: 10px;
     top: 10px;
 }
+

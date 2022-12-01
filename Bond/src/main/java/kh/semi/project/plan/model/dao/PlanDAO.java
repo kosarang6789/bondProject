@@ -14,13 +14,20 @@ public class PlanDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	// 일정 목록 가져오기
-	public List<Plan> getPlanList() {
-		return sqlSession.selectList("planMapper.getPlanList");
+	// 일정 목록 조회
+	public List<Plan> planSelectList() {
+		return sqlSession.selectList("planMapper.planSelectList");
+	}
+	
+	// 일정 상세 조회
+	public Plan planSelectDetail(int planNo) {
+		return sqlSession.selectOne("planMapper.planSelectDetail", planNo);
 	}
 	
 	// 일정 추가하기
 	public int planInsert(Plan plan) {
 		return sqlSession.insert("planMapper.planInsert", plan);
 	}
+
+
 }

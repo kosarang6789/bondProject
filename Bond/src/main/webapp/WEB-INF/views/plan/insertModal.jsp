@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<div id="insertModal" style="display:none">
+<div id="insertModal" class="closed">
 
   <div id="insertWindow">
     <div class="insert-header">
@@ -12,9 +12,10 @@
 
     <div id="insertBody">
 
-
+      
     </div> <!-- end insertBody -->
     
+    <button type="button" id="confirmBtn">확인</button>
 
   </div> <!-- end window -->
 
