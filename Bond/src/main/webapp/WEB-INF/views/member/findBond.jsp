@@ -177,26 +177,30 @@
             <div class="group-recommend">
                 <h3>이런 모임은 어때요</h3>
                 <ul class="group-list">
-                    <li class="group">
-                        <a href="/bond/${groupNo}" class="bandUri">
-                            <div class="group-img">
-                                <c:choose>
-                                    <c:when test="${not empty groupJoinNo.groupImage}">
-                                        <img src="${groupJoinNo.groupImage}" id="cover-img">  
-                                    </c:when>
-                                    <c:otherwise>
-                                        <img src="/resources/images/bond/profile/no-profile.png" id="cover-img">
-                                    </c:otherwise>
-                                </c:choose>
-                                <%-- <img src="/resources/images/member/main2/group-recommend/group-english.jpg"> --%>
-                            </div>
-                            <div>
-                                <strong>${groupJoinNo.groupName}</strong>
-                                <p>${groupJoinNo.groupComment}</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="group">
+
+                    <c:forEach var="groupJoin" item="${groupJoinNo}">
+                        <li class="group">
+                            <a href="/bond/${groupJoin.groupNo}" class="bandUri">
+                                <div class="group-img">
+                                    <c:choose>
+                                        <c:when test="${not empty groupJoin.groupImage}">
+                                            <img src="${groupJoin.groupImage}" id="cover-img">  
+                                        </c:when>
+                                        <c:otherwise>
+                                            <img src="/resources/images/bond/profile/no-profile.png" id="cover-img">
+                                        </c:otherwise>
+                                    </c:choose>
+                                    <%-- <img src="/resources/images/member/main2/group-recommend/group-english.jpg"> --%>
+                                </div>
+                                <div>
+                                    <strong>${groupJoin.groupName}</strong>
+                                    <p>${groupJoin.groupComment}</p>
+                                </div>
+                            </a>
+                        </li>
+                    </c:forEach>
+
+                    <%-- <li class="group">
                         <a href="#" class="bandUri">
                             <div class="group-img">
                                 <img src="/resources/images/member/main2/group-recommend/group-coding.jpg">
@@ -228,7 +232,7 @@
                                 <p>멍때리기를 통해 내면을 다스립니다 Inner Peace</p>
                             </div>
                         </a>
-                    </li>
+                    </li> --%>
                 </ul>
             </div>
         </section>
