@@ -133,7 +133,15 @@ function selectBoardScroll(){
                             // 3. postBody
                             const postBody = document.createElement("div");
                             postBody.classList.add("post-body");
-                            
+                            postBody.setAttribute("id", post.postNo);
+
+                            postBody.addEventListener("click", ()=>{
+                                const modal = document.getElementById("postSelect-modal");
+                                modal.classList.toggle("show");
+                                document.body.style.overflow = "hidden";
+                                document.querySelector("#postSelect-view > main").scrollTop = 0;
+                            });
+
                             const postText = document.createElement("div");
                             postText.classList.add("post-text");
                             
@@ -356,7 +364,7 @@ Element.prototype.setStyle = function(styles) {
 };
 
 document.getElementById("postWrite-btn").addEventListener("click", function() {
-    // 모달창 띄우기
+    // 게시글 작성 모달창 띄우기
     modal('postWrite-modal');
 });
 
@@ -368,4 +376,38 @@ const reportBtn = document.getElementById("reportBtn");
 reportBtn.addEventListener("click", () => {
     const url = "/report/group/" + groupNo; 
     open(url, "신고하기", "width=500px, height=600px")
-})
+});
+
+
+// 게시글 상세조회 모달
+(()=>{
+    const post = document.getElementsByClassName("post-body");
+
+    const modal = document.getElementById("postSelect-modal");
+    const closeBtn = document.querySelector(".sModal-closeBtn");
+
+    for(let p of post){
+        p.addEventListener("click", ()=>{
+            modal.classList.toggle("show");
+            document.body.style.overflow = "hidden";
+            document.querySelector("#postSelect-view > main").scrollTop = 0;
+
+
+        });
+    }
+
+    closeBtn.addEventListener("click",()=>{
+        modal.classList.toggle("show");
+        document.body.style.overflow = "unset";
+    });
+})();
+
+const selectPostDetail = ()=>{
+    $.ajax({
+        url : "/bond/" + postNo,
+        data : {"postNo" : post.postNo},
+        type : "POST",
+        dataType : "JSON"
+
+    })
+};

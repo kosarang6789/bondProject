@@ -48,9 +48,27 @@
 	
 	<!-- 게시글 조회 -->
 	<select id="selectBoardDetail"  resultMap="post_rm">
-		SELECT MEMBER_NAME, POST_CONTENT, POST_VIEW, 
-			TO_CHAR(POST_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') POST_DATE,
-			TO_CHAR(EDIT_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') EDIT_DATE,
+		SELECT POST_NO, MEMBER_NAME, POST_CONTENT, POST_VIEW,
+			<![CDATA[
+			CASE  
+		      WHEN SYSDATE - POST_DATE < 1/24/60
+		      THEN FLOOR( (SYSDATE - POST_DATE) * 24 * 60 * 60 ) || '초 전'
+		      WHEN SYSDATE - POST_DATE < 1/24
+		      THEN FLOOR( (SYSDATE - POST_DATE) * 24 * 60) || '분 전'
+		      WHEN SYSDATE - POST_DATE < 1
+		      THEN FLOOR( (SYSDATE - POST_DATE) * 24) || '시간 전'
+		      ELSE TO_CHAR(POST_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI')
+		   END POST_DATE,
+			CASE  
+		      WHEN SYSDATE - EDIT_DATE < 1/24/60
+		      THEN FLOOR( (SYSDATE - EDIT_DATE) * 24 * 60 * 60 ) || '초 전'
+		      WHEN SYSDATE - EDIT_DATE < 1/24
+		      THEN FLOOR( (SYSDATE - EDIT_DATE) * 24 * 60) || '분 전'
+		      WHEN SYSDATE - EDIT_DATE < 1
+		      THEN FLOOR( (SYSDATE - EDIT_DATE) * 24) || '시간 전'
+		      ELSE TO_CHAR(EDIT_DATE, 'YYYY-MM-DD')
+		   END EDIT_DATE,
+		   ]]>
 			(SELECT MEMBER_IMG_PATH || MEMBER_IMG_RENAME 
 			FROM MEMBER_IMG MI
 			WHERE MI.MEMBER_NO = P.MEMBER_NO) MEMBER_IMG
@@ -58,7 +76,7 @@
 		JOIN MEMBER M ON(P.MEMBER_NO = M.MEMBER_NO)
 		WHERE GROUP_NO = #{groupNo}
 		AND POST_DEL_YN = 'N'
-		ORDER BY POST_DATE DESC
+		ORDER BY POST_NO DESC
 	</select>
 	
 </mapper>

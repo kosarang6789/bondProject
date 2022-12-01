@@ -161,7 +161,7 @@
                                                 </div>
 
                                                 <%-- 게시물 내용 --%>
-                                                <div class="post-body">
+                                                <div class="post-body" id="${post.postNo}">
                                                     <div class="post-text">
                                                         <p class="text-body">
                                                             ${post.postContent}
@@ -274,6 +274,7 @@
         <c:remove var="message" />
     </c:if>
 
+    <%-- 게시글 작성 페이지 모달(iframe) --%>
     <div id="postWrite-modal">
         <iframe width="620px" height="720px" src="/bond/postWrite"
         id="postWrite-iframe"></iframe>
@@ -282,14 +283,20 @@
         </button>
     </div>
 
+    <%-- 게시글 상세조회 페이지 모달 --%>
     <div id="postSelect-modal">
-        
+        <div id="postSelect-view">
+            <jsp:include page="/WEB-INF/views/post/postSelect.jsp"/>
+        </div>
+        <button class="sModal-closeBtn">
+            <i class="fa-solid fa-x"></i>
+        </button>
     </div>
 
     <script>
         let cp = 0;
         const groupNo = "${groupNo}"
-    
+        const postNo = "${postNo}"
     </script>
 
 
