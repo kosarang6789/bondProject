@@ -94,7 +94,7 @@
 	</select>
 
 	<!-- 가입X 본드 조회 -->
-	<select id="selectOpenYN" parameterType="_int" resultMap="group_rm">
+	<select id="selectJoinNo" parameterType="_int" resultMap="group_rm">
 		SELECT GROUP_NAME, GROUP_COMMENT, GROUP_NO 
 		FROM "GROUP"
 		WHERE GROUP_NO NOT IN(SELECT GROUP_NO

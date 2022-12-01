@@ -21,15 +21,12 @@ public class findBondController {
 	@Autowired
 	private FindBondService service;
 
-	@PostMapping("/member/findBond")
-	public String findBondPage(
-			@SessionAttribute("loginMember") Member loginMember,
-			Model model) {
-		
-
-		
-		return "redirect:bond/{groupNo}";
-	}
+//	@PostMapping("/member/findBond")
+//	public String findBondPage(
+//			@PathVariable("groupNo") int groupNo) {
+//		
+//		return "redirect:bond/{groupNo}";
+//	}
 	
 	
 

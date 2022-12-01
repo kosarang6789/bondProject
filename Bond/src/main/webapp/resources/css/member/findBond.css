@@ -269,7 +269,7 @@ main{
     color: #BFBFBF;
 }
 
-.group-category>ul{
+.swiper-wrapper{
     display: inline-block;
     margin-left: 40px;
 }
