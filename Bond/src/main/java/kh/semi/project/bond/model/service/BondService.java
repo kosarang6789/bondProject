@@ -22,11 +22,4 @@ public interface BondService {
 	// 신고 기록 조회
 	String checkReport(int groupNo);
 
-
-
-
-
-	
-
-
 }

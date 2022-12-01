@@ -171,11 +171,19 @@
                     <li class="group">
                         <a href="/bond/${boardNo}" class="bandUri">
                             <div class="group-img">
-                                <img src="/resources/images/member/main2/group-recommend/group-english.jpg">
+                                <c:choose>
+                                    <c:when test="${not empty groupJoinNo.groupImage}">
+                                        <img src="${groupJoinNo.groupImage}" id="cover-img">  
+                                    </c:when>
+                                    <c:otherwise>
+                                        <img src="/resources/images/bond/profile/no-profile.png" id="cover-img">
+                                    </c:otherwise>
+                                </c:choose>
+                                <%-- <img src="/resources/images/member/main2/group-recommend/group-english.jpg"> --%>
                             </div>
                             <div>
-                                <strong>영어가 술술 스피킹</strong>
-                                <p>원어민처럼 말하는 그날까지 같이 공부해요!</p>
+                                <strong>${groupJoinNo.groupName}</strong>
+                                <p>${groupJoinNo.groupComment}</p>
                             </div>
                         </a>
                     </li>

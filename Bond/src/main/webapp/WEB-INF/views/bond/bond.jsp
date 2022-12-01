@@ -24,13 +24,13 @@
             <aside id="info">
                 <div id="info-inner">
                     <div class="side-cover">
-                        <a href="#" class="cover">
+                        <a href="#" class="cover-img">
                             <c:choose>
                                 <c:when test="${not empty groupInfo.groupImage}">
                                     <img src="${groupInfo.groupImage}" id="cover-img">  
                                 </c:when>
                                 <c:otherwise>
-                                    <img src="/resources/images/bond/profile/non-profile.png">
+                                    <img src="/resources/images/bond/profile/no-profile.png" id="cover-img">
                                 </c:otherwise>
                             </c:choose>
                         </a>
@@ -122,8 +122,6 @@
 
                     <%-- 게시물 조회 --%>
                     <div class="post-wrap">
-                        <h2 class="post-wrap-title">모든 게시글</h2>
-                        
                         <c:choose>
                             <c:when test="${empty postList}">
                                 <!-- 게시글 목록 조회 결과가 비어있다면 -->
