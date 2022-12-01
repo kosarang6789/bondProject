@@ -22,11 +22,7 @@ public interface BondService {
 	// 신고 기록 조회
 	String checkReport(int groupNo);
 
-	// 본드 가입 여부 조회
-	int selectJoinNo(Map<String, Object> map1);
 
-	// 게시물 공개 여부 조회
-	String selectOpenYN(int groupNo);
 
 
 
