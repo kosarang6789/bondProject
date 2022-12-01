@@ -92,7 +92,7 @@ input[name="planColor"]:checked + .palette{
 
 
 /* viewModal */
-#viewModal{
+#detailModal{
     position: absolute;
     background-color: rgb(0, 0, 0, 0.7);
     
@@ -103,7 +103,7 @@ input[name="planColor"]:checked + .palette{
     z-index: 10000;
 }
 
-#viewWindow{
+#detailWindow{
     background-color: white;
     width: 300px;
     height: 300px;
@@ -115,7 +115,7 @@ input[name="planColor"]:checked + .palette{
 }
 
 /* 모달창 닫기 버튼 */
-#closeViewModal{
+#closeDetailModal{
     cursor: pointer;
     position: absolute;
     right: 10px;

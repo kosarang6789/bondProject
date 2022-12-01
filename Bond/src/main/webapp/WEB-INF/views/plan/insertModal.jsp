@@ -12,27 +12,8 @@
 
     <div id="insertBody">
 
-      <div id="titleBox">
-      </div> <!-- end titleBox -->
 
-      <div id="colorBox">
-      </div> <!-- end colorBox -->
-
-      <div id="dateBox">
-        <div class="dateBoxRow" id="startBox">
-        </div>
-        <div class="dateBoxRow" id="endBox">
-        </div>
-      </div> <!-- end dateBox -->
-
-      <div id="contentBox">
-      </div> <!-- end commentBox -->
-
-      <div id="buttonBox">
-        <button type="button" id="confirmButton">확인</button>
-      </div> <!-- end buttonBox -->
-
-    </div> <!-- end window-body -->
+    </div> <!-- end insertBody -->
     
 
   </div> <!-- end window -->

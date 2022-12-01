@@ -6,6 +6,7 @@
 	<resultMap type="Plan" id="plan_rm">
 		<id property="planNo" column="PLAN_NO" />
 		
+		<result property="groupNo" column="GROUP_NO" />
 		<result property="postNo" column="PLAN_NO" />
 		<result property="planTitle" column="PLAN_TITLE" />
 		<result property="planContent" column="PLAN_CONTENT" />
@@ -21,7 +22,7 @@
 	
 	<insert id="planInsert">
 		INSERT INTO "POST_PLAN" 
-		VALUES(SEQ_PLAN_NO.NEXTVAL, 1, #{planTitle}, #{planContent},
+		VALUES(SEQ_PLAN_NO.NEXTVAL, 2, 1, #{planTitle}, #{planContent},
 				#{planStart}, #{planEnd}, #{planColor})
 	</insert>
 	

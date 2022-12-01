@@ -2,12 +2,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<div id="viewModal" style="display:none">
+<div id="detailModal" style="display:none">
 
-  <div id="viewWindow">
-      <span id="closeViewModal">&times;</span>
+  <div id="detailWindow">
+      <span id="closeDetailModal">&times;</span>
 
-      <div id="viewBody">
+      <div id="detailBody">
       </div> <%-- end viewBody --%>
 
   </div> <!-- end viewWindow -->

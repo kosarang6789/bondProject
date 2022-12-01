@@ -38,13 +38,12 @@ function loadCalendar(){
 
             // 일정 조회 모달창 열기
             eventClick: function(info) {
+                const thisId = info.event.id;
 
-                const infoTitle = info.event.title;
+                const detailModal = document.getElementById("detailModal");
+                detailModal.style.display="block";
 
-                const viewModal = document.getElementById("viewModal");
-                viewModal.style.display="block";
-
-                makePlanInfo(infoTitle);
+                makePlanDetail(thisId);
             }
             
         });
@@ -57,9 +56,10 @@ function loadCalendar(){
                 type : "POST",
                 dataType : "JSON",
 
-                success : (calenderList) => {
-                for(let item of calenderList) {
+                success : (planList) => {
+                for(let item of planList) {
                     calendar.addEvent({
+                        id: item.planNo,
                         title: item.planTitle,
                         start: item.planStart,
                         end : item.planEnd,
@@ -105,11 +105,21 @@ confirmButton.addEventListener("click", () => {
 
     const inputTitle = document.getElementById("inputTitle").value;
     const inputContent = document.getElementById("inputContent").value;
-    const inputStartDate = document.getElementById("inputStartDate").value;
-    const inputStartTime = document.getElementById("inputStartTime").value;
-    const inputEndDate = document.getElementById("inputEndDate").value;
-    const inputEndTime = document.getElementById("inputEndTime").value;
+    const inputStart = document.getElementById("inputStartDate").value;
+    const inputEnd = document.getElementById("inputEndDate").value;
     const inputColor = document.querySelector("input[name='planColor']:checked").value;
+
+    const checkAllDay = document.getElementById("checkAllDay");
+
+    // 하루종일이 체크되지 않은 경우
+    if(!checkAllDay.checked) {
+        const inputStartTime = document.getElementById("inputStartTime").value;
+        const inputEndTime = document.getElementById("inputEndTime").value;
+
+        inputStart += inputStartTime;
+        inputEnd += inputEndTime;
+    }
+
 
     // 비동기로 일정 업데이트(ajax)
     $.ajax({
@@ -117,10 +127,8 @@ confirmButton.addEventListener("click", () => {
         data : {
                 "inputTitle" : inputTitle,
                 "inputContent" : inputContent,
-                "inputStartDate" : inputStartDate,
-                "inputStartTime" : inputStartTime,
-                "inputEndDate" : inputEndDate,
-                "inputEndTime" : inputEndTime,
+                "inputStart" : inputStart,
+                "inputEnd" : inputEnd,
                 "inputColor" : inputColor
                 },
         type : "POST",
@@ -142,30 +150,42 @@ confirmButton.addEventListener("click", () => {
     clearInsertBody();
 })
 
-// windowBody 화면 만들기 함수
+// InsertBody 화면 만들기 함수
 function makeInsertBody(){
 
     // 1. titleBox
-    const titleBox = document.getElementById("titleBox");
-    const inputTitle = document.createElement("input");
+    const titleBox = document.createElement("div");
+    titleBox.id = "titleBox";
+
+    // 제목 상자 input
+    const inputTitle = document.createElement("input");t
     inputTitle.id = 'inputTitle';
 
-    const titleBoxSpan = document.createElement("span");
-    titleBoxSpan.innerText = '제목';
+    // 제목 상자 text
+    const titleBoxText = document.createElement("div"); 
+    titleBoxText.innerText = '제목'; 
 
-    titleBox.append(titleBoxSpan, inputTitle);
+    // 제목 상자에 input, text 추가
+    titleBox.append(titleBoxText, inputTitle);
 
     // 2. colorBox
-    const colorBox = document.getElementById("colorBox");
+    const colorBox = document.createElement("div");
+    colorBox.id = "colorBox";
 
-    const colorBoxSpan = document.createElement("span");
-    colorBoxSpan.innerText = '색깔';
+    // 컬러 상자 text
+    const colorBoxText = document.createElement("div");
+    colorBoxText.innerText = '색깔';
 
-    colorBox.append(colorBoxSpan);
+    // 컬러 상자에 text 추가
+    colorBox.append(colorBoxText);
     
-    const paletteArr = new Array(); // 색깔 배열
-    paletteArr.push("rgb(255,60,45)", "rgb(240,200,55)", "rgb(55,136,216)"); // 색깔을 추가하세요
+    // 컬러 팔레트 배열
+    const paletteArr = new Array();
 
+    // 추가하고 싶은 색의 RGB값 넣기
+    paletteArr.push("rgb(255,60,45)", "rgb(240,200,55)", "rgb(55,136,216)");
+
+    // 반복문 : 컬러 input(radio) 생성 및 컬러 상자에 추가
     for(let i=0; i<paletteArr.length; i++) {
         const label = document.createElement("label");
         const radio = document.createElement("input");
@@ -185,80 +205,133 @@ function makeInsertBody(){
         colorBox.append(label);
     }
 
-    // 3. startBox
-    const startBox = document.getElementById("startBox");
+    // 3-1. startBox
+    const startBox = document.createElement("div");
+    startBox.classList.add("dateBoxRow");
+    startBox.id = "startBox";
 
+    // 시작 날짜 상자 date
     const inputStartDate = document.createElement("input");
     inputStartDate.setAttribute("type", "date");
     inputStartDate.id = "inputStartDate";
 
+    // 시작 날짜 상자 time
     const inputStartTime = document.createElement("input");
     inputStartTime.setAttribute("type", "time");
     inputStartTime.id = "inputStartTime";
 
-    const startBoxSpan = document.createElement("span");
-    startBoxSpan.innerText = '시작날짜';
+    // 시작 날짜 상자 text
+    const startBoxText = document.createElement("div");
+    startBoxText.innerText = '시작날짜';
 
-    startBox.append(startBoxSpan, inputStartDate, inputStartTime);
+    // 시작 날짜 상자에 text, date, time 추가
+    startBox.append(startBoxText, inputStartDate, inputStartTime);
 
-    // 4. endBox
-    const endBox = document.getElementById("endBox");
+    // 3-2. endBox
+    const endBox = document.createElement("div");
+    endBox.classList.add("dateBoxRow");
+    endBox.id = "endBox";
 
+    // 종료 날짜 상자 date
     const inputEndDate = document.createElement("input");
     inputEndDate.setAttribute("type", "date");
     inputEndDate.id = "inputEndDate";
-
+    
+    // 종료 날짜 상자 time
     const inputEndTime = document.createElement("input");
     inputEndTime.setAttribute("type", "time");
     inputEndTime.id = "inputEndTime";
 
-    const endBoxSpan = document.createElement("span");
-    endBoxSpan.innerText = '종료날짜';
+    // 종료 날짜 상자 text
+    const endBoxText = document.createElement("div");
+    endBoxText.innerText = '종료날짜';
 
-    endBox.append(endBoxSpan, inputEndDate, inputEndTime);
+    // 종료 날짜 상자에 text, date, time 추가
+    endBox.append(endBoxText, inputEndDate, inputEndTime);
 
-    // 5. contentBox
-    const contentBox = document.getElementById("contentBox");
+    // 3-3. allDayBox
+    const allDayBox = document.createElement("div");
+    allDayBox.classList.add("dateBoxRow");
+    allDayBox.id = "allDayBox";
 
+    // 하루종일 상자 input(checkbox)
+    const inputCheckbox = document.createElement("input");
+    inputCheckbox.setAttribute("type", "checkbox");
+    inputCheckbox.id = "inputCheckbox";
+
+    // 하루종일 상자 text
+    const allDayBoxText = document.createElement("div");
+    allDayBoxText.innerText = '하루종일';
+
+    // 하루종일 상자에 input, text 추가
+    allDayBox.append(inputCheckbox, allDayBoxText);
+
+    // 3 < 3-1, 3-2, 3-3. dateBox
+    // 날짜 상자에 시작 날짜 상자, 종료 날짜 상자, 하루종일 상자 추가
+    const dateBox = document.createElement("div");
+    dateBox.id = "dateBox";
+    dateBox.append(startBox, endBox, allDayBox);
+
+    // 4. contentBox
+    const contentBox = document.createElement("div");
+    contentBox.id = "contentBox";
+
+    // 내용 상자 input
     const inputContent = document.createElement("input");
     inputContent.id = "inputContent";
 
-    const contentBoxSpan = document.createElement("span");
-    contentBoxSpan.innerText = '내용';
+    // 내용 상자 text
+    const contentBoxText = document.createElement("div");
+    contentBoxText.innerText = '내용';
 
-    contentBox.append(contentBoxSpan, inputContent);
+    // 내용 상자에 text, input 추가
+    contentBox.append(contentBoxText, inputContent);
+
+    // 5. buttonBox
+    const btnBox = document.createElement("div");
+    btnBox.id = "btnBox";
+
+    // 확인 버튼 상자 button
+    const confirmBtn = document.createElement("button");
+    confirmBtn.setAttribute("type", "button");
+    confirmBtn.id = confirmBtn;
+
+    // insertBody에 전부 추가
+    const insertBody = document.getElementById("insertBody");
+    insertBody.append(titleBox, colorBox, dateBox, contentBox, btnBox);
 
 }
 
-// windowBody 비우기 함수
+// InsertBody 비우기 함수
 function clearInsertBody(){
-    const titleBox = document.getElementById("titleBox");
-    const colorBox = document.getElementById("colorBox");
-    const startBox = document.getElementById("startBox");
-    const endBox = document.getElementById("endBox");
-    const contentBox = document.getElementById("contentBox");
-
-    titleBox.innerHTML = "";
-    colorBox.innerHTML = "";
-    startBox.innerHTML = "";
-    endBox.innerHTML = "";
-    contentBox.innerHTML = "";
+    const insertBody = document.getElementById("insertBody");
+    insertBody.innerHTML = "";
 }
 
 
 /* 일정 조회 모달창 js */
 
 // 일정 조회 모달창 닫기
-const closeViewModal = document.getElementById("closeViewModal");
+const closeDetailModal = document.getElementById("closeDetailModal");
 
-closeViewModal.addEventListener("click", () => {
-    viewModal.style.display="none";
+closeDetailModal.addEventListener("click", () => {
+    detailModal.style.display="none";
 })
 
 // 일정 열면 데이터를 가져옴
-function makePlanInfo(title){
-    console.log(title);
-    $.ajax({
+function makePlanDetail(planNo){
 
+    $.ajax({
+        url : "plan/detail",
+        data : {"planNo":planNo},
+        type : "POST",
+        dataType : "JSON",
+
+        success : (plan) => {
+            // plan.planNo, plan.planTitle, plan.planContent, plan.planStart, plan.planEnd, plan.planColor
+        },
+        error : () => {
+            alert("데이터 전송에 실패하였습니다.")
+        }
     })
 }
