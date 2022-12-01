@@ -145,7 +145,7 @@
                         </div>
                     </div>
 
-                    <button class="swiper-button-next" id="right-btn">
+                    <%-- <button class="swiper-button-next" id="right-btn"> --%>
                         <%-- <i class="fa-solid fa-chevron-left"></i> --%>
                     </button>
                     
