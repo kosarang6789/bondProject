@@ -43,7 +43,7 @@ public class BondMemberController {
 		
 		Map<String, Object> memMap = serivce.selectMemberList(groupNo);
 		
-		model.addAttribute(memMap);
+		model.addAttribute("memMap", memMap);
 
 		
 		return "bond/bondMemberList";
