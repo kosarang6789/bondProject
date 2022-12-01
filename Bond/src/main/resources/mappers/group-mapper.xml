@@ -72,7 +72,7 @@
 	
 	<!-- 본드 정보 조회 -->
 	<select id="selectGroup" parameterType="_int" resultMap="group_rm">
-		SELECT GROUP_NAME, GROUP_COMMENT,
+		SELECT GROUP_NAME, GROUP_COMMENT, GROUP_NO,
 			(SELECT COUNT(MEMBER_NO) FROM MEMBER_JOIN M
 			WHERE M.GROUP_NO = G.GROUP_NO) MEMBER_COUNT,
 			(SELECT GROUP_IMG_PATH || GROUP_IMG_RENAME FROM GROUP_IMG GI
@@ -86,14 +86,28 @@
 		SELECT TO_CHAR(EXPIRE_DATE, 'YYYY-MM-DD HH24:MI:SS') EXPIRE_DATE
 		FROM "REPORT"
 		WHERE TYPE_CODE = 2 
-		AND TARGET_NO = ${groupNo}
+		AND TARGET_NO = #{groupNo}
 		AND RESULT_CODE IN (2, 3, 4)
 		AND EXPIRE_YN = 'N'
 		AND ROWNUM = 1
 		ORDER BY EXPIRE_DATE DESC
 	</select>
-	
 
+	<!-- 본드 가입 여부 조회 -->
+	<select id="selectJoinNo" parameterType="map" resultType="_int">
+		SELECT COUNT(*)
+		FROM MEMBER_JOIN 
+		JOIN "GROUP" USING(GROUP_NO)
+		WHERE MEMBER_NO = #{memberNo}
+		AND GROUP_NO = #{groupNo}
+	</select>
+	
+	<!-- 게시물 공개 여부 조회 -->
+	<select id="selectOpenYN" parameterType="_int" resultType="string">
+		SELECT OPEN_YN
+		FROM "GROUP"
+		WHERE GROUP_NO = #{groupNo}
+	</select>
 	
 	
 	

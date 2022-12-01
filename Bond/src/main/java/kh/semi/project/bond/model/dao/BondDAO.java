@@ -103,6 +103,15 @@ public class BondDAO {
 		return sqlSession.selectOne("groupMapper.checkReport", groupNo);
 	}
 
+	public int selectJoinNo(Map<String, Object> map1) {
+		return sqlSession.selectOne("groupMapper.selectJoinNo", map1);
+	}
+
+	public String selectOpenYN(int groupNo) {
+		return sqlSession.selectOne("groupMapper.selectOpenYN", groupNo);
+	}
+
+
 
 
 

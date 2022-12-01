@@ -1,6 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인 페이지 헤더</title>
 
+    <link rel="stylesheet" href="/resources/css/member/mainPageHeader.css">
+</head>
+<body>
+    
+</body>
+</html>
 <section class="header-area">
     <header>
         <div>
@@ -30,16 +43,16 @@
                     <!-- 내 정보 사진 -->
                     <div class="dropdown">
                         <button type="button" class="dropbtn" onclick="dropDown()">
-                            <span>
-                                
-                                    <c:if test="${empty loginMember.profileImage}">
-                                        <img src="/resources/images/member/profile/defaultProfile.png" id="headerProfile">
-                                    </c:if>
-                                    <c:if test="${!empty loginMember.profileImage}">
-                                        <img src="${loginMember.profileImage}" id="headerProfile">
-                                    </c:if>
-                                
-                            </span>
+                            <c:if test="${empty loginMember.profileImage}">
+                                <span>
+                                    <div class="profile"><i class="fa-solid fa-user" id="profile-photo"></i></div>
+                                </span>
+                            </c:if>
+                            <c:if test="${!empty loginMember.profileImage}"> 
+                                <span>
+                                    <img src="${loginMember.profileImage}" id="login-profile-photo">
+                                </span>
+                            </c:if>
                             <i class="fa-solid fa-caret-down caret-icon" id="triangle-icon"></i>
                         </button> 
                         

@@ -13,51 +13,8 @@
     <script src="https://kit.fontawesome.com/345198b845.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <section class="header-area">
-        <header>
-            <div>
-                <!-- 클릭 시 메인으로 이동하는 로고  -->
-                <a href="/member/mainPage">
-                    <img src="/resources/images/bond/home-logo-white.png" id="home-logo">
-                </a>
-            </div>
 
-            <div class="header-widget-area">
-                <ul class="widget-list">
-                    <li class="widget-item bell-icon">
-                        <!-- 알림 -->
-                        <a href="#">
-                            <i class="fa-solid fa-bell bell-icon"  style="color: #999;"></i>
-                        </a>
-                    </li>
-
-                    <li class="widget-item chat-icon">
-                        <!-- 채팅 -->
-                        <a href="#">
-                            <i class="fa-solid fa-comment-dots chat-icon" style="color: #999;"></i>
-                        </a>
-                    </li>
-
-                    <li class="widget-item">
-                        <!-- 내 정보 사진 -->
-                        <div class="dropdown">
-                            <button type="button" class="dropbtn" onclick="dropDown()">
-                                <span>
-                                    <img src="/resources/images/common/user-icon.png" id="profile-photo">
-                                </span>
-                                <i class="fa-solid fa-caret-down caret-icon" id="triangle-icon"></i>
-                            </button> 
-                            
-                            <div id="myDropdown" class="dropdown-content">
-                                <a href="#">내정보</a>
-                                <a href="/logout">로그아웃</a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </header>
-    </section>
+    <jsp:include page="/WEB-INF/views/bond/headerBondX.jsp"/> 
 
     <main>
         <section class="create-band">

@@ -169,7 +169,7 @@
                 <h3>이런 모임은 어때요</h3>
                 <ul class="group-list">
                     <li class="group">
-                        <a href="#" class="bandUri">
+                        <a href="/bond/${boardNo}" class="bandUri">
                             <div class="group-img">
                                 <img src="/resources/images/member/main2/group-recommend/group-english.jpg">
                             </div>
