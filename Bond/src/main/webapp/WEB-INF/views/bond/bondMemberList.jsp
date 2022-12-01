@@ -41,7 +41,7 @@
                     </div>
 
                     <p class="member">
-                        <a href="/bond/memberList" class="member-count">멤버 ${groupInfo.memberCount}</a>
+                        <a href="#" class="member-count">멤버 ${groupInfo.memberCount}</a>
                     </p>
 
                     <div class="band-info">
@@ -58,7 +58,7 @@
 
                     <div class="sidebar-under-icon">
                         <div class="band-setting-section">
-                            <a href="#" class="band-setting-link sidebar-font"> 
+                            <a href="/bond-bondIntro" class="band-setting-link sidebar-font"> 
                                 <i class="fa-solid fa-gear sidbar-icon"></i>밴드 설정
                             </a>
                             
@@ -110,7 +110,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>    
 
-    <script src="/resources/js/myPage/bondMemberList.js"></script>
+    <script src="/resources/js/bond/bondMemberList.js"></script>
     
 </body>
 </html>

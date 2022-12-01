@@ -7,12 +7,16 @@ main{
     display: flex;
     justify-content: center;
 }
+
+/* 제일 바깥 div */
 .memberMana-area{
     min-width: 632px;
     min-height: 310px;
     max-height: 90vh;
     border: 1px solid black;
 }
+
+/* 멤버 리스트 탑 부분 */
 .member-top{
     padding: 20px;
     border-bottom: 1px solid #ddd;
@@ -47,8 +51,9 @@ main{
     color: white;
     font-weight: bold;
     cursor: pointer;
-    
 }
+
+/* 멤버 검색 - 오타.. */
 .member-serch{
     font-size: 17px;
     width: 100%;
@@ -79,6 +84,7 @@ main{
     outline: none;
 }
 
+/* 멤버 리스트 부분 */
 .member-all{
     padding: 40px 50px 20px;
 }
@@ -116,6 +122,11 @@ main{
 .fa-user-slash:hover{
     color: red;
 }
+.fa-gear{
+    font-size: 20px;
+    padding-top: 20px;
+    cursor: pointer;
+}
 .leader{
     border-radius: 30px;
     background-color: #21c531;
@@ -130,6 +141,7 @@ main{
     margin-top: -1px;
 }
 
+/* 멤버 초대하기 - 하단부분 */
 .member-invite-bottom{
     display: flex;
     height: 77px;

@@ -9,6 +9,9 @@ import lombok.ToString;
 @ToString
 public class GroupMemberList {
 	
+	private String memberName;
+	private String memberImg;
+	
 	private int joinNo;
 	private int groupNo;
 	private int memberNo;
