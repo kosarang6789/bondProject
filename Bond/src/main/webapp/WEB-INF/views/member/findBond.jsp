@@ -178,7 +178,7 @@
                 <h3>이런 모임은 어때요</h3>
                 <ul class="group-list">
 
-                    <c:forEach var="groupJoin" item="${groupJoinNo}">
+                    <c:forEach var="groupJoin" items="${groupJoinNo}">
                         <li class="group">
                             <a href="/bond/${groupJoin.groupNo}" class="bandUri">
                                 <div class="group-img">
