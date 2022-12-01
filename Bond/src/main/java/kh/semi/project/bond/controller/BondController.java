@@ -114,8 +114,34 @@ public class BondController {
 		
 		if(checkReport == null) { // 신고 기록이 없으면
 			model.addAttribute("groupInfo", groupInfo);
+			
+			
+			// 게시글 불러오기
+			Map<String, Object> map = service.selectBoardDetail(groupNo, cp);
+			
+			model.addAttribute("map",map);
+			int memberNo = loginMember.getMemberNo();
+			
+			Map<String, Object> map1 = new HashMap<String, Object>();
+			map1.put("groupNo", groupNo);
+			map1.put("memberNo", memberNo);
+			int result1 = service.selectJoinNo(map1);
+			
+			// 밴드 가입 여부
+			if(result1 == 0) { // 가입X
+				String resultYN = service.selectOpenYN(groupNo);
+				// 게시물 공개 여부
+				if(resultYN.equals("Y")) { // 공개X
+					path = "/";
+					
+				} else { // 공개O
+					path = "bond/openYes";
+				}
+			} else { // 가입O
+				path = "bond/bond";
 				
-			path = "bond/bond";
+			}
+			
 			
 		} else { // 신고 기록이 있으면
 			String notice = "모임 이용 중지됨"

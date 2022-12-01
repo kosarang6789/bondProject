@@ -24,6 +24,7 @@
 		<typeAlias type="kh.semi.project.bond.model.vo.GroupImage" alias="GroupImage"/>		
 		<typeAlias type="kh.semi.project.member.model.vo.MemberImage" alias="MemberImage"/>		
 		<typeAlias type="kh.semi.project.report.model.vo.Report" alias="Report"/>		
+		<typeAlias type="kh.semi.project.plan.model.vo.Plan" alias="Plan"/>		
 	</typeAliases>
 	
 	<!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->
@@ -36,6 +37,7 @@
 		<mapper resource="/mappers/admin-mapper.xml"/>
 		<mapper resource="/mappers/bondIntro-mapper.xml"/>
 		<mapper resource="/mappers/report-mapper.xml"/>
+		<mapper resource="/mappers/plan-mapper.xml"/>
 		<!-- resources 폴더 -->
 	</mappers>
 </configuration>
