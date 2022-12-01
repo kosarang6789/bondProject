@@ -10,7 +10,8 @@ import lombok.Setter;
 public class Plan {
 	
 	private int planNo;				// 일정 번호
-	private int postNo;				// 일정이 있는 모임 번호
+	private int groupNo;				// 일정이 있는 모임 번호
+	private int postNo;				// 일정이 있는 게시글 번호
 	private String planTitle;		// 일정 이름
 	private String planContent;		// 일정 내용
 	private String planStart;		// 일정 시작 날짜

@@ -67,8 +67,18 @@ public class PlanController {
 	@ResponseBody
 	public String getPlanList() {
 		
-		List<Plan> calendarList = service.getPlanList();
+		List<Plan> planList = service.getPlanList();
 		
-		return new Gson().toJson(calendarList);
+		return new Gson().toJson(planList);
 	}
+	
+//	// 캘린더 일정 하나 정보 가져오기
+//	@PostMapping("/plan/Detail")
+//	@ResponseBody
+//	public String getPlanDetail() {
+//		
+//		Plan plan = service.getPlanDetail();
+//		
+//		return new Gson().toJson(plan);
+//	}
 }
