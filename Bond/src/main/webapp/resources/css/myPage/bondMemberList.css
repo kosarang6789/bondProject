@@ -13,7 +13,7 @@ main{
     min-width: 632px;
     min-height: 310px;
     max-height: 90vh;
-    border: 1px solid black;
+    background-color: white;
 }
 
 /* 멤버 리스트 탑 부분 */
@@ -122,7 +122,7 @@ main{
 .fa-user-slash:hover{
     color: red;
 }
-.fa-gear{
+.member-report>.fa-gear{
     font-size: 20px;
     padding-top: 20px;
     cursor: pointer;

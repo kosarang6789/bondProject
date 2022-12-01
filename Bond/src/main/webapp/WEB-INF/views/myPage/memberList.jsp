@@ -23,7 +23,7 @@
             <div class="member-top">
                 <div class="member-Toptitle">
                     <div class="member-total">
-                        <span>멤버</span><span>N</span>
+                        <span>멤버</span><span>${groupInfo.memberCount}</span>
                     </div>
                     <div class="member-invite">멤버 초대하기</div>
                 </div>
