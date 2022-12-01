@@ -11,8 +11,10 @@ body{
     position: relative;
 }
 
-/* 모달 영역 */
-#modal{
+/* insertModal */
+
+/* insertModal 배경 */
+#insertModal{
     position: absolute;
     background-color: rgb(0, 0, 0, 0.7);
     
@@ -23,8 +25,8 @@ body{
     z-index: 10000;
 }
 
-/* 모달창 */
-#window{
+/* insertModal의 window */
+#insertWindow{
     background-color: white;
     width: 300px;
     height: 300px;
@@ -35,18 +37,18 @@ body{
 
 }
 
-/* 모달창 내 스타일 */
+/* insertModal - window 스타일 */
 
 /* 모달창 닫기 버튼 */
-#closeModalButton{
+#closeInsertModal{
     cursor: pointer;
     position: absolute;
     right: 10px;
     top: 10px;
 }
 
-/* window-header */
-.window-header{
+/* insert-header */
+.insert-header{
     background-color: #E2E2E230;
     border-bottom: 1px solid #E2E2E2;
     height: 50px;
@@ -56,8 +58,7 @@ body{
     align-items: center;
 }
 
-/* window-body */
-
+/* insert-body */
 /* 날짜 열 */
 .dateBoxRow{
     display: flex;
@@ -87,4 +88,36 @@ input[name="planColor"]:checked + .palette{
     height: 25px;
 
     margin-left: 5px;
+}
+
+
+/* viewModal */
+#viewModal{
+    position: absolute;
+    background-color: rgb(0, 0, 0, 0.7);
+    
+    width: 100vw;
+    height: 300vh;
+
+    top: 0;
+    z-index: 10000;
+}
+
+#viewWindow{
+    background-color: white;
+    width: 300px;
+    height: 300px;
+
+    position: fixed; 
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+/* 모달창 닫기 버튼 */
+#closeViewModal{
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
 }

@@ -2,6 +2,15 @@
 function loadCalendar(){ 
     // document.addEventListener('DOMContentLoaded', () => {
 
+            // 캘린더 예시
+        // calendar.addEvent({
+        //     title: 'dynamic event',
+        //     start: startDate,
+        //     end: endDate,
+        //     allDay: true,
+        //     backgroundColor: 'red'
+        // });
+
         // fullcalendar 관련 js
         var calendarEl = document.getElementById('calendar');
 
@@ -11,22 +20,32 @@ function loadCalendar(){
 
             headerToolbar : {
                 left: 'title',
-                center: 'prev next today',
                 right: 'addEventButton'
             },
+            // 일정 추가 모달창 열기
             customButtons : {
                 addEventButton : {
-                text: '일정 추가하기',
-                click: function() {
+                    text: '일정 추가하기',
+                    click: function() {
 
-                    // 열려라 모달창
-                    const modal = document.getElementById("modal");
-                    modal.style.display="block";
+                        const insertModal = document.getElementById("insertModal");
+                        insertModal.style.display="block";
 
-                    makeWindowBody();
-                }
+                        makeInsertBody();
+                    }
                 }
             },
+
+            // 일정 조회 모달창 열기
+            eventClick: function(info) {
+
+                const infoTitle = info.event.title;
+
+                const viewModal = document.getElementById("viewModal");
+                viewModal.style.display="block";
+
+                makePlanInfo(infoTitle);
+            }
             
         });
 
@@ -40,7 +59,6 @@ function loadCalendar(){
 
                 success : (calenderList) => {
                 for(let item of calenderList) {
-                    console.log(item);
                     calendar.addEvent({
                         title: item.planTitle,
                         start: item.planStart,
@@ -69,13 +87,16 @@ function loadCalendar(){
 })()
 
 
-// 닫혀라 모달창 함수
-const closeModalButton = document.getElementById("closeModalButton");
+/* 일정 추가 모달창 js */
 
-closeModalButton.addEventListener("click", () => {
-    modal.style.display="none";
-    clearWindowBody();
+// 일정 추가 모달창 닫기
+const closeInsertModal = document.getElementById("closeInsertModal");
+
+closeInsertModal.addEventListener("click", () => {
+    insertModal.style.display="none";
+    clearInsertBody();
 })
+
 
 // 모달창에서 확인 버튼을 누르면 일정을 업데이트함
 const confirmButton = document.getElementById("confirmButton");
@@ -117,15 +138,12 @@ confirmButton.addEventListener("click", () => {
     })
 
     // 결과와 상관 없이 모달창을 닫고 초기화함
-    modal.style.display="none";
-    clearWindowBody();
+    insertModal.style.display="none";
+    clearInsertBody();
 })
 
-
-
-
 // windowBody 화면 만들기 함수
-function makeWindowBody(){
+function makeInsertBody(){
 
     // 1. titleBox
     const titleBox = document.getElementById("titleBox");
@@ -156,7 +174,7 @@ function makeWindowBody(){
         radio.setAttribute("value", paletteArr[i]);
 
         if(i==0) {
-            radio.checked
+            radio.checked;
         }
 
         const palette = document.createElement("div");
@@ -213,7 +231,7 @@ function makeWindowBody(){
 }
 
 // windowBody 비우기 함수
-function clearWindowBody(){
+function clearInsertBody(){
     const titleBox = document.getElementById("titleBox");
     const colorBox = document.getElementById("colorBox");
     const startBox = document.getElementById("startBox");
@@ -228,13 +246,19 @@ function clearWindowBody(){
 }
 
 
+/* 일정 조회 모달창 js */
 
+// 일정 조회 모달창 닫기
+const closeViewModal = document.getElementById("closeViewModal");
 
-// 캘린더 예시
-// calendar.addEvent({
-//     title: 'dynamic event',
-//     start: startDate,
-//     end: endDate,
-//     allDay: true,
-//     backgroundColor: 'red'
-// });
+closeViewModal.addEventListener("click", () => {
+    viewModal.style.display="none";
+})
+
+// 일정 열면 데이터를 가져옴
+function makePlanInfo(title){
+    console.log(title);
+    $.ajax({
+
+    })
+}

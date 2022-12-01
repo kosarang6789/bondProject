@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+
 <!DOCTYPE html>
 <html lang='en'>
   <head>
@@ -26,64 +27,10 @@
   <body>
     <div id='calendar'></div>
 
-    <div id="modal" style="display:none">
+    <jsp:include page="insertModal.jsp" />
 
-      <div id="window">
-        <div class="window-header">
-          <h3>일정 추가하기</h3>
-          <span id="closeModalButton">&times;</span>
-        </div> <!-- end window-header -->
-
-        <div id="windowBody">
-
-          <div id="titleBox">
-            <%-- 제목 : 
-            <input type="text" id="inputTitle"> --%>
-          </div> <!-- end titleBox -->
-
-          <div id="colorBox">
-            <%-- 색깔
-            <label>
-              <input type="radio" name="planColor" value="rgb(255,60,45)" checked>
-              <div class="palette" style="background-color:rgb(255,60,45)"></div>
-            </label>
-
-            <label>
-              <input type="radio" name="planColor" value="rgb(240,200,55)">
-              <div class="palette" style="background-color:rgb(240,200,55)"></div>
-            </label>
-
-            <label>
-              <input type="radio" name="planColor" value="rgb(55,136,216)">
-              <div class="palette" style="background-color:rgb(55,136,216)"></div>
-            </label> --%>
-          </div>
-  
-          <div id="dateBox">
-            <div class="dateBoxRow" id="startBox">
-              <%-- 시작 날짜 <input type="date" id="inputStartDate"> <input type="time" id="inputStartTime"> --%>
-            </div>
-            <div class="dateBoxRow" id="endBox">
-              <%-- 종료 날짜 <input type="date" id="inputEndDate">   <input type="time" id="inputEndTime"> --%>
-            </div>
-          </div> <!-- end dateBox -->
-  
-          <div id="contentBox">
-            <%-- 내용 : <input type="text" id="inputContent"> --%>
-          </div> <!-- end commentBox -->
-  
-          <div id="buttonBox">
-            <button type="button" id="confirmButton">확인</button>
-          </div> <!-- end buttonBox -->
-
-        </div> <!-- end window-body -->
-        
-
-      </div> <!-- end window -->
-
-    </div> <!-- end modal -->
-
-
+    <jsp:include page="viewModal.jsp" />
+ 
 
     <%-- CDN --%>
 
