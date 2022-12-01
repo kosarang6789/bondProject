@@ -8,7 +8,7 @@
 }
 
 body{
-    background-color: #f8f9fa;
+    background-color: #F2F2F2;
     display: block;
 }
 
@@ -21,149 +21,72 @@ ul{list-style : none;}
 
 a{text-decoration: none;}
 
-body{
-background-color: #f8f9fa;
-display: block;
-}
-/* Header */
+/* nav */
 
-.header-area{
-width: 100%;
-background-color: #fff;
-position: fixed;
-box-shadow: 0 1.4px 1.3px 0 rgb(62 73 89 / 7%);
-z-index: 2000;
-display: block;
+.nav-area{
+    top : 50px;
+    position: sticky;
+    display: block;
+    z-index: 1500;
+    /* margin-top: 50px; */
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0,0,0,.05);
 }
 
-header{
-width: 1140px;
-height: 50px;
-margin: auto;
-display: flex;
-align-items: center;
-justify-content: space-between;
-position: relative;
+nav{
+    /* display: flex; */
+    width: 1140px;
+    justify-content: space-between;
+    margin: auto;
+    padding-top: 20px;
 }
 
-#home-logo{
-width: 80px;
-padding-top: 4px;
+nav a{
+    text-decoration: none;
+    padding-bottom: 17px;
 }
 
-.header-widget-area{
-display: block;
+nav>.mainPage-menu>a{
+    font-size: 26px;
+    font-weight: 800;
+    margin-right: 20px;
+    color:#bbb;
+    display: inline-block;
 }
 
-.widget-list{
-list-style: none;
-display: flex;
-align-items: center;
-width: 160px;
-position: relative;
+nav>.mainPage-menu>.active{
+    color:#222;
+    position: relative;
 }
 
-.chat-icon{
-font-size: 1.1em;
-width: 30%;
-}
-
-.bell-icon{
-font-size: 1.1em;
-width: 30%;
-}
-
-.widget-item{
-width: 33.3%;
-height: 100%;
-}
-
-.dropbtn #login-profile-photo{
+nav>.mainPage-menu>.active::after{
+    content: "";
+    border-top: 4px solid #333;
     width: 100%;
-    height: 100%;
+    display: block;
+    position: absolute;
+    bottom: 2px;
 }
 
-/* 프로필 사진 클릭 메뉴 */
-
-.dropdown{
-position: relative;
+nav>.mainPage-menu>a:hover{
+    color: #222;
+    font-weight: 800;
 }
 
-.dropbtn{
-width: 100%;
-height: 100%;
-display: flex;
-border: none;
-cursor: pointer;
-margin-bottom: 1px;
-background-color: white;
-}
-.dropdown-content>a:hover{
-background-color: #f8f9fa;
-}
-.dropdown-content{
-display: none;
-position: absolute;
-z-index: 1000;
-width: 100px;
-height: 75px;
-border: 1px solid #ccc;
-background-color: white;
-border-radius: 14px;
-overflow: hidden;
-top: 42px;
-right: -2px;
+.mainPage-optionBox{
+    padding-top: 5px;
 }
 
-#myDropdown > a{
-display: flex;
-height: 50%;
-justify-content: center;
-align-items: center;
-text-decoration: none;
-color: #555;
-font-size: 14px;
-font-weight: 600;
+nav>.mainPage-optionBox>a{
+    font-size:15px;
+    font-weight: 400;
+    color: #444;
+    text-align: left;
+    padding: 0 10px;
 }
-
-#myDropdown > a:first-child{
-border-bottom: 1px solid #ccc;
-}
-
-.dropdown span{
-width: 23px;
-height: 23px;
-border-radius: 50%;
-border: 1px solid #999;
-/* background-color: #999; */
-}
-
-#headerProfile{
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-}
-
-#profile-photo{
-font-size: 1em;
-color: white;
-}
-
-.caret-icon{
-margin-top: 7px;
-padding-left: 8px;
-color: #999;
-}
-
-.show1 {display: block;}
-
-.rotate {transform: perspective(500px) rotateX(180deg);}
 
 
 /* body */
-body{
-    background-color: #eef0f3;
-}
 
 .myPage-layout{
     display: flex;
