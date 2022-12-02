@@ -53,6 +53,9 @@ body{
     position: absolute;
     right: 10px;
     top: 5px;
+
+    font-size: 25px;
+    color: dimgray;
 }
 
 /* insert-header */
@@ -66,11 +69,6 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-#closeInsertModal{
-    font-size: 25px;
-    color: dimgray;
 }
 
 /* insert-body */
@@ -362,7 +360,76 @@ input[name="planColor"]:checked + .palette{
     padding: 20px;
     font-size: 13px;
 }
-/* 모달창 일정 수정 */
+/* 일정 수정 모달창 (updateModal.jsp) */
+#updateModal{
+    position: absolute;
+    background-color: rgb(0, 0, 0, 0.7);
+    
+    width: 100vw;
+    height: 300vh;
+
+    top: 0;
+    z-index: 50000;
+}
+
+/* 일정 삭제 윈도우 */
+#updateWindow{
+    background-color: white;
+    width: 400px;
+    min-height: 380px;
+    height: auto;
+
+    position: fixed; 
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.update-header{
+    font-size: 12px;
+
+    background-color: #E2E2E230;
+    border-bottom: 1px solid #E2E2E2;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#closeUpdateModal{
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+
+    font-size: 25px;
+    color: dimgray;
+}
+
+#updateBody{
+    padding: 20px;
+}
+
+#updateFoot{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#editBtn{
+    width: 80px;
+    height: 30px;
+    font-size: 10px;
+
+    border: none;
+    background-color: #515161;
+    color: white;
+
+}
+
+
+
 
 /* 일정 삭제 모달창(deleteModal.jsp) */
 #deleteModal{
@@ -375,6 +442,7 @@ input[name="planColor"]:checked + .palette{
     top: 0;
     z-index: 50000;
 }
+
 
 /* 일정 삭제 윈도우 */
 #deleteWindow{

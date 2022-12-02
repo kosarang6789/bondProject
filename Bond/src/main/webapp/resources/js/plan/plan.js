@@ -1,15 +1,8 @@
+let planNo = -1;
+
 // fullcalendar 불러오기
 function loadCalendar(){ 
     // document.addEventListener('DOMContentLoaded', () => {
-
-            // 캘린더 예시
-        // calendar.addEvent({
-        //     title: 'dynamic event',
-        //     start: startDate,
-        //     end: endDate,
-        //     allDay: true,
-        //     backgroundColor: 'red'
-        // });
 
         // fullcalendar 관련 js
         var calendarEl = document.getElementById('calendar');
@@ -32,24 +25,22 @@ function loadCalendar(){
                         insertModal.classList.toggle("closed");
 
                         makeInsertBody();
+
                     }
                 }
             },
 
             // 일정 조회 모달창 열기
             eventClick: function(info) {
-                let thisId = info.event.id;
-                console.log(thisId);
+                planNo = info.event.id;
 
                 const detailModal = document.getElementById("detailModal");
                 detailModal.classList.toggle("closed");
 
-                makePlanDetail(thisId);
-
-                console.log(info);
-                info.removeInfo;
+                makePlanDetail(planNo);
 
             }
+
 
         });
 
@@ -218,6 +209,11 @@ if(confirmBtn != null) {
         const inputContent = document.getElementById("inputContent").value;
         let inputStart = document.getElementById("inputStartDate").value;
         let inputEnd = document.getElementById("inputEndDate").value;
+        console.log(inputEnd);
+        if(inputEnd === "") {
+            inputEnd = inputStart
+        }
+
         const inputColor = document.querySelector("input[name='planColor']:checked").value;
     
         const inputCheckbox = document.getElementById("inputCheckbox");
@@ -500,10 +496,15 @@ function makePlanDetail(thisId){
             // 시작 일
             // startDay 사용함
 
+            // 기간에 시작 날짜까지 추가
+            period = startYear + " " + startMonth + " " + startDay + "일";
+
             // 시작 시간
             let startMeridiem = "";
             let startHour = "";
             let startMinute = "";
+
+            console.log(plan.planStart.length);
 
             if(plan.planStart.length > 10) {
                 
@@ -512,19 +513,23 @@ function makePlanDetail(thisId){
                 if(startHour > 12) {
                     startMeridiem = "오후";
                     startHour -= 12;
+                    startHout = '0' + startHour;
                 } else {
                     startMeridiem = "오전";
                 }
                 
                 // 시작 분
                 startMinute = plan.planStart.substring(14, 16);
+
+                period += " " + startMeridiem + " " + startHour + ":" + startMinute;
+
             }
 
 
-            // 기간에 시작 날짜까지 추가
-            period = startYear + " " + startMonth + " " + startDay + " " + startMeridiem + " " + startHour + ":" + startMinute;
 
-            if(plan.planEnd != null) {
+
+
+            if(!(plan.planStart === plan.planEnd)) {
 
                 // 종료 연도
                 const endYear = plan.planEnd.substring(0, 4) + '년';
@@ -540,6 +545,8 @@ function makePlanDetail(thisId){
                 let endHour = "";
                 let endMinute = "";
 
+                period += " - " + endYear + " " + endMonth + " " + endDay + " ";
+
                 if(plan.planEnd.length > 10) {
 
                     endHour = plan.planEnd.substring(11, 13);
@@ -547,21 +554,25 @@ function makePlanDetail(thisId){
                     if(endHour > 12) {
                         endMeridiem = "오후";
                         endHour -= 12;
+                        endHour = '0' + endHour;
                     } else {
                         endMeridiem = "오전";
                     }
 
                     // 종료 분
                     endMinute = plan.planEnd.substring(14, 16);
+
+                    period += endMeridiem + " " + endHour + ":" + endMinute;
                 }
 
-                period = endYear + " " + endMonth + " " + endDay + " " + endMeridiem + " " + endHour + ":" + endMinute;
 
             }
+
             periodBox.innerText = period;
             
             // 4. 색깔 상자
             const colorBox = document.createElement('div');
+            colorBox.id = 'selectedColor';
             colorBox.classList.add("palette");
             colorBox.setAttribute("style", "background-color:" + plan.planColor);
 
@@ -603,14 +614,14 @@ function makePlanDetail(thisId){
     // // /* 일정 삭제 모달창(deleteModal.jsp) */
 
     // // 일정 삭제 모달창 - 확인
-    const planDeleteBtn = document.getElementById("planDeleteBtn");
+    // const planDeleteBtn = document.getElementById("planDeleteBtn");
 
-    planDeleteBtn.addEventListener("click", () => {
-        deletePlan(planNo);
+    // planDeleteBtn.addEventListener("click", () => {
+    //     deletePlan(planNo);
 
-        const deleteModal = document.getElementById("deleteModal");
-        deleteModal.classList.toggle("closed");
-    })
+    //     const deleteModal = document.getElementById("deleteModal");
+    //     deleteModal.classList.toggle("closed");
+    // })
     
 
 } // end makePlanDetail
@@ -624,6 +635,250 @@ function clearPlanDetail(){
 // -------------------------------------------------------------------------------------------- //
 
 /* 일정 수정 모달창(updateModel.jsp) */
+const planUpdate = document.getElementById("planUpdate");
+
+planUpdate.addEventListener("click", () => {
+    const updateModal = document.getElementById("updateModal");
+    updateModal.classList.toggle("closed");
+    makeUpdateBody();
+})
+
+function clearUpdateBody(){
+    const updateBody = document.getElementById("updateBody");
+    updateBody.innerHTML = "";
+}
+
+/* 일정 수정 모달창 */
+function makeUpdateBody(){
+    clearUpdateBody();
+
+    // 값 가져오기
+    
+
+    // 1. titleBox
+    const inputTitleBox = document.createElement("div");
+    inputTitleBox.id = "inputTitleBox";
+
+    // 제목 상자 input
+    const inputTitle = document.createElement("input");
+    inputTitle.id = 'inputTitle';
+    inputTitle.setAttribute('placeholder', '일정 제목');
+    inputTitle.value = titleBox.innerText;
+
+    // 제목 상자 text
+
+    // 제목 상자에 input, text 추가
+    inputTitleBox.append(inputTitle);
+
+    // 2. colorBox
+    const inputColorBox = document.createElement("div");
+    inputColorBox.id = "inputColorBox";
+
+    // 컬러 상자 text
+    const colorBoxText = document.createElement("div");
+    colorBoxText.innerText = '캘린더 색깔';
+
+    // 컬러 상자에 text 추가
+    inputColorBox.append(colorBoxText);
+    
+    // 컬러 팔레트 배열
+    const paletteArr = new Array();
+
+    // 추가하고 싶은 색의 RGB값 넣기
+    paletteArr.push("rgb(255,60,45)", "rgb(240,200,55)", "rgb(55,136,216)");
+
+    // 반복문 : 컬러 input(radio) 생성 및 컬러 상자에 추가
+    for(let i=0; i<paletteArr.length; i++) {
+        const label = document.createElement("label");
+        const radio = document.createElement("input");
+        radio.setAttribute("type", "radio");
+        radio.setAttribute("name", "planColor");
+        radio.setAttribute("value", paletteArr[i]);
+
+        const selectedColor = document.getElementById('selectedColor').getAttribute('style').substring(17);
+
+        if(radio.getAttribute('value') === selectedColor) {
+            radio.checked = true;
+        }
+
+        const palette = document.createElement("div");
+        palette.classList.add("palette");
+        palette.setAttribute("style", "background-color:"+ paletteArr[i]);
+
+        label.append(radio, palette);
+        inputColorBox.append(label);
+    }
+
+    const period = document.getElementById('periodBox').innerText;
+
+    console.log(period.length);
+
+
+    // 3-1. startBox
+    const startBox = document.createElement("div");
+    startBox.classList.add("dateBoxRow");
+    startBox.id = "startBox";
+
+    // 시작 날짜 상자 date
+    const inputStartDate = document.createElement("input");
+    inputStartDate.setAttribute("type", "date");
+    inputStartDate.id = "inputStartDate";
+
+    // 시작 날짜 상자 time
+    const inputStartTime = document.createElement("input");
+    inputStartTime.setAttribute("type", "time");
+    inputStartTime.id = "inputStartTime";
+
+    // 시작 날짜 상자 text
+    const startBoxText = document.createElement("div");
+    startBoxText.innerText = '시작';
+
+    // 시작 날짜 상자에 text, date, time 추가
+    startBox.append(startBoxText, inputStartDate, inputStartTime);
+
+
+
+    // 3-2. endBox
+    const endBox = document.createElement("div");
+    endBox.classList.add("dateBoxRow");
+    endBox.id = "endBox";
+
+    // 종료 날짜 상자 date
+    const inputEndDate = document.createElement("input");
+    inputEndDate.setAttribute("type", "date");
+    inputEndDate.id = "inputEndDate";
+    
+    // 종료 날짜 상자 time
+    const inputEndTime = document.createElement("input");
+    inputEndTime.setAttribute("type", "time");
+    inputEndTime.id = "inputEndTime";
+
+    // 종료 날짜 상자 text
+    const endBoxText = document.createElement("div");
+    endBoxText.innerText = '종료';
+
+    // 종료 날짜 상자에 text, date, time 추가
+    endBox.append(endBoxText, inputEndDate, inputEndTime);
+
+    // 2022년 12월 06일 길이 13
+    // 2022년 12월 07일 - 2022년 12월 24일 29;
+    // 2022년 12월 20일 오전 06:06 - 2022년 12월 29일 오후 08:06 47;
+    if(period.length === 13) {
+        const year = period.substring(0, 4);
+        const month = period.substring(6, 8);
+        const day = period.substring(10, 12);
+        inputStartDate.value = '' + year + '-' + month + '-' + day;
+    }
+
+    if(period.length === 29) {
+        const year = period.substring(0, 4);
+        const month = period.substring(6, 8);
+        const day = period.substring(10, 12);
+        inputStartDate.value = '' + year + '-' + month + '-' + day;
+
+        const year2 = period.substring(16, 20);
+        const month2 = period.substring(22, 24);
+        const day2 = period.substring(26, 28);
+        inputEndDate.value = '' + year2 + '-' + month2 + '-' + day2;
+    }
+
+    if(period.length === 47) {
+        const year = period.substring(0, 4);
+        const month = period.substring(6, 8);
+        const day = period.substring(10, 12);
+        inputStartDate.value = '' + year + '-' + month + '-' + day;
+
+        let hour = period.substring(17, 19);
+        const minute = period.substring(20, 22);
+        const meridiem = period.substring(15, 17);
+        if(meridiem === '오후') hour = (Number)(hour) + 12;
+        inputStartTime.value = '' + hour + ':' + minute;
+
+        const year2 = period.substring(25, 29);
+        const month2 = period.substring(31, 33);
+        const day2 = period.substring(35, 37);
+        inputEndDate.value = '' + year2 + '-' + month2 + '-' + day2;
+
+        let hour2 = period.substring(42, 44);
+        const minute2 = period.substring(45, 47);
+        const meridiem2 = period.substring(39, 41);
+        if(meridiem2 === '오후') hour2 = (Number)(hour2) + 12;
+        console.log(hour2);
+        inputEndTime.value = '' + hour2 + ':' + minute2;
+    }
+
+
+    // 3-3. allDayBox
+    const allDayBox = document.createElement("div");
+    allDayBox.classList.add("dateBoxRow");
+    allDayBox.id = "allDayBox";
+
+    // 하루종일 상자 input(checkbox)
+    const inputCheckbox = document.createElement("input");
+    inputCheckbox.setAttribute("type", "checkbox");
+    inputCheckbox.id = "inputCheckbox";
+
+    inputCheckbox.addEventListener("change", () => {
+        if(inputCheckbox.checked==true) {
+            inputStartTime.disabled = true;
+            inputEndTime.disabled = true;
+            return;
+        }
+
+        if(inputCheckbox.checked==false) {
+            inputStartTime.disabled = false;
+            inputEndTime.disabled = false;
+            return;
+        }
+
+    })
+    
+    if(inputStartTime.value === true) {
+        inputCheckbox.checked = true;
+
+        inputStartTime.disabled = true;
+
+        inputEndTime.disabled = true;
+    }
+
+
+    // 하루종일 상자 text
+    const allDayBoxText = document.createElement("div");
+    allDayBoxText.innerText = '하루종일';
+
+    // 하루종일 상자에 input, text 추가
+    allDayBox.append(inputCheckbox, allDayBoxText);
+
+    // 3 < 3-1, 3-2, 3-3. dateBox
+    // 날짜 상자에 시작 날짜 상자, 종료 날짜 상자, 하루종일 상자 추가
+    const inputDateBox = document.createElement("div");
+    inputDateBox.id = "inputDateBox";
+    inputDateBox.append(startBox, endBox, allDayBox);
+
+
+
+    // 4. contentBox
+    const inputContentBox = document.createElement("div");
+    inputContentBox.id = "inputContentBox";
+
+    // 내용 상자 input
+    const inputContent = document.createElement("textarea");
+    inputContent.id = "inputContent";
+    inputContent.setAttribute("placeholder", '일정 설명');
+
+    const contentBox = document.getElementById('contentBox');
+    inputContent.value = contentBox.innerText;
+
+    // 내용 상자 text
+
+    // 내용 상자에 text, input 추가
+    inputContentBox.append(inputContent);
+
+    // insertBody에 전부 추가
+    const updateBody = document.getElementById("updateBody");
+    updateBody.append(inputTitleBox, inputContentBox, inputDateBox, inputColorBox);
+
+}
 
 // 일정 수정 함수
 function updatePlan(planNo){
@@ -660,9 +915,15 @@ function updatePlan(planNo){
 
 /* 일정 삭제 모달창(deleteModal.jsp) */
 
-// 일정 삭제 함수
-function deletePlan(planNo){
 
+/* 일정 삭제 모달창(deleteModal.jsp) */
+
+// 일정 삭제 모달창 - 확인
+const planDeleteBtn = document.getElementById("planDeleteBtn");
+
+planDeleteBtn.addEventListener("click", () => {
+    // const planNo = document.getElementById("detailBody").getAttribute("value");
+    // deletePlan(planNo);
     $.ajax({
         url : "plan/delete",
         data : {"planNo":planNo},
@@ -677,19 +938,7 @@ function deletePlan(planNo){
             alert("데이터 전송에 실패하였습니다.")
         }
     })
-}
 
-
-/* 일정 삭제 모달창(deleteModal.jsp) */
-
-// 일정 삭제 모달창 - 확인
-// const planDeleteBtn = document.getElementById("planDeleteBtn");
-
-// planDeleteBtn.addEventListener("click", () => {
-//     const planNo = document.getElementById("detailBody").getAttribute("value");
-//     deletePlan(planNo);
-
-//     const deleteModal = document.getElementById("deleteModal");
-//     deleteModal.classList.toggle("closed");
-// })
-
+    const deleteModal = document.getElementById("deleteModal");
+    deleteModal.classList.toggle("closed");
+})

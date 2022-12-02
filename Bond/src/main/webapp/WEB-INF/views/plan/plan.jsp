@@ -31,6 +31,8 @@
 
     <jsp:include page="viewModal.jsp" />
 
+    <jsp:include page="updateModal.jsp" />
+
     <jsp:include page="deleteModal.jsp" />
 
 

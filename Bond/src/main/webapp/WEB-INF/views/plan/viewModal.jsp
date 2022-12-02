@@ -15,6 +15,7 @@
         <div id="detailBody">
         </div>
 
+        <!-- titleBox, periodBox, colorBox, contentBox,-->
 
 
       
