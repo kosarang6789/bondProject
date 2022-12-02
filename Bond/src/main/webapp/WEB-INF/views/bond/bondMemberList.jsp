@@ -110,7 +110,6 @@
     <script>
         let cp = 0;
         const groupNo = "${groupNo}"
-    
     </script>
 
 

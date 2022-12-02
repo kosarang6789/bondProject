@@ -67,7 +67,7 @@ function selectBoardScroll (){
     else{
         if(flag){
             $.ajax({
-                url : "/bondMemberList",
+                url : "/bondMemberList/scroll",
                 data : {"cp":++cp},
                 dataType : "JSON",
                 success : function(memMap){
@@ -78,26 +78,47 @@ function selectBoardScroll (){
 
                         for(let mem of memMap.memList){
                             const memberList = document.createElement("div");
-                            memberList.classList.add(".member-image");
+                            memberList.classList.add("member-list");
 
                             const memberImage = document.createElement("div");
-                            memberImage.classList.add(".member-image");
+                            memberImage.classList.add("member-image");
+
+                            const image = document.createElement("img");
+                            if(memberList.memberImage!=null){
+                                // image.setAttribute("src", memberList.memberImage);
+                                image.setAttribute("src", mem.memberImage);
+                                image.classList.add("memImg");
+                            } else {
+                                image.setAttribute("src", "/resources/images/member/profile/defaultProfile.png");
+                                image.classList.add("memImg");
+                            }
 
                             const memberName = document.createElement("div");
-                            memberName.classList.add(".member-name");
+                            memberName.classList.add("member-name");
+                            memberName.innerText=memberList.memberName;
 
                             const memberReport = document.createElement("div");
                             memberReport.classList.add("member-report");
 
-                            
+                            const userSlash = document.createElement("i");
+                            userSlash.classList.add("userSlash");
+
+                            memberAll.append(memberList);
+                            memList.append(memberImage, memberName, memberReport);
+                            memberImage.append(image);
+                            memberReport.append(userSlash);
                         }
                         
+                    }else{
+                        alert("멤버가 없습니다.");
                     }
                 },
                 error : ()=>{
                     alert("ajax 통신 오류");
                 }
-            })
+            }); flag = false;
+        }else{
+            flag = ture;
         }
     }
-} 
+} ;

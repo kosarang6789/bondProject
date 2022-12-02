@@ -48,10 +48,10 @@
                 <div class="member-list">
                     <div class="member-image">
                         <c:if test="${empty loginMember.profileImage}">
-                            <img src="/resources/images/member/profile/defaultProfile.png">
+                            <img src="/resources/images/member/profile/defaultProfile.png"  class="memImg">
                         </c:if>
                         <c:if test="${!empty loginMember.profileImage}">
-                            <img src="${loginMember.profileImage}" id="profile-img">
+                            <img src="${loginMember.profileImage}" id="profile-img" class="memImg">
                         </c:if>
                     </div>
                     <div class="member-name" name="memberName" id="memberName">${loginMember.memberName}
@@ -72,16 +72,16 @@
                                 <div class="member-list">
                                     <div class="member-image">
                                         <c:if test="${empty memberList.memberImage}">
-                                            <img src="/resources/images/member/profile/defaultProfile.png">
+                                            <img src="/resources/images/member/profile/defaultProfile.png"  class="memImg">
                                         </c:if>
                                         <c:if test="${!empty memberList.memberImage}">
-                                            <img src="${memberList.memberImage}" id="profile-img">
+                                            <img src="${memberList.memberImage}" id="profile-img"  class="memImg">
                                         </c:if>
                                     </div>
                                     <div class="member-name" name="memberName" id="memberName">${memberList.memberName}<div class="leader"><i class="fa-solid fa-crown"></i>리더</div></div>
                                     
                                     <div class="member-report">
-                                        <i class="fa-solid fa-user-slash"></i>
+                                        <i class="fa-solid fa-user-slash userSlash"></i>
                                     </div>
                                 </div>
                             </c:when>
@@ -89,15 +89,15 @@
                                 <div class="member-list">
                                     <div class="member-image">
                                         <c:if test="${empty memberList.memberImage}">
-                                            <img src="/resources/images/member/profile/defaultProfile.png">
+                                            <img src="/resources/images/member/profile/defaultProfile.png" class="memImg">
                                         </c:if>
                                         <c:if test="${!empty memberList.memberImage}">
-                                            <img src="${memberList.memberImage}" id="profile-img">
+                                            <img src="${memberList.memberImage}" id="profile-img" class="memImg">
                                         </c:if>
                                     </div>
                                     <div class="member-name" name="memberName" id="memberName">${memberList.memberName}</div>
                                     <div class="member-report">
-                                        <i class="fa-solid fa-user-slash"></i>
+                                        <i class="fa-solid fa-user-slash userSlash"></i>
                                     </div>
                                 </div>
                             </c:otherwise>
