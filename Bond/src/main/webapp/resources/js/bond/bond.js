@@ -368,4 +368,4 @@ const selectPostDetail = (postNo)=>{
         error:()=>{console.log("실패");}
 
     })
-};
+}

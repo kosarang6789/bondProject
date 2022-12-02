@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import kh.semi.project.bond.model.vo.Group;
 import kh.semi.project.bond.model.vo.GroupImage;
+import kh.semi.project.bond.model.vo.GroupMemberList;
 import kh.semi.project.bond.model.vo.Pagination;
 import kh.semi.project.bond.model.vo.Post;
 import kh.semi.project.member.model.vo.Member;
@@ -109,6 +110,10 @@ public class BondDAO {
 	 */
 	public Group selctJoinNo(int memberNo) {
 		return sqlSession.selectOne("groupMapper.selectJoinNo", memberNo);
+	}
+
+	public String selectMemberInfo(GroupMemberList member) {
+		return sqlSession.selectOne("groupMapper.selectMemberInfo", member);
 	}
 
 
