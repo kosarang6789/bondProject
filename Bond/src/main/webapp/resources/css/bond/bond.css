@@ -379,8 +379,7 @@ body{
 .text-body{
     font-size: 14px;
     line-height: 1.43;
-    white-space: pre-line;
-    padding-bottom: 8px;
+    padding: 8px 0;
     /* text-decoration: none !important; */
 }
 
