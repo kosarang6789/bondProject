@@ -11,6 +11,8 @@
     <title>글쓰기</title>
     <link rel="stylesheet" href="/resources/css/post/postSelect.css">
     <script src="https://kit.fontawesome.com/785870d879.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>    
+
 </head>
 
 <body>
@@ -21,14 +23,16 @@
             <div class="postMemberAll">
                 <!-- 작성자 사진 -->
                 <div class="postMember-img">
-                    <img src="images/user-icon.png" class="memberImage" name="profile-img" id="profile-img">
+                    <img src="" class="memberImage" name="profile-img" id="profile-img">
                 </div>
                 <!-- 작성자 이름, 게시일, 조회수 -->
                 <div class="postMember">
-                    <div class="postMember-name" name="member" id="memberName">회원이름</div>
+                    <div class="postMember-name" name="member" id="memberName"></div>
                     <div class="postDate-read">
-                        <span class="postDate" name="post" id="postDate">2022년 10월 29일 오후 11:42</span>
-                        <span class="read"  name="post" id="postView"> | ? 읽음</span>
+                        <span class="postDate" name="post" id="postDate"></span>
+                        <span class="read"  name="post" id="postView"> | 
+                            <span id="viewCount"></span>
+                        읽음</span>
                     </div>
                 </div>
                 <!-- 더보기 -->
@@ -51,20 +55,18 @@
             </div>
 
             <!-- 게시글 내용 -->
-            <div class="post-content" name="post" id="postContent">
-                <pre>작성한 글들이 나올거야
-                    원래는 p태그를 썼던데 나중에 바꿔야겠지?<br><br><br>ssss<br><br><br>sss<br><br><br>
-                    <br><br><br>ss<br><br><br>dd<br><br><br>sss<br><br><br>ss<br><br><br>ss<br><br><br>
-                    ss<br><br><br>ss<br><br><br>
-                    ss<br><br><br>
-                    ss<br><br><br>ss<br><br><br>ss<br><br><br>
-                    ss<br><br><br></pre>
+            <div class="post-content" name="post">
+                <pre id="postContent"></pre>
             </div>
 
             <!-- 댓글, 좋아요 수 -->
             <div class="countLR">
-                <span>댓글 ?</span>
-                <span>좋아요 ?</span>
+                <span>댓글
+                    <span id="commentCount"></span>
+                </span>
+                <span>좋아요
+                    <span id="likeCount"></span>
+                </span>
             </div>
             
             <!-- 좋아요, 댓글쓰기 클릭 -->

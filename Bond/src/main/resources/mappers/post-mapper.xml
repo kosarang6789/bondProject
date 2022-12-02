@@ -29,7 +29,42 @@
 		<result property="postDelYN" column="POST_DEL_YN" />
 		<result property="memberName" column="MEMBER_NAME" />
 		<result property="memberImage" column="MEMBER_IMG" />
+		<result property="replyCount" column="REPLY_COUNT" />
+		<result property="likeCount" column="LIKE_COUNT" />
+			
+<!-- 			<collection property="replyList"
+			javaType="java.util.ArrayList" ofType="Reply"
+			select="selectReplyList"
+			column="POST_NO"/>
+
+			<collection property="postImageList"
+			javaType="java.util.ArrayList" ofType="PostImage"
+			select="selectPostImageList"
+			column="POST_NO"/> -->
+		
 	</resultMap>
+	
+	<!-- 댓글 rm -->
+	<resultMap type="Reply" id="reply_rm">
+		<id property="replyNo" column="REPLY_NO" />
+		<result property="replyDelYN" column="REPLY_DEL_YN" />
+		<result property="replyDate" column="REPLY_DATE" />
+		<result property="replyContent" column="REPLY_CONTENT" />
+		<result property="postNo" column="POST_NO" />
+		<result property="parentNo" column="PARENT_NO" />
+		<result property="memberNo" column="MEMBER_NO" />
+	</resultMap>
+	<!-- 게시물 사진 rm -->
+	<resultMap type="PostImage" id="postImage_rm">
+		<id property="imageNo" column="IMG_NO" />
+		<result property="imageOrigin" column="POST_NO" />
+		<result property="imageRename" column="IMG_ORIGINAL" />
+		<result property="imagePath" column="IMG_PATH" />
+		<result property="imageOrder" column="IMG_ORDER" />
+		<result property="imageComment" column="IMG_COMMENT" />
+	</resultMap>
+	
+	
 	
 	<!-- 게시글 목록 불러오기
 	<select id='postList' parameterType="Post" resultMap="post_rm">
@@ -69,14 +104,40 @@
 		      ELSE TO_CHAR(EDIT_DATE, 'YYYY-MM-DD')
 		   END EDIT_DATE,
 		   ]]>
-			(SELECT MEMBER_IMG_PATH || MEMBER_IMG_RENAME 
-			FROM MEMBER_IMG MI
-			WHERE MI.MEMBER_NO = P.MEMBER_NO) MEMBER_IMG
+			   (SELECT COUNT(*) FROM REPLY R
+				WHERE R.POST_NO = P.POST_NO) REPLY_COUNT,
+				(SELECT COUNT(*) FROM POST_LIKE L
+				WHERE L.POST_NO = P.POST_NO) LIKE_COUNT,
+				(SELECT MEMBER_IMG_PATH || MEMBER_IMG_RENAME 
+				FROM MEMBER_IMG MI
+				WHERE MI.MEMBER_NO = P.MEMBER_NO) MEMBER_IMG
 		FROM POST P
 		JOIN MEMBER M ON(P.MEMBER_NO = M.MEMBER_NO)
 		WHERE GROUP_NO = #{groupNo}
 		AND POST_DEL_YN = 'N'
 		ORDER BY POST_NO DESC
 	</select>
+	
+	<!-- 게시글 상세조회 -->
+	<select id="selectPostDetail" resultMap="post_rm">
+		SELECT POST_NO, MEMBER_NAME, POST_CONTENT, POST_VIEW, P.MEMBER_NO,
+			TO_CHAR(POST_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') POST_DATE,
+			TO_CHAR(EDIT_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') EDIT_DATE,
+			(SELECT COUNT(*) FROM REPLY R
+			WHERE R.POST_NO = P.POST_NO) REPLY_COUNT,
+			(SELECT COUNT(*) FROM POST_LIKE L
+			WHERE L.POST_NO = P.POST_NO) LIKE_COUNT,
+			(SELECT MEMBER_IMG_PATH || MEMBER_IMG_RENAME 
+			FROM MEMBER_IMG MI
+			WHERE MI.MEMBER_NO = P.MEMBER_NO) MEMBER_IMG
+		FROM POST P
+		JOIN MEMBER M ON(P.MEMBER_NO = M.MEMBER_NO)
+		WHERE POST_NO = ${postNo}
+		AND POST_DEL_YN = 'N'
+	
+	</select>
+	
+	
+	
 	
 </mapper>

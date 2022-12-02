@@ -410,12 +410,7 @@ button{
     font-size: 1.1em;
 }
 
-.count{
-    margin-left: 3px;
-    font-size: 12px;
-    line-height: 24px;
-    font-weight: 500;
-}
+
 
 .comment{
     font-size: 13px;
@@ -452,12 +447,6 @@ button{
     height: 45px;
     justify-content: space-around;
     align-items: center;
-}
-
-.post-text{
-    font-weight: 500;
-    font-size: 15px;
-    color: #222;
 }
 
 

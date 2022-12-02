@@ -15,7 +15,7 @@ public class ReportUpdateScheduling {
 	@Autowired
 	private AdminReportController reportController;
 	
-	@Scheduled(cron = "0 0/1 * * * *")
+	@Scheduled(cron = "0 0 15 * * *")
 	public void autoReportUpdate() {
 		int result = reportController.autoReportUpdate();
 		

@@ -140,6 +140,7 @@ function selectBoardScroll(){
                                 modal.classList.toggle("show");
                                 document.body.style.overflow = "hidden";
                                 document.querySelector("#postSelect-view > main").scrollTop = 0;
+                                selectPostDetail(p.getAttribute("id"));
                             });
 
                             const postText = document.createElement("div");
@@ -181,18 +182,20 @@ function selectBoardScroll(){
                             icon.classList.add("icon");
                             
                             const faceIcon = document.createElement("i");
-                            faceIcon.classList.add("fa-regular", "fa-face-kiss-wink-heart", "face-icon");
+                            faceIcon.classList.add("fa-regular", "fa-thumbs-up");
                             
                             const eCount = document.createElement("span");
-                            eCount.classList.add("count");
+                            eCount.classList.add("count", "eCount");
+                            eCount.innerText = "  " + post.likeCount + "  ";
                             
                             // (2) comment
                             const comment = document.createElement("button");
                             comment.classList.add("comment");         
-                            comment.innerText = "댓글";
-
+                            comment.innerText = " 댓글 ";
+                            
                             const rCount = document.createElement("span");
-                            rCount.classList.add("count");
+                            rCount.classList.add("count", "rCount");
+                            rCount.innerText = " " + post.replyCount + " ";
                             
                             // (3) commentToggle
                             const commentToggle = document.createElement("button");
@@ -212,7 +215,8 @@ function selectBoardScroll(){
                             eyeIcon.classList.add("fa-solid", "fa-eye");
                             
                             const vCount = document.createElement("span");
-                            vCount.classList.add("count");
+                            vCount.classList.add("count","vCount");
+                            vCount.innerText = " " + post.postView;
 
                             
                             // 4-2) postAddedBox
@@ -238,7 +242,7 @@ function selectBoardScroll(){
                             
                             
                             const smileIcon = document.createElement("i");
-                            smileIcon.classList.add("fa-regular", "fa-face-smile");
+                            smileIcon.classList.add("fa-regular", "fa-thumbs-up");
                             
                             const postText2 = document.createElement("span");
                             postText2.classList.add("post-text");
@@ -293,7 +297,8 @@ function selectBoardScroll(){
 
 
                             postWrap.append(contentCard);
-                            contentCard.append(postListView, postAuthorView, postBody, postCountView);
+                            contentCard.append(postListView);
+                            postListView.append(postAuthorView, postBody, postCountView);
                             
                         }
                     } else{ // 실패
@@ -391,8 +396,7 @@ reportBtn.addEventListener("click", () => {
             modal.classList.toggle("show");
             document.body.style.overflow = "hidden";
             document.querySelector("#postSelect-view > main").scrollTop = 0;
-
-
+            selectPostDetail(p.getAttribute("id"));
         });
     }
 
@@ -402,12 +406,35 @@ reportBtn.addEventListener("click", () => {
     });
 })();
 
-const selectPostDetail = ()=>{
+let viewCount = document.getElementById("viewCount");
+let commentCount  = document.getElementById("commentCount");
+let likeCount = document.getElementById("likeCount");
+let postContent = document.getElementById("postContent");
+let memberName = document.getElementById("memberName");
+let postDate = document.getElementById("postDate");
+let profileImg = document.getElementById("profile-img");
+
+const selectPostDetail = (postNo)=>{
     $.ajax({
-        url : "/bond/" + postNo,
-        data : {"postNo" : post.postNo},
-        type : "POST",
-        dataType : "JSON"
+        url : "/bond/" + groupNo + "/" + postNo,
+        type : "GET",
+        dataType : "JSON",
+        success : (post)=>{
+            console.log("성공");
+            console.log(post.postView);
+            viewCount.innerText = post.postView;
+            commentCount.innerText = post.replyCount;
+            likeCount.innerText = post.likeCount;
+            postContent.innerHTML = post.postContent;
+            memberName.innerText = post.memberName;
+            postDate.innerText = post.postDate;
+            if(post.memberImage !=null) {
+                profileImg.setAttribute("src", post.memberImage);
+            }else {
+                profileImg.setAttribute("src", "/resources/images/member/profile/defaultProfile.png");
+            }
+        },
+        error:()=>{console.log("실패");}
 
     })
 };

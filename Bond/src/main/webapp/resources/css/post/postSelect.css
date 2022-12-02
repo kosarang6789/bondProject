@@ -37,10 +37,11 @@ a{text-decoration: none;}
     min-width: 38px;
     height: 38px;
     margin-right: 20px;
-    border: 1px solid #777;
+    /* border: 1px solid #777; */
     background-color: white;
     margin: 10px;
     cursor: pointer;
+    overflow: hidden;
 }
 
 .postMember-img>#profile-img{
