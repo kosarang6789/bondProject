@@ -199,13 +199,19 @@ public class MemberController {
 		return "member/mainPage";
 	}
 	
-	
 	@GetMapping("/member/findBond")
-	public String findBondPage() {
+	public String findBondPage(			
+			@SessionAttribute("loginMember") Member loginMember,
+			Model model) {
+		
+		// 가입X 본드 조회(groupNo)
+		List<Map<String, Object>> groupJoinNo = service.selectJoinNo(loginMember.getMemberNo());
+		
+		if(groupJoinNo != null) {
+			model.addAttribute("groupJoinNo", groupJoinNo);
+		}
 		return "member/findBond";
 	}
-	
-
 	
 
 	

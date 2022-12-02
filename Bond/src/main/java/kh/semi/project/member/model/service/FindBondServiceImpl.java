@@ -1,5 +1,9 @@
 package kh.semi.project.member.model.service;
 
-public class FindBondServiceImpl {
+import org.springframework.stereotype.Service;
+
+@Service
+public class FindBondServiceImpl implements FindBondService {
+
 
 }

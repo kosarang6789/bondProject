@@ -16,7 +16,66 @@ body{
     display: block;
 }
 
+.nav-area{
+    top : 50px;
+    position: sticky;
+    display: block;
+    z-index: 1500;
+    /* margin-top: 50px; */
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+}
 
+nav{
+    display: flex;
+    width: 1140px;
+    justify-content: space-between;
+    margin: auto;
+    padding-top: 20px;
+}
+
+nav a{
+    padding-bottom: 17px;
+}
+
+nav>.mainPage-menu>a{
+    font-size: 26px;
+    font-weight: 800;
+    margin-right: 20px;
+    color:#bbb;
+    display: inline-block;
+}
+
+nav>.mainPage-menu>.active{
+    color:#222;
+    position: relative;
+}
+
+nav>.mainPage-menu>.active::after{
+    content: "";
+    border-top: 4px solid #333;
+    width: 100%;
+    display: block;
+    position: absolute;
+    bottom: 2px;
+}
+
+nav>.mainPage-menu>a:hover{
+    color: #222;
+    font-weight: 800;
+}
+
+.mainPage-optionBox{
+    padding-top: 5px;
+}
+
+nav>.mainPage-optionBox>a{
+    font-size:15px;
+    font-weight: 400;
+    color: #444;
+    text-align: left;
+    padding: 0 10px;
+}
 /* main */
 
 main{
