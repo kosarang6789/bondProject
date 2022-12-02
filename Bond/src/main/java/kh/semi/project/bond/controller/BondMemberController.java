@@ -8,8 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
+import com.google.gson.Gson;
 
 import kh.semi.project.bond.model.service.BondMemberService;
 import kh.semi.project.bond.model.vo.Group;
@@ -34,6 +37,7 @@ public class BondMemberController {
 	
 	// 그룹 멤버 리스트 가져오기
 	@GetMapping("/bondMemberList")
+//	@ResponseBody
 	public String memberList(
 			@SessionAttribute("loginMember") Member loginMember,
 			@SessionAttribute("groupInfo") Group groupInfo,
@@ -51,7 +55,10 @@ public class BondMemberController {
 
 		
 		return "bond/bondMemberList";
+//		return new Gson().toJson(memMap);
 	}
+	
+	
 	
 	
 
