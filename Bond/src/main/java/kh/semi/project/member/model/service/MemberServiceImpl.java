@@ -59,6 +59,14 @@ public class MemberServiceImpl implements MemberService{
 	public String checkReport(int memberNo) {
 		return dao.checkReport(memberNo);
 	}
+
+
+	// 가입X 본드 조회
+	@Override
+	public List<Map<String, Object>> selectJoinNo(int memberNo) {
+		return dao.selectJoinNo(memberNo);
+	}
+	
 	
 	
 	

@@ -22,4 +22,7 @@ public interface MemberService {
 	
 	// 신고 여부 조회
 	public abstract String checkReport(int memberNo);
+
+	// 가입X 본드 조회
+	public abstract List<Map<String, Object>> selectJoinNo(int memberNo);
 }

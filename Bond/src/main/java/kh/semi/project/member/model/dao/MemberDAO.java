@@ -35,4 +35,12 @@ public class MemberDAO {
 		return sqlSession.selectOne("memberMapper.checkReport", memberNo);
 	}
 
+	/** 가입X 본드 조회
+	 * @param memberNo
+	 * @return
+	 */
+	public List<Map<String, Object>> selectJoinNo(int memberNo) {
+		return sqlSession.selectList("groupMapper.selectJoinNo", memberNo);
+	}
+
 }
