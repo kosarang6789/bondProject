@@ -38,9 +38,9 @@
             <div class="find-band-category">
                 <h2>주제별 본드를 찾아보세요</h2>
                 <div class="group-category">
-                    <button id="left-btn">
+                    <%-- <button id="left-btn">
                         <i class="fa-sharp fa-solid fa-chevron-left"></i>
-                    </button>
+                    </button> --%>
                     <div class="swiper-container gallery-top">
                         <div class="swiper-wrapper">
 
