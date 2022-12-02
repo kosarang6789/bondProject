@@ -6,7 +6,7 @@
 
   <div id="insertWindow">
     <div class="insert-header">
-      <h3>일정 추가하기</h3>
+      <h3>일정 만들기</h3>
       <span id="closeInsertModal">&times;</span>
     </div> <!-- end window-header -->
 
@@ -15,7 +15,9 @@
       
     </div> <!-- end insertBody -->
     
-    <button type="button" id="confirmBtn">확인</button>
+    <div id="insertFoot">
+      <button type="button" id="confirmBtn">완료</button>
+    </div>
 
   </div> <!-- end window -->
 

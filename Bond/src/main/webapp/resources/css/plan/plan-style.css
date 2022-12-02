@@ -17,6 +17,8 @@ body{
     display: none;
 }
 
+/*  */
+
 /* 모달창 일정 추가(insertModal.jsp) */
 
 /* insertModal 배경 */
@@ -34,13 +36,13 @@ body{
 /* insertModal의 window */
 #insertWindow{
     background-color: white;
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    min-height: 380px;
+    height: auto;
 
     position: fixed; 
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-
 }
 
 /* insertModal - window 스타일 */
@@ -50,11 +52,13 @@ body{
     cursor: pointer;
     position: absolute;
     right: 10px;
-    top: 10px;
+    top: 5px;
 }
 
 /* insert-header */
 .insert-header{
+    font-size: 12px;
+
     background-color: #E2E2E230;
     border-bottom: 1px solid #E2E2E2;
     height: 50px;
@@ -64,19 +68,112 @@ body{
     align-items: center;
 }
 
+#closeInsertModal{
+    font-size: 25px;
+    color: dimgray;
+}
+
 /* insert-body */
-/* 날짜 열 */
-.dateBoxRow{
+#insertBody{
+    padding: 20px;
+}
+
+/* 일정 제목 */
+#inputTitleBox{
+    height: 30px;
+    border: 1px solid #E2E2E2;
+    margin-bottom: 10px;
+
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#inputTitle{
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 0px 10px;
+
+    font-size: 10px;
+}
+
+#inputTitleBox:focus-within{
+    border: 1px solid dimgray;
+}
+
+/* 일정 설명 */
+#inputContentBox{
+    height: 60px;
+    border: 1px solid #E2E2E2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#inputContent{
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    padding: 0px 10px;
+
+    font-size: 10px;
+}
+
+#inputContentBox:focus-within{
+    border: 1px solid dimgray;
+}
+
+
+/* 날짜 열 */
+#inputDateBox{
+    margin: 10px 0px;
+    border-top: 1px solid #E2E2E2;
+    border-bottom: 1px solid #E2E2E2;
+}
+
+.dateBoxRow{
+    margin-top: 10px;
+    height: 25px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    font-size: 10px;
+}
+
+.dateBoxRow > input{
+    height: 20px;
+    margin-left: 5px;
+}
+
+#startBox > div, #endBox > div{
+    width: 130px;
+}
+
+#allDayBox{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#inputCheckbox{
+    margin-right: 5px;
 }
 
 /* 팔레트 */
-#colorBox{
+#inputColorBox{
     display: flex;
-    padding: 10px 0px;
+    margin: 5px 0px;
+    font-size: 10px;
 }
 
-#colorBox input{
+#inputColorBox > div{
+    margin-right: 5px;
+}
+
+#inputColorBox input{
     display: none;
 }
 
@@ -93,11 +190,29 @@ input[name="planColor"]:checked + .palette{
     width: 15px;
     height: 15px;
 
-    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#insertFoot{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#confirmBtn{
+    width: 80px;
+    height: 30px;
+    font-size: 10px;
+
+    border: none;
+    background-color: #515161;
+    color: white;
 }
 
 
 /* 모달창 일정 상세 조회(viewModal.jsp) */
+
 #detailModal{
     position: absolute;
     background-color: rgb(0, 0, 0, 0.7);
@@ -109,6 +224,7 @@ input[name="planColor"]:checked + .palette{
     z-index: 10000;
 }
 
+
 #detailWindow{
     background-color: white;
     width: 500px;
@@ -119,7 +235,10 @@ input[name="planColor"]:checked + .palette{
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
 
+    z-index: 15000;
+
 }
+
 
 #detailBody{
     position: relative;
@@ -154,6 +273,8 @@ input[name="planColor"]:checked + .palette{
 
 /* 드롭다운 메뉴 서브메뉴 */
 #detailModalMenu > div{
+    font-size: 12px;
+
     background-color: white;
     display: flex;
     align-items: center;
@@ -239,6 +360,7 @@ input[name="planColor"]:checked + .palette{
 
 #contentBox{
     padding: 20px;
+    font-size: 13px;
 }
 /* 모달창 일정 수정 */
 

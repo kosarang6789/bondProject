@@ -38,14 +38,19 @@ function loadCalendar(){
 
             // 일정 조회 모달창 열기
             eventClick: function(info) {
-                const thisId = info.event.id;
+                let thisId = info.event.id;
+                console.log(thisId);
 
                 const detailModal = document.getElementById("detailModal");
                 detailModal.classList.toggle("closed");
 
                 makePlanDetail(thisId);
+
+                console.log(info);
+                info.removeInfo;
+
             }
-            
+
         });
 
         // 일정에 정보를 뿌리는 함수 getAllPlan
@@ -89,7 +94,7 @@ function loadCalendar(){
         (() => {
             getAllPlan()
         })()
-
+        
     // 캘린더 렌더링
     calendar.render();
 
@@ -101,8 +106,43 @@ function loadCalendar(){
     loadCalendar();
 })()
 
-/* 모달창 통합 닫기 (esc 버튼 클릭 시) */
+/* 모달창 여닫기 이벤트는 전부 여기에 작성 */
 
+// 일정 추가 모달창 닫기(close #insertModal)
+const closeInsertModal = document.getElementById("closeInsertModal");
+
+closeInsertModal.addEventListener("click", () => {
+    insertModal.classList.toggle("closed");
+    clearInsertBody();
+})
+
+// 일정 상세 조회 모달창 열기(open #detailModal)
+const openDetailModalMenu = document.getElementById("openDetailModalMenu");
+
+openDetailModalMenu.addEventListener("click", () => {
+    const detailModalMenu = document.getElementById("detailModalMenu");
+    detailModalMenu.classList.toggle("closed");
+})
+
+// 일정 삭제 모달창 열기(open #deleteModal)
+const planDelete = document.getElementById("planDelete");
+
+planDelete.addEventListener("click", () => {
+    const deleteModal = document.getElementById("deleteModal");
+    deleteModal.classList.toggle("closed");
+})
+
+// 일정 삭제 모달창 취소(닫기)(cancel #deleteModal)
+const cancelDeleteBtn = document.getElementById("cancelDeleteBtn");
+
+cancelDeleteBtn.addEventListener("click", () => {
+    const deleteModal = document.getElementById("deleteModal");
+    deleteModal.classList.toggle("closed");
+})
+
+
+
+/* 모달창 통합 닫기 (esc 버튼 클릭 시) */
 addEventListener("keydown", (e) => {
     const insertModal = document.getElementById("insertModal");
     const detailModal = document.getElementById("detailModal");
@@ -123,9 +163,10 @@ addEventListener("keydown", (e) => {
 
         if(!detailModal.classList.contains("closed")) {
             detailModal.classList.toggle("closed");
+            clearPlanDetail();
 
             if(!detailModalMenu.classList.contains("closed")) {
-                detailModal.classList.toggle("closed");
+                detailModalMenu.classList.toggle("closed");
             }
             
             return;
@@ -138,16 +179,33 @@ addEventListener("keydown", (e) => {
     }
 })
 
+/* 모달창 닫기(외부영역 클릭 시) */
+const detailModal = document.getElementById("detailModal");
+
+detailModal.addEventListener("click", e => {
+    const evTarget = e.target;
+
+    if(evTarget.classList.contains("modalDim")){
+        evTarget.classList.toggle("closed");
+
+        const detailModalMenu = document.getElementById("detailModalMenu");
+        if(!detailModalMenu.classList.contains("closed")) {
+            detailModalMenu.classList.toggle("closed");
+        }
+
+        clearPlanDetail();
+        
+        return;
+    }
+    
+})
+
+
+/* 모달창 닫기 */
+
 
 /* 일정 추가 모달창 js */
 
-// 일정 추가 모달창 닫기
-const closeInsertModal = document.getElementById("closeInsertModal");
-
-closeInsertModal.addEventListener("click", () => {
-    insertModal.classList.toggle("closed");
-    clearInsertBody();
-})
 
 // 모달창에서 확인 버튼을 누르면 일정을 업데이트함
 const confirmBtn = document.getElementById("confirmBtn");
@@ -204,7 +262,7 @@ if(confirmBtn != null) {
         })
     
         // 결과와 상관 없이 모달창을 닫고 초기화함
-        insertModal.style.display="none";
+        insertModal.classList.toggle('closed');
         clearInsertBody();
     })
 
@@ -214,32 +272,33 @@ if(confirmBtn != null) {
 
 // InsertBody 화면 만들기 함수
 function makeInsertBody(){
+    
+    clearInsertBody();
 
     // 1. titleBox
-    const titleBox = document.createElement("div");
-    titleBox.id = "titleBox";
+    const inputTitleBox = document.createElement("div");
+    inputTitleBox.id = "inputTitleBox";
 
     // 제목 상자 input
     const inputTitle = document.createElement("input");
     inputTitle.id = 'inputTitle';
+    inputTitle.setAttribute('placeholder', '일정 제목');
 
     // 제목 상자 text
-    const titleBoxText = document.createElement("div"); 
-    titleBoxText.innerText = '제목'; 
 
     // 제목 상자에 input, text 추가
-    titleBox.append(titleBoxText, inputTitle);
+    inputTitleBox.append(inputTitle);
 
     // 2. colorBox
-    const colorBox = document.createElement("div");
-    colorBox.id = "colorBox";
+    const inputColorBox = document.createElement("div");
+    inputColorBox.id = "inputColorBox";
 
     // 컬러 상자 text
     const colorBoxText = document.createElement("div");
-    colorBoxText.innerText = '색깔';
+    colorBoxText.innerText = '캘린더 색깔';
 
     // 컬러 상자에 text 추가
-    colorBox.append(colorBoxText);
+    inputColorBox.append(colorBoxText);
     
     // 컬러 팔레트 배열
     const paletteArr = new Array();
@@ -264,7 +323,7 @@ function makeInsertBody(){
         palette.setAttribute("style", "background-color:"+ paletteArr[i]);
 
         label.append(radio, palette);
-        colorBox.append(label);
+        inputColorBox.append(label);
     }
 
     // 3-1. startBox
@@ -284,7 +343,7 @@ function makeInsertBody(){
 
     // 시작 날짜 상자 text
     const startBoxText = document.createElement("div");
-    startBoxText.innerText = '시작날짜';
+    startBoxText.innerText = '시작';
 
     // 시작 날짜 상자에 text, date, time 추가
     startBox.append(startBoxText, inputStartDate, inputStartTime);
@@ -308,11 +367,10 @@ function makeInsertBody(){
 
     // 종료 날짜 상자 text
     const endBoxText = document.createElement("div");
-    endBoxText.innerText = '종료날짜';
+    endBoxText.innerText = '종료';
 
     // 종료 날짜 상자에 text, date, time 추가
     endBox.append(endBoxText, inputEndDate, inputEndTime);
-
 
     // 3-3. allDayBox
     const allDayBox = document.createElement("div");
@@ -348,30 +406,29 @@ function makeInsertBody(){
 
     // 3 < 3-1, 3-2, 3-3. dateBox
     // 날짜 상자에 시작 날짜 상자, 종료 날짜 상자, 하루종일 상자 추가
-    const dateBox = document.createElement("div");
-    dateBox.id = "dateBox";
-    dateBox.append(startBox, endBox, allDayBox);
+    const inputDateBox = document.createElement("div");
+    inputDateBox.id = "inputDateBox";
+    inputDateBox.append(startBox, endBox, allDayBox);
 
 
 
     // 4. contentBox
-    const contentBox = document.createElement("div");
-    contentBox.id = "contentBox";
+    const inputContentBox = document.createElement("div");
+    inputContentBox.id = "inputContentBox";
 
     // 내용 상자 input
-    const inputContent = document.createElement("input");
+    const inputContent = document.createElement("textarea");
     inputContent.id = "inputContent";
+    inputContent.setAttribute("placeholder", '일정 설명');
 
     // 내용 상자 text
-    const contentBoxText = document.createElement("div");
-    contentBoxText.innerText = '내용';
 
     // 내용 상자에 text, input 추가
-    contentBox.append(contentBoxText, inputContent);
+    inputContentBox.append(inputContent);
 
     // insertBody에 전부 추가
     const insertBody = document.getElementById("insertBody");
-    insertBody.append(titleBox, colorBox, dateBox, contentBox);
+    insertBody.append(inputTitleBox, inputContentBox, inputDateBox, inputColorBox);
 
 }
 
@@ -384,19 +441,13 @@ function clearInsertBody(){
 
 // -------------------------------------------------------------------------------------------- //
 
-/* 일정 상세 조회 모달창(viewModal.jsp) */
-const openDetailModalMenu = document.getElementById("openDetailModalMenu");
+// detailBody 만들기
+function makePlanDetail(thisId){
 
-openDetailModalMenu.addEventListener("click", () => {
-    const detailModalMenu = document.getElementById("detailModalMenu");
-    detailModalMenu.classList.toggle("closed")
-})
+    const detailBody = document.getElementById("detailBody");
+    detailBody.innerHTML = "";
 
-
-
-
-
-function makePlanDetail(planNo){
+    let planNo = thisId;
 
     $.ajax({
         url : "plan/select/detail",
@@ -406,9 +457,9 @@ function makePlanDetail(planNo){
 
         success : (plan) => {
             // plan.planNo, plan.planTitle, plan.planContent, plan.planStart, plan.planEnd, plan.planColor
-            
-            const detailBody = document.getElementById("detailBody");
-            detailBody.innerHTML = "";
+            planNo = plan.planNo;
+
+            detailBody.setAttribute("value", plan.planNo);
 
             // 1. 요일 상자
             const dateBox = document.createElement('div');
@@ -549,26 +600,9 @@ function makePlanDetail(planNo){
         }
     })
 
-    /* 일정 삭제 모달창(deleteModal.jsp) */
+    // // /* 일정 삭제 모달창(deleteModal.jsp) */
 
-    // 일정 삭제 모달창 열기
-    const planDelete = document.getElementById("planDelete");
-
-    planDelete.addEventListener("click", () => {
-        const deleteModal = document.getElementById("deleteModal");
-        deleteModal.classList.toggle("closed");
-    })
-
-    // 일정 삭제 모달창 - 취소(화면 닫음)
-    const cancelDeleteBtn = document.getElementById("cancelDeleteBtn");
-
-    cancelDeleteBtn.addEventListener("click", () => {
-        const deleteModal = document.getElementById("deleteModal");
-        deleteModal.classList.toggle("closed");
-    })
-
-
-    // 일정 삭제 모달창 - 확인
+    // // 일정 삭제 모달창 - 확인
     const planDeleteBtn = document.getElementById("planDeleteBtn");
 
     planDeleteBtn.addEventListener("click", () => {
@@ -577,16 +611,19 @@ function makePlanDetail(planNo){
         const deleteModal = document.getElementById("deleteModal");
         deleteModal.classList.toggle("closed");
     })
+    
 
 } // end makePlanDetail
 
+// detailBody 비우기
+function clearPlanDetail(){
+    const detailBody = document.getElementById("detailBody");
+    detailBody.innerHTML = "";
+}
 
 // -------------------------------------------------------------------------------------------- //
 
 /* 일정 수정 모달창(updateModel.jsp) */
-
-
-
 
 // 일정 수정 함수
 function updatePlan(planNo){
@@ -641,3 +678,18 @@ function deletePlan(planNo){
         }
     })
 }
+
+
+/* 일정 삭제 모달창(deleteModal.jsp) */
+
+// 일정 삭제 모달창 - 확인
+// const planDeleteBtn = document.getElementById("planDeleteBtn");
+
+// planDeleteBtn.addEventListener("click", () => {
+//     const planNo = document.getElementById("detailBody").getAttribute("value");
+//     deletePlan(planNo);
+
+//     const deleteModal = document.getElementById("deleteModal");
+//     deleteModal.classList.toggle("closed");
+// })
+
