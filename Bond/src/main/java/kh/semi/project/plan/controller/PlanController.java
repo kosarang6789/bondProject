@@ -91,5 +91,31 @@ public class PlanController {
 		
 	}
 	
+//	// 캘린더 일정 업데이트
+//	@PostMapping("/plan/update")
+//	@ResponseBody
+//	public String planUpdate() {
+//		
+//	}
+//	
+	// 캘린더 일정 삭제
+	@PostMapping("/plan/delete")
+	@ResponseBody
+	public String planDelete(
+			@RequestParam(value="planNo", required=false) int planNo
+			) {
+		
+		String message = "데이터 전송 실패";
+		
+		int result = service.planDelete(planNo);
+		
+		if(result > 0) {
+			message = "일정이 삭제되었습니다.";
+		}
+		
+		return new Gson().toJson(message);
+		
+	}
+	
 
 }

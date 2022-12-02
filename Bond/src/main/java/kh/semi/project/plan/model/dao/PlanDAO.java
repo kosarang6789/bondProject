@@ -28,6 +28,11 @@ public class PlanDAO {
 	public int planInsert(Plan plan) {
 		return sqlSession.insert("planMapper.planInsert", plan);
 	}
+	
+	// 일정 삭제하기
+	public int planDelete(int planNo) {
+		return sqlSession.delete("planMapper.planDelete", planNo);
+	}
 
 
 }

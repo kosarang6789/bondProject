@@ -16,7 +16,7 @@ body{
     display: none;
 }
 
-/* insertModal */
+/* 모달창 일정 추가(insertModal.jsp) */
 
 /* insertModal 배경 */
 #insertModal{
@@ -96,7 +96,7 @@ input[name="planColor"]:checked + .palette{
 }
 
 
-/* viewModal */
+/* 모달창 일정 상세 조회(viewModal.jsp) */
 #detailModal{
     position: absolute;
     background-color: rgb(0, 0, 0, 0.7);
@@ -119,6 +119,10 @@ input[name="planColor"]:checked + .palette{
 
 }
 
+#detailBody{
+    position: relative;
+}
+
 /* 모달창 드롭다운 메뉴 */
 #openDetailModalMenu{
     cursor: pointer;
@@ -127,3 +131,51 @@ input[name="planColor"]:checked + .palette{
     top: 10px;
 }
 
+
+/* 모달창 일정 수정 */
+
+
+
+
+
+/* 일정 삭제 모달창(deleteModal.jsp) */
+#deleteWindow{
+    background-color: white;
+    width: 300px;
+    height: 300px;
+
+    position: fixed; 
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+
+    z-index: 25000;
+}
+
+.deleteWindowBtnArea button{
+    width: 90px;
+    height: 35px;
+    border: 1px solid #BFBFBF;
+    font-weight: 800;
+    margin: 0px 5px;
+}
+
+#planDeleteBtn{
+    background-color: #515161;
+    color: white;
+}
+
+#planDeleteBtn:hover{
+    background-color: #212131;
+    transition-duration: 0.1s;
+}
+
+#cancelDeleteBtn{
+    background-color: white;
+    color: grey;
+}
+
+#cancelDeleteBtn:hover{
+    background-color: #E2E2E2;
+    color: black;
+    transition-duration: 0.1s;
+}

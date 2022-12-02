@@ -7,13 +7,16 @@
   <div id="detailWindow">
       <span id="openDetailModalMenu">...</span>
       <div id="detailModalMenu" class="closed">
-        <div>수정하기</div>
-        <div>삭제하기</div>
+        <div id="planUpdate">수정하기</div>
+        <div id="planDelete">삭제하기</div>
       </div>
 
       <div id="detailBody">
+        <jsp:include page="deleteModal.jsp" />
       </div>
 
+      
   </div> <!-- end viewWindow -->
+  
 
 </div> <!-- end modal -->

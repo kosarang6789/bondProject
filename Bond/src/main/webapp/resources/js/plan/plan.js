@@ -48,7 +48,7 @@ function loadCalendar(){
             
         });
 
-        // 달력에 정보를 뿌리는 함수 getAllPlan
+        // 일정에 정보를 뿌리는 함수 getAllPlan
         function getAllPlan(){
             $.ajax({
                 url : "/plan/select/list",
@@ -171,6 +171,8 @@ if(confirmBtn != null) {
     })
 
 }
+
+/* 일정 추가 모달창(insertModal.jsp) */
 
 // InsertBody 화면 만들기 함수
 function makeInsertBody(){
@@ -342,15 +344,9 @@ function clearInsertBody(){
 }
 
 
-/* 일정 조회 모달창 js */
+// -------------------------------------------------------------------------------------------- //
 
-// // 일정 조회 모달창 닫기
-// const closeDetailModal = document.getElementById("closeDetailModal");
-
-// closeDetailModal.addEventListener("click", () => {
-//     detailModal.style.display="none";
-// })
-
+/* 일정 상세 조회 모달창(viewModal.jsp) */
 
 const openDetailModalMenu = document.getElementById("openDetailModalMenu");
 
@@ -358,7 +354,7 @@ openDetailModalMenu.addEventListener("click", () => {
     detailModalMenu.classList.toggle("closed")
 })
 
-// 일정 열면 데이터를 가져옴
+
 function makePlanDetail(planNo){
 
     $.ajax({
@@ -376,9 +372,63 @@ function makePlanDetail(planNo){
             alert("데이터 전송에 실패하였습니다.")
         }
     })
+
+    /* 일정 삭제 모달창(deleteModal.jsp) */
+
+    // 일정 삭제 모달창 열기
+    const planDelete = document.getElementById("planDelete");
+
+    planDelete.addEventListener("click", () => {
+        const deleteWindow = document.getElementById("deleteWindow");
+        deleteWindow.classList.toggle("closed");
+    })
+
+    // 일정 삭제 모달창 - 취소(화면 닫음)
+    const cancelDeleteBtn = document.getElementById("cancelDeleteBtn");
+
+    cancelDeleteBtn.addEventListener("click", () => {
+        const deleteWindow = document.getElementById("deleteWindow");
+        deleteWindow.classList.toggle("closed");
+    })
+
+
+    // 일정 삭제 모달창 - 확인
+    const planDeleteBtn = document.getElementById("planDeleteBtn");
+
+    planDeleteBtn.addEventListener("click", () => {
+        deletePlan(planNo);
+
+        const deleteWindow = document.getElementById("deleteWindow");
+        deleteWindow.classList.toggle("closed");
+    })
+
+
+    // 일정 삭제 함수
+    function deletePlan(planNo){
+
+        $.ajax({
+            url : "plan/delete",
+            data : {"planNo":planNo},
+            type : "POST",
+            dataType : "JSON",
+
+            success : (message) => {
+                alert(message);
+                loadCalendar();
+            },
+            error : () => {
+                alert("데이터 전송에 실패하였습니다.")
+            }
+        })
+    }
+
 }
 
-// 일정 수정 관련
+
+// -------------------------------------------------------------------------------------------- //
+
+
+// 일정 수정 모달창(updateModal.jsp)
 function updatePlan(planNo){
 
     $.ajax({
@@ -408,22 +458,7 @@ function updatePlan(planNo){
 
 }
 
-/* 일정 삭제 관련 js */
 
-function deletePlan(planNo){
+// -------------------------------------------------------------------------------------------- //
 
-    $.ajax({
-        url : "plan/delete",
-        data : {"planNo":planNo},
-        type : "POST",
-        dataType : "JSON",
 
-        success : (message) => {
-            alert(message);
-            loadCalendar();
-        },
-        error : () => {
-            alert("데이터 전송에 실패하였습니다.")
-        }
-    })
-}

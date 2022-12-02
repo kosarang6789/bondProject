@@ -28,6 +28,7 @@
 		WHERE PLAN_NO = #{planNo}
 	</select>
 	
+	<!-- 일정 추가 -->
 	<insert id="planInsert">
 		INSERT INTO "POST_PLAN" 
 		VALUES(SEQ_PLAN_NO.NEXTVAL, 
@@ -40,5 +41,11 @@
 				#{planAllday}
 				)
 	</insert>
+	
+	<!-- 일정 삭제 -->
+	<delete id="planDelete">
+		DELETE FROM "POST_PLAN"
+		WHERE PLAN_NO = #{planNo}
+	</delete>
 	
 </mapper>

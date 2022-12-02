@@ -15,5 +15,8 @@ public interface PlanService {
 	// 일정 추가하기
 	int planInsert(Plan plan);
 	
+	// 일정 삭제하기
+	int planDelete(int planNo);
+	
 
 }

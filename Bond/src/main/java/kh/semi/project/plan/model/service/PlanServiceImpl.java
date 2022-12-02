@@ -32,4 +32,10 @@ public class PlanServiceImpl implements PlanService {
 		return dao.planInsert(plan);
 	}
 	
+	// 일정 삭제하기
+	@Override
+	public int planDelete(int planNo) {
+		return dao.planDelete(planNo);
+	}
+	
 }

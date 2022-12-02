@@ -30,7 +30,7 @@
     <jsp:include page="insertModal.jsp" />
 
     <jsp:include page="viewModal.jsp" />
- 
+
 
     <%-- CDN --%>
 
