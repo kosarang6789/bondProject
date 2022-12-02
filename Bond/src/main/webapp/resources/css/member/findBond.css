@@ -278,15 +278,15 @@ main{
     position: relative;
     overflow: hidden;
     display: inline-block;
-    width: 98px;
+    width: 90px;
     height: 140px;
     vertical-align: top;
     margin-right: 21px;
 }
 
 .categoryImageWrap{
-    width: 98px;
-    height: 98px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
     overflow: hidden;
 }

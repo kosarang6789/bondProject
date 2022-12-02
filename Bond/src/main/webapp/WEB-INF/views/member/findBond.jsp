@@ -9,6 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모임 찾기 | 본드</title>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
     <link rel="stylesheet" href="/resources/css/member/findBond.css">
     <script src="https://kit.fontawesome.com/345198b845.js" crossorigin="anonymous"></script>
 </head>
@@ -145,13 +148,8 @@
                         </div>
                     </div>
 
-                    <%-- <button class="swiper-button-next" id="right-btn"> --%>
-                        <%-- <i class="fa-solid fa-chevron-left"></i> --%>
-                    </button>
-                    
-                    <button class="swiper-button-prev" id="right-btn">
-                        <%-- <i class="fa-sharp fa-solid fa-chevron-right"></i> --%>
-                    </button>
+                    <button class="swiper-button-next"></button>
+                    <button class="swiper-button-prev"></button>
                 </div>
             </div>
         </section>
