@@ -22,4 +22,9 @@ public class BondIntroDAO {
 	public int updateImg(GroupImage img) {
 		return sqlSession.update("bondIntroMapper.updateImg", img);
 	}
+
+	// 본드 소개 - 이미지 삽입
+	public int insertImg(GroupImage img) {
+		return sqlSession.insert("bondIntroMapper.insertImg", img);
+	}
 }
