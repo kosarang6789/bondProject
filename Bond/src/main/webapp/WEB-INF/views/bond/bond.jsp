@@ -66,7 +66,7 @@
                         <div class="band-setting-list">
                             <ul class="band-setting-item">
                                 <li>
-                                    <a href="#" class="report-band sidebar-font">
+                                    <a href="#" id="reportBtn" class="report-band sidebar-font">
                                         <i class="fa-solid fa-bell sidbar-icon"></i>신고하기
                                     </a>
                                 </li>
@@ -122,6 +122,7 @@
 
                     <%-- 게시물 조회 --%>
                     <div class="post-wrap">
+                        
                         <c:choose>
                             <c:when test="${empty postList}">
                                 <!-- 게시글 목록 조회 결과가 비어있다면 -->
@@ -162,7 +163,7 @@
                                                 </div>
 
                                                 <%-- 게시물 내용 --%>
-                                                <div class="post-body">
+                                                <div class="post-body" id="${post.postNo}">
                                                     <div class="post-text">
                                                         <p class="text-body">
                                                             ${post.postContent}
@@ -179,14 +180,14 @@
                                                             <button type="button" class="emotion-view">
                                                                 <span class="emotion-wrap">
                                                                     <span class="icon">
-                                                                        <i class="fa-regular fa-face-kiss-wink-heart face-icon"></i>
+                                                                        <i class="fa-regular fa-thumbs-up"></i>
                                                                     </span>
                                                                 </span>
-                                                                <span class="count">1</span>
+                                                                <span class="count eCount">${post.likeCount}</span>
                                                             </button>
                                                             <%-- 댓글 --%>
                                                             <button type="button" class="comment">
-                                                                댓글 <span class="count">1</span>
+                                                                댓글 <span class="count rCount">${post.replyCount}</span>
                                                             </button>
                                                             <%-- 댓글 더보기 --%>
                                                             <button type="button" class="comment-toggle">
@@ -197,7 +198,7 @@
                                                         <span class="share-read">
                                                             <span class="gSrOnly">읽음</span>
                                                             <i class="fa-solid fa-eye" style="color: #555;"></i>
-                                                            <span class="count">2</span>
+                                                            <span class="count vCount">${post.postView}</span>
                                                         </span>
                                                     </div>
 
@@ -206,7 +207,7 @@
                                                             <div class="add-col">
                                                                 <a href="#" class="emotion-main-btn">
                                                                     <span class="icon-face-emotion">
-                                                                        <i class="fa-regular fa-face-smile"></i>
+                                                                        <i class="fa-regular fa-thumbs-up"></i>
                                                                     </span>
                                                                     <span class="post-text">좋아요</span>
                                                                 </a>
@@ -274,6 +275,7 @@
         <c:remove var="message" />
     </c:if>
 
+    <%-- 게시글 작성 페이지 모달(iframe) --%>
     <div id="postWrite-modal">
         <iframe width="620px" height="720px" src="/bond/postWrite"
         id="postWrite-iframe"></iframe>
@@ -282,14 +284,20 @@
         </button>
     </div>
 
+    <%-- 게시글 상세조회 페이지 모달 --%>
     <div id="postSelect-modal">
-        
+        <div id="postSelect-view">
+            <jsp:include page="/WEB-INF/views/post/postSelect.jsp"/>
+        </div>
+        <button class="sModal-closeBtn">
+            <i class="fa-solid fa-x"></i>
+        </button>
     </div>
 
     <script>
         let cp = 0;
         const groupNo = "${groupNo}"
-    
+        const postNo = "${postNo}"
     </script>
 
 

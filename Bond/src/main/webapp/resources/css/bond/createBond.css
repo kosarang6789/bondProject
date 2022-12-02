@@ -296,3 +296,7 @@ button[type="submit"]{
     background-color: #888;
     color: white;
 }
+
+button:hover{
+    cursor: pointer;
+}

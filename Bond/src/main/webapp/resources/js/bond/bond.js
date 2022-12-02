@@ -105,10 +105,16 @@ function selectBoardScroll(){
                             
                             const postBody = document.createElement("div");
                             postBody.classList.add("post-body");
-                            
-                            const postTextView = document.createElement("div");
-                            postTextView.classList.add("post-text-view");
-                            
+                            postBody.setAttribute("id", post.postNo);
+
+                            postBody.addEventListener("click", ()=>{
+                                const modal = document.getElementById("postSelect-modal");
+                                modal.classList.toggle("show");
+                                document.body.style.overflow = "hidden";
+                                document.querySelector("#postSelect-view > main").scrollTop = 0;
+                                selectPostDetail(p.getAttribute("id"));
+                            });
+
                             const postText = document.createElement("div");
                             postText.classList.add("post-text");
                             
@@ -137,20 +143,72 @@ function selectBoardScroll(){
                             icon.classList.add("icon");
                             
                             const faceIcon = document.createElement("i");
-                            faceIcon.classList.add("face-icon");
+                            faceIcon.classList.add("fa-regular", "fa-thumbs-up");
                             
-                            const count = document.createElement("span");
-                            count.classList.add("count");
+                            const eCount = document.createElement("span");
+                            eCount.classList.add("count", "eCount");
+                            eCount.innerText = "  " + post.likeCount + "  ";
+                            
+                            // (2) comment
+                            const comment = document.createElement("button");
+                            comment.classList.add("comment");         
+                            comment.innerText = " 댓글 ";
+                            
+                            const rCount = document.createElement("span");
+                            rCount.classList.add("count", "rCount");
+                            rCount.innerText = " " + post.replyCount + " ";
+                            
+                            // (3) commentToggle
+                            const commentToggle = document.createElement("button");
+                            commentToggle.classList.add("comment");                   
+                            
+                            const angleIcon = document.createElement("i");
+                            angleIcon.classList.add("fa-solid", "fa-angle-down");
+                            
+                            // 2) shareRead 댓글
+                            const shareRead = document.createElement("span");
+                            shareRead.classList.add("share-read");
+                            
+                            const gSrOnly = document.createElement("span");
+                            gSrOnly.classList.add("gSrOnly");
+                            
+                            const eyeIcon = document.createElement("i");
+                            eyeIcon.classList.add("fa-solid", "fa-eye");
+                            
+                            const vCount = document.createElement("span");
+                            vCount.classList.add("count","vCount");
+                            vCount.innerText = " " + post.postView;
 
-                            // 프로필 이미지
-                            const profileImage = document.createElement("img");
-                            profileImage.classList.add("uprofile-inner");
-                            profileImage.setAttribute("src", post.memberImgage);
-
-                            // 작성자
-                            const boardWriter = document.createElement("strong");
-                            boardWriter.classList.add("post-info-name");
-                            boardWriter.innerText = post.memberName;
+                            
+                            // 4-2) postAddedBox
+                            const postAdded = document.createElement("div");
+                            postAdded.classList.add("post-added");
+                            
+                            
+                            const postAddBox = document.createElement("div");
+                            postAddBox.classList.add("post-add-box");
+                            
+                            
+                            // (1) addCol1
+                            const addCol1 = document.createElement("div");
+                            addCol1.classList.add("add-col");
+                            
+                            
+                            const emotionMainBtn = document.createElement("a");
+                            emotionMainBtn.classList.add("emotion-main-btn");
+                            
+                            
+                            const iconFaceEmotion = document.createElement("span");
+                            iconFaceEmotion.classList.add("icon-face-emotion");
+                            
+                            
+                            const smileIcon = document.createElement("i");
+                            smileIcon.classList.add("fa-regular", "fa-thumbs-up");
+                            
+                            const postText2 = document.createElement("span");
+                            postText2.classList.add("post-text");
+                            postText2.innerText = " 좋아요";
+                            
 
                             // 작성 날짜
                             const boardDate = document.createElement("a");
@@ -170,12 +228,10 @@ function selectBoardScroll(){
                             // postMain.append(postBody, postTextView, postText, moreLink);
 
 
-                            //     postAuthorView,
-                            //     postMain,postCountView,
-                            //     postCount, postCountLeft, faceComment, emotionView, emotionWrap,
-                            //     icon, faceIcon, count
-
-    
+                            postWrap.append(contentCard);
+                            contentCard.append(postListView);
+                            postListView.append(postAuthorView, postBody, postCountView);
+                            
                         }
                     } else{ // 실패
                         alert("게시물을 불러올 수 없습니다.");
@@ -193,4 +249,123 @@ function selectBoardScroll(){
     }
 
 
-}
+// 모달
+
+function modal(id) {
+    var zIndex = 9999;
+    var modal = document.getElementById(id);
+
+    // 모달 div 뒤에 희끄무레한 레이어
+    var bg = document.createElement('div');
+    bg.setStyle({
+        position: 'fixed',
+        zIndex: zIndex,
+        left: '0px',
+        top: '0px',
+        width: '100%',
+        height: '100%',
+        overflow: 'auto',
+        // 레이어 색갈은 여기서 바꾸면 됨
+        backgroundColor: 'rgba(0,0,0,0.4)'
+    });
+    document.body.append(bg);
+
+    // 닫기 버튼 처리, 시꺼먼 레이어와 모달 div 지우기
+    modal.querySelector('.modal-closeBtn').addEventListener('click', function() {
+        bg.remove();
+        modal.style.display = 'none';
+    });
+
+    modal.setStyle({
+        position: 'fixed',
+        display: 'block',
+        // boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+
+        // 시꺼먼 레이어 보다 한칸 위에 보이기
+        zIndex: zIndex + 1,
+
+        // div center 정렬
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        msTransform: 'translate(-50%, -50%)',
+        webkitTransform: 'translate(-50%, -50%)'
+    });
+};
+
+// Element 에 style 한번에 오브젝트로 설정하는 함수 추가
+Element.prototype.setStyle = function(styles) {
+    for (var k in styles) this.style[k] = styles[k];
+    return this;
+};
+
+document.getElementById("postWrite-btn").addEventListener("click", function() {
+    // 게시글 작성 모달창 띄우기
+    modal('postWrite-modal');
+});
+
+
+// 신고하기 버튼
+const reportBtn = document.getElementById("reportBtn");
+
+// 신고 버튼 클릭 시 팝업창
+reportBtn.addEventListener("click", () => {
+    const url = "/report/group/" + groupNo; 
+    open(url, "신고하기", "width=500px, height=600px")
+});
+
+
+// 게시글 상세조회 모달
+(()=>{
+    const post = document.getElementsByClassName("post-body");
+
+    const modal = document.getElementById("postSelect-modal");
+    const closeBtn = document.querySelector(".sModal-closeBtn");
+
+    for(let p of post){
+        p.addEventListener("click", ()=>{
+            modal.classList.toggle("show");
+            document.body.style.overflow = "hidden";
+            document.querySelector("#postSelect-view > main").scrollTop = 0;
+            selectPostDetail(p.getAttribute("id"));
+        });
+    }
+
+    closeBtn.addEventListener("click",()=>{
+        modal.classList.toggle("show");
+        document.body.style.overflow = "unset";
+    });
+})();
+
+let viewCount = document.getElementById("viewCount");
+let commentCount  = document.getElementById("commentCount");
+let likeCount = document.getElementById("likeCount");
+let postContent = document.getElementById("postContent");
+let memberName = document.getElementById("memberName");
+let postDate = document.getElementById("postDate");
+let profileImg = document.getElementById("profile-img");
+
+const selectPostDetail = (postNo)=>{
+    $.ajax({
+        url : "/bond/" + groupNo + "/" + postNo,
+        type : "GET",
+        dataType : "JSON",
+        success : (post)=>{
+            console.log("성공");
+            console.log(post.postView);
+            viewCount.innerText = post.postView;
+            commentCount.innerText = post.replyCount;
+            likeCount.innerText = post.likeCount;
+            postContent.innerHTML = post.postContent;
+            memberName.innerText = post.memberName;
+            postDate.innerText = post.postDate;
+            if(post.memberImage !=null) {
+                profileImg.setAttribute("src", post.memberImage);
+            }else {
+                profileImg.setAttribute("src", "/resources/images/member/profile/defaultProfile.png");
+            }
+        },
+        error:()=>{console.log("실패");}
+
+    })
+};
