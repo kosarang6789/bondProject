@@ -18,7 +18,7 @@ import kh.semi.project.member.model.vo.Member;
 
 
 @Controller
-@SessionAttributes({"loginMember", "groupInfo", "memberList"})
+@SessionAttributes({"loginMember", "groupInfo"})
 public class BondMemberController {
 	
 	@Autowired
