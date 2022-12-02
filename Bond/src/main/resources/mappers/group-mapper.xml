@@ -117,8 +117,8 @@
 								WHERE MEMBER_NO = #{memberNo})
 	</select> 
 	
-	<select id="selectMemberInfo" resultMap = "memberList_rm">
-		SELECT JOIN_NO, JOIN_STATUS FROM "MEMBER_JOIN" 
+	<select id="selectMemberInfo" resultType = "string">
+		SELECT JOIN_STATUS FROM "MEMBER_JOIN" 
 		WHERE MEMBER_NO = #{memberNo}
 		AND GROUP_NO = #{groupNo}
 	</select>

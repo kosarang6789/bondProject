@@ -104,7 +104,7 @@ public class BondServiceImpl implements BondService{
 		String st= dao.selectMemberInfo(member);
 		// 가입O 상태 0
 		if(st != null ) {
-			if(member.getJoinStatus().equals("2")) {
+			if(st.equals("2")) {
 				result =-1;
 			} result = 1;
 		} else { // 가입 X
