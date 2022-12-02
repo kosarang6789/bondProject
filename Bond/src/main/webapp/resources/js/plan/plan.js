@@ -365,8 +365,143 @@ function makePlanDetail(planNo){
 
         success : (plan) => {
             // plan.planNo, plan.planTitle, plan.planContent, plan.planStart, plan.planEnd, plan.planColor
-            console.log(plan.planNo);
-            console.log(plan.planTitle);
+            
+            const detailBody = document.getElementById("detailBody");
+            detailBody.innerHTML = "";
+
+            // 1. 요일 상자
+            const dateBox = document.createElement('div');
+            dateBox.id = "dateBox";
+            
+            // 시작 날짜 요일 자르기
+            const startDay = plan.planStart.substring(8, 10);
+            dateBox.innerText = startDay;
+
+            // 날짜 상자
+            const dayBox = document.createElement('div');
+            dayBox.innerText = '화요일';
+            dayBox.id = 'dayBox';
+
+            // 헤더 왼쪽 상자 조립하기
+            const headerLeftBox = document.createElement('div');
+            headerLeftBox.append(dateBox, dayBox);
+            headerLeftBox.id = 'headerLeftBox';
+
+            // 2. 제목 상자
+            const titleBox = document.createElement('div');
+            titleBox.innerText = plan.planTitle;
+            titleBox.id = 'titleBox';
+
+            // 3. 기간 상자
+            const periodBox = document.createElement('div');
+            periodBox.id = 'periodBox';
+
+            // 기간 변수
+            let period = "";
+
+            // 시작 연도
+            const startYear = plan.planStart.substring(0, 4) + '년';
+
+            // 시작 월
+            const startMonth = plan.planStart.substring(5, 7) + '월';
+            
+            // 시작 일
+            // startDay 사용함
+
+            // 시작 시간
+            let startMeridiem = "";
+            let startHour = "";
+            let startMinute = "";
+
+            if(plan.planStart.length > 10) {
+                
+                startHour = plan.planStart.substring(11, 13);
+
+                if(startHour > 12) {
+                    startMeridiem = "오후";
+                    startHour -= 12;
+                } else {
+                    startMeridiem = "오전";
+                }
+                
+                // 시작 분
+                startMinute = plan.planStart.substring(14, 16);
+            }
+
+
+            // 기간에 시작 날짜까지 추가
+            period = startYear + " " + startMonth + " " + startDay + " " + startMeridiem + " " + startHour + ":" + startMinute;
+
+            if(plan.planEnd != null) {
+
+                // 종료 연도
+                const endYear = plan.planEnd.substring(0, 4) + '년';
+
+                // 종료 월
+                const endMonth = plan.planEnd.substring(5, 7) + '월';
+
+                // 종료 일
+                const endDay = plan.planEnd.substring(8, 10) + '일';
+
+                // 종료 시간
+                let endMeridiem = "";
+                let endHour = "";
+                let endMinute = "";
+
+                if(plan.planEnd.length > 10) {
+
+                    endHour = plan.planEnd.substring(11, 13);
+
+                    if(endHour > 12) {
+                        endMeridiem = "오후";
+                        endHour -= 12;
+                    } else {
+                        endMeridiem = "오전";
+                    }
+
+                    // 종료 분
+                    endMinute = plan.planEnd.substring(14, 16);
+                }
+
+                period = endYear + " " + endMonth + " " + endDay + " " + endMeridiem + " " + endHour + ":" + endMinute;
+
+            }
+            periodBox.innerText = period;
+            
+            // 4. 색깔 상자
+            const colorBox = document.createElement('div');
+            colorBox.classList.add("palette");
+            colorBox.setAttribute("style", "background-color:" + plan.planColor);
+
+            // 5. 작성자 상자
+            const memberNameBox = document.createElement('div');
+            memberNameBox.innerHTML = "&nbsp;&nbsp;&#183;&nbsp;&nbsp;" + "김일일";
+
+            // 헤더 상자 조립하기
+            // 라벨 상자( 컬러 상자 + 작성자 상자)
+            const labelBox = document.createElement('div');
+            labelBox.append(colorBox, memberNameBox);
+            labelBox.id = 'labelBox';
+
+            // 헤더 오른쪽 상자( 제목 상자 + 기간 상자 + 라벨 상자)
+            const headerRightBox = document.createElement('div');
+            headerRightBox.append(titleBox, periodBox, labelBox);
+            headerRightBox.id = "headerRightBox";
+
+            // 헤더 상자
+            const headerBox = document.createElement('div');
+            headerBox.append(headerLeftBox, headerRightBox);
+            headerBox.id = "headerBox";
+
+            // 6. 내용 상자
+            const contentBox = document.createElement('div');
+            const content = plan.planContent;
+            contentBox.innerText = content;
+            contentBox.id = 'contentBox';
+
+            // detailBody에 값 추가
+            detailBody.append(headerBox, contentBox);
+
         },
         error : () => {
             alert("데이터 전송에 실패하였습니다.")
@@ -409,9 +544,6 @@ function makePlanDetail(planNo){
 
 /* 일정 수정 모달창(updateModel.jsp) */
 
-function makeUpdatePlan(){
-    
-}
 
 
 
