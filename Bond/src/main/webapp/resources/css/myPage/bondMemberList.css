@@ -124,7 +124,7 @@ main{
 .fa-user-slash:hover{
     color: red;
 }
-.member-report>.fa-gear{
+.member-report>a>.fa-gear{
     font-size: 20px;
     padding-top: 20px;
     cursor: pointer;
