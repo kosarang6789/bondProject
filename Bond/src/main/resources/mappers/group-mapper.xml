@@ -93,21 +93,14 @@
 		ORDER BY EXPIRE_DATE DESC
 	</select>
 
-	<!-- 본드 가입 여부 조회 -->
-	<select id="selectJoinNo" parameterType="map" resultType="_int">
-		SELECT COUNT(*)
-		FROM MEMBER_JOIN 
-		JOIN "GROUP" USING(GROUP_NO)
-		WHERE MEMBER_NO = #{memberNo}
-		AND GROUP_NO = #{groupNo}
-	</select>
-	
-	<!-- 게시물 공개 여부 조회 -->
-	<select id="selectOpenYN" parameterType="_int" resultType="string">
-		SELECT OPEN_YN
+	<!-- 가입X 본드 조회 -->
+	<select id="selectJoinNo" parameterType="_int" resultMap="group_rm">
+		SELECT GROUP_NAME, GROUP_COMMENT, GROUP_NO 
 		FROM "GROUP"
-		WHERE GROUP_NO = #{groupNo}
-	</select>
+		WHERE GROUP_NO NOT IN(SELECT GROUP_NO
+								FROM MEMBER_JOIN
+								WHERE MEMBER_NO = #{memberNo})
+	</select> 
 	
 	
 	

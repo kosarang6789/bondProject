@@ -85,52 +85,24 @@ function selectBoardScroll(){
                             const contentCard = document.createElement("div");
                             contentCard.classList.add("content-card");
                             
-                            // 1. post-list-view
                             const postListView = document.createElement("div");
                             postListView.classList.add("post-list-view");
                             
-                            // 2. post-author-view (작성자 프로필, 정보)
                             const postAuthorView = document.createElement("div");
                             postAuthorView.classList.add("post-author-view");
                             
-                            // 2-1) uprofile
                             const uprofile = document.createElement("div");
                             uprofile.classList.add("uprofile");
                             
-                            // 프로필 이미지
-                            const profileImage = document.createElement("img");
-                            
-                            if(post.memberImage!=null){
-                                profileImage.setAttribute("src", post.memberImage);
-                            } else {
-                                profileImage.setAttribute("src", "/resources/images/member/profile/defaultProfile.png");
-                            }
-                            profileImage.classList.add("uprofile-inner");
-                            
-                            // 2-2) post-info
                             const postInfo = document.createElement("div");
                             postInfo.classList.add("post-info");
                             
-                            // 작성자
-                            const boardWriter = document.createElement("strong");
-                            boardWriter.classList.add("post-info-name");
-                            boardWriter.innerText = post.memberName;
+                            const ellipsis = document.createElement("span");
+                            ellipsis.classList.add("ellipsis");
                             
-                            // 작성 날짜
-                            const postListInfo = document.createElement("div");
-                            postListInfo.classList.add("post-list-info");
+                            const postMain = document.createElement("div");
+                            postMain.classList.add("post-main");
                             
-                            const boardDate = document.createElement("a");
-                            boardDate.classList.add("post-info-date");
-                            boardDate.innerText = post.postDate;
-                            
-                            postAuthorView.append(uprofile, postInfo);
-                            uprofile.append(profileImage);
-                            postInfo.append(boardWriter, postListInfo);
-                            postListInfo.append(boardDate);
-
-
-                            // 3. postBody
                             const postBody = document.createElement("div");
                             postBody.classList.add("post-body");
                             postBody.setAttribute("id", post.postNo);
@@ -146,32 +118,21 @@ function selectBoardScroll(){
                             const postText = document.createElement("div");
                             postText.classList.add("post-text");
                             
-                            // 게시물 내용
-                            const boardContent = document.createElement("p");
-                            boardContent.classList.add("text-body");
-                            boardContent.innerHTML = post.postContent;
-                            
                             const moreLink = document.createElement("a");
                             moreLink.classList.add("more-link");
-                            moreLink.innerText = "...더보기";
                             
-                            postBody.append(postText);
-                            postText.append(boardContent, moreLink);
-
-                            
-                            // 4. postCountView
                             const postCountView = document.createElement("div");
                             postCountView.classList.add("post-count-view");
-
-                            // 4-1) postCount
+                            
                             const postCount = document.createElement("div");
                             postCount.classList.add("post-count");
                             
-                            // 1) face-comment 좋아요
+                            const postCountLeft = document.createElement("div");
+                            postCountLeft.classList.add("post-count-left");
+                            
                             const faceComment = document.createElement("span");
                             faceComment.classList.add("face-comment");
                             
-                            // (1) emotionView
                             const emotionView = document.createElement("button");
                             emotionView.classList.add("emotion-view");
                             
@@ -249,51 +210,22 @@ function selectBoardScroll(){
                             postText2.innerText = " 좋아요";
                             
 
-                            // (2) addCol2
-                            const addCol2 = document.createElement("div");
-                            addCol2.classList.add("add-col");
-                            
-                            
-                            const commentMainBtn = document.createElement("a");
-                            commentMainBtn.classList.add("comment-main-btn");
-                            
-                            
-                            const comment2 = document.createElement("span");
-                            comment2.classList.add("comment");
-                            
-                            
-                            const iconComment = document.createElement("span");
-                            iconComment.classList.add("icon-comment");
-                            
-                            const messageIcon = document.createElement("i");
-                            messageIcon.classList.add("fa-regular", "fa-message");
-                            
-                            const postText3 = document.createElement("span");
-                            postText3.classList.add("post-text");
-                            postText3.innerText = " 댓글쓰기";
-                            
-                            postCountView.append(postCount, postAdded);
-                            postCount.append(faceComment, shareRead);
+                            // 작성 날짜
+                            const boardDate = document.createElement("a");
+                            boardDate.classList.add("post-info-date");
+                            boardDate.innerText = post.postDate;
 
-                            faceComment.append(emotionView, comment, commentToggle);
-                            emotionView.append(emotionWrap, eCount);
-                            emotionWrap.append(icon);
-                            icon.append(faceIcon);
-                            comment.append(rCount);
-                            commentToggle.append(angleIcon);
+                            // 게시물 내용
+                            const boardContent = document.createElement("p");
+                            boardContent.classList.add("text-body");
+                            boardContent.innerHTML = post.postContent;
 
-                            shareRead.append(gSrOnly, eyeIcon, vCount);
-                            
-                            postAdded.append(postAddBox);
-                            postAddBox.append(addCol1, addCol2);
-                            addCol1.append(emotionMainBtn);
-                            emotionMainBtn.append(iconFaceEmotion, postText2);
-                            iconFaceEmotion.append(smileIcon);
+                            postWrap.append(profileImage, boardWriter, boardDate, boardContent,
+                                commentDiv, contentCard, postListView);
 
-                            addCol2.append(commentMainBtn);
-                            commentMainBtn.append(comment2);
-                            comment2.append(iconComment,postText3);
-                            iconComment.append(messageIcon);
+                            // postAuthorView.append(uprofile, postInfo, ellipsis);
+
+                            // postMain.append(postBody, postTextView, postText, moreLink);
 
 
                             postWrap.append(contentCard);
@@ -315,7 +247,6 @@ function selectBoardScroll(){
             flag = true;
         }
     }
-};
 
 
 // 모달

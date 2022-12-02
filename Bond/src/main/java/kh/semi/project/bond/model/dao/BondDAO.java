@@ -103,14 +103,13 @@ public class BondDAO {
 		return sqlSession.selectOne("groupMapper.checkReport", groupNo);
 	}
 
-	public int selectJoinNo(Map<String, Object> map1) {
-		return sqlSession.selectOne("groupMapper.selectJoinNo", map1);
+	/** 가입X 본드 조회
+	 * @param groupNo
+	 * @return
+	 */
+	public Group selctJoinNo(int memberNo) {
+		return sqlSession.selectOne("groupMapper.selectJoinNo", memberNo);
 	}
-
-	public String selectOpenYN(int groupNo) {
-		return sqlSession.selectOne("groupMapper.selectOpenYN", groupNo);
-	}
-
 
 
 
