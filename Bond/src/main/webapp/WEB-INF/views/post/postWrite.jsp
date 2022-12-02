@@ -22,7 +22,8 @@
 <body>
     <main>
         <section class="postWrite-section">
-            <form action="#" id="postWriteFrm">
+            <form action="/bond/${groupNo}/postWrite" id="postWriteFrm" method="POST"
+            enctype="multipart/form-data">
                 <section class="postWrite-title">
                     <h3 class="title-area">글쓰기</h3>
                 </section>
@@ -31,13 +32,11 @@
 
                     <!-- 게시글 작성 -->
                     <div class="postWrite-content">
-                        <textarea name="editordata" id="summernote" ></textarea>
+                        <textarea name="postWriteContent" id="summernote" ></textarea>
                     </div>
 
-                    <!-- 이미지 삽입 -->
-                    
                     <!-- 툴바 -->
-                    <div class="postWrite-toolbar">
+                    <%-- <div class="postWrite-toolbar">
                         <ul class="toolbarList">
                             <li class="toolbarListItem">
                                 <input type="file" id="photoInput">
@@ -53,16 +52,15 @@
                                 <i class="fa-regular fa-calendar"></i><!-- 일정 -->
                             </li>
                         </ul>
-                    </div>
+                    </div> --%>
                 </section>
                 
                 <div class="postWrite-bottom">
-                    <div class="setup-btn">
-                        <label for="reply-yn"><i class="fa-solid fa-toggle-off"></i><!-- 설정 --></label>
+                    <div class="setup-btn"> <label for="reply-yn"><i class="fa-solid fa-toggle-off"></i><!-- 설정 --></label>
                         <input type="checkbox" class="write-setup" id="reply-yn" name="replayYN">댓글 사용</input>
                     </div>
                     <div class="submit-btn">
-                        <button class="postWrite-btn">
+                        <button type="button" onclick="submitContent()" class="postWrite-btn">
                             <p>게시</p>
                         </button>
                     </div>
@@ -71,7 +69,9 @@
         </section>
     </main>
 
-    
+    <script>
+        const groupNo = "${groupNo}"
+    </script>
     <script src="/resources/js/post/postWrite.js"></script>
     
     

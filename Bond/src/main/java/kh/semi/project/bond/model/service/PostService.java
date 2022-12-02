@@ -10,4 +10,10 @@ public interface PostService {
 	 */
 	Post selectPostDetail(int postNo);
 
+	/** 게시글 작성
+	 * @param post
+	 * @return postNo
+	 */
+	int postWrite(Post post);
+
 }

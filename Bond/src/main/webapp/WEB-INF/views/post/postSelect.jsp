@@ -88,7 +88,7 @@
                 <div class="replyOne">
                     <!-- 댓글 작성자 이미지 -->
                     <div class="replyMember-img">
-                        <img src="images/user-icon.png" class="replyMemberImage">
+                        <img src="/resources/images/member/profile/defaultProfile.png" class="replyMemberImage">
                     </div>
                     <div class="replyContent">
                         <strong class="replyMember-name">김순자</strong>
@@ -129,7 +129,7 @@
                     <div class="replyOne">
                         <!-- 댓글 작성자 이미지 -->
                         <div class="re-replyMember-img">
-                            <img src="images/user-icon.png" class="replyMemberImage">
+                            <img src="/resources/images/member/profile/defaultProfile.png" class="replyMemberImage">
                         </div>
                         <div class="re-replyContent">
                             <strong class="replyMember-name">김순자</strong>
@@ -156,7 +156,7 @@
                     <div class="replyOne">
                         <!-- 댓글 작성자 이미지 -->
                         <div class="re-replyMember-img">
-                            <img src="images/user-icon.png" class="replyMemberImage">
+                            <img src="/resources/images/member/profile/defaultProfile.png" class="replyMemberImage">
                         </div>
                         <div class="re-replyContent">
                             <strong class="replyMember-name">김순자</strong>
@@ -186,7 +186,7 @@
             <div class="replyWrite-toolbar">
                 <div class="replyWrite">
                     <div class="replyWrite-img">
-                        <img src="images/user-icon.png">
+                        <img src="/resources/images/member/profile/defaultProfile.png">
                     </div>
                     <div class="replyWrite-input">
                         <textarea id="replyWrite-Content" cols="20" rows="1" 

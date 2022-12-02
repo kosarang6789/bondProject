@@ -132,12 +132,19 @@
 			WHERE MI.MEMBER_NO = P.MEMBER_NO) MEMBER_IMG
 		FROM POST P
 		JOIN MEMBER M ON(P.MEMBER_NO = M.MEMBER_NO)
-		WHERE POST_NO = ${postNo}
+		WHERE POST_NO = #{postNo}
 		AND POST_DEL_YN = 'N'
 	
 	</select>
 	
-	
-	
+	<!-- 게시글 삽입 -->
+	<insert id="postWrite" parameterType="Post" useGeneratedKeys="true">
+		<selectKey keyProperty="postNo" resultType="_int" order="BEFORE">
+				SELECT SEQ_POST_NO.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO POST VALUES
+		(#{postNo}, #{groupNo}, #{memberNo}, #{postContent}, NULL, DEFAULT, DEFAULT, NULL, DEFAULT, DEFAULT)
+	</insert>
+
 	
 </mapper>
