@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.web.multipart.MultipartFile;
 
 import kh.semi.project.bond.model.vo.Group;
+import kh.semi.project.bond.model.vo.GroupMemberList;
 import kh.semi.project.member.model.vo.Member;
 
 public interface BondService {
@@ -21,5 +22,8 @@ public interface BondService {
 
 	// 신고 기록 조회
 	String checkReport(int groupNo);
+
+	int selectMemberInfo(GroupMemberList member);
+
 
 }

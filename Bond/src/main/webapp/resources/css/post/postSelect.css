@@ -280,11 +280,6 @@ a{text-decoration: none;}
     0px 0px 2px 1px rgba(0, 0, 0, 0.02);
 }
 
-.moreView-menu>li:nth-child(2), li:nth-child(3){
-    border-top: 1px solid #D5D6E1;
-}
-
-
 .moreView-menu a{
     font-size: 13px;
     font-weight: 400;

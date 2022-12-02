@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import kh.semi.project.bond.model.dao.BondDAO;
 import kh.semi.project.bond.model.vo.Group;
 import kh.semi.project.bond.model.vo.GroupImage;
+import kh.semi.project.bond.model.vo.GroupMemberList;
 import kh.semi.project.bond.model.vo.Pagination;
 import kh.semi.project.bond.model.vo.Post;
 import kh.semi.project.common.Util;
@@ -94,6 +95,22 @@ public class BondServiceImpl implements BondService{
 	@Override
 	public String checkReport(int groupNo) {
 		return dao.checkReport(groupNo);
+	}
+
+	@Override
+	public int selectMemberInfo(GroupMemberList member) {
+		
+		int result =0;
+		String st= dao.selectMemberInfo(member);
+		// 가입O 상태 0
+		if(st != null ) {
+			if(member.getJoinStatus().equals("2")) {
+				result =-1;
+			} result = 1;
+		} else { // 가입 X
+			result = -1;
+		}
+		return result;
 	}
 
 
