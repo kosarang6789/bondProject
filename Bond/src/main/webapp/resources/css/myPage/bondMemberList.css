@@ -100,7 +100,7 @@ main{
     border-bottom: 1px solid #ddd;
     background-color: white;
 }
-.member-all .member-image{
+.member-image{
     height: 50px;
     width: 50px;
     border-radius: 50%;
