@@ -7,7 +7,7 @@
 		<id property="memberNo" column="MEMBER_NO" />
 
 		<result property="memberName" column="MEMBER_NAME" />
-		<result property="memberImg" column="MEMBER_IMG" />
+		<result property="memberImage" column="MEMBER_IMG" />
 		
 		<result property="joinNo" column="JOIN_NO" />
 		<result property="groupNo" column="GROUP_NO" />
@@ -31,6 +31,7 @@
 		FROM "MEMBER_JOIN" MJ
 		WHERE GROUP_NO = #{groupNo}
 		AND JOIN_STATUS = 0
+		ORDER BY LEADER_YN DESC, MEMBER_NAME
 	</select>
 	
 

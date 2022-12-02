@@ -34,46 +34,58 @@
                     
                 </div>
             </div>
-
             <div class="member-all">
                 <div class="member-title">멤버</div>
+
+                <c:forEach var="mem" items="${memList}">
+                    <c:if test="${memNo == mem.memberNo}">
+                        <c:if test="${mem.leaderYN == 'Y'}">
+                            <c:set var="leader" value="1"/>
+                        </c:if>
+                    </c:if>
+                </c:forEach>
+
+                <div class="member-list">
+                    <div class="member-image">
+                        <c:if test="${empty loginMember.profileImage}">
+                            <img src="/resources/images/member/profile/defaultProfile.png">
+                        </c:if>
+                        <c:if test="${!empty loginMember.profileImage}">
+                            <img src="${loginMember.profileImage}" id="profile-img">
+                        </c:if>
+                    </div>
+                    <div class="member-name" name="memberName" id="memberName">${loginMember.memberName}
+                    
+                        <c:if test="${not empty leader}">
+                            <div class="leader"><i class="fa-solid fa-crown"></i>리더</div>
+                        </c:if>
+                    </div>
+                    <div class="member-report">
+                        <a href="/myPage/myPage"><i class="fa-solid fa-gear sidbar-icon"></i></a>
+                    </div>
+                </div>              
+
                 <c:forEach var="memberList" items="${memList}">
-                        <%-- <c:if test="memNo ==${ memberList.memberNo}">
-                            <c:when test="${groupMemberList.leaderYN == 'Y'}">
+                    <c:if test="${memNo != memberList.memberNo}">
+                        <c:choose>
+                            <c:when test="${memberList.leaderYN == 'Y'}">
                                 <div class="member-list">
                                     <div class="member-image">
                                         <c:if test="${empty memberList.memberImage}">
-                                            <img src="/resources/images/user.png">
+                                            <img src="/resources/images/member/profile/defaultProfile.png">
                                         </c:if>
                                         <c:if test="${!empty memberList.memberImage}">
                                             <img src="${memberList.memberImage}" id="profile-img">
                                         </c:if>
                                     </div>
-                                    <div class="member-name" name="memberName" id="memberName">${memberList.memberName}</div>
-                                    <div class="leader"><i class="fa-solid fa-crown"></i>리더</div>
+                                    <div class="member-name" name="memberName" id="memberName">${memberList.memberName}<div class="leader"><i class="fa-solid fa-crown"></i>리더</div></div>
+                                    
                                     <div class="member-report">
-                                        <i class="fa-solid fa-gear sidbar-icon"><a href="/bond-bondIntro"></a></i>
+                                        <i class="fa-solid fa-user-slash"></i>
                                     </div>
                                 </div>
                             </c:when>
                             <c:otherwise>
-                                <div class="member-list">
-                                    <div class="member-image">
-                                        <c:if test="${empty memberList.memberImage}">
-                                            <img src="/resources/images/user.png">
-                                        </c:if>
-                                        <c:if test="${!empty memberList.memberImage}">
-                                            <img src="${memberList.memberImage}" id="profile-img">
-                                        </c:if>
-                                    </div>
-                                    <div class="member-name" name="memberName" id="memberName">${memberList.memberName}</div>
-                                    <div class="member-report">
-                                        <i class="fa-solid fa-gear sidbar-icon"><a href="/bond-bondIntro"></a></i>
-                                    </div>
-                                </div>
-
-                            </c:otherwise>
-                        </c:if> --%>
                                 <div class="member-list">
                                     <div class="member-image">
                                         <c:if test="${empty memberList.memberImage}">
@@ -88,10 +100,14 @@
                                         <i class="fa-solid fa-user-slash"></i>
                                     </div>
                                 </div>
-                        
-                    
+                            </c:otherwise>
+
+                        </c:choose>
+                        <%-- </c:otherwise> --%>
+                    </c:if>
                 </c:forEach>
             </div>
+
 
             <div id="pageTarget" style="height:10px"></div>
             

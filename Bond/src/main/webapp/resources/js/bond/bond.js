@@ -248,7 +248,7 @@ function selectBoardScroll(){
         }
     }
 
-
+}
 // 모달
 
 function modal(id) {
