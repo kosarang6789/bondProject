@@ -22,6 +22,8 @@
 		<typeAlias type="kh.semi.project.bond.model.vo.Post" alias="Post"/> 
 		<typeAlias type="kh.semi.project.bond.model.vo.Group" alias="Group"/>
 		<typeAlias type="kh.semi.project.bond.model.vo.GroupImage" alias="GroupImage"/>		
+		<typeAlias type="kh.semi.project.bond.model.vo.Reply" alias="Reply"/>		
+		<typeAlias type="kh.semi.project.bond.model.vo.PostImage" alias="PostImage"/>		
 		<typeAlias type="kh.semi.project.member.model.vo.MemberImage" alias="MemberImage"/>		
 		<typeAlias type="kh.semi.project.report.model.vo.Report" alias="Report"/>		
 		<typeAlias type="kh.semi.project.plan.model.vo.Plan" alias="Plan"/>		

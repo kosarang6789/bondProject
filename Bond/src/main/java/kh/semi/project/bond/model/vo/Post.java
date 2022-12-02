@@ -2,8 +2,6 @@ package kh.semi.project.bond.model.vo;
 
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -26,8 +24,12 @@ public class Post {
 	private String postDelYN;
 	private String memberName;
 	private String memberImage;
+	private int replyCount;
+	private int likeCount;
 	
 	private List<Post> postList;
+	private List<Reply> replyList;
+	private List<PostImage> postImageList;
 	
 	// 추가
 	private String groupName;

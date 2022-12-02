@@ -9,8 +9,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>글쓰기</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/resources/css/post/postWrite.css">
     <script src="https://kit.fontawesome.com/785870d879.js" crossorigin="anonymous"></script>
+    <script src="/resources/js/summernote/summernote-lite.js"></script>
+    <script src="/resources/js/summernote/lang/summernote-ko-KR.js"></script>
+
+    <link rel="stylesheet" href="/resources/css/summernote/summernote-lite.css">
+
 </head>
 
 <body>
@@ -25,8 +31,7 @@
 
                     <!-- 게시글 작성 -->
                     <div class="postWrite-content">
-                        <textarea name="content" id="content" placeholder="새로운 소식을 남겨보세요.
-공개밴드에 남긴 글은 누구나 볼 수 있습니다."></textarea>
+                        <textarea name="editordata" id="summernote" ></textarea>
                     </div>
 
                     <!-- 이미지 삽입 -->
@@ -65,7 +70,11 @@
             </form>
         </section>
     </main>
+
+    
     <script src="/resources/js/post/postWrite.js"></script>
+    
+    
 </body>
 
 </html>

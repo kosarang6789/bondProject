@@ -18,12 +18,11 @@ body{
     background-color: white;
 }
 
-
 .postWrite-title{
     position: relative;
     display: flex;
     height: 70px;
-    border-bottom: 1px solid #ccc;
+    /* border-bottom: 1px solid #ccc; */
 }
 .title-area{
     width: 100%;
@@ -40,9 +39,12 @@ body{
 
 .postWrite-content{
     height: 480px;
-    margin-bottom: 13px;
+    width: 570px;
+    margin: 0 auto 13px;
+    font-size: 14px;
+    line-height: 22px;
 }
-
+/* 
 textarea{
     resize: none;
     width: 100%;
@@ -53,7 +55,7 @@ textarea{
     line-height: 20px;
 }
 
-textarea:focus{ outline: none; }
+textarea:focus{ outline: none; } */
 
 /* 툴바 */
 .postWrite-toolbar{
