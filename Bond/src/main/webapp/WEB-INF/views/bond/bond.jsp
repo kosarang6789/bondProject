@@ -277,7 +277,7 @@
 
     <%-- 게시글 작성 페이지 모달(iframe) --%>
     <div id="postWrite-modal">
-        <iframe width="620px" height="720px" src="/bond/postWrite"
+        <iframe width="620px" height="720px" src="/bond/${groupNo}/postWrite"
         id="postWrite-iframe"></iframe>
         <button class="modal-closeBtn">
             <i class="fa-solid fa-x"></i>

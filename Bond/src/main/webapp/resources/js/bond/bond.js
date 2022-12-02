@@ -318,7 +318,7 @@ function selectBoardScroll(){
 };
 
 
-// 모달
+// 게시글 작성 모달
 
 function modal(id) {
     var zIndex = 9999;
@@ -343,6 +343,7 @@ function modal(id) {
     modal.querySelector('.modal-closeBtn').addEventListener('click', function() {
         bg.remove();
         modal.style.display = 'none';
+        window.frames['postWrite-iframe'].contentWindow.location.reload();
     });
 
     modal.setStyle({

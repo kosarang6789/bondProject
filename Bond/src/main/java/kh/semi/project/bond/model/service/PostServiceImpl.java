@@ -18,4 +18,11 @@ public class PostServiceImpl implements PostService{
 		
 		return dao.selectPostDetail(postNo);
 	}
+
+	// 게시글 작성
+	@Override
+	public int postWrite(Post post) {
+		
+		return dao.postWrite(post);
+	}
 }
