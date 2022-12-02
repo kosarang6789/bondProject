@@ -66,25 +66,28 @@ function selectBoardScroll (){
     if(cp==0){ cp++; }
     else{
         if(flag){
+            console.log(cp);
             $.ajax({
                 url : "/bondMemberList/scroll",
                 data : {"cp":++cp},
+                type : "POST",
                 dataType : "JSON",
                 success : function(memMap){
                     if(memMap != null){
                         console.log(memMap);
                         
-                            const memberAll = document.querySelector("memberAll");
+                            const memberAll = document.querySelector(".member-all");
 
                         for(let mem of memMap.memList){
-                            const memberList = document.createElement("div");
-                            memberList.classList.add("member-list");
+
+                            const members = document.createElement("div");
+                            members.classList.add("member-list");
 
                             const memberImage = document.createElement("div");
                             memberImage.classList.add("member-image");
 
                             const image = document.createElement("img");
-                            if(memberList.memberImage!=null){
+                            if(mem.memberImage!=null){
                                 // image.setAttribute("src", memberList.memberImage);
                                 image.setAttribute("src", mem.memberImage);
                                 image.classList.add("memImg");
@@ -95,7 +98,7 @@ function selectBoardScroll (){
 
                             const memberName = document.createElement("div");
                             memberName.classList.add("member-name");
-                            memberName.innerText=memberList.memberName;
+                            memberName.innerText=mem.memberName;
 
                             const memberReport = document.createElement("div");
                             memberReport.classList.add("member-report");
@@ -103,8 +106,8 @@ function selectBoardScroll (){
                             const userSlash = document.createElement("i");
                             userSlash.classList.add("userSlash");
 
-                            memberAll.append(memberList);
-                            memList.append(memberImage, memberName, memberReport);
+                            memberAll.append(members);
+                            members.append(memberImage, memberName, memberReport);
                             memberImage.append(image);
                             memberReport.append(userSlash);
                         }
@@ -118,7 +121,7 @@ function selectBoardScroll (){
                 }
             }); flag = false;
         }else{
-            flag = ture;
+            flag = true;
         }
     }
 } ;

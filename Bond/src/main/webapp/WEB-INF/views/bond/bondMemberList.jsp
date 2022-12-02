@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- map에 저장된 값을 꺼내어 각각 변수에 저장 --%>
-<%-- <c:set var="memList" value="${memMap.memList}"/> --%>
-<%-- <c:set var="pagination" value="${memMap.pagination}"/> --%>
+<c:set var="memList" value="${memMap.memList}"/>
+<c:set var="memNo" value="${memMap.loginMember.memberNo}"/>
+<c:set var="pagination" value="${memMap.pagination}"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -59,7 +60,7 @@
 
                     <div class="sidebar-under-icon">
                         <div class="band-setting-section">
-                            <a href="/bond-bondIntro" class="band-setting-link sidebar-font"> 
+                            <a href="/bond/${groupNo}/bond-bondIntro" class="band-setting-link sidebar-font"> 
                                 <i class="fa-solid fa-gear sidbar-icon"></i>밴드 설정
                             </a>
                             

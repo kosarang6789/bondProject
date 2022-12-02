@@ -108,7 +108,7 @@
             </div>
 
 
-            <div id="pageTarget" style="height:10px"></div>
+            <div id="pageTarget"></div>
             
             <div class="member-invite-bottom">
                 <div class="invite-icon"><i class="fa-solid fa-user-plus"></i></div>
@@ -118,5 +118,11 @@
             </div>
         </div>
     </main>
+
+        <script>
+        let cp = 0;
+        const groupNo = "${groupNo}"
+    </script>
+
 </body>
 </html>

@@ -32,7 +32,7 @@ public class BondIntroController {
 //	public String goBodnIntro() {
 //		return "/bond/bond-bondIntro";
 //	}
-	@GetMapping("/bond-bondIntro")
+	@GetMapping("/bond/{groupNo}/bond-bondIntro")
 	public String goBodnIntro(@SessionAttribute("groupInfo") Group groupInfo,Model model) {
 		
 		if(groupInfo.getGroupComment() != null) {
@@ -45,7 +45,7 @@ public class BondIntroController {
 	}
 	
 	// 본드 소개 수정
-	@PostMapping("/bond-bondIntro")
+	@PostMapping("/bond/{groupNo}/bond-bondIntro")
 	public String bondIntro(
 //			@PathVariable("groupNo") int groupNo,
 			@SessionAttribute("groupInfo") Group groupInfo,

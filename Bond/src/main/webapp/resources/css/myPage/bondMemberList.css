@@ -148,6 +148,7 @@ main{
     display: flex;
     height: 77px;
     padding: 20px;
+    background-color: white;
 }
 .invite-icon{
     width: 45px;

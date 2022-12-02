@@ -43,7 +43,7 @@ public class BondMemberController {
 //	
 	
 	// 그룹 멤버 리스트 가져오기
-	@GetMapping("/bondMemberList")
+	@GetMapping("/bond/{groupNo}/bondMemberList")
 //	@ResponseBody
 	public String memberList(
 			@SessionAttribute("loginMember") Member loginMember,
@@ -58,14 +58,10 @@ public class BondMemberController {
 		
 		model.addAttribute("memMap", memMap);
 		
-//		System.out.println(memMap);
-
-		
 		return "bond/bondMemberList";
-//		return new Gson().toJson(memMap);
 	}
 	
-	@GetMapping("/bondMemberList/scroll")
+	@PostMapping("/bondMemberList/scroll")
 	@ResponseBody
 	public String memberListScroll(
 			Model model,
