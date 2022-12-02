@@ -12,8 +12,9 @@
       </div>
 
       <div id="detailBody">
-        <jsp:include page="deleteModal.jsp" />
       </div>
+
+      <jsp:include page="deleteModal.jsp" />
 
       
   </div> <!-- end viewWindow -->

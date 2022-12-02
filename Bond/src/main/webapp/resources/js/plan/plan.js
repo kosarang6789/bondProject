@@ -402,33 +402,20 @@ function makePlanDetail(planNo){
         deleteWindow.classList.toggle("closed");
     })
 
-
-    // 일정 삭제 함수
-    function deletePlan(planNo){
-
-        $.ajax({
-            url : "plan/delete",
-            data : {"planNo":planNo},
-            type : "POST",
-            dataType : "JSON",
-
-            success : (message) => {
-                alert(message);
-                loadCalendar();
-            },
-            error : () => {
-                alert("데이터 전송에 실패하였습니다.")
-            }
-        })
-    }
-
-}
+} // end makePlanDetail
 
 
 // -------------------------------------------------------------------------------------------- //
 
+/* 일정 수정 모달창(updateModel.jsp) */
 
-// 일정 수정 모달창(updateModal.jsp)
+function makeUpdatePlan(){
+    
+}
+
+
+
+// 일정 수정 함수
 function updatePlan(planNo){
 
     $.ajax({
@@ -461,4 +448,23 @@ function updatePlan(planNo){
 
 // -------------------------------------------------------------------------------------------- //
 
+/* 일정 삭제 모달창(deleteModal.jsp) */
 
+// 일정 삭제 함수
+function deletePlan(planNo){
+
+    $.ajax({
+        url : "plan/delete",
+        data : {"planNo":planNo},
+        type : "POST",
+        dataType : "JSON",
+
+        success : (message) => {
+            alert(message);
+            loadCalendar();
+        },
+        error : () => {
+            alert("데이터 전송에 실패하였습니다.")
+        }
+    })
+}
