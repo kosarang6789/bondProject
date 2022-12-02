@@ -108,7 +108,7 @@ public class MyPageServiceImpl implements MyPageService{
 						
 					}else {
 						loginMember.setProfileImage(temp);
-//					throw new Exception("이미지 업로드 실패");
+					throw new Exception("이미지 업로드 실패");
 					}
 				}
 			}
@@ -117,6 +117,14 @@ public class MyPageServiceImpl implements MyPageService{
 		}else { // 이미지 없으면 추가
 			
 			if(profileImage.getSize() != 0) {
+				
+				rename = Util.fileRename(profileImage.getOriginalFilename());
+				
+				img.setMemberImgPath(webPath);
+				img.setMemberImgRename(rename);
+				img.setMemberImgOrigin(profileImage.getOriginalFilename());
+				
+				loginMember.setProfileImage(webPath+rename);
 				
 				result = dao.insertImg(img);
 				
