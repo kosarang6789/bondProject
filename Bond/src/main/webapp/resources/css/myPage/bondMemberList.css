@@ -1,0 +1,176 @@
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+*{
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'nanumsquare', serif;
+}
+main{
+    display: flex;
+    justify-content: center;
+}
+
+/* 제일 바깥 div */
+.memberMana-area{
+    min-width: 632px;
+    min-height: 310px;
+    max-height: 90vh;
+    background-color: white;
+}
+
+/* 멤버 리스트 탑 부분 */
+.member-top{
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+.member-Toptitle{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+.member-top .member-total{
+    font-size: 18px;
+    font-weight: bold;
+}
+.member-top .member-total>span{
+    margin-left: 5px;
+}
+.member-top .member-total>span:last-child{
+    color: #21c531;
+    font-weight: bold;
+    font-size: 20px;
+}
+.member-top .member-invite{
+    border: 1.5px solid #21c531;
+    width: 114px;
+    height: 34px;
+    text-align: center;
+    border-radius: 5px;
+    padding-top: 5px;
+}
+.member-top .member-invite:hover{
+    background-color: #21c531;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* 멤버 검색 - 오타... */
+.member-serch{
+    font-size: 17px;
+    width: 100%;
+    border: 1px solid #21c531;
+    margin: auto;
+    height: 40px;
+    padding-right: 10px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+.member-serch>input{
+    padding-left: 8px;
+    width: 95%;
+    font-size: 18px;
+    margin-top: 10px;
+    border: none;
+}
+.member-serch i{
+    text-align: end;
+    font-size: 20px;
+    cursor: pointer;
+}
+.member-serch>button{
+    border: none;
+    background-color: white;
+}
+.member-serch>input:focus{
+    outline: none;
+}
+
+/* 멤버 리스트 부분 */
+.member-all{
+    padding: 40px 50px 20px;
+}
+.member-all>.member-title{
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+.member-all>.member-list{
+    height: 88px;    display: flex;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+}
+.member-all .member-image{
+    height: 50px;
+    min-width: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.member-image > img{
+    width: 100%;
+    height: 100%;
+}
+.member-name{
+    padding-top: 16px;
+    font-size: 17px;
+    width: 80%;
+    display: flex;
+}
+.fa-user-slash{
+    font-size: 20px;
+    padding-top: 20px;
+    cursor: pointer;
+}
+.fa-user-slash:hover{
+    color: red;
+}
+.member-report>.fa-gear{
+    font-size: 20px;
+    padding-top: 20px;
+    cursor: pointer;
+}
+.leader{
+    border-radius: 30px;
+    background-color: #21c531;
+    color: white;
+    font-size: 12px;
+    width: 52px;
+    height: 23px;
+    text-align: center;
+    padding-top: 5.5px;
+    align-items: center;
+    margin-left: 10px;
+    margin-top: -1px;
+}
+
+/* 멤버 초대하기 - 하단부분 */
+.member-invite-bottom{
+    display: flex;
+    height: 77px;
+    padding: 20px;
+}
+.invite-icon{
+    width: 45px;
+    height: 45px;
+    border: 2px double #ddd;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.invite-icon .fa-user-plus{
+    font-size: 25px;
+    padding-left: 8px;
+    padding-top: 8px;
+    color: #21c531;
+}
+.member-invite-bottom{
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 13px;
+}
+.member-invite-btn button{
+    font-size: 15px;
+    background-color: white;
+    border: none;
+}
+.fa-crown{
+    margin-right: 3px;
+}

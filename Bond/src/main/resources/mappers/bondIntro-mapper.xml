@@ -47,7 +47,6 @@
    		GROUP_IMG_PATH = #{groupImagePath}
    		WHERE GROUP_NO = #{groupNo}
    </update>
-   
    	
 	
 </mapper>
