@@ -103,7 +103,6 @@
                             </c:otherwise>
 
                         </c:choose>
-                        <%-- </c:otherwise> --%>
                     </c:if>
                 </c:forEach>
             </div>

@@ -58,6 +58,8 @@ function selectBoardScroll (){
 
                             const memberReport = document.createElement("div");
                             memberReport.classList.add("member-report");
+
+                            
                         }
                         
                     }
