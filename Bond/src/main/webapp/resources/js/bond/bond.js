@@ -248,7 +248,7 @@ function selectBoardScroll(){
         }
     }
 
-
+}
 // 모달
 
 function modal(id) {
@@ -368,4 +368,4 @@ const selectPostDetail = (postNo)=>{
         error:()=>{console.log("실패");}
 
     })
-};
+}

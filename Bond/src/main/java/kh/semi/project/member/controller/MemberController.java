@@ -207,7 +207,7 @@ public class MemberController {
 		// 가입X 본드 조회(groupNo)
 		List<Map<String, Object>> groupJoinNo = service.selectJoinNo(loginMember.getMemberNo());
 		
-		if(groupJoinNo != null) {
+		if(groupJoinNo != null) { // 가입X 본드가 있을 경우 
 			model.addAttribute("groupJoinNo", groupJoinNo);
 		}
 		return "member/findBond";
