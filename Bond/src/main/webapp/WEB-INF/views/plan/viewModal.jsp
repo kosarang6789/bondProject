@@ -5,7 +5,7 @@
 <div id="detailModal" class="closed">
 
   <div id="detailWindow">
-      <span id="openDetailModalMenu">...</span>
+      <img src="/resources/images/common/plan-dots.png" id="openDetailModalMenu">
       <div id="detailModalMenu" class="closed">
         <div id="planUpdate">수정하기</div>
         <div id="planDelete">삭제하기</div>
@@ -14,7 +14,7 @@
       <div id="detailBody">
       </div>
 
-      <jsp:include page="deleteModal.jsp" />
+
 
       
   </div> <!-- end viewWindow -->

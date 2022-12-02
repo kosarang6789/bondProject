@@ -351,6 +351,7 @@ function clearInsertBody(){
 const openDetailModalMenu = document.getElementById("openDetailModalMenu");
 
 openDetailModalMenu.addEventListener("click", () => {
+    const detailModalMenu = document.getElementById("detailModalMenu");
     detailModalMenu.classList.toggle("closed")
 })
 
@@ -514,16 +515,16 @@ function makePlanDetail(planNo){
     const planDelete = document.getElementById("planDelete");
 
     planDelete.addEventListener("click", () => {
-        const deleteWindow = document.getElementById("deleteWindow");
-        deleteWindow.classList.toggle("closed");
+        const deleteModal = document.getElementById("deleteModal");
+        deleteModal.classList.toggle("closed");
     })
 
     // 일정 삭제 모달창 - 취소(화면 닫음)
     const cancelDeleteBtn = document.getElementById("cancelDeleteBtn");
 
     cancelDeleteBtn.addEventListener("click", () => {
-        const deleteWindow = document.getElementById("deleteWindow");
-        deleteWindow.classList.toggle("closed");
+        const deleteModal = document.getElementById("deleteModal");
+        deleteModal.classList.toggle("closed");
     })
 
 
@@ -533,8 +534,8 @@ function makePlanDetail(planNo){
     planDeleteBtn.addEventListener("click", () => {
         deletePlan(planNo);
 
-        const deleteWindow = document.getElementById("deleteWindow");
-        deleteWindow.classList.toggle("closed");
+        const deleteModal = document.getElementById("deleteModal");
+        deleteModal.classList.toggle("closed");
     })
 
 } // end makePlanDetail

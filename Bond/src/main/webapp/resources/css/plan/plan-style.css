@@ -113,7 +113,7 @@ input[name="planColor"]:checked + .palette{
     width: 500px;
     min-height: 200px;
     height: auto;
-    
+
     position: fixed; 
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
@@ -127,11 +127,46 @@ input[name="planColor"]:checked + .palette{
 
 
 /* 모달창 드롭다운 메뉴 */
+
+/* 드롭다운 열기 */
 #openDetailModalMenu{
     cursor: pointer;
     position: absolute;
-    right: 10px;
-    top: 10px;
+    right: 20px;
+    top: 20px;
+
+    z-index: 20000;
+}
+
+/* 드롭다운 메뉴 */
+#detailModalMenu{
+    width: 150px;
+    border: 1px solid #E2E2E2;
+
+
+    position: absolute;
+    right: 27px;
+    top: 40px;
+
+    z-index: 25000;
+}
+
+/* 드롭다운 메뉴 서브메뉴 */
+#detailModalMenu > div{
+    background-color: white;
+    display: flex;
+    align-items: center;
+
+    height: 30px;
+    padding: 20px;
+
+    z-index: 30000;
+
+    cursor: pointer;
+}
+
+#detailModalMenu > div:not(#detailModalMenu > div:last-child){
+    border-bottom: 1px solid #E2E2E2;
 }
 
 /* 사용 변수 todayBox, titleBox, periodBox, colorBox, memberNameBox, contentBox */
@@ -217,31 +252,55 @@ input[name="planColor"]:checked + .palette{
 }
 /* 모달창 일정 수정 */
 
-
-
-
-
 /* 일정 삭제 모달창(deleteModal.jsp) */
+#deleteModal{
+    position: fixed;
+    background-color: rgb(0, 0, 0, 0.7);
+    
+    width: 100vw;
+    height: 300vh;
+
+    top: 0;
+    z-index: 50000;
+}
+
+/* 일정 삭제 윈도우 */
 #deleteWindow{
     background-color: white;
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 100px;
+
 
     position: fixed; 
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
 
-    z-index: 25000;
+    z-index: 55000;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
+/* 일정을 삭제하시겠습니까? */
+#deleteWindow > span{
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+/* 일정 삭제 버튼 영역 */
 .deleteWindowBtnArea button{
+    font-weight: 800;
+
     width: 90px;
     height: 35px;
     border: 1px solid #BFBFBF;
-    font-weight: 800;
     margin: 0px 5px;
 }
 
+/* 확인 */
 #planDeleteBtn{
     background-color: #515161;
     color: white;
@@ -252,6 +311,7 @@ input[name="planColor"]:checked + .palette{
     transition-duration: 0.1s;
 }
 
+/* 취소 */
 #cancelDeleteBtn{
     background-color: white;
     color: grey;
