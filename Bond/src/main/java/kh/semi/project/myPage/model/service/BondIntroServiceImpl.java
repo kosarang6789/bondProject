@@ -42,11 +42,39 @@ public class BondIntroServiceImpl implements BondIntroService{
 		
 		img.setGroupNo(newGroup.getGroupNo());
 		
-		if(result>0) {
+		if(result>0) { // 본드 이름, 내용 수정 성공
 			
 			String temp = groupInfo.getGroupImage(); // 실패 대비 값 저장
 			
-			if(deleteYN == 1) { // 삭제를 했다
+			if(groupInfo.getGroupImage() == null) { // 그룹 이미지가 비어있을 경우
+				
+				if(groupImage2.getSize() == 0) { // 업로드 파일 x
+					groupInfo.setGroupImage(temp);
+				}else {
+					
+					rename = Util.fileRename(groupImage2.getOriginalFilename());
+					
+					img.setGroupImagePath(webPath);
+					img.setGroupImageRename(rename);
+					img.setGroupImageOrigin(groupImage2.getOriginalFilename());
+					
+					groupInfo.setGroupImage(webPath+rename);
+					
+					result = dao.insertImg(img);
+					
+					if(result>0) { // 이미지 수정 성공
+						if(rename != null) {
+							groupImage2.transferTo(new File(filePath+rename));
+						}
+					}else { // 이미지 수정 실패
+						groupInfo.setGroupImage(temp);
+						throw new Exception("이미지 업로드 실패");
+					}
+				}
+
+			}else {
+				
+				if(deleteYN == 1) { // 삭제를 했다
 					
 					img.setGroupImagePath("/resources/images/bond/profile/");
 					img.setGroupImageRename("no-profile.png");
@@ -55,7 +83,7 @@ public class BondIntroServiceImpl implements BondIntroService{
 					groupInfo.setGroupImage("/resources/images/bond/profile/no-profile.png");
 					
 					result = dao.updateImg(img);
-
+					
 				}else { // 삭제를 안했다
 					if(groupImage2.getSize() == 0) { // 업로드 파일 x
 						groupInfo.setGroupImage(temp);
@@ -81,6 +109,10 @@ public class BondIntroServiceImpl implements BondIntroService{
 						}
 					}
 				}
+			}
+			
+			
+			
 		}
 
 		return result;
