@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="bondMemberListMapper">
+
+	<resultMap type="GroupMemberList" id="memberList_rm">
+
+		<id property="memberNo" column="MEMBER_NO" />
+
+		<result property="memberName" column="MEMBER_NAME" />
+		<result property="memberImg" column="MEMBER_IMG" />
+		
+		<result property="joinNo" column="JOIN_NO" />
+		<result property="groupNo" column="GROUP_NO" />
+		<result property="leaderYN" column="LEADER_YN" />
+		<result property="joinDate" column="JOIN_DATE" />
+		<result property="joinStatus" column="JOIN_STATUS" />
+		<result property="leaveDate" column="LEAVE_DATE" />
+
+	</resultMap>
+	
+		<resultMap type="Member" id="member_rm">
+		
+		<!-- PK 컬럼은 id로 -->
+		<id property="memberNo" column="MEMBER_NO" />
+		
+		<!-- 나머지 컬럼은 result로 작성 -->
+		<result property="memberEmail" column="MEMBER_EMAIL" />
+		<result property="memberPw" column="MEMBER_PW" />
+		<result property="memberName" column="MEMBER_NAME" />
+		<result property="memberBirth" column="MEMBER_BIRTH" />
+		<result property="memberTel" column="MEMBER_TEL" />
+		<result property="authority" column="AUTHORITY" />
+		<result property="memberStatus" column="MEMBER_STATUS" />
+		<result property="signUpDate" column="SIGNUP_DATE" />
+		<result property="delDate" column="DEL_DATE" />
+		<result property="profileImage" column="PROFILE_IMG" />
+	</resultMap>
+	
+
+	<!-- 멤버 리스트 가져오기 -->
+	<select id="selectMemberList" resultMap="memberList_rm">
+		SELECT MJ.MEMBER_NO, 
+			(SELECT MEMBER_NAME 
+			FROM "MEMBER" M WHERE M.MEMBER_NO = MJ.MEMBER_NO) MEMBER_NAME, 
+			LEADER_YN, GROUP_NO,
+			(SELECT (MEMBER_IMG_PATH||MEMBER_IMG_RENAME) 
+			FROM "MEMBER_IMG" WHERE MEMBER_NO = MJ.MEMBER_NO) MEMBER_IMG
+		FROM "MEMBER_JOIN" MJ
+		WHERE GROUP_NO = #{groupNo}
+		AND JOIN_STATUS = 0
+	</select>
+	
+
+
+
+</mapper>
