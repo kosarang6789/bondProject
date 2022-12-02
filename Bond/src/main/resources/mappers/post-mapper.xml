@@ -146,5 +146,18 @@
 		(#{postNo}, #{groupNo}, #{memberNo}, #{postContent}, NULL, DEFAULT, DEFAULT, NULL, DEFAULT, DEFAULT)
 	</insert>
 
+	<!-- 이미지테이블에 삽입 -->
+	<insert id="insertPostImages" parameterType="list">
+		INSERT INTO POST_IMG
+		SELECT SEQ_IMG_NO.NEXTVAL IMG_NO, A.*FROM
+		<foreach collection="list" item="img" open="(" close=") A" separator="UNION ALL">
+			SELECT
+				#{img.postNo} POST_NO,
+				#{img.imageRename} IMG_RENAME,
+				#{img.imagePath} IMG_PATH
+			FROM DUAL
+		</foreach>
+	</insert>
+	
 	
 </mapper>
