@@ -9,6 +9,7 @@
 
 body{
     position: relative;
+    overflow: hidden;
 }
 
 /* 복합기능 */
@@ -170,17 +171,6 @@ input[name="planColor"]:checked + .palette{
 }
 
 /* 사용 변수 todayBox, titleBox, periodBox, colorBox, memberNameBox, contentBox */
-
-/*              [header]
-                [headerLeft] [headerRight]
-                todayBox     titleBox                            menu
-                             perioBox
-                             colorBox &#183; memberNameBox
-                border
-
-                contentBox
-
-*/
 
 /* 헤더 박스 */
 #headerBox{

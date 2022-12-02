@@ -96,9 +96,47 @@ function loadCalendar(){
     // }); // end full calander
 }
 
+/* 일정 뿌리기 */
 (() => {
     loadCalendar();
 })()
+
+/* 모달창 통합 닫기 (esc 버튼 클릭 시) */
+
+addEventListener("keydown", (e) => {
+    const insertModal = document.getElementById("insertModal");
+    const detailModal = document.getElementById("detailModal");
+    const detailModalMenu = document.getElementById("detailModalMenu");
+    // const updateModal = document.getElementById("updateModal");
+    const deleteModal = document.getElementById("deleteModal");
+
+    if(e.key === 'Escape'){
+        if(!deleteModal.classList.contains("closed")) { // 삭제 모달이 열려 있으면
+            deleteModal.classList.toggle("closed");
+            return;
+        }
+
+        // if(!updateModal.classList.contains("closed")) {
+        //     updateModal.classList.toggle("closed");
+        //     return;
+        // }
+
+        if(!detailModal.classList.contains("closed")) {
+            detailModal.classList.toggle("closed");
+
+            if(!detailModalMenu.classList.contains("closed")) {
+                detailModal.classList.toggle("closed");
+            }
+            
+            return;
+        }
+
+        if(!insertModal.classList.contains("closed")) {
+            insertModal.classList.toggle("closed");
+            return;
+        }
+    }
+})
 
 
 /* 일정 추가 모달창 js */
@@ -347,13 +385,15 @@ function clearInsertBody(){
 // -------------------------------------------------------------------------------------------- //
 
 /* 일정 상세 조회 모달창(viewModal.jsp) */
-
 const openDetailModalMenu = document.getElementById("openDetailModalMenu");
 
 openDetailModalMenu.addEventListener("click", () => {
     const detailModalMenu = document.getElementById("detailModalMenu");
     detailModalMenu.classList.toggle("closed")
 })
+
+
+
 
 
 function makePlanDetail(planNo){
