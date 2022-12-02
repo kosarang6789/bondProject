@@ -135,6 +135,9 @@ public class BondController {
 				if(openYN.equals("N")) { // 게시물 공개X
 					path = "bond/openNo";
 				} else { // 게시물 공개O
+					// 게시글 불러오기
+					Map<String, Object> map = service.selectBoardDetail(groupNo, cp);
+					model.addAttribute("map",map);
 					path = "bond/openYes";
 				}
 				
