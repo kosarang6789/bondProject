@@ -241,6 +241,38 @@ nav>.mainPage-optionBox>a{
     z-index: 100px;
 }
 
+
+/* swiper */
+
+.swiper {
+    width: 1040px;
+    height: 160px;
+
+}
+
+.swiper-wrapper{
+    display: flex;
+}
+
+.swiper-slide {
+background: #fff;
+
+
+/* Center slide text vertically */
+display: -webkit-box;
+display: -ms-flexbox;
+display: -webkit-flex;
+display: flex;
+-webkit-box-pack: center;
+-ms-flex-pack: center;
+-webkit-justify-content: center;
+justify-content: center;
+-webkit-box-align: center;
+-ms-flex-align: center;
+-webkit-align-items: center;
+align-items: center;
+}
+
 main{
     margin-top: 50px;
     /* min-height: 1000px; */
@@ -248,13 +280,13 @@ main{
     display: block;
 }
 
-.group-category{
+/* .group-category{
     width: 1040px;
     margin: 0 auto;
     position: relative;
-}
+} */
 
-.group-category>button{
+/* .group-category>button{
     border: none;
     background-color: #fff;
     display: inline-block;
@@ -262,18 +294,22 @@ main{
     position: absolute;
     top: -18px;
     cursor: pointer;
-}
+} */
 
-.group-category i{
+/* .group-category i{
     font-size: 24px;
     line-height: 100%;
     vertical-align: middle;
     color: #BFBFBF;
-}
+} */
 
-.swiper-wrapper{
+/* .swiper-wrapper{
     display: inline-block;
     margin-left: 40px;
+} */
+
+.category{
+    display: flex;
 }
 
 .category-list{
@@ -283,7 +319,7 @@ main{
     width: 90px;
     height: 140px;
     vertical-align: top;
-    margin-right: 21px;
+    margin: 0 12px;
 }
 
 .categoryImageWrap{
@@ -301,7 +337,7 @@ main{
 
 .category-list p{
     font-size: 16px;
-    margin-top: 7px;
+    margin-top: 10px;
     vertical-align: middle;
     font-weight: 600;
     color: #222;
@@ -356,6 +392,7 @@ main{
     color:#444;
     cursor: pointer;
 }
+
 
 /* 모임 추천 영역 */
 

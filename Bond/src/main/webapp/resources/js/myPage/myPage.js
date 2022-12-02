@@ -310,6 +310,3 @@ if(profileFrm != null){
     }
     
 };
-
-// Swiper
-

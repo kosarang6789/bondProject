@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모임 찾기 | 본드</title>
 
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
     <link rel="stylesheet" href="/resources/css/member/findBond.css">
     <script src="https://kit.fontawesome.com/345198b845.js" crossorigin="anonymous"></script>
@@ -41,69 +41,53 @@
             <div class="find-band-category">
                 <h2>주제별 본드를 찾아보세요</h2>
 
-
-                    <%-- <div class="swiper-container gallery-top">
+                    <div class="swiper mySwiper">
                         <div class="swiper-wrapper">
-
-                            <div class="swiper-slide">
-                                <div class="category-list">
-                                    <a href="#">
+                            <div class="swiper-slide ">
+                                <div class="category">
+                                    <a href="#" class="category-list">
                                         <div class="categoryImageWrap">
                                             <img src="/resources/images/member/main2/group-category/1_exercise.jpg" class="categoryImage">
                                         </div>
                                         <p>운동</p>
                                     </a>
-                                </div>
-                                <div class="category-list">
-                                    <a href="#">
+                                    <a href="#" class="category-list">
                                         <div class="categoryImageWrap">
                                             <img src="/resources/images/member/main2/group-category/2_craft.jpg" class="categoryImage">
                                         </div>
                                         <p>공예</p>
                                     </a>
-                                </div>
-                                <div class="category-list">
-                                    <a href="#">
+                                    <a href="#" class="category-list">
                                         <div class="categoryImageWrap">
                                             <img src="/resources/images/member/main2/group-category/3_game.jpg" class="categoryImage">
                                         </div>
                                         <p>게임</p>
                                     </a>
-                                </div>
-                                <div class="category-list">
-                                    <a href="#">
+                                    <a href="#" class="category-list">
                                         <div class="categoryImageWrap">
                                             <img src="/resources/images/member/main2/group-category/4_art.jpg" class="categoryImage">
                                         </div>
                                         <p>문화/예술</p>
                                     </a>
-                                </div>
-                                <div class="category-list">
-                                    <a href="#">
+                                    <a href="#" class="category-list">
                                         <div class="categoryImageWrap">
                                             <img src="/resources/images/member/main2/group-category/5_self-improvement.jpg" class="categoryImage">
                                         </div>
                                         <p>자기개발</p>
                                     </a>
-                                </div>
-                                <div class="category-list">
-                                    <a href="#">
+                                    <a href="#" class="category-list">
                                         <div class="categoryImageWrap">
                                             <img src="/resources/images/member/main2/group-category/6_camping.jpg" class="categoryImage">
                                         </div>
                                         <p>여행/캠핑</p>
                                     </a>
-                                </div>
-                                <div class="category-list">
-                                    <a href="#">
+                                    <a href="#" class="category-list">
                                         <div class="categoryImageWrap">
                                             <img src="/resources/images/member/main2/group-category/7_camera.jpg" class="categoryImage">
                                         </div>
                                         <p>사진</p>
                                     </a>
-                                </div>
-                                <div class="category-list">
-                                    <a href="#">
+                                    <a href="#" class="category-list">
                                         <div class="categoryImageWrap">
                                             <img src="/resources/images/member/main2/group-category/8_farming.jpg" class="categoryImage">
                                         </div>
@@ -111,46 +95,63 @@
                                     </a>
                                 </div>
                             </div>
-
-                            <div class="swiper-slide">
-                                <div class="category-list">
-                                    <a href="#">
+                            <div class="swiper-slide ">
+                                <div class="category">
+                                    <a href="#" class="category-list">
                                         <div class="categoryImageWrap">
                                             <img src="/resources/images/member/main2/group-category/11_fan.jpg" class="categoryImage">
                                         </div>
                                         <p>팬클럽</p>
                                     </a>
-                                </div>
-                                <div class="category-list">
-                                    <a href="#">
+                                    <a href="#" class="category-list">
                                         <div class="categoryImageWrap">
                                             <img src="/resources/images/member/main2/group-category/9_cooking.jpg" class="categoryImage">
                                         </div>
                                         <p>요리</p>
                                     </a>
-                                </div>
-                                <div class="category-list">
-                                    <a href="#">
+                                    <a href="#" class="category-list">
                                         <div class="categoryImageWrap">
                                             <img src="/resources/images/member/main2/group-category/12_economy.jpg" class="categoryImage">
                                         </div>
                                         <p>경제/재태크</p>
                                     </a>
-                                </div>
-                                <div class="category-list">
-                                    <a href="#">
+                                    <a href="#" class="category-list">
                                         <div class="categoryImageWrap">
                                             <img src="/resources/images/member/main2/group-category/10_interior.jpg" class="categoryImage">
                                         </div>
                                         <p>인테리어</p>
                                     </a>
+                                    <a href="#" class="category-list">
+                                        <div class="categoryImageWrap">
+                                            <img src="/resources/images/member/main2/group-category/15_pet.png" class="categoryImage">
+                                        </div>
+                                        <p>애완동물</p>
+                                    </a>
+                                    <a href="#" class="category-list">
+                                        <div class="categoryImageWrap">
+                                            <img src="/resources/images/member/main2/group-category/13_food.png" class="categoryImage">
+                                        </div>
+                                        <p>맛집탐방</p>
+                                    </a>
+                                    <a href="#" class="category-list">
+                                        <div class="categoryImageWrap">
+                                            <img src="/resources/images/member/main2/group-category/14_language.jpg" class="categoryImage">
+                                        </div>
+                                        <p>어학/외국어</p>
+                                    </a>
+                                    <a href="#" class="category-list">
+                                        <div class="categoryImageWrap">
+                                            <img src="/resources/images/member/main2/group-category/16_story.jpg" class="categoryImage">
+                                        </div>
+                                        <p>일상/이야기</p>
+                                    </a>
                                 </div>
-                            </div>    
+                            </div>
+                            </div>
                         </div>
-                    </div> --%>
-
-                    <button class="swiper-button-next"></button>
-                    <button class="swiper-button-prev"></button>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -245,7 +246,25 @@
 
     <a href="/logout">로그아웃</a>
 
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
     <script src="/resources/js/member/mainPage.js"></script>
+
+        <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 30,
+        centeredSlides: true,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        });
+    </script>
 </body>
 </html>
