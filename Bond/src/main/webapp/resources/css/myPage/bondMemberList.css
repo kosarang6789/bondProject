@@ -87,6 +87,7 @@ main{
 /* 멤버 리스트 부분 */
 .member-all{
     padding: 40px 50px 20px;
+    background-color: white;
 }
 .member-all>.member-title{
     font-size: 18px;
@@ -97,6 +98,7 @@ main{
     height: 88px;    display: flex;
     padding: 15px 0;
     border-bottom: 1px solid #ddd;
+    background-color: white;
 }
 .member-all .member-image{
     height: 50px;

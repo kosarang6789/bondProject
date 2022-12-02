@@ -30,5 +30,12 @@ public class BondMemberServiceImpl implements BondMemberService{
 	}
 
 
+	// 본드 멤버 리스트 가져오기
+	@Override
+	public List<GroupMemberList> selectMemList(int groupNo) {
+		return dao.selectMemberList(groupNo);
+	}
+
+
 	
 }

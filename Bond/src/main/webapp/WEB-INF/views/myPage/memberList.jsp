@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:set var="memList" value="${memMap.memList}"/>
+<c:set var="loginMember" value="${memMap.loginMember}"/>
 <c:set var="pagination" value="${memMap.pagination}"/>
 
 <!DOCTYPE html>
@@ -38,7 +39,7 @@
                 <div class="member-title">멤버</div>
                 <c:forEach var="memberList" items="${memList}">
                     
-                        <c:if test="{loginMember.memberNo == groupMemberList.memberNo}">
+                        <c:if test="loginMember.memberNo == groupMemberList.memberNo">
                             <c:when test="groupMemberList.leaderYN == 'Y'">
                                 <div class="member-list">
                                     <div class="member-image">
@@ -49,7 +50,7 @@
                                             <img src="${GroupMemberList.memberImage}" id="profile-img">
                                         </c:if>
                                     </div>
-                                    <div class="member-name" name="memberName" id="memberName">${memList.memberName}</div>
+                                    <div class="member-name" name="memberName" id="memberName">${groupMemberList.memberName}</div>
                                     <div class="leader"><i class="fa-solid fa-crown"></i>리더</div>
                                     <div class="member-report">
                                         <i class="fa-solid fa-gear sidbar-icon"><a href="/bond-bondIntro"></a></i>
@@ -59,14 +60,14 @@
                             <c:otherwise>
                                 <div class="member-list">
                                     <div class="member-image">
-                                        <c:if test="${empty groupMemberList.memberImage}">
+                                        <c:if test="${empty GroupMemberList.memberImage}">
                                             <img src="/resources/images/user.png">
                                         </c:if>
-                                        <c:if test="${!empty groupMemberList.memberImage}">
-                                            <img src="${groupMemberList.memberImage}" id="profile-img">
+                                        <c:if test="${!empty GroupMemberList.memberImage}">
+                                            <img src="${GroupMemberList.memberImage}" id="profile-img">
                                         </c:if>
                                     </div>
-                                    <div class="member-name" name="memberName" id="memberName">${memList.memberName}</div>
+                                    <div class="member-name" name="memberName" id="memberName">${GroupMemberList.memberName}</div>
                                     <div class="member-report">
                                         <i class="fa-solid fa-gear sidbar-icon"><a href="/bond-bondIntro"></a></i>
                                     </div>
@@ -76,14 +77,14 @@
                         </c:if>
                                 <div class="member-list">
                                     <div class="member-image">
-                                        <c:if test="${empty groupMemberList.memberImage}">
-                                            <img src="/resources/images/user.png">
+                                        <c:if test="${empty GroupMemberList.memberImage}">
+                                            <img src="/resources/images/member/profile/defaultProfile.png">
                                         </c:if>
-                                        <c:if test="${!empty groupMemberList.memberImage}">
-                                            <img src="${groupMemberList.memberImage}" id="profile-img">
+                                        <c:if test="${!empty GroupMemberList.memberImage}">
+                                            <img src="${GroupMemberList.memberImage}" id="profile-img">
                                         </c:if>
                                     </div>
-                                    <div class="member-name" name="memberName" id="memberName">${memList.memberName}</div>
+                                    <div class="member-name" name="memberName" id="memberName">${GroupMemberList.memberName}</div>
                                     <div class="member-report">
                                         <i class="fa-solid fa-user-slash"></i>
                                     </div>
@@ -91,20 +92,6 @@
                         
                     
                 </c:forEach>
-
-
-                <%-- <div class="member-list">
-                    <div class="member-image">
-                        <img src="/resources/images/user.png" alt="">
-                    </div>
-                    <div class="member-name" name="memberName" id="memberName">${loginMember.memberName}
-                        <div class="leader"><i class="fa-solid fa-crown"></i>리더</div>
-
-                    </div>
-                    <div class="member-report">
-                        <i class="fa-solid fa-user-slash"></i>
-                    </div>
-                </div> --%>
             </div>
 
             <div id="pageTarget" style="height:10px"></div>

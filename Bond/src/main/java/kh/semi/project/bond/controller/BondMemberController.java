@@ -35,7 +35,7 @@ public class BondMemberController {
 	// 그룹 멤버 리스트 가져오기
 	@GetMapping("/bondMemberList")
 	public String memberList(
-//			@SessionAttribute("loginMember") Member loginMember,
+			@SessionAttribute("loginMember") Member loginMember,
 			@SessionAttribute("groupInfo") Group groupInfo,
 			Model model) {
 		
@@ -43,7 +43,11 @@ public class BondMemberController {
 		
 		Map<String, Object> memMap = serivce.selectMemberList(groupNo);
 		
+		memMap.put("loginMember", loginMember);
+		
 		model.addAttribute("memMap", memMap);
+		
+		System.out.println(memMap);
 
 		
 		return "bond/bondMemberList";
