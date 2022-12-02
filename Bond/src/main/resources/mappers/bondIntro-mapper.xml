@@ -47,6 +47,14 @@
    		GROUP_IMG_PATH = #{groupImagePath}
    		WHERE GROUP_NO = #{groupNo}
    </update>
+   
+   
+   <!-- 본드 소개 이미지 삽입 -->
+   <insert id="insertImg">
+   		INSERT INTO "GROUP_IMG"
+   		VALUES(SEQ_GROUP_IMG_NO.NEXTVAL, #{groupNo}, #{groupImageOrigin},
+   			#{groupImageRename}, #{groupImagePath})
+   </insert>
    	
 	
 </mapper>
