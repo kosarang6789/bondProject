@@ -51,7 +51,7 @@ public class BondMemberController {
 		
 		model.addAttribute("memMap", memMap);
 		
-		System.out.println(memMap);
+//		System.out.println(memMap);
 
 		
 		return "bond/bondMemberList";

@@ -87,6 +87,11 @@
                 <jsp:include page="/WEB-INF/views/myPage/memberList.jsp"/>
             </main>
 
+            <!-- 3번 영역 -->
+            <div id="banner">
+                <div id="band-photo-area"></div>
+            </div>
+
             <a href="#">
                 <button type="button" class="btn-go-to-top">
                     <i class="fa-solid fa-arrow-up go-to-top-icon"></i>
