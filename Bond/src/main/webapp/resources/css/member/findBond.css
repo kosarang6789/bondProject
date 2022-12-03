@@ -254,6 +254,10 @@ nav>.mainPage-optionBox>a{
     display: flex;
 }
 
+.swiper-button{
+    color: #888;
+}
+
 .swiper-slide {
 background: #fff;
 
@@ -373,6 +377,7 @@ main{
     border: 2px solid #222;
     border-radius: 40px;
     overflow: hidden;
+    box-shadow: 4px 4px 20px 3px #cbcbcb;
 }
 
 #query{
