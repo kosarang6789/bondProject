@@ -71,12 +71,11 @@
             
             <!-- 좋아요, 댓글쓰기 클릭 -->
             <div class="like-replyBtn">
-                <div class="likeBtn">
+                <div id="likeBtn">
                     <span><i class="fa-regular fa-thumbs-up"></i></span>
-                    <span class="likeEmpty"></span>
                     <span>좋아요</span>
                 </div>
-                <div class="replyBtn">
+                <div id="replyBtn">
                     <span><i class="fa-regular fa-comment"></i></span>
                     <span>댓글쓰기</span>
                 </div>
@@ -200,6 +199,8 @@
             </div>
         </section>
     </main>
+
+    <script src="/resources/js/post/postSelect.js"></script>
 </body>
 
 </html>
