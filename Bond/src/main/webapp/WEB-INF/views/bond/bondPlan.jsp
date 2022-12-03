@@ -22,7 +22,7 @@
 
     <jsp:include page="/WEB-INF/views/plan/insertModal.jsp" />
 
-    <jsp:include page="/WEB-INF/views/plan/viewModal.jsp" />
+    <jsp:include page="/WEB-INF/views/plan/selectModal.jsp" />
 
     <jsp:include page="/WEB-INF/views/plan/updateModal.jsp" />
 
@@ -92,7 +92,8 @@
 
             <!-- 2번 영역 -->
             <main id="boardPlan">
-                <jsp:include page="/WEB-INF/views/plan/plan.jsp" />
+                <!-- fullcalendar -->
+                <div id='calendar'></div>
             </main>
 
             <!-- 3번 영역 -->
@@ -114,6 +115,55 @@
                         </div>
                         <a href="#" class="more-button">더보기</a>
                     </section>
+                </div>
+
+                <!-- 다가오는 일정창 -->
+                <div id="band-soon-plan-area">
+                    <section class="band-soon-plan">
+                        <h2 class="tit">다가오는 일정</h2>
+                        <div class="soon-plan-body">
+                            <!-- 반복 -->
+                            <c:if test="${!empty planListSoon}">
+
+                                <c:forEach var="plan" items="${planListSoon}">
+                                    <div class="soon-plan-one">
+                                        <div class="left-part">
+                                            <div class="oneDay">
+                                                ${plan.planStartDay}
+                                            </div>
+                                            <div class="oneMonth">
+                                                ${plan.planStartMonth}월
+                                            </div>
+                                        </div>
+                                        <div class="right-part">
+                                            <div class="oneTitle">
+                                                ${plan.planTitle}
+                                            </div>
+                                            <div class="onePeriod">
+                                                <c:if test="${!empty plan.planStartTime}">
+                                                    ${plan.planStartTime}
+                                                    &nbsp;-&nbsp;
+                                                </c:if>
+                                                ${plan.planEnd}
+                                                <c:if test="${!empty plna.planEndTime}">
+                                                    &nbsp;
+                                                    ${plan.planEndTime}
+                                                </c:if>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+
+                            </c:if>
+                            <!-- 반복 끝 -->
+                            <c:if test="${empty planListSoon}">
+                                <div class="soon-plan-empty">
+                                    일주일 내 일정이 없습니다
+                                </div>
+                            </c:if>
+                        </div>
+                    </section>
+ 
                 </div>
             </div>
 
@@ -138,10 +188,16 @@
     </script>
 
 
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>    
 
-    <script src="/resources/js/bond/bondPlan.js"></script>
-    <script src="/resources/js/plan/plan.js"></script>
-    
+<script src="/resources/js/bond/bondPlan.js"></script>
+<script src="/resources/js/plan/useFullcalendar.js"></script>
+
+<!-- fullcalendar CDN 방식으로 추가 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales-all.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>    
+
 </body>
 </html>
