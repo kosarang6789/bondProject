@@ -2,6 +2,7 @@ package kh.semi.project.bond.model.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -21,10 +22,41 @@ public class PostServiceImpl implements PostService{
 	// 게시글 상세조회
 	@Override
 	public Post selectPostDetail(int postNo) {
-		
 		return dao.selectPostDetail(postNo);
 	}
 
+	// 좋아요 체크 확인
+	@Override
+	public int postLikeCheck(Map<String, Object> map) {
+		return dao.postLikeCheck(map);
+	}
+	
+	// 좋아요
+	@Override
+	public int postLikeUp(Map<String, Object> paramMap) {
+		return dao.postLikeUp(paramMap);
+	}
+
+	// 좋아요 취소
+	@Override
+	public int postLikeDown(Map<String, Object> paramMap) {
+		return dao.postLikeDown(paramMap);
+	}
+	
+	// 조회수 조회후 증가
+	@Override
+	public int postViewUpdate(Map<String, Object> map) {
+		
+		int viewCount = dao.selectViewCount(map);
+		int viewResult = 0;
+		
+		if(viewCount==0) {
+			viewResult = dao.insertPostView(map);
+		}
+		
+		return viewResult;
+	}
+	
 	// 게시글 작성
 	@Override
 	public int postWrite(Post post) {
@@ -63,4 +95,9 @@ public class PostServiceImpl implements PostService{
 		
 		return postNo;
 	}
+
+	
+
+	
+
 }

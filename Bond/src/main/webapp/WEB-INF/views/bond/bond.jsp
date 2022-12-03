@@ -50,7 +50,7 @@
                     </div>
 
                     <div class="btn-box">
-                        <button type="button" class="write-button">글쓰기</button>
+                        <button type="button" id="write-button">글쓰기</button>
                         <p class="box-desc">
                             누구나 밴드를 검색해 찾을 수 있고, 밴드 소개와 게시글을 볼 수 있습니다.
                         </p>
@@ -103,20 +103,6 @@
                                 새로운 소식을 남겨보세요. <br>
                                 공개 밴드에 남긴 글은 누구나 볼 수 있습니다.
                             </div>
-                        </div>
-
-                        <div class="toolbar-area">
-                            <ul class="toolbar">
-                                <li class="toolbaritem">
-                                    <i class="fa-solid fa-image board-icon"></i>
-                                </li>
-                                <li class="toolbaritem">
-                                    <i class="fa-solid fa-check-to-slot board-icon"></i>
-                                </li>
-                                <li class="toolbaritem">
-                                    <i class="fa-solid fa-divide board-icon"></i>
-                                </li>
-                            </ul>
                         </div>
                     </div> 
 
@@ -189,10 +175,6 @@
                                                             <button type="button" class="comment">
                                                                 댓글 <span class="count rCount">${post.replyCount}</span>
                                                             </button>
-                                                            <%-- 댓글 더보기 --%>
-                                                            <button type="button" class="comment-toggle">
-                                                                <i class="fa-solid fa-angle-down"></i>
-                                                            </button>
                                                         </span>
                                                         <%-- 조회수 --%>
                                                         <span class="share-read">
@@ -200,29 +182,6 @@
                                                             <i class="fa-solid fa-eye" style="color: #555;"></i>
                                                             <span class="count vCount">${post.postView}</span>
                                                         </span>
-                                                    </div>
-
-                                                    <div class="post-added">
-                                                        <div class="post-add-box">
-                                                            <div class="add-col">
-                                                                <a href="#" class="emotion-main-btn">
-                                                                    <span class="icon-face-emotion">
-                                                                        <i class="fa-regular fa-thumbs-up"></i>
-                                                                    </span>
-                                                                    <span class="post-text">좋아요</span>
-                                                                </a>
-                                                            </div>
-                                                            <div class="add-col">
-                                                                <a href="#" class="comment-main-btn">
-                                                                    <span class="comment">
-                                                                        <span class="icon-comment">
-                                                                            <i class="fa-regular fa-message"></i>
-                                                                        </span>
-                                                                        <span class="post-text">댓글쓰기</span>
-                                                                    </span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -298,7 +257,7 @@
     <script>
         let cp = 0;
         const groupNo = "${groupNo}"
-        const postNo = "${postNo}"
+        const memberNo = "${loginMember.memberNo}"
     </script>
 
 

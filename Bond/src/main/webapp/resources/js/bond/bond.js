@@ -140,7 +140,7 @@ function selectBoardScroll(){
                                 modal.classList.toggle("show");
                                 document.body.style.overflow = "hidden";
                                 document.querySelector("#postSelect-view > main").scrollTop = 0;
-                                selectPostDetail(p.getAttribute("id"));
+                                selectPostDetail(postBody.getAttribute("id"));
                             });
 
                             const postText = document.createElement("div");
@@ -197,13 +197,6 @@ function selectBoardScroll(){
                             rCount.classList.add("count", "rCount");
                             rCount.innerText = " " + post.replyCount + " ";
                             
-                            // (3) commentToggle
-                            const commentToggle = document.createElement("button");
-                            commentToggle.classList.add("comment");                   
-                            
-                            const angleIcon = document.createElement("i");
-                            angleIcon.classList.add("fa-solid", "fa-angle-down");
-                            
                             // 2) shareRead 댓글
                             const shareRead = document.createElement("span");
                             shareRead.classList.add("share-read");
@@ -217,84 +210,17 @@ function selectBoardScroll(){
                             const vCount = document.createElement("span");
                             vCount.classList.add("count","vCount");
                             vCount.innerText = " " + post.postView;
-
                             
-                            // 4-2) postAddedBox
-                            const postAdded = document.createElement("div");
-                            postAdded.classList.add("post-added");
-                            
-                            
-                            const postAddBox = document.createElement("div");
-                            postAddBox.classList.add("post-add-box");
-                            
-                            
-                            // (1) addCol1
-                            const addCol1 = document.createElement("div");
-                            addCol1.classList.add("add-col");
-                            
-                            
-                            const emotionMainBtn = document.createElement("a");
-                            emotionMainBtn.classList.add("emotion-main-btn");
-                            
-                            
-                            const iconFaceEmotion = document.createElement("span");
-                            iconFaceEmotion.classList.add("icon-face-emotion");
-                            
-                            
-                            const smileIcon = document.createElement("i");
-                            smileIcon.classList.add("fa-regular", "fa-thumbs-up");
-                            
-                            const postText2 = document.createElement("span");
-                            postText2.classList.add("post-text");
-                            postText2.innerText = " 좋아요";
-                            
-
-                            // (2) addCol2
-                            const addCol2 = document.createElement("div");
-                            addCol2.classList.add("add-col");
-                            
-                            
-                            const commentMainBtn = document.createElement("a");
-                            commentMainBtn.classList.add("comment-main-btn");
-                            
-                            
-                            const comment2 = document.createElement("span");
-                            comment2.classList.add("comment");
-                            
-                            
-                            const iconComment = document.createElement("span");
-                            iconComment.classList.add("icon-comment");
-                            
-                            const messageIcon = document.createElement("i");
-                            messageIcon.classList.add("fa-regular", "fa-message");
-                            
-                            const postText3 = document.createElement("span");
-                            postText3.classList.add("post-text");
-                            postText3.innerText = " 댓글쓰기";
-                            
-                            postCountView.append(postCount, postAdded);
+                            postCountView.append(postCount);
                             postCount.append(faceComment, shareRead);
 
-                            faceComment.append(emotionView, comment, commentToggle);
+                            faceComment.append(emotionView, comment);
                             emotionView.append(emotionWrap, eCount);
                             emotionWrap.append(icon);
                             icon.append(faceIcon);
                             comment.append(rCount);
-                            commentToggle.append(angleIcon);
 
                             shareRead.append(gSrOnly, eyeIcon, vCount);
-                            
-                            postAdded.append(postAddBox);
-                            postAddBox.append(addCol1, addCol2);
-                            addCol1.append(emotionMainBtn);
-                            emotionMainBtn.append(iconFaceEmotion, postText2);
-                            iconFaceEmotion.append(smileIcon);
-
-                            addCol2.append(commentMainBtn);
-                            commentMainBtn.append(comment2);
-                            comment2.append(iconComment,postText3);
-                            iconComment.append(messageIcon);
-
 
                             postWrap.append(contentCard);
                             contentCard.append(postListView);
@@ -369,6 +295,11 @@ Element.prototype.setStyle = function(styles) {
     return this;
 };
 
+document.getElementById("write-button").addEventListener("click", function() {
+    // 게시글 작성 모달창 띄우기
+    modal('postWrite-modal');
+});
+
 document.getElementById("postWrite-btn").addEventListener("click", function() {
     // 게시글 작성 모달창 띄우기
     modal('postWrite-modal');
@@ -387,10 +318,10 @@ reportBtn.addEventListener("click", () => {
 
 // 게시글 상세조회 모달
 (()=>{
-    const post = document.getElementsByClassName("post-body");
-
     const modal = document.getElementById("postSelect-modal");
     const closeBtn = document.querySelector(".sModal-closeBtn");
+    const post = document.getElementsByClassName("post-body");
+    let sh = window.scrollY;
 
     for(let p of post){
         p.addEventListener("click", ()=>{
@@ -402,8 +333,11 @@ reportBtn.addEventListener("click", () => {
     }
 
     closeBtn.addEventListener("click",()=>{
-        modal.classList.toggle("show");
-        document.body.style.overflow = "unset";
+        // modal.classList.toggle("show");
+        window.location.reload(true);
+        window.scrollY = sh;
+        // document.body.style.overflow = "auto";
+        // history.scrollRestoration = "auto";
     });
 })();
 
@@ -414,6 +348,7 @@ let postContent = document.getElementById("postContent");
 let memberName = document.getElementById("memberName");
 let postDate = document.getElementById("postDate");
 let profileImg = document.getElementById("profile-img");
+const likeBtn = document.getElementById("likeBtn");
 
 const selectPostDetail = (postNo)=>{
     $.ajax({
@@ -433,9 +368,61 @@ const selectPostDetail = (postNo)=>{
                 profileImg.setAttribute("src", post.memberImage);
             }else {
                 profileImg.setAttribute("src", "/resources/images/member/profile/defaultProfile.png");
+            };
+            if(post.likeCheck=="on"){
+                likeBtn.classList.add('checkLikeBtn');
             }
         },
         error:()=>{console.log("실패");}
+    });
 
-    })
+    likeBtn.addEventListener("click", ()=>{
+        let likeCount = document.getElementById("likeCount");
+
+        if(likeBtn.classList.contains('checkLikeBtn')){
+            // 좋아요 눌린 경우
+            $.ajax({
+                url: "/postLikeDown",
+                data: {"postNo" : postNo, "memberNo" : memberNo},
+                type: "GET",
+                success: (result)=>{
+                    if(result>0){
+                        likeBtn.classList.remove("checkLikeBtn");
+                        likeCount.innerText = Number(likeCount.innerText)-1;
+                    } else{
+                        console.log("감소 실패");
+                    }
+                },
+                error: ()=>{console.log("감소 에러");}
+            })
+        } else {
+            // 좋아요 안눌린 경우
+            $.ajax({
+                url: "/postLikeUp",
+                data: {"postNo" : postNo, "memberNo" : memberNo},
+                type: "GET",
+                success: (result)=>{
+                    if(result>0){
+                        likeBtn.classList.add("checkLikeBtn");
+                        likeCount.innerText = Number(likeCount.innerText)+1;
+                    } else{
+                        console.log("증가 실패");
+                    }
+                },
+                error: ()=>{console.log("증가 에러");}
+            })
+    
+    
+        }
+    });
+};
+
+// 댓글쓰기 창 늘리기
+const autoResizeTextarea = () => {
+    let textarea = document.getElementById("replyWrite-Content")
+
+    textarea.style.height = 'auto';
+    let height = textarea.scrollHeight; // 높이
+    textarea.style.height = `${height+5}px`;
+    
 };
