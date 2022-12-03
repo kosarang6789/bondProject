@@ -19,6 +19,7 @@ import kh.semi.project.bond.model.vo.Pagination;
 import kh.semi.project.bond.model.vo.Post;
 import kh.semi.project.common.Util;
 import kh.semi.project.member.model.vo.Member;
+import kh.semi.project.plan.model.vo.Plan;
 
 @Service
 public class BondServiceImpl implements BondService{
@@ -111,6 +112,12 @@ public class BondServiceImpl implements BondService{
 			result = -1;
 		}
 		return result;
+	}
+	
+	// 다가오는 일정 목록 불러오기
+	@Override
+	public List<Plan> planSelectListSoon(int groupNo) {
+		return dao.planSelectListSoon(groupNo);
 	}
 
 

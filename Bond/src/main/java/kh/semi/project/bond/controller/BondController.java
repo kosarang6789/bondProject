@@ -28,9 +28,10 @@ import kh.semi.project.bond.model.service.BondService;
 import kh.semi.project.bond.model.vo.Group;
 import kh.semi.project.bond.model.vo.GroupMemberList;
 import kh.semi.project.member.model.vo.Member;
+import kh.semi.project.plan.model.vo.Plan;
 
 @Controller
-@SessionAttributes({"loginMember", "groupInfo"})
+@SessionAttributes({"loginMember", "groupInfo", "planListSoon"})
 public class BondController {
 
 	@Autowired 
@@ -129,6 +130,11 @@ public class BondController {
 				// 게시글 불러오기
 				Map<String, Object> map = service.selectBoardDetail(groupNo, cp);
 				model.addAttribute("map",map);
+				
+				// 다가오는 일정 목록 불러오기
+				List<Plan> planListSoon = service.planSelectListSoon(groupNo);
+				model.addAttribute("planListSoon", planListSoon);
+				
 				path = "bond/bond";
 				
 			} else { // 가입X
@@ -176,11 +182,17 @@ public class BondController {
 		return new Gson().toJson(map);
 	}
 	
-	// 본드 생성 페이지 이동
+	// 본드 일정 조회 페이지 이동
 	@GetMapping("/bond/{groupNo}/plan")
 	public String goBondPlanPage(
-			@PathVariable("groupNo") int groupNo
+			@PathVariable("groupNo") int groupNo,
+			Model model
 			) {
+		
+		// 다가오는 일정 목록 불러오기
+		List<Plan> planListSoon = service.planSelectListSoon(groupNo);
+		model.addAttribute("planListSoon", planListSoon);
+		
 		return "bond/bondPlan";
 	}
 	
