@@ -3,7 +3,6 @@ package kh.semi.project.bond.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -76,19 +75,7 @@ public class PostController {
 		
 		// 게시글 작성 서비스 수행 후 작성된 게시글의 번호로 반환
 		int postNo = service.postWrite(post);
-
-//		String message = null;
-//		String path = null;
-//	    if(postNo > 0) {
-//	    	message = "게시글이 정상적으로 등록되었습니다.";
-//	    	path = "/bond/" + groupNo;
-//	    } else {
-//	    	message = "게시글 작성 실패";
-//	    	path = referer;
-//	    }
-//	      
-//	    ra.addFlashAttribute("message");
-	      
+	    
 	    return postNo;   
 	      
 	}

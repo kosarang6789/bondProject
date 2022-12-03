@@ -11,11 +11,6 @@
 
 const postWriteContent = document.getElementById("summernote");
 
-const writeValidate=()=>{
-
-    
-};
-
 const submitContent = ()=>{
 
     if(postWriteContent.value.trim().length==0){
@@ -30,31 +25,42 @@ const submitContent = ()=>{
             dataType : "JSON",
             success: (postNo)=> {
                 console.log("성공");
+                window.alert("게시물이 작성되었습니다.");
                 parent.window.location.reload();
             },
             error: ()=>{
                 console.log("실패");
+                window.alert("게시물 작성 실패");
             }
         })
     }
 
 };
 
-
 $(document).ready(function() {
 
     $('#summernote').summernote({
         placeholder: "새로운 소식을 남겨보세요. <br>공개밴드에 남긴 글은 누구나 볼 수 있습니다.",
         tabsize: 2,
-        height: 380,
+        height: 504,
         focus: true,
         lang: "ko-KR",
         disableResizeEditor: true,
         fontNames: ['nanumsquare', 'serif'],
         toolbar: [
-            ['font', ['bold', 'italic', 'underline', 'strikethrough', 'color']],
+            ['font', ['bold', 'italic', 'underline', 'strikethrough', 'forecolor']],
             ['insert', ['picture']],
         ],
+        icons: {
+            bold : "fa-solid fa-bold",
+            italic : "fa-solid fa-italic",
+            underline : "fa-solid fa-underline",
+            strikethrough : "fa-solid fa-strikethrough",
+            color : "fa-solid fa-font",
+            
+            picture : "fa-regular fa-image"
+        }
+        ,
          // 이미지 업로드 이벤트가 발생했을 때 
         callbacks: { //여기 부분이 이미지를 첨부하는 부분
             onImageUpload : function(files, editor) {
