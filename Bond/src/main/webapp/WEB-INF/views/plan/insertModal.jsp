@@ -11,6 +11,58 @@
     </div> <!-- end window-header -->
 
     <div id="insertBody">
+      <div id="inputTitleBox">
+        <input type="text" id="inputTitle" placeholder="일정 제목">
+      </div>
+
+      <div id="inputContentBox">
+        <textarea id="inputContent" placeholder="일정 설명"></textarea>
+      </div>
+
+      <div id="inputDateBox">
+        
+        <div id="startBox" class="dateBoxRow">
+          <div id="startBoxText">시작</div>
+          <input type="date" id="inputStartDate">
+          <input type="time" id="inputStartTime">
+        </div>
+
+        <div id="endBox" class="dateBoxRow">
+          <div id="endBoxText">종료</div>
+          <input type="date" id="inputEndDate">
+          <input type="time" id="inputEndTime">
+        </div>
+
+        <div id="allDayBox" class="dateBoxRow">
+          <input type="checkbox" id="inputCheckbox">
+          <div id="allDayBoxText">하루종일</div>
+        </div>
+
+      </div>
+
+      <div id="inputColorBox">
+        <div id="colorBoxText">캘린더 색깔</div>
+        <label> <!-- 빨강 -->
+          <input type="radio" class="paletteRadio" name="planColor" value="rgb(255,60,45)" checked>
+          <div class="palette" style="background-color:rgb(255,60,45)"></div>
+        </label>
+
+        <label> <!-- 노랑 -->
+          <input type="radio" class="paletteRadio" name="planColor" value="rgb(240,200,55)">
+          <div class="palette" style="background-color:rgb(240,200,55)"></div>
+        </label>
+
+        <label> <!-- 초록 -->
+          <input type="radio" class="paletteRadio" name="planColor" value="rgb(30,180,70)">
+          <div class="palette" style="background-color:rgb(30,180,70)"></div>
+        </label>
+
+        <label> <!-- 파랑 -->
+          <input type="radio" class="paletteRadio" name="planColor" value="rgb(55,136,216)">
+          <div class="palette" style="background-color:rgb(55,136,216)"></div>
+        </label>
+          
+      </div>
 
       
     </div> <!-- end insertBody -->
