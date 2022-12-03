@@ -176,6 +176,12 @@ public class BondController {
 		return new Gson().toJson(map);
 	}
 	
+	// 본드 생성 페이지 이동
+	@GetMapping("/bond/plan")
+	public String goBondPlanPage() {
+		return "bond/bondPlan";
+	}
+	
 
 	
 	

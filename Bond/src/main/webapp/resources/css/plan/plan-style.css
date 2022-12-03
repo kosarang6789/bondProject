@@ -176,7 +176,8 @@ body{
 }
 
 input[name="planColor"]:hover + .palette{
-    border: 1px solid black;
+    opacity: 0.7;
+    transition-duration: 0.1s;
 }
 
 input[name="planColor"]:checked + .palette{
@@ -410,6 +411,7 @@ input[name="planColor"]:checked + .palette{
     padding: 20px;
 }
 
+
 #updateFoot{
     width: 100%;
     display: flex;
@@ -427,8 +429,6 @@ input[name="planColor"]:checked + .palette{
     color: white;
 
 }
-
-
 
 
 /* 일정 삭제 모달창(deleteModal.jsp) */
