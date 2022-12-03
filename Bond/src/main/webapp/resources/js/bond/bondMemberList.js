@@ -176,6 +176,50 @@ const selectMemPro = memberNo =>{
         success : (memPro)=>{
             console.log(memPro.memberName);
 
+            if(memPro.memberImage !=null) {
+                modalImg.setAttribute("src", memPro.memberImage);
+            }else {
+                modalImg.setAttribute("src", "/resources/images/member/profile/defaultProfile.png");
+            };
+
+            modalName.innerText = memPro.memberName;
+
+            if(memPro.leaderYN == 'N'){
+                modalLeader.innerText="멤버";
+            }else{
+                modalLeader.innerText="리더";
+            };
+
+            modalJoinDate.innerText=memPro.joinDate;
+
+            modalBirth.innerText = memPro.memberBirth;
+
+            if(memNo != memPro.memberNo){
+                const modalBtn = document.createElement("button");
+                modalBtn.classList.add("report");
+
+                const modalIcon = document.createElement("i");
+                modalIcon.classList.add("fa-solid");
+                modalIcon.classList.add("fa-user-slash");
+                modalIcon.innerText = "신고하기";
+
+                modalReport.append(modalBtn);
+                modalBtn.append(modalIcon);
+            }else{
+                const modalA = document.createElement("a");
+                modalA.setAttribute("href", "/myPage/myPage");
+                
+                const modalMyI = document.createElement("i");
+                modalMyI.classList.add("fa-solid");
+                modalMyI.classList.add("fa-gear");
+                modalMyI.classList.add("sidbar-icon");
+                modalMyI.innerText="내 정보 수정";
+
+                modalReport.append(modalA);
+                modalA.append(modalMyI);
+            }
+
+
         },
         error : ()=>{
             console.log("ajax 통신 실패ㅠㅜㅠㅜ");
