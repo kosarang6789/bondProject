@@ -10,22 +10,34 @@
 		<result property="planTitle" column="PLAN_TITLE" />
 		<result property="planContent" column="PLAN_CONTENT" />
 		<result property="planStart" column="PLAN_START" />
+		<result property="planStartDate" column="PLAN_START_DATE" />
 		<result property="planEnd" column="PLAN_END" />
 		<result property="planColor" column="PLAN_COLOR" />
 		<result property="planAllday" column="PLAN_ALLDAY" />
+
+		<result property="memberNo" column="MEMBER_NO" />
+		<result property="memberName" column="MEMBER_NAME" />
+
+		<result property="planStartMonth" column="PLAN_START_MONTH" />
+		<result property="planStartDay" column="PLAN_START_DAY" />
+		<result property="planStartTime" column="PLAN_START_TIME" />
+		<result property="planEndTime" column="PLAN_END_TIME" />
+		
+		
 	</resultMap>
 	
 	<!-- 일정 목록 조회 -->
 	<select id="planSelectList" parameterType="_int" resultMap="plan_rm">
-		SELECT *
+		SELECT PLAN_NO, PLAN_TITLE, PLAN_START, PLAN_END, PLAN_COLOR, PLAN_ALLDAY
 		FROM "POST_PLAN"
 		WHERE GROUP_NO = #{groupNo}
 	</select>
 	
 	<!-- 일정 상세 조회 -->
 	<select id="planSelectDetail" parameterType="_int" resultMap="plan_rm">
-		SELECT *
+		SELECT PLAN_NO, PLAN_TITLE, PLAN_CONTENT, PLAN_START, PLAN_END, PLAN_COLOR, PLAN_ALLDAY, MEMBER_NAME, PLAN_START_DATE
 		FROM "POST_PLAN"
+		JOIN "MEMBER" USING(MEMBER_NO)
 		WHERE PLAN_NO = #{planNo}
 	</select>
 	
@@ -39,7 +51,9 @@
 				#{planStart},
 				#{planEnd},
 				#{planColor},
-				#{planAllday}
+				#{planAllday},
+				#{memberNo},
+				#{planStartDate}
 				)
 	</insert>
 	
@@ -51,7 +65,8 @@
 		PLAN_START = #{planStart},
 		PLAN_END = #{planEnd},
 		PLAN_COLOR = #{planColor},
-		PLAN_ALLDAY = #{planAllday}
+		PLAN_ALLDAY = #{planAllday},
+		PLAN_START_DATE = #{planStartDate}
 		WHERE PLAN_NO = #{planNo}
 	</update>
 	
@@ -60,5 +75,23 @@
 		DELETE FROM "POST_PLAN"
 		WHERE PLAN_NO = #{planNo}
 	</delete>
+	
+	<!-- 다가오는 일정 목록 -->
+	<select id="planSelectList_soon" parameterType="_int" resultMap="plan_rm">
+		SELECT PLAN_TITLE, 
+				SUBSTR(PLAN_START, 0, 10) PLAN_START, 
+				SUBSTR(PLAN_START, 6, 2) PLAN_START_MONTH,
+				SUBSTR(PLAN_START, 9, 2) PLAN_START_DAY,
+				SUBSTR(PLAN_START, 12, 5) PLAN_START_TIME,
+				SUBSTR(PLAN_END, 0, 10) PLAN_END,
+				SUBSTR(PLAN_END, 12, 5) PLAN_END_TIME
+		FROM "POST_PLAN"
+		WHERE GROUP_NO = ${groupNo}
+		<![CDATA[
+			AND TO_DATE(SUBSTR(PLAN_START, 0, 10), 'YYYY-MM-DD') >= SYSDATE 
+			AND TO_DATE(SUBSTR(PLAN_END, 0, 10), 'YYYY-MM-DD') <= SYSDATE + 7
+		]]>
+		ORDER BY PLAN_START
+	</select>
 	
 </mapper>
