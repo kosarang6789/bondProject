@@ -77,45 +77,49 @@ function selectBoardScroll (){
                         console.log(memMap);
                         
                             const memberAll = document.querySelector(".member-all");
-
-                        for(let mem of memMap.memList){
-
-                            const members = document.createElement("div");
-                            members.classList.add("member-list");
-
-                            const memberImage = document.createElement("div");
-                            memberImage.classList.add("member-image");
-
-                            const image = document.createElement("img");
-                            if(mem.memberImage!=null){
-                                image.setAttribute("src", mem.memberImage);
-                                image.classList.add("memImg");
-                            } else {
-                                image.setAttribute("src", "/resources/images/member/profile/defaultProfile.png");
-                                image.classList.add("memImg");
+                            
+                            for(let mem of memMap.memList){
+                                if(memNo != mem.memberNo){
+    
+                                const members = document.createElement("div");
+                                members.classList.add("member-list");
+    
+                                const memberImage = document.createElement("div");
+                                memberImage.classList.add("member-image");
+    
+                                const image = document.createElement("img");
+                                if(mem.memberImage!=null){
+                                    image.setAttribute("src", mem.memberImage);
+                                    image.classList.add("memImg");
+                                } else {
+                                    image.setAttribute("src", "/resources/images/member/profile/defaultProfile.png");
+                                    image.classList.add("memImg");
+                                }
+    
+                                const memberName = document.createElement("div");
+                                memberName.classList.add("member-name");
+                                memberName.innerText=mem.memberName;
+    
+                                const memberReport = document.createElement("div");
+                                memberReport.classList.add("member-report");
+    
+                                const userSlash = document.createElement("i");
+                                userSlash.classList.add("userSlash");
+                                userSlash.classList.add("fa-solid");
+                                userSlash.classList.add("fa-user-slash");
+    
+                                memberAll.append(members);
+                                members.append(memberImage, memberName, memberReport);
+                                memberImage.append(image);
+                                memberReport.append(userSlash);
                             }
-
-                            const memberName = document.createElement("div");
-                            memberName.classList.add("member-name");
-                            memberName.innerText=mem.memberName;
-
-                            const memberReport = document.createElement("div");
-                            memberReport.classList.add("member-report");
-
-                            const userSlash = document.createElement("i");
-                            userSlash.classList.add("userSlash");
-
-                            memberAll.append(members);
-                            members.append(memberImage, memberName, memberReport);
-                            memberImage.append(image);
-                            memberReport.append(userSlash);
                         }
                         
                     }else{
                         alert("멤버가 없습니다.");
                     }
                 },
-                error : ()=>{
+                error : function(req, status, error){
                     alert("ajax 통신 오류");
                 }
             }); flag = false;

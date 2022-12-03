@@ -19,9 +19,9 @@ public class BondMemberServiceImpl implements BondMemberService{
 	
 	// 본드 멤버 리스트 가져오기
 	@Override
-	public Map<String, Object> selectMemberList(int groupNo) {
+	public Map<String, Object> selectMemberList(int groupNo, int cp) {
 
-		List<GroupMemberList> memList = dao.selectMemberList(groupNo);
+		List<GroupMemberList> memList = dao.selectMemberList(groupNo, cp);
 		
 		Map<String, Object> memMap = new HashMap<String, Object>();
 		memMap.put("memList", memList);
@@ -29,19 +29,19 @@ public class BondMemberServiceImpl implements BondMemberService{
 		return memMap;
 	}
 
-
-	// 본드 멤버 리스트 가져오기
-	@Override
-	public List<GroupMemberList> selectMemList(int groupNo) {
-		return dao.selectMemberList(groupNo);
-	}
+//
+//	// 본드 멤버 리스트 가져오기
+//	@Override
+//	public List<GroupMemberList> selectMemList(int groupNo) {
+//		return dao.selectMemberList(groupNo);
+//	}
 
 	
 	// 본드 멤버 리스트 무한 스크롤
 	@Override
-	public Map<String, Object> memberListScroll(int groupNo, int cpp) {
+	public Map<String, Object> memberListScroll(int groupNo, int cp) {
 		
-		List<GroupMemberList> memList = dao.memberListScroll(groupNo, cpp);
+		List<GroupMemberList> memList = dao.memberListScroll(groupNo, cp);
 		
 		Map<String, Object> memMap = new HashMap<String, Object>();
 		

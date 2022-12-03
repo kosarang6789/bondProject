@@ -17,15 +17,18 @@ public class BondMemberDAO {
 
 	
 	// 멤버 리스트 가져오기
-	public List<GroupMemberList> selectMemberList(int groupNo) {
-		return sqlSession.selectList("bondMemberListMapper.selectMemberList", groupNo);
+	public List<GroupMemberList> selectMemberList(int groupNo, int cp) {
+		
+		RowBounds rowBounds = new RowBounds((cp-1)*15, 15);
+		
+		return sqlSession.selectList("bondMemberListMapper.selectMemberList", groupNo, rowBounds);
 	}
 
 
 	// 본드 멤버 리스트 무한 스크롤
-	public List<GroupMemberList> memberListScroll(int groupNo, int cpp) {
+	public List<GroupMemberList> memberListScroll(int groupNo, int cp) {
 
-		RowBounds rowBounds = new RowBounds((cpp-1)*10, 10);
+		RowBounds rowBounds = new RowBounds((cp-1)*15, 15);
 		
 		return sqlSession.selectList("bondMemberListMapper.selectMemberList",groupNo, rowBounds);
 	}

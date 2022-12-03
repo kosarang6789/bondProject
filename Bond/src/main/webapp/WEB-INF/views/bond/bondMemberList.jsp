@@ -110,7 +110,8 @@
 
     <script>
         let cp = 0;
-        const groupNo = "${groupNo}"
+        const groupNo = "${groupNo}";
+        const memNo = "${memMap.loginMember.memberNo}";
     </script>
 
 

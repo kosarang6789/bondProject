@@ -48,11 +48,12 @@ public class BondMemberController {
 			@PathVariable("groupNo") int groupNo,
 			@SessionAttribute("loginMember") Member loginMember,
 			@SessionAttribute("groupInfo") Group groupInfo,
+			@RequestParam(value="cp", required=false, defaultValue= "1") int cp,
 			Model model) {
 		
 //		int groupNo = groupInfo.getGroupNo();
 		
-		Map<String, Object> memMap = serivce.selectMemberList(groupNo);
+		Map<String, Object> memMap = serivce.selectMemberList(groupNo, cp);
 		
 		memMap.put("loginMember", loginMember);
 		
@@ -66,7 +67,7 @@ public class BondMemberController {
 	public String memberListScroll(
 			@PathVariable("groupNo") int groupNo,
 			Model model,
-			@RequestParam(value="cpp", required=false, defaultValue= "1") int cpp,
+			@RequestParam(value="cp", required=false, defaultValue= "1") int cp,
 			HttpServletRequest req, HttpServletResponse resp,
 			@SessionAttribute(value="loginMember", required=false) Member loginMember,
 			@SessionAttribute("groupInfo") Group groupInfo,
@@ -74,7 +75,7 @@ public class BondMemberController {
 		
 //		int groupNo = groupInfo.getGroupNo();
 		
-		Map<String, Object> memMap = serivce.memberListScroll(groupNo, cpp);
+		Map<String, Object> memMap = serivce.memberListScroll(groupNo, cp);
 		
 		model.addAttribute("memMap", memMap);
 		

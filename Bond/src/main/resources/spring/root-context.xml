@@ -20,9 +20,12 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
 
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" /> <!-- ojdbc 클래스 -->
-		<property name="url" value="jdbc:oracle:thin:@115.90.212.22:9000:xe" /> <!-- 내 주소 --> 
-		<property name="username" value="bond" /> <!-- DB아이디 -->
-		<property name="password" value="6789" /> <!-- DB비밀번호 -->
+		<!-- <property name="url" value="jdbc:oracle:thin:@115.90.212.22:9000:xe" /> 내 주소 
+		<property name="username" value="bond" /> DB아이디
+		<property name="password" value="6789" /> DB비밀번호 -->
+      <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" /> <!-- 내 주소 --> 
+      <property name="username" value="bond6789" /> <!-- DB아이디 -->
+      <property name="password" value="6789" /> <!-- DB비밀번호 -->
 
 		<!-- SQL이 수행된 후 자동으로 Commit 되는것을 지정 -->
 		<property name="defaultAutoCommit" value="false" /> <!-- DB 오토커밋 -->
