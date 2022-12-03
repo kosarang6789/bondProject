@@ -5,22 +5,18 @@
     font-family: 'nanumsquare', serif;
 }
 
-body{
-    width: 600px;
-    height: 700px;
-}
-
 .postWrite-section{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
     background-color: white;
 }
 
-.postWrite-title{
-    position: relative;
+#postWriteFrm{
     display: flex;
+    flex-direction: column;
+}
+
+.postWrite-title{
+    display: flex;
+    position: relative;
     height: 70px;
     /* border-bottom: 1px solid #ccc; */
 }
@@ -34,16 +30,20 @@ body{
 
 /* 게시글작성 */
 .postWrite{
-    height: 550px;
+    height: 570px;
+    padding-bottom: 10px;
 }
 
 .postWrite-content{
-    height: 480px;
+    height: 100%;
     width: 570px;
-    margin: 0 auto 13px;
+    margin: 0 auto;
     font-size: 14px;
     line-height: 22px;
+    border: 1px solid #dae0e5;
+    border-radius: 3px
 }
+
 /* 
 textarea{
     resize: none;
@@ -58,18 +58,19 @@ textarea{
 textarea:focus{ outline: none; } */
 
 /* 툴바 */
-.postWrite-toolbar{
+/* .postWrite-toolbar{
     display: flex;
     width: 100%;
     align-items: center;
     margin-bottom: 10px;
-}
+} */
 
 .postWrite-bottom{
     display: flex;
     justify-content: space-between;
-    border-top: 1px solid #ddd;
-    height: 80px;
+    /* border-top: 1px solid #ddd; */
+    height: 70px;
+    padding-bottom: 10px;
 }
 
 .postWrite-btn:active{
@@ -86,8 +87,8 @@ textarea:focus{ outline: none; } */
 }
 .fa-toggle-off{
     font-size: 20px;
-    padding-right: 15px;
-    margin-left: 20px;
+    padding-right: 10px;
+    margin-left: 26px;
     color: #777;
     cursor: pointer;
 }
