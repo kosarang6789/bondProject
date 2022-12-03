@@ -61,12 +61,12 @@ public class BondMemberController {
 		return "bond/bondMemberList";
 	}
 	
-	@PostMapping("/bondMemberList/scroll")
+	@PostMapping("/bond/{groupNo}/bondMemberList/scroll")
 	@ResponseBody
 	public String memberListScroll(
 			@PathVariable("groupNo") int groupNo,
 			Model model,
-			@RequestParam(value="cp", required=false, defaultValue= "1") int cp,
+			@RequestParam(value="cpp", required=false, defaultValue= "1") int cpp,
 			HttpServletRequest req, HttpServletResponse resp,
 			@SessionAttribute(value="loginMember", required=false) Member loginMember,
 			@SessionAttribute("groupInfo") Group groupInfo,
@@ -74,7 +74,7 @@ public class BondMemberController {
 		
 //		int groupNo = groupInfo.getGroupNo();
 		
-		Map<String, Object> memMap = serivce.memberListScroll(groupNo, cp);
+		Map<String, Object> memMap = serivce.memberListScroll(groupNo, cpp);
 		
 		model.addAttribute("memMap", memMap);
 		

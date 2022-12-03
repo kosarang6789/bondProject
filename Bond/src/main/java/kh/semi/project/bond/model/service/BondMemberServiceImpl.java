@@ -39,9 +39,9 @@ public class BondMemberServiceImpl implements BondMemberService{
 	
 	// 본드 멤버 리스트 무한 스크롤
 	@Override
-	public Map<String, Object> memberListScroll(int groupNo, int cp) {
+	public Map<String, Object> memberListScroll(int groupNo, int cpp) {
 		
-		List<GroupMemberList> memList = dao.memberListScroll(groupNo, cp);
+		List<GroupMemberList> memList = dao.memberListScroll(groupNo, cpp);
 		
 		Map<String, Object> memMap = new HashMap<String, Object>();
 		

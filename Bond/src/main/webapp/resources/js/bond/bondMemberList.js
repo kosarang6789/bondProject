@@ -68,7 +68,7 @@ function selectBoardScroll (){
         if(flag){
             console.log(cp);
             $.ajax({
-                url : "/bondMemberList/scroll",
+                url : "/bond/"+groupNo+"/bondMemberList/scroll",
                 data : {"cp":++cp},
                 type : "POST",
                 dataType : "JSON",
@@ -88,7 +88,6 @@ function selectBoardScroll (){
 
                             const image = document.createElement("img");
                             if(mem.memberImage!=null){
-                                // image.setAttribute("src", memberList.memberImage);
                                 image.setAttribute("src", mem.memberImage);
                                 image.classList.add("memImg");
                             } else {

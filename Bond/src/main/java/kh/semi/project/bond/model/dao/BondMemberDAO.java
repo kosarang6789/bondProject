@@ -23,9 +23,9 @@ public class BondMemberDAO {
 
 
 	// 본드 멤버 리스트 무한 스크롤
-	public List<GroupMemberList> memberListScroll(int groupNo, int cp) {
+	public List<GroupMemberList> memberListScroll(int groupNo, int cpp) {
 
-		RowBounds rowBounds = new RowBounds((cp-1)*10, 10);
+		RowBounds rowBounds = new RowBounds((cpp-1)*10, 10);
 		
 		return sqlSession.selectList("bondMemberListMapper.selectMemberList",groupNo, rowBounds);
 	}

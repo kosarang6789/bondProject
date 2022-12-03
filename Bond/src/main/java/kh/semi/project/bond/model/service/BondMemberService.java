@@ -15,6 +15,6 @@ public interface BondMemberService {
 	List<GroupMemberList> selectMemList(int groupNo);
 
 	// 본드 멤버 리스트 무한 스크롤
-	Map<String, Object> memberListScroll(int groupNo, int cp);
+	Map<String, Object> memberListScroll(int groupNo, int cpp);
 
 }

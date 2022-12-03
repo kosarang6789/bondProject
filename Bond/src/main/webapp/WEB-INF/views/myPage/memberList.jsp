@@ -119,10 +119,10 @@
         </div>
     </main>
 
-        <script>
+        <%-- <script>
         let cp = 0;
         const groupNo = "${groupNo}"
-    </script>
+    </script> --%>
 
 </body>
 </html>
