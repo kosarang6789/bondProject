@@ -83,7 +83,7 @@
 	
 	<!-- 게시글 조회 -->
 	<select id="selectBoardDetail"  resultMap="post_rm">
-		SELECT POST_NO, MEMBER_NAME, POST_CONTENT, POST_VIEW,
+		SELECT POST_NO, MEMBER_NAME, POST_CONTENT,
 			<![CDATA[
 			CASE  
 		      WHEN SYSDATE - POST_DATE < 1/24/60
@@ -108,6 +108,8 @@
 				WHERE R.POST_NO = P.POST_NO) REPLY_COUNT,
 				(SELECT COUNT(*) FROM POST_LIKE L
 				WHERE L.POST_NO = P.POST_NO) LIKE_COUNT,
+				(SELECT COUNT(*) FROM POST_VIEW V
+				WHERE V.POST_NO = P.POST_NO)POST_VIEW,
 				(SELECT MEMBER_IMG_PATH || MEMBER_IMG_RENAME 
 				FROM MEMBER_IMG MI
 				WHERE MI.MEMBER_NO = P.MEMBER_NO) MEMBER_IMG
@@ -120,13 +122,15 @@
 	
 	<!-- 게시글 상세조회 -->
 	<select id="selectPostDetail" resultMap="post_rm">
-		SELECT POST_NO, MEMBER_NAME, POST_CONTENT, POST_VIEW, P.MEMBER_NO,
+		SELECT POST_NO, MEMBER_NAME, POST_CONTENT, P.MEMBER_NO,
 			TO_CHAR(POST_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') POST_DATE,
 			TO_CHAR(EDIT_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') EDIT_DATE,
 			(SELECT COUNT(*) FROM REPLY R
 			WHERE R.POST_NO = P.POST_NO) REPLY_COUNT,
 			(SELECT COUNT(*) FROM POST_LIKE L
 			WHERE L.POST_NO = P.POST_NO) LIKE_COUNT,
+			(SELECT COUNT(*) FROM POST_VIEW V
+			WHERE V.POST_NO = P.POST_NO)POST_VIEW,
 			(SELECT MEMBER_IMG_PATH || MEMBER_IMG_RENAME 
 			FROM MEMBER_IMG MI
 			WHERE MI.MEMBER_NO = P.MEMBER_NO) MEMBER_IMG
@@ -137,6 +141,38 @@
 	
 	</select>
 	
+	<!-- 좋아요 체크 -->
+	<select id="postLikeCheck" resultType="_int">
+		SELECT COUNT(*) FROM POST_LIKE
+		WHERE POST_NO = #{postNo}
+		AND MEMBER_NO = #{memberNo}
+	</select>
+	
+	<!-- 좋아요 -->
+	<insert id="postLikeUp">
+		INSERT INTO POST_LIKE VALUES(#{postNo},#{memberNo})
+	</insert>
+	
+	<delete id="postLikeDown">
+		DELETE FROM POST_LIKE
+		WHERE POST_NO = #{postNo}
+		AND MEMBER_NO =	#{memberNo}
+	</delete>
+	
+	<!-- 회원 1명 조회여부 확인 -->
+	<select id="selectViewCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM POST_VIEW
+		WHERE POST_NO = #{postNo}
+		AND MEMBER_NO = #{memberNo}
+	</select>
+	
+	<!-- 조회 목록 삽입 -->
+	<insert id="insertPostView">
+		INSERT INTO POST_VIEW 
+		VALUES(#{postNo}, #{memberNo})
+	</insert>
+
 	<!-- 게시글 삽입 -->
 	<insert id="postWrite" parameterType="Post" useGeneratedKeys="true">
 		<selectKey keyProperty="postNo" resultType="_int" order="BEFORE">

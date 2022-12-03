@@ -116,9 +116,12 @@ a{text-decoration: none;}
 }
 
 .like-replyBtn>div:hover{
+    cursor: pointer;
+}
+
+.checkLikeBtn {
     color: #21c531;
     font-weight: 800;
-    cursor: pointer;
 }
 
 .like-replyBtn span{

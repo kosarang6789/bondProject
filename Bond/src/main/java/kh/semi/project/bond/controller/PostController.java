@@ -3,7 +3,10 @@ package kh.semi.project.bond.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -42,12 +45,71 @@ public class PostController {
 	@ResponseBody
 	@GetMapping("bond/{groupNo}/{postNo}")
 	public String postSelect(@PathVariable("postNo") int postNo,
+			HttpServletRequest req,
 			@SessionAttribute("loginMember") Member loginMember) {
 		
 		Post post = service.selectPostDetail(postNo);
 		
+		if(post!=null) {
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("postNo", postNo);
+			map.put("memberNo", loginMember.getMemberNo());
+			
+			int result = service.postLikeCheck(map);
+			if(result>0) {
+				post.setLikeCheck("on"); // 좋아요하면 likeCheck값을 on로
+			}
+			
+			// 조회수 검사 후 조회수 증가
+			int viewResult = service.postViewUpdate(map);
+			if(viewResult>0) { // insert시에 데이터와 화면 동기화
+				post.setPostView(post.getPostView()+1);
+			}
+			
+		}
+		
+		// 조회수 증가
+//		if(post!=null) {
+//			Cookie[] cookies = req.getCookies();
+//			
+//			Cookie c = null;
+//			if(cookies != null) {
+//				for(Cookie temp : cookies) {
+//					if(temp.getName().equals("postViewNo")) {
+//						c= temp;
+//					}
+//				}
+//			}
+//			
+//			int result = 0;
+//			if(c==null) {
+//				result = service.updatePostView(postNo);
+//				c= new Cookie("postViewNo", "|" + postNo + "|");
+//			} else { 
+//				if(c.getValue().indexOf("|" + postNo + "|") == -1) { // 일치하는 값 없는경우
+//					result = service.updatePostView(postNo);
+//					c.setValue(c.getValue())
+//				}
+//			}
+//		}
+		
 		return new Gson().toJson(post);
 	}
+	
+	// 좋아요 증가
+	@GetMapping("/postLikeUp")
+	@ResponseBody
+	public int postLikeUp(@RequestParam Map<String, Object> paramMap) {
+		return service.postLikeUp(paramMap);
+	}
+	
+	// 좋아요 취소
+	@GetMapping("/postLikeDown")
+	@ResponseBody
+	public int postLikeDown(@RequestParam Map<String, Object> paramMap) {
+		return service.postLikeDown(paramMap);
+	}
+	
 	
 	// 게시물 작성 페이지
 	@GetMapping("/bond/{groupNo}/postWrite")

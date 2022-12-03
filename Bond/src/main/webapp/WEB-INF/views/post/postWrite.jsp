@@ -34,25 +34,6 @@
                     <div class="postWrite-content">
                         <textarea name="postWriteContent" id="summernote" ></textarea>
                     </div>
-
-                    <!-- 툴바 -->
-                    <%-- <div class="postWrite-toolbar">
-                        <ul class="toolbarList">
-                            <li class="toolbarListItem">
-                                <input type="file" id="photoInput">
-                                <i class="fa-regular fa-image"></i><!-- 이미지첨부 -->
-                            </li>
-                            <li class="toolbarListItem">
-                                <i class="fa-solid fa-check-to-slot"></i><!-- 투표 -->
-                            </li>
-                            <li class="toolbarListItem">
-                                <i class="fa-solid fa-divide"></i><!-- N빵 -->
-                            </li>
-                            <li class="toolbarListItem">
-                                <i class="fa-regular fa-calendar"></i><!-- 일정 -->
-                            </li>
-                        </ul>
-                    </div> --%>
                 </section>
                 
                 <div class="postWrite-bottom">
