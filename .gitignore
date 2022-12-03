@@ -140,3 +140,4 @@ JDBC2/driver.xml
 BookPractice/src/driver.xml
 LibraryManagement/driver.xml
 project1/forProject.sql
+.DS_Store

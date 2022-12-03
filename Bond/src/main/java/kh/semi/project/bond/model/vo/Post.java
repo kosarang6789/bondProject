@@ -26,6 +26,7 @@ public class Post {
 	private String memberImage;
 	private int replyCount;
 	private int likeCount;
+	private String likeCheck;
 	
 	private List<Post> postList;
 	private List<Reply> replyList;
