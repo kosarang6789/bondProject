@@ -26,12 +26,7 @@
                     <div class="member-total">
                         <span>멤버</span><span>${groupInfo.memberCount}</span>
                     </div>
-                    <div class="member-invite">멤버 초대하기</div>
-                </div>
-                <div class="member-serch">
-                    <input type="text" placeholder="멤버 검색">
-                    <button type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    
+                    <button class="member-invite inviteBtn">멤버 초대하기</button>
                 </div>
             </div>
             <div class="member-all">
@@ -110,12 +105,12 @@
 
 
             
-            <div class="member-invite-bottom">
+            <%-- <div class="member-invite-bottom">
                 <div class="invite-icon"><i class="fa-solid fa-user-plus"></i></div>
                 <div class="member-invite-btn">
                     <button>멤버 초대하기</button>
                 </div>
-            </div>
+            </div> --%>
         </div>
     </main>
 

@@ -83,7 +83,7 @@
 	
 	<!-- 게시글 조회 -->
 	<select id="selectBoardDetail"  resultMap="post_rm">
-		SELECT POST_NO, MEMBER_NAME, POST_CONTENT, POST_VIEW,
+		SELECT POST_NO, MEMBER_NAME, POST_CONTENT,
 			<![CDATA[
 			CASE  
 		      WHEN SYSDATE - POST_DATE < 1/24/60
@@ -120,7 +120,7 @@
 	
 	<!-- 게시글 상세조회 -->
 	<select id="selectPostDetail" resultMap="post_rm">
-		SELECT POST_NO, MEMBER_NAME, POST_CONTENT, POST_VIEW, P.MEMBER_NO,
+		SELECT POST_NO, MEMBER_NAME, POST_CONTENT, P.MEMBER_NO,
 			TO_CHAR(POST_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') POST_DATE,
 			TO_CHAR(EDIT_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') EDIT_DATE,
 			(SELECT COUNT(*) FROM REPLY R

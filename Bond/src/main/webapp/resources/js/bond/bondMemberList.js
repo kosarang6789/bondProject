@@ -128,3 +128,33 @@ function selectBoardScroll (){
         }
     }
 } ;
+
+
+// 본드 주소 복사
+const href = location.href.toString();
+const reAddress = href.substring(0, href.lastIndexOf("/"));
+
+document.querySelector(".inviteBtn").addEventListener("click", ()=>{
+    const copyAdd = document.createElement("textarea");
+    document.body.append(copyAdd);
+    copyAdd.textContent = reAddress;
+    copyAdd.select();
+    document.execCommand('copy');
+    copyAdd.remove();
+    alert("주소가 복사되었습니다.");
+})
+
+console.log(reAddress);
+
+// function copyAddress(reAddress){
+//     console.log(reAddress);
+//     const copyAdd = document.createElement("textarea");
+//     document.body.append(copyAdd);
+//     copyAdd.value = reAddress;
+//     copyAdd.select();
+//     document.execCommand("copy");
+//     copyAdd.remove();
+//     alert("주소가 복사되었습니다.");
+// }
+
+

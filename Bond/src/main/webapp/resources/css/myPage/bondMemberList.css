@@ -24,11 +24,11 @@ main{
 .member-Toptitle{
     display: flex;
     justify-content: space-between;
-    padding-bottom: 10px;
 }
 .member-top .member-total{
     font-size: 18px;
     font-weight: bold;
+    padding-top: 7px;
 }
 .member-top .member-total>span{
     margin-left: 5px;
@@ -39,18 +39,23 @@ main{
     font-size: 20px;
 }
 .member-top .member-invite{
-    border: 1.5px solid #21c531;
     width: 114px;
     height: 34px;
-    text-align: center;
-    border-radius: 5px;
-    padding-top: 5px;
 }
-.member-top .member-invite:hover{
+.inviteBtn:hover{
     background-color: #21c531;
     color: white;
     font-weight: bold;
     cursor: pointer;
+    border-radius: 5px;
+}
+.inviteBtn{
+    width: 100%;
+    height: 100%;
+    border: 1.5px solid #21c531;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 15px;
 }
 
 /* 멤버 검색 - 오타... */
@@ -149,6 +154,9 @@ main{
     height: 77px;
     padding: 20px;
     background-color: white;
+    align-items: center;
+    cursor: pointer;
+    /* margin-bottom: 13px; */
 }
 .invite-icon{
     width: 45px;
@@ -163,11 +171,6 @@ main{
     padding-left: 8px;
     padding-top: 8px;
     color: #21c531;
-}
-.member-invite-bottom{
-    align-items: center;
-    cursor: pointer;
-    margin-bottom: 13px;
 }
 .member-invite-btn button{
     font-size: 15px;
