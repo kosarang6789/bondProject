@@ -71,6 +71,7 @@
 
     <script>
         const groupNo = "${groupNo}"
+        
     </script>
     <script src="/resources/js/post/postWrite.js"></script>
     
