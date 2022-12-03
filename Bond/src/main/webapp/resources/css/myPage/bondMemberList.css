@@ -110,6 +110,7 @@ main{
     width: 50px;
     border-radius: 50%;
     margin-right: 15px;
+    cursor: pointer;
 }
 .memImg{
     width: 100%;
@@ -179,4 +180,106 @@ main{
 }
 .fa-crown{
     margin-right: 3px;
+}
+
+
+/* 프로필 선택 시 모달창 */
+.modal{
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: 100%;
+    z-index: 11000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal .profile1{
+    background-color: white;
+    width: 320px; height: 412px;
+    text-align: center;
+    display: block;
+    margin: 260px auto;
+}
+.modal .close-btn{
+    padding: 15px 10px 0 0;
+    border: none;
+    font-size: 21px;
+    background-color: white;
+    cursor: pointer;
+    font-weight: bold;
+    color: #777;
+    position: absolute;
+    margin-left: 125px;
+}
+.profile1 .profile-area{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.profile1 .profile-image{
+    border: 3px solid greenyellow;
+    border-radius: 50%;
+    width: 170px;
+    height: 170px;
+    position: relative;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+.modal .image{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.modal .profile-area>.memberName{
+    margin: 10px 0 15px;
+    font-size: 24px;
+}
+.modal #inputImage{
+    display: none;
+    cursor: pointer;
+}
+.modal .member{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+.modal .leader-yn{
+    font-size: 12px;
+    padding-top: 4px;
+    border-radius: 45%;
+    width: 36px;
+    height: 20px;
+    margin-right: 8px;
+    background-color: #21c531;
+    color: white;
+}
+.modal .join-date{
+    font-size: 13px;
+}
+.modal .birth{
+    display: flex;
+    margin-bottom: 25px;
+    font-size: 16px;
+}
+.modal .birth-title{
+    margin-right: 5px;
+}
+.modal .report{
+    font-size: 13px;
+    cursor: pointer;
+    border: none;
+    background-color: white;
+    margin-top: 7px;
+}
+.modal .report:hover{
+    color: red;
+}
+
+.show{
+    display: flex;
 }

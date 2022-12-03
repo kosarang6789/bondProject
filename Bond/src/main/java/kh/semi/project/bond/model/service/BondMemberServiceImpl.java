@@ -50,6 +50,13 @@ public class BondMemberServiceImpl implements BondMemberService{
 		return memMap;
 	}
 
+	
+	// 본드 멤버 프로필 클릭
+	@Override
+	public GroupMemberList selectMemPro(GroupMemberList memPro) {
+		return dao.selectMemPro(memPro);
+	}
+
 
 	
 }

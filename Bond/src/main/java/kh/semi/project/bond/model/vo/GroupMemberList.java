@@ -11,6 +11,7 @@ public class GroupMemberList {
 	
 	private String memberName;
 	private String memberImage;
+	private String memberBirth;
 	
 	private int joinNo;
 	private int groupNo;

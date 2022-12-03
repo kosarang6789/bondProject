@@ -130,7 +130,7 @@ function selectBoardScroll (){
 } ;
 
 
-// 본드 주소 복사
+// 멤버 초대하기 - 본드 주소 복사
 const href = location.href.toString();
 const reAddress = href.substring(0, href.lastIndexOf("/"));
 
@@ -142,19 +142,42 @@ document.querySelector(".inviteBtn").addEventListener("click", ()=>{
     document.execCommand('copy');
     copyAdd.remove();
     alert("주소가 복사되었습니다.");
-})
+});
 
-console.log(reAddress);
+// 회원 정보 모달 창
 
-// function copyAddress(reAddress){
-//     console.log(reAddress);
-//     const copyAdd = document.createElement("textarea");
-//     document.body.append(copyAdd);
-//     copyAdd.value = reAddress;
-//     copyAdd.select();
-//     document.execCommand("copy");
-//     copyAdd.remove();
-//     alert("주소가 복사되었습니다.");
-// }
+const image = document.getElementsByClassName("memImg");
+const modal = document.getElementById("modal");
+const modalx = document.getElementById("modalx");
 
+for(let img of image){
+    img.addEventListener("click", ()=>{
+        modal.style.display="flex";
+        
+        selectMemPro(img.getAttribute("id"));
+    });
+    
+};
+modalx.addEventListener("click",()=>{
+    modal.style.display="none";
+});
 
+const modalImg = document.getElementById("image");
+const modalName = document.getElementById("modalName");
+const modalLeader = document.getElementById("modalLeader");
+const modalJoinDate = document.getElementById("modalJoinDate");
+const modalBirth = document.getElementById("modalBirth");
+
+const selectMemPro = memberNo =>{
+    $.ajax({
+        url : "/bond/"+groupNo+"/"+memberNo,
+        dataType : "JSON",
+        success : (memPro)=>{
+            console.log(memPro.memberName);
+
+        },
+        error : ()=>{
+            console.log("ajax 통신 실패ㅠㅜㅠㅜ");
+        }
+    })
+}
