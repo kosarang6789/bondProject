@@ -7,7 +7,7 @@ import kh.semi.project.plan.model.vo.Plan;
 public interface PlanService {
 
 	// 일정 목록 가져오기
-	List<Plan> planSelectList();
+	List<Plan> planSelectList(int groupNo);
 
 	// 일정 상세 조회
 	Plan planSelectDetail(int planNo);
@@ -15,8 +15,13 @@ public interface PlanService {
 	// 일정 추가하기
 	int planInsert(Plan plan);
 	
+	// 일정 수정하기
+	int planUpdate(Plan plan);
+	
 	// 일정 삭제하기
 	int planDelete(int planNo);
+
+
 	
 
 }

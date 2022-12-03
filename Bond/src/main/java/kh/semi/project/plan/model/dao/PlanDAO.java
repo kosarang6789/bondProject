@@ -15,8 +15,8 @@ public class PlanDAO {
 	private SqlSessionTemplate sqlSession;
 
 	// 일정 목록 조회
-	public List<Plan> planSelectList() {
-		return sqlSession.selectList("planMapper.planSelectList");
+	public List<Plan> planSelectList(int groupNo) {
+		return sqlSession.selectList("planMapper.planSelectList", groupNo);
 	}
 	
 	// 일정 상세 조회
@@ -29,10 +29,17 @@ public class PlanDAO {
 		return sqlSession.insert("planMapper.planInsert", plan);
 	}
 	
+	// 일정 수정하기
+	public int planUpdate(Plan plan) {
+		return sqlSession.update("planMapper.planUpdate", plan);
+	}
+	
 	// 일정 삭제하기
 	public int planDelete(int planNo) {
 		return sqlSession.delete("planMapper.planDelete", planNo);
 	}
+
+
 
 
 }

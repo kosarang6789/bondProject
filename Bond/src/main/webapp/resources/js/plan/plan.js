@@ -1,13 +1,13 @@
 let planNo = -1;
 
 // fullcalendar 불러오기
-function loadCalendar(){ 
-    // document.addEventListener('DOMContentLoaded', () => {
+// function loadCalendar(){ 
+    document.addEventListener('DOMContentLoaded', () => {
 
         // fullcalendar 관련 js
-        var calendarEl = document.getElementById('calendar');
+        const calendarEl = document.getElementById('calendar');
 
-        var calendar = new FullCalendar.Calendar(calendarEl, {
+        const calendar = new FullCalendar.Calendar(calendarEl, {
             locale: 'ko',
             initialView: 'dayGridMonth',
 
@@ -48,8 +48,8 @@ function loadCalendar(){
         // 일정에 정보를 뿌리는 함수 getAllPlan
         function getAllPlan(){
             $.ajax({
-                url : "/plan/select/list",
-                data : {"groupNo": 1},
+                url : "/bond/" + groupNo + "/plan/select/list",
+                data : {"groupNo": groupNo},
                 type : "POST",
                 dataType : "JSON",
 
@@ -90,13 +90,13 @@ function loadCalendar(){
     // 캘린더 렌더링
     calendar.render();
 
-    // }); // end full calander
-}
+    }); // end full calander
+// }
 
 /* 일정 뿌리기 */
-(() => {
-    loadCalendar();
-})()
+// (() => {
+//     loadCalendar();
+// })()
 
 /* 모달창 여닫기 이벤트는 전부 여기에 작성 */
 
@@ -122,7 +122,7 @@ const closeUpdateModal = document.getElementById('closeUpdateModal');
 closeUpdateModal.addEventListener('click', () => {
     const updateModal = document.getElementById('updateModal');
     updateModal.classList.toggle('closed');
-
+    clearUpdateBody();
 })
 
 // 일정 수정하세요...
@@ -247,11 +247,11 @@ if(confirmBtn != null) {
             inputAllday = 'F';
         }
 
-        // 비동기로 일정 업데이트(ajax)
+        // 비동기로 일정 삽입(ajax)
         $.ajax({
-            url : "/plan/insert",
+            url : "/bond/" + groupNo + "/plan/insert",
             data : {
-                    "groupNo" : 1,
+                    "groupNo" : groupNo,
                     "inputTitle" : inputTitle,
                     "inputContent" : inputContent,
                     "inputStart" : inputStart,
@@ -263,10 +263,9 @@ if(confirmBtn != null) {
             dataType : "JSON",
     
             success : (message) => {
-                loadCalendar();
-    
-                // 성공 시 화면에 정보를 다시 뿌림
                 alert(message);
+                const thisUrl = location.href;
+                location = thisUrl;
             },
             error : (message) => {
                 alert(message);
@@ -448,6 +447,7 @@ function makeInsertBody(){
 function clearInsertBody(){
     const insertBody = document.getElementById("insertBody");
     insertBody.innerHTML = "";
+
 }
 
 
@@ -462,8 +462,10 @@ function makePlanDetail(thisId){
     let planNo = thisId;
 
     $.ajax({
-        url : "plan/select/detail",
-        data : {"planNo":planNo},
+        url : "/bond/" + groupNo + "/plan/select/detail",
+        data : {
+            "planNo":planNo
+        },
         type : "POST",
         dataType : "JSON",
 
@@ -539,10 +541,6 @@ function makePlanDetail(thisId){
                 period += " " + startMeridiem + " " + startHour + ":" + startMinute;
 
             }
-
-
-
-
 
             if(!(plan.planStart === plan.planEnd)) {
 
@@ -923,7 +921,7 @@ function updatePlan(){
     }
     
     $.ajax({
-        url : "plan/update",
+        url : "/bond/" + groupNo + "/plan/update",
         data : {
                 "planNo" : planNo,
                 "inputTitle" : inputTitle,
@@ -938,7 +936,9 @@ function updatePlan(){
 
         success : (message) => {
             alert(message);
-            loadCalendar();
+
+            const thisUrl = location.href;
+            location = thisUrl;
         },
         error : () => {
             alert("데이터 전송에 실패하였습니다.")
@@ -964,14 +964,16 @@ planDeleteBtn.addEventListener("click", () => {
     // const planNo = document.getElementById("detailBody").getAttribute("value");
     // deletePlan(planNo);
     $.ajax({
-        url : "plan/delete",
+        url : "/bond/" + groupNo + "/plan/delete",
         data : {"planNo":planNo},
         type : "POST",
         dataType : "JSON",
 
         success : (message) => {
             alert(message);
-            loadCalendar();
+
+            const thisUrl = location.href;
+            location = thisUrl;
         },
         error : () => {
             alert("데이터 전송에 실패하였습니다.")
@@ -981,3 +983,9 @@ planDeleteBtn.addEventListener("click", () => {
     const deleteModal = document.getElementById("deleteModal");
     deleteModal.classList.toggle("closed");
 })
+
+
+// 속도가 느리면 어떻게 해야 할가
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms))
+}

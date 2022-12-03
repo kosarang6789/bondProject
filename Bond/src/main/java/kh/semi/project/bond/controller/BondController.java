@@ -177,8 +177,10 @@ public class BondController {
 	}
 	
 	// 본드 생성 페이지 이동
-	@GetMapping("/bond/plan")
-	public String goBondPlanPage() {
+	@GetMapping("/bond/{groupNo}/plan")
+	public String goBondPlanPage(
+			@PathVariable("groupNo") int groupNo
+			) {
 		return "bond/bondPlan";
 	}
 	

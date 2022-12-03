@@ -16,9 +16,10 @@
 	</resultMap>
 	
 	<!-- 일정 목록 조회 -->
-	<select id="planSelectList" resultMap="plan_rm">
+	<select id="planSelectList" parameterType="_int" resultMap="plan_rm">
 		SELECT *
 		FROM "POST_PLAN"
+		WHERE GROUP_NO = #{groupNo}
 	</select>
 	
 	<!-- 일정 상세 조회 -->
@@ -41,6 +42,18 @@
 				#{planAllday}
 				)
 	</insert>
+	
+	<!-- 일정 수정 -->
+	<update id="planUpdate">
+		UPDATE "POST_PLAN" SET
+		PLAN_TITLE = #{planTitle},
+		PLAN_CONTENT = #{planContent},
+		PLAN_START = #{planStart},
+		PLAN_END = #{planEnd},
+		PLAN_COLOR = #{planColor},
+		PLAN_ALLDAY = #{planAllday}
+		WHERE PLAN_NO = #{planNo}
+	</update>
 	
 	<!-- 일정 삭제 -->
 	<delete id="planDelete">

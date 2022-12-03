@@ -19,14 +19,15 @@
 
 <body>
     <jsp:include page="/WEB-INF/views/bond/headerBond.jsp"/> 
-        <div id="container">
-            <jsp:include page="/WEB-INF/views/plan/insertModal.jsp" />
 
-            <jsp:include page="/WEB-INF/views/plan/viewModal.jsp" />
-        
-            <jsp:include page="/WEB-INF/views/plan/updateModal.jsp" />
-        
-            <jsp:include page="/WEB-INF/views/plan/deleteModal.jsp" />
+    <jsp:include page="/WEB-INF/views/plan/insertModal.jsp" />
+
+    <jsp:include page="/WEB-INF/views/plan/viewModal.jsp" />
+
+    <jsp:include page="/WEB-INF/views/plan/updateModal.jsp" />
+
+    <jsp:include page="/WEB-INF/views/plan/deleteModal.jsp" />
+        <div id="container">
 
             <!-- 1번 영역 -->
             <aside id="info">
@@ -131,18 +132,9 @@
         <c:remove var="message" />
     </c:if>
 
-    <div id="postWrite-modal">
-        <iframe width="620px" height="720px" src="/bond/postWrite"
-        id="postWrite-iframe"></iframe>
-        <button class="modal-closeBtn">
-            <i class="fa-solid fa-x"></i>
-        </button>
-    </div>
-
     <script>
         let cp = 0;
         const groupNo = "${groupNo}"
-    
     </script>
 
 
