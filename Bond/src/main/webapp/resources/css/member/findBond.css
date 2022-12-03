@@ -398,6 +398,48 @@ main{
     cursor: pointer;
 }
 
+.list-wrapper{
+    min-height: 670px;
+    width: 100%;
+}
+
+.list-table{
+    width: 100%;
+    padding: 20px;
+    border-collapse: collapse;
+}
+
+.list-table > thead{ background-color: #999; color: white;}
+
+.td-img{
+    width: 150px;
+}
+
+.list-table tr{
+    height: 20px;
+}
+
+.list-table > tbody{
+    padding-bottom: 20px;
+}
+
+.list-table > tbody > tr{
+    border-bottom: 1px solid gray;
+} 
+.list-table > tbody > td{
+    border-bottom: 1px solid gray;
+} 
+
+.list-table tr > *{ text-align: left; }
+.list-table tr > *:nth-of-type(1){ width: 5%; }
+
+.list-table tr > td:nth-of-type(2){
+    width: 25%; 
+    text-align: left;
+    text-decoration: none;
+}
+
+
 
 /* 모임 추천 영역 */
 

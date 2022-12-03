@@ -165,9 +165,7 @@
                             <option value="t">본드 이름</option>
                             <option value="c">본드 소개글</option>
                         </select>
-                        <c:forEach var="group" items="${group}">
-                            ${group.groupNo}
-                        </c:forEach>
+
                         <input type="text" id="search-query" name="query"
                         placeholder="원하는 모임을 검색하세요">
 
@@ -177,92 +175,22 @@
                         </button>
                     </fieldset>
                 </form>
-                    
-                <%-- 검색을 진행한 경우 --%>
-                <c:if test="${not empty param.key}">
-                    <c:set var="sURL" value="&key=${param.key}&query=${param.key}"/>
-                </c:if>
-
-                <div class="search-wrapper">
+                <div class="list-wrapper">
                     <table class="list-table">
-                        <thead>
-                            <tr>
-                                <th>번호</th>
-                                <th>본드 이름</th>
-                                <th>본드 소개글</th>
-                            </tr>
-                        </thead>
 
                         <tbody>
-                            <c:choose>
-                                <c:when test="${empty groupList}">
-                                <!-- 본드 목록 조회 결과가 비어있다면 -->
-                                    <tr>
-                                        <th colspan="3">본드가 존재하지 않습니다.</th>
-                                    </tr>
-                                </c:when>
-
-                                <c:otherwise>
-                                <!-- 본드 목록 조회 결과가 있다면 -->
-                                <c:forEach var="group" items="${group}">
-                                    <tr>
-                                        <td>${group.groupNo}</td>
-                                        <td>
-                                            <c:if test="${not empty group.thumbnail}">
-                                                <img class="list-thumbnail" src="${group.thumbnail}">
-                                            </c:if>
-                                            <c:if test="${empty group.thumbnail}">
-                                                <img class="list-thumbnail" src="/resources/images/bond/profile/no-profile.png">
-                                            </c:if>
-
-                                            <a href="/member/${group.groupNo}?cp=${pagination.currentPage}${sURL}">${group.groupName}</a>
-                                        </td>
-                                        <td>${group.groupComment}</td>
-                                    </tr>
-                                </c:forEach>
-                                </c:otherwise>
-                            </c:choose>
+                            <c:forEach var="group" items="${group}">
+                                <tr>
+                                    <td rowspan="2"><img src="/resources/images/bond/profile/no-profile.png" class="td-img"></td>
+                                    <td>${group.groupName}</td>
+                                </tr>
+                                <tr class="tr-comment">
+                                    <td class="td-comment">${group.groupComment}</td>
+                                </tr>
+                            </c:forEach>
                         </tbody>
                     </table>
                 </div>
-
-                <div class="pagination-area">
-
-                    <ul class="pagination">
-                    
-                        <!-- 첫 페이지로 이동 -->
-                        <li><a href="/group/${groupNo}?cp=1${sURL}">&lt;&lt;</a></li>
-    
-                        <!-- 이전 목록 마지막 번호로 이동 -->
-                        <li><a href="/group/${groupNo}?cp=${pagination.prevPage}${sURL}">&lt;</a></li>
-    
-    
-                        <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
-    
-                            <c:choose>
-                                <c:when test="${i == pagination.currentPage}">
-                                    <!-- 현재 보고있는 페이지 -->
-                                    <li><a class="current">${i}</a></li>
-                                </c:when>
-    
-                                <c:otherwise>
-                                    <!-- 현재 페이지를 제외한 나머지 -->
-                                    <li><a href="/group/${groupNo}/?cp=${i}${sURL}">${i}</a></li>
-                                </c:otherwise>
-                            </c:choose>
-                        
-                        </c:forEach>
-                        
-                        <!-- 다음 목록 시작 번호로 이동 -->
-                        <li><a href="/group/${groupNo}?cp=${pagination.nextPage}${sURL}">&gt;</a></li>
-    
-                        <!-- 끝 페이지로 이동 -->
-                        <li><a href="/group/${groupNo}?cp=${pagination.maxPage}${sURL}">&gt;&gt;</a></li>
-    
-                    </ul>
-                </div>
-    
-
             </article>
         </section>
 
