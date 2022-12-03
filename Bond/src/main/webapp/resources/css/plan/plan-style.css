@@ -110,7 +110,7 @@ body{
     align-items: center;
 }
 
-#inputContent{
+#inputContent #input2Content{
     width: 100%;
     border: none;
     outline: none;
