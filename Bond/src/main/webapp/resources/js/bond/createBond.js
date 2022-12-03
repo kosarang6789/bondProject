@@ -58,7 +58,7 @@ createForm.addEventListener("submit", function(event){
         event.preventDefault();
         return;
     }
-    
+
 });
 
 // 이미지 미리보기

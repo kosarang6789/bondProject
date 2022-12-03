@@ -26,6 +26,7 @@ import com.google.gson.Gson;
 
 import kh.semi.project.bond.model.service.BondService;
 import kh.semi.project.bond.model.vo.Group;
+import kh.semi.project.bond.model.vo.GroupMemberList;
 import kh.semi.project.member.model.vo.Member;
 
 @Controller
@@ -107,6 +108,14 @@ public class BondController {
 		// 본드 기본정보 불러오기(이름, 사진, 멤버수, 소개글)
 		Group groupInfo = service.selectGroupInfo(groupNo);
 		
+		String openYN = groupInfo.getOpenYN();
+		GroupMemberList member = new GroupMemberList();
+		
+		member.setGroupNo(groupNo);
+		member.setMemberNo(loginMember.getMemberNo());
+		
+		int result = service.selectMemberInfo(member);
+		
 		// 신고 기록 조회
 		String checkReport = service.checkReport(groupNo);
 		String path = "";
@@ -116,32 +125,23 @@ public class BondController {
 			model.addAttribute("groupInfo", groupInfo);
 			
 			
-			// 게시글 불러오기
-			Map<String, Object> map = service.selectBoardDetail(groupNo, cp);
-			
-			model.addAttribute("map",map);
-			int memberNo = loginMember.getMemberNo();
-			
-			Map<String, Object> map1 = new HashMap<String, Object>();
-			map1.put("groupNo", groupNo);
-			map1.put("memberNo", memberNo);
-			int result1 = service.selectJoinNo(map1);
-			
-			// 밴드 가입 여부
-			if(result1 == 0) { // 가입X
-				String resultYN = service.selectOpenYN(groupNo);
-				// 게시물 공개 여부
-				if(resultYN.equals("Y")) { // 공개X
-					path = "/";
-					
-				} else { // 공개O
-					path = "bond/openYes";
-				}
-			} else { // 가입O
+			if(result > 0) { // 가입O
+				// 게시글 불러오기
+				Map<String, Object> map = service.selectBoardDetail(groupNo, cp);
+				model.addAttribute("map",map);
 				path = "bond/bond";
 				
+			} else { // 가입X
+				if(openYN.equals("N")) { // 게시물 공개X
+					path = "bond/openNo";
+				} else { // 게시물 공개O
+					// 게시글 불러오기
+					Map<String, Object> map = service.selectBoardDetail(groupNo, cp);
+					model.addAttribute("map",map);
+					path = "bond/openYes";
+				}
+				
 			}
-			
 			
 		} else { // 신고 기록이 있으면
 			String notice = "모임 이용 중지됨"

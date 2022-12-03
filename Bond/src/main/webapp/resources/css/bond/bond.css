@@ -9,7 +9,8 @@
 }
 
 a{
-    text-decoration: none;
+    text-decoration: none !important;
+
 }
 
 body{
@@ -49,6 +50,9 @@ body{
     display: inline-block;
     position: relative;
     vertical-align: top;
+    width: 232px;
+    height: 174px;
+    overflow: hidden;
 }
 
 
@@ -57,6 +61,7 @@ body{
     height: 100%;
     border: 1px solid rgba(0,0,0,.05);
     border-radius: 3px;
+    object-fit: cover;
 }
 
 .band-name{
@@ -374,9 +379,8 @@ body{
 .text-body{
     font-size: 14px;
     line-height: 1.43;
-    white-space: pre-line;
-    padding-bottom: 8px;
-
+    padding: 8px 0;
+    /* text-decoration: none !important; */
 }
 
 .post-count{
@@ -409,12 +413,7 @@ button{
     font-size: 1.1em;
 }
 
-.count{
-    margin-left: 3px;
-    font-size: 12px;
-    line-height: 24px;
-    font-weight: 500;
-}
+
 
 .comment{
     font-size: 13px;
@@ -452,17 +451,6 @@ button{
     justify-content: space-around;
     align-items: center;
 }
-
-.post-text{
-    font-weight: 500;
-    font-size: 15px;
-    color: #222;
-}
-
-.post-text:hover{
-    text-decoration: underline;
-}
-
 
 
 /* banner */
@@ -670,9 +658,6 @@ button{
     color: #222;
 }
 
-.post-text:hover{
-    text-decoration: underline;
-}
 
 
 /* 모달 창 관련 */
@@ -682,7 +667,7 @@ button{
     color: #777;
     cursor: pointer;
     position: absolute;
-    right: 40px;
+    right: 18px;
     top: 20px;
 }
 
@@ -695,3 +680,35 @@ iframe{
 }
 
 
+/* 상세조회 모달창 */
+#postSelect-modal{
+    position : fixed;
+    top : 0;
+    left : 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: none; 
+    z-index: 3000;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#postSelect-view{
+    height: 95%;
+}
+
+.show{
+    display: flex !important;
+}
+
+.sModal-closeBtn{
+    position: absolute;
+    top: 27px;
+    right: 33px;
+    font-size: 22px;
+    color: #f0f2f4;
+}

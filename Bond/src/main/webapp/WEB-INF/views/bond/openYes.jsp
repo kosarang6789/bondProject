@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="postList" value="${map.postList}"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>모임이 쉬워진다 | BOND</title>
+    <title>${groupInfo.groupName} | BOND</title>
 
     <link rel="stylesheet" href="/resources/css/bond//openYes.css">
     <script src="https://kit.fontawesome.com/1ce4f19a7a.js" crossorigin="anonymous"></script>
@@ -22,13 +23,13 @@
             <aside id="info">
                 <div id="info-inner">
                     <div class="side-cover">
-                        <a href="#" class="cover">
+                        <a href="#" class="cover-img">
                             <c:choose>
                                 <c:when test="${not empty groupInfo.groupImage}">
                                     <img src="${groupInfo.groupImage}" id="cover-img">  
                                 </c:when>
                                 <c:otherwise>
-                                    <img src="/resources/images/bond/profile/non-profile.png">
+                                    <img src="/resources/images/bond/profile/no-profile.png" id="cover-img">
                                 </c:otherwise>
                             </c:choose>
                         </a>
@@ -124,14 +125,136 @@
                         </div>
                     </div>
 
-                    <div class="empty" style="height: 235px;">
-                        <a href="#" class="empty-inner">
-                            <span class="empty-icon">
-                                    <i class="fa-regular fa-clipboard empty-icon-inner"></i>
-                            </span>
-                            <p class="empty-desc">모든 글을 보려면 밴드에 가입해보세요.</p>
-                        </a>
-                    </div>
+                <!-- 2번 영역 -->
+                    <main id="board-list">
+                        <div class="post-write-form">
+                            <div class="board-search">
+                                <form action="#" class="search-form">
+                                    <div class="input-search-form">
+                                        <label class="gSrOnly" for="input-search" >글 내용, 작성자 검색</label>
+                                        <input type="text" id="input-search" placeholder="글 내용, 작성자 검색"
+                                            maxlength="20">
+                                        <button type="submit" class="searchbtn"><i class="fa-solid fa-magnifying-glass search-icon"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <%-- 게시물 조회 --%>
+                            <div class="post-wrap">
+                                
+                                <c:choose>
+                                    <c:when test="${empty postList}">
+                                        <!-- 게시글 목록 조회 결과가 비어있다면 -->
+                                        <tr>
+                                            <th colspan="6">게시글이 존재하지 않습니다.</th>
+                                        </tr>
+                                    </c:when>
+
+                                    <c:otherwise>
+                                        <!-- 게시글 목록 조회 결과가 있다면 -->
+                                        <c:forEach var="post" items="${postList}">
+                                            <div data-viewname="post-list-view" class="post-wrap">
+                                                <div class="content-card">
+                                                    <div class="post-list-view">
+                                                        <div class="post-author-view">
+                                                            <%-- 작성자 프로필 이미지 --%>
+                                                            <div class="uprofile">
+                                                                
+                                                                <c:if test="${empty post.memberImage}">
+                                                                    <%-- 프로필 이미지가 없을 경우 --%>
+                                                                    <img class="uprofile-inner" 
+                                                                    src="/resources/images/member/profile/defaultProfile.png" />
+                                                                </c:if>
+                                                                <c:if test="${!empty post.memberImage}">
+                                                                    <%-- 프로필 이미지가 있을 경우 --%>
+                                                                    <img class="uprofile-inner" src="${post.memberImage}"/>
+                                                                </c:if>
+                                                            </div>
+
+                                                            <div class="post-info">
+                                                                <%-- 작성자 이름 --%>
+                                                                <strong class="post-info-name">${post.memberName}</strong>
+                                                                <%-- 작성 날짜 --%>
+                                                                <div class="post-list-info">
+                                                                    <a href="#" class="post-info-date">${post.postDate}</a>
+                                                                </div>
+                                                            </div>    
+                                                        </div>
+
+                                                        <%-- 게시물 내용 --%>
+                                                        <div class="post-body" id="${post.postNo}">
+                                                            <div class="post-text">
+                                                                <p class="text-body">
+                                                                    ${post.postContent}
+                                                                </p>
+                                                                <a href="#" class="more-link">...더보기</a>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="post-count-view">
+                                                            <div class="post-count">
+                                                                <span class="face-comment">
+                                                                    <%-- 좋아요 --%>
+                                                                    <button type="button" class="emotion-view">
+                                                                        <span class="emotion-wrap">
+                                                                            <span class="icon">
+                                                                                <i class="fa-regular fa-thumbs-up"></i>
+                                                                            </span>
+                                                                        </span>
+                                                                        <span class="count eCount">${post.likeCount}</span>
+                                                                    </button>
+                                                                    <%-- 댓글 --%>
+                                                                    <button type="button" class="comment">
+                                                                        댓글 <span class="count rCount">${post.replyCount}</span>
+                                                                    </button>
+                                                                    <%-- 댓글 더보기 --%>
+                                                                    <button type="button" class="comment-toggle">
+                                                                        <i class="fa-solid fa-angle-down"></i>
+                                                                    </button>
+                                                                </span>
+                                                                <%-- 조회수 --%>
+                                                                <span class="share-read">
+                                                                    <span class="gSrOnly">읽음</span>
+                                                                    <i class="fa-solid fa-eye" style="color: #555;"></i>
+                                                                    <span class="count vCount">${post.postView}</span>
+                                                                </span>
+                                                            </div>
+
+                                                            <div class="post-added">
+                                                                <div class="post-add-box">
+                                                                    <div class="add-col">
+                                                                        <a href="#">
+                                                                            <span class="icon">
+                                                                                <i class="fa-regular fa-thumbs-up"></i>
+                                                                            </span>
+                                                                            <span class="post-text">좋아요</span>
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="add-col">
+                                                                        <a href="#">
+                                                                            <span class="icon">
+                                                                                <i class="fa-solid fa-up-right-from-square"></i>
+                                                                            </span>
+                                                                            <span class="post-text">공유</span>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </c:forEach>
+                                    </c:otherwise>
+                                </c:choose>
+
+
+                            </div>
+
+                            <div id="pageTarget" style="height:20px"></div>
+                        </div>
+                    </main>
                 </div>
             </div>
 
@@ -142,5 +265,8 @@
             </a>
         </div>
 
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>    
+
+    <script src="/resources/js/bond/bond.js"></script>
 
 </body>
