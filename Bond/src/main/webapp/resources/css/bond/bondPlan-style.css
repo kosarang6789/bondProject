@@ -26,6 +26,122 @@ body{
 }
 
 /*  */
+/* 풀캘린더 폰트 */
+.fc-header-toolbar{
+    font-size: 12px;
+}
+
+.fc-daygrid-day-number{
+    font-size: 11px;
+}
+
+.fc-col-header-cell-cushion {
+    font-size: 11px;
+}
+
+.fc-event-time{
+    font-size: 11px;
+}
+
+.fc-event-title{
+    font-size: 11px;
+}
+
+.fc-daygrid-more-link{
+    font-size: 10px;
+    letter-spacing: -1px;
+}
+
+.fc-event-title-container{
+    font-size: 11px;
+}
+
+.fc-daygrid-day-frame:hover{
+    background-color: rgb(0, 0, 0, 0.03);
+    transition-duration: 0.1s;
+    cursor: pointer;
+}
+
+/* today-plan-area */
+
+/* 배너 날짜 목록 */
+#band-soon-plan-area{
+    position: fixed;
+    min-height: 80px;
+    width: 240px;
+    top: 320px;
+    background-color: white;
+}
+
+.soon-plan-body{
+    border-top: 1px solid #f0f2f4;
+}
+
+/* 배너 날짜 목록 스타일 banner plan list */
+.soon-plan-one{
+    display: flex;
+    align-items: center;
+    padding: 0px 14px;
+    margin: 5px 0px;
+    height: 40px;
+}
+
+.left-part{
+    padding-top: 1px;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+    color: dimgray;
+
+
+}
+
+.oneDay{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.oneMonth{
+    font-size: 10px;
+    letter-spacing: -1px;
+}
+
+.right-part{
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    margin-left: 10px;
+    color: dimgray
+}
+
+.oneTitle{
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.onePeriod{
+    font-size: 10px;
+}
+
+/* 일정 없으면 */
+.soon-plan-empty{
+    font-size: 12px;
+    color: dimgray;
+
+    height: 46px;
+    padding: 0px 14px;
+    margin: 5px;
+
+
+    display: flex;
+    align-items: center;
+}
+
+/* end today-plan-area */
 
 /* 모달창 일정 추가(insertModal.jsp) */
 
@@ -95,7 +211,7 @@ body{
     align-items: center;
 }
 
-#inputTitle{
+#inputTitle, #input2Title{
     width: 100%;
     border: none;
     outline: none;
@@ -118,7 +234,7 @@ body{
     align-items: center;
 }
 
-#inputContent{
+#inputContent, #input2Content{
     width: 100%;
     border: none;
     outline: none;
@@ -1049,6 +1165,7 @@ button{
 #banner .more-button:hover{
     text-decoration: underline;
 }
+
 
 .btn-go-to-top{
     position: fixed;
