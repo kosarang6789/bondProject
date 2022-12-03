@@ -141,14 +141,14 @@
 
                     </div>
 
-                            <div class="report">
+                            <div class="report" id="modalReport">
                                 <a href="/myPage/myPage"><i class="fa-solid fa-gear sidbar-icon"></i></a>
+                                <button class="report">
+                                    <i class="fa-solid fa-user-slash"></i>  
+                                    신고하기
+                                </button>
                             </div>
 
-                            <button class="report">
-                                <i class="fa-solid fa-user-slash"></i>  
-                                신고하기
-                            </button>
 
                     <%-- <div class="profile-image">
                         <c:if test="${empty memberList.memberImage}">

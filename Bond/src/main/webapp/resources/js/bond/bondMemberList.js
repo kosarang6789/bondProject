@@ -167,6 +167,7 @@ const modalName = document.getElementById("modalName");
 const modalLeader = document.getElementById("modalLeader");
 const modalJoinDate = document.getElementById("modalJoinDate");
 const modalBirth = document.getElementById("modalBirth");
+const modalReport = document.getElementById("modalReport");
 
 const selectMemPro = memberNo =>{
     $.ajax({
