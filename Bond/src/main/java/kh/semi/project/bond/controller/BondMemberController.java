@@ -44,13 +44,13 @@ public class BondMemberController {
 	
 	// 그룹 멤버 리스트 가져오기
 	@GetMapping("/bond/{groupNo}/bondMemberList")
-//	@ResponseBody
 	public String memberList(
+			@PathVariable("groupNo") int groupNo,
 			@SessionAttribute("loginMember") Member loginMember,
 			@SessionAttribute("groupInfo") Group groupInfo,
 			Model model) {
 		
-		int groupNo = groupInfo.getGroupNo();
+//		int groupNo = groupInfo.getGroupNo();
 		
 		Map<String, Object> memMap = serivce.selectMemberList(groupNo);
 		
@@ -64,6 +64,7 @@ public class BondMemberController {
 	@PostMapping("/bondMemberList/scroll")
 	@ResponseBody
 	public String memberListScroll(
+			@PathVariable("groupNo") int groupNo,
 			Model model,
 			@RequestParam(value="cp", required=false, defaultValue= "1") int cp,
 			HttpServletRequest req, HttpServletResponse resp,
@@ -71,7 +72,7 @@ public class BondMemberController {
 			@SessionAttribute("groupInfo") Group groupInfo,
 			RedirectAttributes ra) {
 		
-		int groupNo = groupInfo.getGroupNo();
+//		int groupNo = groupInfo.getGroupNo();
 		
 		Map<String, Object> memMap = serivce.memberListScroll(groupNo, cp);
 		
