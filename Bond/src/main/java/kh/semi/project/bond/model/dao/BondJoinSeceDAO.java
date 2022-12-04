@@ -18,4 +18,10 @@ public class BondJoinSeceDAO {
 		return sqlSession.insert("bondJoinSeceMapper.bondJoin", join);
 	}
 
+
+	// 본드 탈퇴
+	public int bondSecession(GroupMemberList join) {
+		return sqlSession.update("bondJoinSeceMapper.bondSecession", join);
+	}
+
 }

@@ -13,6 +13,7 @@
     <title>${groupInfo.groupName} | BOND</title>
 
     <link rel="stylesheet" href="/resources/css/bond/bond.css">
+    <link rel="stylesheet" href="/resources/css/bond/Modal-jose.css"><%-- 탈퇴모달 --%>
     <script src="https://kit.fontawesome.com/1ce4f19a7a.js" crossorigin="anonymous"></script>
 
 </head>
@@ -313,6 +314,9 @@
         </button>
     </div>
 
+    <%-- 본드 탈퇴 모달 --%>
+    <jsp:include page="/WEB-INF/views/bond/secessionModal.jsp"/>
+
     <script>
         let cp = 0;
         const groupNo = "${groupNo}"
@@ -322,6 +326,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>    
 
+    <script src="/resources/js/bond/secessionModal.js"></script><%-- 탈퇴 모달 --%>
     <script src="/resources/js/bond/bond.js"></script>
     
 </body>

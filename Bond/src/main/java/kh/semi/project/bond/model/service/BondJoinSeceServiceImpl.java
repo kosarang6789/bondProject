@@ -27,4 +27,17 @@ public class BondJoinSeceServiceImpl implements BondJoinSeceService{
 		return dao.bondJoin(join);
 	}
 
+
+	// 본드 탈퇴
+	@Override
+	public int bondSecession(int memberNo, int groupNo) {
+		
+		GroupMemberList join = new GroupMemberList();
+		
+		join.setGroupNo(groupNo);
+		join.setMemberNo(memberNo);
+		
+		return dao.bondSecession(join);
+	}
+
 }
