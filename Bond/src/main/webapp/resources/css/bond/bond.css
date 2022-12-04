@@ -163,7 +163,7 @@ body{
     margin-right: 5px;
 }
 
-.write-button{
+#write-button{
     width: 100%;
     height: 40px;
     padding: 0;
@@ -257,7 +257,7 @@ body{
 
 .main-content{
     position: relative;
-    margin-bottom: 55px;
+    margin-bottom: 13px;
 }
 
 .content-button{
@@ -285,30 +285,9 @@ body{
     line-height: 1.5;
 }
 
-.toolbar-area{
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 43px;
-    padding: 0 13px 0 15px;
-    background-color: white;
-    margin-bottom: 12px;
-}
-
-.toolbar{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 43px;
-}
-
-.toolbaritem{
-    cursor: pointer;
-}
-
 /* 게시물 영역 */
 .content-card{
-    margin-bottom: 11px;
+    margin-bottom: 13px;
     position: relative;
     background-color: white;
 }
@@ -372,23 +351,11 @@ body{
     padding: 0 22px 17px;
 }
 
-.post-text{
-    cursor: pointer;
-}
-
 .text-body{
     font-size: 14px;
     line-height: 1.43;
     padding: 8px 0;
     /* text-decoration: none !important; */
-}
-
-.post-count{
-    overflow: hidden;
-    padding: 15px 22px 10px;
-    margin-top: -17px;
-    display: flex;
-    justify-content: space-between;
 }
 
 .face-comment{
@@ -413,8 +380,6 @@ button{
     font-size: 1.1em;
 }
 
-
-
 .comment{
     font-size: 13px;
     font-weight: 400;
@@ -423,33 +388,9 @@ button{
     vertical-align: top;
 }
 
-.comment-toggle{
-    margin-top: 3px;
-    width: 17px;
-    height: 17px;
-    overflow: hidden;
-
-}
-
 .share-read{
     line-height: 23px;
     vertical-align: top;
-}
-
-.post-added{
-    height: 45px;
-    position: relative;
-    border-top: 1px soid #888;
-    border-radius: 0 0 4px 4px;
-    white-space: nowrap;
-}
-
-.post-add-box{
-    display: flex;
-    width: 100%;
-    height: 45px;
-    justify-content: space-around;
-    align-items: center;
 }
 
 
@@ -659,9 +600,14 @@ button{
     color: white;
 }
 
+.post-count-view{
+    margin-top: 13px;
+}
+
 .post-count{
     overflow: hidden;
-    padding: 15px 22px 10px;
+    border-top: 1px solid #efefef;
+    padding: 13px 22px;
     margin-top: -17px;
     display: flex;
     justify-content: space-between;
@@ -737,6 +683,7 @@ button{
     font-weight: 500;
     font-size: 15px;
     color: #222;
+    cursor: pointer;
 }
 
 
