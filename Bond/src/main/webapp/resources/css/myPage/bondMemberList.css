@@ -274,7 +274,7 @@ main{
     cursor: pointer;
     border: none;
     background-color: white;
-    margin-top: 7px;
+    /* margin-top: 7px; */
 }
 .modal .report:hover{
     color: red;

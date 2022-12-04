@@ -18,8 +18,6 @@ public interface BondMemberService {
 	Map<String, Object> memberListScroll(int groupNo, int cp);
 
 	// 본드 멤버 프로필 클릭
-	GroupMemberList selectMemPro(GroupMemberList memPro);
-
 	GroupMemberList selecMemPro(int groupNo, int memberNo);
 
 

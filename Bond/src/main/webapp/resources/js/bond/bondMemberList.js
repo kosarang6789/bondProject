@@ -83,7 +83,7 @@ function selectBoardScroll (){
     
                                 const members = document.createElement("div");
                                 members.classList.add("member-list");
-                                members.setAttribute("id", mem.memNo);
+                                members.setAttribute("id", mem.memberNo);
                                 members.addEventListener("click",()=>{
                                     modal.style.display="flex";
                                     selectMemPro(members.getAttribute("id"));
@@ -149,15 +149,13 @@ document.querySelector(".inviteBtn").addEventListener("click", ()=>{
     alert("주소가 복사되었습니다.");
 });
 
+// ---------회원 정보 모달 창------------
 
-// 회원 정보 모달 창
 
 let image = document.getElementsByClassName("memImg");
 let mm = document.getElementsByClassName("member-list");
 const modal = document.getElementById("modal");
 const modalx = document.getElementById("modalx");
-
-// let selectMemNo;
 
 modalx.addEventListener("click",()=>{
     modal.style.display="none";
@@ -170,21 +168,48 @@ const modalJoinDate = document.getElementById("modalJoinDate");
 const modalBirth = document.getElementById("modalBirth");
 const modalReport = document.getElementById("modalReport");
 
-// for(let img of image){
-//     img.addEventListener("click", ()=>{
-//         modal.style.display="flex";
-//         // selectMemNo = img.getAttribute("id");
-//         // console.log("1 : " + selectMemNo);
-        
-//         selectMemPro(img.getAttribute("id"));
-//     });
-// };
+
 for(let m of mm){
     m.addEventListener("click", ()=>{
         modal.style.display="flex";
         selectMemPro(m.getAttribute("id"));
     });
 };
+
+// 내가 아닐 때
+const modalBtn = document.createElement("button");
+modalBtn.classList.add("report");
+
+const modalNMe = document.createElement("div");
+modalNMe.classList.add("report");
+const modalIcon = document.createElement("i");
+modalIcon.classList.add("fa-solid");
+modalIcon.classList.add("fa-user-slash");
+modalIcon.innerText = "신고하기";
+
+modalNMe.append(modalBtn);
+modalBtn.append(modalIcon);
+
+// 나 일때
+const modalA = document.createElement("a");
+modalA.setAttribute("href", "/myPage/myPage");
+
+const modalMe = document.createElement("div");
+modalMe.classList.add("report");
+const modalMyI = document.createElement("i");
+modalMyI.classList.add("fa-solid");
+modalMyI.classList.add("fa-gear");
+modalMyI.classList.add("sidbar-icon");
+modalMyI.innerText="내 정보 수정";
+
+modalMe.append(modalA);
+modalA.append(modalMyI);
+
+// 프로필 부분
+const modalImgarea = document.getElementById("modalImgarea");
+const ii = document.createElement("img");
+ii.classList.add("image");
+modalImgarea.append(ii);
 
 const selectMemPro = (memberNo) =>{
     $.ajax({
@@ -194,9 +219,11 @@ const selectMemPro = (memberNo) =>{
             console.log(memPro.memberName);
 
             if(memPro.memberImage !=null) {
-                modalImg.setAttribute("src", memPro.memberImage);
+                ii.setAttribute("src", memPro.memberImage);
+                modalImgarea;
             }else {
-                modalImg.setAttribute("src", "/resources/images/member/profile/defaultProfile.png");
+                ii.setAttribute("src", "/resources/images/member/profile/defaultProfile.png");
+                modalImgarea;
             };
 
             modalName.innerText = memPro.memberName;
@@ -207,33 +234,17 @@ const selectMemPro = (memberNo) =>{
                 modalLeader.innerText="리더";
             };
 
-            modalJoinDate.innerText=memPro.joinDate;
+            modalJoinDate.innerText= "since" + memPro.joinDate;
 
             modalBirth.innerText = memPro.memberBirth;
 
-            if(memNo != memPro.memberNo){
-                const modalBtn = document.createElement("button");
-                modalBtn.classList.add("report");
-
-                const modalIcon = document.createElement("i");
-                modalIcon.classList.add("fa-solid");
-                modalIcon.classList.add("fa-user-slash");
-                modalIcon.innerText = "신고하기";
-
-                modalReport.append(modalBtn);
-                modalBtn.append(modalIcon);
+            const modalProfile = document.getElementById("modalProfile");
+            if(myNo != memPro.memberNo){
+                modalProfile.append(modalNMe);
+                modalMe.remove();
             }else{
-                const modalA = document.createElement("a");
-                modalA.setAttribute("href", "/myPage/myPage");
-                
-                const modalMyI = document.createElement("i");
-                modalMyI.classList.add("fa-solid");
-                modalMyI.classList.add("fa-gear");
-                modalMyI.classList.add("sidbar-icon");
-                modalMyI.innerText="내 정보 수정";
-
-                modalReport.append(modalA);
-                modalA.append(modalMyI);
+                modalProfile.append(modalMe);
+                modalNMe.remove();
             }
 
         },

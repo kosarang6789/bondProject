@@ -104,7 +104,6 @@
         <script>
             alert("${message}");
         </script>
-        <%-- message 1회 출력 후 모든 scope에서 message 삭제 --%>
         <c:remove var="message" />
     </c:if>
 

@@ -34,14 +34,6 @@ public class BondMemberController {
 	@Autowired
 	private BondMemberService serivce;
 	
-//	
-//	// 그룹 멤버 리스트 페이지 이동
-//	@GetMapping("/bondMemberList")
-//	public String goMemberList() {
-//		return "bond/bondMemberList";
-//	}
-//	
-	
 	// 그룹 멤버 리스트 가져오기
 	@GetMapping("/bond/{groupNo}/bondMemberList")
 	public String memberList(
@@ -50,8 +42,6 @@ public class BondMemberController {
 			@SessionAttribute("groupInfo") Group groupInfo,
 			@RequestParam(value="cp", required=false, defaultValue= "1") int cp,
 			Model model) {
-		
-//		int groupNo = groupInfo.getGroupNo();
 		
 		Map<String, Object> memMap = serivce.selectMemberList(groupNo, cp);
 		
@@ -62,6 +52,8 @@ public class BondMemberController {
 		return "bond/bondMemberList";
 	}
 	
+	
+	// 멤버 리스트 무한 스크롤
 	@PostMapping("/bond/{groupNo}/bondMemberList/scroll")
 	@ResponseBody
 	public String memberListScroll(
@@ -72,8 +64,6 @@ public class BondMemberController {
 			@SessionAttribute(value="loginMember", required=false) Member loginMember,
 			@SessionAttribute("groupInfo") Group groupInfo,
 			RedirectAttributes ra) {
-		
-//		int groupNo = groupInfo.getGroupNo();
 		
 		Map<String, Object> memMap = serivce.memberListScroll(groupNo, cp);
 		
@@ -89,12 +79,6 @@ public class BondMemberController {
 	public String selectMemPro(
 			@SessionAttribute("groupInfo") Group groupInfo,
 			@PathVariable("memberNo") int memberNo) {
-		
-//		GroupMemberList memPro = new GroupMemberList();
-//		memPro.setGroupNo(groupNo);
-//		memPro.setMemberNo(memberNo);
-//		
-//		memPro = serivce.selectMemPro(memPro);
 		
 		GroupMemberList memPro = serivce.selecMemPro(groupInfo.getGroupNo(), memberNo);
 		

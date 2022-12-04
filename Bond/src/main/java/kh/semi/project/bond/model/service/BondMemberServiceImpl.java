@@ -29,13 +29,6 @@ public class BondMemberServiceImpl implements BondMemberService{
 		return memMap;
 	}
 
-//
-//	// 본드 멤버 리스트 가져오기
-//	@Override
-//	public List<GroupMemberList> selectMemList(int groupNo) {
-//		return dao.selectMemberList(groupNo);
-//	}
-
 	
 	// 본드 멤버 리스트 무한 스크롤
 	@Override
@@ -52,11 +45,6 @@ public class BondMemberServiceImpl implements BondMemberService{
 
 	
 	// 본드 멤버 프로필 클릭
-	@Override
-	public GroupMemberList selectMemPro(GroupMemberList memPro) {
-		return dao.selectMemPro(memPro);
-	}
-
 	@Override
 	public GroupMemberList selecMemPro(int groupNo, int memberNo) {
 		
