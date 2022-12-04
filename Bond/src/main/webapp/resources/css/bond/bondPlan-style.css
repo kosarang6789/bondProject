@@ -1,0 +1,1303 @@
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'nanumsquare';
+}
+
+a{
+    text-decoration: none;
+}
+
+body{
+    background-color: #F2F2F2;
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+/* plan style start */
+/* 복합기능 */
+.closed{
+    display: none;
+}
+
+/*  */
+/* 풀캘린더 폰트 */
+.fc-header-toolbar{
+    font-size: 12px;
+}
+
+.fc-daygrid-day-number{
+    font-size: 11px;
+}
+
+.fc-col-header-cell-cushion {
+    font-size: 11px;
+}
+
+.fc-event-time{
+    font-size: 11px;
+}
+
+.fc-event-title{
+    font-size: 11px;
+}
+
+.fc-daygrid-more-link{
+    font-size: 10px;
+    letter-spacing: -1px;
+}
+
+.fc-event-title-container{
+    font-size: 11px;
+}
+
+.fc-daygrid-day-frame:hover{
+    background-color: rgb(0, 0, 0, 0.03);
+    transition-duration: 0.1s;
+    cursor: pointer;
+}
+
+/* today-plan-area */
+
+/* 배너 날짜 목록 */
+/* 다가오는 일정 */
+#band-soon-plan-area{
+    position: fixed;
+    min-height: 80px;
+    width: 240px;
+    top: 320px;
+    background-color: white;
+}
+
+.soon-plan-body{
+    border-top: 1px solid #f0f2f4;
+}
+
+/* 배너 날짜 목록 스타일 banner plan list */
+.soon-plan-one{
+    display: flex;
+    align-items: center;
+    padding: 0px 14px;
+    margin: 5px 0px;
+    height: 40px;
+}
+
+.left-part{
+    padding-top: 1px;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+    color: dimgray;
+
+
+}
+
+.oneDay{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.oneMonth{
+    font-size: 10px;
+    letter-spacing: -1px;
+}
+
+.right-part{
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    margin-left: 10px;
+    color: dimgray
+}
+
+.oneTitle{
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.onePeriod{
+    font-size: 10px;
+}
+
+/* 일정 없으면 */
+.soon-plan-empty{
+    font-size: 12px;
+    color: dimgray;
+
+    height: 46px;
+    padding: 0px 14px;
+    margin: 5px;
+
+
+    display: flex;
+    align-items: center;
+}
+
+/* end today-plan-area */
+
+/* 모달창 일정 추가(insertModal.jsp) */
+
+/* insertModal 배경 */
+#insertModal{
+    position: absolute;
+    background-color: rgb(0, 0, 0, 0.7);
+    
+    width: 100vw;
+    height: 100vh;
+
+    top: 0;
+    z-index: 10000;
+}
+
+/* insertModal의 window */
+#insertWindow{
+    background-color: white;
+    width: 400px;
+    min-height: 420px;
+    height: auto;
+
+    position: fixed; 
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* insertModal - window 스타일 */
+
+/* 모달창 닫기 버튼 */
+#closeInsertModal{
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+
+    font-size: 25px;
+    color: dimgray;
+}
+
+/* insert-header */
+.insert-header{
+    font-size: 12px;
+
+    background-color: #E2E2E230;
+    border-bottom: 1px solid #E2E2E2;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* insert-body */
+#insertBody, #updateBody{
+    padding: 20px;
+    min-height: 250px;
+}
+
+/* 일정 제목 (input) */
+#inputTitleBox{
+    height: 30px;
+    border: 1px solid #E2E2E2;
+    margin-bottom: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#inputTitle, #input2Title{
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 0px 10px;
+
+    font-size: 12px;
+}
+
+#inputTitleBox:focus-within{
+    border: 1px solid dimgray;
+}
+
+/* 일정 설명 (textarea) */
+
+#inputContentBox{
+    min-height: 70px;
+    border: 1px solid #E2E2E2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0px;
+}
+
+#inputContent, #input2Content{
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 0px 10px;
+    font-size: 12px;
+
+    resize: none;
+}
+
+#inputContentBox:focus-within{
+    border: 1px solid dimgray;
+}
+
+
+/* 날짜 열 */
+#inputDateBox{
+    margin: 20px 0px;
+    border-top: 1px solid #E2E2E2;
+    border-bottom: 1px solid #E2E2E2;
+}
+
+.dateBoxRow{
+    margin-top: 10px;
+    height: 30px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    font-size: 10px;
+}
+
+.dateBoxRow > input{
+    height: 20px;
+    margin-left: 5px;
+}
+
+#startBox > div, #endBox > div{
+    width: 130px;
+}
+
+#allDayBox{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#inputCheckbox, #input2Checkbox{
+    margin-right: 5px;
+}
+
+/* 팔레트 */
+#inputColorBox{
+    display: flex;
+    margin: 5px 0px;
+    font-size: 10px;
+}
+
+#inputColorBox > div{
+    margin-right: 5px;
+}
+
+#inputColorBox input{
+    display: none;
+}
+
+input[name="planColor"]:hover + .palette{
+    opacity: 0.7;
+    transition-duration: 0.1s;
+}
+
+input[name="planColor"]:checked + .palette{
+    border: 2px solid black;
+}
+
+.palette{
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+
+    margin-right: 5px;
+}
+
+#insertFoot, #updateFoot{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#confirmBtn{
+    width: 80px;
+    height: 30px;
+    font-size: 10px;
+
+    border: none;
+    background-color: #515161;
+    color: white;
+}
+
+
+/* 모달창 일정 상세 조회(viewModal.jsp) */
+
+#detailModal{
+    position: absolute;
+    background-color: rgb(0, 0, 0, 0.7);
+    
+    width: 100vw;
+    height: 300vh;
+
+    top: 0;
+    z-index: 10000;
+}
+
+
+#detailWindow{
+    background-color: white;
+    width: 500px;
+    min-height: 200px;
+    height: auto;
+
+    position: fixed; 
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+
+    z-index: 15000;
+
+}
+
+
+#detailBody{
+    position: relative;
+
+}
+
+
+/* 모달창 드롭다운 메뉴 */
+
+/* 드롭다운 열기 */
+#openDetailModalMenu{
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+
+    z-index: 20000;
+}
+
+/* 드롭다운 메뉴 */
+#detailModalMenu{
+    width: 150px;
+    border: 1px solid #E2E2E2;
+
+
+    position: absolute;
+    right: 27px;
+    top: 40px;
+
+    z-index: 25000;
+}
+
+/* 드롭다운 메뉴 서브메뉴 */
+#detailModalMenu > div{
+    font-size: 12px;
+
+    background-color: white;
+    display: flex;
+    align-items: center;
+
+    height: 30px;
+    padding: 20px;
+
+    z-index: 30000;
+
+    cursor: pointer;
+}
+
+#detailModalMenu > div:not(#detailModalMenu > div:last-child){
+    border-bottom: 1px solid #E2E2E2;
+}
+
+/* 사용 변수 todayBox, titleBox, periodBox, colorBox, memberNameBox, contentBox */
+
+/* 헤더 박스 */
+#headerBox{
+    display: flex;
+    width: 100%;
+    height: 110px;
+
+    /* padding-bottom: 20px; */
+    padding: 20px;
+    border-bottom: 1px solid #E2E2E2;
+}
+
+/* 헤더 박스 왼쪽 */
+#headerLeftBox{
+    width: 70px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 일 박스 */
+#dateBox{
+    height: 1em;
+    font-size : 30px;
+    display: flex;
+    line-height: 25px;
+
+}
+
+/* 요일 박스 */
+#dayBox{
+    font-size: 13px;
+}
+
+/* 헤더 박스 오른쪽 */
+#headerRightBox{
+    width: 630px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+/* 타이틀 박스 */
+#titleBox{
+    font-size: 20px;
+    line-height: 21px;
+}
+
+/* 기간 박스 */
+#periodBox{
+    font-size : 13px;
+    color: dimgray;
+}
+
+/* 라벨 박스 */
+#labelBox{
+    font-size: 13px;
+    color: dimgray;
+
+    display: flex;
+    align-items: center;
+}
+
+#contentBox{
+    padding: 20px;
+    font-size: 13px;
+}
+/* 일정 수정 모달창 (updateModal.jsp) */
+#updateModal{
+    position: absolute;
+    background-color: rgb(0, 0, 0, 0.7);
+    
+    width: 100vw;
+    height: 300vh;
+
+    top: 0;
+    z-index: 50000;
+}
+
+/* 일정 삭제 윈도우 */
+#updateWindow{
+    background-color: white;
+    width: 400px;
+    min-height: 380px;
+    height: auto;
+
+    position: fixed; 
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.update-header{
+    font-size: 12px;
+
+    background-color: #E2E2E230;
+    border-bottom: 1px solid #E2E2E2;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#closeUpdateModal{
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+
+    font-size: 25px;
+    color: dimgray;
+}
+
+#editBtn{
+    width: 80px;
+    height: 30px;
+    font-size: 10px;
+
+    border: none;
+    background-color: #515161;
+    color: white;
+
+}
+
+
+/* 일정 삭제 모달창(deleteModal.jsp) */
+#deleteModal{
+    position: fixed;
+    background-color: rgb(0, 0, 0, 0.7);
+    
+    width: 100vw;
+    height: 300vh;
+
+    top: 0;
+    z-index: 50000;
+}
+
+
+/* 일정 삭제 윈도우 */
+#deleteWindow{
+    background-color: white;
+    width: 250px;
+    height: 100px;
+
+
+    position: fixed; 
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+
+    z-index: 55000;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 일정을 삭제하시겠습니까? */
+#deleteWindow > span{
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+/* 일정 삭제 버튼 영역 */
+.deleteWindowBtnArea button{
+    font-weight: 800;
+
+    width: 90px;
+    height: 35px;
+    border: 1px solid #BFBFBF;
+    margin: 0px 5px;
+}
+
+/* 확인 */
+#planDeleteBtn{
+    background-color: #515161;
+    color: white;
+}
+
+#planDeleteBtn:hover{
+    background-color: #212131;
+    transition-duration: 0.1s;
+}
+
+/* 취소 */
+#cancelDeleteBtn{
+    background-color: white;
+    color: grey;
+}
+
+#cancelDeleteBtn:hover{
+    background-color: #E2E2E2;
+    color: black;
+    transition-duration: 0.1s;
+}
+/* plan style end */
+
+#container{
+    width: 1140px;
+    height: 800px;
+    display: flex;
+    flex: 1 1 auto;
+    position: relative;
+
+    margin: 0 auto;
+    padding: 108px 0 0;
+    align-items: flex-start;
+    
+
+}
+
+/* side-bar */
+#info{
+    padding-bottom: 20px;
+    margin-right: 18px;
+    width: 232px;
+}
+
+
+#info-inner{
+    position: fixed;
+    width: 232px;
+}
+
+.side-cover{
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+}
+
+
+#cover-img{
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(0,0,0,.05);
+    border-radius: 3px;
+}
+
+.band-name{
+    position: relative;
+    padding-top: 14px;
+}
+
+
+.band-name a{
+    font-size: 22px;
+    font-weight: 700;
+    color: black;
+    text-decoration: none;
+    overflow-wrap: break-word;
+}
+
+.member{
+    margin-top: 10px;
+}
+
+.member-count{
+    padding-top: 1px;
+    text-decoration: none;
+    display: inline-block;
+
+    color: black;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.band-info{
+    padding-top: 8px;
+}
+
+.band-description{
+    overflow: hidden;
+    max-height: 113px;
+    line-height: 1.45;
+    font-size: 13px;
+
+}
+
+.more-link{
+    font-size: 13px;
+    font-weight: 400;
+    color: #999;
+    display: inline-block;
+    margin-top: 4px;
+    text-decoration: none;
+}
+
+.more-link:hover{
+    text-decoration: underline;
+}
+
+.btn-box{
+    margin-top: 11px;
+    margin-bottom: 4px;
+}
+
+.box-desc{
+    font-size: 13px;
+    font-weight: 400;
+    color: #888;
+    margin-top: 11px;
+    line-height: 1.3;
+}
+
+.sidebar-under-icon{
+    margin-top: 8px;
+    padding-top: 9px;
+    border-top: 1px solid rgba(0,0,0,.1);
+}
+
+.band-setting-section{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+.sidebar-font{
+    text-decoration: none;
+    color: #555;
+}
+
+
+.band-setting-item{
+    list-style: none;
+    display: flex;
+}
+
+.leave-band{
+    padding-left: 8px;
+}
+
+.sidbar-icon{
+    color: #555;
+    margin-right: 5px;
+}
+
+.write-button{
+    width: 100%;
+    height: 40px;
+    padding: 0;
+    background-color: #93D94E;
+    border: none;
+
+    font-size: 14px;
+    color: white;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+
+/* 글쓰기 영역 */
+.post-write-form{
+    padding-bottom: 46px;
+}
+
+.board-search{
+    position: relative;
+    margin-bottom: 12px;
+    z-index: 995;
+    
+}
+
+.gSrOnly{
+    overflow: hidden;
+    position: absolute;
+    height: 1px;
+    width: 1px;
+}
+
+
+#input-search{
+    border: none;
+    width: 100%;
+    height: 100%;
+
+    padding-left: 7px;
+
+}
+
+#input-search:focus{
+    outline: none;
+}
+
+.input-search-form{
+    height: 40px;
+    width: 100%;
+    padding: 0 45px 0 15px;
+    background-color: white;
+
+    position: relative;
+    display: block;
+}
+
+.search-text{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0;
+
+    font-size: 14px;
+
+}
+
+.searchbtn {
+    border-style: none;
+    background-color: white;
+
+    position: absolute;
+    right: 22px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    opacity: .75;
+
+}
+
+.searchbtn:hover{
+    cursor: pointer;
+}
+
+.main-content{
+    position: relative;
+    margin-bottom: 55px;
+}
+
+.content-button{
+    position: absolute;
+    height: 84px;
+    width: 100%;
+    border: none;
+    background-color: white;
+    opacity: 0;
+
+    cursor: pointer;
+}
+
+/* iframe 모달창 */
+#postWrite-modal{
+    display:none;
+}
+
+.content-editor{
+    min-height: 84px;
+    color: #999;
+    background-color: white;
+
+    padding: 18px 22px;
+    line-height: 1.5;
+}
+
+.toolbar-area{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 43px;
+    padding: 0 13px 0 15px;
+    background-color: white;
+    margin-bottom: 12px;
+}
+
+.toolbar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 43px;
+}
+
+.toolbaritem{
+    cursor: pointer;
+}
+
+/* 게시물 영역 */
+.content-card{
+    margin-bottom: 11px;
+    position: relative;
+    background-color: white;
+}
+
+.post-author-view{
+    position: relative;
+    height: 65px;
+    background-color: transparent;
+    z-index: 11;
+    cursor: pointer;
+    padding-top: 20px;
+    align-items: flex-start;
+}
+
+.uprofile{
+    position: absolute;
+    margin-left: 22px;
+    margin-right: 10px;
+    z-index: 12;
+}
+
+.uprofile-inner{
+    width: 40px;
+    height: 40px;
+
+    display: block;
+    overflow: hidden;
+    position: relative;
+    background-color: #ccc;
+    border-radius: 50%;
+}
+
+
+.post-info{
+    display: block;
+    position: absolute;
+    margin-left: 77px;
+    min-width: 0;
+    padding-top: 2px;
+    line-height: 1.4;
+    z-index: 12;
+    overflow: hidden;
+}
+
+.post-info-name{
+    font-size: 14px;
+    font-weight: 700;
+    color: #222;
+}
+
+.post-info-date{
+    vertical-align: top;
+    font-size: 12px;
+    font-weight: 400;
+    color: #888;
+    text-decoration: none;
+    margin-top: 3px;
+}
+
+.post-body{
+    padding: 0 22px 17px;
+}
+
+.post-text{
+    cursor: pointer;
+}
+
+.text-body{
+    font-size: 14px;
+    line-height: 1.43;
+    white-space: pre-line;
+    padding-bottom: 8px;
+
+}
+
+.post-count{
+    overflow: hidden;
+    padding: 15px 22px 10px;
+    margin-top: -17px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.face-comment{
+    font-size: 13px;
+    font-weight: 400;
+    color: #555;
+    position: relative;
+}
+
+.emotion-view{
+    margin-right: 7px;
+}
+
+button{
+    border: 0;
+    background-color: transparent;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.face-icon{
+    font-size: 1.1em;
+}
+
+.count{
+    margin-left: 3px;
+    font-size: 12px;
+    line-height: 24px;
+    font-weight: 500;
+}
+
+.comment{
+    font-size: 13px;
+    font-weight: 400;
+    color: #555;
+    line-height: 23px;
+    vertical-align: top;
+}
+
+.comment-toggle{
+    margin-top: 3px;
+    width: 17px;
+    height: 17px;
+    overflow: hidden;
+
+}
+
+.share-read{
+    line-height: 23px;
+    vertical-align: top;
+}
+
+.post-added{
+    height: 45px;
+    position: relative;
+    border-top: 1px soid #888;
+    border-radius: 0 0 4px 4px;
+    white-space: nowrap;
+}
+
+.post-add-box{
+    display: flex;
+    width: 100%;
+    height: 45px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.post-text{
+    font-weight: 500;
+    font-size: 15px;
+    color: #222;
+}
+
+.post-text:hover{
+    text-decoration: underline;
+}
+
+
+
+/* banner */
+#banner{
+    display: flex;
+    margin-left: 18px;
+}
+
+#band-photo-area{
+    width: 240px; 
+    position: fixed;
+}
+
+.toolbar{
+    list-style: none;
+}
+
+.board-icon{
+    color:#888;
+}
+
+.board-icon:hover{
+    color: #555;
+}
+
+.band-photo{
+    position: relative;
+    margin-bottom: 13px;
+
+    background-color:  white;
+}
+
+#banner .tit{
+    height: 34px;
+    padding-left: 14px;
+    padding-right: 14px;
+    line-height: 40px;
+    font-size: 13px;
+    font-weight: 600;
+    
+}
+
+#banner .photo-body{
+    padding: 14px;
+    border-top: 1px solid #f0f2f4;
+}
+
+#banner .photo-list{
+    margin-top: -1px;
+    margin-left: -1px;
+    font-size: 0;
+}
+
+#banner .photo-list a{
+    display: inline-block;
+    position: relative;
+}
+
+.banner-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  
+    cursor: pointer;
+    aspect-ratio: auto 73 / 73;
+
+
+}
+
+#banner .photo-list .no-img{
+    display: inline-block;
+    width: 68px;
+    height: 68px;
+    background-color: #eef0f3;
+}
+
+.banner-box {
+    border: none;
+    width: 68px;
+    height: 68px;
+    overflow: hidden;
+    margin-top: 1px;
+    margin-right: 1px;
+}
+
+#banner .more-button{
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    font-size: 12px;
+    font-weight: 400;
+    text-decoration: none;
+    color: black;
+}
+
+#banner .more-button:hover{
+    text-decoration: underline;
+}
+
+
+.btn-go-to-top{
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}   
+
+.btn-go-to-top:hover{
+    background-color: #93D94E;
+}
+
+.go-to-top-icon{
+    font-size: 1.5em;
+    color: #555;
+}
+
+.btn-go-to-top:hover > .go-to-top-icon{
+    color: white;
+}
+
+.post-count{
+    overflow: hidden;
+    padding: 15px 22px 10px;
+    margin-top: -17px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.face-comment{
+    font-size: 13px;
+    font-weight: 400;
+    color: #555;
+    position: relative;
+}
+
+.emotion-view{
+    margin-right: 7px;
+}
+
+button{
+    border: 0;
+    background-color: transparent;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.face-icon{
+    font-size: 1.1em;
+}
+
+.count{
+    margin-left: 3px;
+    font-size: 12px;
+    line-height: 24px;
+    font-weight: 500;
+}
+
+.comment{
+    font-size: 13px;
+    font-weight: 400;
+    color: #555;
+    line-height: 23px;
+    vertical-align: top;
+}
+
+.comment-toggle{
+    margin-top: 3px;
+    width: 17px;
+    height: 17px;
+    overflow: hidden;
+
+}
+
+.share-read{
+    line-height: 23px;
+    vertical-align: top;
+}
+
+.post-added{
+    height: 45px;
+    position: relative;
+    border-top: 1px soid #888;
+    border-radius: 0 0 4px 4px;
+    white-space: nowrap;
+}
+
+.post-add-box{
+    display: flex;
+    width: 100%;
+    height: 45px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.post-text{
+    font-weight: 500;
+    font-size: 15px;
+    color: #222;
+}
+
+.post-text:hover{
+    text-decoration: underline;
+}
+
+/* 모달 창 관련 */
+.modal-closeBtn{ 
+    border: none;
+    font-size: 18px;
+    color: #777;
+    cursor: pointer;
+    position: absolute;
+    right: 40px;
+    top: 20px;
+}
+
+iframe{
+    border: none;
+}
+
+
+
+/*  */
+/* board-list */
+
+#boardPlan{
+    width: 632px;
+    margin-bottom: 11px;
+    flex: 0 0 auto;
+    padding: 10px;
+
+    background-color: white;
+}

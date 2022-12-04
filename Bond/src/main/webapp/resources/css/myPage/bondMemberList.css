@@ -24,11 +24,11 @@ main{
 .member-Toptitle{
     display: flex;
     justify-content: space-between;
-    padding-bottom: 10px;
 }
 .member-top .member-total{
     font-size: 18px;
     font-weight: bold;
+    padding-top: 7px;
 }
 .member-top .member-total>span{
     margin-left: 5px;
@@ -39,18 +39,23 @@ main{
     font-size: 20px;
 }
 .member-top .member-invite{
-    border: 1.5px solid #21c531;
     width: 114px;
     height: 34px;
-    text-align: center;
-    border-radius: 5px;
-    padding-top: 5px;
 }
-.member-top .member-invite:hover{
+.inviteBtn:hover{
     background-color: #21c531;
     color: white;
     font-weight: bold;
     cursor: pointer;
+    border-radius: 5px;
+}
+.inviteBtn{
+    width: 100%;
+    height: 100%;
+    border: 1.5px solid #21c531;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 15px;
 }
 
 /* 멤버 검색 - 오타... */
@@ -87,24 +92,27 @@ main{
 /* 멤버 리스트 부분 */
 .member-all{
     padding: 40px 50px 20px;
+    background-color: white;
 }
 .member-all>.member-title{
     font-size: 18px;
     margin-bottom: 15px;
     font-weight: bold;
 }
-.member-all>.member-list{
+.member-list{
     height: 88px;    display: flex;
     padding: 15px 0;
     border-bottom: 1px solid #ddd;
+    background-color: white;
 }
-.member-all .member-image{
+.member-image{
     height: 50px;
-    min-width: 50px;
+    width: 50px;
     border-radius: 50%;
     margin-right: 15px;
+    cursor: pointer;
 }
-.member-image > img{
+.memImg{
     width: 100%;
     height: 100%;
 }
@@ -114,7 +122,7 @@ main{
     width: 80%;
     display: flex;
 }
-.fa-user-slash{
+.userSlash{
     font-size: 20px;
     padding-top: 20px;
     cursor: pointer;
@@ -122,7 +130,7 @@ main{
 .fa-user-slash:hover{
     color: red;
 }
-.member-report>.fa-gear{
+.member-report>a>.fa-gear{
     font-size: 20px;
     padding-top: 20px;
     cursor: pointer;
@@ -146,6 +154,10 @@ main{
     display: flex;
     height: 77px;
     padding: 20px;
+    background-color: white;
+    align-items: center;
+    cursor: pointer;
+    /* margin-bottom: 13px; */
 }
 .invite-icon{
     width: 45px;
@@ -161,11 +173,6 @@ main{
     padding-top: 8px;
     color: #21c531;
 }
-.member-invite-bottom{
-    align-items: center;
-    cursor: pointer;
-    margin-bottom: 13px;
-}
 .member-invite-btn button{
     font-size: 15px;
     background-color: white;
@@ -173,4 +180,106 @@ main{
 }
 .fa-crown{
     margin-right: 3px;
+}
+
+
+/* 프로필 선택 시 모달창 */
+.modal{
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: 100%;
+    z-index: 11000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal .profile1{
+    background-color: white;
+    width: 320px; height: 412px;
+    text-align: center;
+    display: block;
+    margin: 260px auto;
+}
+.modal .close-btn{
+    padding: 15px 10px 0 0;
+    border: none;
+    font-size: 21px;
+    background-color: white;
+    cursor: pointer;
+    font-weight: bold;
+    color: #777;
+    position: absolute;
+    margin-left: 125px;
+}
+.profile1 .profile-area{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.profile1 .profile-image{
+    border: 3px solid greenyellow;
+    border-radius: 50%;
+    width: 170px;
+    height: 170px;
+    position: relative;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+.modal .image{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.modal .profile-area>.memberName{
+    margin: 10px 0 15px;
+    font-size: 24px;
+}
+.modal #inputImage{
+    display: none;
+    cursor: pointer;
+}
+.modal .member{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+.modal .leader-yn{
+    font-size: 12px;
+    padding-top: 4px;
+    border-radius: 45%;
+    width: 36px;
+    height: 20px;
+    margin-right: 8px;
+    background-color: #21c531;
+    color: white;
+}
+.modal .join-date{
+    font-size: 13px;
+}
+.modal .birth{
+    display: flex;
+    margin-bottom: 25px;
+    font-size: 16px;
+}
+.modal .birth-title{
+    margin-right: 5px;
+}
+.modal .report{
+    font-size: 13px;
+    cursor: pointer;
+    border: none;
+    background-color: white;
+    /* margin-top: 7px; */
+}
+.modal .report:hover{
+    color: red;
+}
+
+.show{
+    display: flex;
 }

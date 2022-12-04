@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%-- map에 저장된 값을 꺼내어 각각 변수에 저장 --%>
+<c:set var="postList" value="${map.postList}"/>
+<c:set var="pagination" value="${map.pagination}"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,16 +10,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>모임이 쉬워진다 | BOND</title>
+    <title>${groupInfo.groupName} | BOND</title>
 
-    <link rel="stylesheet" href="/resources/css/bond/album.css">
+    <link rel="stylesheet" href="/resources/css/bond/bondPlan-style.css">
     <script src="https://kit.fontawesome.com/1ce4f19a7a.js" crossorigin="anonymous"></script>
+
 </head>
 
-<body>    
-	<jsp:include page="/WEB-INF/views/bond/headerBond.jsp"/>  
+<body>
+    <jsp:include page="/WEB-INF/views/bond/headerBond.jsp"/> 
 
+    <jsp:include page="/WEB-INF/views/plan/insertModal.jsp" />
+
+    <jsp:include page="/WEB-INF/views/plan/selectModal.jsp" />
+
+    <jsp:include page="/WEB-INF/views/plan/updateModal.jsp" />
+
+    <jsp:include page="/WEB-INF/views/plan/deleteModal.jsp" />
         <div id="container">
+
             <!-- 1번 영역 -->
             <aside id="info">
                 <div id="info-inner">
@@ -74,118 +86,14 @@
                                 </li>
                             </ul>
                         </div>  
-                        </div>
                     </div>
                 </div>
             </aside>
 
             <!-- 2번 영역 -->
-            <main id="board-list">
-                <div class="album-section">
-                    <div class="header-wrap header-wrap-fixed">
-                        <div class="header-main">
-                            <h1 class="title">사진첩</h1>
-                            <div class="btn-wrap">
-                                <button type="button" class="create-album ubutton">앨범 만들기</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="album-wrap">
-                        <div class="album-header">
-                            <div class="item">
-                                <h2 class="title">
-                                    <a href="#">
-                                        <strong>전체사진</strong>
-                                        <em>5</em>
-                                    </a>
-                                </h2>
-                                <time class="info">2022년 11월</time>
-                            </div>
-
-                            <div class="item">
-                                <span class="btn-attach-photo">
-                                    <span class="photo-upload">
-                                        <i class="fa-solid fa-plus photo-plus" style="color: #777;"></i>
-                                        <input type="file" class="file-input">
-                                    </span>
-                                </span>
-                            </div>
-                        </div>
-
-                        <ul class="album-images">
-                            <li class="album">
-                                <a href="#">
-                                    <img src="/resources/images/bond/album1.png" class="album-img">
-                                </a>
-                            </li>
-                            <li class="album">
-                                <a href="#">
-                                    <img src="/resources/images/bond/album2.png" class="album-img">
-                                </a>
-                            </li>
-                            <li class="album">
-                                <a href="#">
-                                    <img src="/resources/images/bond/album3.png" class="album-img">
-                                </a>
-                            </li>
-                            <li class="album"><a href="#">4</a></li>
-                            <li class="album"><a href="#">5</a></li>
-                            <li class="album"><a href="#">6</a></li>
-                        </ul>
-
-                    </div>
-
-                    <div class="album-wrap album-wrap-line">
-                        <div class="album-sort">
-                            <span class="title">앨범</span>
-                        </div>
-
-                        <ul class="album-list">
-                            <li class="album-item-view">
-                                <div class="album-header">
-                                    <div class="item">
-                                        <h2 class="title">
-                                            <a href="#">
-                                                <strong>애니멀왕국</strong>
-                                                <em>3</em>
-                                            </a>
-                                        </h2>
-                                        <time class="info">2022년 11월</time>
-                                    </div>
-        
-                                    <div class="item">
-                                        <span class="btn-attach-photo">
-                                            <span class="photo-upload">
-                                                <i class="fa-solid fa-plus photo-plus" style="color: #777;"></i>
-                                                <input type="file" class="file-input">
-                                            </span>
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <ul class="album-images">
-                                    <li class="album-bottom">
-                                        <a href="#">
-                                            <img src="/resources/images/bond/album1.png" class="album-img">
-                                        </a>
-                                    </li>
-                                    <li class="album-bottom">
-                                        <a href="#">
-                                            <img src="/resources/images/bond/album2.png" class="album-img">
-                                        </a>
-                                    </li>
-                                    <li class="album-bottom">
-                                        <a href="#">
-                                            <img src="/resources/images/bond/album3.png" class="album-img">
-                                        </a>
-                                    </li>
-                                    <li class="album-bottom"><a href="#">4</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+            <main id="boardPlan">
+                <!-- fullcalendar -->
+                <div id='calendar'></div>
             </main>
 
             <!-- 3번 영역 -->
@@ -262,21 +170,37 @@
                         </div> <!-- end soon-plan-body -->
                     </section> <!-- end bond-soon-plan -->
 
-                    <!-- 일정 페이지로 이동 버튼 -->
-                    <c:if test="${!empty planListSoon}">
-                        <a href="/bond/${groupNo}/plan" class="more-button">더보기</a>
-                    </c:if>
-                </div> <!-- end bond-soon-plan-area -->
-
-            </div>
-
             <a href="#">
                 <button type="button" class="btn-go-to-top">
                     <i class="fa-solid fa-arrow-up go-to-top-icon"></i>
                 </button>
             </a>
         </div>
+    
+    <c:if test="${!empty message}">
+        <script>
+            alert("${message}");
+        </script>
+        <%-- message 1회 출력 후 모든 scope에서 message 삭제 --%>
+        <c:remove var="message" />
+    </c:if>
 
-        
-    <script src="/resources/js/bond/bond.js"></script>
+    <script>
+        let cp = 0;
+        const groupNo = "${groupNo}"
+    </script>
+
+
+
+<script src="/resources/js/bond/bondPlan.js"></script>
+<script src="/resources/js/plan/useFullcalendar.js"></script>
+
+<!-- fullcalendar CDN 방식으로 추가 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales-all.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>    
+
 </body>
+</html>

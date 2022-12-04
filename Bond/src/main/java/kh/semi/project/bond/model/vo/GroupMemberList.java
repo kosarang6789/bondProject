@@ -10,7 +10,8 @@ import lombok.ToString;
 public class GroupMemberList {
 	
 	private String memberName;
-	private String memberImg;
+	private String memberImage;
+	private String memberBirth;
 	
 	private int joinNo;
 	private int groupNo;

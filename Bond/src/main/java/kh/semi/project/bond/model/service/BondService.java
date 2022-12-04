@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import kh.semi.project.bond.model.vo.Group;
 import kh.semi.project.bond.model.vo.GroupMemberList;
 import kh.semi.project.member.model.vo.Member;
+import kh.semi.project.plan.model.vo.Plan;
 
 public interface BondService {
 
@@ -24,6 +25,9 @@ public interface BondService {
 	String checkReport(int groupNo);
 
 	int selectMemberInfo(GroupMemberList member);
+	
+	// 다가오는 일정 목록 불러오기
+	List<Plan> planSelectListSoon(int groupNo);
 
 
 }

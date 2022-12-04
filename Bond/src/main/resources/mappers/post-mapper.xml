@@ -21,7 +21,6 @@
 		<result property="memberNo" column="MEMBER_NO" />
 		<result property="groupNo" column="GROUP_NO" />
 		<result property="postContent" column="POST_CONTENT" />
-		<result property="postView" column="POST_VIEW" />
 		<result property="replyYN" column="REPLY_YN" />
 		<result property="postDate" column="POST_DATE" />
 		<result property="editDate" column="EDIT_DATE" />

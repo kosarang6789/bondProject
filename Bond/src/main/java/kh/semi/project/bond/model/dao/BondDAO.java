@@ -14,6 +14,7 @@ import kh.semi.project.bond.model.vo.GroupMemberList;
 import kh.semi.project.bond.model.vo.Pagination;
 import kh.semi.project.bond.model.vo.Post;
 import kh.semi.project.member.model.vo.Member;
+import kh.semi.project.plan.model.vo.Plan;
 
 @Repository
 public class BondDAO {
@@ -114,6 +115,11 @@ public class BondDAO {
 
 	public String selectMemberInfo(GroupMemberList member) {
 		return sqlSession.selectOne("groupMapper.selectMemberInfo", member);
+	}
+
+	// 다가오는 일정 목록 불러오기
+	public List<Plan> planSelectListSoon(int groupNo) {
+		return sqlSession.selectList("planMapper.planSelectList_soon", groupNo);
 	}
 
 
