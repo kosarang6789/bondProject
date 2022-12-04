@@ -16,7 +16,8 @@
       </div>
 
       <div id="inputContentBox">
-        <textarea id="inputContent" placeholder="일정 설명"></textarea>
+        <textarea id="inputContent" placeholder="일정 설명"
+        rows="5" maxlength="300"></textarea>
       </div>
 
       <div id="inputDateBox">
@@ -42,9 +43,15 @@
 
       <div id="inputColorBox">
         <div id="colorBoxText">캘린더 색깔</div>
+        
         <label> <!-- 빨강 -->
           <input type="radio" class="paletteRadio" name="planColor" value="rgb(255,60,45)" checked>
           <div class="palette" style="background-color:rgb(255,60,45)"></div>
+        </label>
+
+        <label> <!-- 주황 -->
+          <input type="radio" class="paletteRadio" name="planColor" value="rgb(250,170,35)">
+          <div class="palette" style="background-color:rgb(250,170,35)"></div>
         </label>
 
         <label> <!-- 노랑 -->
@@ -60,6 +67,16 @@
         <label> <!-- 파랑 -->
           <input type="radio" class="paletteRadio" name="planColor" value="rgb(55,136,216)">
           <div class="palette" style="background-color:rgb(55,136,216)"></div>
+        </label>
+
+        <label> <!-- 남색 -->
+          <input type="radio" class="paletteRadio" name="planColor" value="rgb(0,20,160)">
+          <div class="palette" style="background-color:rgb(0,20,160)"></div>
+        </label>
+
+        <label> <!-- 보라 -->
+          <input type="radio" class="paletteRadio" name="planColor" value="rgb(180,140,245)">
+          <div class="palette" style="background-color:rgb(180,140,245)"></div>
         </label>
           
       </div>

@@ -126,7 +126,7 @@ function insertOne(){
         alert('제목을 입력해주세요')
         return;
     }
-    const inputContent = document.getElementById("inputContent").value;
+    const inputContent = document.getElementById("inputContent").value.trim();
     
     let inputStart = document.getElementById("inputStartDate").value;
     if(inputStart === '') {
@@ -135,9 +135,9 @@ function insertOne(){
     }
     
     let inputEnd = document.getElementById("inputEndDate").value;
-    if(inputEnd === '') {
-        alert('종료 날짜를 입력해주세요');
-        return;
+
+    if(inputEnd === "") {
+        inputEnd = inputStart
     }
 
     if(inputStart > inputEnd) {
@@ -145,9 +145,7 @@ function insertOne(){
         return;
     }
     
-    if(inputEnd === "") {
-        inputEnd = inputStart
-    }
+
 
     const inputColor = document.querySelector("input[name='planColor']:checked").value;
     if(inputColor === '') {
@@ -371,7 +369,7 @@ function updateOne(){
         return;
     }
 
-    const input2Content = document.getElementById("input2Content").value;
+    const input2Content = document.getElementById("input2Content").value.trim();
 
 
     let input2Start = document.getElementById("input2StartDate").value;
@@ -383,18 +381,13 @@ function updateOne(){
     
     let input2End = document.getElementById("input2EndDate").value;
 
-    if(input2End === '') {
-        alert('종료 날짜를 입력해주세요');
-        return;
+    if(input2End === "") {
+        input2End = input2Start
     }
 
     if(input2Start > input2End) {
         alert('종료 날짜가 시작 날짜보다 빠를 수 없습니다.');
         return;
-    }
-
-    if(input2End === "") {
-        input2End = input2Start
     }
 
     const input2Color = document.querySelector("input[name='planColor']:checked").value;
@@ -724,3 +717,4 @@ closeUpdateModal.addEventListener('click', () => {
 
 
 /* 다가오는 일정 칸 채우기 */
+// 동기식
