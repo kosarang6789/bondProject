@@ -1,6 +1,7 @@
 package kh.semi.project.common;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 
 public class Util {
 	
@@ -41,4 +42,31 @@ public class Util {
 	   public static String newLineClear(String content) {
 		   return content.replaceAll("<br>", "\n");
 	   }
+	   
+	   // 문자열 형식의 날짜(예 : 2022-12-03 )를 입력받아 요일 구하기
+	   public static String getDate(String startDate) {
+			
+			
+			int year = Integer.parseInt(startDate.substring(0, 4));
+			int month = Integer.parseInt(startDate.substring(5, 7));
+			int day = Integer.parseInt(startDate.substring(8, 10));
+			
+			LocalDate date = LocalDate.of(year, month, day);
+			
+			int dateValue = date.getDayOfWeek().getValue();
+			
+			String result = "";
+			
+			switch (dateValue) {
+			case 1: result = "월요일"; break;
+			case 2: result = "화요일"; break;
+			case 3: result = "수요일"; break;
+			case 4: result = "목요일"; break;
+			case 5: result = "금요일"; break;
+			case 6: result = "토요일"; break;
+			case 7: result = "일요일"; break;
+			}
+			
+			return result;
+		}
 }
