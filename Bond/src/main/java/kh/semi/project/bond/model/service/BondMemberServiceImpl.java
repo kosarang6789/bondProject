@@ -57,6 +57,18 @@ public class BondMemberServiceImpl implements BondMemberService{
 		return dao.selectMemPro(memPro);
 	}
 
+	@Override
+	public GroupMemberList selecMemPro(int groupNo, int memberNo) {
+		
+		GroupMemberList groupMemList = new GroupMemberList();
+		groupMemList.setMemberNo(memberNo);
+		groupMemList.setGroupNo(groupNo);
+		
+		return dao.selecMemPro(groupMemList);
+	}
 
+
+
+	
 	
 }

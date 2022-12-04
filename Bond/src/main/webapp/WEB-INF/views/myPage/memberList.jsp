@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:set var="memList" value="${memMap.memList}"/>
-<c:set var="memNo" value="${memMap.loginMember.memberNo}"/>
+<c:set var="myNo" value="${memMap.loginMember.memberNo}"/>
 <c:set var="pagination" value="${memMap.pagination}"/>
 
 <!DOCTYPE html>
@@ -33,7 +33,7 @@
                 <div class="member-title">멤버</div>
 
                 <c:forEach var="mem" items="${memList}">
-                    <c:if test="${memNo == mem.memberNo}">
+                    <c:if test="${myNo == mem.memberNo}">
                         <c:if test="${mem.leaderYN == 'Y'}">
                             <c:set var="leader" value="1"/>
                         </c:if>
@@ -41,12 +41,12 @@
                 </c:forEach>
 
                 <div class="member-list">
-                    <div class="member-image">
+                    <div class="member-image" id="${myNo}">
                         <c:if test="${empty loginMember.profileImage}">
-                            <img src="/resources/images/member/profile/defaultProfile.png" id="${memberList.memberNo}" class="memImg">
+                            <img src="/resources/images/member/profile/defaultProfile.png" class="memImg">
                         </c:if>
                         <c:if test="${!empty loginMember.profileImage}">
-                            <img src="${loginMember.profileImage}" id="${memberList.memberNo}" class="memImg">
+                            <img src="${loginMember.profileImage}" class="memImg">
                         </c:if>
                     </div>
                     <div class="member-name" name="memberName" id="memberName">${loginMember.memberName}
@@ -61,16 +61,16 @@
                 </div>              
 
                 <c:forEach var="memberList" items="${memList}">
-                    <c:if test="${memNo != memberList.memberNo}">
+                    <c:if test="${myNo != memberList.memberNo}">
                         <c:choose>
                             <c:when test="${memberList.leaderYN == 'Y'}">
-                                <div class="member-list">
+                                <div class="member-list" id="${memberList.memberNo}">
                                     <div class="member-image">
                                         <c:if test="${empty memberList.memberImage}">
-                                            <img src="/resources/images/member/profile/defaultProfile.png" id="${memberList.memberNo}"  class="memImg">
+                                            <img src="/resources/images/member/profile/defaultProfile.png" class="memImg">
                                         </c:if>
                                         <c:if test="${!empty memberList.memberImage}">
-                                            <img src="${memberList.memberImage}" id="${memberList.memberNo}"  class="memImg">
+                                            <img src="${memberList.memberImage}" class="memImg">
                                         </c:if>
                                     </div>
                                     <div class="member-name" name="memberName" id="memberName">${memberList.memberName}<div class="leader"><i class="fa-solid fa-crown"></i>리더</div></div>
@@ -81,13 +81,13 @@
                                 </div>
                             </c:when>
                             <c:otherwise>
-                                <div class="member-list">
+                                <div class="member-list" id="${memberList.memberNo}">
                                     <div class="member-image">
                                         <c:if test="${empty memberList.memberImage}">
-                                            <img src="/resources/images/member/profile/defaultProfile.png" id="${memberList.memberNo}" class="memImg">
+                                            <img src="/resources/images/member/profile/defaultProfile.png"class="memImg">
                                         </c:if>
                                         <c:if test="${!empty memberList.memberImage}">
-                                            <img src="${memberList.memberImage}" id="${memberList.memberNo}" class="memImg">
+                                            <img src="${memberList.memberImage}"class="memImg">
                                         </c:if>
                                     </div>
                                     <div class="member-name" name="memberName" id="memberName">${memberList.memberName}</div>
@@ -116,14 +116,16 @@
         <%-- 모달 --%>
         <div class="modal" id="modal">
             <div class="profile1">
-            <%-- <c:forEach var="memberList" items="${memList}"> --%>
-            
                 <button type="button" class="clickProfile close-btn">
                     <i class="fa-solid fa-x" id="modalx"></i>
                 </button>
+            <c:forEach var="memberList" items="${memList}">
+            
+
                 <section class="profile-area">
-                    <div class="profile-image">
-                            <img src="${memberList.memberImage}" class="image" id="image">
+                
+                    <%-- <div class="profile-image">
+                            <img src="" class="image" id="image">
                     </div>
             
                     <h3 class="memberName" name="memberName" id="modalName"></h3>
@@ -147,10 +149,10 @@
                                     <i class="fa-solid fa-user-slash"></i>  
                                     신고하기
                                 </button>
-                            </div>
+                            </div> --%>
 
 
-                    <%-- <div class="profile-image">
+                    <div class="profile-image">
                         <c:if test="${empty memberList.memberImage}">
                             <img src="/resources/images/member/profile/defaultProfile.png" class="image" id="image">
                         </c:if>
@@ -191,9 +193,10 @@
                                 신고하기
                             </button>
                         </c:otherwise>
-                    </c:choose> --%>
+                    </c:choose>
                 </section>
-                <%-- </c:forEach> --%>
+            
+                </c:forEach>
             </div>
         </div>
 

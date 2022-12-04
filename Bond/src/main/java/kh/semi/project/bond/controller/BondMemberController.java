@@ -84,17 +84,19 @@ public class BondMemberController {
 	
 	
 	// 본드 멤버 프로필 클릭
-	@GetMapping("/bond/{groupNo}/{memberNo}")
+	@GetMapping("/bond/bondMemberList/{memberNo}")
 	@ResponseBody
 	public String selectMemPro(
-			@PathVariable("groupNo") int groupNo,
+			@SessionAttribute("groupInfo") Group groupInfo,
 			@PathVariable("memberNo") int memberNo) {
 		
-		GroupMemberList memPro = new GroupMemberList();
-		memPro.setGroupNo(groupNo);
-		memPro.setMemberNo(memberNo);
+//		GroupMemberList memPro = new GroupMemberList();
+//		memPro.setGroupNo(groupNo);
+//		memPro.setMemberNo(memberNo);
+//		
+//		memPro = serivce.selectMemPro(memPro);
 		
-		memPro = serivce.selectMemPro(memPro);
+		GroupMemberList memPro = serivce.selecMemPro(groupInfo.getGroupNo(), memberNo);
 		
 		return new Gson().toJson(memPro);
 	}

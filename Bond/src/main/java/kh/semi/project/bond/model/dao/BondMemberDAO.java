@@ -40,4 +40,11 @@ public class BondMemberDAO {
 	}
 
 
+	public GroupMemberList selecMemPro(GroupMemberList groupMemList) {
+		return sqlSession.selectOne("bondMemberListMapper.selectMemPro", groupMemList);
+	}
+
+
+
+
 }

@@ -79,10 +79,15 @@ function selectBoardScroll (){
                             const memberAll = document.querySelector(".member-all");
                             
                             for(let mem of memMap.memList){
-                                if(memNo != mem.memberNo){
+                                if(myNo != mem.memberNo){
     
                                 const members = document.createElement("div");
                                 members.classList.add("member-list");
+                                members.setAttribute("id", mem.memNo);
+                                members.addEventListener("click",()=>{
+                                    modal.style.display="flex";
+                                    selectMemPro(members.getAttribute("id"));
+                                })
     
                                 const memberImage = document.createElement("div");
                                 memberImage.classList.add("member-image");
@@ -144,20 +149,16 @@ document.querySelector(".inviteBtn").addEventListener("click", ()=>{
     alert("주소가 복사되었습니다.");
 });
 
+
 // 회원 정보 모달 창
 
-const image = document.getElementsByClassName("memImg");
+let image = document.getElementsByClassName("memImg");
+let mm = document.getElementsByClassName("member-list");
 const modal = document.getElementById("modal");
 const modalx = document.getElementById("modalx");
 
-for(let img of image){
-    img.addEventListener("click", ()=>{
-        modal.style.display="flex";
-        
-        selectMemPro(img.getAttribute("id"));
-    });
-    
-};
+// let selectMemNo;
+
 modalx.addEventListener("click",()=>{
     modal.style.display="none";
 });
@@ -169,9 +170,25 @@ const modalJoinDate = document.getElementById("modalJoinDate");
 const modalBirth = document.getElementById("modalBirth");
 const modalReport = document.getElementById("modalReport");
 
-const selectMemPro = memberNo =>{
+// for(let img of image){
+//     img.addEventListener("click", ()=>{
+//         modal.style.display="flex";
+//         // selectMemNo = img.getAttribute("id");
+//         // console.log("1 : " + selectMemNo);
+        
+//         selectMemPro(img.getAttribute("id"));
+//     });
+// };
+for(let m of mm){
+    m.addEventListener("click", ()=>{
+        modal.style.display="flex";
+        selectMemPro(m.getAttribute("id"));
+    });
+};
+
+const selectMemPro = (memberNo) =>{
     $.ajax({
-        url : "/bond/"+groupNo+"/"+memberNo,
+        url : "/bond/bondMemberList/" + memberNo,
         dataType : "JSON",
         success : (memPro)=>{
             console.log(memPro.memberName);
@@ -218,7 +235,6 @@ const selectMemPro = memberNo =>{
                 modalReport.append(modalA);
                 modalA.append(modalMyI);
             }
-
 
         },
         error : ()=>{

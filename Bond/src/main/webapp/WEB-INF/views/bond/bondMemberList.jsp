@@ -111,7 +111,7 @@
     <script>
         let cp = 0;
         const groupNo = "${groupNo}";
-        const memNo = "${memMap.loginMember.memberNo}";
+        const myNo = "${memMap.loginMember.memberNo}";
     </script>
 
 

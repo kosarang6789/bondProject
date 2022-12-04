@@ -20,4 +20,8 @@ public interface BondMemberService {
 	// 본드 멤버 프로필 클릭
 	GroupMemberList selectMemPro(GroupMemberList memPro);
 
+	GroupMemberList selecMemPro(int groupNo, int memberNo);
+
+
+
 }
