@@ -39,5 +39,20 @@
 	<task:scheduler id="jobScheduler" pool-size="10"/>
 	<task:annotation-driven scheduler="jobScheduler"/>
 	
+		<!-- 인터셉터 등록/매핑주소 설정 -->
+	<interceptors>
+		
+		<interceptor>
+			<mapping path="/bond/**" />  <!-- 모든 요청 주소 -->
+			<beans:bean id="bondInterceptor"  
+				class="kh.semi.project.common.interceptor.BondInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/admin/**" />  <!-- 모든 요청 주소 -->
+			<beans:bean id="adminInterceptor"  
+				class="kh.semi.project.common.interceptor.AdminInterceptor"/>
+		</interceptor>
+		
+	</interceptors>
 	
 </beans:beans>
