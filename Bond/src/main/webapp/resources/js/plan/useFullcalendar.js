@@ -148,6 +148,8 @@ function insertOne(){
 
 
     const inputColor = document.querySelector("input[name='planColor']:checked").value;
+    
+    console.log(inputColor);
     if(inputColor === '') {
         alert('색깔을 선택해주세요.');
         return;
@@ -159,8 +161,8 @@ function insertOne(){
 
     // 하루종일이 체크되지 않은 경우
     if(!inputCheckbox.checked) {
-        const inputStartTime = document.getElementById("inputStartTime").value;
-        const inputEndTime = document.getElementById("inputEndTime").value;
+        let inputStartTime = document.getElementById("inputStartTime").value;
+        let inputEndTime = document.getElementById("inputEndTime").value;
 
         if(inputStartTime === '') {
             alert('시작 시간을 입력해주세요.');
@@ -168,11 +170,10 @@ function insertOne(){
         }
 
         if(inputEndTime === '') {
-            alert('종료 시간을 입력해주세요.');
-            return;
+            inputEndTime = inputStartTime;
         }
 
-        if(inputStart === inputEnd) {
+        if(inputStart === inputEnd) { // 날짜가 같을 때, 시간이 잘못 입력된 경우
             if(inputStartTime > inputEndTime) {
                 alert('종료 시간이 시작 시간보다 빠를 수 없습니다.');
                 return;
@@ -403,8 +404,8 @@ function updateOne(){
 
     // 하루종일이 체크되지 않은 경우
     if(!input2Checkbox.checked) {
-        const input2StartTime = document.getElementById("input2StartTime").value;
-        const input2EndTime = document.getElementById("input2EndTime").value;
+        let input2StartTime = document.getElementById("input2StartTime").value;
+        let input2EndTime = document.getElementById("input2EndTime").value;
 
         if(input2StartTime === '') {
             alert('시작 시간을 입력해주세요.');
@@ -412,8 +413,7 @@ function updateOne(){
         }
 
         if(input2EndTime === '') {
-            alert('종료 시간을 입력해주세요.');
-            return;
+            input2EndTime = input2StartTime;
         }
 
         if(input2Start === input2End) {

@@ -87,6 +87,11 @@ public class PlanController {
 			plan.setMemberNo(memberNo);
 			plan.setGroupNo(groupNo);
 			plan.setPlanTitle(inputTitle);
+			
+			if(inputContent.equals("-1")) {
+				inputContent = "[" + inputTitle + "] 일정을 만들었습니다.";
+			}
+			
 			plan.setPlanContent(inputContent);
 			plan.setPlanStart(inputStart);
 			// inputStart를 이용해 요일 구하기

@@ -45,7 +45,7 @@
         <div id="colorBoxText">캘린더 색깔</div>
         
         <label> <!-- 빨강 -->
-          <input type="radio" class="paletteRadio" name="planColor" value="rgb(255,60,45)" checked>
+          <input type="radio" class="paletteRadio" name="planColor" value="rgb(255,60,45)">
           <div class="palette" style="background-color:rgb(255,60,45)"></div>
         </label>
 
