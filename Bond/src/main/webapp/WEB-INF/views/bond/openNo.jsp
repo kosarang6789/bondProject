@@ -10,6 +10,7 @@
     <title>모임이 쉬워진다 | BOND</title>
 
     <link rel="stylesheet" href="/resources/css/bond//openYes.css">
+    <link rel="stylesheet" href="/resources/css/bond/joinModal.css">
     <script src="https://kit.fontawesome.com/1ce4f19a7a.js" crossorigin="anonymous"></script>
 
 </head>
@@ -150,4 +151,25 @@
         </div>
 
 
+        
+        <%-- 본드 가입 모달 --%>
+        <form action="/bond/${groupNo}/join">
+        그룹 번호 : ${groupNo}   /   그룹 이름 : ${groupName} / ${groupInfo.groupName}
+            <div class="bJModal" id="{groupNo}">
+                <div class="joinModal">
+                    <div class="bondJoinTop">
+                        <div class="bondJoinTitle">본드 가입하기</div>
+                        <div class="joinModalClose"><i class="fa-solid fa-x joinModalX"></i></div>
+                    </div>
+                    <div class="bondJoin">${groupInfo.groupName}에 가입하시겠습니까?</div>
+                    <div class="joinModalBtnArea">
+                        <button class="jBtn" id="joinYesBtn">네</button>
+                        <button type="button" class="jBtn" id="joinNoBtn">아니요</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+<script src="/resources/js/bond/joinModal.js"></script>
 </body>
