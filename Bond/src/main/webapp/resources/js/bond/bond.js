@@ -329,6 +329,7 @@ reportBtn.addEventListener("click", () => {
             document.body.style.overflow = "hidden";
             document.querySelector("#postSelect-view > main").scrollTop = 0;
             selectPostDetail(p.getAttribute("id"));
+            selectReplyList(p.getAttribute("id"));
         });
     }
 
@@ -426,3 +427,59 @@ const autoResizeTextarea = () => {
     textarea.style.height = `${height+5}px`;
     
 };
+
+const selectReplyList=(postNo)=>{
+    $.ajax({
+        url: "/reply/list",
+        data: {"postNO" : postNo},
+        type: "GET",
+        dataType: "JSON",
+        success: (rList)=>{
+            console.log(rList);
+
+            const replyList = document.getElementById("replyList"); // ul
+            replyList.innerHTML = "";
+
+            for(let reply of rList){
+                // 행
+                const replyOne = document.createElement("li");
+                replyOne.classList.add("replyOne");
+
+                // 답글일 경우 child-comment 추가
+                if(comment.parentNo!=0) replyOne.classList.add("child-comment");
+
+                // 작성자 이미지
+                const replyMemberImg = document.createElement("img");
+                if(reply.memberImage!=null){
+                    replyMemberImg.setAttribute("src", reply.memberImage);
+                } else{
+                    replyMemberImg.setAttribute("src", "/resources/images/member/profile/defaultProfile.png");
+                }
+                
+                // 댓글 텍스트 부분
+                const replyText = document.createElement("div");
+                replyText.classList.add("reply-text");
+
+                replyOne.append(replyMemberImg, replyText);
+
+                // 작성자 닉네임
+                const replyMemberName = document.createElement("strong");
+                replyMemberName.classList.add("replyMember-name");
+
+                // 댓글 내용
+                const replyContent = document.createElement("p");
+                replyContent.classList.add("reply-content");
+                replyContent.innerHTML = reply.replyContent;
+
+                // 댓글 정보
+                const replyInfo = document.createElement("div");
+                replyInfo.classList.add("reply-info");
+
+                replyText.append(replyMemberName, replyContent, replyInfo);
+
+                // 답글 버튼
+                
+            }
+        }
+    })
+}

@@ -82,104 +82,48 @@
             </div>
             
             <!-- 댓글조회 -->
-            <section class="replyContent-area">
+            <ul id="replyList">
                 <!-- 댓글 한개 -->
-                <div class="replyOne">
+                <li class="replyOne">
                     <!-- 댓글 작성자 이미지 -->
-                    <div class="replyMember-img">
-                        <img src="/resources/images/member/profile/defaultProfile.png" class="replyMemberImage">
-                    </div>
-                    <div class="replyContent">
+                    <img src="/resources/images/member/profile/defaultProfile.png" class="replyMember-img">
+                    <div class="reply-text">
                         <strong class="replyMember-name">김순자</strong>
-                        <div class="re-reply-content">댓글 내용들이 쭉 나올거야</div>
+                        <p class="reply-content">댓글 내용들이 쭉 나올거야</p>
                         <div class="reply-info">
-                            <span class="replyDate">2022년 10월 29일 오후 11:42</span>
-                            <p>•</p>
-                            <div class="replyLike">
-                                <i class="fa-regular fa-thumbs-up"></i>&nbsp;
-                                <p>좋아요</p>&nbsp;
-                                <span class="count-replyLike">?</span>
+                            <div class="reply-btn">
+                                <p class="replyDate">2022년 10월 29일 오후 11:42</p>
+                                <button>•답글쓰기</button>
+                                <button>•신고</button>
                             </div>
-                            <p>•</p>
-                            <span>답글쓰기</span>
-                        </div>
-                    </div>
-                    <div class="moreView" id="replymoreView">
-                        <label for="post-moreView">
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </label>
-                        <ul class="moreView-menu">
-                            <li>
-                                <a href="">글 수정</a>
-                            </li> 
-                            <li>
-                                <a href="">삭제하기</a>
-                            </li>
-                            <li>
-                                <a href="">신고하기</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-        
-                <!-- 덧글 조회 -->
-                <section class="re-replyContent-area">
-                    <!-- 댓글 한개 -->
-                    <div class="replyOne">
-                        <!-- 댓글 작성자 이미지 -->
-                        <div class="re-replyMember-img">
-                            <img src="/resources/images/member/profile/defaultProfile.png" class="replyMemberImage">
-                        </div>
-                        <div class="re-replyContent">
-                            <strong class="replyMember-name">김순자</strong>
-                            <div class="reply-content">댓글 내용들이 쭉 나올거야</div>
-                            <div class="reply-info">
-                                <span class="replyDate">2022년 10월 29일 오후 11:42</span>
-                                <p>•</p>
-                                <div class="replyLike">
-                                    <i class="fa-regular fa-thumbs-up"></i>&nbsp;
-                                    <p>좋아요</p>&nbsp;
-                                    <span class="count-replyLike">?</span>
-                                </div>
-                                <p>•</p>
-                                <span>답글쓰기</span>
+                            <div class="writer-btn">
+                                <button>수정 |</button>
+                                <button>삭제</button>
                             </div>
                         </div>
-                        <div class="moreView" id="replymoreView">
-                            <label for="post-moreView">
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                            </label>
-                        </div>
                     </div>
-                    <!-- 댓글 한개 -->
-                    <div class="replyOne">
-                        <!-- 댓글 작성자 이미지 -->
-                        <div class="re-replyMember-img">
-                            <img src="/resources/images/member/profile/defaultProfile.png" class="replyMemberImage">
-                        </div>
-                        <div class="re-replyContent">
-                            <strong class="replyMember-name">김순자</strong>
-                            <div class="reply-content">댓글 내용들이 쭉 나올거야</div>
-                            <div class="reply-info">
-                                <span class="replyDate">2022년 10월 29일 오후 11:42</span>
-                                <p>•</p>
-                                <div class="replyLike">
-                                    <i class="fa-regular fa-thumbs-up"></i>&nbsp;
-                                    <p>좋아요</p>&nbsp;
-                                    <span class="count-replyLike">?</span>
-                                </div>
-                                <p>•</p>
-                                <span>답글쓰기</span>
+                </li>
+                <li class="replyOne child-comment">
+                    <!-- 댓글 작성자 이미지 -->
+                    <img src="/resources/images/member/profile/defaultProfile.png" 
+                        class="replyMember-img child-img">
+                    <div class="reply-text">
+                        <strong class="replyMember-name">김순자</strong>
+                        <p class="reply-content child-content">댓글 내용들이 쭉 나올거야</p>
+                        <div class="reply-info">
+                            <div class="reply-btn">
+                                <p class="replyDate">2022년 10월 29일 오후 11:42</p>
+                                <button>•답글쓰기</button>
+                                <button>•신고</button>
+                            </div>
+                            <div class="writer-btn">
+                                <button>수정 |</button>
+                                <button>삭제</button>
                             </div>
                         </div>
-                        <div class="moreView" id="replymoreView">
-                            <label for="post-moreView">
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                            </label>
-                        </div>
                     </div>
-                </section>
-            </section>
+                </li>
+            </ul>
         
             <!-- 댓글 작성 -->
             <div class="replyWrite-toolbar">

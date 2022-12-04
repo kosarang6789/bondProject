@@ -179,7 +179,7 @@
 				SELECT SEQ_POST_NO.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO POST VALUES
-		(#{postNo}, #{groupNo}, #{memberNo}, #{postContent}, NULL, DEFAULT, DEFAULT, NULL, DEFAULT, DEFAULT)
+		(#{postNo}, #{groupNo}, #{memberNo}, #{postContent}, DEFAULT, DEFAULT, NULL, DEFAULT, DEFAULT)
 	</insert>
 
 	<!-- 이미지테이블에 삽입 -->
