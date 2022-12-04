@@ -21,7 +21,6 @@
 		<result property="memberNo" column="MEMBER_NO" />
 		<result property="groupNo" column="GROUP_NO" />
 		<result property="postContent" column="POST_CONTENT" />
-		<result property="postView" column="POST_VIEW" />
 		<result property="replyYN" column="REPLY_YN" />
 		<result property="postDate" column="POST_DATE" />
 		<result property="editDate" column="EDIT_DATE" />
@@ -179,7 +178,7 @@
 				SELECT SEQ_POST_NO.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO POST VALUES
-		(#{postNo}, #{groupNo}, #{memberNo}, #{postContent}, NULL, DEFAULT, DEFAULT, NULL, DEFAULT, DEFAULT)
+		(#{postNo}, #{groupNo}, #{memberNo}, #{postContent}, DEFAULT, DEFAULT, NULL, DEFAULT, DEFAULT)
 	</insert>
 
 	<!-- 이미지테이블에 삽입 -->
