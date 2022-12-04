@@ -32,10 +32,15 @@ public class BondIntroController {
 //	public String goBodnIntro() {
 //		return "/bond/bond-bondIntro";
 //	}
-	@GetMapping("/bond-bondIntro")
-	public String goBodnIntro(@SessionAttribute("groupInfo") Group groupInfo,Model model) {
+	@GetMapping("/bond/{groupNo}/bond-bondIntro")
+	public String goBodnIntro(
+			@SessionAttribute("groupInfo") Group groupInfo,
+			@PathVariable("groupNo") int groupNo,
+			Model model) {
 		
 		if(groupInfo.getGroupComment() != null) {
+			
+			groupInfo.setGroupNo(groupNo);
 			
 			groupInfo.setGroupComment(Util.newLineClear(groupInfo.getGroupComment()));
 		}
@@ -45,9 +50,9 @@ public class BondIntroController {
 	}
 	
 	// 본드 소개 수정
-	@PostMapping("/bond-bondIntro")
+	@PostMapping("/bond/{groupNo}/bond-bondIntro")
 	public String bondIntro(
-//			@PathVariable("groupNo") int groupNo,
+			@PathVariable("groupNo") int groupNo,
 			@SessionAttribute("groupInfo") Group groupInfo,
 			RedirectAttributes ra,
 			Group inputGroup,
@@ -64,7 +69,7 @@ public class BondIntroController {
 		newGroup.setGroupName(inputGroup.getGroupName());
 		newGroup.setGroupComment(inputGroup.getGroupComment());
 
-		newGroup.setGroupNo(groupInfo.getGroupNo());
+		newGroup.setGroupNo(groupNo);
 		
 		int result = service.bondIntro(groupInfo, webPath, filePath, newGroup, groupImage2, deleteYN);
 		

@@ -71,6 +71,7 @@
     <script>
         const bOriName = "${groupInfo.groupName}";
         const bOriginalImg = "${groupInfo.groupImage}";
+        const groupNo = "${groupNo}";
     </script>
     <%-- <script src="/resources/js/myPage/bondIntro.js"></script> --%>
 </body>

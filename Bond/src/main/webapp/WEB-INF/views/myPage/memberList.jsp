@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:set var="memList" value="${memMap.memList}"/>
+<c:set var="myNo" value="${memMap.loginMember.memberNo}"/>
 <c:set var="pagination" value="${memMap.pagination}"/>
 
 <!DOCTYPE html>
@@ -25,95 +26,110 @@
                     <div class="member-total">
                         <span>멤버</span><span>${groupInfo.memberCount}</span>
                     </div>
-                    <div class="member-invite">멤버 초대하기</div>
-                </div>
-                <div class="member-serch">
-                    <input type="text" placeholder="멤버 검색">
-                    <button type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    
+                    <button class="member-invite inviteBtn">멤버 초대하기</button>
                 </div>
             </div>
-
             <div class="member-all">
                 <div class="member-title">멤버</div>
-                <c:forEach var="memberList" items="${memList}">
+
+                <c:forEach var="mem" items="${memList}">
+                    <c:if test="${myNo == mem.memberNo}">
+                        <c:if test="${mem.leaderYN == 'Y'}">
+                            <c:set var="leader" value="1"/>
+                        </c:if>
+                    </c:if>
+                </c:forEach>
+
+                <div class="member-list" id="${myNo}">
+                    <div class="member-image" >
+                        <c:if test="${empty loginMember.profileImage}">
+                            <img src="/resources/images/member/profile/defaultProfile.png" class="memImg">
+                        </c:if>
+                        <c:if test="${!empty loginMember.profileImage}">
+                            <img src="${loginMember.profileImage}" class="memImg">
+                        </c:if>
+                    </div>
+                    <div class="member-name" name="memberName" id="memberName">${loginMember.memberName}
                     
-                        <c:if test="{loginMember.memberNo == groupMemberList.memberNo}">
-                            <c:when test="groupMemberList.leaderYN == 'Y'">
-                                <div class="member-list">
+                        <c:if test="${not empty leader}">
+                            <div class="leader"><i class="fa-solid fa-crown"></i>리더</div>
+                        </c:if>
+                    </div>
+                    <div class="member-report">
+                        <a href="/myPage/myPage"><i class="fa-solid fa-gear sidbar-icon"></i></a>
+                    </div>
+                </div>              
+
+                <c:forEach var="memberList" items="${memList}">
+                    <c:if test="${myNo != memberList.memberNo}">
+                        <c:choose>
+                            <c:when test="${memberList.leaderYN == 'Y'}">
+                                <div class="member-list" id="${memberList.memberNo}">
                                     <div class="member-image">
-                                        <c:if test="${empty GroupMemberList.memberImage}">
-                                            <img src="/resources/images/user.png">
+                                        <c:if test="${empty memberList.memberImage}">
+                                            <img src="/resources/images/member/profile/defaultProfile.png" class="memImg">
                                         </c:if>
-                                        <c:if test="${!empty GroupMemberList.memberImage}">
-                                            <img src="${GroupMemberList.memberImage}" id="profile-img">
+                                        <c:if test="${!empty memberList.memberImage}">
+                                            <img src="${memberList.memberImage}" class="memImg">
                                         </c:if>
                                     </div>
-                                    <div class="member-name" name="memberName" id="memberName">${memList.memberName}</div>
-                                    <div class="leader"><i class="fa-solid fa-crown"></i>리더</div>
+                                    <div class="member-name" name="memberName" id="memberName">${memberList.memberName}<div class="leader"><i class="fa-solid fa-crown"></i>리더</div></div>
+                                    
                                     <div class="member-report">
-                                        <i class="fa-solid fa-gear sidbar-icon"><a href="/bond-bondIntro"></a></i>
+                                        <i class="fa-solid fa-user-slash userSlash"></i>
                                     </div>
                                 </div>
                             </c:when>
                             <c:otherwise>
-                                <div class="member-list">
+                                <div class="member-list" id="${memberList.memberNo}">
                                     <div class="member-image">
-                                        <c:if test="${empty groupMemberList.memberImage}">
-                                            <img src="/resources/images/user.png">
+                                        <c:if test="${empty memberList.memberImage}">
+                                            <img src="/resources/images/member/profile/defaultProfile.png"class="memImg">
                                         </c:if>
-                                        <c:if test="${!empty groupMemberList.memberImage}">
-                                            <img src="${groupMemberList.memberImage}" id="profile-img">
+                                        <c:if test="${!empty memberList.memberImage}">
+                                            <img src="${memberList.memberImage}"class="memImg">
                                         </c:if>
                                     </div>
-                                    <div class="member-name" name="memberName" id="memberName">${memList.memberName}</div>
+                                    <div class="member-name" name="memberName" id="memberName">${memberList.memberName}</div>
                                     <div class="member-report">
-                                        <i class="fa-solid fa-gear sidbar-icon"><a href="/bond-bondIntro"></a></i>
+                                        <i class="fa-solid fa-user-slash userSlash"></i>
                                     </div>
                                 </div>
-
                             </c:otherwise>
-                        </c:if>
-                                <div class="member-list">
-                                    <div class="member-image">
-                                        <c:if test="${empty groupMemberList.memberImage}">
-                                            <img src="/resources/images/user.png">
-                                        </c:if>
-                                        <c:if test="${!empty groupMemberList.memberImage}">
-                                            <img src="${groupMemberList.memberImage}" id="profile-img">
-                                        </c:if>
-                                    </div>
-                                    <div class="member-name" name="memberName" id="memberName">${memList.memberName}</div>
-                                    <div class="member-report">
-                                        <i class="fa-solid fa-user-slash"></i>
-                                    </div>
-                                </div>
-                        
-                    
+                        </c:choose>
+                    </c:if>
                 </c:forEach>
-
-
-                <%-- <div class="member-list">
-                    <div class="member-image">
-                        <img src="/resources/images/user.png" alt="">
-                    </div>
-                    <div class="member-name" name="memberName" id="memberName">${loginMember.memberName}
-                        <div class="leader"><i class="fa-solid fa-crown"></i>리더</div>
-
-                    </div>
-                    <div class="member-report">
-                        <i class="fa-solid fa-user-slash"></i>
-                    </div>
-                </div> --%>
+            <div id="pageTarget"></div>
             </div>
+        </div>
 
-            <div id="pageTarget" style="height:10px"></div>
+
+        <%-- 모달 --%>
+        <div class="modal" id="modal">
+            <div class="profile1" id="modalProfile">
+                <button type="button" class="clickProfile close-btn">
+                    <i class="fa-solid fa-x" id="modalx"></i>
+                </button>
+                <section class="profile-area">
+
+                    <div class="profile-image" id="modalImgarea">
+                    </div>
             
-            <div class="member-invite-bottom">
-                <div class="invite-icon"><i class="fa-solid fa-user-plus"></i></div>
-                <div class="member-invite-btn">
-                    <button>멤버 초대하기</button>
-                </div>
+                    <h3 class="memberName" name="memberName" id="modalName"></h3>
+                    <section class="member">
+                        <div class="leader-yn">
+                            <div class="profile-member" id="modalLeader">멤버</div>
+                        </div>
+                        <div class="join-date" id="modalJoinDate"></div>
+                    </section>
+            
+                    <div class="birth">
+                        <div class="birth-title">생일 : </div>
+                        <div class="memberBirth" id="modalBirth">
+                        </div>
+
+                    </div>
+                </section>
             </div>
         </div>
     </main>
