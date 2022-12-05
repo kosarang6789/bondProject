@@ -266,6 +266,10 @@
                 </button>
             </a>
         </div>
+                    <!-- 3번 영역 -->
+            <div id="banner">
+                <div id="band-photo-area"></div>
+            </div>
 
     <%-- 탈퇴 모달 --%>
     <jsp:include page="/WEB-INF/views/bond/joinModal.jsp"/>
