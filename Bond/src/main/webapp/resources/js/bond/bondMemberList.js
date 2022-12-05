@@ -76,10 +76,10 @@ function selectBoardScroll (){
                     if(memMap != null){
                         console.log(memMap);
                         
-                            const memberAll = document.querySelector(".member-all");
-                            
-                            for(let mem of memMap.memList){
-                                if(myNo != mem.memberNo){
+                        const memberAll = document.querySelector(".member-all");
+                        
+                        for(let mem of memMap.memList){
+                            if(myNo != mem.memberNo){
     
                                 const members = document.createElement("div");
                                 members.classList.add("member-list");
@@ -108,6 +108,7 @@ function selectBoardScroll (){
     
                                 const memberReport = document.createElement("div");
                                 memberReport.classList.add("member-report");
+                                memberReport.setAttribute("id", mem.memberNo);
     
                                 const userSlash = document.createElement("i");
                                 userSlash.classList.add("userSlash");
@@ -118,6 +119,18 @@ function selectBoardScroll (){
                                 members.append(memberImage, memberName, memberReport);
                                 memberImage.append(image);
                                 memberReport.append(userSlash);
+                            }
+
+                            const reportMemList = document.getElementsByClassName("member-report");
+
+                            // 무한 스크롤에서 신고하기 이벤트줌.
+                            for(let rm of reportMemList){
+                                rm.addEventListener("click", ()=>{
+                                    let memberNo = rm.getAttribute("id");
+                                    
+                                    const url = "/report/member/" + memberNo; 
+                                    open(url, "신고하기", "width=500px, height=600px")
+                                })
                             }
                         }
                         
@@ -168,13 +181,16 @@ const modalName = document.getElementById("modalName");
 const modalLeader = document.getElementById("modalLeader");
 const modalJoinDate = document.getElementById("modalJoinDate");
 const modalBirth = document.getElementById("modalBirth");
-const modalReport = document.getElementById("modalReport");
+const modalReport = document.querySelector(".reportBtn");
 
+
+// 멤버 이미지 불러와 for문 안에 넣어 id값 얻고 모달창 띄움
 for(let m of mmm){
     m.addEventListener("click", ()=>{
         modal.classList.remove("hidden");
         modal.classList.add("show");
         selectMemPro(m.getAttribute("id"));
+        
     });
 };
 
@@ -185,12 +201,14 @@ const modalBtn2 = document.createElement("button");
 modalBtn2.classList.add("chatting");
 
 const modalNMe = document.createElement("div");
+
 modalNMe.classList.add("report");
 const modalIcon = document.createElement("i");
 modalIcon.classList.add("fa-solid");
 modalIcon.classList.add("fa-user-slash");
 modalIcon.classList.add("memberReport");
 modalIcon.innerText = "신고하기";
+
 const modalChat = document.createElement("a");
 const modalChatI = document.createElement("i");
 modalChatI.classList.add("fa-solid");
@@ -199,11 +217,6 @@ modalChatI.classList.add("chat-icon");
 modalChatI.classList.add("chattingIcon");
 modalChatI.innerText = "채팅하기";
 
-
-modalNMe.append(modalBtn1, modalBtn2);
-modalBtn1.append(modalIcon);
-modalBtn2.append(modalChat);
-modalChat.append(modalChatI);
 
 // 나 일때
 const modalA = document.createElement("a");
@@ -217,9 +230,6 @@ modalMyI.classList.add("fa-gear");
 modalMyI.classList.add("sidbar-icon");
 modalMyI.innerText="내 정보 수정";
 
-
-modalMe.append(modalA);
-modalA.append(modalMyI);
 
 // 프로필 부분
 const modalImgarea = document.getElementById("modalImgarea");
@@ -255,13 +265,19 @@ const selectMemPro = (memberNo) =>{
 
             modalBirth.innerText = memPro.memberBirth;
 
+            modalReport.innerHTML="";
             if(myNo != memPro.memberNo){
-                modalProfile.append(modalNMe);
-                modalMe.remove();
+                modalReport.append(modalBtn1, modalBtn2);
+                modalReport.setAttribute("id", memPro.memberNo);
+                modalBtn1.append(modalIcon);
+                modalBtn2.append(modalChat);
+                modalChat.append(modalChatI);
             }else{
-                modalProfile.append(modalMe);
-                modalNMe.remove();
+                modalReport.append(modalA);
+                modalA.append(modalMyI);
+                modalReport.setAttribute("id", myNo);
             }
+            modalBtn1.setAttribute("id", memPro.memberNo);
 
         },
         error : ()=>{
@@ -290,3 +306,49 @@ reportBtn.addEventListener("click", () => {
     open(url, "신고하기", "width=500px, height=600px")
 });
 
+
+// 멤버 신고
+// 멤버 리스트 신고(무한 스크롤 신고하기는 무한 스크롤 부분에서 작성함.)
+const reportMemList = document.getElementsByClassName("member-report");
+
+for(let rm of reportMemList){
+    rm.addEventListener("click", ()=>{
+        let memberNo = rm.getAttribute("id");
+        
+        const url = "/report/member/" + memberNo; 
+        open(url, "신고하기", "width=500px, height=600px")
+    })
+};
+
+// 모달 창에서 신고
+if(modal.classList.contains("show")){
+    // const modalReportList = document.getElementsByClassName("report");
+    
+    // for(let mr of modalReportList){
+    //     mr.addEventListener("click", ()=>{
+    //         let memberNo = mr.getAttribute("id");
+                    
+    //         const url = "/report/member/" + memberNo; 
+    //         open(url, "신고하기", "width=500px, height=600px")
+    //     })
+    // }
+
+    // let memberNo = modalReport.getAttribute("id");
+    // // 신고하기 버튼
+
+    // // 신고 버튼 클릭 시 팝업창
+    // modalBtn1.addEventListener("click", () => {
+    //     const url = "/report/member/" + memberNo; 
+    //     open(url, "신고하기", "width=500px, height=600px")
+    // });
+    
+}
+let memberNo = modalBtn1.getAttribute("id");
+console.log(memberNo);
+// 신고하기 버튼
+
+// 신고 버튼 클릭 시 팝업창
+modalBtn1.addEventListener("click", () => {
+    const url = "/report/member/" + memberNo; 
+    open(url, "신고하기", "width=500px, height=600px")
+});

@@ -40,7 +40,7 @@
                     </c:if>
                 </c:forEach>
 
-                <div class="member-list" id="${myNo}">
+                <div class="member-list">
                     <div class="member-image" id="${myNo}">
                         <c:if test="${empty loginMember.profileImage}">
                             <img src="/resources/images/member/profile/defaultProfile.png" class="memImg">
@@ -64,7 +64,7 @@
                     <c:if test="${myNo != memberList.memberNo}">
                         <c:choose>
                             <c:when test="${memberList.leaderYN == 'Y'}">
-                                <div class="member-list" id="${memberList.memberNo}">
+                                <div class="member-list">
                                     <div class="member-image" id="${memberList.memberNo}">
                                         <c:if test="${empty memberList.memberImage}">
                                             <img src="/resources/images/member/profile/defaultProfile.png" class="memImg">
@@ -75,13 +75,13 @@
                                     </div>
                                     <div class="member-name" name="memberName" id="memberName">${memberList.memberName}<div class="leader"><i class="fa-solid fa-crown"></i>리더</div></div>
                                     
-                                    <div class="member-report">
+                                    <div class="member-report" id="${memberList.memberNo}">
                                         <i class="fa-solid fa-user-slash userSlash memberReport"></i>
                                     </div>
                                 </div>
                             </c:when>
                             <c:otherwise>
-                                <div class="member-list" id="${memberList.memberNo}">
+                                <div class="member-list">
                                     <div class="member-image" id="${memberList.memberNo}">
                                         <c:if test="${empty memberList.memberImage}">
                                             <img src="/resources/images/member/profile/defaultProfile.png"class="memImg">
@@ -91,8 +91,8 @@
                                         </c:if>
                                     </div>
                                     <div class="member-name" name="memberName" id="memberName">${memberList.memberName}</div>
-                                    <div class="member-report">
-                                        <i class="fa-solid fa-user-slash userSlash  memberReport"></i>
+                                    <div class="member-report" id="${memberList.memberNo}">
+                                        <i class="fa-solid fa-user-slash userSlash memberReport"></i>
                                     </div>
                                 </div>
                             </c:otherwise>
@@ -127,8 +127,10 @@
                         <div class="birth-title">생일 : </div>
                         <div class="memberBirth" id="modalBirth">
                         </div>
-
                     </div>
+
+                    <div class="reportBtn" id="modalReport"></div> <%-- 안되면 이거만 지우면 됨. --%>
+
                 </section>
             </div>
         </div>
