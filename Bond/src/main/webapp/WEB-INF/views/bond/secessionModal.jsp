@@ -15,7 +15,7 @@
                         <div class="joSeTitle">본드 탈퇴하기</div>
                         <div class="joSeModalClose"><i class="fa-solid fa-x joSeModalX"></i></div>
                     </div>
-                    <div class="seContent"><pre>${groupInfo.groupName}
+                    <div class="seContent"><pre class="seContentPre">${groupInfo.groupName}
 본드에서 탈퇴하시겠습니까?
                 </pre></div>
                     <div class="joSeModalBtnArea">

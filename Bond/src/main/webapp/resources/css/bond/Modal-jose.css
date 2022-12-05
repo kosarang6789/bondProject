@@ -80,6 +80,6 @@
 }
 
 /* 탈퇴 추가 pre태그  */
-pre{
+.seContentPre{
     text-align: center;
 }
