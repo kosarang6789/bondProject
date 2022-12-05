@@ -13,7 +13,6 @@
     align-items: center;
 }
 .joSeModalArea{
-    border: 1px solid black;
     width: 380px;
     height: 290px;
     background-color: white;
@@ -68,18 +67,25 @@
 .joContent{
     height: 80px;
     font-size: 21px;
-    padding-top: 22px;
+    padding-top: 6px;
     margin: auto;
 }
 /* 탈퇴 콘텐트 부분 */
 .seContent{
     height: 100px;
     font-size: 21px;
-    /* padding-top: 58px; */
+    padding-top: 20px;
     margin: auto;
 }
 
 /* 탈퇴 추가 pre태그  */
-pre{
+.seContentPre{
     text-align: center;
+}
+
+.show{
+    display: flex;
+}
+.hidden{
+    display: none;
 }
