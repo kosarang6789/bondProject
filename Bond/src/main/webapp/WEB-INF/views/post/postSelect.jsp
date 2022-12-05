@@ -83,8 +83,7 @@
             
             <!-- 댓글조회 -->
             <ul id="replyList">
-                <!-- 댓글 한개 -->
-                <li class="replyOne">
+                <%-- <li class="replyOne">
                     <!-- 댓글 작성자 이미지 -->
                     <img src="/resources/images/member/profile/defaultProfile.png" class="replyMember-img">
                     <div class="reply-text">
@@ -103,6 +102,7 @@
                         </div>
                     </div>
                 </li>
+                <!-- 댓글 한개 -->
                 <li class="replyOne child-comment">
                     <!-- 댓글 작성자 이미지 -->
                     <img src="/resources/images/member/profile/defaultProfile.png" 
@@ -122,7 +122,7 @@
                             </div>
                         </div>
                     </div>
-                </li>
+                </li> --%>
             </ul>
         
             <!-- 댓글 작성 -->

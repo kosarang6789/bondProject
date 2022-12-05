@@ -30,16 +30,12 @@
 		<result property="memberImage" column="MEMBER_IMG" />
 		<result property="replyCount" column="REPLY_COUNT" />
 		<result property="likeCount" column="LIKE_COUNT" />
+		<result property="postView" column="POST_VIEW" />
 			
-<!-- 			<collection property="replyList"
+			<collection property="replyList"
 			javaType="java.util.ArrayList" ofType="Reply"
 			select="selectReplyList"
 			column="POST_NO"/>
-
-			<collection property="postImageList"
-			javaType="java.util.ArrayList" ofType="PostImage"
-			select="selectPostImageList"
-			column="POST_NO"/> -->
 		
 	</resultMap>
 	
@@ -52,25 +48,9 @@
 		<result property="postNo" column="POST_NO" />
 		<result property="parentNo" column="PARENT_NO" />
 		<result property="memberNo" column="MEMBER_NO" />
+		<result property="memberName" column="MEMBER_NAME" />
+		<result property="memberImage" column="MEMBER_IMG" />
 	</resultMap>
-	<!-- 게시물 사진 rm -->
-	<resultMap type="PostImage" id="postImage_rm">
-		<id property="imageNo" column="IMG_NO" />
-		<result property="imageOrigin" column="POST_NO" />
-		<result property="imageRename" column="IMG_ORIGINAL" />
-		<result property="imagePath" column="IMG_PATH" />
-		<result property="imageOrder" column="IMG_ORDER" />
-		<result property="imageComment" column="IMG_COMMENT" />
-	</resultMap>
-	
-	
-	
-	<!-- 게시글 목록 불러오기
-	<select id='postList' parameterType="Post" resultMap="post_rm">
-		SELECT POST_NO, MEMBER_NO, GROUP_NO, POST_CONTENT, POST_DATE, 
-		DECODE(POST_DEL_YN, 'Y', '삭제됨', 'N', '게시중') AS POST_DEL_YN
-		FROM "POST"
-	</select> -->
 	
 	
 	<!-- 게시글 수 조회 -->
@@ -138,6 +118,23 @@
 		WHERE POST_NO = #{postNo}
 		AND POST_DEL_YN = 'N'
 	
+	</select>
+	
+	<select id="selectReplyList" resultMap="reply_rm">
+		SELECT LEVEL, C.* FROM
+			(SELECT REPLY_NO, REPLY_CONTENT, 
+				TO_CHAR(REPLY_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분"') REPLY_DATE,
+				POST_NO, R.MEMBER_NO, MEMBER_NAME,
+				(SELECT MEMBER_IMG_PATH || MEMBER_IMG_RENAME 
+				FROM MEMBER_IMG MI
+				WHERE MI.MEMBER_NO = R.MEMBER_NO) MEMBER_IMG,
+				PARENT_NO, REPLY_DEL_YN
+			FROM REPLY R
+			JOIN MEMBER M ON(R.MEMBER_NO = M.MEMBER_NO)
+			WHERE POST_NO = #{postNo}) C
+		START WITH PARENT_NO IS NULL
+		CONNECT BY PRIOR REPLY_NO = PARENT_NO
+		ORDER SIBLINGS BY REPLY_NO
 	</select>
 	
 	<!-- 좋아요 체크 -->
