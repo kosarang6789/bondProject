@@ -14,10 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Component
 @WebFilter(filterName = "loginFilter",
-		   urlPatterns = {"/member/*", "/bond/*", "/logout", "/admin/*"})
+		   urlPatterns = {"/member/*", "/bond/*", "/logout", "/admin/*", "/report/*"})
 public class LoginFilter implements Filter {
 
 	@Override
@@ -29,6 +30,8 @@ public class LoginFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+		
+		// org.springframework.web.servlet
 		
 		// 필터는 클라이언트의 요청이 되자마자
 		// 또는 응답이 되기 직전에 필터링 코드를 추가할 수 있는 기능

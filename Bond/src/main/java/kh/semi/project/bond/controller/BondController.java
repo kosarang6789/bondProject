@@ -110,10 +110,11 @@ public class BondController {
 		// 본드 기본정보 불러오기(이름, 사진, 멤버수, 소개글)
 		Group groupInfo = service.selectGroupInfo(groupNo);
 		
-		String openYN = groupInfo.getOpenYN();
+//		String openYN = groupInfo.getOpenYN();
+		String openYN = "N";
 		
-		if(openYN.equals(null)) {
-			openYN = "N";
+		if(groupInfo != null) {
+			openYN = groupInfo.getOpenYN();
 		}
 		
 		GroupMemberList member = new GroupMemberList();

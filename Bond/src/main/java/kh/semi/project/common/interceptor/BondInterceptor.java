@@ -1,5 +1,7 @@
 package kh.semi.project.common.interceptor;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,6 +41,8 @@ public class BondInterceptor implements HandlerInterceptor{
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
+		
+		
 		// 세션을 얻어옴
 		HttpSession session = request.getSession();
 		
@@ -59,7 +63,11 @@ public class BondInterceptor implements HandlerInterceptor{
 		}
 		
 		if(!isContain) {
-			System.out.println("BondInterceptor postHandle 실행");
+			Date date = new Date();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss z");
+			
+			System.out.println("[Scheduler] BondInterceptor postHandle (" + sdf.format(date) + ")");
+			
 			response.sendRedirect("referer:/");
 			
 		}
