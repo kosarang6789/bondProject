@@ -45,7 +45,7 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide ">
                                 <div class="category">
-                                    <a href="#" class="category-list">
+                                    <a href="/member/search" class="category-list">
                                         <div class="categoryImageWrap">
                                             <img src="/resources/images/member/main2/group-category/1_exercise.jpg" class="categoryImage">
                                         </div>
@@ -159,6 +159,7 @@
         <section class="search-area">
             <article>
                 <h2>BOND 찾기</h2>
+                <!-- 검색창 -->
                 <form action="#" method="get" id="group-search" onsubmit="return true">
                     <fieldset>
                         <select name="key" id="search-key">
@@ -169,28 +170,11 @@
                         <input type="text" id="search-query" name="query"
                         placeholder="원하는 모임을 검색하세요">
 
-                        <button type="submit" id="search-btn"
-                        class="fa-solid fa-magnifying-glass">
-
-                        </button>
+                        <a href="/member/findBond/search">
+                            <button type="submit" id="search-btn" class="fa-solid fa-magnifying-glass"></button>
+                        </a>
                     </fieldset>
                 </form>
-                <div class="list-wrapper">
-                    <table class="list-table">
-
-                        <tbody>
-                            <c:forEach var="group" items="${group}">
-                                <tr>
-                                    <td rowspan="2"><img src="/resources/images/bond/profile/no-profile.png" class="td-img"></td>
-                                    <td>${group.groupName}</td>
-                                </tr>
-                                <tr class="tr-comment">
-                                    <td class="td-comment">${group.groupComment}</td>
-                                </tr>
-                            </c:forEach>
-                        </tbody>
-                    </table>
-                </div>
             </article>
         </section>
 

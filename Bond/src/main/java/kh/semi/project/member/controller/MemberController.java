@@ -212,9 +212,6 @@ public class MemberController {
 			model.addAttribute("groupJoinNo", groupJoinNo);
 		}
 		
-		List<Group> group = service.allGroupList();
-		model.addAttribute("group", group);
-
 		return "member/findBond";
 	}
 	

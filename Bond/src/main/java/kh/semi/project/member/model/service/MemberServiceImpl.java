@@ -107,11 +107,6 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 
-	@Override
-	public List<Group> allGroupList() {
-		return dao.allGroupList();
-	}
-
 
 
 

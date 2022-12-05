@@ -123,70 +123,27 @@
 		AND GROUP_NO = #{groupNo}
 	</select>
 	
-	<select id="getListCount" parameterType="_int" resultType="_int">
-		SELECT COUNT(*) FROM "GROUP" 
-		WHERE GROUP_NO  = #{groupNo}
-		AND GROUP_STATUS = '0'
-	</select>
-	
-	<select id="selectGroupList" parameterType="_int" resultMap="group_rm">
-		SELECT GROUP_NO, GROUP_NAME, GROUP_COMMENT,
-			 (SELECT GROUP_IMG_PATH || GROUP_IMG_RENAME  FROM GROUP_IMG I
-				WHERE I.GROUP_NO = G.GROUP_NO) THUMBNAIL
-		FROM "GROUP" G
-		WHERE GROUP_NO = #{groupNo}
-		AND GROUP_STATUS = '0'
-		ORDER BY GROUP_NAME
-	</select>
-	
-	<select id="getListCount_search" resultType="_int">
-		SELECT COUNT(*) FROM "GROUP" 
-		WHERE GROUP_NO  = #{groupNo}
-		AND GROUP_STATUS = '0'
-		
-		<if test ='query != null and query != ""'>
-			<choose>
-				<when test = 'key == "t"'>
-					AND GROUP_NAME LIKE '%${query}%'
-				</when>
-				
-				<when test = 'key == "c"'>
-					AND GROUP_COMMENT LIKE '%${query}%'
-				</when>
-			</choose>
-		</if>
-	</select>
-
-
-	<select id="selectGroupList_search" parameterType="_int" resultMap="group_rm">
-		SELECT GROUP_NO, GROUP_NAME, GROUP_COMMENT,
-			 (SELECT GROUP_IMG_PATH || GROUP_IMG_RENAME  FROM GROUP_IMG I
-				WHERE I.GROUP_NO = G.GROUP_NO) THUMBNAIL
-		FROM "GROUP" G
-		WHERE GROUP_NO = #{groupNo}
-		AND GROUP_STATUS = '0'
-		
-		<if test ='query != null and query != ""'>
-			<choose>
-				<when test = 'key == "t"'>
-					AND GROUP_NAME LIKE '%${query}%'
-				</when>
-				
-				<when test = 'key == "c"'>
-					AND GROUP_COMMENT LIKE '%${query}%'
-				</when>
-			</choose>
-		</if>
-		
-		ORDER BY GROUP_NAME
-	</select>
-	
+	<!-- 검색 -->
 	<select id="allGroupList" parameterType="_int" resultMap="group_rm">
-				SELECT GROUP_NO, GROUP_NAME, GROUP_COMMENT,
+		SELECT GROUP_NO, GROUP_NAME, GROUP_COMMENT,
 			 (SELECT GROUP_IMG_PATH || GROUP_IMG_RENAME  FROM GROUP_IMG I
 				WHERE I.GROUP_NO = G.GROUP_NO) THUMBNAIL
 		FROM "GROUP" G
 		WHERE GROUP_STATUS = '0'
+		
+		<if test ='query != null and query != ""'>
+			<choose>
+				<when test = 'key == "t"'>
+					AND GROUP_NAME LIKE '%${query}%'
+				</when>
+				
+				<when test = 'key == "c"'>
+					AND GROUP_COMMENT LIKE '%${query}%'
+				</when>
+			</choose>
+		</if>
+		
+		ORDER BY GROUP_NAME
 	</select>
 	
 </mapper>

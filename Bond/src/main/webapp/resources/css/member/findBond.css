@@ -411,8 +411,18 @@ main{
 
 .list-table > thead{ background-color: #999; color: white;}
 
+.td-name{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.td-comment{
+    font-size: 11px;
+    color: #666;
+}
+
 .td-img{
-    width: 150px;
+    width: 100px;
 }
 
 .list-table tr{
@@ -423,12 +433,12 @@ main{
     padding-bottom: 20px;
 }
 
-.list-table > tbody > tr{
+/* .list-table > tbody > tr{
     border-bottom: 1px solid gray;
 } 
 .list-table > tbody > td{
     border-bottom: 1px solid gray;
-} 
+}  */
 
 .list-table tr > *{ text-align: left; }
 .list-table tr > *:nth-of-type(1){ width: 5%; }

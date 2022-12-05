@@ -33,8 +33,6 @@ public interface MemberService {
 	// 검색 조건 일치 본드 목록 조회 
 	public abstract Map<String, Object> selectGroupList(Map<String, Object> pm, int cp);
 
-	public abstract List<Group> allGroupList();
-
 
 
 }

@@ -84,9 +84,6 @@ public class MemberDAO {
 		return sqlSession.selectList("groupMapper.selectGroupList_search", pm, rowBounds);
 	}
 
-	public List<Group> allGroupList() {
-		return sqlSession.selectList("groupMapper.allGroupList");
-	}
 
 
 
