@@ -29,4 +29,10 @@ public class ReplyServiceImpl implements ReplyService{
 		return dao.insertReply(reply);
 	}
 
+	// 댓글 삭제
+	@Override
+	public int deleteReply(int replyNo) {
+		return dao.deleteReply(replyNo);
+	}
+
 }

@@ -18,4 +18,10 @@ public interface ReplyService {
 	 */
 	int insertReply(Reply reply);
 
+	/** 댓글 삭제
+	 * @param replyNo
+	 * @return result
+	 */
+	int deleteReply(int replyNo);
+
 }

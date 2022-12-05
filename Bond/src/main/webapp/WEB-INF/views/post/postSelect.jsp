@@ -83,6 +83,9 @@
             
             <!-- 댓글조회 -->
             <ul id="replyList">
+            </ul>
+            <%-- <div class="reply-area"> --%>
+            <%-- </div> --%>
                 <%-- <li class="replyOne">
                     <!-- 댓글 작성자 이미지 -->
                     <img src="/resources/images/member/profile/defaultProfile.png" class="replyMember-img">
@@ -101,29 +104,7 @@
                             </div>
                         </div>
                     </div>
-                </li>
-                <!-- 댓글 한개 -->
-                <li class="replyOne child-comment">
-                    <!-- 댓글 작성자 이미지 -->
-                    <img src="/resources/images/member/profile/defaultProfile.png" 
-                        class="replyMember-img child-img">
-                    <div class="reply-text">
-                        <strong class="replyMember-name">김순자</strong>
-                        <p class="reply-content child-content">댓글 내용들이 쭉 나올거야</p>
-                        <div class="reply-info">
-                            <div class="reply-btn">
-                                <p class="replyDate">2022년 10월 29일 오후 11:42</p>
-                                <button>•답글쓰기</button>
-                                <button>•신고</button>
-                            </div>
-                            <div class="writer-btn">
-                                <button>수정 |</button>
-                                <button>삭제</button>
-                            </div>
-                        </div>
-                    </div>
-                </li> --%>
-            </ul>
+                </li>--%>
         
             <!-- 댓글 작성 -->
             <div class="replyWrite-toolbar">

@@ -34,5 +34,11 @@ public class ReplyController {
 		return service.insertReply(reply);
 	}
 	
+	// 댓글 삭제
+	@GetMapping("/delete")
+	public int deleteReply(int replyNo) {
+		return service.deleteReply(replyNo);
+	}
+	
 	
 }

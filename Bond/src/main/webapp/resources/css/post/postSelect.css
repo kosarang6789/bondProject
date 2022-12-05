@@ -7,7 +7,7 @@
 a{text-decoration: none;}
 
 #postSelect-view > main{
-    height: 100%;
+    max-height: 100%;
     overflow: auto;
     background-color: white;
 }
@@ -92,7 +92,7 @@ a{text-decoration: none;}
 .post-content{
     padding: 25px 40px 16px;
     line-height: 23px;
-    min-height: 200px;
+    min-height: 30px;
     font-size: 14px;
 }
 
@@ -128,12 +128,15 @@ a{text-decoration: none;}
     font-size: 14px;
 }
 
-
 #replyList{
     width: 100%;
-    margin: 13px 0;
-    border-bottom: 1px solid #E7E7E7;
+    padding: 13px 0;
     background-color: #FCFCFC;
+}
+
+.firstReply-inform{
+    font-size: 14px;
+    text-align: center;
 }
 
 .replyOne{
@@ -142,6 +145,7 @@ a{text-decoration: none;}
     height: 64px;
     margin: 0 auto;
     flex-wrap: nowrap;
+    
 }
 
 .replyMember-img{
@@ -206,8 +210,9 @@ a{text-decoration: none;}
 
 /* 댓글 작성 */
 .replyWrite-toolbar{
-    margin: 25px 30px;
+    padding: 25px 30px;
     display: flex;
+    border-top: 1px solid #E7E7E7;
     justify-content: center;
 }
 
@@ -247,6 +252,7 @@ a{text-decoration: none;}
     resize: none;
     line-height: 20px;
     overflow-y: hidden;
+    max-height: 200px;
 }
 
 
