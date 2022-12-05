@@ -1,77 +1,72 @@
 package kh.semi.project.common.interceptor;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.ui.Model;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kh.semi.project.bond.model.service.BondService;
 import kh.semi.project.bond.model.vo.Group;
+import kh.semi.project.bond.model.vo.GroupMemberList;
+import kh.semi.project.common.Util;
+import kh.semi.project.member.model.vo.Member;
 
+// 존재하지 않는 모임에 접근 시
 public class BondInterceptor implements HandlerInterceptor{
+	
+	@Autowired
+	private BondService service;
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
+		System.out.println("[BondInterceptor] : 존재하지 않는 모임 접근 확인 인터셉터");
 		
 		// 다운캐스팅 진행
-			HttpServletRequest req = (HttpServletRequest)request;
-			HttpServletResponse resp = (HttpServletResponse)response;
-			
-			// 로그인 여부 확인
-			// -> session에 loginMember가 있는지 확인
-			HttpSession session = req.getSession();
-			
-			if(session.getAttribute("myGroupList") == null) { // 모임 정보 없으면
-				resp.sendRedirect("referer:/"); // 로그인 회원의 메인페이지로 리다이렉트
-			} 
-			// 로그인 O
-			return HandlerInterceptor.super.preHandle(request, response, handler);
-	}
-	
-	
-	
-	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-			ModelAndView modelAndView) throws Exception {
+		HttpServletRequest req = (HttpServletRequest)request;
+		HttpServletResponse resp = (HttpServletResponse)response;
 		
 		
-		// 세션을 얻어옴
-		HttpSession session = request.getSession();
+		// 타당성 검사 (true)일때만 다음 필터로 진행
+//		boolean valid = false;
+		
+		// 이동하려는 주소를 가져옴
+		String path = req.getRequestURI();
+		
+		// 보낼 주소
+		String sendPath = "";
+		// 비교에 사용할 groupNo 초기화
+		int requestGroupNo = -1;
 		
 		
-		// 세션에서 group 목록을 꺼냄
-		List<Group> myGroupList = (List<Group>)session.getAttribute("myGroupList");
-		
-		// 현재 이동하려는 bond의 groupNo를 얻어옴. 어떻게?
-		int thisGroupNo = (Integer)session.getAttribute("thisGroupNo");
-		
-		// 모임 그룹 목록에 그룹 번호가 있는지 검사
-		boolean isContain = false;
-		
-		for( Group myGroup : myGroupList) {
-			if(myGroup.getGroupNo() == thisGroupNo) {
-				isContain = true; // 값이 있으면 true로
-			}
+		// 주소에서 숫자를 꺼냄
+		try {
+			requestGroupNo = Util.getGroupNo(path);
+		} catch(NumberFormatException numberE) {
+			// 주소가 아니면 진행시켜!
+			return true;
 		}
 		
-		if(!isContain) {
-			Date date = new Date();
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss z");
 			
-			System.out.println("[Scheduler] BondInterceptor postHandle (" + sdf.format(date) + ")");
+		// 존재하는 주소인지 확인
+		int count = service.isExist(requestGroupNo);
 			
-			response.sendRedirect("referer:/");
+		if(count > 0) {
+			System.out.println("[BondInterceptor] 정상적인 경로입니다.\n");
 			
+			return true;
+		} else {
+			System.out.println("[BondInterceptor] 비정상적인 경로입니다...(page not found)\n");
+			sendPath = "/pageNotFound";
+			resp.sendRedirect(sendPath);
+			return false;
 		}
-		
 	}
+	
 	
 }
