@@ -76,7 +76,7 @@
                                     <div class="member-name" name="memberName" id="memberName">${memberList.memberName}<div class="leader"><i class="fa-solid fa-crown"></i>리더</div></div>
                                     
                                     <div class="member-report">
-                                        <i class="fa-solid fa-user-slash userSlash"></i>
+                                        <i class="fa-solid fa-user-slash userSlash">신고하기</i>
                                     </div>
                                 </div>
                             </c:when>
