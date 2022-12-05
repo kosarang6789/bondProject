@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Component;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Component
 @WebFilter(filterName = "loginFilter",
@@ -46,9 +45,7 @@ public class LoginFilter implements Filter {
 		
 		if(session.getAttribute("loginMember") == null) { // 로그인 X
 			resp.sendRedirect("/"); // 메인페이지로 리다이렉트
-			
 		}else { // 로그인 O
-			
 			// 연결된 다음 필터로 이동(없으면 Servlet / JSP로 이동)
 			chain.doFilter(request, response);
 		}
