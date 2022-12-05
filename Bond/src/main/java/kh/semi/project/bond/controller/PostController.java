@@ -65,33 +65,7 @@ public class PostController {
 			if(viewResult>0) { // insert시에 데이터와 화면 동기화
 				post.setPostView(post.getPostView()+1);
 			}
-			
 		}
-		
-		// 조회수 증가
-//		if(post!=null) {
-//			Cookie[] cookies = req.getCookies();
-//			
-//			Cookie c = null;
-//			if(cookies != null) {
-//				for(Cookie temp : cookies) {
-//					if(temp.getName().equals("postViewNo")) {
-//						c= temp;
-//					}
-//				}
-//			}
-//			
-//			int result = 0;
-//			if(c==null) {
-//				result = service.updatePostView(postNo);
-//				c= new Cookie("postViewNo", "|" + postNo + "|");
-//			} else { 
-//				if(c.getValue().indexOf("|" + postNo + "|") == -1) { // 일치하는 값 없는경우
-//					result = service.updatePostView(postNo);
-//					c.setValue(c.getValue())
-//				}
-//			}
-//		}
 		
 		return new Gson().toJson(post);
 	}
