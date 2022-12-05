@@ -39,6 +39,11 @@ public class PlanDAO {
 		return sqlSession.delete("planMapper.planDelete", planNo);
 	}
 
+	// member/mainPage에 일정 뿌리기
+	public List<Plan> getMyPlans(int memberNo) {
+		return sqlSession.selectList("member.planAttribue", memberNo);
+	}
+
 
 
 

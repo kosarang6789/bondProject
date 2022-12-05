@@ -29,7 +29,7 @@ public class BondNavInterceptor implements HandlerInterceptor{
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		
-		System.out.println("[BondNavInterceptor] 미가입 회원이 nav 메뉴 사용 방지 인터셉터");
+		System.out.println("[BondNavInterceptor] 미가입 회원의 모임 nav 메뉴 사용 차단 인터셉터");
 		
 		// 다운캐스팅 진행
 		HttpServletRequest req = (HttpServletRequest)request;
@@ -70,11 +70,11 @@ public class BondNavInterceptor implements HandlerInterceptor{
 		
 		// 결과가 있으면
 		if(result > 0) {
-			System.out.println("[BondNavInterceptor] : nav 사용 가능!\n ");
+			System.out.println("[BondNavInterceptor] nav 사용 가능!\n ");
 			
 
 		} else {
-			System.out.println("[BondNavInterceptor] : nav 사용 불가!\n ");
+			System.out.println("[BondNavInterceptor] nav 사용 불가!\n ");
 			sendPath = "redirect:/";
 			resp.sendRedirect(sendPath);
 		}

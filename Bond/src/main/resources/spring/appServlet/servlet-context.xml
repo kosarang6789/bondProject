@@ -45,13 +45,6 @@
 	
 		<!-- 인터셉터 등록/매핑주소 설정 -->
 	<interceptors>
-		
-		<interceptor>
-			<mapping path="/member/**" /> 
-			<beans:bean id="LoginInterceptor"  
-				class="kh.semi.project.common.interceptor.LoginInterceptor"/>
-		</interceptor> 
-		
 		<interceptor>
 			<mapping path="/bond/**" /> 
 			<beans:bean id="bondInterceptor"  

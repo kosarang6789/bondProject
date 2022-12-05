@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @WebFilter(filterName = "loginFilter",
-		   urlPatterns = {"/member/*", "/bond/*", "/logout", "/admin/*", "/report/*"})
+		   urlPatterns = {"/member/*", "/bond/*", "/logout", "/admin/*", "/report/*", "/myPage/*"})
 public class LoginFilter implements Filter {
 
 	@Override
@@ -29,7 +29,7 @@ public class LoginFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		
+		System.out.println("[Login Filter] 로그인 필터 ");
 		// org.springframework.web.servlet
 		
 		// 필터는 클라이언트의 요청이 되자마자
@@ -44,9 +44,16 @@ public class LoginFilter implements Filter {
 		HttpSession session = req.getSession();
 		
 		if(session.getAttribute("loginMember") == null) { // 로그인 X
-			resp.sendRedirect("/"); // 메인페이지로 리다이렉트
+			
+			System.out.println("[LoginFilter] 로그인 안됨");
+			
+			session.setAttribute("message", "로그인 후 이용해주세요.");
+			resp.sendRedirect("/login"); // 메인페이지로 리다이렉트
 		}else { // 로그인 O
 			// 연결된 다음 필터로 이동(없으면 Servlet / JSP로 이동)
+			
+			System.out.println("[LoginFilter] 로그인 확인");
+			
 			chain.doFilter(request, response);
 		}
 		
