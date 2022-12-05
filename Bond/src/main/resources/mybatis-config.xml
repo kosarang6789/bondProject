@@ -42,6 +42,7 @@
 		<mapper resource="/mappers/report-mapper.xml"/>
 		<mapper resource="/mappers/bondMember-mapper.xml"/>
 		<mapper resource="/mappers/plan-mapper.xml"/>
+		<mapper resource="/mappers/bondJoinSece-mapper.xml"/>
 		<!-- resources 폴더 -->
 	</mappers>
 </configuration>

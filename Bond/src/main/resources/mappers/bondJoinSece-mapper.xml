@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="bondJoinSeceMapper">
+
+	<resultMap type="GroupMemberList" id="memberList_rm">
+
+		<id property="memberNo" column="MEMBER_NO" />
+
+		<result property="memberName" column="MEMBER_NAME" />
+		<result property="memberImage" column="MEMBER_IMG" />
+		<result property="memberBirth" column="MEMBER_BIRTH" />
+		
+		<result property="joinNo" column="JOIN_NO" />
+		<result property="groupNo" column="GROUP_NO" />
+		<result property="leaderYN" column="LEADER_YN" />
+		<result property="joinDate" column="JOIN_DATE" />
+		<result property="joinStatus" column="JOIN_STATUS" />
+		<result property="leaveDate" column="LEAVE_DATE" />
+
+	</resultMap>
+	
+
+	<!-- 본드 가입 -->
+	<insert id="bondJoin">
+		INSERT INTO "MEMBER_JOIN" VALUES
+		(SEQ_MEMBER_JOIN_NO.NEXTVAL, #{groupNo}, #{memberNo}, 'N', DEFAULT, '0', NULL)
+	</insert>
+	
+	
+	<!-- 본드 탈퇴 -->
+	<update id="bondSecession">
+		UPDATE "MEMBER_JOIN" SET
+		JOIN_STATUS = 2,
+		LEAVE_DATE = SYSDATE
+		WHERE GROUP_NO = #{groupNo}
+		AND MEMBER_NO = #{memberNo}
+	</update>
+
+
+</mapper>
