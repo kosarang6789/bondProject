@@ -69,7 +69,7 @@ public class BondJoinSeceController {
 		}
 		ra.addFlashAttribute("message", message);
 		
-		return "redirect:/bond/"+groupNo;
+		return "redirect:/member/mainPage";
 	}
 	
 }
