@@ -291,6 +291,9 @@ main{
 .show{
     display: flex;
 }
+.hidden{
+    display: none;
+}
 
 .chattingIcon{
     margin-left: 20px;

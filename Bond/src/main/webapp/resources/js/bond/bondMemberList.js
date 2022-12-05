@@ -83,14 +83,15 @@ function selectBoardScroll (){
     
                                 const members = document.createElement("div");
                                 members.classList.add("member-list");
-                                members.setAttribute("id", mem.memberNo);
-                                members.addEventListener("click",()=>{
-                                    modal.style.display="flex";
-                                    selectMemPro(members.getAttribute("id"));
-                                })
-    
+                                
                                 const memberImage = document.createElement("div");
                                 memberImage.classList.add("member-image");
+                                memberImage.setAttribute("id", mem.memberNo);
+                                memberImage.addEventListener("click",()=>{
+                                    modal.classList.remove("hidden");
+                                    modal.classList.add("show");
+                                    selectMemPro(memberImage.getAttribute("id"));
+                                })
     
                                 const image = document.createElement("img");
                                 if(mem.memberImage!=null){
@@ -153,12 +154,13 @@ document.querySelector(".inviteBtn").addEventListener("click", ()=>{
 
 
 let image = document.getElementsByClassName("memImg");
-let mm = document.getElementsByClassName("member-list");
 const modal = document.getElementById("modal");
 const modalx = document.getElementById("modalx");
+let mmm = document.getElementsByClassName("member-image");
 
 modalx.addEventListener("click",()=>{
-    modal.style.display="none";
+    modal.classList.remove("show");
+    modal.classList.add("hidden");
 });
 
 const modalImg = document.getElementById("image");
@@ -168,10 +170,10 @@ const modalJoinDate = document.getElementById("modalJoinDate");
 const modalBirth = document.getElementById("modalBirth");
 const modalReport = document.getElementById("modalReport");
 
-
-for(let m of mm){
+for(let m of mmm){
     m.addEventListener("click", ()=>{
-        modal.style.display="flex";
+        modal.classList.remove("hidden");
+        modal.classList.add("show");
         selectMemPro(m.getAttribute("id"));
     });
 };
@@ -187,6 +189,7 @@ modalNMe.classList.add("report");
 const modalIcon = document.createElement("i");
 modalIcon.classList.add("fa-solid");
 modalIcon.classList.add("fa-user-slash");
+modalIcon.classList.add("memberReport");
 modalIcon.innerText = "신고하기";
 const modalChat = document.createElement("a");
 const modalChatI = document.createElement("i");
@@ -223,6 +226,7 @@ const modalImgarea = document.getElementById("modalImgarea");
 const ii = document.createElement("img");
 ii.classList.add("image");
 modalImgarea.append(ii);
+const modalProfile = document.getElementById("modalProfile");
 
 const selectMemPro = (memberNo) =>{
     $.ajax({
@@ -251,7 +255,6 @@ const selectMemPro = (memberNo) =>{
 
             modalBirth.innerText = memPro.memberBirth;
 
-            const modalProfile = document.getElementById("modalProfile");
             if(myNo != memPro.memberNo){
                 modalProfile.append(modalNMe);
                 modalMe.remove();
@@ -265,4 +268,25 @@ const selectMemPro = (memberNo) =>{
             console.log("ajax 통신 실패ㅠㅜㅠㅜ");
         }
     })
-}
+};
+
+window.addEventListener("click", e=>{
+    let ev = e.target;
+
+    if(ev.classList.contains("show")){
+        modal.classList.remove("show");
+        modal.classList.add("hidden");
+    }
+})
+
+
+// 밴드 신고
+// 신고하기 버튼
+const reportBtn = document.getElementById("reportBtn");
+
+// 신고 버튼 클릭 시 팝업창
+reportBtn.addEventListener("click", () => {
+    const url = "/report/group/" + groupNo; 
+    open(url, "신고하기", "width=500px, height=600px")
+});
+

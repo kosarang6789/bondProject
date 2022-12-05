@@ -41,7 +41,7 @@
                 </c:forEach>
 
                 <div class="member-list" id="${myNo}">
-                    <div class="member-image" >
+                    <div class="member-image" id="${myNo}">
                         <c:if test="${empty loginMember.profileImage}">
                             <img src="/resources/images/member/profile/defaultProfile.png" class="memImg">
                         </c:if>
@@ -65,7 +65,7 @@
                         <c:choose>
                             <c:when test="${memberList.leaderYN == 'Y'}">
                                 <div class="member-list" id="${memberList.memberNo}">
-                                    <div class="member-image">
+                                    <div class="member-image" id="${memberList.memberNo}">
                                         <c:if test="${empty memberList.memberImage}">
                                             <img src="/resources/images/member/profile/defaultProfile.png" class="memImg">
                                         </c:if>
@@ -76,13 +76,13 @@
                                     <div class="member-name" name="memberName" id="memberName">${memberList.memberName}<div class="leader"><i class="fa-solid fa-crown"></i>리더</div></div>
                                     
                                     <div class="member-report">
-                                        <i class="fa-solid fa-user-slash userSlash">신고하기</i>
+                                        <i class="fa-solid fa-user-slash userSlash memberReport"></i>
                                     </div>
                                 </div>
                             </c:when>
                             <c:otherwise>
                                 <div class="member-list" id="${memberList.memberNo}">
-                                    <div class="member-image">
+                                    <div class="member-image" id="${memberList.memberNo}">
                                         <c:if test="${empty memberList.memberImage}">
                                             <img src="/resources/images/member/profile/defaultProfile.png"class="memImg">
                                         </c:if>
@@ -92,7 +92,7 @@
                                     </div>
                                     <div class="member-name" name="memberName" id="memberName">${memberList.memberName}</div>
                                     <div class="member-report">
-                                        <i class="fa-solid fa-user-slash userSlash"></i>
+                                        <i class="fa-solid fa-user-slash userSlash  memberReport"></i>
                                     </div>
                                 </div>
                             </c:otherwise>
