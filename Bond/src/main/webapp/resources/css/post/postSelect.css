@@ -157,6 +157,7 @@ a{text-decoration: none;}
 }
 
 .reply-text{
+    position: relative;
     width: 95%;
     display: flex;
     flex-direction: column;
@@ -276,6 +277,45 @@ a{text-decoration: none;}
     cursor: pointer;
     margin-left: 10px;
 }
+
+/* 댓글 수정 */
+.update-textarea{
+    min-height: 32px;
+    width: 85%;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    max-height: 300px;
+    resize: none;
+    padding: 7px;
+    overflow: hidden;
+}
+
+.reply-btn-area{
+    position: absolute;
+    right: -22px;
+    top: 27px;
+}
+
+.reply-btn-area button{
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 7px;
+    cursor: pointer;
+    margin: 0 2px;
+}
+
+.reply-btn-area button:nth-child(1){
+    background-color: #21c531;
+    color: white;
+}
+
+.reply-btn-area button:nth-child(2){
+    background-color: white;
+    color:#777;
+    border: 1px solid #ddd;
+}
+
+
 
 /* 더보기 리스트 */
 .moreView-menu{

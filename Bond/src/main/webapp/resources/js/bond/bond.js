@@ -582,7 +582,7 @@ const insertReply = ()=>{
         }
             
     });
-}
+};
     
 // 댓글 삭제
 const deleteReply=(replyNo)=>{
@@ -610,4 +610,95 @@ const deleteReply=(replyNo)=>{
 
         });
     }
-}
+};
+
+// 댓글 수정 화면 전환
+let beforeReplyText;
+
+const showUpdateReply = (replyNo, btn) => {
+
+    const temp = document.getElementsByClassName("update-textarea");
+
+    if(temp.length>0){
+        if(confirm("다른 댓글이 수정 중입니다. 현재 댓글을 수정하시겠습니까?")){
+            temp[0].parentElement.innerHTML = beforeReplyText;
+        } else {
+            return;
+        }
+    }
+    // 댓글 한개의 내용 : replyText
+    const replyText = btn.parentElement.parentElement.parentElement;
+    beforeReplyText = replyText.innerHTML;
+    const rememberName = replyText.children[0].innerText;
+
+    console.log(replyText.children[1].innerHTML);
+    let beforeContent = replyText.children[1].innerHTML;
+
+    replyText.innerHTML = "";
+
+    const memberName = document.createElement("strong");
+    memberName.classList.add("replyMember-name");
+    memberName.innerText = rememberName;
+
+    const textarea = document.createElement("textarea");
+    textarea.classList.add("update-textarea");
+
+    // XSS 방지 처리 해제
+    beforeContent =  beforeContent.replaceAll("&amp;", "&");
+    beforeContent =  beforeContent.replaceAll("&lt;", "<");
+    beforeContent =  beforeContent.replaceAll("&gt;", ">");
+    beforeContent =  beforeContent.replaceAll("&quot;", "\"");
+    
+    // 개행문자 처리 해제
+    beforeContent =  beforeContent.replaceAll("<br>", "\n");
+
+    textarea.value = beforeContent;
+
+    replyText.append(memberName, textarea);
+
+    const replyBtnArea = document.createElement("div");
+    replyBtnArea.classList.add("reply-btn-area");
+
+    const updateReplyBtn = document.createElement("button");
+    updateReplyBtn.innerText = "수정";
+    updateReplyBtn.setAttribute("onclick", "updateReply("+replyNo+",this)");
+
+    const cancelBtn = document.createElement("button");
+    cancelBtn.innerText = "취소";
+    cancelBtn.setAttribute("onclick", "updateCancel(this)");
+
+    replyBtnArea.append(updateReplyBtn, cancelBtn);
+    replyText.append(replyBtnArea);
+};
+
+// 댓글 수정 취소
+const updateCancel = (btn)=>{
+    if(confirm("댓글 수정을 취소하시겠습니까?")){
+        btn.parentElement.parentElement.innerHTML = beforeReplyText;
+    }
+};
+
+// 댓글 수정
+const updateReply = (replyNo, btn)=>{
+    const replyContent = btn.parentElement.previousElementSibling.value;
+
+    $.ajax({
+        url : "/reply/update",
+        data : {"replyNo": replyNo,
+                "replyContent": replyContent},
+        type : "POST",
+        success : (result)=>{
+            if(result>0){
+                alert("댓글이 수정되었습니다.");
+                selectReplyList(selectPostNo);
+            }else{
+                alert("댓글 수정 실패");
+            }
+        },
+        error : (req, status, error)=>{
+            console.log("댓글수정 에러 발생");
+            console.log(req.responseText);
+        }
+    });
+
+};

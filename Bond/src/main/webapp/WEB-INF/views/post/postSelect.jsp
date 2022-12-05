@@ -91,7 +91,11 @@
                     <img src="/resources/images/member/profile/defaultProfile.png" class="replyMember-img">
                     <div class="reply-text">
                         <strong class="replyMember-name">김순자</strong>
-                        <p class="reply-content">댓글 내용들이 쭉 나올거야</p>
+                        <p class="reply-content">
+                            [0] 댓글 내용들
+                            [1] update-textarea
+                            [2] btnarea - 수정, 취소
+                        </p>
                         <div class="reply-info">
                             <div class="reply-btn">
                                 <p class="replyDate">2022년 10월 29일 오후 11:42</p>

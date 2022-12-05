@@ -23,5 +23,11 @@
 		WHERE REPLY_NO = #{replyNo}
 	</update>
 	
+	<!-- 댓글 수정 -->
+	<update id="updateReply">
+		UPDATE "REPLY" SET
+		REPLY_CONTENT = #{replyContent}
+		WHERE REPLY_NO = #{replyNo}
+	</update>
 
 </mapper>
