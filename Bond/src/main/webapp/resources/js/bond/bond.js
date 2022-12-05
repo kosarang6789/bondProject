@@ -140,8 +140,9 @@ function selectBoardScroll(){
                                 modal.classList.toggle("show");
                                 document.body.style.overflow = "hidden";
                                 document.querySelector("#postSelect-view > main").scrollTop = 0;
-                                selectPostDetail(postBody.getAttribute("id"));
-                                selectReplyList(postBody.getAttribute("id"));
+                                selectPostNo = postBody.getAttribute("id")
+                                selectPostDetail(selectPostNo);
+                                selectReplyList(selectPostNo);
                             });
 
                             const postText = document.createElement("div");
@@ -330,6 +331,8 @@ reportBtn.addEventListener("click", () => {
             document.querySelector("#postSelect-view > main").scrollTop = 0;
             selectPostDetail(p.getAttribute("id"));
             selectReplyList(p.getAttribute("id"));
+            // 선택된 post의 postNo를 전역변수로 선언
+            selectPostNo = p.getAttribute("id");
         });
     }
 
@@ -411,10 +414,9 @@ const selectPostDetail = (postNo)=>{
                 },
                 error: ()=>{console.log("증가 에러");}
             })
-    
-    
         }
     });
+
 };
 
 // 댓글쓰기 창 늘리기
@@ -437,88 +439,99 @@ const selectReplyList=(postNo)=>{
         success: (rList)=>{
             console.log(rList);
 
-            const replyList = document.getElementById("replyList"); // ul
+            if(rList.length!=0){
 
-            for(let reply of rList){
-                // 행
-                const replyOne = document.createElement("li");
-                replyOne.classList.add("replyOne");
+                const replyList = document.getElementById("replyList"); // ul
+                replyList.innerHTML = "";
+    
+                for(let reply of rList){
+                    // 행
+                    const replyOne = document.createElement("li");
+                    replyOne.classList.add("replyOne");
+    
+                    // 작성자 이미지
+                    const replyMemberImg = document.createElement("img");
+                    replyMemberImg.classList.add("replyMember-img");
+                    if(reply.memberImage!=null){
+                        replyMemberImg.setAttribute("src", reply.memberImage);
+                    } else{
+                        replyMemberImg.setAttribute("src", "/resources/images/member/profile/defaultProfile.png");
+                    }
+                    
+                    // 댓글 텍스트 부분
+                    const replyText = document.createElement("div");
+                    replyText.classList.add("reply-text");
+    
+                    replyOne.append(replyMemberImg, replyText);
+    
+                    // 작성자 닉네임
+                    const replyMemberName = document.createElement("strong");
+                    replyMemberName.classList.add("replyMember-name");
+                    replyMemberName.innerText = reply.memberName;
+    
+                    // 댓글 내용
+                    const replyContent = document.createElement("p");
+                    replyContent.classList.add("reply-content");
+                    replyContent.innerHTML = reply.replyContent;
+    
+                    // 답글일 경우 child 속성 추가
+                    if(reply.parentNo!=0) {
+                        replyOne.classList.add("child-comment");
+                        replyMemberImg.classList.add("child-img");
+                        replyContent.classList.add("child-content");
+                    }
+    
+                    // 댓글 정보
+                    const replyInfo = document.createElement("div");
+                    replyInfo.classList.add("reply-info");
+    
+                    replyText.append(replyMemberName, replyContent, replyInfo);
+    
+                    // 답글 버튼
+                    const replyBtn = document.createElement("div");
+                    replyBtn.classList.add("reply-btn");
+    
+                    const replyDate = document.createElement("p");
+                    replyDate.classList.add("replyDate");
+                    replyDate.innerText = reply.replyDate;
 
-                // 작성자 이미지
-                const replyMemberImg = document.createElement("img");
-                replyMemberImg.classList.add("replyMember-img");
-                if(reply.memberImage!=null){
-                    replyMemberImg.setAttribute("src", reply.memberImage);
-                } else{
-                    replyMemberImg.setAttribute("src", "/resources/images/member/profile/defaultProfile.png");
+                    replyBtn.append(replyDate);
+                    
+                    if(reply.replyDelYN == 'N'){
+                        const childReplyBtn = document.createElement("button");
+                        childReplyBtn.setAttribute("onclick", "showInsertReply("+reply.replyNo+", this)");
+                        childReplyBtn.innerText="•답글쓰기";
+        
+                        // 신고버튼
+                        const reportBtn = document.createElement("button");
+                        // reportBtn.setAttribute("onclick", )
+                        reportBtn.innerText="•신고";
+                        replyBtn.append(childReplyBtn, reportBtn);
+                    }
+
+                    // 수정/삭제버튼
+                    const writerBtn = document.createElement("div");
+    
+                    if(memberNo == reply.memberNo && reply.replyDelYN == 'N'){
+                        const updateBtn = document.createElement("button");
+                        updateBtn.innerText = "수정 | ";
+                        
+                        updateBtn.setAttribute("onclick", "showUpdateReply("+reply.replyNo+", this)");
+                        
+                        const deleteBtn = document.createElement("button");
+                        deleteBtn.innerHTML = "&nbsp;삭제";
+                        
+                        deleteBtn.setAttribute("onclick", "deleteReply("+reply.replyNo+", this)");
+                        
+                        writerBtn.append(updateBtn, deleteBtn);
+                    }
+                    replyInfo.append(replyBtn, writerBtn);
+                    replyList.append(replyOne);
                 }
-                
-                // 댓글 텍스트 부분
-                const replyText = document.createElement("div");
-                replyText.classList.add("reply-text");
-
-                replyOne.append(replyMemberImg, replyText);
-
-                // 작성자 닉네임
-                const replyMemberName = document.createElement("strong");
-                replyMemberName.classList.add("replyMember-name");
-                replyMemberName.innerText = reply.memberName;
-
-                // 댓글 내용
-                const replyContent = document.createElement("p");
-                replyContent.classList.add("reply-content");
-                replyContent.innerHTML = reply.replyContent;
-
-                // 답글일 경우 child 속성 추가
-                if(reply.parentNo!=0) {
-                    replyOne.classList.add("child-comment");
-                    replyMemberImg.classList.add("child-img");
-                    replyContent.classList.add("child-content");
-                }
-
-                // 댓글 정보
-                const replyInfo = document.createElement("div");
-                replyInfo.classList.add("reply-info");
-
-                replyText.append(replyMemberName, replyContent, replyInfo);
-
-                // 답글 버튼
-                const replyBtn = document.createElement("div");
-                replyBtn.classList.add("reply-btn");
-
-                const replyDate = document.createElement("p");
-                replyDate.classList.add("replyDate");
-                replyDate.innerText = reply.replyDate;
-
-                const childReplyBtn = document.createElement("button");
-                childReplyBtn.setAttribute("onclick", "showInsertReply("+reply.replyNo+", this)");
-                childReplyBtn.innerText="•답글쓰기";
-
-                // 신고버튼
-                const reportBtn = document.createElement("button");
-                // reportBtn.setAttribute("onclick", )
-                reportBtn.innerText="•신고";
-
-                replyBtn.append(replyDate, childReplyBtn, reportBtn);
-
-                // 수정/삭제버튼
-                const writerBtn = document.createElement("div");
-
-                if(memberNo == reply.memberNo){
-                    const updateBtn = document.createElement("button");
-                    updateBtn.innerText = "수정 | ";
-                    
-                    updateBtn.setAttribute("onclick", "showUpdateReply("+reply.replyNo+", this)");
-                    
-                    const deleteBtn = document.createElement("button");
-                    deleteBtn.innerText = "삭제";
-                    
-                    deleteBtn.setAttribute("onclick", "deleteReply("+reply.replyNo+", this");
-                    
-                    writerBtn.append(updateBtn, deleteBtn);
-                }
-                replyInfo.append(replyBtn, writerBtn);
-                replyList.append(replyOne);
+                replyList.classList.remove("firstReply-inform")
+            } else {
+                replyList.innerText = "첫 번째 댓글을 작성해보세요!";
+                replyList.classList.add("firstReply-inform");
             }
         },
         error : (req, status, error)=>{
@@ -526,4 +539,75 @@ const selectReplyList=(postNo)=>{
             console.log(req.responseText);
         }
     })
+}
+
+
+// 댓글 등록
+const addReply = document.getElementById("addReply");
+const replyWriteContent = document.getElementById("replyWrite-Content");
+
+
+addReply.addEventListener("click", (e)=>{
+    insertReply();
+})
+
+const insertReply = ()=>{
+    if(replyWriteContent.value.trim().length==0){
+        alert("댓글을 작성한 뒤 버튼을 클릭해주세요.");
+
+        replyWriteContent.value="";
+        replyWriteContent.focus();
+        return;
+    }
+
+    $.ajax({
+        url : "/reply/insert",
+        data : {"replyContent" : replyWriteContent.value,
+                "memberNo" : memberNo,
+                "postNo" : selectPostNo},
+        type : "post",
+        success : (result)=>{
+            if(result>0){
+                alert("댓글이 등록되었습니다.");
+
+                replyWriteContent.value="";
+                selectReplyList(selectPostNo);
+            } else {
+                alert("댓글 등록에 실패했습니다.");
+            }
+        },
+        error : (req, status, error)=>{
+            console.log("에러 발생");
+            console.log(req.responseText);
+        }
+            
+    });
+}
+    
+// 댓글 삭제
+const deleteReply=(replyNo)=>{
+
+    if( confirm("정말로 삭제 하시겠습니까?") ){
+
+        $.ajax({
+            url : "/reply/delete",
+            data : {"replyNo" : replyNo,
+                    "postNo" : selectPostNo},
+            type : "GET",
+            success: (result)=>{
+                if(result > 0){
+                    alert("삭제되었습니다");
+                    selectReplyList(selectPostNo); // 목록을 다시 조회해서 삭제된 글을 제거
+                }else{
+                    alert("삭제 실패");
+                }
+            },
+
+            error : (req, status, error)=>{
+                console.log("댓글 삭제 실패")
+                console.log(req.responseText);
+            }
+
+        });
+    }
 }

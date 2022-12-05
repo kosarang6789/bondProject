@@ -12,4 +12,16 @@ public interface ReplyService {
 	 */
 	List<Reply> selectReplyList(int postNo);
 
+	/** 댓글 작성
+	 * @param reply
+	 * @return result
+	 */
+	int insertReply(Reply reply);
+
+	/** 댓글 삭제
+	 * @param replyNo
+	 * @return result
+	 */
+	int deleteReply(int replyNo);
+
 }
