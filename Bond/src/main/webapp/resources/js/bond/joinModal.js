@@ -23,7 +23,6 @@ joSeNoBtn.addEventListener("click", ()=>{
 
 window.addEventListener("click",e=>{ 
     let ev = e.target; 
-    console.log(ev)
 
     if(ev.classList.contains("show")){
         joSeModal.classList.add("hidden");
