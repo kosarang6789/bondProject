@@ -7,17 +7,20 @@ const joSeModal = document.querySelector(".joSeModal");
 const seceBtn = document.querySelector(".leave-band");
 
 seceBtn.addEventListener("click", ()=>{
-    joSeModal.style.display = "flex";
+    joSeModal.classList.add("show");
+    joSeModal.classList.remove("hidden");
 });
 
 
 const joSeModalX = document.querySelector(".joSeModalX");
 const joSeNoBtn = document.getElementById("joSeNoBtn");
 joSeModalX.addEventListener("click", ()=>{
-    joSeModal.style.display = "none";
+    joSeModal.classList.add("hidden");
+    joSeModal.classList.remove("show");
 });
 joSeNoBtn.addEventListener("click", ()=>{
-    joSeModal.style.display = "none";
+    joSeModal.classList.add("hidden");
+    joSeModal.classList.remove("show");
 });
 
 
@@ -29,5 +32,14 @@ joSeYesBtn.addEventListener("click", (e)=>{
         e.preventDefault();
         alert("탈퇴 취소 되었습니다");
     }
-    // confirm("정말 탈퇴 하시겠습니까?");
 });
+
+window.addEventListener("click",e=>{ 
+    let ev = e.target; 
+
+    if(ev.classList.contains("show")){
+        joSeModal.classList.add("hidden");
+        joSeModal.classList.remove("show");
+    }
+});
+
