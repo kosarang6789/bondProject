@@ -142,7 +142,7 @@ a{text-decoration: none;}
 .replyOne{
     display: flex;
     width: 87%;
-    height: 64px;
+    min-height: 64px;
     margin: 0 auto;
     flex-wrap: nowrap;
     
@@ -275,6 +275,59 @@ a{text-decoration: none;}
     height: 100%;
     cursor: pointer;
     margin-left: 10px;
+}
+
+/* 댓글 수정 */
+.update-textarea{
+    min-height: 32px;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    max-height: 300px;
+    resize: none;
+    padding: 7px;
+    overflow: hidden;
+    outline: none;
+}
+
+
+.reply-btn-area{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 5px;
+}
+
+.reply-btn-area button{
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 7px;
+    cursor: pointer;
+    margin: 0 2px;
+}
+
+.reply-btn-area button:nth-child(1){
+    background-color: #21c531;
+    color: white;
+}
+
+.reply-btn-area button:nth-child(2){
+    background-color: white;
+    color:#777;
+    border: 1px solid #ddd;
+}
+
+/* 답글 */
+.reply-textarea{
+    min-height: 32px;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    max-height: 300px;
+    resize: none;
+    padding: 7px;
+    overflow: hidden;
+    outline: none;
+    margin-top: 3px;
 }
 
 /* 더보기 리스트 */

@@ -40,5 +40,9 @@ public class ReplyController {
 		return service.deleteReply(replyNo);
 	}
 	
-	
+	// 댓글 수정
+	@PostMapping("/update")
+	public int updateReply(Reply reply) {
+		return service.updateReply(reply);
+	}
 }

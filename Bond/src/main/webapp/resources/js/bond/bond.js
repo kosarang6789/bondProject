@@ -499,6 +499,7 @@ const selectReplyList=(postNo)=>{
                     
                     if(reply.replyDelYN == 'N'){
                         const childReplyBtn = document.createElement("button");
+                        
                         childReplyBtn.setAttribute("onclick", "showInsertReply("+reply.replyNo+", this)");
                         childReplyBtn.innerText="•답글쓰기";
         
@@ -521,7 +522,7 @@ const selectReplyList=(postNo)=>{
                         const deleteBtn = document.createElement("button");
                         deleteBtn.innerHTML = "&nbsp;삭제";
                         
-                        deleteBtn.setAttribute("onclick", "deleteReply("+reply.replyNo+", this)");
+                        deleteBtn.setAttribute("onclick", "deleteReply("+reply.replyNo+",this)");
                         
                         writerBtn.append(updateBtn, deleteBtn);
                     }
@@ -546,12 +547,7 @@ const selectReplyList=(postNo)=>{
 const addReply = document.getElementById("addReply");
 const replyWriteContent = document.getElementById("replyWrite-Content");
 
-
-addReply.addEventListener("click", (e)=>{
-    insertReply();
-})
-
-const insertReply = ()=>{
+addReply.addEventListener("click", ()=>{
     if(replyWriteContent.value.trim().length==0){
         alert("댓글을 작성한 뒤 버튼을 클릭해주세요.");
 
@@ -582,7 +578,7 @@ const insertReply = ()=>{
         }
             
     });
-}
+});
     
 // 댓글 삭제
 const deleteReply=(replyNo)=>{
@@ -610,4 +606,172 @@ const deleteReply=(replyNo)=>{
 
         });
     }
-}
+};
+
+// 댓글 수정 화면 전환
+let beforeReplyText;
+
+const showUpdateReply = (replyNo, btn) => {
+
+    const temp = document.getElementsByClassName("update-textarea");
+
+    if(temp.length>0){
+        if(confirm("다른 댓글이 수정 중입니다. 현재 댓글을 수정하시겠습니까?")){
+            temp[0].parentElement.innerHTML = beforeReplyText;
+        } else {
+            return;
+        }
+    }
+    // 댓글 한개의 내용 : replyText
+    const replyText = btn.parentElement.parentElement.parentElement;
+    beforeReplyText = replyText.innerHTML;
+    const rememberName = replyText.children[0].innerText;
+
+    console.log(replyText.children[1].innerHTML);
+    let beforeContent = replyText.children[1].innerHTML;
+
+    replyText.innerHTML = "";
+
+    const memberName = document.createElement("strong");
+    memberName.classList.add("replyMember-name");
+    memberName.innerText = rememberName;
+
+    const textarea = document.createElement("textarea");
+    textarea.classList.add("update-textarea");
+
+    // XSS 방지 처리 해제
+    beforeContent =  beforeContent.replaceAll("&amp;", "&");
+    beforeContent =  beforeContent.replaceAll("&lt;", "<");
+    beforeContent =  beforeContent.replaceAll("&gt;", ">");
+    beforeContent =  beforeContent.replaceAll("&quot;", "\"");
+    
+    // 개행문자 처리 해제
+    beforeContent =  beforeContent.replaceAll("<br>", "\n");
+
+    textarea.value = beforeContent;
+
+    replyText.append(memberName, textarea);
+
+    const replyBtnArea = document.createElement("div");
+    replyBtnArea.classList.add("reply-btn-area");
+
+    const updateReplyBtn = document.createElement("button");
+    updateReplyBtn.innerText = "수정";
+    updateReplyBtn.setAttribute("onclick", "updateReply("+replyNo+",this)");
+
+    const cancelBtn = document.createElement("button");
+    cancelBtn.innerText = "취소";
+    cancelBtn.setAttribute("onclick", "updateCancel(this)");
+
+    replyBtnArea.append(updateReplyBtn, cancelBtn);
+    replyText.append(replyBtnArea);
+};
+
+// 댓글 수정 취소
+const updateCancel = (btn)=>{
+    if(confirm("댓글 수정을 취소하시겠습니까?")){
+        btn.parentElement.parentElement.innerHTML = beforeReplyText;
+    }
+};
+
+// 댓글 수정
+const updateReply = (replyNo, btn)=>{
+    const replyContent = btn.parentElement.previousElementSibling.value;
+
+    $.ajax({
+        url : "/reply/update",
+        data : {"replyNo": replyNo,
+                "replyContent": replyContent},
+        type : "POST",
+        success : (result)=>{
+            if(result>0){
+                alert("댓글이 수정되었습니다.");
+                selectReplyList(selectPostNo);
+            }else{
+                alert("댓글 수정 실패");
+            }
+        },
+        error : (req, status, error)=>{
+            console.log("댓글수정 에러 발생");
+            console.log(req.responseText);
+        }
+    });
+
+};
+
+// 답글 작성 화면 추가
+const showInsertReply = (parentNo, btn)=>{
+    const temp = document.getElementsByClassName("reply-textarea");
+
+    if(temp.length >0){
+        if(confirm("다른 답글을 작성 중입니다. 현재 댓글에 답글을 작성하시겠습니까?")){
+            temp[0].nextElementSibling.remove();
+            temp[0].remove(); 
+        }else{
+            return;
+        }
+    }
+
+    const textarea = document.createElement("textarea");
+    textarea.classList.add("reply-textarea");
+
+    const replyOne = btn.parentElement.parentElement;
+    replyOne.append(textarea);
+    console.log(btn.parentElement.parentElement.parentElement);
+    btn.parentElement.parentElement.after(textarea);
+
+    const replyBtnArea = document.createElement("div");
+    replyBtnArea.classList.add("reply-btn-area");
+
+    const insertBtn = document.createElement("button");
+    insertBtn.innerText = "보내기";
+    insertBtn.setAttribute("onclick", "insertChildReply("+parentNo+",this)");
+
+    const cancelBtn = document.createElement("button");
+    cancelBtn.innerText = "취소";
+    cancelBtn.setAttribute("onclick", "insertCancel(this)");
+
+    replyBtnArea.append(insertBtn, cancelBtn);
+
+    textarea.after(replyBtnArea);
+};
+
+// 답글 취소
+const insertCancel= (btn)=>{
+    btn.parentElement.previousElementSibling.remove();
+    btn.parentElement.remove();
+};
+
+// 답글 등록
+const insertChildReply = (parentNo, btn)=>{
+    const replyContent = btn.parentElement.previousElementSibling.value;
+
+    if(replyContent.trim().length==0){
+        alert("답글 작성 후 등록 버튼을 클릭해주세요.");
+
+        btn.parentElement.previousElementSibling.value ="";
+        btn.parentElement.previousElementSibling.focus();
+
+        return;
+    }
+
+    $.ajax({
+        url: "/reply/insert",
+        data: {"memberNo" : memberNo,
+                "postNo" : selectPostNo,
+                "parentNo" : parentNo,
+                "replyContent" : replyContent},
+        type: "POST",
+        success : (result)=>{
+            if(result>0){
+                alert("답글이 등록되었습니다.");
+                selectReplyList(selectPostNo);
+            }else{
+                alert("답글 등록 실패");
+            }
+        },
+        error : ()=>{
+            console.log("답글 등록 중 오류 발생");
+        }
+    });
+};
