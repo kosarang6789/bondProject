@@ -11,6 +11,8 @@
     <title>${groupInfo.groupName} | BOND</title>
 
     <link rel="stylesheet" href="/resources/css/bond//openYes.css">
+    <link rel="stylesheet" href="/resources/css/bond/Modal-jose.css"><%-- 가입모달 --%>
+    
     <script src="https://kit.fontawesome.com/1ce4f19a7a.js" crossorigin="anonymous"></script>
 
 </head>
@@ -264,6 +266,10 @@
                 </button>
             </a>
         </div>
+
+    <%-- 탈퇴 모달 --%>
+    <jsp:include page="/WEB-INF/views/bond/joinModal.jsp"/>
+    <script src="/resources/js/bond/joinModal.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>    
 

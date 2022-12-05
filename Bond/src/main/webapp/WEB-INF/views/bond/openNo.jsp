@@ -10,6 +10,8 @@
     <title>모임이 쉬워진다 | BOND</title>
 
     <link rel="stylesheet" href="/resources/css/bond//openYes.css">
+    <link rel="stylesheet" href="/resources/css/bond/Modal-jose.css"><%-- 가입모달 --%>
+
     <script src="https://kit.fontawesome.com/1ce4f19a7a.js" crossorigin="anonymous"></script>
 
 </head>
@@ -149,5 +151,8 @@
             </a>
         </div>
 
+        <%-- 가입 모달 --%>
+        <jsp:include page="/WEB-INF/views/bond/joinModal.jsp"/>
+        <script src="/resources/js/bond/joinModal.js"></script>
 
 </body>
