@@ -268,16 +268,16 @@ const selectMemPro = (memberNo) =>{
             modalReport.innerHTML="";
             if(myNo != memPro.memberNo){
                 modalReport.append(modalBtn1, modalBtn2);
-                modalReport.setAttribute("id", memPro.memberNo);
+                // modalReport.setAttribute("id", memPro.memberNo);
                 modalBtn1.append(modalIcon);
+                modalBtn1.setAttribute("id", memPro.memberNo);
                 modalBtn2.append(modalChat);
                 modalChat.append(modalChatI);
             }else{
                 modalReport.append(modalA);
                 modalA.append(modalMyI);
-                modalReport.setAttribute("id", myNo);
+                // modalReport.setAttribute("id", myNo);
             }
-            modalBtn1.setAttribute("id", memPro.memberNo);
 
         },
         error : ()=>{
@@ -319,8 +319,8 @@ for(let rm of reportMemList){
         open(url, "신고하기", "width=500px, height=600px")
     })
 };
-
 // 모달 창에서 신고
+let memberNo;
 if(modal.classList.contains("show")){
     // const modalReportList = document.getElementsByClassName("report");
     
@@ -342,10 +342,11 @@ if(modal.classList.contains("show")){
     //     open(url, "신고하기", "width=500px, height=600px")
     // });
     
+    memberNo = modalBtn1.getAttribute("id");
 }
-let memberNo = modalBtn1.getAttribute("id");
 console.log(memberNo);
 // 신고하기 버튼
+// let memberNo;
 
 // 신고 버튼 클릭 시 팝업창
 modalBtn1.addEventListener("click", () => {
