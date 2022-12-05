@@ -30,12 +30,9 @@ public class SearchController {
 			Map<String, Object> map = service.allGroupList(pm);
 			model.addAttribute("map", map);
 			
-//			List<Group> group = service.allGroupList(pm);
-//			model.addAttribute("group", group);
-			
 		}
 		
-		return "/member/search/groupList";
+		return "/member/search";
 	}
 	
 }

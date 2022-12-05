@@ -160,7 +160,7 @@
             <article>
                 <h2>BOND 찾기</h2>
                 <!-- 검색창 -->
-                <form action="#" method="get" id="group-search" onsubmit="return true">
+                <form action="/member/search" method="get" id="group-search" onsubmit="return true">
                     <fieldset>
                         <select name="key" id="search-key">
                             <option value="t">본드 이름</option>

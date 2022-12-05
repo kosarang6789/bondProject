@@ -17,7 +17,7 @@ public class SearchDAO {
 
 	public List<Group> allGroupList(Map<String, Object> pm) {
 		
-		return sqlSession.selectList("grouopMapper.allGroupList", pm);
+		return sqlSession.selectList("groupMapper.allGroupList", pm);
 	}
 	
 }

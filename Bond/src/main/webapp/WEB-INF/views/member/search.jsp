@@ -12,14 +12,17 @@
     <link rel="stylesheet" href="/resources/css/member/search.css">
     <script src="https://kit.fontawesome.com/345198b845.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-
-
-
     <jsp:include page="/WEB-INF/views/member/mainPage-header.jsp" />
 
-
-
+    <%-- 검색을 진행한 경우 --%>
+    <c:if test="${not empty param.key}">
+        <%-- /board/1?cp=3&key=t&query=테스트 --%>
+        <c:set var="sURL" value="&key=${param.key}&query=${param.key}"/>
+    
+    </c:if>
+    
     <div class="search-area">
         <h2>검색 결과</h2>
         <ul class="list-wrapper">
@@ -30,7 +33,7 @@
                     </c:when>
                     
                     <c:otherwise>
-                        <c:forEach var="group" items="${grouplist}">
+                        <c:forEach var="group" items="${groupList}">
                             <div class="list">
                                 <div class="list-cover">
                                     <div class="cover">
@@ -51,13 +54,6 @@
             </li>
         </ul>
     </div>
-
-    <h3>session scope 확인</h3>
-    이름 : "${loginMember.memberName}";
-    생일 : "${loginMember.memberBirth}";
-    전화번호 : "${loginMember.memberTel}";
-
-    <a href="/logout">로그아웃</a>
 
     <!-- <jsp:include page="/WEB-INF/views/common/footer.jsp" /> -->
     <script src="/resources/js/member/mainPage.js"></script>
