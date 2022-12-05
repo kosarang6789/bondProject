@@ -22,4 +22,12 @@ public class ReplyDAO {
 		return sqlSession.selectList("postMapper.selectReplyList", postNo);
 	}
 
+	/** 댓글 등록
+	 * @param reply
+	 * @return result
+	 */
+	public int insertReply(Reply reply) {
+		return sqlSession.insert("replyMapper.insertReply", reply);
+	}
+
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="replyMapper">
+
+	<!-- 댓글 삽입 -->
+	<insert id="insertReply">
+		INSERT INTO "REPLY" VALUES
+		(SEQ_REPLY_NO.NEXTVAL, #{postNo}, #{memberNo}, #{replyContent}, DEFAULT, DEFAULT, 
+		<if test='parentNo == 0'>
+			NULL
+		</if>
+		<if test='parentNo != 0'>
+			#{parentNo}
+		</if>
+		)
+	</insert>
+	
+	
+
+</mapper>

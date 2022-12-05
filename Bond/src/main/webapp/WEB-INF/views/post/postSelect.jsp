@@ -138,7 +138,7 @@
                     </div>
                 </div>
                 <div class="send-btn">
-                    <button>보내기</button>
+                    <button id="addReply">보내기</button>
                 </div>
             </div>
         </section>

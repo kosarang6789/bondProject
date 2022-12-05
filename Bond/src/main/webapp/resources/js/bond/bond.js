@@ -330,6 +330,8 @@ reportBtn.addEventListener("click", () => {
             document.querySelector("#postSelect-view > main").scrollTop = 0;
             selectPostDetail(p.getAttribute("id"));
             selectReplyList(p.getAttribute("id"));
+            // 선택된 post의 postNo를 전역변수로 선언
+            selectPostNo = p.getAttribute("id");
         });
     }
 
@@ -411,10 +413,9 @@ const selectPostDetail = (postNo)=>{
                 },
                 error: ()=>{console.log("증가 에러");}
             })
-    
-    
         }
     });
+
 };
 
 // 댓글쓰기 창 늘리기
@@ -438,6 +439,7 @@ const selectReplyList=(postNo)=>{
             console.log(rList);
 
             const replyList = document.getElementById("replyList"); // ul
+            replyList.innerHTML = "";
 
             for(let reply of rList){
                 // 행
@@ -511,7 +513,7 @@ const selectReplyList=(postNo)=>{
                     updateBtn.setAttribute("onclick", "showUpdateReply("+reply.replyNo+", this)");
                     
                     const deleteBtn = document.createElement("button");
-                    deleteBtn.innerText = "삭제";
+                    deleteBtn.innerHTML = "&nbsp;삭제";
                     
                     deleteBtn.setAttribute("onclick", "deleteReply("+reply.replyNo+", this");
                     
@@ -527,3 +529,43 @@ const selectReplyList=(postNo)=>{
         }
     })
 }
+
+
+// 댓글 등록
+const addReply = document.getElementById("addReply");
+const replyWriteContent = document.getElementById("replyWrite-Content");
+
+addReply.addEventListener("click", ()=>{
+
+    if(replyWriteContent.value.trim().length==0){
+        alert("댓글을 작성한 뒤 버튼을 클릭해주세요.");
+
+        replyWriteContent.value="";
+        replyWriteContent.focus();
+        return;
+    }
+
+    $.ajax({
+        url : "/reply/insert",
+        data : {"replyContent" : replyWriteContent.value,
+                "memberNo" : memberNo,
+                "postNo" : selectPostNo},
+        type : "post",
+        success : (result)=>{
+            if(result>0){
+                alert("댓글이 등록되었습니다.");
+
+                replyWriteContent.value="";
+                selectReplyList(selectPostNo);
+            } else {
+                alert("댓글 등록에 실패했습니다.");
+            }
+        },
+        error : (req, status, error)=>{
+            console.log("에러 발생");
+            console.log(req.responseText);
+        }
+            
+    });
+
+});
