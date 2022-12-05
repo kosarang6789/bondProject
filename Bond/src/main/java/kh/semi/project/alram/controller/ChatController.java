@@ -3,12 +3,14 @@ package kh.semi.project.alram.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import kh.semi.project.alram.model.service.AlramService;
+import kh.semi.project.alram.model.service.ChatService;
 
 @Controller
-public class AlramController {
+public class ChatController {
 	
 	@Autowired
-	private AlramService service;
+	private ChatService service;
+	
+	
 
 }
