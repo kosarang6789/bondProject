@@ -15,4 +15,8 @@ public class Reply {
 	private int postNo;
 	private int parentNo;
 	private int memberNo;
+	
+	private String memberName;
+	private String memberImage;
+	
 }

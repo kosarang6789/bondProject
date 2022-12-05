@@ -76,8 +76,8 @@
         <ul>
         <li><a href="/bond/${groupNo}">게시글</a></li>
         <li><a href="/bond/${groupNo}/album">사진첩</a></li>
-        <li><a href="#">일정</a></li>
-        <li><a href="/bondMemberList">멤버</a></li>
+        <li><a href="/bond/${groupNo}/bondMemberList">멤버</a></li>
+        <li><a href="/bond/${groupNo}/plan">일정</a></li>
         </ul>
     </div>
 </nav>

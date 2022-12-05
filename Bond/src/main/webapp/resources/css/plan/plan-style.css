@@ -9,10 +9,20 @@
 
 body{
     position: relative;
+    overflow: hidden;
 }
 
-/* 모달 영역 */
-#modal{
+/* 복합기능 */
+.closed{
+    display: none;
+}
+
+/*  */
+
+/* 모달창 일정 추가(insertModal.jsp) */
+
+/* insertModal 배경 */
+#insertModal{
     position: absolute;
     background-color: rgb(0, 0, 0, 0.7);
     
@@ -23,30 +33,35 @@ body{
     z-index: 10000;
 }
 
-/* 모달창 */
-#window{
+/* insertModal의 window */
+#insertWindow{
     background-color: white;
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    min-height: 380px;
+    height: auto;
 
     position: fixed; 
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-
 }
 
-/* 모달창 내 스타일 */
+/* insertModal - window 스타일 */
 
 /* 모달창 닫기 버튼 */
-#closeModalButton{
+#closeInsertModal{
     cursor: pointer;
     position: absolute;
     right: 10px;
-    top: 10px;
+    top: 5px;
+
+    font-size: 25px;
+    color: dimgray;
 }
 
-/* window-header */
-.window-header{
+/* insert-header */
+.insert-header{
+    font-size: 12px;
+
     background-color: #E2E2E230;
     border-bottom: 1px solid #E2E2E2;
     height: 50px;
@@ -56,25 +71,113 @@ body{
     align-items: center;
 }
 
-/* window-body */
+/* insert-body */
+#insertBody{
+    padding: 20px;
+}
+
+/* 일정 제목 */
+#inputTitleBox{
+    height: 30px;
+    border: 1px solid #E2E2E2;
+    margin-bottom: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#inputTitle{
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 0px 10px;
+
+    font-size: 10px;
+}
+
+#inputTitleBox:focus-within{
+    border: 1px solid dimgray;
+}
+
+/* 일정 설명 */
+#inputContentBox{
+    height: 60px;
+    border: 1px solid #E2E2E2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#inputContent #input2Content{
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    padding: 0px 10px;
+
+    font-size: 10px;
+}
+
+#inputContentBox:focus-within{
+    border: 1px solid dimgray;
+}
+
 
 /* 날짜 열 */
+#inputDateBox{
+    margin: 10px 0px;
+    border-top: 1px solid #E2E2E2;
+    border-bottom: 1px solid #E2E2E2;
+}
+
 .dateBoxRow{
+    margin-top: 10px;
+    height: 25px;
+    width: 100%;
     display: flex;
+    align-items: center;
+
+    font-size: 10px;
+}
+
+.dateBoxRow > input{
+    height: 20px;
+    margin-left: 5px;
+}
+
+#startBox > div, #endBox > div{
+    width: 130px;
+}
+
+#allDayBox{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#inputCheckbox{
+    margin-right: 5px;
 }
 
 /* 팔레트 */
-#colorBox{
+#inputColorBox{
     display: flex;
-    padding: 10px 0px;
+    margin: 5px 0px;
+    font-size: 10px;
 }
 
-#colorBox input{
+#inputColorBox > div{
+    margin-right: 5px;
+}
+
+#inputColorBox input{
     display: none;
 }
 
 input[name="planColor"]:hover + .palette{
-    border: 1px solid black;
+    opacity: 0.7;
+    transition-duration: 0.1s;
 }
 
 input[name="planColor"]:checked + .palette{
@@ -83,8 +186,319 @@ input[name="planColor"]:checked + .palette{
 
 .palette{
     border-radius: 50%;
-    width: 25px;
-    height: 25px;
+    width: 15px;
+    height: 15px;
 
-    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#insertFoot{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#confirmBtn{
+    width: 80px;
+    height: 30px;
+    font-size: 10px;
+
+    border: none;
+    background-color: #515161;
+    color: white;
+}
+
+
+/* 모달창 일정 상세 조회(viewModal.jsp) */
+
+#detailModal{
+    position: absolute;
+    background-color: rgb(0, 0, 0, 0.7);
+    
+    width: 100vw;
+    height: 300vh;
+
+    top: 0;
+    z-index: 10000;
+}
+
+
+#detailWindow{
+    background-color: white;
+    width: 500px;
+    min-height: 200px;
+    height: auto;
+
+    position: fixed; 
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+
+    z-index: 15000;
+
+}
+
+
+#detailBody{
+    position: relative;
+
+}
+
+
+/* 모달창 드롭다운 메뉴 */
+
+/* 드롭다운 열기 */
+#openDetailModalMenu{
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+
+    z-index: 20000;
+}
+
+/* 드롭다운 메뉴 */
+#detailModalMenu{
+    width: 150px;
+    border: 1px solid #E2E2E2;
+
+
+    position: absolute;
+    right: 27px;
+    top: 40px;
+
+    z-index: 25000;
+}
+
+/* 드롭다운 메뉴 서브메뉴 */
+#detailModalMenu > div{
+    font-size: 12px;
+
+    background-color: white;
+    display: flex;
+    align-items: center;
+
+    height: 30px;
+    padding: 20px;
+
+    z-index: 30000;
+
+    cursor: pointer;
+}
+
+#detailModalMenu > div:not(#detailModalMenu > div:last-child){
+    border-bottom: 1px solid #E2E2E2;
+}
+
+/* 사용 변수 todayBox, titleBox, periodBox, colorBox, memberNameBox, contentBox */
+
+/* 헤더 박스 */
+#headerBox{
+    display: flex;
+    width: 100%;
+    height: 110px;
+
+    /* padding-bottom: 20px; */
+    padding: 20px;
+    border-bottom: 1px solid #E2E2E2;
+}
+
+/* 헤더 박스 왼쪽 */
+#headerLeftBox{
+    width: 70px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 일 박스 */
+#dateBox{
+    height: 1em;
+    font-size : 30px;
+    display: flex;
+    line-height: 25px;
+
+}
+
+/* 요일 박스 */
+#dayBox{
+    font-size: 13px;
+}
+
+/* 헤더 박스 오른쪽 */
+#headerRightBox{
+    width: 630px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+/* 타이틀 박스 */
+#titleBox{
+    font-size: 20px;
+    line-height: 21px;
+}
+
+/* 기간 박스 */
+#periodBox{
+    font-size : 13px;
+    color: dimgray;
+}
+
+/* 라벨 박스 */
+#labelBox{
+    font-size: 13px;
+    color: dimgray;
+
+    display: flex;
+    align-items: center;
+}
+
+#contentBox{
+    padding: 20px;
+    font-size: 13px;
+}
+/* 일정 수정 모달창 (updateModal.jsp) */
+#updateModal{
+    position: absolute;
+    background-color: rgb(0, 0, 0, 0.7);
+    
+    width: 100vw;
+    height: 300vh;
+
+    top: 0;
+    z-index: 50000;
+}
+
+/* 일정 삭제 윈도우 */
+#updateWindow{
+    background-color: white;
+    width: 400px;
+    min-height: 380px;
+    height: auto;
+
+    position: fixed; 
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.update-header{
+    font-size: 12px;
+
+    background-color: #E2E2E230;
+    border-bottom: 1px solid #E2E2E2;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#closeUpdateModal{
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+
+    font-size: 25px;
+    color: dimgray;
+}
+
+#updateBody{
+    padding: 20px;
+}
+
+
+#updateFoot{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#editBtn{
+    width: 80px;
+    height: 30px;
+    font-size: 10px;
+
+    border: none;
+    background-color: #515161;
+    color: white;
+
+}
+
+
+/* 일정 삭제 모달창(deleteModal.jsp) */
+#deleteModal{
+    position: fixed;
+    background-color: rgb(0, 0, 0, 0.7);
+    
+    width: 100vw;
+    height: 300vh;
+
+    top: 0;
+    z-index: 50000;
+}
+
+
+/* 일정 삭제 윈도우 */
+#deleteWindow{
+    background-color: white;
+    width: 250px;
+    height: 100px;
+
+
+    position: fixed; 
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+
+    z-index: 55000;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 일정을 삭제하시겠습니까? */
+#deleteWindow > span{
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+/* 일정 삭제 버튼 영역 */
+.deleteWindowBtnArea button{
+    font-weight: 800;
+
+    width: 90px;
+    height: 35px;
+    border: 1px solid #BFBFBF;
+    margin: 0px 5px;
+}
+
+/* 확인 */
+#planDeleteBtn{
+    background-color: #515161;
+    color: white;
+}
+
+#planDeleteBtn:hover{
+    background-color: #212131;
+    transition-duration: 0.1s;
+}
+
+/* 취소 */
+#cancelDeleteBtn{
+    background-color: white;
+    color: grey;
+}
+
+#cancelDeleteBtn:hover{
+    background-color: #E2E2E2;
+    color: black;
+    transition-duration: 0.1s;
 }

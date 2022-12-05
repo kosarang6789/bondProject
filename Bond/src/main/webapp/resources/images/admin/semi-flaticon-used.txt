@@ -39,3 +39,8 @@
 10. empty-box.png
 
 - 주소 : <a href="https://www.flaticon.com/free-icons/empty" title="empty icons">Empty icons created by Ghozi Muhtarom - Flaticon</a>
+
+
+11. dots.png
+- 수정한 파일명 : plan-dots.png
+- 주소 : <a href="https://www.flaticon.com/free-icons/menu" title="menu icons">Menu icons created by Ayub Irawan - Flaticon</a>
