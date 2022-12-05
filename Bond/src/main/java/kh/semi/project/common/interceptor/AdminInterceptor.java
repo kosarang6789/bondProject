@@ -23,9 +23,11 @@ public class AdminInterceptor implements HandlerInterceptor{
 		
 		if(!member.getAuthority().equals("1")) { // 관리자가 맞으면
 			response.sendRedirect("referer:/"); // 로그인 회원의 메인페이지로 리다이렉트
+			return false;
+		} else {
+			return true;
 		}
 		
-		return true;
 		
 	}
 }
