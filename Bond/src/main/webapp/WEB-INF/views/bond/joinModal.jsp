@@ -15,7 +15,9 @@
                         <div class="joSeTitle">본드 가입하기</div>
                         <div class="joSeModalClose"><i class="fa-solid fa-x joSeModalX"></i></div>
                     </div>
-                    <div class="joContent">${groupInfo.groupName}에 가입하시겠습니까?</div>
+                    <div class="joContent"><pre class="seContentPre">${groupInfo.groupName}
+본드에 가입하시겠습니까?
+                </pre></div>
                     <div class="joSeModalBtnArea">
                         <button class="joSeBtn" id="joSeYesBtn">네</button>
                         <button type="button" class="joSeBtn" id="joSeNoBtn">아니요</button>
