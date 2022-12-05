@@ -5,19 +5,31 @@ const joSeModal = document.querySelector(".joSeModal");
 
 const joinBtn = document.querySelector(".write-button");
 joinBtn.addEventListener("click", ()=>{
-    joSeModal.style.display = "flex";
+    joSeModal.classList.add("show");
+    joSeModal.classList.remove("hidden");
 });
-const pp = document.querySelector(".empty");
-pp.addEventListener("click", ()=>{
-    joSeModal.style.display = "flex";
-});
-
 
 const joSeModalX = document.querySelector(".joSeModalX");
 const joSeNoBtn = document.getElementById("joSeNoBtn");
 joSeModalX.addEventListener("click", ()=>{
-    joSeModal.style.display = "none";
+    joSeModal.classList.add("hidden");
+    joSeModal.classList.remove("show");
 });
 joSeNoBtn.addEventListener("click", ()=>{
-    joSeModal.style.display = "none";
+    joSeModal.classList.add("hidden");
+    joSeModal.classList.remove("show");
 });
+
+
+window.addEventListener("click",e=>{ 
+    let ev = e.target; 
+    console.log(ev)
+
+    if(ev.classList.contains("show")){
+        joSeModal.classList.add("hidden");
+        joSeModal.classList.remove("show");
+    }
+});
+
+
+
