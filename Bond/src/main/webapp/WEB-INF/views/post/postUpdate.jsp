@@ -22,7 +22,7 @@
 <body>
     <main>
         <section class="postWrite-section">
-            <form action="/bond/${groupNo}/postUpdate" id="postWriteFrm" method="POST"
+            <form action="/bond/post/${postNo}/postUpdate" id="postWriteFrm" method="POST"
             enctype="multipart/form-data">
                 <section class="postWrite-title">
                     <h3 class="title-area">글 수정하기</h3>
@@ -41,7 +41,7 @@
                         <input type="checkbox" class="write-setup" id="reply-yn" name="replayYN">댓글 사용</input>
                     </div>
                     <div class="submit-btn">
-                        <button type="button" onclick="submitContent()" class="postWrite-btn">
+                        <button type="button" onclick="submitContent(postNo)" class="postWrite-btn">
                             <p>게시</p>
                         </button>
                     </div>
@@ -51,7 +51,7 @@
     </main>
 
     <script>
-        const groupNo = "${groupNo}"
+        const postNo = "${postNo}"
         
     </script>
     <script src="/resources/js/post/postUpdate.js"></script>

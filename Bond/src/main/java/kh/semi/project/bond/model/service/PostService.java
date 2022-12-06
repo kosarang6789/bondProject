@@ -55,6 +55,12 @@ public interface PostService {
 	 */
 	Post selectPostContent(int postNo);
 
+	/** 게시글 수정
+	 * @param post
+	 * @return result
+	 */
+	int postUpdate(Post post);
+	
 	/** 모든 게시글 이미지 목록을 조회
 	 * @return
 	 */
