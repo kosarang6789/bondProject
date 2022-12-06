@@ -109,6 +109,12 @@ public class PostServiceImpl implements PostService{
 		return dao.selectPostContent(postNo);
 	}
 
+	// 모든 게시글 이미지를 조회
+	@Override
+	public List<String> selectPostImageList() {
+		return dao.selectPostImageList();
+	}
+
 	
 
 	

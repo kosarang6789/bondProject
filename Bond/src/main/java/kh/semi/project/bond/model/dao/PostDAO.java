@@ -100,6 +100,14 @@ public class PostDAO {
 	}
 
 	
+	/** 모든 게시글 이미지를 조회
+	 * @return
+	 */
+	public List<String> selectPostImageList() {
+		return sqlSession.selectOne("postMapper.selectPostImageList");
+	}
+
+	
 	
 
 

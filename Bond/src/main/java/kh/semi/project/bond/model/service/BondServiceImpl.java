@@ -125,6 +125,13 @@ public class BondServiceImpl implements BondService{
 	public int isExist(int groupNo) {
 		return dao.isExist(groupNo);
 	}
+	
+	
+	// 모든 모임의 이미지 리스트를 가져옴
+	@Override
+	public List<String> selectBondImageList() {
+		return dao.selectBondImageList();
+	}
 
 
 

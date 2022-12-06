@@ -202,5 +202,10 @@
 		SELECT POST_CONTENT FROM POST WHERE POST_NO = #{postNo}
 	</select>
 	
+	<!-- 게시글의 모든 이미지를 조회 -->
+	<select id="selectPostImageList" resultType="string">
+		SELECT IMG_RENAME FROM POST_IMG
+	</select>
+	
 	
 </mapper>
