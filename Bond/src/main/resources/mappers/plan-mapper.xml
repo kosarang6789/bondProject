@@ -22,6 +22,10 @@
 		<result property="planStartDay" column="PLAN_START_DAY" />
 		<result property="planStartTime" column="PLAN_START_TIME" />
 		<result property="planEndTime" column="PLAN_END_TIME" />
+
+		<result property="groupName" column="GROUP_NAME" />
+		
+		
 		
 		
 	</resultMap>
@@ -92,6 +96,30 @@
 			AND TO_DATE(SUBSTR(PLAN_END, 0, 10), 'YYYY-MM-DD') <= SYSDATE + 7
 		]]>
 		ORDER BY PLAN_START
+	</select>
+	
+	<!-- 가입중인 모임의 모든 일정 목록 조회 -->
+	<select id="getMyAllPlans" parameterType="_int" resultMap="plan_rm">
+		SELECT GROUP_NO,
+			   PLAN_TITLE,
+			   GROUP_NAME,
+			   PLAN_COLOR,
+				SUBSTR(PLAN_START, 0, 10) PLAN_START, 
+				SUBSTR(PLAN_START, 6, 2) PLAN_START_MONTH,
+				SUBSTR(PLAN_START, 9, 2) PLAN_START_DAY,
+				SUBSTR(PLAN_START, 12, 5) PLAN_START_TIME,
+				SUBSTR(PLAN_END, 0, 10) PLAN_END,
+				SUBSTR(PLAN_END, 12, 5) PLAN_END_TIME
+		FROM "POST_PLAN"
+		JOIN "GROUP" USING(GROUP_NO)
+		WHERE GROUP_NO IN (SELECT GROUP_NO 
+				  		   FROM MEMBER_JOIN
+				  		   WHERE MEMBER_NO = #{memberNo}
+				  		   AND JOIN_STATUS IN (0,1))
+		<![CDATA[
+			AND TO_DATE(SUBSTR(PLAN_START, 0, 10), 'YYYY-MM-DD') >= SYSDATE 
+			AND TO_DATE(SUBSTR(PLAN_END, 0, 10), 'YYYY-MM-DD') <= SYSDATE + 7
+		]]>
 	</select>
 	
 </mapper>

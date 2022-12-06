@@ -5,30 +5,40 @@ import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.google.gson.Gson;
+
+import kh.semi.project.bond.model.service.BondService;
 import kh.semi.project.bond.model.vo.Group;
 import kh.semi.project.member.model.service.MemberService;
 import kh.semi.project.member.model.vo.Member;
+import kh.semi.project.plan.model.vo.Plan;
 
 @Controller
-@SessionAttributes({"loginMember", "message", "myGroupList"})
+@SessionAttributes({"loginMember", "message", "myGroupList", "groupInfo"})
 public class MemberController {
 	
 	@Autowired
 	private MemberService service;
+	
+	@Autowired
+	private BondService bondService;
 	// bean을 의존성 주입받음
 	// Service 클래스에서 @Service 어노테이션을 작성해서 bean으로 만들었음!
 	
@@ -212,6 +222,35 @@ public class MemberController {
 		}
 		return "member/findBond";
 	}
+	
+	// 로그인 시 해당 회원이 가입한 모임의 모든 일정 목록 조회
+	@GetMapping("/myAllPlans")
+	@ResponseBody
+	public String getMyAllPlans(HttpSession session) {
+		// 1. 세션에서 회원 정보를 가져옴
+		Member loginMember = (Member)session.getAttribute("loginMember");
+		
+		// 2. 해당 회원의 회원 번호를 이용, 가입한 모임의 모든 일정 목록을 가져옴
+		List<Plan> myAllPlanList = service.getMyAllPlans(loginMember.getMemberNo());
+		
+		// 3. 가져온 목록을 json형식으로 반환(feat. Gson)
+		return new Gson().toJson(myAllPlanList);
+	}
+	
+	// 일정 클릭 시 리다이렉트
+	@GetMapping("/goBondPlan/{groupNo}")
+	public String goBondPlanPage(
+			@PathVariable("groupNo") int groupNo,
+			Model model
+			) {
+		
+		Group groupInfo = bondService.selectGroupInfo(groupNo);
+		
+		model.addAttribute("groupInfo", groupInfo);
+		
+		return "redirect:/bond/" + groupNo + "/plan";
+	}
+	
 	
 
 	
