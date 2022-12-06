@@ -83,6 +83,22 @@ public class PostDAO {
 		return sqlSession.insert("postMapper.insertPostImages", uploadImages);
 	}
 
+	/** 게시글 삭제
+	 * @param postNo
+	 * @return
+	 */
+	public int deletePost(int postNo) {
+		return sqlSession.update("postMapper.deletePost", postNo);
+	}
+
+	/** 게시글만 조회
+	 * @param postNo
+	 * @return
+	 */
+	public Post selectPostContent(int postNo) {
+		return sqlSession.selectOne("postMapper.selectPostContent", postNo);
+	}
+
 	
 	
 
