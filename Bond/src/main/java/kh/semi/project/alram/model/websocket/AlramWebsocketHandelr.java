@@ -10,14 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
-import kh.semi.project.alram.model.service.AlramService;
+import kh.semi.project.alram.model.service.ChatService;
 
 public class AlramWebsocketHandelr extends TextWebSocketHandler{
 	
 	private Logger logger = LoggerFactory.getLogger(AlramWebsocketHandelr.class);
 	
 	@Autowired
-	private AlramService service;
+	private ChatService service;
 	
 	private Set<WebSocketSession> sessions = Collections.synchronizedSet(new HashSet<WebSocketSession>());
 

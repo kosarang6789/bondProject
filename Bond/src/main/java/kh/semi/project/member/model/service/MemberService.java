@@ -39,4 +39,7 @@ public interface MemberService {
 	
 	// 가입중인 모임의 모든 일정 목록 가져오기
 	List<Plan> getMyAllPlans(int memberNo);
+
+	// 모든 회원 이미지를 가져옴
+	public abstract List<String> selectMemberImageList();
 }

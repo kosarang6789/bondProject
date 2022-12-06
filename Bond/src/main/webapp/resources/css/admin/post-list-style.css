@@ -6,8 +6,8 @@
 
 .postNo{ flex-basis: 10%; }
 .memberNo{ flex-basis: 15%; }
-.groupNo{ flex-basis: 15%;}
-.postContent{ flex-basis: 30%;}
+.groupNo{ flex-basis: 20%;}
+.postContent{ flex-basis: 25%;}
 .postDate{ flex-basis: 20%;}
 .postDelYN{ flex-basis: 10%;}
 

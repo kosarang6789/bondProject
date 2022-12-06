@@ -31,6 +31,17 @@
 	</resultMap>
 	
 	
+	<resultMap type="MemberImage" id="memberImg_rm">
+	
+		<id property="memberNo" column="MEMBER_NO"/>
+		
+		<result property="memberImgOrigin" column="MEMBER_IMG_ORIGIN"/>
+		<result property="memberImgRename" column="MEMBER_IMG_RENAME"/>
+		<result property="memberImgPath" column="MEMBER_IMG_PATH"/>
+		
+	</resultMap>
+	
+	
 	<!-- 로그인 -->
 	<select id="login" parameterType="String" resultMap="member_rm">
 		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_PW, MEMBER_NAME, MEMBER_BIRTH, MEMBER_TEL, 
@@ -91,5 +102,9 @@
 		ORDER BY EXPIRE_DATE DESC
 	</select>
 	
+	<!-- 모든 회원의 이미지 목록을 조회 -->
+	<select id="selectMemberImageList" resultType="string">
+		SELECT MEMBER_IMG_RENAME FROM MEMBER_IMG
+	</select>
 
 </mapper>

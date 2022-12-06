@@ -128,7 +128,11 @@ function ajax(keywordValue, optValue, countValue, cp){
                     // 글 내용
                     const row4 = document.createElement("span");
                     row4.classList.add("postContent");
-                    row4.innerText = item.postContent;
+                    if(item.postContent === "") {
+                        row4.innerText = item.memberName + "님의 게시글입니다.";
+                    } else {
+                        row4.innerText = item.postContent;
+                    }
         
                     // 작성일
                     const row5 = document.createElement("span");

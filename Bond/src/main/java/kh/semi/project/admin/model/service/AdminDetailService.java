@@ -25,7 +25,7 @@ public interface AdminDetailService {
 	 * @param inputPostNo
 	 * @return
 	 */
-	Post selectPostDetail(int inputPostNo);
+	Map<String, Object> selectPostDetail(int inputPostNo);
 
 	/** 신고 내역 상세 조회
 	 * @param inputReportNo

@@ -34,4 +34,5 @@ public class Post {
 	
 	// 추가
 	private String groupName;
+	private String postImage;
 }

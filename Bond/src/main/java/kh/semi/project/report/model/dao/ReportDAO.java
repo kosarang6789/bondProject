@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kh.semi.project.bond.model.vo.Group;
+import kh.semi.project.bond.model.vo.GroupMemberList;
 import kh.semi.project.bond.model.vo.Post;
 import kh.semi.project.member.model.vo.Member;
 import kh.semi.project.report.model.vo.Report;
@@ -60,6 +61,24 @@ public class ReportDAO {
 	public int makeReport(Map<String, Object> infoMap) {
 		return sqlSession.insert("reportMapper.makeReport", infoMap);
 	}
+
+	
+	/** 내 리더 여부 가져오기
+	 * @param myInfo
+	 * @return
+	 */
+	public GroupMemberList getMyLeaderYN(GroupMemberList myInfo) {
+		return sqlSession.selectOne("reportMapper.getMyLeaderYN", myInfo);
+	}
+
+	/** 리더가 탈퇴시키기
+	 * @param out
+	 * @return
+	 */
+	public int getout(GroupMemberList out) {
+		return sqlSession.update("reportMapper.getout", out);
+	}
+
 
 
 }

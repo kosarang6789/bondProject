@@ -274,12 +274,27 @@ main{
     cursor: pointer;
     border: none;
     background-color: white;
-    /* margin-top: 7px; */
+}
+.modal .chatting{
+    font-size: 13px;
+    cursor: pointer;
+    border: none;
+    background-color: white;
 }
 .modal .report:hover{
     color: red;
 }
+.modal .chatting:hover{
+    color: #21c531;
+}
 
 .show{
     display: flex;
+}
+.hidden{
+    display: none;
+}
+
+.chattingIcon{
+    margin-left: 20px;
 }

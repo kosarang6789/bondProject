@@ -171,9 +171,8 @@ public class PostController {
 	 * @param model
 	 * @return
 	 */
-	@GetMapping("/bond/${groupNo}/postUpdate")
-	public String selectPostContent(int postNo,
-			Model model) {
+	@GetMapping("/bond/post/{postNo}/postUpdate")
+	public String selectPostContent(@PathVariable("postNo") int postNo, Model model) {
 		
 		Post post = service.selectPostContent(postNo);
 		post.setPostNo(postNo);
@@ -185,11 +184,17 @@ public class PostController {
 	
 	// 게시글 수정
 	@ResponseBody
-	@PostMapping("/bond/${groupNo}/postUpdate")
-	public int postUpdate(int postNo) {
+	@PostMapping("/bond/post/{postNo}/postUpdate")
+	public int postUpdate(@PathVariable("postNo") int postNo,
+			@RequestParam("postContent") String postContent) {
 		
+		Post post = new Post();
+		post.setPostNo(postNo);
+		post.setPostContent(postContent);
 		
-		return 0;
+		int result = service.postUpdate(post);
+		
+		return result;
 	}
 	
 }

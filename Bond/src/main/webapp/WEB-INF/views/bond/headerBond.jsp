@@ -59,7 +59,12 @@
                                 </button> 
                                 
                                 <div id="myDropdown" class="dropdown-content">
-                                    <a href="/myPage/myPage">내정보</a>
+                                    <c:if test="${loginMember.authority.equals('1')}">
+                                            <a href="/admin/mainPage">관리자 홈</a>
+                                    </c:if>
+                                    <c:if test="${loginMember.authority.equals('0')}">
+                                            <a href="/myPage/myPage">내정보</a>
+                                    </c:if>
                                     <a href="/logout">로그아웃</a>
                                 </div>
                             </div>
@@ -78,6 +83,7 @@
         <li><a href="/bond/${groupNo}/album">사진첩</a></li>
         <li><a href="/bond/${groupNo}/bondMemberList">멤버</a></li>
         <li><a href="/bond/${groupNo}/plan">일정</a></li>
+        <li><a href="/bond/${groupNo}/chatting">채팅</a></li>
         </ul>
     </div>
 </nav>

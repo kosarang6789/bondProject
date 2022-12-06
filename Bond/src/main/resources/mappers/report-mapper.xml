@@ -52,6 +52,24 @@
 		<result property="memberImage" column="MEMBER_IMG" />
 	</resultMap>
 	
+	<!-- GroupMemberList VO -->
+	<resultMap type="GroupMemberList" id="memberList_rm">
+
+		<id property="memberNo" column="MEMBER_NO" />
+
+		<result property="memberName" column="MEMBER_NAME" />
+		<result property="memberImage" column="MEMBER_IMG" />
+		<result property="memberBirth" column="MEMBER_BIRTH" />
+		
+		<result property="joinNo" column="JOIN_NO" />
+		<result property="groupNo" column="GROUP_NO" />
+		<result property="leaderYN" column="LEADER_YN" />
+		<result property="joinDate" column="JOIN_DATE" />
+		<result property="joinStatus" column="JOIN_STATUS" />
+		<result property="leaveDate" column="LEAVE_DATE" />
+
+	</resultMap>
+	
 	<!-- reason VO -->
 	<resultMap type="Report" id="reason_rm">
 		
@@ -101,4 +119,22 @@
 			   ${targetNo},
 			   DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT)
 	</insert>
+	
+	
+	<!-- 내 리더 여부 가져오기 -->
+	<select id="getMyLeaderYN" resultMap="memberList_rm">
+		SELECT LEADER_YN, GROUP_NO, MEMBER_NO
+		FROM "MEMBER_JOIN"
+		WHERE GROUP_NO = #{groupNo}
+		AND MEMBER_NO = #{memberNo}
+	</select>
+	
+	<!-- 리더가 탈퇴시키기 -->
+	<update id="getout">
+		UPDATE "MEMBER_JOIN" SET
+		JOIN_STATUS = 2,
+		LEAVE_DATE = SYSDATE
+		WHERE MEMBER_NO = #{memberNo}
+		AND GROUP_NO = #{groupNo}
+	</update>
 </mapper>

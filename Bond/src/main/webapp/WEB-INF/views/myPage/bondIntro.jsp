@@ -26,7 +26,7 @@
                 </div>
                 <div class="introWrite">
                     <div class="writeTitle">본드 소개글</div>
-                    <textarea name="groupComment" id="groupComment">${groupInfo.groupComment}</textarea>
+                    <textarea name="groupComment" id="groupComment" maxlength="480">${groupInfo.groupComment}</textarea>
                 </div>
                 <div class="imgTitle">본드 대표 이미지</div>
 

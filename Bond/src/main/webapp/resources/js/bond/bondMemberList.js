@@ -76,21 +76,22 @@ function selectBoardScroll (){
                     if(memMap != null){
                         console.log(memMap);
                         
-                            const memberAll = document.querySelector(".member-all");
-                            
-                            for(let mem of memMap.memList){
-                                if(myNo != mem.memberNo){
+                        const memberAll = document.querySelector(".member-all");
+                        
+                        for(let mem of memMap.memList){
+                            if(myNo != mem.memberNo){
     
                                 const members = document.createElement("div");
                                 members.classList.add("member-list");
-                                members.setAttribute("id", mem.memberNo);
-                                members.addEventListener("click",()=>{
-                                    modal.style.display="flex";
-                                    selectMemPro(members.getAttribute("id"));
-                                })
-    
+                                
                                 const memberImage = document.createElement("div");
                                 memberImage.classList.add("member-image");
+                                memberImage.setAttribute("id", mem.memberNo);
+                                memberImage.addEventListener("click",()=>{
+                                    modal.classList.remove("hidden");
+                                    modal.classList.add("show");
+                                    selectMemPro(memberImage.getAttribute("id"));
+                                })
     
                                 const image = document.createElement("img");
                                 if(mem.memberImage!=null){
@@ -107,6 +108,7 @@ function selectBoardScroll (){
     
                                 const memberReport = document.createElement("div");
                                 memberReport.classList.add("member-report");
+                                memberReport.setAttribute("id", mem.memberNo);
     
                                 const userSlash = document.createElement("i");
                                 userSlash.classList.add("userSlash");
@@ -117,6 +119,18 @@ function selectBoardScroll (){
                                 members.append(memberImage, memberName, memberReport);
                                 memberImage.append(image);
                                 memberReport.append(userSlash);
+                            }
+
+                            const reportMemList = document.getElementsByClassName("member-report");
+
+                            // 무한 스크롤에서 신고하기 이벤트줌.
+                            for(let rm of reportMemList){
+                                rm.addEventListener("click", ()=>{
+                                    let memberNo = rm.getAttribute("id");
+                                    
+                                    const url = "/report/member/" + memberNo; 
+                                    open(url, "신고하기", "width=500px, height=600px")
+                                })
                             }
                         }
                         
@@ -153,12 +167,13 @@ document.querySelector(".inviteBtn").addEventListener("click", ()=>{
 
 
 let image = document.getElementsByClassName("memImg");
-let mm = document.getElementsByClassName("member-list");
 const modal = document.getElementById("modal");
 const modalx = document.getElementById("modalx");
+let mmm = document.getElementsByClassName("member-image");
 
 modalx.addEventListener("click",()=>{
-    modal.style.display="none";
+    modal.classList.remove("show");
+    modal.classList.add("hidden");
 });
 
 const modalImg = document.getElementById("image");
@@ -166,29 +181,49 @@ const modalName = document.getElementById("modalName");
 const modalLeader = document.getElementById("modalLeader");
 const modalJoinDate = document.getElementById("modalJoinDate");
 const modalBirth = document.getElementById("modalBirth");
-const modalReport = document.getElementById("modalReport");
+const modalReport = document.querySelector(".reportBtn");
 
 
-for(let m of mm){
+// 멤버 이미지 불러와 for문 안에 넣어 id값 얻고 모달창 띄움
+for(let m of mmm){
     m.addEventListener("click", ()=>{
-        modal.style.display="flex";
+        modal.classList.remove("hidden");
+        modal.classList.add("show");
         selectMemPro(m.getAttribute("id"));
+        
     });
 };
 
 // 내가 아닐 때
-const modalBtn = document.createElement("button");
-modalBtn.classList.add("report");
+const modalBtn1 = document.createElement("button");
+modalBtn1.classList.add("report");
+const modalBtn2 = document.createElement("button");
+modalBtn2.classList.add("chatting");
 
 const modalNMe = document.createElement("div");
+
 modalNMe.classList.add("report");
+// 회원이 회원 신고
 const modalIcon = document.createElement("i");
 modalIcon.classList.add("fa-solid");
 modalIcon.classList.add("fa-user-slash");
+modalIcon.classList.add("memberReport");
 modalIcon.innerText = "신고하기";
+// 리더가 회원 탈퇴
+const modalIconG = document.createElement("i");
+modalIconG.classList.add("fa-solid");
+modalIconG.classList.add("fa-user-slash");
+modalIconG.classList.add("memberReport");
+modalIconG.innerText = "탈퇴시키기";
 
-modalNMe.append(modalBtn);
-modalBtn.append(modalIcon);
+const modalChat = document.createElement("a");
+const modalChatI = document.createElement("i");
+modalChatI.classList.add("fa-solid");
+modalChatI.classList.add("fa-comment-dots");
+modalChatI.classList.add("chat-icon");
+modalChatI.classList.add("chattingIcon");
+modalChatI.innerText = "채팅하기";
+
 
 // 나 일때
 const modalA = document.createElement("a");
@@ -202,14 +237,13 @@ modalMyI.classList.add("fa-gear");
 modalMyI.classList.add("sidbar-icon");
 modalMyI.innerText="내 정보 수정";
 
-modalMe.append(modalA);
-modalA.append(modalMyI);
 
 // 프로필 부분
 const modalImgarea = document.getElementById("modalImgarea");
 const ii = document.createElement("img");
 ii.classList.add("image");
 modalImgarea.append(ii);
+const modalProfile = document.getElementById("modalProfile");
 
 const selectMemPro = (memberNo) =>{
     $.ajax({
@@ -238,18 +272,111 @@ const selectMemPro = (memberNo) =>{
 
             modalBirth.innerText = memPro.memberBirth;
 
-            const modalProfile = document.getElementById("modalProfile");
-            if(myNo != memPro.memberNo){
-                modalProfile.append(modalNMe);
-                modalMe.remove();
-            }else{
-                modalProfile.append(modalMe);
-                modalNMe.remove();
+            modalReport.innerHTML="";
+
+            if(myNo == memPro.leaderNo){ // 내가 리더인 경우
+                if(myNo != memPro.memberNo){ /* 회원 */
+                    modalReport.append(modalBtn1, modalBtn2);
+                    modalBtn1.append(modalIconG);
+                    modalBtn1.setAttribute("id", memPro.memberNo);
+                    modalBtn2.append(modalChat);
+                    modalChat.append(modalChatI);
+
+                    let memberNo = memPro.memberNo;
+
+                    // 모달 창 신고
+                    modalBtn1.addEventListener("click", () => {
+                        const url = "/report/member/" + memberNo; 
+                        open(url, "신고하기", "width=500px, height=600px")
+                    });
+                }else{ /* 나 */
+                    modalReport.append(modalA);
+                    modalA.append(modalMyI);
+                    // modalReport.setAttribute("id", myNo);
+                }
+            }else{ /* 내가 리더가 아닌 경우 */
+                if(myNo != memPro.memberNo){ /* 회원 */
+                    modalReport.append(modalBtn1, modalBtn2);
+                    modalBtn1.append(modalIcon);
+                    modalBtn1.setAttribute("id", memPro.memberNo);
+                    modalBtn2.append(modalChat);
+                    modalChat.append(modalChatI);
+
+                    let memberNo = memPro.memberNo;
+
+                    // 모달 창 신고
+                    modalBtn1.addEventListener("click", () => {
+                        const url = "/report/member/" + memberNo; 
+                        open(url, "신고하기", "width=500px, height=600px")
+                    });
+                }else{ /* 나 */
+                    modalReport.append(modalA);
+                    modalA.append(modalMyI);
+                    // modalReport.setAttribute("id", myNo);
+                }
             }
+            
+            // if(myNo != memPro.memberNo){ /* 회원 */
+            //     modalReport.append(modalBtn1, modalBtn2);
+            //     // modalReport.setAttribute("id", memPro.memberNo);
+            //     modalBtn1.append(modalIcon);
+            //     modalBtn1.setAttribute("id", memPro.memberNo);
+            //     modalBtn2.append(modalChat);
+            //     modalChat.append(modalChatI);
+
+            //     let memberNo = memPro.memberNo;
+
+            //     // 모달 창 신고
+            //     modalBtn1.addEventListener("click", () => {
+            //         const url = "/report/member/" + memberNo; 
+            //         open(url, "신고하기", "width=500px, height=600px")
+            //     });
+            // }else{ /* 나 */
+            //     modalReport.append(modalA);
+            //     modalA.append(modalMyI);
+            //     // modalReport.setAttribute("id", myNo);
+            // }
+
+
 
         },
         error : ()=>{
             console.log("ajax 통신 실패ㅠㅜㅠㅜ");
         }
     })
-}
+};
+
+window.addEventListener("click", e=>{
+    let ev = e.target;
+
+    if(ev.classList.contains("show")){
+        modal.classList.remove("show");
+        modal.classList.add("hidden");
+    }
+})
+
+
+// 밴드 신고
+// 신고하기 버튼
+const reportBtn = document.getElementById("reportBtn");
+
+// 신고 버튼 클릭 시 팝업창
+reportBtn.addEventListener("click", () => {
+    const url = "/report/group/" + groupNo; 
+    open(url, "신고하기", "width=500px, height=600px")
+});
+
+
+// 멤버 신고
+// 멤버 리스트 신고(무한 스크롤 신고하기는 무한 스크롤 부분에서 작성함.)
+const reportMemList = document.getElementsByClassName("member-report");
+
+for(let rm of reportMemList){
+    rm.addEventListener("click", ()=>{
+        let memberNo = rm.getAttribute("id");
+        
+        const url = "/report/member/" + memberNo; 
+        open(url, "신고하기", "width=500px, height=600px")
+    })
+};
+
