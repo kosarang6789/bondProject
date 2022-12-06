@@ -25,7 +25,7 @@ public class BondInterceptor implements HandlerInterceptor{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		System.out.println("[BondInterceptor] 존재하지 않는 모임 접근 차단 인터셉터");
+		System.out.print("[BondInterceptor] 모임 주소 검사 : ");
 		
 		// 다운캐스팅 진행
 		HttpServletRequest req = (HttpServletRequest)request;
@@ -57,11 +57,11 @@ public class BondInterceptor implements HandlerInterceptor{
 		int count = service.isExist(requestGroupNo);
 			
 		if(count > 0) {
-			System.out.println("[BondInterceptor] 정상적인 경로입니다.\n");
+			System.out.print("정상적인 경로입니다\n");
 			
 			return true;
 		} else {
-			System.out.println("[BondInterceptor] 비정상적인 경로입니다 : page not found\n");
+			System.out.print("비정상적인 경로입니다(page not found)\n");
 			sendPath = "/pageNotFound";
 			resp.sendRedirect(sendPath);
 			return false;

@@ -43,10 +43,14 @@
     min-height: 50px;
 }
 
+#memberImageBox{
+    padding: 20px 0;
+}
 #memberImage{
     width: 100px;
     height: 100px;
     cursor: pointer;
+    border-radius: 50%;
 }
 
 /* join count */
