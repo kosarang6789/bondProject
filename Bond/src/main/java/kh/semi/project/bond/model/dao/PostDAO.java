@@ -10,6 +10,10 @@ import org.springframework.stereotype.Repository;
 import kh.semi.project.bond.model.vo.Post;
 import kh.semi.project.bond.model.vo.PostImage;
 
+/**
+ * @author hyunjae
+ *
+ */
 @Repository
 public class PostDAO {
 
@@ -70,8 +74,11 @@ public class PostDAO {
 	 * @param post
 	 * @return postNo
 	 */
-	public int postWrite(Post post) {	
-		return sqlSession.insert("postMapper.postWrite", post);
+	public int postWrite(Post post) {
+		int result = sqlSession.insert("postMapper.postWrite", post);
+		
+		if(result>0) result = post.getPostNo();
+		return result;
 	}
 
 
@@ -81,6 +88,38 @@ public class PostDAO {
 	 */
 	public int insertPostImages(List<PostImage> uploadImages) {
 		return sqlSession.insert("postMapper.insertPostImages", uploadImages);
+	}
+
+	/** 게시글 삭제
+	 * @param postNo
+	 * @return
+	 */
+	public int deletePost(int postNo) {
+		return sqlSession.update("postMapper.deletePost", postNo);
+	}
+
+	/** 게시글만 조회
+	 * @param postNo
+	 * @return
+	 */
+	public Post selectPostContent(int postNo) {
+		return sqlSession.selectOne("postMapper.selectPostContent", postNo);
+	}
+
+	/** 게시글 수정
+	 * @param post
+	 * @return result
+	 */
+	public int postUpdate(Post post) {
+		return sqlSession.update("postMapper.postUpdate", post);
+	}
+
+	/** 이미지 삭제
+	 * @param postNo
+	 * @return
+	 */
+	public int deleteImage(int postNo) {
+		return sqlSession.delete("postMapper.deleteImage", postNo);
 	}
 
 	

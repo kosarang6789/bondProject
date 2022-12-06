@@ -191,5 +191,26 @@
 		</foreach>
 	</insert>
 	
+	<!-- 게시물 삭제 -->
+	<update id="deletePost">
+		UPDATE POST SET 
+		POST_DEL_YN ='Y' WHERE POST_NO=#{postNo}
+	</update>
+	
+	<!-- 게시글만 조회 -->
+	<select id="selectPostContent" resultMap="post_rm">
+		SELECT POST_CONTENT FROM POST WHERE POST_NO = #{postNo}
+	</select>
+	
+	<!-- 게시글 수정 -->
+	<update id="postUpdate">
+		UPDATE POST SET POST_CONTENT = #{postContent}
+		WHERE POST_NO = #{postNo}
+	</update>
+	
+	<!-- 이미지 삭제 -->
+	<delete id="deleteImage">
+		DELETE FROM POST_IMG WHERE POST_NO=#{postNo}
+	</delete>
 	
 </mapper>

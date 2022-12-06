@@ -1,35 +1,27 @@
-// const replyYN = document.getElementById("reply-yn")
-// replyYN.addEventListener("change", ()=>{
-//     if(this.check){
-//         replyYN.classList.add("ok");
-//         replyYN.classList.remove("no");
-//     }else{
-//         replyYN.classList.remove("ok");
-//         replyYN.classList.add("no");
-//     }
-// });
+const postUpdateContent = document.getElementById("summernote");
 
-const postWriteContent = document.getElementById("summernote");
+const submitContent = (postNo)=>{
 
-const submitContent = ()=>{
-
-    if(postWriteContent.value.trim().length==0){
+    if(postUpdateContent.value.trim().length==0){
         alert("내용을 입력해주세요.");
-        postWriteContent.value="";
+        postUpdateContent.value="";
         return false;
     } else {
         $.ajax({
-            url : "/bond/"+ groupNo +"/postWrite",
-            data : {"postContent" : postWriteContent.value},
+            url : "/bond/post/"+ postNo +"/postUpdate",
+            data : {"postContent" : postUpdateContent.value},
             type : "POST",
             dataType : "JSON",
-            success: (postNo)=> {
-                console.log("성공");
-                window.alert("게시물이 작성되었습니다.");
-                parent.window.location.reload();
+            success: (result)=> {
+                if(result>0){
+                    console.log("성공");
+                    window.alert("게시물이 수정되었습니다.");
+                    parent.window.location.reload();
+                }
             },
-            error : function(req, status, error){
-                    console.log("게시물 작성 에러 발생");
+            error: ()=>{
+                console.log("실패");
+                window.alert("게시물 수정 실패");
             }
         })
     }
@@ -39,7 +31,6 @@ const submitContent = ()=>{
 $(document).ready(function() {
 
     $('#summernote').summernote({
-        placeholder: "새로운 소식을 남겨보세요. <br>공개밴드에 남긴 글은 누구나 볼 수 있습니다.",
         tabsize: 2,
         height: 504,
         focus: true,

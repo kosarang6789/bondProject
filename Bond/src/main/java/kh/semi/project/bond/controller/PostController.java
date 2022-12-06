@@ -135,6 +135,7 @@ public class PostController {
 		File targetFile = new File(folderPath + rename);   
 	    
 		try {
+			
 			// 파일 저장
 			InputStream fileStream = multipartFile.getInputStream();
 			FileUtils.copyInputStreamToFile(fileStream, targetFile);   
@@ -143,14 +144,57 @@ public class PostController {
 			json.addProperty("url", webPath +rename);  
 			json.addProperty("responseCode", "success");
 	         
-	       } catch (IOException e) {
+		} catch (IOException e) {
 	    	   FileUtils.deleteQuietly(targetFile);   
 	    	   json.addProperty("responseCode", "error");
 	    	   e.printStackTrace();
-	       }
-	      
-	       return json.toString();
-	   }
+		}
+		return json.toString();
+	}
 	
+	
+	
+	// 게시글 삭제
+	@ResponseBody
+	@GetMapping("/post/delete")
+	public int deletePost(int postNo) {
+		
+		int result = service.deletePost(postNo);
+		
+		return result;
+	}
+	
+	
+	// 게시글 내용만 조회
+	/**
+	 * @param postNo
+	 * @param model
+	 * @return
+	 */
+	@GetMapping("/bond/post/{postNo}/postUpdate")
+	public String selectPostContent(@PathVariable("postNo") int postNo, Model model) {
+		
+		Post post = service.selectPostContent(postNo);
+		post.setPostNo(postNo);
+		model.addAttribute("post", post);
+		
+		return "post/postUpdate";
+	}
+	
+	
+	// 게시글 수정
+	@ResponseBody
+	@PostMapping("/bond/post/{postNo}/postUpdate")
+	public int postUpdate(@PathVariable("postNo") int postNo,
+			@RequestParam("postContent") String postContent) {
+		
+		Post post = new Post();
+		post.setPostNo(postNo);
+		post.setPostContent(postContent);
+		
+		int result = service.postUpdate(post);
+		
+		return result;
+	}
 	
 }

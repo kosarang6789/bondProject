@@ -40,17 +40,8 @@
                     <label for="post-moreView-icon" name="moreView" >
                         <i class="fa-solid fa-ellipsis-vertical"></i>
                     </label>
-                    <ul class="moreView-menu">
-                        <li>
-                            <a href="">글 수정</a>
-                        </li> 
-                        <li>
-                            <a href="">삭제하기</a>
-                        </li>
-                        <li>
-                            <a href="">신고하기</a>
-                        </li>
-                    </ul>
+                    <div class="moreView-menu">
+                    </div>
                 </div>
             </div>
 
