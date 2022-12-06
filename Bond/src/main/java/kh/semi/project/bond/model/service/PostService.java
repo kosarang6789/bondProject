@@ -54,4 +54,10 @@ public interface PostService {
 	 */
 	Post selectPostContent(int postNo);
 
+	/** 게시글 수정
+	 * @param post
+	 * @return result
+	 */
+	int postUpdate(Post post);
+
 }
