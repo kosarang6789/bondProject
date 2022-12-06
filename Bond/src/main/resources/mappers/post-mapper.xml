@@ -201,7 +201,6 @@
 	<select id="selectPostContent" resultMap="post_rm">
 		SELECT POST_CONTENT FROM POST WHERE POST_NO = #{postNo}
 	</select>
-	
 
 	
 	<!-- 게시글 수정 -->
