@@ -177,5 +177,18 @@ public class PlanController {
 		
 	}
 	
+	// member/mainPage에 일정 뿌리기
+	@PostMapping("member/mainPage/myPlans")
+	@ResponseBody
+	public String getMyPlans(
+			HttpSession session) {
+		
+		Member loginMember = (Member)session.getAttribute("loginMember");
+		int memberNo = loginMember.getMemberNo();
+		
+		List<Plan> myPlansList = service.getMyPlans(memberNo);
+		return new Gson().toJson(myPlansList);
+	}
+	
 
 }

@@ -20,6 +20,9 @@ public interface PlanService {
 	
 	// 일정 삭제하기
 	int planDelete(int planNo);
+	
+	// member/mainPage에 일정 뿌리기
+	List<Plan> getMyPlans(int memberNo);
 
 
 	

@@ -31,7 +31,7 @@ import kh.semi.project.member.model.vo.Member;
 import kh.semi.project.plan.model.vo.Plan;
 
 @Controller
-@SessionAttributes({"loginMember", "groupInfo", "planListSoon"})
+@SessionAttributes({"loginMember", "groupInfo", "planListSoon", "thisGroupNo"})
 public class BondController {
 
 	@Autowired 
@@ -104,12 +104,19 @@ public class BondController {
 			@SessionAttribute(value="loginMember", required=false) Member loginMember,
 			RedirectAttributes ra
 			) {
-		
+		// session에 이 그룹의 그룹 번호를 올려놓음
+		model.addAttribute("thisGroupNo", groupNo);
 		
 		// 본드 기본정보 불러오기(이름, 사진, 멤버수, 소개글)
 		Group groupInfo = service.selectGroupInfo(groupNo);
 		
-		String openYN = groupInfo.getOpenYN();
+//		String openYN = groupInfo.getOpenYN();
+		String openYN = "N";
+		
+		if(groupInfo != null) {
+			openYN = groupInfo.getOpenYN();
+		}
+		
 		GroupMemberList member = new GroupMemberList();
 		
 		member.setGroupNo(groupNo);
@@ -197,7 +204,6 @@ public class BondController {
 	}
 	
 
-	
 	
 }
 
