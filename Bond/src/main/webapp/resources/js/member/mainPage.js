@@ -69,12 +69,13 @@ function searchPageScroll(){
     
                         for(let group of map2.allGroupList.groupList){
                             const h3 = document.createElement("h3");
+                            const listItem = document.createElement("li");
+                            listItem.classList.add("list-item");
+                            
                             if(group == null){
                                 h3.innerText = "본드가 존재하지 않습니다.";
                                 h3.classList.add("h3");
                             } else{
-                                const listItem = document.createElement("li");
-                                listItem.classList.add("list-item");
                                 
                                 const list = document.createElement("div");
                                 list.classList.add("list");
@@ -138,7 +139,7 @@ function searchPageScroll(){
                                 listWrapper.append(listItem);
 
                             }
-                           
+                            
                             
 
                         }

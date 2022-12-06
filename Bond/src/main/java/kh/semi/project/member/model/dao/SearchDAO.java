@@ -17,8 +17,8 @@ public class SearchDAO {
 	private SqlSessionTemplate sqlSession;
 
 	public List<Group> allGroupList(Map<String, Object> pm) {
-		
-		return sqlSession.selectList("groupMapper.allGroupList", pm);
+		RowBounds rowBounds = new RowBounds(0, 20); 
+		return sqlSession.selectList("groupMapper.allGroupList", pm, rowBounds);
 	}
 
 	public int bondCount(Map<String, Object> pm) {
@@ -26,7 +26,7 @@ public class SearchDAO {
 	}
 
 	public List<Group> allGroupList(Map<String, Object> pm, int cp) {
-		RowBounds rowBounds = new RowBounds((cp-1) * 10, 10); 
+		RowBounds rowBounds = new RowBounds((cp-1) * 20, 20); 
 		return sqlSession.selectList("groupMapper.allGroupList", pm, rowBounds);
 	}
 
