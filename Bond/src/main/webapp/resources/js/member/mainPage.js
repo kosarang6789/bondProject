@@ -79,6 +79,7 @@ function selectBoardScroll(){
                             
                             const groupNo = document.createElement("a");
                             groupNo.classList.add("group-no");
+                            groupNo.innerText = group.groupNo
 
                             const listCover = document.createElement("div");
                             listCover.classList.add("list-cover");
