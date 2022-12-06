@@ -127,36 +127,48 @@ public class ReportController {
 		Group groupInfo = (Group)session.getAttribute("groupInfo");
 		GroupMemberList getMyLeaderYN = service.getMyLeaderYN(loginMember.getMemberNo(), groupInfo.getGroupNo());
 		
-		int result2 = 0;
-		int result = 0;
+//		int result2 = 0;
+//		int result = 0;
+		String message = "";
 		
 		if(getMyLeaderYN.getLeaderYN().equals("Y")) { // 탈퇴시키기
 			int groupNo = groupInfo.getGroupNo();
-			result2 = service.getout(targetNo, groupNo);
+			int result2 = service.getout(targetNo, groupNo);
+			
+			if (result2>0) {
+				message = "탈퇴되었습니다.";
+			}else {
+				message = "탈퇴 과정에서 오류가 발생했습니다.";
+			}
 		}else {
 			
 			// 회원 신고
-			result = service.makeReport(infoMap);
+			int result = service.makeReport(infoMap);
+			
+			if(result >= 0) {
+				message = "신고가 접수되었습니다.";
+			} else {
+				message = "신고 접수 과정에서 오류가 발생했습니다.";
+			}
 		}
 		
 		
 		// 트랜잭션 처리 필요
 		
 		String path = "";
-		String message = "";
 		
 
 		path = "report/{target}/{targetNoStr}";
-		
-		if(result >= 0) {
-			message = "신고가 접수되었습니다.";
-		} else if (result<0) {
-			message = "신고 접수 과정에서 오류가 발생했습니다.";
-		} else if (result2>0) {
-			message = "탈퇴되었습니다.";
-		}else {
-			message = "탈퇴 과정에서 오류가 발생했습니다.";
-		}
+//		
+//		if(result >= 0) {
+//			message = "신고가 접수되었습니다.";
+//		} else if (result<0) {
+//			message = "신고 접수 과정에서 오류가 발생했습니다.";
+//		} else if (result2>0) {
+//			message = "탈퇴되었습니다.";
+//		}else {
+//			message = "탈퇴 과정에서 오류가 발생했습니다.";
+//		}
 		
 //		
 //		if(result >= 0) {
