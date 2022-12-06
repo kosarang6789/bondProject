@@ -129,7 +129,7 @@
 	<!-- 검색 -->
 	<select id="allGroupList" parameterType="_int" resultMap="group_rm">
 		SELECT GROUP_NO, GROUP_NAME, GROUP_COMMENT,
-			 (SELECT GROUP_IMG_PATH || GROUP_IMG_RENAME  FROM GROUP_IMG I
+			(SELECT GROUP_IMG_PATH || GROUP_IMG_RENAME  FROM GROUP_IMG I
 				WHERE I.GROUP_NO = G.GROUP_NO) THUMBNAIL
 		FROM "GROUP" G
 		WHERE GROUP_STATUS = '0'
@@ -147,6 +147,12 @@
 		</if>
 		
 		ORDER BY GROUP_NAME
+
+	<!-- 이 본드가 존재합니까? -->
+	<select id="isExist" parameterType="_int" resultType="_int">
+		SELECT COUNT(*)
+		FROM "GROUP"
+		WHERE GROUP_NO = #{groupNo}
 	</select>
 	
 </mapper>

@@ -68,5 +68,28 @@ public class Util {
 			}
 			
 			return result;
-		}
+	   }
+	   
+	   // 주소에서 groupNo를 가져오는 메서드
+	   public static int getGroupNo(String path) throws NumberFormatException {
+		   
+		   // 주소 예시 : /bond/11/album
+		   
+		   int firstIndex = path.indexOf("/"); // 첫 번째 /의 위치
+		   int secondIndex = path.indexOf("/", firstIndex + 1); // 두 번째 /의 위치
+		   int thirdIndex = path.indexOf("/", secondIndex + 1); // 세 번째 /의 위치
+		   
+		   int result = -1;
+		   
+		   if(thirdIndex != -1) { // 세 번째 /가 있는 경우
+			   result = Integer.parseInt(path.substring(secondIndex + 1, thirdIndex));
+		   }
+		   
+		   if(thirdIndex == -1) { // 세 번째 /가 없는 경우, 끝까지 가져옴
+			   result = Integer.parseInt(path.substring(secondIndex + 1));
+		   }
+				   
+		   return result; // 숫자를 보냅니다.
+	   }
+	   
 }

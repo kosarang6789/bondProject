@@ -122,6 +122,11 @@ public class BondDAO {
 		return sqlSession.selectList("planMapper.planSelectList_soon", groupNo);
 	}
 
+	// 본드가 존재하나요?
+	public int isExist(int groupNo) {
+		return sqlSession.selectOne("groupMapper.isExist", groupNo);
+	}
+
 
 
 

@@ -120,6 +120,12 @@ public class BondServiceImpl implements BondService{
 		return dao.planSelectListSoon(groupNo);
 	}
 
+	// 본드가 존재하나요?
+	@Override
+	public int isExist(int groupNo) {
+		return dao.isExist(groupNo);
+	}
+
 
 
 

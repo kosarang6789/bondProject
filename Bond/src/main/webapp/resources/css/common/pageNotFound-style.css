@@ -1,0 +1,100 @@
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+*{
+    box-sizing: border-box;
+
+    padding: 0;
+    margin: 0;
+    font-family: 'nanumsquare';
+}
+
+body{
+    background-color: #F2F2F2;
+    display: block;
+}
+
+.header-area{
+    background-color: #f8f9fa;
+    display: block;
+    width: 100%;
+    background-color: #fff;
+    position: fixed;
+    box-shadow: 0 1.4px 1.3px 0 rgb(62 73 89 / 7%);
+    z-index: 2000;
+    display: block;
+}
+
+header{
+    background-color: #F2F2F2;
+    width: 1140px;
+    height: 50px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+#home-logo{
+    width: 80px;
+    padding-top: 4px;
+}
+
+#pageNotFoundBody{
+    width: 100vw;
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#imgBox{
+    width: 150px;
+    height: 150px;
+    border-radius: 10%;
+    overflow: hidden;
+}
+
+#sadImage{
+    width: 150px;
+    height: 150px;
+}
+
+#comment{
+    margin: 20px 0px;
+    font-size: 23px;
+    letter-spacing: -1px;
+}
+
+#commentDetail{
+    letter-spacing: -1px;
+    display: flex;
+    justify-content: center;
+
+    width: 500px;
+    text-align: center;
+}
+
+#goMainButton{
+    font-weight: 600;
+    margin-top: 20px;
+    width: 70px;
+    height: 30px;
+    background-color: #E2E2E2;
+    color: black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+#goMainButton:hover{
+    opacity: 0.8;
+}
+
+a{
+    text-decoration: none;
+}

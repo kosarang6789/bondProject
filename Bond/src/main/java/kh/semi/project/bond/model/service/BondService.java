@@ -29,5 +29,8 @@ public interface BondService {
 	// 다가오는 일정 목록 불러오기
 	List<Plan> planSelectListSoon(int groupNo);
 
+	// 존재하는 본드인가요?
+	int isExist(int groupNo);
+
 
 }
