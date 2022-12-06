@@ -17,6 +17,7 @@ public class GroupMemberList {
 	private int groupNo;
 	private int memberNo;
 	private String leaderYN; 
+	private int leaderNo; 
 	private String joinDate;
 	private String joinStatus;
 	private String leaveDate;

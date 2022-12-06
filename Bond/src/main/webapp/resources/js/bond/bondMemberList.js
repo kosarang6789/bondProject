@@ -273,74 +273,29 @@ const selectMemPro = (memberNo) =>{
             modalBirth.innerText = memPro.memberBirth;
 
             modalReport.innerHTML="";
-            if(myNo == memPro.memberNo && memPro.leaderYN == 'Y'){ /* 나 + 리더 */
-                if(myNo != memPro.memberNo){ /* 회원 */
-                    modalReport.append(modalBtn1, modalBtn2);
-                    // modalReport.setAttribute("id", memPro.memberNo);
-                    modalBtn1.append(modalIconG);
-                    modalBtn1.setAttribute("id", memPro.memberNo);
-                    modalBtn2.append(modalChat);
-                    modalChat.append(modalChatI);
+               
+            if(myNo != memPro.memberNo){ /* 회원 */
+                modalReport.append(modalBtn1, modalBtn2);
+                // modalReport.setAttribute("id", memPro.memberNo);
+                modalBtn1.append(modalIcon);
+                modalBtn1.setAttribute("id", memPro.memberNo);
+                modalBtn2.append(modalChat);
+                modalChat.append(modalChatI);
 
-                    let memberNo = memPro.memberNo;
+                let memberNo = memPro.memberNo;
 
-                    // 모달 창 신고
-                    modalBtn1.addEventListener("click", () => {
+                // 모달 창 신고
+                modalBtn1.addEventListener("click", () => {
                     const url = "/report/member/" + memberNo; 
                     open(url, "신고하기", "width=500px, height=600px")
-                    });
-                }else{ /* 나 */
-                    modalReport.append(modalA);
-                    modalA.append(modalMyI);
-                    modalReport.setAttribute("id", myNo);
-                }
+                });
+            }else{ /* 나 */
+                modalReport.append(modalA);
+                modalA.append(modalMyI);
+                // modalReport.setAttribute("id", myNo);
             }
-            if(myNo == memPro.memberNo && memPro.leaderYN == 'N'){ /* 나 + 리더X */
-                if(myNo != memPro.memberNo){ /* 회원 */
-                    modalReport.append(modalBtn1, modalBtn2);
-                    // modalReport.setAttribute("id", memPro.memberNo);
-                    modalBtn1.append(modalIcon);
-                    modalBtn1.setAttribute("id", memPro.memberNo);
-                    modalBtn2.append(modalChat);
-                    modalChat.append(modalChatI);
-
-                    let memberNo = memPro.memberNo;
-
-                    // 모달 창 신고
-                    modalBtn1.addEventListener("click", () => {
-                    const url = "/report/member/" + memberNo; 
-                    open(url, "신고하기", "width=500px, height=600px")
-                    });
-                }else{ /* 나 */
-                    modalReport.append(modalA);
-                    modalA.append(modalMyI);
-                    modalReport.setAttribute("id", myNo);
-                }
-            }
-            
-                
 
 
-            // if(myNo != memPro.memberNo){ /* 회원 */
-            //     modalReport.append(modalBtn1, modalBtn2);
-            //     // modalReport.setAttribute("id", memPro.memberNo);
-            //     modalBtn1.append(modalIcon);
-            //     modalBtn1.setAttribute("id", memPro.memberNo);
-            //     modalBtn2.append(modalChat);
-            //     modalChat.append(modalChatI);
-
-            //     let memberNo = memPro.memberNo;
-
-            //     // 모달 창 신고
-            //     modalBtn1.addEventListener("click", () => {
-            //         const url = "/report/member/" + memberNo; 
-            //         open(url, "신고하기", "width=500px, height=600px")
-            //     });
-            // }else{ /* 나 */
-            //     modalReport.append(modalA);
-            //     modalA.append(modalMyI);
-            //     // modalReport.setAttribute("id", myNo);
-            // }
 
         },
         error : ()=>{
