@@ -15,6 +15,8 @@
 		<result property="memberStatus" column="MEMBER_STATUS" />
 		<result property="signUpDate" column="SIGNUP_DATE" />
 		<result property="delDate" column="DEL_DATE" />
+
+		<result property="profileImage" column="PROFILE_IMG" />
 	</resultMap>
 	
 	<!-- GroupVO -->
@@ -52,6 +54,10 @@
 		<result property="postDelYN" column="POST_DEL_YN" />
 		<result property="memberName" column="MEMBER_NAME" />
 		<result property="memberImage" column="MEMBER_IMG" />
+	
+		<result property="postImage" column="POST_IMG" />
+		
+		
 	</resultMap>
 	
 	<!-- Report VO -->
@@ -83,6 +89,16 @@
 	
 	</resultMap>
 	
+	<!-- PostImage VO -->
+	<resultMap type="PostImage" id="postImage_rm">
+		<id property="imageNo" column="IMAGE_NO" />
+		
+		<result property="postNo" column="POST_NO" />
+		<result property="imageRename" column="IMAGE_RENAME" />
+		<result property="imagePath" column="IMAGE_PATH" />
+		<result property="imageFullName" column="IMG_FULLNAME" />
+	</resultMap>
+	
 	<!-- 회원 목록 개수 조회 -->
 	<select id="getMemberListCount" parameterType="string" resultType="_int">
 		SELECT COUNT(*)
@@ -102,8 +118,9 @@
 
 	<!-- 회원 상세 조회 -->
 	<select id="selectMemberDetail" parameterType="_int" resultMap="member_rm">
-		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NAME, MEMBER_TEL, MEMBER_BIRTH, MEMBER_STATUS, SIGNUP_DATE, DEL_DATE
-		FROM "MEMBER"
+		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NAME, MEMBER_TEL, MEMBER_BIRTH, MEMBER_STATUS, SIGNUP_DATE, DEL_DATE, 
+			   (SELECT MEMBER_IMG_PATH||MEMBER_IMG_RENAME FROM "MEMBER_IMG" MI WHERE MI.MEMBER_NO = M.MEMBER_NO) PROFILE_IMG
+		FROM "MEMBER" M
 		WHERE MEMBER_NO = #{inputMemberNo}
 	</select>
 	
@@ -200,6 +217,13 @@
 		FROM "POST"
 		JOIN "MEMBER" USING(MEMBER_NO)
 		JOIN "GROUP" USING(GROUP_NO)
+		WHERE POST_NO = ${inputPostNo}
+	</select>
+	
+	<!-- 게시글 상세 조회 시 이미지 목록을 가져옴 -->
+	<select id="selectPostDetail_imageList" parameterType="_int" resultMap="postImage_rm">
+		SELECT (IMG_PATH || IMG_RENAME) AS IMG_FULLNAME 
+		FROM "POST_IMG"
 		WHERE POST_NO = ${inputPostNo}
 	</select>
 	

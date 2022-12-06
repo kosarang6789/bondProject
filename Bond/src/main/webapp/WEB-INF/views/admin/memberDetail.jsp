@@ -53,7 +53,14 @@
                         <div class="detail-info-row">
                             <label>기본 프로필</label>
                             <div class="detail-info-col">
-                                <img id="memberImage" src="/resources/images/admin/temp-image.jpg">
+                                <div id="memberImageBox">
+                                    <c:if test="${!empty memberInfo.member.profileImage}">
+                                        <img id="memberImage" src="${memberInfo.member.profileImage}">
+                                    </c:if>
+                                    <c:if test="${empty memberInfo.member.profileImage}">
+                                        <img id="memberImage" src="/resources/images/member/profile/defaultProfile.png">
+                                    </c:if>
+                                </div>
                             </div>
                         </div>
                         <div class="detail-info-row">

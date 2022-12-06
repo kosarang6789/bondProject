@@ -74,6 +74,12 @@ public class MemberServiceImpl implements MemberService{
 		return dao.getMyAllPlans(memberNo);
 	}
 
+	// 모든 회원의 이미지 리스트를 가져옴
+	@Override
+	public List<String> selectMemberImageList() {
+		return dao.selectMemberImageList();
+	}
+
 	
 	
 	

@@ -126,6 +126,11 @@ public class BondDAO {
 	public int isExist(int groupNo) {
 		return sqlSession.selectOne("groupMapper.isExist", groupNo);
 	}
+	
+	// 모든 모임의 이미지 목록을 가져옴
+	public List<String> selectBondImageList() {
+		return sqlSession.selectList("groupMapper.selectBondImageList");
+	}
 
 
 

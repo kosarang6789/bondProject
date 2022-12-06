@@ -82,8 +82,20 @@ public class AdminDetailServiceImpl implements AdminDetailService{
 	
 	// 게시글 상세 조회
 	@Override
-	public Post selectPostDetail(int inputPostNo) {
-		return dao.selectPostDetail(inputPostNo);
+	public Map<String, Object> selectPostDetail(int inputPostNo) {
+		Map<String, Object> postMap = new HashMap<String, Object>();
+		
+		// 1. 게시글 정보를 가져옴
+		Post postDetail = dao.selectPostDetail(inputPostNo);
+		
+		// 2. 해당 게시글의 이미지 리스트를 가져옴
+		List<Post> postImageList = dao.selectPostDetail_imageList(inputPostNo);
+		
+		// 3. Map에 담아서 반환
+		postMap.put("postDetail", postDetail);
+		postMap.put("postImageList", postImageList);
+		
+		return postMap;
 	}
 	
 	// 신고 내역 상세 조회

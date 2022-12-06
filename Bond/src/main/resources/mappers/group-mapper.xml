@@ -133,4 +133,9 @@
 		WHERE GROUP_NO = #{groupNo}
 	</select>
 	
+	<select id="selectBondImageList" resultType="string">
+		SELECT GROUP_IMG_RENAME
+		FROM "GROUP_IMG"
+	</select>
+	
 </mapper>

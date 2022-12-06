@@ -41,6 +41,10 @@ public class AdminDetailDAO {
 	public Post selectPostDetail(int inputPostNo) {
 		return sqlSession.selectOne("adminMapper.selectPostDetail", inputPostNo);
 	}
+	
+	public List<Post> selectPostDetail_imageList(int inputPostNo) {
+		return sqlSession.selectList("adminMapper.selectPostDetail_imageList", inputPostNo);
+	}
 
 	/** 신고 내역 상세 조회
 	 * @param inputReportNo

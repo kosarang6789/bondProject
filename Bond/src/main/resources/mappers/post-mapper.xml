@@ -201,6 +201,7 @@
 	<select id="selectPostContent" resultMap="post_rm">
 		SELECT POST_CONTENT FROM POST WHERE POST_NO = #{postNo}
 	</select>
+
 	
 	<!-- 게시글 수정 -->
 	<update id="postUpdate">
@@ -213,4 +214,8 @@
 		DELETE FROM POST_IMG WHERE POST_NO=#{postNo}
 	</delete>
 	
+	<!-- 게시글의 모든 이미지를 조회 -->
+	<select id="selectPostImageList" resultType="string">
+		SELECT IMG_RENAME FROM POST_IMG
+	</select>
 </mapper>

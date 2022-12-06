@@ -109,6 +109,7 @@ public class PostServiceImpl implements PostService{
 		return dao.selectPostContent(postNo);
 	}
 
+	
 	// 게시글 수정
 	@Override
 	public int postUpdate(Post post) {
@@ -147,5 +148,10 @@ public class PostServiceImpl implements PostService{
 		return result;
 	}
 	
+	// 모든 게시글 이미지를 조회
+	@Override
+	public List<String> selectPostImageList() {
+		return dao.selectPostImageList();
+	}
 
 }
