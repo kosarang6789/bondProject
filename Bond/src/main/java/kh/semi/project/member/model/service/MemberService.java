@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kh.semi.project.member.model.dao.MemberDAO;
 import kh.semi.project.member.model.vo.Member;
+import kh.semi.project.plan.model.vo.Plan;
 
 public interface MemberService {
 
@@ -25,4 +26,7 @@ public interface MemberService {
 
 	// 가입X 본드 조회
 	public abstract List<Map<String, Object>> selectJoinNo(int memberNo);
+	
+	// 가입중인 모임의 모든 일정 목록 가져오기
+	List<Plan> getMyAllPlans(int memberNo);
 }

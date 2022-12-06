@@ -94,7 +94,7 @@
             </ul>
         </section>
         <section class="myGroup-schedule">
-            <h3>내 모임 정모</h3>
+            <h3>내 모임 일정</h3>
             <div class="schedule">
                 
             </div>
@@ -117,7 +117,11 @@
     </c:if>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
-    <script src="/resources/js/member/mainPage.js"></script>
+
 </body>
 </html>
 
+<%-- jQuery CDN 방식으로 추가 --%>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+<script src="/resources/js/member/mainPage.js"></script>

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kh.semi.project.member.model.vo.Member;
+import kh.semi.project.plan.model.vo.Plan;
 
 @Repository
 public class MemberDAO {
@@ -43,4 +44,8 @@ public class MemberDAO {
 		return sqlSession.selectList("groupMapper.selectJoinNo", memberNo);
 	}
 
+	// 가입중인 모임의 모든 일정 목록 가져오기
+	public List<Plan> getMyAllPlans(int memberNo) {
+		return sqlSession.selectList("planMapper.getMyAllPlans", memberNo);
+	}
 }

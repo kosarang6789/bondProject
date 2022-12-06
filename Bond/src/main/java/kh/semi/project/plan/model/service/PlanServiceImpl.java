@@ -44,11 +44,7 @@ public class PlanServiceImpl implements PlanService {
 		return dao.planDelete(planNo);
 	}
 
-	// member/mainPage에 일정 뿌리기
-	@Override
-	public List<Plan> getMyPlans(int memberNo) {
-		return dao.getMyPlans(memberNo);
-	}
+
 
 
 	
