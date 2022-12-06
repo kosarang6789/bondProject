@@ -19,7 +19,7 @@
 
         <ul class="drop-down">
             <div class="top-menu">
-                <a href="/admin/notice/list">공지사항</a>
+                <a href="/admin/statistic">공지사항</a>
             </div>
         </ul>
             

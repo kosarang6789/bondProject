@@ -56,4 +56,12 @@ public class AdminController {
 	public String goReportLIst() {
 		return "admin/reportList";
 	}
+	
+	/** 통계 페이지로 이동
+	 * @return
+	 */
+	@GetMapping("/statistic")
+	public String goStatisticPage() {
+		return "admin/statistic";
+	}
 }
