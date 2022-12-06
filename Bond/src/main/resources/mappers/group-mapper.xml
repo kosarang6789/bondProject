@@ -126,5 +126,11 @@
 		AND GROUP_NO = #{groupNo}
 	</select>
 
+	<!-- 이 본드가 존재합니까? -->
+	<select id="isExist" parameterType="_int" resultType="_int">
+		SELECT COUNT(*)
+		FROM "GROUP"
+		WHERE GROUP_NO = #{groupNo}
+	</select>
 	
 </mapper>

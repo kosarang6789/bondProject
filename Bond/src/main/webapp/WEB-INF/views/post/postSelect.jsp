@@ -114,7 +114,17 @@
             <div class="replyWrite-toolbar">
                 <div class="replyWrite">
                     <div class="replyWrite-img">
-                        <img src="/resources/images/member/profile/defaultProfile.png">
+                        <c:if test="${empty loginMember.profileImage}">
+                            <%-- 프로필 이미지가 없을 경우 --%>
+                            <img class="uprofile-inner" 
+                            src="/resources/images/member/profile/defaultProfile.png" />
+                        </c:if>
+                        <c:if test="${!empty loginMember.profileImage}">
+                            <%-- 프로필 이미지가 있을 경우 --%>
+                            <img class="uprofile-inner" src="${loginMember.profileImage}"/>
+                        </c:if>
+                        <%-- <img src="/resources/images/member/profile/defaultProfile.png"> --%>
+
                     </div>
                     <div class="replyWrite-input">
                         <textarea id="replyWrite-Content" cols="20" rows="1" 

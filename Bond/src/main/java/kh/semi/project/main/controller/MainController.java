@@ -22,5 +22,8 @@ public class MainController {
 		return "redirect:/index/main";
 	}
 	
-
+	@GetMapping("/pageNotFound")
+	public String pageNotFound() {
+		return "common/pageNotFound";
+	}
 }
