@@ -380,3 +380,22 @@ for(let rm of reportMemList){
     })
 };
 
+
+// // 벤드 설정 테스트
+// const testtemp = document.querySelector(".band-setting-section");
+// if(myNo == memPro.leaderNo){
+//     const atag = document.createElement("a");
+//     atag.classList.add("band-setting-link");
+//     atag.classList.add("sidebar-font");
+
+//     const itag = document.createElement("i");
+//     itag.classList.add("fa-solid");
+//     itag.classList.add("fa-gear");
+//     itag.classList.add("sidbar-icon");
+//     itag.innerText = "밴드 설정";
+
+//     testtemp.append(atag);
+//     atag.append(itag);
+// }else{
+//     testtemp.classList.add("hidden");
+// }
