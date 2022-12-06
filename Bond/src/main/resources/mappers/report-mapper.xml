@@ -132,7 +132,8 @@
 	<!-- 리더가 탈퇴시키기 -->
 	<update id="getout">
 		UPDATE "MEMBER_JOIN" SET
-		JOIN_STATUS = 1
+		JOIN_STATUS = 2,
+		LEAVE_DATE = SYSDATE
 		WHERE MEMBER_NO = #{memberNo}
 		AND GROUP_NO = #{groupNo}
 	</update>

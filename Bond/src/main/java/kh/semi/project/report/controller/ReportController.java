@@ -120,18 +120,23 @@ public class ReportController {
 		infoMap.put("reasonCode", reasonCode);
 		infoMap.put("memberNo", memberNo);
 		
-		// 회원 신고
-		int result = service.makeReport(infoMap);
 		
 		
 		
 		// 리더가 탈퇴시키기
 		Group groupInfo = (Group)session.getAttribute("groupInfo");
 		GroupMemberList getMyLeaderYN = service.getMyLeaderYN(loginMember.getMemberNo(), groupInfo.getGroupNo());
+		
 		int result2 = 0;
-		if(getMyLeaderYN.getLeaderYN().equals("Y")) {
+		int result = 0;
+		
+		if(getMyLeaderYN.getLeaderYN().equals("Y")) { // 탈퇴시키기
 			int groupNo = groupInfo.getGroupNo();
 			result2 = service.getout(targetNo, groupNo);
+		}else {
+			
+			// 회원 신고
+			result = service.makeReport(infoMap);
 		}
 		
 		
@@ -145,14 +150,25 @@ public class ReportController {
 		
 		if(result >= 0) {
 			message = "신고가 접수되었습니다.";
-		} else {
+		} else if (result<0) {
 			message = "신고 접수 과정에서 오류가 발생했습니다.";
+		} else if (result2>0) {
+			message = "탈퇴되었습니다.";
+		}else {
+			message = "탈퇴 과정에서 오류가 발생했습니다.";
 		}
 		
-		if(result2>0) {
-			message = "탈퇴되었습니다.";
-		}else { message = "탈퇴 과정에서 오류가 발생했습니다."; }
-		
+//		
+//		if(result >= 0) {
+//			message = "신고가 접수되었습니다.";
+//		} else {
+//			message = "신고 접수 과정에서 오류가 발생했습니다.";
+//		}
+//		
+//		if(result2>0) {
+//			message = "탈퇴되었습니다.";
+//		}else { message = "탈퇴 과정에서 오류가 발생했습니다."; }
+//		
 		ra.addFlashAttribute("message", message);
 		
 		return "redirect:/" + path;

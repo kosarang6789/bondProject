@@ -80,7 +80,11 @@ public class BondMemberController {
 			@SessionAttribute("groupInfo") Group groupInfo,
 			@PathVariable("memberNo") int memberNo) {
 		
-		GroupMemberList memPro = serivce.selecMemPro(groupInfo.getGroupNo(), memberNo);
+		GroupMemberList memPro = new GroupMemberList();
+		memPro.setGroupNo(groupInfo.getGroupNo());
+		memPro.setMemberNo(memberNo);
+		
+		memPro = serivce.selecMemPro(memPro);
 		
 		return new Gson().toJson(memPro);
 	}

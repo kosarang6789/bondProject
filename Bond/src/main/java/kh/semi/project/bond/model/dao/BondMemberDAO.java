@@ -35,8 +35,8 @@ public class BondMemberDAO {
 
 
 	// 본드 멤버 프로필 클릭
-	public GroupMemberList selecMemPro(GroupMemberList groupMemList) {
-		return sqlSession.selectOne("bondMemberListMapper.selectMemPro", groupMemList);
+	public GroupMemberList selecMemPro(GroupMemberList memPro) {
+		return sqlSession.selectOne("bondMemberListMapper.selectMemPro", memPro);
 	}
 
 
