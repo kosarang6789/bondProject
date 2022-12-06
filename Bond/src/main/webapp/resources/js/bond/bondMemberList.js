@@ -273,6 +273,14 @@ const selectMemPro = (memberNo) =>{
                 modalBtn1.setAttribute("id", memPro.memberNo);
                 modalBtn2.append(modalChat);
                 modalChat.append(modalChatI);
+
+                let memberNo = memPro.memberNo;
+
+                // 모달 창 신고
+                modalBtn1.addEventListener("click", () => {
+                    const url = "/report/member/" + memberNo; 
+                    open(url, "신고하기", "width=500px, height=600px")
+                });
             }else{
                 modalReport.append(modalA);
                 modalA.append(modalMyI);
@@ -319,37 +327,4 @@ for(let rm of reportMemList){
         open(url, "신고하기", "width=500px, height=600px")
     })
 };
-// 모달 창에서 신고
-let memberNo;
-if(modal.classList.contains("show")){
-    // const modalReportList = document.getElementsByClassName("report");
-    
-    // for(let mr of modalReportList){
-    //     mr.addEventListener("click", ()=>{
-    //         let memberNo = mr.getAttribute("id");
-                    
-    //         const url = "/report/member/" + memberNo; 
-    //         open(url, "신고하기", "width=500px, height=600px")
-    //     })
-    // }
 
-    // let memberNo = modalReport.getAttribute("id");
-    // // 신고하기 버튼
-
-    // // 신고 버튼 클릭 시 팝업창
-    // modalBtn1.addEventListener("click", () => {
-    //     const url = "/report/member/" + memberNo; 
-    //     open(url, "신고하기", "width=500px, height=600px")
-    // });
-    
-    memberNo = modalBtn1.getAttribute("id");
-}
-console.log(memberNo);
-// 신고하기 버튼
-// let memberNo;
-
-// 신고 버튼 클릭 시 팝업창
-modalBtn1.addEventListener("click", () => {
-    const url = "/report/member/" + memberNo; 
-    open(url, "신고하기", "width=500px, height=600px")
-});
