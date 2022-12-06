@@ -58,16 +58,16 @@
 
 /* 본문이 들어가는 영역 */
 .content-area{
-    margin: 10px 0px;
+    margin: 20px 0px;
     width: 100%;
     min-height: 500px;
+    padding-bottom: 20px;
     border-bottom : 1px solid #BFBFBF;
 }
 
 /* 이미지가 들어가는 영역 */
 .img-area{
     display: flex;
-    justify-content: space-between;
 }
 
 .img-box{
@@ -79,12 +79,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 10px;
 }
 
 .img-box > img{
-    width: 30%;
-    height: 30%;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
+    border-radius: 10px;
+
 
 }
 

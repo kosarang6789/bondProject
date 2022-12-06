@@ -31,6 +31,9 @@ public interface BondService {
 
 	// 존재하는 본드인가요?
 	int isExist(int groupNo);
+	
+	// 모임 이미지 리스트
+	List<String> selectBondImageList();
 
 
 }

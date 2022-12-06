@@ -39,28 +39,25 @@
                     
                     <div class="post-detail">
                         <div class="title-area">
-                            <div class="postNo">${post.postNo}</div>
-                            <div class="groupNo">${post.groupNo}</div>
-                            <div class="groupName">${post.groupName}</div>
-                            <div class="postDelYN">${post.postDelYN}</div>
+                            <div class="postNo">${postMap.postDetail.postNo}</div>
+                            <div class="groupNo">${postMap.postDetail.groupNo}</div>
+                            <div class="groupName">${postMap.postDetail.groupName}</div>
+                            <div class="postDelYN">${postMap.postDetail.postDelYN}</div>
                         </div>
 
                         <div class="title-area">
-                            <div class="memberNo">${post.memberNo}</div>
-                            <div class="memberName">${post.memberName}</div>
-                            <div class="postDate">${post.postDate}</div>
+                            <div class="memberNo">${postMap.postDetail.memberNo}</div>
+                            <div class="memberName">${postMap.postDetail.memberName}</div>
+                            <div class="postDate">${postMap.postDetail.postDate}</div>
                         </div>
 
                         <div class="content-area">
-                            <div class="postContent">${post.postContent}</div>
+                            <div class="postContent">${postMap.postDetail.postContent}</div>
                         </div>
-
                         <div class="img-area">
-                            <div class="img-box"><img src="/resources/images/admin/admin-no-images.png"></div>
-                            <div class="img-box"></div>
-                            <div class="img-box"></div>
-                            <div class="img-box"></div>
-                            <div class="img-box"></div>
+                            <c:forEach var="postImageList" items="${postMap.postImageList}">
+                                <div class="img-box"><img src="${postImageList.imageFullName}"></div>
+                            </c:forEach>
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 package kh.semi.project.bond.model.service;
 
+import java.util.List;
 import java.util.Map;
 
 import kh.semi.project.bond.model.vo.Post;
@@ -59,5 +60,10 @@ public interface PostService {
 	 * @return result
 	 */
 	int postUpdate(Post post);
+	
+	/** 모든 게시글 이미지 목록을 조회
+	 * @return
+	 */
+	List<String> selectPostImageList();
 
 }

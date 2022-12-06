@@ -10,7 +10,7 @@
         </div>
         <span id="admin-name">관리자1</span>
         <div class="profile-btn-area">
-            <a href="/plan" id="home">달력</a>
+            <a href="/member/mainPage" id="home">본드 홈</a>
             <a href="/logout" id="logout">로그아웃</a>
         </div>
     </article> <!-- admin-profile end -->

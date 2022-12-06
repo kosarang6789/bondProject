@@ -78,11 +78,16 @@ public class AdminListServiceImpl implements AdminListService{
 		List<Post> postList = dao.selectPostList(keyword, opt, pagination);
 		
 		// 4. 게시글에서 개행문자 제거
-		for( Post post : postList) {
+		for( Post post : postList ) {
 			post.setPostContent(AdminUtil.newLineClear2(post.getPostContent()));
 		}
 		
-		// 5. 값을 넣어서 전송
+		// 5. 게시글에서 <P>태그 영역을 제거
+		for( Post post : postList ) {
+			post.setPostContent(AdminUtil.pTagClear(post.getPostContent()));
+		}
+		
+		// 6. 값을 넣어서 전송
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("postList", postList);
 		map.put("pagination", pagination);

@@ -48,4 +48,9 @@ public class MemberDAO {
 	public List<Plan> getMyAllPlans(int memberNo) {
 		return sqlSession.selectList("planMapper.getMyAllPlans", memberNo);
 	}
+
+	// 모든 회원의 이미지를 가져옴
+	public List<String> selectMemberImageList() {
+		return sqlSession.selectList("memberMapper.selectMemberImageList");
+	}
 }

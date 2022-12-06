@@ -80,9 +80,10 @@ public class AdminDetailController {
 		
 		int inputPostNo = Integer.parseInt(postNo);
 		
-		Post post = service.selectPostDetail(inputPostNo);
+		Map<String, Object> postMap = service.selectPostDetail(inputPostNo);
 		
-		model.addAttribute("post", post);
+		model.addAttribute("postMap", postMap);
+		
 		return "admin/postDetail";
 		
 	}
