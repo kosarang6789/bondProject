@@ -97,6 +97,19 @@ public class PostServiceImpl implements PostService{
 	}
 
 	
+	// 게시글 삭제
+	@Override
+	public int deletePost(int postNo) {
+		return dao.deletePost(postNo);
+	}
+
+	// 게시글만 조회
+	@Override
+	public Post selectPostContent(int postNo) {
+		return dao.selectPostContent(postNo);
+	}
+
+	
 
 	
 
