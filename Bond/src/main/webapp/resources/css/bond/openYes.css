@@ -50,10 +50,14 @@ body{
 }
 
 
-#side-cover{
+.side-cover{
     display: inline-block;
     position: relative;
     vertical-align: top;
+    width: 232px;
+    height: 174px;
+    overflow: hidden;
+    margin-bottom: 20px;
 }
 
 
@@ -62,7 +66,9 @@ body{
     height: 100%;
     border: 1px solid rgba(0,0,0,.05);
     border-radius: 3px;
-}
+    object-fit: cover;
+}  border-radius: 3px;
+
 
 .band-name{
     position: relative;
@@ -328,7 +334,7 @@ body{
 
 /* board-list */
 #board-list{
-    width: 632px;
+    width: 612px;
     margin-bottom: 11px;
     flex: 0 0 auto;
 }
@@ -632,4 +638,40 @@ button{
 
 .btn-go-to-top:hover > .go-to-top-icon{
     color: white;
+}
+
+
+
+
+/* 상세조회 모달창 */
+#postSelect-modal{
+    position : fixed;
+    top : 0;
+    left : 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: none; 
+    z-index: 3000;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#postSelect-view{
+    height: 90vh;
+}
+
+.show{
+    display: flex !important;
+}
+
+.sModal-closeBtn{
+    position: absolute;
+    top: 27px;
+    right: 33px;
+    font-size: 22px;
+    color: #f0f2f4;
 }

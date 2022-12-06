@@ -30,5 +30,10 @@ window.addEventListener("click",e=>{
     }
 });
 
+document.querySelector(".empty").addEventListener("click", ()=>{
+    joSeModal.classList.add("show");
+    joSeModal.classList.remove("hidden");
+})
+
 
 

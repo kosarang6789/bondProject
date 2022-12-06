@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모임이 쉬워진다 | BOND</title>
 
-    <link rel="stylesheet" href="/resources/css/bond//openYes.css">
+    <link rel="stylesheet" href="/resources/css/bond/openYes.css">
     <link rel="stylesheet" href="/resources/css/bond/Modal-jose.css"><%-- 가입모달 --%>
 
     <script src="https://kit.fontawesome.com/1ce4f19a7a.js" crossorigin="anonymous"></script>
@@ -29,8 +29,8 @@
                             <a href="/bond/${groupJoin.groupNo}">
                                 <div class="group-img">
                                     <c:choose>
-                                        <c:when test="${not empty groupJoin.groupImage}">
-                                            <img src="${groupJoin.groupImage}" id="cover-img">  
+                                        <c:when test="${not empty groupInfo.groupImage}">
+                                            <img src="${groupInfo.groupImage}" id="cover-img">  
                                         </c:when>
                                         <c:otherwise>
                                             <img src="/resources/images/bond/profile/no-profile.png" id="cover-img">
@@ -44,11 +44,11 @@
                     </div>
 
                     <div class="band-name">
-                        <a href="#" class="uri-text">${groupJoin.groupName}</a>
+                        <a href="#" class="uri-text">${groupInfo.groupName}</a>
                     </div>
 
                     <p class="member">
-                        <a href="#" class="member-count">멤버 ${groupJoin.memberCount}</a>
+                        <a href="#" class="member-count">멤버 ${groupInfo.memberCount}</a>
                     </p>
 
                     <div class="share">
@@ -81,7 +81,7 @@
                     <h2 class="band-intro-title">밴드 소개</h2>
                     <div class="band-intro-detail">
                         <p class="desc">${groupJoinNo.groupComment}</p>
-                        <div class="intro-option">
+                        <%-- <div class="intro-option">
                             <div class="intro-option-box">
                                 <ul class="select-keyword-list">
                                     <li class="select-keyword-item">취미</li>
@@ -89,7 +89,7 @@
                                     <li class="select-keyword-item">운세</li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> --%>
                     </div>
 
                     <ul class="intro-photo collage">
@@ -120,16 +120,16 @@
                         <div class="intro-info-wrap">
                             <p class="intro-desc">
                                 개설일
-                                <span class="intro-desc-data">${groupJoinNo.groupDate}</span>
+                                <span class="intro-desc-data">${groupInfo.groupDate}</span>
                             </p>
                             <p class="intro-desc">
-                                최근 새글
-                                <span class="intro-desc-data">1건</span>
+                                멤버수
+                                <span class="intro-desc-data">${groupInfo.memberCount}명</span>
                             </p>
-                            <p class="intro-desc">
+                            <%-- <p class="intro-desc">
                                 최근 가입
                                 <span class="intro-desc-data">10명</span>
-                            </p>
+                            </p> --%>
                         </div>
                     </div>
 
@@ -154,5 +154,9 @@
         <%-- 가입 모달 --%>
         <jsp:include page="/WEB-INF/views/bond/joinModal.jsp"/>
         <script src="/resources/js/bond/joinModal.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>    
+
+        <script src="/resources/js/bond/openNo.js"></script>
 
 </body>
