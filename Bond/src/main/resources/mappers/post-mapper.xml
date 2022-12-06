@@ -190,4 +190,17 @@
 			FROM DUAL
 		</foreach>
 	</insert>
+	
+	<!-- 게시물 삭제 -->
+	<update id="deletePost">
+		UPDATE POST SET 
+		POST_DEL_YN ='Y' WHERE POST_NO=#{postNo}
+	</update>
+	
+	<!-- 게시글만 조회 -->
+	<select id="selectPostContent" resultMap="post_rm">
+		SELECT POST_CONTENT FROM POST WHERE POST_NO = #{postNo}
+	</select>
+	
+	
 </mapper>

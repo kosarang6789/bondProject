@@ -1,5 +1,7 @@
 package kh.semi.project.plan.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -134,7 +136,16 @@ public class PlanController {
 			
 			Plan plan = new Plan();
 			plan.setPlanNo(planNo);
+
+			Date date = new Date();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm z");
+			
+			if(inputContent.equals("-1")) {
+				inputContent = "[" + inputTitle + "] "+ sdf.format(date) + "에 일정이 수정되었습니다.";
+			}
+			
 			plan.setPlanTitle(inputTitle);
+			
 			plan.setPlanContent(inputContent);
 			plan.setPlanStart(inputStart);
 			
@@ -176,19 +187,5 @@ public class PlanController {
 		return new Gson().toJson(message);
 		
 	}
-	
-	// member/mainPage에 일정 뿌리기
-	@PostMapping("member/mainPage/myPlans")
-	@ResponseBody
-	public String getMyPlans(
-			HttpSession session) {
-		
-		Member loginMember = (Member)session.getAttribute("loginMember");
-		int memberNo = loginMember.getMemberNo();
-		
-		List<Plan> myPlansList = service.getMyPlans(memberNo);
-		return new Gson().toJson(myPlansList);
-	}
-	
 
 }

@@ -42,4 +42,16 @@ public interface PostService {
 	 */
 	int postViewUpdate(Map<String, Object> map);
 
+	/** 게시글 삭제
+	 * @param postNo
+	 * @return result
+	 */
+	int deletePost(int postNo);
+
+	/** 게시글 내용만 조회
+	 * @param postNo
+	 * @return
+	 */
+	Post selectPostContent(int postNo);
+
 }

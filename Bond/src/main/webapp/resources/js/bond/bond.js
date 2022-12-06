@@ -143,6 +143,22 @@ function selectBoardScroll(){
                                 selectPostNo = postBody.getAttribute("id")
                                 selectPostDetail(selectPostNo);
                                 selectReplyList(selectPostNo);
+                                // 메뉴창 추가
+                                if(memberNo == post.memberNo){
+                                    const updateMenu = document.createElement("button");
+                                    updateMenu.innerText = "글 수정";
+                                    updateMenu.setAttribute("onclick", "updatePost("+post.postNo+")");
+
+                                    const deleteMenu = document.createElement("button");
+                                    deleteMenu.innerText = "삭제하기";
+                                    deleteMenu.setAttribute("onclick", "deletePost("+post.postNo+")");
+                                    moreViewMenu.append(updateMenu, deleteMenu);
+
+                                } else {
+                                    // const reportMenu = document.createElement("button");
+                                    // reportMenu.innerText = "신고하기"
+                                    // moreViewMenu.append(reportMenu);
+                                }
                             });
 
                             const postText = document.createElement("div");
@@ -307,7 +323,6 @@ document.getElementById("postWrite-btn").addEventListener("click", function() {
     modal('postWrite-modal');
 });
 
-
 // 신고하기 버튼
 const reportBtn = document.getElementById("reportBtn");
 
@@ -342,6 +357,15 @@ reportBtn.addEventListener("click", () => {
         // document.body.style.overflow = "auto";
         // history.scrollRestoration = "auto";
     });
+
+    // if(modal.classList.contains("show")){
+    //     window.onclick=function(e){
+    //         if(!e.target.matches("#postSelect-section, #postSelect-section *")){
+    //             window.location.reload(true);
+    //         }
+    //     };
+    // }
+
 })();
 
 let viewCount = document.getElementById("viewCount");
@@ -352,6 +376,7 @@ let memberName = document.getElementById("memberName");
 let postDate = document.getElementById("postDate");
 let profileImg = document.getElementById("profile-img");
 const likeBtn = document.getElementById("likeBtn");
+const moreViewMenu = document.querySelector(".moreView-menu");
 
 const selectPostDetail = (postNo)=>{
     $.ajax({
@@ -375,6 +400,25 @@ const selectPostDetail = (postNo)=>{
             if(post.likeCheck=="on"){
                 likeBtn.classList.add('checkLikeBtn');
             }
+
+            // 메뉴창 추가
+            if(memberNo == post.memberNo){
+                const updateMenu = document.createElement("button");
+                updateMenu.innerText = "글 수정";
+                updateMenu.setAttribute("onclick", "function("+post.postNo+") {modal('postWrite-modal')}");
+                
+
+                const deleteMenu = document.createElement("button");
+                deleteMenu.innerText = "삭제하기";
+                deleteMenu.setAttribute("onclick", "deletePost("+post.postNo+")");
+                moreViewMenu.append(updateMenu, deleteMenu);
+
+            } else {
+                const reportMenu = document.createElement("button");
+                reportMenu.innerText = "신고하기"
+                moreViewMenu.append(reportMenu);
+            }
+
         },
         error:()=>{console.log("실패");}
     });
@@ -418,6 +462,76 @@ const selectPostDetail = (postNo)=>{
     });
 
 };
+
+// 게시글 삭제
+const deletePost= (postNo)=>{
+    if( confirm("정말로 삭제 하시겠습니까?")){
+    
+        $.ajax({
+            url: "/post/delete",
+            data: {"postNo": selectPostNo},
+            type: "GET",
+            success: (result)=>{
+                if(result>0){
+                    alert("삭제되었습니다.");
+                    window.location.reload(true);
+                } else{
+                    alert("삭제실패");
+                }   
+            }
+        })
+    }
+};
+
+// 게시글 수정
+const updatePost = (postNo, btn)=>{
+
+    // btn.addEventListener("onclick", modal('postUpdate-modal'));
+    
+    // $.ajax({
+    //     url: "/post/content",
+    //     data: {"postNo": selectPostNo},
+    //     type: "GET",
+    //     dataType : "JSON",
+    //     success: (post)=>{
+    //         const updatePostContent = document.getElementsByClassName("note-editable");
+    //         updatePostContent.value = post.postContent;
+    //     }
+    // })
+
+    // $.ajax({
+    //     url:"/post/update",
+    //     data: {"postNo": selectPostNo},
+    //     type: "POST",
+    //     success: (result)=>{
+    //         if(result>0){
+    //             alert("수정되었습니다.");
+    //             window.location.reload(true);
+    //         }else{
+    //             alert("수정실패");
+    //         }
+    //     },
+    //     error: ()=>{
+    //         console.log("수정시 오류발생");
+    //     }
+    // })
+}
+
+// 게시글 상세조회 메뉴
+const postmoreView = document.querySelector("[name=moreView]");
+postmoreView.addEventListener("click", ()=>{
+    moreViewMenu.classList.toggle("showMenu");
+});
+
+window.onclick=function(e){
+    if(!e.target.matches("[name=moreView]>*")){
+
+        if(moreViewMenu.classList.contains("showMenu")){
+            moreViewMenu.classList.toggle("showMenu");
+        } 
+    }
+};
+
 
 // 댓글쓰기 창 늘리기
 const autoResizeTextarea = () => {

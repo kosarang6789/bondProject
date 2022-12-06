@@ -181,6 +181,8 @@ main{
     color: #777;
 }
 
+/* 내 모임 일정 */
+
 .myGroup-schedule{
     width: 1140px;
     margin: auto;
@@ -193,10 +195,101 @@ main{
     background-color: #fff;
     border-radius: 20px;
     width: 1140px;
-    height: 200px;
+    min-height: 50px;
+    padding: 20px;
     margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
 }
 
+#nonePlanBox{
+    font-size: 15px;
+    color: dimgray;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.planBox{
+    background-color: #ebebeb;
+    color: black;
+
+    border-radius: 20px;
+    margin-bottom: 5px;
+
+    width: 540px;
+    height: 80px;
+    
+    display: flex;
+}
+
+.planBox:hover{
+    background-color: #E2E2E2;
+    transition-duration: 0.2s;
+    border-radius: 20px;
+}
+
+.planLeftPart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 70px;
+}
+
+.planOneMonth{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.planOneDay{
+    font-size: 18px;
+}
+
+.planRightPart{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 480px;
+}
+
+.planLinkBox{
+    display: flex;
+    white-space: nowrap;
+    color: black;
+    font-size: 15px;
+}
+
+.palette{
+    min-width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+
+.planGroupName{
+    font-weight: 600;
+}
+
+.planTitle{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    letter-spacing: -1px;
+    font-size: 14px;
+    font-weight: 400;
+
+}
+
+.planPeriodBox{
+    font-size: 13px;
+    color: #777;
+}
 
 /* footer */
 footer{
@@ -239,3 +332,4 @@ footer span{
     height: 100%;
     border-radius: 50%;
 }
+
