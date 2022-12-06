@@ -112,15 +112,23 @@ function searchPageScroll(){
                                 bondNameA.innerText = group.groupName;
     
                                 const bondComment = document.createElement("div");
+                                if(group.memberCount != null){
+                                    bondComment.innerText = group.groupComment
+                                } else{
+                                    bondComment.innerText = "소개글이 없습니다.";
+                                }
                                 bondComment.classList.add("bond-comment");
-                                bondComment.innerText = group.groupComment
     
                                 const bondCountLeader = document.createElement("div");
                                 bondCountLeader.classList.add("bond-count-leader");
     
                                 const bondCount = document.createElement("div");
+                                if(bondCount != 0){
+                                    bondCount.innerText = group.groupCount;
+                                } else{
+                                    bondCount.innerText = "멤버 0"
+                                }
                                 bondCount.classList.add("bond-count");
-                                bondCount.innerText = group.groupCount;
     
                                 const bondLeader = document.createElement("div");
                                 if(group.groupLeader != null){

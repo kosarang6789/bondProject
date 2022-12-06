@@ -10,6 +10,7 @@
 		
 		<!-- 나머지 컬럼은 result로 작성 -->
 		<result property="topicCode" column="TOPIC_CODE" />
+		<result property="topicName" column="TOPIC_NAME" />
 		<result property="groupName" column="GROUP_NAME" />
 		<result property="groupDate" column="GROUP_DATE" />
 		<result property="groupImage" column="GROUP_IMG" />
@@ -115,8 +116,10 @@
 
 	<!-- 가입X 본드 조회 -->
 	<select id="selectJoinNo" parameterType="_int" resultMap="group_rm">
-		SELECT GROUP_NAME, GROUP_COMMENT, GROUP_NO 
-		FROM "GROUP"
+		SELECT GROUP_NAME, GROUP_COMMENT, GROUP_NO, 
+					 (SELECT GROUP_IMG_PATH || GROUP_IMG_RENAME FROM GROUP_IMG GI
+			     WHERE GI.GROUP_NO = G.GROUP_NO) GROUP_IMG
+		FROM "GROUP" G
 		WHERE GROUP_NO NOT IN(SELECT GROUP_NO
 								FROM MEMBER_JOIN
 								WHERE MEMBER_NO = #{memberNo})
@@ -188,6 +191,20 @@
 	<select id="selectBondImageList" resultType="string">
 		SELECT GROUP_IMG_RENAME
 		FROM "GROUP_IMG"
+	</select>
+	
+	<select id="groupTopic" parameterType="_int" resultMap="group_rm">
+		 SELECT GROUP_NO, GROUP_NAME, GROUP_COMMENT, TOPIC_NAME,
+		     (SELECT GROUP_IMG_PATH || GROUP_IMG_RENAME  FROM GROUP_IMG I
+		      WHERE I.GROUP_NO = G.GROUP_NO) GROUP_IMG,
+		     (SELECT COUNT(MEMBER_NO) FROM MEMBER_JOIN M
+		     WHERE M.GROUP_NO = G.GROUP_NO) MEMBER_COUNT,
+		     (SELECT MEMBER_NAME FROM MEMBER_JOIN MJ JOIN "MEMBER" USING(MEMBER_NO)
+		 WHERE LEADER_YN = 'Y' AND MJ.GROUP_NO = G.GROUP_NO) LEADER_NAME
+		 FROM "GROUP" G
+		 JOIN GROUP_TOPIC USING(TOPIC_CODE)
+		 WHERE GROUP_STATUS = '0' 
+		 AND TOPIC_CODE = #{topicCode}
 	</select>
 	
 </mapper>

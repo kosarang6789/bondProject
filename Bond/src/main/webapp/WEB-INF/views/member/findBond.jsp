@@ -45,7 +45,7 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide ">
                                 <div class="category">
-                                    <a href="#" class="category-list">
+                                    <a href="/member/groupTopic/{topicCode}" class="category-list">
                                         <div class="categoryImageWrap">
                                             <img src="/resources/images/member/main2/group-category/1_exercise.jpg" class="categoryImage">
                                         </div>
@@ -186,7 +186,6 @@
             <div class="group-recommend">
                 <h3>이런 모임은 어때요</h3>
                 <ul class="group-list">
-
                     <c:forEach var="groupJoin" items="${groupJoinNo}">
                         <li class="group">
                             <a href="/bond/${groupJoin.groupNo}" class="bandUri">
@@ -199,7 +198,6 @@
                                             <img src="/resources/images/bond/profile/no-profile.png" id="cover-img">
                                         </c:otherwise>
                                     </c:choose>
-                                    <%-- <img src="/resources/images/member/main2/group-recommend/group-english.jpg"> --%>
                                 </div>
                                 <div class="group-comment">
                                     <strong>${groupJoin.groupName}</strong>
@@ -208,53 +206,11 @@
                             </a>
                         </li>
                     </c:forEach>
-
-                    <%-- <li class="group">
-                        <a href="#" class="bandUri">
-                            <div class="group-img">
-                                <img src="/resources/images/member/main2/group-recommend/group-coding.jpg">
-                            </div>
-                            <div>
-                                <strong>코사랑 동호회</strong>
-                                <p>코잘알이 되는 날까지 hello world! 에러는 싫어요 404는 이제 그만</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="group">
-                        <a href="#" class="bandUri">
-                            <div class="group-img">
-                                <img src="/resources/images/member/main2/group-recommend/group-riding.jpg">
-                            </div>
-                            <div>
-                                <strong>자전거 따릉따릉</strong>
-                                <p>자전거를 통한 체력 단련으로 건강 되찾기, 따릉이도 환영합니다</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="group">
-                        <a href="#" class="bandUri">
-                            <div class="group-img">
-                                <img src="/resources/images/member/main2/group-recommend/group-spaceout.jpg">
-                            </div>
-                            <div>
-                                <strong>멍때리기 대회 준비</strong>
-                                <p>멍때리기를 통해 내면을 다스립니다 Inner Peace</p>
-                            </div>
-                        </a>
-                    </li> --%>
                 </ul>
             </div>
         </section>
         
     </main>
-    
-    <h3>session scope 확인</h3>
-    이름 : "${loginMember.memberName}";
-    생일 : "${loginMember.memberBirth}";
-    전화번호 : "${loginMember.memberTel}";
-
-    <a href="/logout">로그아웃</a>
-
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />

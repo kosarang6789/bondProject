@@ -20,6 +20,18 @@ public class findBondController {
 	
 	@Autowired
 	private FindBondService service;
+	
+	@GetMapping("/member/groupTopic/{topicCode}")
+	public String groupTopicPage(	
+			@PathVariable("topicCode") int topicCode,
+			@SessionAttribute("loginMember") Member loginMember,
+			Model model) {
+		
+		// 카테고리별 본드 조회(topicCode)
+		List<Map<String, Object>> groupTopic = service.groupTopic(topicCode);
+		
+		return "member/groupTopic";
+	}
 
 	
 	

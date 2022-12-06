@@ -57,9 +57,23 @@
                                     <div class="bond-name">
                                         <a href="/bond/${group.groupNo}" class="bond-name-a">${group.groupName}</a>
                                     </div>
-                                    <div class="bond-comment">${group.groupComment}</div>
+                                    <c:choose>
+                                        <c:when test="${not empty group.groupComment}">
+                                            <div class="bond-comment">${group.groupComment}</div>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <div class="bond-comment">소개글이 없습니다.</div> 
+                                        </c:otherwise>
+                                    </c:choose>
                                     <div class="bond-count-leader">
-                                        <div class="bond-count">멤버 ${group.memberCount} </div>
+                                        <c:choose>
+                                            <c:when test="${group.memberCount}">
+                                                <div class="bond-count">멤버 ${group.memberCount} </div>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <div class="bond-count">멤버 0</div> 
+                                            </c:otherwise>
+                                        </c:choose>
                                         <c:choose>
                                             <c:when test="${not empty group.leaderName}">
                                                 <div class="bond-leader">리더 ${group.leaderName} </div>
