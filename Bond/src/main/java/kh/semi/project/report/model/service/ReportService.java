@@ -4,10 +4,15 @@ import java.util.List;
 import java.util.Map;
 
 import kh.semi.project.bond.model.vo.Group;
+import kh.semi.project.bond.model.vo.GroupMemberList;
 import kh.semi.project.bond.model.vo.Post;
 import kh.semi.project.member.model.vo.Member;
 import kh.semi.project.report.model.vo.Report;
 
+/**
+ * @author user1
+ *
+ */
 public interface ReportService {
 
 	/** 신고 대상이 회원인 경우
@@ -41,6 +46,22 @@ public interface ReportService {
 	 * @return
 	 */
 	int makeReport(Map<String, Object> infoMap);
+
+	/** 내 리더 여부 불러오기
+	 * @param input
+	 * @param groupNo
+	 * @return
+	 */
+	GroupMemberList getMyLeaderYN(int memberNo, int groupNo);
+
+	
+	
+	/** 리더가 탈퇴시키기
+	 * @param targetNo
+	 * @param groupNo
+	 * @return
+	 */
+	int getout(int targetNo, int groupNo);
 
 
 

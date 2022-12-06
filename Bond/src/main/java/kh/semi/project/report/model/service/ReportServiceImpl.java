@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kh.semi.project.bond.model.vo.Group;
+import kh.semi.project.bond.model.vo.GroupMemberList;
 import kh.semi.project.bond.model.vo.Post;
 import kh.semi.project.member.model.vo.Member;
 import kh.semi.project.report.model.dao.ReportDAO;
@@ -49,6 +50,27 @@ public class ReportServiceImpl implements ReportService {
 	public int makeReport(Map<String, Object> infoMap) {
 		return dao.makeReport(infoMap);
 		
+	}
+
+	// 내 리더 여부 불러오기
+	@Override
+	public GroupMemberList getMyLeaderYN(int memberNo, int groupNo) {
+		GroupMemberList myInfo = new GroupMemberList();
+		
+		myInfo.setGroupNo(groupNo);
+		myInfo.setMemberNo(memberNo);
+		
+		return dao.getMyLeaderYN(myInfo);
+	}
+
+	// 리터가 탈퇴시키기
+	@Override
+	public int getout(int targetNo, int groupNo) {
+		GroupMemberList out = new GroupMemberList();
+		out.setGroupNo(groupNo);
+		out.setMemberNo(targetNo);
+		
+		return dao.getout(out);
 	}
 
 

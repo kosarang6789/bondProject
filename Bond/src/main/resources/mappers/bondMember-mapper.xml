@@ -13,6 +13,7 @@
 		<result property="joinNo" column="JOIN_NO" />
 		<result property="groupNo" column="GROUP_NO" />
 		<result property="leaderYN" column="LEADER_YN" />
+		<result property="leaderNo" column="LEADER_NO" />
 		<result property="joinDate" column="JOIN_DATE" />
 		<result property="joinStatus" column="JOIN_STATUS" />
 		<result property="leaveDate" column="LEAVE_DATE" />
@@ -32,6 +33,7 @@
 	<!-- 멤버 리스트 가져오기 -->
 	<select id="selectMemberList" resultMap="memberList_rm">
 		SELECT MJ.MEMBER_NO, TO_CHAR(JOIN_DATE, 'YYYY"년" MM"월" DD"일"') AS JOIN_DATE,
+			(SELECT MEMBER_NO FROM "MEMBER_JOIN" WHERE GROUP_NO = MJ.GROUP_NO AND LEADER_YN='Y') LEADER_NO,
 			(SELECT MEMBER_NAME 
 			FROM "MEMBER" M WHERE M.MEMBER_NO = MJ.MEMBER_NO) MEMBER_NAME, 
 			(SELECT MEMBER_BIRTH FROM "MEMBER" M WHERE M.MEMBER_NO = MJ.MEMBER_NO) MEMBER_BIRTH,
@@ -39,22 +41,26 @@
 			(SELECT (MEMBER_IMG_PATH||MEMBER_IMG_RENAME) 
 			FROM "MEMBER_IMG" WHERE MEMBER_NO = MJ.MEMBER_NO) MEMBER_IMG
 		FROM "MEMBER_JOIN" MJ
-		WHERE GROUP_NO = #{groupNo}
-		AND JOIN_STATUS = '0'
+		WHERE MJ.GROUP_NO = #{groupNo}
+		AND JOIN_STATUS != '2'
 		ORDER BY LEADER_YN DESC, MEMBER_NAME
 	</select>
 	
 	
 	<!-- 본드 멤버 프로필 클릭 -->
 	<select id="selectMemPro" resultMap="memberList_rm">
-		SELECT MEMBER_NO, (SELECT (MEMBER_IMG_PATH||MEMBER_IMG_RENAME)  MEMBER_IMG
+		SELECT MEMBER_NO, 
+			(SELECT MEMBER_NO FROM "MEMBER_JOIN" JJ 
+				WHERE JJ.GROUP_NO = MJ.GROUP_NO 
+				AND LEADER_YN='Y') LEADER_NO,
+			(SELECT (MEMBER_IMG_PATH||MEMBER_IMG_RENAME)
 			FROM "MEMBER_IMG" WHERE MEMBER_NO = MJ.MEMBER_NO) MEMBER_IMG,
 			(SELECT MEMBER_NAME 
 			FROM "MEMBER" M WHERE M.MEMBER_NO = MJ.MEMBER_NO) MEMBER_NAME, 
 			LEADER_YN,TO_CHAR(JOIN_DATE, ' YYYY"년" MM"월" DD"일" ') AS JOIN_DATE,
 			(SELECT MEMBER_BIRTH FROM "MEMBER" M WHERE M.MEMBER_NO = MJ.MEMBER_NO) MEMBER_BIRTH
 		FROM "MEMBER_JOIN" MJ
-		WHERE GROUP_NO = #{groupNo}
+		WHERE MJ.GROUP_NO = #{groupNo}
 		AND MEMBER_NO = #{memberNo}
 	</select>
 
