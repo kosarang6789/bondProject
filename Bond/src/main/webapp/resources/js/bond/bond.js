@@ -263,10 +263,9 @@ function selectBoardScroll(){
 
 
 // 게시글 작성 모달
-
-function modal(id) {
+const modal = (modalId, iframe) => {
     var zIndex = 9999;
-    var modal = document.getElementById(id);
+    var modal = document.getElementById(modalId);
 
     // 모달 div 뒤에 희끄무레한 레이어
     var bg = document.createElement('div');
@@ -287,7 +286,7 @@ function modal(id) {
     modal.querySelector('.modal-closeBtn').addEventListener('click', function() {
         bg.remove();
         modal.style.display = 'none';
-        window.frames['postWrite-iframe'].contentWindow.location.reload();
+        window.frames[iframe].contentWindow.location.reload();
     });
 
     modal.setStyle({
@@ -315,12 +314,12 @@ Element.prototype.setStyle = function(styles) {
 
 document.getElementById("write-button").addEventListener("click", function() {
     // 게시글 작성 모달창 띄우기
-    modal('postWrite-modal');
+    modal('postWrite-modal', 'postWrite-iframe');
 });
 
 document.getElementById("postWrite-btn").addEventListener("click", function() {
     // 게시글 작성 모달창 띄우기
-    modal('postWrite-modal');
+    modal('postWrite-modal', 'postWrite-iframe');
 });
 
 // 신고하기 버튼
@@ -405,8 +404,12 @@ const selectPostDetail = (postNo)=>{
             if(memberNo == post.memberNo){
                 const updateMenu = document.createElement("button");
                 updateMenu.innerText = "글 수정";
-                updateMenu.setAttribute("onclick", "function("+post.postNo+") {modal('postWrite-modal')}");
-                
+                updateMenu.addEventListener("click", ()=>{
+                    modal('postUpdate-modal', 'postUpdate-iframe');
+                    const postUpdateIframe = document.getElementById("postUpdate-iframe");
+                    postUpdateIframe.setAttribute("src", "/bond/post/"+post.postNo+"/postUpdate");
+                })
+                updateMenu.setAttribute("onclick", "modal('postUpdate-modal', 'postUpdate-iframe')");
 
                 const deleteMenu = document.createElement("button");
                 deleteMenu.innerText = "삭제하기";

@@ -306,7 +306,7 @@
 
     <%-- 게시글 수정 페이지 모달(iframe) --%>
     <div id="postUpdate-modal">
-        <iframe width="620px" height="720px" src="/bond/${groupNo}/postUpdate"
+        <iframe width="620px" height="720px"
         id="postUpdate-iframe"></iframe>
         <button class="modal-closeBtn">
             <i class="fa-solid fa-x"></i>

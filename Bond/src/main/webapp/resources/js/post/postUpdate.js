@@ -1,21 +1,23 @@
 const postUpdateContent = document.getElementById("summernote");
 
-const submitContent = ()=>{
+const submitContent = (postNo)=>{
 
-    if(postWriteContent.value.trim().length==0){
+    if(postUpdateContent.value.trim().length==0){
         alert("내용을 입력해주세요.");
-        postWriteContent.value="";
+        postUpdateContent.value="";
         return false;
     } else {
         $.ajax({
-            url : "/bond/"+ groupNo +"/postWrite",
-            data : {"postContent" : postWriteContent.value},
+            url : "/bond/post/"+ postNo +"/postUpdate",
+            data : {"postContent" : postUpdateContent.value},
             type : "POST",
             dataType : "JSON",
-            success: (postNo)=> {
-                console.log("성공");
-                window.alert("게시물이 수정되었습니다.");
-                parent.window.location.reload();
+            success: (result)=> {
+                if(result>0){
+                    console.log("성공");
+                    window.alert("게시물이 수정되었습니다.");
+                    parent.window.location.reload();
+                }
             },
             error: ()=>{
                 console.log("실패");

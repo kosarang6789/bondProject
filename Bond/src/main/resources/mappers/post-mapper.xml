@@ -202,5 +202,15 @@
 		SELECT POST_CONTENT FROM POST WHERE POST_NO = #{postNo}
 	</select>
 	
+	<!-- 게시글 수정 -->
+	<update id="postUpdate">
+		UPDATE POST SET POST_CONTENT = #{postContent}
+		WHERE POST_NO = #{postNo}
+	</update>
+	
+	<!-- 이미지 삭제 -->
+	<delete id="deleteImage">
+		DELETE FROM POST_IMG WHERE POST_NO=#{postNo}
+	</delete>
 	
 </mapper>

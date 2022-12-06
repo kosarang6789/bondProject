@@ -28,9 +28,8 @@ const submitContent = ()=>{
                 window.alert("게시물이 작성되었습니다.");
                 parent.window.location.reload();
             },
-            error: ()=>{
-                console.log("실패");
-                window.alert("게시물 작성 실패");
+            error : function(req, status, error){
+                    console.log("게시물 작성 에러 발생");
             }
         })
     }
