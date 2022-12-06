@@ -8,6 +8,9 @@ import kh.semi.project.bond.model.vo.Group;
 public interface SearchService {
 
 	Map<String, Object> allGroupList(Map<String, Object> pm);
+	
+	Map<String, Object> allGroupList(Map<String, Object> pm, int cp);
+
 
 	
 }

@@ -3,6 +3,7 @@ package kh.semi.project.member.model.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,5 +24,11 @@ public class SearchDAO {
 	public int bondCount(Map<String, Object> pm) {
 		return sqlSession.selectOne("groupMapper.bondCount", pm);
 	}
+
+	public List<Group> allGroupList(Map<String, Object> pm, int cp) {
+		RowBounds rowBounds = new RowBounds((cp-1) * 10, 10); 
+		return sqlSession.selectList("groupMapper.allGroupList", pm, rowBounds);
+	}
+
 	
 }

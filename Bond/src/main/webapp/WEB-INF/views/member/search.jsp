@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="groupList" value="${map.groupList}"/>
-<c:set var="bondCount" value="${map.bondCount}"/>
+<c:set var="groupList" value="${map.allGroupList.groupList}"/>
+<c:set var="bondCount" value="${map.allGroupList.bondCount}"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +32,7 @@
             <li class="list-item">
                 <c:choose>
                     <c:when test="${empty groupList}">
-                        <h3>본드가 존재하지 않습니다. </h3>
+                        <h3 class="h3">본드가 존재하지 않습니다. </h3>
                     </c:when>
                     
                     <c:otherwise>
@@ -55,16 +55,17 @@
                                 </a>    
                                 <div class="list-bond">
                                     <div class="bond-name">
-                                        <a href="/bond/${group.groupNo}">${group.groupName}</a>
+                                        <a href="/bond/${group.groupNo}" class="bond-name-a">${group.groupName}</a>
                                     </div>
                                     <div class="bond-comment">${group.groupComment}</div>
-                                    <div class="bond-count">멤버 ${group.memberCount} 
+                                    <div class="bond-count-leader">
+                                        <div class="bond-count">멤버 ${group.memberCount} </div>
                                         <c:choose>
                                             <c:when test="${not empty group.leaderName}">
-                                                리더 ${group.leaderName} 
+                                                <div class="bond-leader">리더 ${group.leaderName} </div>
                                             </c:when>
                                             <c:otherwise>
-                                                리더 관리자
+                                                <div class="bond-leader">리더 관리자 </div> 
                                             </c:otherwise>
                                         </c:choose>
                                     </div>
@@ -75,7 +76,14 @@
                 </c:choose>
             </li>
         </ul>
+        <div id="pageTarget" style="height:20px"></div>
     </div>
+
+    <script>
+        let cp = 0;
+        let key = "${param.key}";
+    </script>
+
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>    
     <!-- <jsp:include page="/WEB-INF/views/common/footer.jsp" /> -->

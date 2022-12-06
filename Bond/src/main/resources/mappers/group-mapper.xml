@@ -139,19 +139,16 @@
 		     WHERE LEADER_YN = 'Y' AND MJ.GROUP_NO = G.GROUP_NO) LEADER_NAME
 		 FROM "GROUP" G
 		 WHERE GROUP_STATUS = '0'
-		
 		<if test ='query != null and query != ""'>
 			<choose>
 				<when test = 'key == "t"'>
 					AND GROUP_NAME LIKE '%${query}%'
 				</when>
-				
 				<when test = 'key == "c"'>
 					AND GROUP_COMMENT LIKE '%${query}%'
 				</when>
 			</choose>
 		</if>
-		
 		ORDER BY GROUP_NAME
 		</select>
 		
@@ -172,11 +169,10 @@
 			<if test ='query != null and query != ""'>
 				<choose>
 					<when test = 'key == "t"'>
-						AND GROUP_NAME LIKE '%${query}%'
+						WHERE GROUP_NAME LIKE '%${query}%'
 					</when>
-					
 					<when test = 'key == "c"'>
-						AND GROUP_COMMENT LIKE '%${query}%'
+						WHERE GROUP_COMMENT LIKE '%${query}%'
 					</when>
 				</choose>
 			</if>

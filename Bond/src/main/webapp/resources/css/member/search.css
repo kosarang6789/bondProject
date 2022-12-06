@@ -56,7 +56,18 @@ h2{
     color: #666;
 }
 
+.bond-count-leader{
+    display: flex;
+}
+
 .bond-count{
+    margin-top: 5px;
+    font-size: 12px;
+    color: #666;
+}
+
+.bond-leader{
+    margin-left: 10px;
     margin-top: 5px;
     font-size: 12px;
     color: #666;

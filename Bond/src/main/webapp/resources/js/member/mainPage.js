@@ -46,12 +46,12 @@ const option = {
     thredhold: 1,
 }
 
-const observer = new IntersectionObserver(selectBoardScroll, option);
+const observer = new IntersectionObserver(searchPageScroll, option);
 const target = document.getElementById("pageTarget");
 observer.observe(target);
 
 let flag = true;
-function selectBoardScroll(){
+function searchPageScroll(){
     if(cp == 0 ){
         cp++;
     }else{
@@ -59,47 +59,91 @@ function selectBoardScroll(){
             console.log(cp);
             $.ajax({
                 url : "/member/search",
-                data : {"cp" : ++cp},
-                type : "GET",
+                data : {"cp" : ++cp, "key" : key},
+                type : "POST",
                 dataType : "JSON",
-                success : function(map){
-                    if( map != null ){
-                        console.log(map.groupList);
-                        const postWrap = document.querySelector(".list-wrap");
+                success : function(map2){
+                        console.log(map2);
+                        if( map2 != null ){
+                        const listWrapper = document.querySelector(".list-wrapper");
     
-                        for(let group of map.groupList){
-                            const listWrap = document.createElement("ul");
-                            listWrap.classList.add("list-wrap");
-                            
-                            const listItem = document.createElement("li");
-                            listItem.classList.add("list-item");
-                            
-                            const list = document.createElement("div");
-                            list.classList.add("list");
-                            
-                            const groupNo = document.createElement("a");
-                            groupNo.classList.add("group-no");
-                            groupNo.innerText = group.groupNo
-
-                            const listCover = document.createElement("div");
-                            listCover.classList.add("list-cover");
-
-                            const cover = document.createElement("div");
-                            cover.classList.add("cover");
-
-                            const groupImage = document.createElement("img");
-                            if(group.groupImage != null){
-                                groupImage.setAttribute("src", group.groupImage);
+                        for(let group of map2.allGroupList.groupList){
+                            const h3 = document.createElement("h3");
+                            if(group == null){
+                                h3.innerText = "본드가 존재하지 않습니다.";
+                                h3.classList.add("h3");
                             } else{
-                                groupImage.setAttribute("src","/resources/images/bond/profile/no-profile.png")
+                                const listItem = document.createElement("li");
+                                listItem.classList.add("list-item");
+                                
+                                const list = document.createElement("div");
+                                list.classList.add("list");
+                                
+                                const groupNo = document.createElement("a");
+                                groupNo.classList.add("group-no");
+    
+                                const listCover = document.createElement("div");
+                                listCover.classList.add("list-cover");
+    
+                                const cover = document.createElement("div");
+                                cover.classList.add("cover");
+    
+                                const groupImage = document.createElement("img");
+                                if(group.groupImage != null){
+                                    groupImage.setAttribute("src", group.groupImage);
+                                } else{
+                                    groupImage.setAttribute("src","/resources/images/bond/profile/no-profile.png")
+                                }
+                                groupImage.classList.add("group-image")
+    
+                                cover.append(groupImage);
+                                listCover.append(cover);
+                                groupNo.append(listCover);
+    
+                                const listBond = document.createElement("div");
+                                listBond.classList.add("list-bond");
+    
+                                const bondName = document.createElement("div");
+                                bondName.classList.add("bond-name");
+    
+                                const bondNameA = document.createElement("a");
+                                bondNameA.classList.add("bond-name-a");
+                                bondNameA.innerText = group.groupName;
+    
+                                const bondComment = document.createElement("div");
+                                bondComment.classList.add("bond-comment");
+                                bondComment.innerText = group.groupComment
+    
+                                const bondCountLeader = document.createElement("div");
+                                bondCountLeader.classList.add("bond-count-leader");
+    
+                                const bondCount = document.createElement("div");
+                                bondCount.classList.add("bond-count");
+                                bondCount.innerText = group.groupCount;
+    
+                                const bondLeader = document.createElement("div");
+                                if(group.groupLeader != null){
+                                    bondLeader.innerText = "리더" + group.leaderName;
+                                } else{
+                                    bondLeader.innerText = "리더 관리자";
+                                }
+                                bondLeader.classList.add("bond-leader");
+    
+    
+                                bondCountLeader.append(bondCount,bondLeader);
+                                bondName.append(bondNameA)
+                                listBond.append(bondName, bondComment, bondCountLeader);
+                                list.append(groupNo, listBond);
+                                listItem.append(h3, list);
+                                listWrapper.append(listItem);
+
                             }
-                            groupImage.classList.add("group-image")
-
-
+                           
                             
+
                         }
                     } else{ // 실패
-                        alert("게시물을 불러올 수 없습니다.");
+                        alert("본드를 불러올 수 없습니다.");
                     }
                 },
                 error : function(req, status, error){
@@ -119,6 +163,9 @@ function selectBoardScroll(){
 function myAllPlans(){
 
     const schedule = document.querySelector(".schedule");
+
+    if(schedule != null){
+
     schedule.innerHTML = "";
 
     $.ajax({
@@ -217,6 +264,7 @@ function myAllPlans(){
 
         }
     })
+}
 
 
 }

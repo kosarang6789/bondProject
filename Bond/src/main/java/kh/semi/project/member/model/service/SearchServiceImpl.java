@@ -23,12 +23,42 @@ public class SearchServiceImpl implements SearchService {
 		int bondCount = dao.bondCount(pm);
 		
 		List<Group> groupList = dao.allGroupList(pm);
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("groupList", groupList);
-		map.put("bondCount", bondCount);
+		Map<String, Object> map1 = new HashMap<String, Object>();
+		map1.put("groupList", groupList);
+		map1.put("bondCount", bondCount);
 		
-		return map;
+		return map1;
 	}
+
+	@Override
+	public Map<String, Object> allGroupList(Map<String, Object> pm, int cp) {
+		
+		// 본드 수 조회
+		int bondCount = dao.bondCount(pm);
+		
+		List<Group> groupList = dao.allGroupList(pm, cp);
+		Map<String, Object> map1 = new HashMap<String, Object>();
+		map1.put("groupList", groupList);
+		map1.put("bondCount", bondCount);
+		
+		return map1;
+	}
+
+//	@Override
+//	public Map<String, Object> allGroupList(Map<String, Object> pm, int cp) {
+//		
+//		// 본드 수 조회
+//		int bondCount = dao.bondCount(pm);
+//		
+//		List<Group> groupList = dao.allGroupList(pm,cp);
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		map.put("groupList", groupList);
+//		map.put("bondCount", bondCount);
+//		
+//		return map;
+//	}
+	
+	
 
 	
 }
