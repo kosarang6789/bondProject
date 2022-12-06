@@ -45,7 +45,7 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide ">
                                 <div class="category">
-                                    <a href="/member/search" class="category-list">
+                                    <a href="#" class="category-list">
                                         <div class="categoryImageWrap">
                                             <img src="/resources/images/member/main2/group-category/1_exercise.jpg" class="categoryImage">
                                         </div>
@@ -171,7 +171,9 @@
                         placeholder="원하는 모임을 검색하세요">
 
                         <a href="/member/findBond/search">
-                            <button type="submit" id="search-btn" class="fa-solid fa-magnifying-glass"></button>
+                            <button type="submit" id="search-btn">
+                                <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
+                            </button>
                         </a>
                     </fieldset>
                 </form>

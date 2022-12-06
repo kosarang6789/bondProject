@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="groupList" value="${map.groupList}"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +29,7 @@
         <ul class="list-wrapper">
             <li class="list-item">
                 <c:choose>
-                    <c:when test="${empty grouplist}">
+                    <c:when test="${empty groupList}">
                         <h3>본드가 존재하지 않습니다. </h3>
                     </c:when>
                     

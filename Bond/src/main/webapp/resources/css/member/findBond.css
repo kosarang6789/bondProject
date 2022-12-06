@@ -284,34 +284,6 @@ main{
     display: block;
 }
 
-/* .group-category{
-    width: 1040px;
-    margin: 0 auto;
-    position: relative;
-} */
-
-/* .group-category>button{
-    border: none;
-    background-color: #fff;
-    display: inline-block;
-    height: 100%;
-    position: absolute;
-    top: -18px;
-    cursor: pointer;
-} */
-
-/* .group-category i{
-    font-size: 24px;
-    line-height: 100%;
-    vertical-align: middle;
-    color: #BFBFBF;
-} */
-
-/* .swiper-wrapper{
-    display: inline-block;
-    margin-left: 40px;
-} */
-
 .category{
     display: flex;
 }
@@ -398,55 +370,20 @@ main{
     cursor: pointer;
 }
 
-.list-wrapper{
-    min-height: 670px;
-    width: 100%;
+#search-key{
+    border: none;
 }
 
-.list-table{
-    width: 100%;
-    padding: 20px;
-    border-collapse: collapse;
+.search-area{
+    position: relative;
 }
 
-.list-table > thead{ background-color: #999; color: white;}
-
-.td-name{
-    font-size: 14px;
-    font-weight: 600;
+#search-query{
+    border: none;
 }
 
-.td-comment{
-    font-size: 11px;
-    color: #666;
-}
-
-.td-img{
-    width: 100px;
-}
-
-.list-table tr{
-    height: 20px;
-}
-
-.list-table > tbody{
-    padding-bottom: 20px;
-}
-
-/* .list-table > tbody > tr{
-    border-bottom: 1px solid gray;
-} 
-.list-table > tbody > td{
-    border-bottom: 1px solid gray;
-}  */
-
-.list-table tr > *{ text-align: left; }
-.list-table tr > *:nth-of-type(1){ width: 5%; }
-
-.list-table tr > td:nth-of-type(2){
-    width: 25%; 
-    text-align: left;
-    text-decoration: none;
+#search-icon{
+    font-size: 0.8em;
 }
 
 
