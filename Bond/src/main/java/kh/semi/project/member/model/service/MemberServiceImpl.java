@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kh.semi.project.member.model.dao.MemberDAO;
 import kh.semi.project.member.model.vo.Member;
+import kh.semi.project.plan.model.vo.Plan;
 
 @Service
 public class MemberServiceImpl implements MemberService{
@@ -67,6 +68,12 @@ public class MemberServiceImpl implements MemberService{
 		return dao.selectJoinNo(memberNo);
 	}
 	
+	// 가입중인 모임의 모든 일정 목록 가져오기
+	@Override
+	public List<Plan> getMyAllPlans(int memberNo) {
+		return dao.getMyAllPlans(memberNo);
+	}
+
 	
 	
 	

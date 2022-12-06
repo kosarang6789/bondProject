@@ -26,4 +26,6 @@ public class Plan {
 	private String planStartDay;	// 시작 날짜만
 	private String planStartTime;   // 시작 시간
 	private String planEndTime;		// 종료 시간
+	
+	private String groupName;		// 모임명
 }
