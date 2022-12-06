@@ -27,11 +27,12 @@ public class BondIntroController {
 	@Autowired
 	private BondIntroService service;
 	
-	// 본드 소개 페이지 이동
+//	 //본드 소개 페이지 이동
 //	@GetMapping("/bond-bondIntro")
 //	public String goBodnIntro() {
 //		return "/bond/bond-bondIntro";
 //	}
+	 
 	@GetMapping("/bond/{groupNo}/bond-bondIntro")
 	public String goBodnIntro(
 			@SessionAttribute("groupInfo") Group groupInfo,

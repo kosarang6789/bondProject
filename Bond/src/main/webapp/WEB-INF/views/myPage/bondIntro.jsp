@@ -15,7 +15,7 @@
 </head>
 <body>
     <main>
-        <form action="/bond-bondIntro" class="bandIntro" id="bandIntroFrm" method="post"
+        <form action="/bond/${groupNo}/bond-bondIntro" class="bandIntro" id="bandIntroFrm" method="post"
             enctype="multipart/form-data" onsubmit="return introValidate()">
             <div class="introTitle">본드 소개</div>
             <div class="introArea">

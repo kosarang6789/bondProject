@@ -162,19 +162,21 @@
                 <!-- 검색창 -->
                 <form action="/member/search" method="get" id="group-search" onsubmit="return true">
                     <fieldset>
-                        <select name="key" id="search-key">
-                            <option value="t">본드 이름</option>
-                            <option value="c">본드 소개글</option>
-                        </select>
+                        <div class="search-line">
+                            <select name="key" id="search-key">
+                                <option value="t">본드 이름</option>
+                                <option value="c">본드 소개글</option>
+                            </select>
 
-                        <input type="text" id="search-query" name="query"
-                        placeholder="원하는 모임을 검색하세요">
+                            <input type="text" id="search-query" name="query"
+                            placeholder="원하는 모임을 검색하세요">
 
-                        <a href="/member/findBond/search">
-                            <button type="submit" id="search-btn">
-                                <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
-                            </button>
-                        </a>
+                            <a href="/member/findBond/search">
+                                <button type="submit" id="search-btn">
+                                    <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
+                                </button>
+                            </a>
+                        </div>
                     </fieldset>
                 </form>
             </article>
@@ -199,7 +201,7 @@
                                     </c:choose>
                                     <%-- <img src="/resources/images/member/main2/group-recommend/group-english.jpg"> --%>
                                 </div>
-                                <div>
+                                <div class="group-comment">
                                     <strong>${groupJoin.groupName}</strong>
                                     <p>${groupJoin.groupComment}</p>
                                 </div>

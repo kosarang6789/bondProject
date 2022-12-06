@@ -17,6 +17,8 @@
 		<result property="openYN" column="OPEN_YN" />
 		<result property="groupStatus" column="GROUP_STATUS" />
 		<result property="memberCount" column="MEMBER_COUNT" />
+		<result property="leaderName" column="LEADER_NAME" />
+		<result property="bondCount" column="BOND_COUNT" />
 	</resultMap>
 	
 	<!-- 그룹이미지 -->
@@ -128,11 +130,15 @@
 	
 	<!-- 검색 -->
 	<select id="allGroupList" parameterType="_int" resultMap="group_rm">
-		SELECT GROUP_NO, GROUP_NAME, GROUP_COMMENT,
-			(SELECT GROUP_IMG_PATH || GROUP_IMG_RENAME  FROM GROUP_IMG I
-				WHERE I.GROUP_NO = G.GROUP_NO) THUMBNAIL
-		FROM "GROUP" G
-		WHERE GROUP_STATUS = '0'
+		 SELECT GROUP_NO, GROUP_NAME, GROUP_COMMENT,
+		     (SELECT GROUP_IMG_PATH || GROUP_IMG_RENAME  FROM GROUP_IMG I
+		      WHERE I.GROUP_NO = G.GROUP_NO) GROUP_IMG,
+		     (SELECT COUNT(MEMBER_NO) FROM MEMBER_JOIN M
+		     WHERE M.GROUP_NO = G.GROUP_NO) MEMBER_COUNT,
+		     (SELECT MEMBER_NAME FROM MEMBER_JOIN MJ JOIN "MEMBER" USING(MEMBER_NO)
+		     WHERE LEADER_YN = 'Y' AND MJ.GROUP_NO = G.GROUP_NO) LEADER_NAME
+		 FROM "GROUP" G
+		 WHERE GROUP_STATUS = '0'
 		
 		<if test ='query != null and query != ""'>
 			<choose>
@@ -147,6 +153,34 @@
 		</if>
 		
 		ORDER BY GROUP_NAME
+		</select>
+		
+		<select id="bondCount" resultType="_int">
+			SELECT COUNT(*) BOND_COUNT
+			FROM (
+			 SELECT GROUP_NO, GROUP_NAME, GROUP_COMMENT,
+			     (SELECT GROUP_IMG_PATH || GROUP_IMG_RENAME  FROM GROUP_IMG I
+			      WHERE I.GROUP_NO = G.GROUP_NO) GROUP_IMG,
+			     (SELECT COUNT(MEMBER_NO) FROM MEMBER_JOIN M
+			     WHERE M.GROUP_NO = G.GROUP_NO) MEMBER_COUNT,
+			     (SELECT MEMBER_NAME FROM MEMBER_JOIN MJ JOIN "MEMBER" USING(MEMBER_NO)
+			     WHERE LEADER_YN = 'Y' AND MJ.GROUP_NO = G.GROUP_NO) LEADER_NAME
+			 FROM "GROUP" G
+			 WHERE GROUP_STATUS = '0'
+			 )
+			 
+			<if test ='query != null and query != ""'>
+				<choose>
+					<when test = 'key == "t"'>
+						AND GROUP_NAME LIKE '%${query}%'
+					</when>
+					
+					<when test = 'key == "c"'>
+						AND GROUP_COMMENT LIKE '%${query}%'
+					</when>
+				</choose>
+			</if>
+		</select>
 
 	<!-- 이 본드가 존재합니까? -->
 	<select id="isExist" parameterType="_int" resultType="_int">

@@ -19,9 +19,14 @@ public class SearchServiceImpl implements SearchService {
 	@Override
 	public Map<String, Object> allGroupList(Map<String, Object> pm) {
 		
+		// 본드 수 조회
+		int bondCount = dao.bondCount(pm);
+		
 		List<Group> groupList = dao.allGroupList(pm);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("groupList", groupList);
+		map.put("bondCount", bondCount);
+		
 		return map;
 	}
 

@@ -19,5 +19,9 @@ public class SearchDAO {
 		
 		return sqlSession.selectList("groupMapper.allGroupList", pm);
 	}
+
+	public int bondCount(Map<String, Object> pm) {
+		return sqlSession.selectOne("groupMapper.bondCount", pm);
+	}
 	
 }

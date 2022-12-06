@@ -350,6 +350,7 @@ main{
     border-radius: 40px;
     overflow: hidden;
     box-shadow: 4px 4px 20px 3px #cbcbcb;
+    height: 50px;
 }
 
 #query{
@@ -362,16 +363,21 @@ main{
 }
 
 #search-btn{
-    width:10%;
+    width:5%;
     background-color: white;
     border: none;
-    font-size: 1.2em;
+    font-size: 1.1em;
     color:#444;
     cursor: pointer;
+    height: 20px;
 }
 
 #search-key{
     border: none;
+    height: 30px;
+    margin-left: 40px;
+    font-size: 15px;
+    font-weight: 600;
 }
 
 .search-area{
@@ -380,10 +386,26 @@ main{
 
 #search-query{
     border: none;
+    height: 30px;
+    width: 55%;
+    margin-left: 30px;
+    font-size: 15px;
 }
 
-#search-icon{
-    font-size: 0.8em;
+#search-query:focus{
+    outline: none;
+}
+
+.search-line:focus{
+    border-style: none;
+}
+
+.search-line{
+    width: 600px;
+    margin-top: 6px;
+    margin-left: 50px;
+    height: 30px;
+
 }
 
 
@@ -445,6 +467,10 @@ main{
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.group-comment{
+    width: 408px;
 }
 
 
