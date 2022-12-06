@@ -16,7 +16,14 @@
 <body>
     <!-- 신고하기 영역 -->
     <div class="report-page">
-        <header class="report-head"> 신고하기 </header>
+        <c:if test="${target.equals('member')}">
+            <c:if test="${map.getMyLeaderYN.leaderYN.equals('Y')}">
+                <header class="report-head"> 탈퇴시키기 </header>
+            </c:if>
+            <c:if test="${map.getMyLeaderYN.leaderYN.equals('N')}">
+                <header class="report-head"> 신고하기 </header>
+            </c:if>
+        </c:if>
         <form id="reportFrm" method="POST">
             <div class="report-who">
                 <c:if test="${target.equals('member')}">

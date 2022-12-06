@@ -22,6 +22,7 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kh.semi.project.bond.model.vo.Group;
+import kh.semi.project.bond.model.vo.GroupMemberList;
 import kh.semi.project.bond.model.vo.Post;
 import kh.semi.project.member.model.vo.Member;
 import kh.semi.project.report.model.service.ReportService;
@@ -46,7 +47,7 @@ public class ReportController {
 	public String makeReportPage(
 			@PathVariable("target") String target,
 			@PathVariable("input") int input,
-			Model model
+			Model model, HttpSession session
 			) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -54,6 +55,14 @@ public class ReportController {
 		int typeCode = 0;
 		
 		if(target.equals("member")) { // 타겟이 회원인 경우
+			
+			// 내가 리더인지 가져오기
+			Member loginMember = (Member)session.getAttribute("loginMember");
+			Group groupInfo = (Group)session.getAttribute("groupInfo");
+			GroupMemberList getMyLeaderYN = service.getMyLeaderYN(loginMember.getMemberNo(), groupInfo.getGroupNo());
+			map.put("getMyLeaderYN", getMyLeaderYN);
+			
+			// 회원 정보 불러오기
 			Member member = service.getMemberInfo(input);
 			map.put("member", member);
 			typeCode = 1;
@@ -111,7 +120,20 @@ public class ReportController {
 		infoMap.put("reasonCode", reasonCode);
 		infoMap.put("memberNo", memberNo);
 		
+		// 회원 신고
 		int result = service.makeReport(infoMap);
+		
+		
+		
+		// 리더가 탈퇴시키기
+		Group groupInfo = (Group)session.getAttribute("groupInfo");
+		GroupMemberList getMyLeaderYN = service.getMyLeaderYN(loginMember.getMemberNo(), groupInfo.getGroupNo());
+		int result2 = 0;
+		if(getMyLeaderYN.getLeaderYN().equals("Y")) {
+			int groupNo = groupInfo.getGroupNo();
+			result2 = service.getout(targetNo, groupNo);
+		}
+		
 		
 		// 트랜잭션 처리 필요
 		
@@ -126,6 +148,10 @@ public class ReportController {
 		} else {
 			message = "신고 접수 과정에서 오류가 발생했습니다.";
 		}
+		
+		if(result2>0) {
+			message = "탈퇴되었습니다.";
+		}else { message = "탈퇴 과정에서 오류가 발생했습니다."; }
 		
 		ra.addFlashAttribute("message", message);
 		
