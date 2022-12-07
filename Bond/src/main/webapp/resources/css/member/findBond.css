@@ -50,9 +50,9 @@ header{
     list-style: none;
     display: flex;
     align-items: center;
-    width: 160px;
     position: relative;
     top: 2px;
+    justify-content: flex-end;
 }
 
 .chat-icon{
