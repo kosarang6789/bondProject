@@ -13,6 +13,7 @@ import kh.semi.project.bond.model.vo.GroupImage;
 import kh.semi.project.bond.model.vo.GroupMemberList;
 import kh.semi.project.bond.model.vo.Pagination;
 import kh.semi.project.bond.model.vo.Post;
+import kh.semi.project.bond.model.vo.PostImage;
 import kh.semi.project.member.model.vo.Member;
 import kh.semi.project.plan.model.vo.Plan;
 
@@ -130,6 +131,10 @@ public class BondDAO {
 	// 모든 모임의 이미지 목록을 가져옴
 	public List<String> selectBondImageList() {
 		return sqlSession.selectList("groupMapper.selectBondImageList");
+	}
+
+	public List<PostImage> selectImageList(List<PostImage> postImageList) {
+		return sqlSession.selectList("postMapper.selectImageList", postImageList);
 	}
 
 

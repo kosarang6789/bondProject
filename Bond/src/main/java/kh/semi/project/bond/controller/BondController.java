@@ -1,5 +1,6 @@
 package kh.semi.project.bond.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +27,9 @@ import com.google.gson.Gson;
 
 import kh.semi.project.bond.model.service.BondService;
 import kh.semi.project.bond.model.vo.Group;
+import kh.semi.project.bond.model.vo.GroupImage;
 import kh.semi.project.bond.model.vo.GroupMemberList;
+import kh.semi.project.bond.model.vo.PostImage;
 import kh.semi.project.member.model.vo.Member;
 import kh.semi.project.plan.model.vo.Plan;
 
@@ -88,7 +91,7 @@ public class BondController {
 		// 본드 기본정보 불러오기(이름, 사진, 멤버수, 소개글)
 		Group groupInfo = service.selectGroupInfo(groupNo);
 		
-		model.addAttribute("groupInfo", groupInfo);
+		Map<String, Object> map = service.selectImageList(groupNo);
 		
 		return "bond/album";
 	}
