@@ -87,7 +87,7 @@
             <!-- 2번 영역 -->
             <main id="board-list">
                 <div class="post-write-form">
-                    <div class="board-search">
+                    <%-- <div class="board-search">
                         <form action="#" class="search-form">
                             <div class="input-search-form">
                                 <label class="gSrOnly" for="input-search" >글 내용, 작성자 검색</label>
@@ -96,7 +96,7 @@
                                 <button type="submit" class="searchbtn"><i class="fa-solid fa-magnifying-glass search-icon"></i></button>
                             </div>
                         </form>
-                    </div>
+                    </div> --%>
                     
                     <div class="main-content">   
                         <div>
