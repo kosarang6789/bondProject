@@ -25,7 +25,7 @@ main{
     padding: 15px 10px 0 0;
     border: none;
     font-size: 21px;
-    background-color: white;
+    background-color: none;
     cursor: pointer;
     font-weight: bold;
     color: #777;

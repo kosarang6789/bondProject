@@ -315,30 +315,6 @@ const selectMemPro = (memberNo) =>{
                     // modalReport.setAttribute("id", myNo);
                 }
             }
-            
-            // if(myNo != memPro.memberNo){ /* 회원 */
-            //     modalReport.append(modalBtn1, modalBtn2);
-            //     // modalReport.setAttribute("id", memPro.memberNo);
-            //     modalBtn1.append(modalIcon);
-            //     modalBtn1.setAttribute("id", memPro.memberNo);
-            //     modalBtn2.append(modalChat);
-            //     modalChat.append(modalChatI);
-
-            //     let memberNo = memPro.memberNo;
-
-            //     // 모달 창 신고
-            //     modalBtn1.addEventListener("click", () => {
-            //         const url = "/report/member/" + memberNo; 
-            //         open(url, "신고하기", "width=500px, height=600px")
-            //     });
-            // }else{ /* 나 */
-            //     modalReport.append(modalA);
-            //     modalA.append(modalMyI);
-            //     // modalReport.setAttribute("id", myNo);
-            // }
-
-
-
         },
         error : ()=>{
             console.log("ajax 통신 실패ㅠㅜㅠㅜ");
@@ -356,15 +332,6 @@ window.addEventListener("click", e=>{
 })
 
 
-// 밴드 신고
-// 신고하기 버튼
-const reportBtn = document.getElementById("reportBtn");
-
-// 신고 버튼 클릭 시 팝업창
-reportBtn.addEventListener("click", () => {
-    const url = "/report/group/" + groupNo; 
-    open(url, "신고하기", "width=500px, height=600px")
-});
 
 
 // 멤버 신고
@@ -379,23 +346,3 @@ for(let rm of reportMemList){
         open(url, "신고하기", "width=500px, height=600px")
     })
 };
-
-
-// // 벤드 설정 테스트
-// const testtemp = document.querySelector(".band-setting-section");
-// if(myNo == memPro.leaderNo){
-//     const atag = document.createElement("a");
-//     atag.classList.add("band-setting-link");
-//     atag.classList.add("sidebar-font");
-
-//     const itag = document.createElement("i");
-//     itag.classList.add("fa-solid");
-//     itag.classList.add("fa-gear");
-//     itag.classList.add("sidbar-icon");
-//     itag.innerText = "밴드 설정";
-
-//     testtemp.append(atag);
-//     atag.append(itag);
-// }else{
-//     testtemp.classList.add("hidden");
-// }

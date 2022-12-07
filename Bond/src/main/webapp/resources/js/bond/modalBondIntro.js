@@ -1,13 +1,24 @@
 
-// 본드 가입하기 모달창
+// 본드 정보 보기 모달창
 
 const modalBondIntro = document.querySelector(".modalBondIntro");
 
-const viewIntroBtn = document.querySelector(".sidebar-under-icon");
-viewIntroBtn.addEventListener("click", ()=>{
-    modalBondIntro.classList.add("show");
-    modalBondIntro.classList.remove("hidden");
-});
+if(document.querySelector(".sidebar-under-icon") != null){
+    const viewIntroBtn = document.querySelector(".sidebar-under-icon");
+    viewIntroBtn.addEventListener("click", ()=>{
+        modalBondIntro.classList.add("show");
+        modalBondIntro.classList.remove("hidden");
+    });
+};
+
+if(document.querySelector(".modalInfo") != null){
+    const viewIntroBtn = document.querySelector(".modalInfo");
+    viewIntroBtn.addEventListener("click", ()=>{
+        modalBondIntro.classList.add("show");
+        modalBondIntro.classList.remove("hidden");
+    });
+};
+
 
 const modalBondX = document.querySelector(".modalBondX");
 modalBondX.addEventListener("click", ()=>{

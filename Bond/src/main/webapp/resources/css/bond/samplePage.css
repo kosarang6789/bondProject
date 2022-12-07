@@ -55,6 +55,9 @@ body{
     display: inline-block;
     position: relative;
     vertical-align: top;
+    width: 232px;
+    height: 174px;
+    /* overflow: hidden; */
 }
 
 
