@@ -436,6 +436,7 @@ button{
 }
 
 #banner .photo-body{
+    height: 165px;
     padding: 14px;
     border-top: 1px solid #f0f2f4;
 }
@@ -501,6 +502,14 @@ button{
 
 .soon-plan-body{
     border-top: 1px solid #f0f2f4;
+}
+
+.no-image-info{
+    font-size: 12px;
+    color: dimgray;
+    height: 100%;
+    margin: 5px;
+    display: flex;
 }
 
 /* 배너 날짜 목록 스타일 banner plan list */
