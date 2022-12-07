@@ -660,6 +660,10 @@ const selectReplyList=(postNo)=>{
 const addReply = document.getElementById("addReply");
 const replyWriteContent = document.getElementById("replyWrite-Content");
 
+document.getElementById("replyBtn").addEventListener("click", ()=>{
+    replyWriteContent.focus();
+});
+
 addReply.addEventListener("click", ()=>{
     if(replyWriteContent.value.trim().length==0){
         alert("댓글을 작성한 뒤 버튼을 클릭해주세요.");
@@ -889,3 +893,4 @@ const insertChildReply = (parentNo, btn)=>{
         }
     });
 };
+
