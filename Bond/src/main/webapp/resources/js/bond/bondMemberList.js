@@ -197,8 +197,6 @@ for(let m of mmm){
 // 내가 아닐 때
 const modalBtn1 = document.createElement("button");
 modalBtn1.classList.add("report");
-const modalBtn2 = document.createElement("button");
-modalBtn2.classList.add("chatting");
 
 const modalNMe = document.createElement("div");
 
@@ -215,14 +213,6 @@ modalIconG.classList.add("fa-solid");
 modalIconG.classList.add("fa-user-slash");
 modalIconG.classList.add("memberReport");
 modalIconG.innerText = "탈퇴시키기";
-
-const modalChat = document.createElement("a");
-const modalChatI = document.createElement("i");
-modalChatI.classList.add("fa-solid");
-modalChatI.classList.add("fa-comment-dots");
-modalChatI.classList.add("chat-icon");
-modalChatI.classList.add("chattingIcon");
-modalChatI.innerText = "채팅하기";
 
 
 // 나 일때
@@ -276,11 +266,9 @@ const selectMemPro = (memberNo) =>{
 
             if(myNo == memPro.leaderNo){ // 내가 리더인 경우
                 if(myNo != memPro.memberNo){ /* 회원 */
-                    modalReport.append(modalBtn1, modalBtn2);
+                    modalReport.append(modalBtn1);
                     modalBtn1.append(modalIconG);
                     modalBtn1.setAttribute("id", memPro.memberNo);
-                    modalBtn2.append(modalChat);
-                    modalChat.append(modalChatI);
 
                     let memberNo = memPro.memberNo;
 
@@ -296,11 +284,9 @@ const selectMemPro = (memberNo) =>{
                 }
             }else{ /* 내가 리더가 아닌 경우 */
                 if(myNo != memPro.memberNo){ /* 회원 */
-                    modalReport.append(modalBtn1, modalBtn2);
+                    modalReport.append(modalBtn1);
                     modalBtn1.append(modalIcon);
                     modalBtn1.setAttribute("id", memPro.memberNo);
-                    modalBtn2.append(modalChat);
-                    modalChat.append(modalChatI);
 
                     let memberNo = memPro.memberNo;
 
