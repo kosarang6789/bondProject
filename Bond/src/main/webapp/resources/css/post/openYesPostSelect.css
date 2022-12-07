@@ -87,15 +87,6 @@ a{text-decoration: none;}
     cursor: pointer;
 }
 
-
-.post-wrap{
-    padding-right: 20px;
-    border-top: 1px solid #E7E7E7;
-}
-.post-wrap>.post-wrap:first-child{
-    border-top: none;
-}
-
 /* 게시글 작성 */
 .post-content{
     padding: 25px 40px 16px;

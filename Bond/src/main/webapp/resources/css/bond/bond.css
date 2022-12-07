@@ -287,6 +287,15 @@ body{
 }
 
 /* 게시물 영역 */
+.noPost-info{
+    height: 60px;
+    display: block;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    line-height: 60px;
+}
+
 .content-card{
     margin-bottom: 13px;
     position: relative;
@@ -679,7 +688,7 @@ button{
     line-height: 23px;
     vertical-align: top;
 }
-
+/* 
 .post-added{
     height: 45px;
     position: relative;
@@ -701,7 +710,7 @@ button{
     font-size: 15px;
     color: #222;
     cursor: pointer;
-}
+} */
 
 
 
