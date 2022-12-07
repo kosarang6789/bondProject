@@ -57,7 +57,7 @@ main{
     border-radius: 5px;
     background-color: #21c531;
     color: white;
-    margin: 20px 0 20px 20px;
+    margin: 20px 0;
 }
 .login-btn:active{
     transform: scale(0.95);
