@@ -39,6 +39,7 @@ main{
     text-align: center;
     display: block;
     margin: 260px auto;
+    min-height: 580px;
 }
 
 .cover{
@@ -55,7 +56,7 @@ main{
 
 .modalBondImg{
     width: 100%;
-    height: 50%;
+    height: 230px;
 }
 
 .modalBondContent{
