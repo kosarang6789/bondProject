@@ -19,6 +19,15 @@ public class FindBondDAO {
 	public List<Map<String, Object>> groupTopic(int topicCode) {
 		return sqlSession.selectList("groupMapper.groupTopic", topicCode);
 	}
+	
+//	public int groupCount(int topicCode) {
+//		return sqlSession.selectOne("groupMapper.groupCount", topicCode);
+//	}
+//
+//	public List<Group> groupTopic(int topicCode, int cp) {
+//		RowBounds rowBounds = new RowBounds((cp-1) * 10, 10);
+//		return sqlSession.selectList("groupMapper.groupTopic", topicCode, rowBounds);
+//	}
 
 //	public List<Group> groupTopic(int topicCode, int cp) {
 //		RowBounds rowBounds = new RowBounds((cp-1) * 10, 10); 

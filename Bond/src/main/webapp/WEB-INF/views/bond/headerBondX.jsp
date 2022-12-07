@@ -34,12 +34,12 @@
                     </a>
                 </li>
 
-                <li class="widget-item chat-icon">
+                <%-- <li class="widget-item chat-icon">
                     <!-- 채팅 -->
                     <a href="#">
                         <i class="fa-solid fa-comment-dots chat-icon" style="color: #999;"></i>
                     </a>
-                </li>
+                </li> --%>
 
                 <li class="widget-item">
                     <!-- 내 정보 사진 -->

@@ -15,11 +15,24 @@ public class FindBondServiceImpl implements FindBondService {
 
 	@Autowired
 	private FindBondDAO dao;
+
 	
 	@Override
 	public List<Map<String, Object>> groupTopic(int topicCode) {
 		return dao.groupTopic(topicCode);
 	}
+	
+//	@Override
+//	public Map<String, Object> groupTopic(int topicCode, int cp) {
+//		int groupCount = dao.groupCount(topicCode);
+//		
+//		List<Group> groupTopic = dao.groupTopic(topicCode, cp);
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		map.put("groupCount", groupCount);
+//		map.put("groupTopic", groupTopic);
+//		
+//		return map;
+//	}
 
 //	@Override
 //	public Map<String, Object> groupTopic(int topicCode, int cp) {
