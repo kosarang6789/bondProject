@@ -29,3 +29,31 @@ for(let drop of dropDown){
         }
     })
 }
+
+
+// 신고 개수 ajax
+function findWaitingReports (){
+    $.ajax({
+        url: "/admin/report/find/waiting",
+        type : "POST",
+        dataType : "JSON",
+        success : (waitingReports) => {
+            console.log(waitingReports);
+            const alarmDot = document.getElementById("alarmDot");
+            if(waitingReports > 0) {
+                alarmDot.style.display="block";
+            } else {
+                alarmDot.style.display="none";
+            }
+        },
+        error : () => {
+            console.log("미처리 신고 여부 조회 실패")
+        }
+
+    })
+}
+
+// 즉시 실행 함수 존
+(() => {
+ findWaitingReports();
+})()

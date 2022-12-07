@@ -6,9 +6,9 @@
 
     <article class="admin-info"> <!-- admin-info  -->
         <div class="info-image-area">
-            <img id="info-image" src="/resources/images/admin/admin-profile-icon.png">
+            <img id="info-image" src="${loginMember.profileImage}">
         </div>
-        <span id="admin-name">관리자1</span>
+        <span id="admin-name">${loginMember.memberName}</span>
         <div class="profile-btn-area">
             <a href="/member/mainPage" id="home">본드 홈</a>
             <a href="/logout" id="logout">로그아웃</a>
@@ -19,7 +19,7 @@
 
         <ul class="drop-down">
             <div class="top-menu">
-                <a href="/admin/notice/list">공지사항</a>
+                <a href="/admin/statistic">대시보드</a>
             </div>
         </ul>
             
@@ -30,7 +30,8 @@
             <li><a class="sub-menu hide" href="/admin/post/list">게시글</a></li>
         </ul>
 
-        <ul class="drop-down">
+        <ul class="drop-down report-menu">
+            <div id="alarmDot"></div>
             <div class="top-menu">
                 <a href="/admin/report/list">신고</a>
             </div>

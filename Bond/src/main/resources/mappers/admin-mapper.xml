@@ -86,6 +86,10 @@
 		<result property="resultDetails" column="RESULT_DETAILS" />
 		
 		<result property="targetName" column="TARGET_NAME" />
+
+		<result property="waitingReports" column="WAITING_REPORTS" />
+		
+		
 	
 	</resultMap>
 	
@@ -314,6 +318,12 @@
 			  		  END
 		WHERE REPORT_NO = ${reportNo}
 	</update>
+	
+	<!-- 미처리 신고 조회 -->
+	<select id="findWaitingReports" resultType="_int">
+		SELECT COUNT(*) WAITING_REPORTS FROM REPORT
+		WHERE PROCESS_YN = 'N'
+	</select>
 	
 	<!-- 스케줄러를 이용한 신고 테이블 자동 업데이트 -->
 	<update id="autoReportUpdate">
