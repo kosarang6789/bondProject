@@ -32,9 +32,8 @@ header{
     list-style: none;
     display: flex;
     align-items: center;
-    width: 160px;
     position: relative;
-    top: 2px;
+    justify-content: flex-end;
 }
 
 .chat-icon{
@@ -47,9 +46,6 @@ header{
     line-height: 1;
 }
 
-.widget-item{
-    width: 33.3%;
-}
 
 
 /* 프로필 사진 클릭 메뉴 */

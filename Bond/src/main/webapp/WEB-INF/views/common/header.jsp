@@ -10,7 +10,7 @@
 
         <div class="header-widget-area">
             <ul class="widget-list">
-                <li class="widget-item bell-icon">
+                <%-- <li class="widget-item bell-icon">
                     <!-- 알림 -->
                     <a href="#">
                         <i class="fa-solid fa-bell bell-icon"  style="color: #999;"></i>
@@ -22,7 +22,7 @@
                     <a href="#">
                         <i class="fa-solid fa-comment-dots chat-icon" style="color: #999;"></i>
                     </a>
-                </li>
+                </li> --%>
 
                 <li class="widget-item">
 
