@@ -14,7 +14,8 @@
 
     <link rel="stylesheet" href="/resources/css/bond/bond.css">
     <link rel="stylesheet" href="/resources/css/bond/Modal-jose.css"><%-- 탈퇴모달 --%>
-    <link rel="stylesheet" href="/resources/css/bond/modalBondIntro.css">
+    <link rel="stylesheet" href="/resources/css/bond/modalBondIntro.css"><%-- 본드 정보 모달 --%>
+    <link rel="stylesheet" href="/resources/css/bond/modalMemPro.css"><%-- 게시글 멤버 프로필 상세 모달 --%>
     <script src="https://kit.fontawesome.com/1ce4f19a7a.js" crossorigin="anonymous"></script>
 
 </head>
@@ -116,9 +117,9 @@
                         <c:choose>
                             <c:when test="${empty postList}">
                                 <!-- 게시글 목록 조회 결과가 비어있다면 -->
-                                <tr>
-                                    <th colspan="6">게시글이 존재하지 않습니다.</th>
-                                </tr>
+                                <span class="noPost-info">
+                                    게시글이 존재하지 않습니다
+                                </span>
                             </c:when>
 
                             <c:otherwise>
@@ -129,8 +130,7 @@
                                             <div class="post-list-view">
                                                 <div class="post-author-view">
                                                     <%-- 작성자 프로필 이미지 --%>
-                                                    <div class="uprofile">
-                                                        
+                                                    <div class="uprofile" id="${post.memberNo}">
                                                         <c:if test="${empty post.memberImage}">
                                                             <%-- 프로필 이미지가 없을 경우 --%>
                                                             <img class="uprofile-inner" 
@@ -194,8 +194,6 @@
                                 </c:forEach>
                             </c:otherwise>
                         </c:choose>
-
-
                     </div>
 
                     <div id="pageTarget" style="height:20px"></div>
@@ -335,6 +333,10 @@
     <%-- 본드 정보 보기 모달 --%>
     <jsp:include page="/WEB-INF/views/bond/modalBondIntro.jsp"/>
     <script src="/resources/js/bond/modalBondIntro.js"></script>
+
+    <%-- 게시글의 멤버 프로필 선택 시 프로필 상세정보 모달 --%>
+    <jsp:include page="/WEB-INF/views/bond/modalMemPro.jsp"/>
+    <script src="/resources/js/bond/modalMemPro.js"></script>
 
     <script>
         let cp = 0;

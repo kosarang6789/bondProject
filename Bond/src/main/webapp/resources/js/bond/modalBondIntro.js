@@ -3,19 +3,10 @@
 
 const modalBondIntro = document.querySelector(".modalBondIntro");
 
-
-// 멤버리스트 - 밴드 정보 보기
-// if(document.querySelector(".band-info") != null){
-//     const viewIntroBtn = document.querySelector(".band-info");
-//     viewIntroBtn.addEventListener("click", ()=>{
-//         modalBondIntro.classList.add("show");
-//         modalBondIntro.classList.remove("hidden");
-//     });
-// };
-
+// 앨범에서 밴드 정보 보기
 if(document.querySelector(".band-info") != null){
-    const viewIntroBtn = document.querySelector(".band-info");
-    viewIntroBtn.addEventListener("click", ()=>{
+    const viewIntroBtn1 = document.querySelector(".band-info");
+    viewIntroBtn1.addEventListener("click", ()=>{
         modalBondIntro.classList.add("show");
         modalBondIntro.classList.remove("hidden");
     });
@@ -23,8 +14,8 @@ if(document.querySelector(".band-info") != null){
 
 // openYes에서 밴드 정보 보기
 if(document.querySelector(".band-setting-section2") != null){
-    const viewIntroBtn = document.querySelector(".band-setting-section2");
-    viewIntroBtn.addEventListener("click", ()=>{
+    const viewIntroBtn1 = document.querySelector(".band-setting-section2");
+    viewIntroBtn1.addEventListener("click", ()=>{
         modalBondIntro.classList.add("show");
         modalBondIntro.classList.remove("hidden");
     });
@@ -45,6 +36,13 @@ window.addEventListener("click",e=>{
         modalBondIntro.classList.remove("show");
     }
 });
+
+// if(document.querySelector("imageO")!= null){
+//     modalBondX.style = "margin : 2px 0 0 150px";
+// };
+// if(document.querySelector("imageX") != null){
+//     modalBondX.style = "margin : 2px 0 0 325px";
+// };
 
 
 

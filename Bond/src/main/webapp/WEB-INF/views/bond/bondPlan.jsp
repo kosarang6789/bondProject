@@ -13,6 +13,7 @@
     <title>${groupInfo.groupName} | BOND</title>
 
     <link rel="stylesheet" href="/resources/css/bond/bondPlan-style.css">
+    <link rel="stylesheet" href="/resources/css/bond/modalBondIntro.css">
     <script src="https://kit.fontawesome.com/1ce4f19a7a.js" crossorigin="anonymous"></script>
 
 </head>
@@ -156,6 +157,11 @@
 
 <script src="/resources/js/bond/bondPlan.js"></script>
 <script src="/resources/js/plan/useFullcalendar.js"></script>
+
+<%-- 본드 정보 보기 모달 --%>
+<jsp:include page="/WEB-INF/views/bond/modalBondIntro.jsp"/>
+<script src="/resources/js/bond/modalBondIntro.js"></script>
+
 
 <!-- fullcalendar CDN 방식으로 추가 -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">

@@ -16,12 +16,10 @@
 					</button>
                     <c:choose>
                         <c:when test="${not empty groupInfo.groupImage}">
-                        <div class="cover">
-							<img src="${groupInfo.groupImage}" id="cover-img">  
-						</div> 
+							<img src="${groupInfo.groupImage}" class="imageO" id="cover-img">  
                         </c:when>
                         <c:otherwise>
-                            <img src="/resources/images/bond/profile/no-profile.png" id="cover-img">
+                            <img src="/resources/images/bond/profile/no-profile.png" class="imageX" id="cover-img">
                         </c:otherwise>
                     </c:choose>
 				</div>

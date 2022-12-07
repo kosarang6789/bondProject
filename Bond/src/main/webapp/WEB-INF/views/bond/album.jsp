@@ -28,7 +28,7 @@
                                     <img src="${groupInfo.groupImage}" id="cover-img">  
                                 </c:when>
                                 <c:otherwise>
-                                    <img src="/resources/images/bond/profile/no-profile.png" id="cover-img">
+                                    <img src="/resources/images/bond/profile/non-profile.png">
                                 </c:otherwise>
                             </c:choose>
                         </a>
@@ -42,12 +42,9 @@
                         <a href="#" class="member-count">멤버 ${groupInfo.memberCount}</a>
                     </p>
 
-                    <div class="band-info modalInfo">
+                    <div class="band-info">
                         <p class="band-description">${groupInfo.groupComment}</p>
-                        <a href="#" class="more-link modalInfo">...더보기</a>
-                    </div>
-
-                    <div class="sidebar-under-icon">
+                        <a href="#" class="more-link">...더보기</a>
                     </div>
                 </div>
             </aside>
@@ -67,6 +64,7 @@
                                 <h2 class="title">
                                     <a href="#">
                                         <strong>전체사진</strong>
+                                        <em>5</em>
                                     </a>
                                 </h2>
                             </div>
@@ -156,11 +154,10 @@
             </a>
         </div>
 
-
     <%-- 본드 정보 보기 모달 --%>
     <jsp:include page="/WEB-INF/views/bond/modalBondIntro.jsp"/>
     <script src="/resources/js/bond/modalBondIntro.js"></script>
 
         
-    <script src="/resources/js/bond/album.js"></script>
+    <script src="/resources/js/bond/bond.js"></script>
 </body>
