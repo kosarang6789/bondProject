@@ -29,8 +29,8 @@
 
             <section class="content">
                 <div class="content-header">
-                    <h3>게시물 제목</h3>
-                    <a href="/admin/notice/list" id="list-btn">
+                    <h3>게시물 정보</h3>
+                    <a href="/admin/post/list" id="list-btn">
                         목록
                     </a>
                 </div>
@@ -40,13 +40,20 @@
                     <div class="post-detail">
                         <div class="title-area">
                             <div class="postNo">${postMap.postDetail.postNo}</div>
-                            <div class="groupNo">${postMap.postDetail.groupNo}</div>
+                            <div class="groupNo">Group. ${postMap.postDetail.groupNo}</div>
                             <div class="groupName">${postMap.postDetail.groupName}</div>
-                            <div class="postDelYN">${postMap.postDetail.postDelYN}</div>
+                            <div class="postDelYN">
+                                <c:if test="${postMap.postDetail.postDelYN.equals('Y')}">
+                                    삭제
+                                </c:if>
+                                <c:if test="${postMap.postDetail.postDelYN.equals('N')}">
+                                    -
+                                </c:if>
+                            </div>
                         </div>
 
                         <div class="title-area">
-                            <div class="memberNo">${postMap.postDetail.memberNo}</div>
+                            <div class="memberNo">User. ${postMap.postDetail.memberNo}</div>
                             <div class="memberName">${postMap.postDetail.memberName}</div>
                             <div class="postDate">${postMap.postDetail.postDate}</div>
                         </div>

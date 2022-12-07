@@ -115,9 +115,9 @@
                         <c:choose>
                             <c:when test="${empty postList}">
                                 <!-- 게시글 목록 조회 결과가 비어있다면 -->
-                                <tr>
-                                    <th colspan="6">게시글이 존재하지 않습니다.</th>
-                                </tr>
+                                <span class="noPost-info">
+                                    게시글이 존재하지 않습니다
+                                </span>
                             </c:when>
 
                             <c:otherwise>
@@ -192,8 +192,6 @@
                                 </c:forEach>
                             </c:otherwise>
                         </c:choose>
-
-
                     </div>
 
                     <div id="pageTarget" style="height:20px"></div>
