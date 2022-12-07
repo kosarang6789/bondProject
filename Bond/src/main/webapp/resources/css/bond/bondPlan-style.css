@@ -687,6 +687,8 @@ input[name="planColor"]:checked + .palette{
     color: black;
     text-decoration: none;
     overflow-wrap: break-word;
+    pointer-events: none; /*이벤트를 막음*/
+    cursor: default; /*마우스 커서를 포인트에서 디폴트로 변경*/
 }
 
 .member{
@@ -701,6 +703,9 @@ input[name="planColor"]:checked + .palette{
     color: black;
     font-size: 13px;
     font-weight: 500;
+
+    pointer-events: none; /*이벤트를 막음*/
+    cursor: default; /*마우스 커서를 포인트에서 디폴트로 변경*/
 }
 
 .band-info{
@@ -722,9 +727,11 @@ input[name="planColor"]:checked + .palette{
     display: inline-block;
     margin-top: 4px;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .more-link:hover{
+    color: #93D94E;
     text-decoration: underline;
 }
 
