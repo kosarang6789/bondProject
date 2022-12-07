@@ -25,7 +25,7 @@ public class Group {
 	private String topicName;
 	private String leaderName;
 	private int postCount;
-	private int leaderNo;
+	private int leaderNo; // 안되면 지우기
 	
 	
 }

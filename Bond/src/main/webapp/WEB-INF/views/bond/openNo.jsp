@@ -36,7 +36,6 @@
                                             <img src="/resources/images/bond/profile/no-profile.png" id="cover-img">
                                         </c:otherwise>
                                     </c:choose>
-                                    <%-- <img src="/resources/images/member/main2/group-recommend/group-english.jpg"> --%>
                                 </div>
                             </a>
                         </li>
@@ -81,39 +80,7 @@
                     <h2 class="band-intro-title">밴드 소개</h2>
                     <div class="band-intro-detail">
                         <p class="desc">${groupJoinNo.groupComment}</p>
-                        <%-- <div class="intro-option">
-                            <div class="intro-option-box">
-                                <ul class="select-keyword-list">
-                                    <li class="select-keyword-item">취미</li>
-                                    <li class="select-keyword-item">심리학</li>
-                                    <li class="select-keyword-item">운세</li>
-                                </ul>
-                            </div>
-                        </div> --%>
                     </div>
-
-                    <ul class="intro-photo collage">
-                        <li class="collage-photo">
-                            <a href="#">
-                                <img src="/resources/images/bond/intro-photo1.PNG">
-                            </a>
-                        </li>
-                        <li class="collage-photo">
-                            <a href="#">
-                                <img src="/resources/images/bond/intro-photo2.PNG">
-                            </a>
-                        </li>
-                        <li class="collage-photo">
-                            <a href="#">
-                                <img src="/resources/images/bond/intro-photo3.PNG">
-                            </a>
-                        </li>
-                        <li class="collage-photo">
-                            <a href="#">
-                                <img src="/resources/images/bond/intro-photo4.PNG">
-                            </a>
-                        </li>
-                    </ul>
 
                     <div class="intro-option-statics">
                         <h2 class="intro-title">이 밴드의 활동 정보</h2>
@@ -126,17 +93,13 @@
                                 멤버수
                                 <span class="intro-desc-data">${groupInfo.memberCount}명</span>
                             </p>
-                            <%-- <p class="intro-desc">
-                                최근 가입
-                                <span class="intro-desc-data">10명</span>
-                            </p> --%>
                         </div>
                     </div>
 
-                    <div class="empty" style="height: 235px;">
+                    <div class="empty" style="height: 450px;">
                         <a href="#" class="empty-inner">
                             <span class="empty-icon">
-                                    <i class="fa-regular fa-clipboard empty-icon-inner"></i>
+                                <img src="/resources/images/bond/openNo-img.png" class="openNoImg">
                             </span>
                             <p class="empty-desc">모든 글을 보려면 밴드에 가입해보세요.</p>
                         </a>

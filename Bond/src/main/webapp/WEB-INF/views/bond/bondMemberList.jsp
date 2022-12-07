@@ -60,9 +60,11 @@
 
                     <div class="sidebar-under-icon">
                         <div class="band-setting-section">
-                            <a href="/bond/${groupNo}/bond-bondIntro" class="band-setting-link sidebar-font"> 
-                                <i class="fa-solid fa-gear sidbar-icon"></i>밴드 설정
-                            </a>
+                            <c:if test="${groupInfo.leaderNo == loginMember.memberNo}">
+                                <a href="/bond/${groupNo}/bond-bondIntro" class="band-setting-link sidebar-font"> 
+                                    <i class="fa-solid fa-gear sidbar-icon"></i>밴드 설정
+                                </a>
+                            </c:if>
                             
                         <div class="band-setting-list">
                             <ul class="band-setting-item">

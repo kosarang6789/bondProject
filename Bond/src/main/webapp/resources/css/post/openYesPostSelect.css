@@ -92,6 +92,9 @@ a{text-decoration: none;}
     padding-right: 20px;
     border-top: 1px solid #E7E7E7;
 }
+.post-wrap:first-child{
+    border-top: none;
+}
 
 /* 게시글 작성 */
 .post-content{
