@@ -168,7 +168,7 @@ nav{
     display: inline-block;
 }
 
-a:hover{
+#myDiv a:hover{
     color: white;
     font-weight: 800;
 }

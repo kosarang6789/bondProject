@@ -64,7 +64,6 @@
                                 <h2 class="title">
                                     <a href="#">
                                         <strong>전체사진</strong>
-                                        <em>5</em>
                                     </a>
                                 </h2>
                             </div>
@@ -72,10 +71,8 @@
 
                         <ul class="album-images">
                             <c:forEach var="image" items="${bondImageList}">
-                                <li class="album">
-                                    <a href="#">
-                                        <img src="${image.postImage}" class="album-img">
-                                    </a>
+                                <li class="album" id="${image.imageNo}">
+                                    <img src="${image.postImage}" class="album-img">
                                 </li>
                             </c:forEach>
                         </ul>
@@ -154,10 +151,24 @@
             </a>
         </div>
 
+    <%-- 이미지 조회 모달 --%>
+    <div id="imageSelect-modal">
+        <div class="uprofile">
+            <img class="uprofile-inner" src=""/>
+            <strong class="post-info-name"></strong> 
+        </div>
+        <div id="imageSelect-view">
+            <img id="imageView" src="">
+        </div>
+        <button class="sModal-closeBtn">
+            <i class="fa-solid fa-x"></i>
+        </button>
+    </div>
+
     <%-- 본드 정보 보기 모달 --%>
     <jsp:include page="/WEB-INF/views/bond/modalBondIntro.jsp"/>
     <script src="/resources/js/bond/modalBondIntro.js"></script>
 
         
-    <script src="/resources/js/bond/bond.js"></script>
+    <script src="/resources/js/bond/album.js"></script>
 </body>

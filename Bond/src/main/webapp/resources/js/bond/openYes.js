@@ -520,7 +520,7 @@ const selectReplyList=(postNo)=>{
                 }
                 replyList.classList.remove("firstReply-inform")
             } else {
-                replyList.innerText = "첫 번째 댓글을 작성해보세요!";
+                replyList.innerText = "작성된 댓글이 없습니다";
                 replyList.classList.add("firstReply-inform");
             }
         },
