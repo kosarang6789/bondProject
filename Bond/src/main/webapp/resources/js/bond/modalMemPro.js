@@ -1,20 +1,39 @@
 // ---------회원 정보 모달 창------------
 
+// 밴드 게시글의 프로필 이미지 모달
+// if(document.querySelector(".uprofile") != null){
+    let images = document.getElementsByClassName("uprofile");
 
-let images = document.getElementsByClassName("uprofile");
+    // 멤버 이미지 불러와 for문 안에 넣어 id값 얻고 모달창 띄움
+    for(let m of images){
+        m.addEventListener("click", ()=>{
+            modalMemPro.classList.add("show");
+            modalMemPro.classList.remove("hidden");
+            selectMemPro(m.getAttribute("id"));
+            
+        });
+    };
+// }
+
+// // 밴드 게시글 상세조회 프로필 이미지 모달
+// if(document.querySelector(".postMember-img") != null){
+//     let images = document.getElementsByClassName("uprofile");
+
+//     // 멤버 이미지 불러와 for문 안에 넣어 id값 얻고 모달창 띄움
+//     for(let m of images){
+//         m.addEventListener("click", ()=>{
+//             modalMemPro.classList.add("show");
+//             modalMemPro.classList.remove("hidden");
+//             selectMemPro(m.getAttribute("id"));
+            
+//         });
+//     };
+// }
+
 const modalMemPro = document.querySelector(".modalMemPro");
 const modalx = document.querySelector(".modalx");
 
 
-// 멤버 이미지 불러와 for문 안에 넣어 id값 얻고 모달창 띄움
-for(let m of images){
-    m.addEventListener("click", ()=>{
-        modalMemPro.classList.add("show");
-        modalMemPro.classList.remove("hidden");
-        selectMemPro(m.getAttribute("id"));
-        
-    });
-};
 
 modalx.addEventListener("click",()=>{
     modalMemPro.classList.remove("show");
