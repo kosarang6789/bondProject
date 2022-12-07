@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kh.semi.project.bond.model.vo.Group;
 import kh.semi.project.member.model.dao.MemberDAO;
 import kh.semi.project.member.model.vo.Member;
 import kh.semi.project.plan.model.vo.Plan;
@@ -26,6 +27,15 @@ public interface MemberService {
 
 	// 가입X 본드 조회
 	public abstract List<Map<String, Object>> selectJoinNo(int memberNo);
+
+	// 본드 목록 조회 
+	public abstract Map<String, Object> selectGroupList(int groupNo, int cp);
+
+	// 검색 조건 일치 본드 목록 조회 
+	public abstract Map<String, Object> selectGroupList(Map<String, Object> pm, int cp);
+
+
+
 	
 	// 가입중인 모임의 모든 일정 목록 가져오기
 	List<Plan> getMyAllPlans(int memberNo);

@@ -1,0 +1,151 @@
+a{
+    color: black;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+h2{
+    color: black;
+    font-size: 27px;
+    font-weight: 800;
+    text-align: center;
+}
+
+
+
+.nav-area{
+    position: sticky;
+    display: block;
+    z-index: 1500;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+    border-top: 1px solid rgba(0,0,0,.05);
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+nav{
+    display: flex;
+    width: 1140px;
+    justify-content: center;
+}
+
+nav a{
+    padding-bottom: 10px;
+    width: 92px;
+}
+
+.topic-nav{
+    margin-top: 10px;
+}
+
+.topic-nav a{
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    margin-right: 20px;
+    color:#bbb;
+    display: inline-block;
+
+}
+
+
+nav>.mainPage-menu>.active{
+    color:#222;
+    position: relative;
+}
+
+nav>.mainPage-menu>.active::after{
+    content: "";
+    border-top: 4px solid #333;
+    width: 100%;
+    display: block;
+    position: absolute;
+    bottom: 2px;
+}
+
+nav>.mainPage-menu>a:hover{
+    color: #222;
+    font-weight: 800;
+}
+
+.mainPage-optionBox{
+    padding-top: 5px;
+}
+
+nav>.mainPage-optionBox>a{
+    font-size:15px;
+    font-weight: 400;
+    color: #444;
+    text-align: left;
+    padding: 0 10px;
+}
+
+.search-area{
+    top: 70px;
+    width: 1140px;
+    min-height: 1000px;
+    position: relative;
+    display: block;
+    margin: auto;
+    padding-bottom: 100px;
+}
+
+.list-wrap{
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.list{
+    display: flex;
+    height: 174px;
+    margin-top: 25px;
+    align-items: center;
+}
+
+.cover{
+    width: 232px;
+    height: 174px;
+    overflow: hidden;
+    box-shadow: 4px 4px 20px 3px #ebebeb;
+}
+
+.cover img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.list-bond{
+    margin-left: 30px;
+    
+}
+
+.bond-name{
+    margin-top: 5px;
+}
+
+.bond-comment{
+    margin-top: 5px;
+    font-size: 15px;
+    color: #666;
+}
+
+.bond-count-leader{
+    display: flex;
+}
+
+.bond-count{
+    margin-top: 5px;
+    font-size: 12px;
+    color: #666;
+}
+
+.bond-leader{
+    margin-left: 10px;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #666;
+}
+
+

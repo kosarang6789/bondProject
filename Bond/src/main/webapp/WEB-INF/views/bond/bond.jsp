@@ -206,17 +206,16 @@
                         <h2 class="tit">최근 사진</h2>
                         <div class="photo-body">
                             <div class="photo-list">
-                                <a href="#" class="banner-box">
-                                    <img src="/resources/images/bond/banner.jpeg" class="banner-img">
-                                </a>
-                                <span class="no-img"></span>
-                                <span class="no-img"></span>
-                                <span class="no-img"></span>
-                                <span class="no-img"></span>
-                                <span class="no-img"></span>
+                                <ul>
+                                    <c:forEach var="image" items="${recentImages}">
+                                        <li class="banner-box">
+                                            <img src="${image.postImage}" class="banner-img">
+                                        </li>
+                                    </c:forEach>
+                                </ul>
                             </div>
                         </div>
-                        <a href="#" class="more-button">더보기</a>
+                        <a href="/bond/${groupNo}/plan" class="more-button">더보기</a>
                     </section>
                 </div>
 
@@ -282,6 +281,7 @@
             </div>
 
             <a href="#">
+                <button type="button" class="btn-go-to-top">
                     <i class="fa-solid fa-arrow-up go-to-top-icon"></i>
                 </button>
             </a>

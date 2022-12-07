@@ -454,10 +454,6 @@ button{
     width: 100%;
     height: 100%;
     object-fit: cover;  
-    cursor: pointer;
-    aspect-ratio: auto 73 / 73;
-
-
 }
 
 #banner .photo-list .no-img{
@@ -474,6 +470,7 @@ button{
     overflow: hidden;
     margin-top: 1px;
     margin-right: 1px;
+    display: inline-block;
 }
 
 #banner .more-button{

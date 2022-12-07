@@ -52,10 +52,12 @@
 		<result property="memberImage" column="MEMBER_IMG" />
 	</resultMap>
 
-	<resultMap type="PostImage" id="postImg_rm">
-		<id property="imageNo" column="IMG_NO" />
-		<result property="imageRename" column="IMG_RENAME" />
-	</resultMap>
+	<resultMap type="PostImage" id="postImage_rm">
+      <id property="imageNo" column="IMG_NO"/>
+      <result property="imagePath" column="IMG_PATH"/>
+      <result property="imageRename" column="IMG_RENAME"/>
+      <result property="postImage" column="POST_IMG"/>
+   </resultMap>
 	
 	<!-- 게시글 수 조회 -->
 	<select id="getPostCount" parameterType="_int" resultType="_int">
@@ -218,8 +220,19 @@
 		DELETE FROM POST_IMG WHERE POST_NO=#{postNo}
 	</delete>
 	
+	
 	<!-- 게시글의 모든 이미지를 조회 -->
 	<select id="selectPostImageList" resultType="string">
 		SELECT IMG_RENAME FROM POST_IMG
 	</select>
+
+	<!-- 밴드 내 모든 이미지 조회(앨범) -->
+	<select id="selectImageList" resultMap="postImage_rm">
+		SELECT IMG_NO, POST_NO, (IMG_PATH || IMG_RENAME) POST_IMG
+		FROM POST_IMG
+		JOIN POST USING(POST_NO)
+		WHERE GROUP_NO = #{groupNo}
+		ORDER BY POST_NO DESC
+	</select>
+	
 </mapper>
