@@ -133,7 +133,7 @@ function selectBoardScroll(){
                             const postListInfo = document.createElement("div");
                             postListInfo.classList.add("post-list-info");
                             
-                            const boardDate = document.createElement("a");
+                            const boardDate = document.createElement("div");
                             boardDate.classList.add("post-info-date");
                             boardDate.innerText = post.postDate;
                             
@@ -376,7 +376,7 @@ reportBtn.addEventListener("click", () => {
     //             window.location.reload(true);
     //         }
     //     };
-    // }
+    // }author
 
 })();
 
@@ -389,6 +389,8 @@ let postDate = document.getElementById("postDate");
 let profileImg = document.getElementById("profile-img");
 const likeBtn = document.getElementById("likeBtn");
 const moreViewMenu = document.querySelector(".moreView-menu");
+
+let postMemberImg = document.querySelector(".postMember-img");
 
 const selectPostDetail = (postNo)=>{
     $.ajax({
@@ -404,6 +406,8 @@ const selectPostDetail = (postNo)=>{
             postContent.innerHTML = post.postContent;
             memberName.innerText = post.memberName;
             postDate.innerText = post.postDate;
+
+            postMemberImg.setAttribute("id", post.memberNo);
             if(post.memberImage !=null) {
                 profileImg.setAttribute("src", post.memberImage);
             }else {
