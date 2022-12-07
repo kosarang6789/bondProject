@@ -37,6 +37,7 @@ public class Report {
 	
 	// 기타
 	private String targetName; // 신고 대상 이름
+	private int waitingReports; // 신고 여부
 	
 	
 	// mapper에 추가하세요

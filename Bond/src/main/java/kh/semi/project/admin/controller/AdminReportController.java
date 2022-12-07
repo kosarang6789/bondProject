@@ -8,7 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
+import com.google.gson.Gson;
 
 import kh.semi.project.admin.model.service.AdminReportService;
 import kh.semi.project.report.model.vo.Report;
@@ -43,6 +46,16 @@ public class AdminReportController {
 		int result = service.reportProcess(report, process);
 		
 		return "redirect:/admin/report/" + reportNo;
+	}
+	
+	
+	@PostMapping("/report/find/waiting")
+	@ResponseBody
+	public String findWaitingReports() {
+		// 미처리 신고 업무가 있는지 확인
+		int waitingReports = service.findWaitingReports();
+		
+		return new Gson().toJson(waitingReports);
 	}
 	
 	

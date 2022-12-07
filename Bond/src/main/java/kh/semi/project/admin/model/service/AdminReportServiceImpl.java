@@ -54,4 +54,10 @@ public class AdminReportServiceImpl implements AdminReportService {
 		return result;
 		
 	}
+	
+	// 미처리 신고업무 확인
+	@Override
+	public int findWaitingReports() {
+		return dao.findWaitingReports();
+	}
 }

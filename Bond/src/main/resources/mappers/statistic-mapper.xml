@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="statisticMapper">
+	
+	
+	<!-- Statistic VO -->
+	<resultMap type="Statistic" id="statistic_rm">
+	
+		<id property="statisticNo" column="STATISTIC_NO" />
+		
+		
+		<result property="todayDate" column="TODAY_DATE" />
+		<result property="weeklyDate" column="WEEKLY_DATE" />
+		
+		<!-- 게시글 -->
+		<result property="postCount" column="POST_COUNT" />
+		
+		<!-- 모임 차트 -->
+		<result property="topicName" column="TOPIC_NAME" />
+		<result property="groupCount" column="GROUP_COUNT" />
+		
+		<!-- 가입 / 탈퇴 회원 숫자 -->
+		<result property="memberSignUpCount" column="MEMBER_SIGNUP_COUNT" />
+		<result property="memberDelCount" column="MEMBER_DEL_COUNT" />
+		
+		<!-- 전체 -->
+		<result property="totalMemberCount" column="TOTAL_MEMBER_COUNT" />
+		<result property="totalGroupCount" column="TOTAL_GROUP_COUNT" />
+		<result property="totalPostCount" column="TOTAL_POST_COUNT" />
+
+		<!-- 일일 -->
+		<result property="todayMemberCount" column="TODAY_MEMBER_COUNT" />
+		<result property="todayGroupCount" column="TODAY_GROUP_COUNT" />
+		<result property="todayPostCount" column="TODAY_POST_COUNT" />
+		
+	</resultMap>
+	
+	
+	<!-- 주간 작성 목록 가져오기 -->
+	<select id="selectWeeklyPost" resultMap="statistic_rm">
+		SELECT TO_CHAR(SYSDATE-7, 'YYYY-MM-DD') AS WEEKLY_DATE, COUNT(*) AS POST_COUNT FROM "POST"
+		WHERE TO_CHAR(POST_DATE, 'YYYY-MM-DD') = TO_CHAR(SYSDATE-7, 'YYYY-MM-DD')
+		UNION ALL
+		SELECT TO_CHAR(SYSDATE-6, 'YYYY-MM-DD') AS WEEKLY_DATE, COUNT(*) AS POST_COUNT FROM "POST"
+		WHERE TO_CHAR(POST_DATE, 'YYYY-MM-DD') = TO_CHAR(SYSDATE-6, 'YYYY-MM-DD')
+		UNION ALL
+		SELECT TO_CHAR(SYSDATE-5, 'YYYY-MM-DD') AS WEEKLY_DATE, COUNT(*) AS POST_COUNT FROM "POST"
+		WHERE TO_CHAR(POST_DATE, 'YYYY-MM-DD') = TO_CHAR(SYSDATE-5, 'YYYY-MM-DD')
+		UNION ALL
+		SELECT TO_CHAR(SYSDATE-4, 'YYYY-MM-DD') AS WEEKLY_DATE, COUNT(*) AS POST_COUNT FROM "POST"
+		WHERE TO_CHAR(POST_DATE, 'YYYY-MM-DD') = TO_CHAR(SYSDATE-4, 'YYYY-MM-DD')
+		UNION ALL
+		SELECT TO_CHAR(SYSDATE-3, 'YYYY-MM-DD') AS WEEKLY_DATE, COUNT(*) AS POST_COUNT FROM "POST"
+		WHERE TO_CHAR(POST_DATE, 'YYYY-MM-DD') = TO_CHAR(SYSDATE-5, 'YYYY-MM-DD')
+		UNION ALL
+		SELECT TO_CHAR(SYSDATE-2, 'YYYY-MM-DD') AS WEEKLY_DATE, COUNT(*) AS POST_COUNT FROM "POST"
+		WHERE TO_CHAR(POST_DATE, 'YYYY-MM-DD') = TO_CHAR(SYSDATE-2, 'YYYY-MM-DD')
+		UNION ALL
+		SELECT TO_CHAR(SYSDATE-1, 'YYYY-MM-DD') AS WEEKLY_DATE, COUNT(*) AS POST_COUNT FROM "POST"
+		WHERE TO_CHAR(POST_DATE, 'YYYY-MM-DD') = TO_CHAR(SYSDATE-1, 'YYYY-MM-DD')
+		UNION ALL
+		SELECT TO_CHAR(SYSDATE-0, 'YYYY-MM-DD') AS WEEKLY_DATE, COUNT(*) AS POST_COUNT FROM "POST"
+		WHERE TO_CHAR(POST_DATE, 'YYYY-MM-DD') = TO_CHAR(SYSDATE-0, 'YYYY-MM-DD')
+	</select>
+	
+	<!-- 모임 목록 가져오기 -->
+	<select id="selectTopicDoughnut" resultMap="statistic_rm">
+		SELECT TOPIC_NAME, COUNT(GROUP_NO) AS GROUP_COUNT
+		FROM "GROUP"
+		JOIN "GROUP_TOPIC" USING(TOPIC_CODE)
+		GROUP BY TOPIC_NAME
+	</select>
+	
+	<!-- 회원 가입 목록 가져오기 -->
+	<select id="selectWeeklysignUpMembers" resultMap="statistic_rm">
+		SELECT TO_CHAR(SIGNUP_DATE, 'YYYY-MM-DD') AS WEEKLY_DATE, 
+	   			COUNT(MEMBER_NAME) MEMBER_SIGNUP_COUNT
+		FROM "MEMBER"
+		WHERE SIGNUP_DATE >= SYSDATE - 7
+		GROUP BY TO_CHAR(SIGNUP_DATE, 'YYYY-MM-DD')
+		ORDER BY WEEKLY_DATE ASC
+	</select>
+	
+	<!-- 탈퇴 회원 목록 가져오기 -->
+	<select id="selectWeeklyDelMembers" resultMap="statistic_rm">
+		SELECT TO_CHAR(SIGNUP_DATE, 'YYYY-MM-DD') AS WEEKLY_DATE, 
+			   COUNT(MEMBER_NAME) MEMBER_DEL_COUNT
+		FROM "MEMBER"
+		WHERE SIGNUP_DATE >= SYSDATE - 7
+		AND MEMBER_STATUS = 2
+		GROUP BY TO_CHAR(SIGNUP_DATE, 'YYYY-MM-DD')
+		ORDER BY WEEKLY_DATE ASC
+	</select>
+	
+	<!-- 전 기간 통계 가져오기 -->
+	<select id="selectAllPeriodGeneral" resultMap="statistic_rm">
+		SELECT (SELECT COUNT(MEMBER_NO) FROM "MEMBER" WHERE MEMBER_STATUS IN ('0', '1')) AS TOTAL_MEMBER_COUNT,
+				(SELECT COUNT(GROUP_NO) FROM "GROUP" WHERE GROUP_STATUS IN ('0', '1')) AS TOTAL_GROUP_COUNT,
+				(SELECT COUNT(POST_NO) FROM "POST" WHERE POST_DEL_YN = 'Y') AS TOTAL_POST_COUNT
+		FROM DUAL
+	</select>
+	
+	<!-- 일일 기간 통계 가져오기 -->
+	<select id="selectTodayGeneral" resultMap="statistic_rm">
+		SELECT (SELECT COUNT(MEMBER_NO) 
+				FROM "MEMBER" 
+				WHERE MEMBER_STATUS IN ('0', '1')
+				AND TO_CHAR(SIGNUP_DATE, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD'))
+				AS TODAY_MEMBER_COUNT,
+				--
+				(SELECT COUNT(GROUP_NO) 
+				 FROM "GROUP" 
+				 WHERE GROUP_STATUS IN ('0', '1')
+				 AND TO_CHAR(GROUP_DATE, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD')) 
+				 AS TODAY_GROUP_COUNT,
+				 --
+				(SELECT COUNT(POST_NO) 
+				 FROM "POST" 
+				 WHERE POST_DEL_YN = 'Y'
+				 AND TO_CHAR(POST_DATE, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD')) 
+				 AS TODAY_POST_COUNT,
+				 TO_CHAR(SYSDATE, 'YYYY-MM-DD') AS TODAY_DATE
+		FROM DUAL
+	</select>
+	
+</mapper>

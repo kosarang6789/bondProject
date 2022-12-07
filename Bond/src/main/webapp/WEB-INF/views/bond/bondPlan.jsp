@@ -70,7 +70,8 @@
             </aside>
 
             <!-- 2번 영역 -->
-            <main id="boardPlan">
+            <%-- <main id="boardPlan"> --%>
+            <main id="board-list">
                 <!-- fullcalendar -->
                 <div id='calendar'></div>
             </main>
