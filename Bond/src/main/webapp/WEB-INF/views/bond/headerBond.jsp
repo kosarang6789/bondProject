@@ -85,17 +85,4 @@
 </body>
 </html>
 
-<script>
-    var header = document.getElementById("myDIV");
-    var btns = document.getElementsByClassName("btn");
-    for (var i = 0; i < btns.length; i++) {
-    btns[i].addEventListener("click", function() {
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-    });
-}
-</script>
-
-
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
