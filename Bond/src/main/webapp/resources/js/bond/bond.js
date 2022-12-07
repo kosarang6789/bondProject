@@ -102,6 +102,7 @@ function selectBoardScroll(){
                             // 2-1) uprofile
                             const uprofile = document.createElement("div");
                             uprofile.classList.add("uprofile");
+                            uprofile.setAttribute("id", post.memberNo);
                             
                             // 프로필 이미지
                             const profileImage = document.createElement("img");
