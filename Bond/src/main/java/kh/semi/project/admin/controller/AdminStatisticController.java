@@ -1,6 +1,7 @@
 package kh.semi.project.admin.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,13 +24,13 @@ public class AdminStatisticController {
 	/** 게시글 작성 개수 리스트 가져오기
 	 * @return
 	 */
-	@GetMapping("/statistic/weekely/post")
+	@GetMapping("/statistic/weekly/post")
 	@ResponseBody
 	public String selectWeeklyPost() {
 		
-		List<Statistic> weekelyPostList = service.selectWeeklyPost();
+		List<Statistic> weeklyPostList = service.selectWeeklyPost();
 		
-		return new Gson().toJson(weekelyPostList);
+		return new Gson().toJson(weeklyPostList);
 	}
 	
 	
@@ -45,12 +46,40 @@ public class AdminStatisticController {
 		return new Gson().toJson(topicDoughnutList);
 	}
 	
-	@GetMapping("/statistic/weekely/members")
+	/** 주간 회원 가져오기
+	 * @return
+	 */
+	@GetMapping("/statistic/weekly/members")
 	@ResponseBody
 	public String selectWeeklyMembers() {
 		
-		List<Statistic> weeklyMembers = service.selectWeeklyMembers();
+		Map<String, Object> weeklyMembersMap = service.selectWeeklyMembers();
 		
-		return new Gson().toJson(weeklyMembers);
+		return new Gson().toJson(weeklyMembersMap);
+	}
+	
+	/** 전체 수 가져오기(회원, 모임, 게시글)
+	 * @return
+	 */
+	@GetMapping("/statistic/allPeriod/general")
+	@ResponseBody
+	public String selectAllPeriodGeneral() {
+		
+		List<Statistic> allPeriodGeneral = service.selectAllPeriodGeneral();
+		
+		return new Gson().toJson(allPeriodGeneral);
+	}
+	
+	/** 일일 수 가져오기(회원, 모임, 게시글)
+	 * @return
+	 */
+	@GetMapping("/statistic/today/general")
+	@ResponseBody
+	public String selectTodayGeneral() {
+		
+		List<Statistic> todayGeneral = service.selectTodayGeneral();
+		
+		return new Gson().toJson(todayGeneral);
+		
 	}
 }

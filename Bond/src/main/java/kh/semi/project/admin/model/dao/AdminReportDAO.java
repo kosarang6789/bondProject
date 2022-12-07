@@ -45,4 +45,11 @@ public class AdminReportDAO {
 	public int updateExpireDate(Report report) {
 		return sqlSession.update("adminMapper.updateExpireDate", report);
 	}
+
+	/** 미처리 신고업무 확인
+	 * @return
+	 */
+	public int findWaitingReports() {
+		return sqlSession.selectOne("adminMapper.findWaitingReports");
+	}
 }

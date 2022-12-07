@@ -31,9 +31,31 @@ public class AdminStatisticDAO {
 	/** 주간 가입 통계
 	 * @return
 	 */
-	public List<Statistic> selectWeeklyMembers() {
-		return sqlSession.selectList("statisticMapper.selectWeeklyMembers");
+	public List<Statistic> selectWeeklysignUpMembers() {
+		return sqlSession.selectList("statisticMapper.selectWeeklysignUpMembers");
 	}
+	
+	/** 주간 탈퇴 통계
+	 * @return
+	 */
+	public List<Statistic> selectWeeklyDelMembers() {
+		return sqlSession.selectList("statisticMapper.selectWeeklyDelMembers");
+	}
+
+	/** 전체 수 가져오기(회원, 모임, 게시글)
+	 * @return
+	 */
+	public List<Statistic> selectAllPeriodGeneral() {
+		return sqlSession.selectList("statisticMapper.selectAllPeriodGeneral");
+	}
+
+	/** 일일 수 가져오기(회원, 모임, 게시글)
+	 * @return
+	 */
+	public List<Statistic> selectTodayGeneral() {
+		return sqlSession.selectList("statisticMapper.selectTodayGeneral");
+	}
+	
 	
 	
 }
