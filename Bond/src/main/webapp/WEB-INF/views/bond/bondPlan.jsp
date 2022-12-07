@@ -100,24 +100,23 @@
 
             <!-- 3번 영역 -->
             <div id="banner">
-                <div id="band-photo-area">
+                <%-- <div id="band-photo-area">
                     <section class="band-photo">
                         <h2 class="tit">최근 사진</h2>
                         <div class="photo-body">
                             <div class="photo-list">
-                                <a href="#" class="banner-box">
-                                    <img src="/resources/images/bond/banner.jpeg" class="banner-img">
-                                </a>
-                                <span class="no-img"></span>
-                                <span class="no-img"></span>
-                                <span class="no-img"></span>
-                                <span class="no-img"></span>
-                                <span class="no-img"></span>
+                                <ul>
+                                    <c:forEach var="image" items="${recentImages}">
+                                        <li class="banner-box">
+                                            <img src="${image.postImage}" class="banner-img">
+                                        </li>
+                                    </c:forEach>
+                                </ul>
                             </div>
                         </div>
                         <a href="#" class="more-button">더보기</a>
                     </section>
-                </div>
+                </div> --%>
 
                 <!-- 다가오는 일정창 -->
                 <div id="band-soon-plan-area">

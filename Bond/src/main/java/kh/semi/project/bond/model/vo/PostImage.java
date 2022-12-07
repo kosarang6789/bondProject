@@ -25,5 +25,7 @@ public class PostImage {
 
 	// 관리자 페이지 게시글 사진 출력용입니다..
 	private String imageFullName;
+
 	private String postImage;
+
 }
