@@ -56,7 +56,10 @@
       <id property="imageNo" column="IMG_NO"/>
       <result property="imagePath" column="IMG_PATH"/>
       <result property="imageRename" column="IMG_RENAME"/>
+      <result property="postNo" column="POST_NO" />
       <result property="postImage" column="POST_IMG"/>
+      <result property="memberName" column="MEMBER_NAME" />
+			<result property="memberImage" column="MEMBER_IMG" />
    </resultMap>
 	
 	<!-- 게시글 수 조회 -->
@@ -233,6 +236,18 @@
 		JOIN POST USING(POST_NO)
 		WHERE GROUP_NO = #{groupNo}
 		ORDER BY POST_NO DESC
+	</select>
+	
+	<select id="selectImageDetail" resultMap="postImage_rm">
+		SELECT (IMG_PATH || IMG_RENAME) POST_IMG, PI.POST_NO, MEMBER_NAME,
+			(SELECT MEMBER_IMG_PATH || MEMBER_IMG_RENAME 
+			FROM MEMBER_IMG MI
+			WHERE MI.MEMBER_NO = M.MEMBER_NO) MEMBER_IMG
+		FROM POST_IMG PI
+		JOIN POST P ON(P.POST_NO = PI.POST_NO)
+		JOIN "MEMBER" M ON(M.MEMBER_NO = P.MEMBER_NO)
+		WHERE IMG_NO=#{imageNo}
+	
 	</select>
 	
 </mapper>

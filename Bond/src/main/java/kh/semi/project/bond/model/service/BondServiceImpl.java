@@ -141,17 +141,11 @@ public class BondServiceImpl implements BondService{
 		return dao.selectImageList(groupNo);
 	}
 
-
-
-
-
-
 	
-	
+	// 선택한 이미지 조회
+	@Override
+	public PostImage selectImageDetail(int imageNo) {
+		return dao.selectImageDetail(imageNo);
+	}
 
-
-
-	
-	
-	
 }

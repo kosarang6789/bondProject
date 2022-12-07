@@ -113,6 +113,12 @@ function selectBoardScroll(){
                                 profileImage.setAttribute("src", "/resources/images/member/profile/defaultProfile.png");
                             }
                             profileImage.classList.add("uprofile-inner");
+                            const modalMemPro = document.querySelector(".modalMemPro");
+                            profileImage.addEventListener("click", ()=>{
+                                modalMemPro.classList.add("show");
+                                modalMemPro.classList.remove("hidden");
+                                selectMemPro(post.memberNo);
+                            });
                             
                             // 2-2) post-info
                             const postInfo = document.createElement("div");
