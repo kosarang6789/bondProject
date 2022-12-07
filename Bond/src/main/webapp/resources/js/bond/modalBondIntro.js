@@ -3,8 +3,8 @@
 
 const modalBondIntro = document.querySelector(".modalBondIntro");
 
-if(document.querySelector(".sidebar-under-icon") != null){
-    const viewIntroBtn = document.querySelector(".sidebar-under-icon");
+if(document.querySelector(".more-link modalInfo") != null){
+    const viewIntroBtn = document.querySelector(".more-link modalInfo");
     viewIntroBtn.addEventListener("click", ()=>{
         modalBondIntro.classList.add("show");
         modalBondIntro.classList.remove("hidden");

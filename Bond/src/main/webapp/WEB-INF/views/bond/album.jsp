@@ -48,12 +48,12 @@
                     </div>
 
                     <div class="sidebar-under-icon">
-                        <div class="band-setting-section">
+                        <%-- <div class="band-setting-section">
                             <a href="#" class="band-setting-link sidebar-font"> 
                                 <i class="fa-solid fa-gear sidbar-icon"></i>밴드 설정
                             </a>
                             
-                        </div>
+                        </div> --%>
                     </div>
                 </div>
             </aside>
