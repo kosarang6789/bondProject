@@ -31,4 +31,13 @@ window.addEventListener("click",e=>{
 });
 
 
+// openNo에만 있는 empty 버튼
+if(document.querySelector(".empty") != null){
+    document.querySelector(".empty").addEventListener("click", ()=>{
+        joSeModal.classList.add("show");
+        joSeModal.classList.remove("hidden");
+    })
+};
+
+
 

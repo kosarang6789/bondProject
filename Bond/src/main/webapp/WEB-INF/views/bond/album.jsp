@@ -10,6 +10,7 @@
     <title>모임이 쉬워진다 | BOND</title>
 
     <link rel="stylesheet" href="/resources/css/bond/album.css">
+    <link rel="stylesheet" href="/resources/css/bond/modalBondIntro.css">
     <script src="https://kit.fontawesome.com/1ce4f19a7a.js" crossorigin="anonymous"></script>
 </head>
 
@@ -46,34 +47,12 @@
                         <a href="#" class="more-link">...더보기</a>
                     </div>
 
-                    <div class="btn-box">
-                        <button type="button" class="write-button">글쓰기</button>
-                        <p class="box-desc">
-                            누구나 밴드를 검색해 찾을 수 있고, 밴드 소개와 게시글을 볼 수 있습니다.
-                        </p>
-                    </div>
-
                     <div class="sidebar-under-icon">
                         <div class="band-setting-section">
                             <a href="#" class="band-setting-link sidebar-font"> 
                                 <i class="fa-solid fa-gear sidbar-icon"></i>밴드 설정
                             </a>
                             
-                        <div class="band-setting-list">
-                            <ul class="band-setting-item">
-                                <li>
-                                    <a href="#" class="report-band sidebar-font">
-                                        <i class="fa-solid fa-bell sidbar-icon"></i>신고하기
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#" class="leave-band sidebar-font">
-                                        <i class="fa-solid fa-person-walking-arrow-right sidbar-icon"></i>탈퇴하기
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>  
                         </div>
                     </div>
                 </div>
@@ -182,6 +161,10 @@
                 </button>
             </a>
         </div>
+
+    <%-- 본드 정보 보기 모달 --%>
+    <jsp:include page="/WEB-INF/views/bond/modalBondIntro.jsp"/>
+    <script src="/resources/js/bond/modalBondIntro.js"></script>
 
         
     <script src="/resources/js/bond/album.js"></script>

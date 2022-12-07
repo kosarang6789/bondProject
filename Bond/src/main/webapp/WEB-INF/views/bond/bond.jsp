@@ -14,6 +14,7 @@
 
     <link rel="stylesheet" href="/resources/css/bond/bond.css">
     <link rel="stylesheet" href="/resources/css/bond/Modal-jose.css"><%-- 탈퇴모달 --%>
+    <link rel="stylesheet" href="/resources/css/bond/modalBondIntro.css">
     <script src="https://kit.fontawesome.com/1ce4f19a7a.js" crossorigin="anonymous"></script>
 
 </head>
@@ -47,7 +48,7 @@
 
                     <div class="band-info">
                         <p class="band-description">${groupInfo.groupComment}</p>
-                        <a href="#" class="more-link">...더보기</a>
+                        <a href="#" class="more-link modalInfo">...더보기</a>
                     </div>
 
                     <div class="btn-box">
@@ -59,11 +60,11 @@
 
                     <div class="sidebar-under-icon">
                         <div class="band-setting-section">
-                            <!--<a href="/bond/bondIntro" class="band-setting-link sidebar-font"> -->
-                            <a href="/bond/${groupNo}/bond-bondIntro" class="band-setting-link sidebar-font"> 
-                                <i class="fa-solid fa-gear sidbar-icon"></i>밴드 설정
-                            </a>
-                            
+                            <c:if test="${groupInfo.leaderNo == loginMember.memberNo}">
+                                <a href="/bond/${groupNo}/bond-bondIntro" class="band-setting-link sidebar-font"> 
+                                    <i class="fa-solid fa-gear sidbar-icon"></i>밴드 설정
+                                </a>
+                            </c:if>   
                         <div class="band-setting-list">
                             <ul class="band-setting-item">
                                 <li>
@@ -328,6 +329,10 @@
 
     <%-- 본드 탈퇴 모달 --%>
     <jsp:include page="/WEB-INF/views/bond/secessionModal.jsp"/>
+
+    <%-- 본드 정보 보기 모달 --%>
+    <jsp:include page="/WEB-INF/views/bond/modalBondIntro.jsp"/>
+    <script src="/resources/js/bond/modalBondIntro.js"></script>
 
     <script>
         let cp = 0;
