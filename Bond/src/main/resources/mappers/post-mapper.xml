@@ -68,7 +68,7 @@
 	
 	<!-- 게시글 조회 -->
 	<select id="selectBoardDetail"  resultMap="post_rm">
-		SELECT POST_NO, MEMBER_NAME, POST_CONTENT,
+		SELECT POST_NO, MEMBER_NAME, POST_CONTENT, P.MEMBER_NO,
 			<![CDATA[
 			CASE  
 		      WHEN SYSDATE - POST_DATE < 1/24/60
