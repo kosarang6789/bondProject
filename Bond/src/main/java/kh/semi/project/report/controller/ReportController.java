@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kh.semi.project.admin.AdminUtil;
 import kh.semi.project.bond.model.vo.Group;
 import kh.semi.project.bond.model.vo.GroupMemberList;
 import kh.semi.project.bond.model.vo.Post;
@@ -70,12 +71,15 @@ public class ReportController {
 		
 		if(target.equals("group")) { // 타겟이 모임인 경우
 			Group group = service.getGroupInfo(input);
+			group.setGroupComment(AdminUtil.newLineClear2(group.getGroupComment()));
 			map.put("group", group);
 			typeCode = 2;
 		}
 		
 		if(target.equals("post")) { // 타겟이 게시글인 경우
 			Post post = service.getPostInfo(input);
+			post.setPostContent(AdminUtil.newLineClear2(post.getPostContent()));
+			post.setPostContent(AdminUtil.pTagClear(post.getPostContent()));
 			map.put("post", post);
 			typeCode = 3;
 		}

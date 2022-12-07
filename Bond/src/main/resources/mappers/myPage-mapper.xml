@@ -39,7 +39,8 @@
 	<!-- 회원 탈퇴 -->
 	<update id="secession">
 		UPDATE MEMBER SET
-		MEMBER_STATUS = '2'
+		MEMBER_STATUS = '2',
+		DEL_DATE = SYSDATE
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
 	
