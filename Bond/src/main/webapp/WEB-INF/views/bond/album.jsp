@@ -94,7 +94,6 @@
                                 <h2 class="title">
                                     <a href="#">
                                         <strong>전체사진</strong>
-                                        <em>5</em>
                                     </a>
                                 </h2>
                             </div>
@@ -185,5 +184,5 @@
         </div>
 
         
-    <script src="/resources/js/bond/bond.js"></script>
+    <script src="/resources/js/bond/album.js"></script>
 </body>
