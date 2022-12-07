@@ -425,7 +425,13 @@ const selectPostDetail = (postNo)=>{
             } else {
                 const reportMenu = document.createElement("button");
                 reportMenu.innerText = "신고하기"
+                // reportMenu.setAttribute("src", "/report/post/"+ post.postNo);
+                reportMenu.addEventListener("click", () => {
+                    const url = "/report/post/"+ post.postNo; 
+                    open(url, "신고하기", "width=500px, height=600px")
+                });
                 moreViewMenu.append(reportMenu);
+                
             }
 
         },
@@ -491,40 +497,6 @@ const deletePost= (postNo)=>{
         })
     }
 };
-
-// 게시글 수정
-const updatePost = (postNo, btn)=>{
-
-    // btn.addEventListener("onclick", modal('postUpdate-modal'));
-    
-    // $.ajax({
-    //     url: "/post/content",
-    //     data: {"postNo": selectPostNo},
-    //     type: "GET",
-    //     dataType : "JSON",
-    //     success: (post)=>{
-    //         const updatePostContent = document.getElementsByClassName("note-editable");
-    //         updatePostContent.value = post.postContent;
-    //     }
-    // })
-
-    // $.ajax({
-    //     url:"/post/update",
-    //     data: {"postNo": selectPostNo},
-    //     type: "POST",
-    //     success: (result)=>{
-    //         if(result>0){
-    //             alert("수정되었습니다.");
-    //             window.location.reload(true);
-    //         }else{
-    //             alert("수정실패");
-    //         }
-    //     },
-    //     error: ()=>{
-    //         console.log("수정시 오류발생");
-    //     }
-    // })
-}
 
 // 게시글 상세조회 메뉴
 const postmoreView = document.querySelector("[name=moreView]");
@@ -625,12 +597,19 @@ const selectReplyList=(postNo)=>{
                         
                         childReplyBtn.setAttribute("onclick", "showInsertReply("+reply.replyNo+", this)");
                         childReplyBtn.innerText="•답글쓰기";
-        
+                        
+                        if(memberNo != reply.memberNo){
+                            const replyReportBtn = document.createElement("button");
+                            // reportBtn.setAttribute("onclick", )
+                            replyReportBtn.innerText="•신고";
+                            replyReportBtn.addEventListener("click", () => {
+                                const url = "/report/member/"+ reply.memberNo; 
+                                open(url, "신고하기", "width=500px, height=600px")
+                            })
+                            replyBtn.append(childReplyBtn, replyReportBtn);
+                        }
                         // 신고버튼
-                        const reportBtn = document.createElement("button");
-                        // reportBtn.setAttribute("onclick", )
-                        reportBtn.innerText="•신고";
-                        replyBtn.append(childReplyBtn, reportBtn);
+                        replyBtn.append(childReplyBtn);
                     }
 
                     // 수정/삭제버튼
@@ -687,8 +666,9 @@ addReply.addEventListener("click", ()=>{
         type : "post",
         success : (result)=>{
             if(result>0){
+                const rCount = document.getElementById("commentCount");
+                rCount.innerText = Number(rCount.innerHTML) + 1;
                 alert("댓글이 등록되었습니다.");
-
                 replyWriteContent.value="";
                 selectReplyList(selectPostNo);
             } else {

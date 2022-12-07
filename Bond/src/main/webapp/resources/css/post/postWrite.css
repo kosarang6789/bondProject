@@ -44,31 +44,10 @@
     border-radius: 3px
 }
 
-/* 
-textarea{
-    resize: none;
-    width: 100%;
-    height: 480px;
-    font-size: 14px;
-    padding: 25px 25px;
-    border: none;
-    line-height: 20px;
-}
-
-textarea:focus{ outline: none; } */
-
-/* 툴바 */
-/* .postWrite-toolbar{
-    display: flex;
-    width: 100%;
-    align-items: center;
-    margin-bottom: 10px;
-} */
-
 .postWrite-bottom{
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-    /* border-top: 1px solid #ddd; */
+    justify-content: flex-end;
     height: 70px;
     padding-bottom: 10px;
 }
@@ -76,22 +55,7 @@ textarea:focus{ outline: none; } */
 .postWrite-btn:active{
     transform: scale(0.95);
 }
-.setup-btn{
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-.write-setup{
-    cursor: pointer;
-    display: none;
-}
-.fa-toggle-off{
-    font-size: 20px;
-    padding-right: 10px;
-    margin-left: 26px;
-    color: #777;
-    cursor: pointer;
-}
+
 
 .postWrite-btn{
     background-color: #21c531;

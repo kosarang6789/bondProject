@@ -37,9 +37,9 @@
                 </section>
                 
                 <div class="postWrite-bottom">
-                    <div class="setup-btn"> <label for="reply-yn"><i class="fa-solid fa-toggle-off"></i><!-- 설정 --></label>
+                    <%-- <div class="setup-btn"> <label for="reply-yn"><i class="fa-solid fa-toggle-off"></i><!-- 설정 --></label>
                         <input type="checkbox" class="write-setup" id="reply-yn" name="replayYN">댓글 사용</input>
-                    </div>
+                    </div> --%>
                     <div class="submit-btn">
                         <button type="button" onclick="submitContent(postNo)" class="postWrite-btn">
                             <p>게시</p>
