@@ -415,6 +415,7 @@ main{
 .recommend-area{
     background-color: #eef0f3;
     padding: 35px 0 25px 0;
+    min-height: 500px;
 }
 
 .group-recommend{

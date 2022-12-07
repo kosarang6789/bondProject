@@ -7,4 +7,6 @@ public interface FindBondService {
 
 	List<Map<String, Object>> groupTopic(int topicCode);
 
+//	Map<String, Object> groupTopic(int topicCode, int cp);
+
 }

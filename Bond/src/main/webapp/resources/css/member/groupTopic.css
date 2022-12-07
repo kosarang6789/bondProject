@@ -6,19 +6,94 @@ a{
 
 h2{
     color: black;
-    font-size: 25px;
+    font-size: 27px;
     font-weight: 800;
-    margin-left: 5px;
+    text-align: center;
+}
+
+
+
+.nav-area{
+    position: sticky;
+    display: block;
+    z-index: 1500;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+    border-top: 1px solid rgba(0,0,0,.05);
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+nav{
+    display: flex;
+    width: 1140px;
+    justify-content: center;
+}
+
+nav a{
+    padding-bottom: 10px;
+    width: 92px;
+}
+
+.topic-nav{
+    margin-top: 10px;
+}
+
+.topic-nav a{
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    margin-right: 20px;
+    color:#bbb;
+    display: inline-block;
+
+}
+
+
+nav>.mainPage-menu>.active{
+    color:#222;
+    position: relative;
+}
+
+nav>.mainPage-menu>.active::after{
+    content: "";
+    border-top: 4px solid #333;
+    width: 100%;
+    display: block;
+    position: absolute;
+    bottom: 2px;
+}
+
+nav>.mainPage-menu>a:hover{
+    color: #222;
+    font-weight: 800;
+}
+
+.mainPage-optionBox{
+    padding-top: 5px;
+}
+
+nav>.mainPage-optionBox>a{
+    font-size:15px;
+    font-weight: 400;
+    color: #444;
+    text-align: left;
+    padding: 0 10px;
 }
 
 .search-area{
-    top: 100px;
+    top: 70px;
     width: 1140px;
     min-height: 1000px;
     position: relative;
     display: block;
     margin: auto;
     padding-bottom: 100px;
+}
+
+.list-wrap{
+    width: 1000px;
+    margin: 0 auto;
 }
 
 .list{
