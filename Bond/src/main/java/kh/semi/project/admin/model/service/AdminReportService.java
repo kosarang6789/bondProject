@@ -15,4 +15,10 @@ public interface AdminReportService {
 	 */
 	int reportProcess(Report report, String process);
 
+	
+	/** 미처리 신고 업무 확인
+	 * @return
+	 */
+	int findWaitingReports();
+
 }

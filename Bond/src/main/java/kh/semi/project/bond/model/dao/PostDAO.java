@@ -127,7 +127,7 @@ public class PostDAO {
 	 * @return
 	 */
 	public List<String> selectPostImageList() {
-		return sqlSession.selectOne("postMapper.selectPostImageList");
+		return sqlSession.selectList("postMapper.selectPostImageList");
 	}
 
 	
