@@ -132,18 +132,28 @@
 }
 
 #hotUnit{
-    color: rgb(255, 99, 132);
+    color: red;
     width: 40%;
 }
 
 #coldUnit{
+    color: blue;
     width: 40%;
+}
+
+#signUpUnit{
+    color: blue;
+
+}
+
+#delUnit{
+    color: red;
 }
 
 
 /* 차트 스타일 */
 #bar{
-    width: 500px;
+    height: 260px;
 }
 
 #line{

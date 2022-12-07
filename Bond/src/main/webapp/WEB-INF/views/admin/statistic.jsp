@@ -31,9 +31,6 @@
             <section class="content">
                 <div class="content-header">
                     <h3>통계</h3>
-                    <a href="/admin/mainPage" id="list-btn">
-                        목록
-                    </a>
                 </div>
 
                 <div class="content-body">
