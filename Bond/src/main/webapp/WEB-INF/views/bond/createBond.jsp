@@ -62,58 +62,58 @@
                                             게임</label>
                                         </li>
                                         <li>
-                                            <input type="radio" id="art" class="category-list" name="topicCode" value=4>
+                                            <input type="radio" id="art" class="category-list" name="topicCode" value=5>
                                             <label for="art">
                                                 <i class="fa-solid fa-palette"></i>
                                             문화/예술</label>
                                         </li>
                                         <li>
-                                            <input type="radio" id="self-imp" class="category-list" name="topicCode" value=5>
+                                            <input type="radio" id="self-imp" class="category-list" name="topicCode" value=12>
                                             <label for="self-imp">
                                                 <i class="fa-solid fa-book"></i>
-                                            자기개발</label>
+                                            자기계발</label>
                                         </li>
                                         <li>
-                                            <input type="radio" id="camping" class="category-list" name="topicCode" value=6>
+                                            <input type="radio" id="camping" class="category-list" name="topicCode" value=7>
                                             <label for="camping">
                                                 <i class="fa-solid fa-campground"></i>
                                             여행/캠핑</label>
                                         </li>
                                         <li>
-                                            <input type="radio" id="photo" class="category-list" name="topicCode" value=7>
+                                            <input type="radio" id="photo" class="category-list" name="topicCode" value=10>
                                             <label for="photo">
                                                 <i class="fa-solid fa-photo-film"></i>
                                             사진</label>
                                         </li>
                                         <li>
-                                            <input type="radio" id="farming" class="category-list" name="topicCode" value=8>
+                                            <input type="radio" id="farming" class="category-list" name="topicCode" value=6>
                                             <label for="farming">
                                                 <i class="fa-solid fa-wheat-awn"></i>
-                                            농예</label>
+                                            자연/귀농</label>
                                         </li>
                                         <li>
-                                            <input type="radio" id="cook" class="category-list" name="topicCode" value=9>
+                                            <input type="radio" id="cook" class="category-list" name="topicCode" value=8>
                                             <label for="cook">
                                                 <i class="fa-solid fa-kitchen-set"></i>
                                             요리</label>
                                         </li>
                                         <li>
-                                            <input type="radio" id="interior" class="category-list" name="topicCode" value=10>
+                                            <input type="radio" id="interior" class="category-list" name="topicCode" value=11>
                                             <label for="interior">
                                                 <i class="fa-solid fa-paint-roller"></i>
                                             인테리어</label>
                                         </li>
                                         <li>
-                                            <input type="radio" id="fan" class="category-list" name="topicCode" value=11>                                               
+                                            <input type="radio" id="fan" class="category-list" name="topicCode" value=4>                                               
                                             <label for="fan">
                                                 <i class="fa-solid fa-face-grin-hearts"></i>
                                             팬클럽</label>
                                         </li>
                                         <li>
-                                            <input type="radio" id="economy" class="category-list" name="topicCode" value=12>
+                                            <input type="radio" id="economy" class="category-list" name="topicCode" value=9>
                                             <label for="economy">
                                                 <i class="fa-solid fa-comments-dollar"></i>
-                                            경제</label>
+                                            경제/재테크</label>
                                         </li>
                                     </ul>
                                 </div>

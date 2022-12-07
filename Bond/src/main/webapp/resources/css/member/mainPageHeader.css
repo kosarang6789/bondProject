@@ -48,8 +48,8 @@ header{
     list-style: none;
     display: flex;
     align-items: center;
-    width: 160px;
     position: relative;
+    justify-content: flex-end;
 }
 
 .chat-icon{
@@ -63,7 +63,6 @@ header{
 }
 
 .widget-item{
-    width: 33.3%;
     height: 100%;
 }
 

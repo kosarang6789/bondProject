@@ -67,7 +67,7 @@
                                     </c:choose>
                                     <div class="bond-count-leader">
                                         <c:choose>
-                                            <c:when test="${group.memberCount}">
+                                            <c:when test="${not empty group.memberCount}">
                                                 <div class="bond-count">멤버 ${group.memberCount} </div>
                                             </c:when>
                                             <c:otherwise>
