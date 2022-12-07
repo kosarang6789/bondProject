@@ -148,7 +148,7 @@ nav{
 }
 
 
-#list-nav > ul{
+#list-nav > div{
     list-style: none;
     display: flex;
     height: 35px;
@@ -156,12 +156,12 @@ nav{
     align-items: center;
 }
 
-nav li{
+.btn{
     margin: 0px 35px;
 }
 
 
-nav li > a{
+.btn > a{
     text-decoration: none;
     font-size: 15px;
     font-weight: bold;
@@ -171,14 +171,7 @@ nav li > a{
     display: inline-block;
 }
 
-.active::after{
+a:hover{
     color: white;
-    position: relative;
-    font-weight: 800;
-}
-
-.active:hover{
-    color: white;
-    position: relative;
     font-weight: 800;
 }

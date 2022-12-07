@@ -1,31 +1,37 @@
 // 양 옆 고정 + 가운데만 스크롤 가능
 const leftSide = document.getElementById("info-inner");
 const center= document.getElementById("board-list");
-const rightSide = document.getElementById("band-photo-area");
+// const rightSide = document.getElementById("banner");
+// const rightSide = document.getElementById("band-photo-area");
+const rightSide2 = document.getElementById("band-soon-plan-area");
 
 const centerWidth = center.offsetWidth;
 const leftSideWidth = leftSide.offsetWidth;
-const righthideWidth = rightSide.offsetWidth;
+const righthideWidth = rightSide2.offsetWidth;
 
 window.addEventListener("load", function () {
     leftSide.style.left = center.getBoundingClientRect().x - 18 - leftSideWidth + 'px';
-    rightSide.style.left = center.getBoundingClientRect().x + centerWidth + 18 + 'px';
+    // rightSide.style.left = center.getBoundingClientRect().x + centerWidth + 18 + 'px';
+    rightSide2.style.left = center.getBoundingClientRect().x + centerWidth + 18 + 'px';
 });
 
 window.addEventListener("resize", function () {
     leftSide.style.left = center.getBoundingClientRect().x - 18 - leftSideWidth + 'px';
-    rightSide.style.left = center.getBoundingClientRect().x + centerWidth + 18 + 'px';
+    // rightSide.style.left = center.getBoundingClientRect().x + centerWidth + 18 + 'px';
+    rightSide2.style.left = center.getBoundingClientRect().x + centerWidth + 18 + 'px';
 });
 
 window.addEventListener("scroll", function () {
 
     if (window.scrollX == 0) {
         leftSide.style.left = center.getBoundingClientRect().x - 18 - leftSideWidth + 'px';
-        rightSide.style.left = center.getBoundingClientRect().x + centerWidth + 18 + 'px';
+        // rightSide.style.left = center.getBoundingClientRect().x + centerWidth + 18 + 'px';
+        rightSide2.style.left = center.getBoundingClientRect().x + centerWidth + 18 + 'px';
     }
     else if (window.scrollX > 0) {
         leftSide.style.left = window.scrollX * -1 + "px";
-        rightSide.style.left = center.getBoundingClientRect().x + centerWidth + 18 + 'px';
+        // rightSide.style.left = center.getBoundingClientRect().x + centerWidth + 18 + 'px';
+        rightSide2.style.left = center.getBoundingClientRect().x + centerWidth + 18 + 'px';
     }
 });
 
