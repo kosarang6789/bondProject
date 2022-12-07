@@ -51,7 +51,11 @@
 		<result property="memberName" column="MEMBER_NAME" />
 		<result property="memberImage" column="MEMBER_IMG" />
 	</resultMap>
-	
+
+	<resultMap type="PostImage" id="postImg_rm">
+		<id property="imageNo" column="IMG_NO" />
+		<result property="imageRename" column="IMG_RENAME" />
+	</resultMap>
 	
 	<!-- 게시글 수 조회 -->
 	<select id="getPostCount" parameterType="_int" resultType="_int">
