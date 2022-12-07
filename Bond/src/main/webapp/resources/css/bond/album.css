@@ -194,6 +194,7 @@ body{
     position: relative;
     padding-bottom: 46px;
     float: left;
+    width: 100%;
 }
 
 .header-wrap{
