@@ -11,7 +11,7 @@
     <section class="profile">
         <!-- 내 정보 사진 -->
         <button type="button" class="box">
-            <img src="/resources/images/admin/admin-profile-icon.png" id="profile-photo">
+            <img src="${loginMember.profileImage}" id="profile-photo">
         </button>
     </section>
 </header>

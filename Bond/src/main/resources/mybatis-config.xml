@@ -28,6 +28,7 @@
 		<typeAlias type="kh.semi.project.report.model.vo.Report" alias="Report"/>		
 		<typeAlias type="kh.semi.project.plan.model.vo.Plan" alias="Plan"/>		
 		<typeAlias type="kh.semi.project.bond.model.vo.GroupMemberList" alias="GroupMemberList"/>		
+		<typeAlias type="kh.semi.project.admin.model.vo.Statistic" alias="Statistic"/>		
 	</typeAliases>
 	
 	<!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->
@@ -44,6 +45,7 @@
 		<mapper resource="/mappers/plan-mapper.xml"/>
 		<mapper resource="/mappers/bondJoinSece-mapper.xml"/>
 		<mapper resource="/mappers/reply-mapper.xml"/>
+		<mapper resource="/mappers/statistic-mapper.xml"/>
 		<!-- resources 폴더 -->
 	</mappers>
 </configuration>

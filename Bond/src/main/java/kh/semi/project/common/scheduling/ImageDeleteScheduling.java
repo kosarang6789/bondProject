@@ -43,7 +43,7 @@ public class ImageDeleteScheduling {
 		// * friendship.jpg, no-profile.png, select-photo.jpg, travel.jpg
 		
 		// 1-C. 게시물의 이미지 in DB
-//		List<String> postImageDBList = postService.selectPostImageList();
+		List<String> postImageDBList = postService.selectPostImageList();
 		// * none
 
 		
@@ -62,9 +62,9 @@ public class ImageDeleteScheduling {
 		List<File> groupFileList = Arrays.asList(groupArr);
 		
 		// 2-C. 서버에서 게시글 이미지를 조회, 배열로 반환 후 List로 변환
-//		String postImageStoragePath = application.getRealPath("/resources/images/post");
-//		File[] postArr = new File(postImageStoragePath).listFiles();
-//		List<File> postFileList = Arrays.asList(postArr);
+		String postImageStoragePath = application.getRealPath("/resources/images/post");
+		File[] postArr = new File(postImageStoragePath).listFiles();
+		List<File> postFileList = Arrays.asList(postArr);
 
 		
 		// 3. 삭제하면 안되는 이미지 리스트
@@ -111,14 +111,14 @@ public class ImageDeleteScheduling {
 		}
 		
 		// 4-C. 게시글 이미지 비교함
-//		if(!postFileList.isEmpty()) { // 서버 - 게시글 이미지 저장소에 파일이 있다면
-//			for(File file : postFileList) {
-//				String fileName = file.getName();
-//				if(postImageDBList.indexOf(fileName) == -1) {
-//					System.out.println("[게시글 이미지] " + fileName + "삭제댐");
-//					file.delete();
-//				}
-//			}
-//		}
+		if(!postFileList.isEmpty()) { // 서버 - 게시글 이미지 저장소에 파일이 있다면
+			for(File file : postFileList) {
+				String fileName = file.getName();
+				if(postImageDBList.indexOf(fileName) == -1) {
+					System.out.println("[게시글 이미지] " + fileName + "삭제댐");
+					file.delete();
+				}
+			}
+		}
 	}
 }

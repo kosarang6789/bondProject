@@ -140,3 +140,25 @@
 }
 
 /* end .sidebar */
+
+
+/* alarmDot */
+
+.report-menu{
+    position: relative;
+}
+
+#alarmDot{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #C4302B;
+    top : 10px;
+    right : 70px;
+
+    z-index: 98765;
+
+    display: none;
+}
+
