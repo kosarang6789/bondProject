@@ -37,11 +37,11 @@ public class ReportController {
 	@Autowired
 	private ReportService service;
 	
-	// 임시 신고 페이지1로 이동
-	@GetMapping("/tempReport")
-	public String goTempReport() {
-		return "report/tempReportPage";
-	}
+//	// 임시 신고 페이지1로 이동
+//	@GetMapping("/tempReport")
+//	public String goTempReport() {
+//		return "report/tempReportPage";
+//	}
 	
 	// 신고하기 페이지로 정보 전달
 	@GetMapping("/{target}/{input}")
@@ -146,8 +146,66 @@ public class ReportController {
 		return "redirect:/" + path;
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	// 추방하기 페이지로 정보 전달
+	@GetMapping("/{target}/{input}/explusion")
+	public String makeExplusionPage(
+			@PathVariable("target") String target,
+			@PathVariable("input") int input,
+			Model model, HttpSession session
+			) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		int typeCode = 0;
+		
+		if(target.equals("member")) { // 타겟이 회원인 경우
+			
+			// 내가 리더인지 가져오기
+			Member loginMember = (Member)session.getAttribute("loginMember");
+			Group groupInfo = (Group)session.getAttribute("groupInfo");
+			GroupMemberList getMyLeaderYN = service.getMyLeaderYN(loginMember.getMemberNo(), groupInfo.getGroupNo());
+			map.put("getMyLeaderYN", getMyLeaderYN);
+			
+			// 회원 정보 불러오기
+			Member member = service.getMemberInfo(input);
+			map.put("member", member);
+			typeCode = 1;
+		}
+		
+		if(target.equals("group")) { // 타겟이 모임인 경우
+			Group group = service.getGroupInfo(input);
+			group.setGroupComment(AdminUtil.newLineClear2(group.getGroupComment()));
+			map.put("group", group);
+			typeCode = 2;
+		}
+		
+		if(target.equals("post")) { // 타겟이 게시글인 경우
+			Post post = service.getPostInfo(input);
+			post.setPostContent(AdminUtil.newLineClear2(post.getPostContent()));
+			post.setPostContent(AdminUtil.pTagClear(post.getPostContent()));
+			map.put("post", post);
+			typeCode = 3;
+		}
+		
+		// 신고 사유 목록 가져오기
+		List<Report> reasonList = service.getReportReasonList(typeCode);
+		map.put("reasonList", reasonList);
+	
+		model.addAttribute("typeCode", typeCode);
+		model.addAttribute("map", map);
+		
+		return "report/explusionPage";
+	}
+	
 	// 추방하기
-		@PostMapping("/{target}/{targetNoStr}/{reasonCode}/explusion")
+		@PostMapping("/{target}/{targetNoStr}/explusion/{reasonCode}")
 		public String makeExplusion(
 				@PathVariable("target") String target,
 				@PathVariable("targetNoStr") String targetNoStr,
