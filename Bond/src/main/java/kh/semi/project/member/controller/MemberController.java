@@ -189,7 +189,7 @@ public class MemberController {
 	 */
 	@GetMapping("/signUpOk")
 	public String goSignUpOkPage() {
-		return "member/signUpOk";
+		return "/member/signUpOk";
 	}
 	
 	

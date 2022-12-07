@@ -58,34 +58,13 @@
                         <a href="#" class="more-link">...더보기</a>
                     </div>
 
-                    <div class="btn-box">
-                        <button type="button" class="write-button">글쓰기</button>
-                        <p class="box-desc">
-                            누구나 밴드를 검색해 찾을 수 있고, 밴드 소개와 게시글을 볼 수 있습니다.
-                        </p>
-                    </div>
-
                     <div class="sidebar-under-icon">
                         <div class="band-setting-section">
-                            <a href="#" class="band-setting-link sidebar-font"> 
-                                <i class="fa-solid fa-gear sidbar-icon"></i>밴드 설정
-                            </a>
-                            
-                        <div class="band-setting-list">
-                            <ul class="band-setting-item">
-                                <li>
-                                    <a href="#" class="report-band sidebar-font">
-                                        <i class="fa-solid fa-bell sidbar-icon"></i>신고하기
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#" class="leave-band sidebar-font">
-                                        <i class="fa-solid fa-person-walking-arrow-right sidbar-icon"></i>탈퇴하기
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>  
+                            <c:if test="${groupInfo.leaderNo == loginMember.memberNo}">
+                                <a href="/bond/${groupNo}/bond-bondIntro" class="band-setting-link sidebar-font"> 
+                                    <i class="fa-solid fa-gear sidbar-icon"></i>밴드 설정
+                                </a>
+                            </c:if>
                     </div>
                 </div>
             </aside>
@@ -99,23 +78,6 @@
 
             <!-- 3번 영역 -->
             <div id="banner">
-                <%-- <div id="band-photo-area">
-                    <section class="band-photo">
-                        <h2 class="tit">최근 사진</h2>
-                        <div class="photo-body">
-                            <div class="photo-list">
-                                <ul>
-                                    <c:forEach var="image" items="${recentImages}">
-                                        <li class="banner-box">
-                                            <img src="${image.postImage}" class="banner-img">
-                                        </li>
-                                    </c:forEach>
-                                </ul>
-                            </div>
-                        </div>
-                        <a href="#" class="more-button">더보기</a>
-                    </section>
-                </div> --%>
 
                 <!-- 다가오는 일정창 -->
                 <div id="band-soon-plan-area">
