@@ -18,6 +18,7 @@
 		<result property="openYN" column="OPEN_YN" />
 		<result property="groupStatus" column="GROUP_STATUS" />
 		<result property="memberCount" column="MEMBER_COUNT" />
+		<result property="leaderNo" column="LEADER_NO" /><!-- 안되면 지우기 -->
 		<result property="leaderName" column="LEADER_NAME" />
 		<result property="bondCount" column="BOND_COUNT" />
 		<result property="groupCount" column="GROUP_COUNT" />
@@ -78,12 +79,13 @@
 	
 	<!-- 내 본드 조회 -->
 	<select id="selectMyGroup" parameterType="Member" resultMap="group_rm">
-		SELECT G.GROUP_NO, GROUP_NAME, 
+		SELECT G.GROUP_NO, GROUP_NAME, GROUP_DATE,
 			(SELECT COUNT(*) FROM MEMBER_JOIN M
 			WHERE M.GROUP_NO = G.GROUP_NO
 			AND JOIN_STATUS != 2) MEMBER_COUNT,
 			(SELECT GROUP_IMG_PATH || GROUP_IMG_RENAME FROM GROUP_IMG GI
-			WHERE GI.GROUP_NO = G.GROUP_NO) GROUP_IMG
+			WHERE GI.GROUP_NO = G.GROUP_NO) GROUP_IMG,
+			(SELECT MEMBER_NO FROM "MEMBER_JOIN" WHERE GROUP_NO = G.GROUP_NO AND LEADER_YN = 'Y') LEADER_NO
 		FROM "GROUP" G
 		JOIN MEMBER_JOIN M ON(M.GROUP_NO = G.GROUP_NO)
 		WHERE MEMBER_NO = #{memberNo}
@@ -93,12 +95,13 @@
 	
 	<!-- 본드 정보 조회 -->
 	<select id="selectGroup" parameterType="_int" resultMap="group_rm">
-		SELECT GROUP_NAME, GROUP_COMMENT, GROUP_NO, OPEN_YN,
+		SELECT GROUP_NAME, GROUP_COMMENT, GROUP_NO, OPEN_YN, TO_CHAR(GROUP_DATE, 'YYYY"년" MM"월" DD"일"')GROUP_DATE,
 			(SELECT COUNT(MEMBER_NO) FROM MEMBER_JOIN M
 			WHERE M.GROUP_NO = G.GROUP_NO
 			AND JOIN_STATUS != 2) MEMBER_COUNT,
 			(SELECT GROUP_IMG_PATH || GROUP_IMG_RENAME FROM GROUP_IMG GI
-			WHERE GI.GROUP_NO = G.GROUP_NO) GROUP_IMG
+			WHERE GI.GROUP_NO = G.GROUP_NO) GROUP_IMG, 
+			(SELECT MEMBER_NO FROM "MEMBER_JOIN" WHERE GROUP_NO = G.GROUP_NO AND LEADER_YN = 'Y') LEADER_NO
 		FROM "GROUP" G
 		WHERE GROUP_NO = #{groupNo}
 	</select>
