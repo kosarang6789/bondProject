@@ -72,11 +72,11 @@
 
 <nav class="bg nav-fixed">
     <div id="list-nav">
-        <ul>
-            <li><a class="active" href="/bond/${groupNo}">게시글</a></li>
-            <li><a class="active" href="/bond/${groupNo}/album">사진첩</a></li>
-            <li><a class="active" href="/bond/${groupNo}/bondMemberList">멤버</a></li>
-            <li><a class="active" href="/bond/${groupNo}/plan">일정</a></li>
+        <ul id="myDiv">
+            <li><a class="btn active" href="/bond/${groupNo}">게시글</a></li>
+            <li><a class="btn" href="/bond/${groupNo}/album">사진첩</a></li>
+            <li><a class="btn" href="/bond/${groupNo}/bondMemberList">멤버</a></li>
+            <li><a class="btn" href="/bond/${groupNo}/plan">일정</a></li>
             <%-- <li><a href="/bond/${groupNo}/chatting">채팅</a></li> --%>
         </ul>
     </div>
@@ -84,5 +84,18 @@
     
 </body>
 </html>
+
+<script>
+    var header = document.getElementById("myDIV");
+    var btns = header.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+    });
+}
+</script>
+
 
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
