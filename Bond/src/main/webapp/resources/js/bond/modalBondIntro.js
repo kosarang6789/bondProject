@@ -3,21 +3,32 @@
 
 const modalBondIntro = document.querySelector(".modalBondIntro");
 
-if(document.querySelector(".sidebar-under-icon") != null){
-    const viewIntroBtn = document.querySelector(".sidebar-under-icon");
-    viewIntroBtn.addEventListener("click", ()=>{
-        modalBondIntro.classList.add("show");
-        modalBondIntro.classList.remove("hidden");
-    });
-};
 
-if(document.querySelector(".modalInfo") != null){
-    const viewIntroBtn = document.querySelector(".modalInfo");
+// 멤버리스트 - 밴드 정보 보기
+// if(document.querySelector(".band-info") != null){
+//     const viewIntroBtn = document.querySelector(".band-info");
+//     viewIntroBtn.addEventListener("click", ()=>{
+//         modalBondIntro.classList.add("show");
+//         modalBondIntro.classList.remove("hidden");
+//     });
+// };
+
+if(document.querySelector(".band-info") != null){
+    const viewIntroBtn = document.querySelector(".band-info");
     viewIntroBtn.addEventListener("click", ()=>{
         modalBondIntro.classList.add("show");
         modalBondIntro.classList.remove("hidden");
     });
-};
+}
+
+// openYes에서 밴드 정보 보기
+if(document.querySelector(".band-setting-section2") != null){
+    const viewIntroBtn = document.querySelector(".band-setting-section2");
+    viewIntroBtn.addEventListener("click", ()=>{
+        modalBondIntro.classList.add("show");
+        modalBondIntro.classList.remove("hidden");
+    });
+}
 
 
 const modalBondX = document.querySelector(".modalBondX");
