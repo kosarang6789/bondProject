@@ -55,7 +55,7 @@
                             <div class="leader"><i class="fa-solid fa-crown"></i>리더</div>
                         </c:if>
                     </div>
-                    <div class="member-report">
+                    <div class="goMyPage">
                         <a href="/myPage/myPage"><i class="fa-solid fa-gear sidbar-icon"></i></a>
                     </div>
                 </div>              

@@ -27,8 +27,6 @@
                     <li><a href="/myPage/myPage-changePw">- 비밀번호 변경</a></li>
                     <li><a href="/myPage/myPage-secession">- 서비스 탈퇴</a></li>
                 </ul>
-                <a href="#">내 글 조회</a>
-
             </nav>
 
         </aside>
