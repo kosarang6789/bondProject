@@ -38,7 +38,7 @@ public interface BondService {
 	List<String> selectBondImageList();
 
 	// 그룹내 이미지 리스트
-	Map<String, Object> selectImageList(int groupNo);
+	List<PostImage> selectImageList(int groupNo);
 
 
 }

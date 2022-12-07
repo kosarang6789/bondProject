@@ -91,7 +91,9 @@ public class BondController {
 		// 본드 기본정보 불러오기(이름, 사진, 멤버수, 소개글)
 		Group groupInfo = service.selectGroupInfo(groupNo);
 		
-		Map<String, Object> map = service.selectImageList(groupNo);
+		List<PostImage> bondImageList = service.selectImageList(groupNo);
+		
+		model.addAttribute("bondImageList", bondImageList);
 		
 		return "bond/album";
 	}
@@ -140,6 +142,22 @@ public class BondController {
 				// 게시글 불러오기
 				Map<String, Object> map = service.selectBoardDetail(groupNo, cp);
 				model.addAttribute("map",map);
+				
+				// 최신 이미지 불러오기
+				List<PostImage> bondImageList = service.selectImageList(groupNo);
+				List<PostImage> recentImages = new ArrayList<PostImage>();
+				
+				int imageLimit = 0;
+				if(bondImageList.size()<6) {
+					 imageLimit = bondImageList.size();
+				} else {
+					imageLimit = 6;
+				}
+				for(int i=0; i<imageLimit; i++) {
+					recentImages.add(i, bondImageList.get(i));
+				}
+				
+				model.addAttribute("recentImages", recentImages);
 				
 				// 다가오는 일정 목록 불러오기
 				List<Plan> planListSoon = service.planSelectListSoon(groupNo);

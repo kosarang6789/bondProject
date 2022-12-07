@@ -85,9 +85,6 @@
                     <div class="header-wrap header-wrap-fixed">
                         <div class="header-main">
                             <h1 class="title">사진첩</h1>
-                            <div class="btn-wrap">
-                                <button type="button" class="create-album ubutton">앨범 만들기</button>
-                            </div>
                         </div>
                     </div>
 
@@ -100,117 +97,25 @@
                                         <em>5</em>
                                     </a>
                                 </h2>
-                                <time class="info">2022년 11월</time>
-                            </div>
-
-                            <div class="item">
-                                <span class="btn-attach-photo">
-                                    <span class="photo-upload">
-                                        <i class="fa-solid fa-plus photo-plus" style="color: #777;"></i>
-                                        <input type="file" class="file-input">
-                                    </span>
-                                </span>
                             </div>
                         </div>
 
                         <ul class="album-images">
-                            <c:forEach var="image" items="${postImageList}">
+                            <c:forEach var="image" items="${bondImageList}">
                                 <li class="album">
                                     <a href="#">
                                         <img src="${image.postImage}" class="album-img">
                                     </a>
                                 </li>
                             </c:forEach>
-                            <li class="album">
-                                <a href="#">
-                                    <img src="/resources/images/bond/album2.png" class="album-img">
-                                </a>
-                            </li>
-                            <li class="album">
-                                <a href="#">
-                                    <img src="/resources/images/bond/album3.png" class="album-img">
-                                </a>
-                            </li>
-                            <li class="album"><a href="#">4</a></li>
-                            <li class="album"><a href="#">5</a></li>
-                            <li class="album"><a href="#">6</a></li>
                         </ul>
 
-                    </div>
-
-                    <div class="album-wrap album-wrap-line">
-                        <div class="album-sort">
-                            <span class="title">앨범</span>
-                        </div>
-
-                        <ul class="album-list">
-                            <li class="album-item-view">
-                                <div class="album-header">
-                                    <div class="item">
-                                        <h2 class="title">
-                                            <a href="#">
-                                                <strong>애니멀왕국</strong>
-                                                <em>3</em>
-                                            </a>
-                                        </h2>
-                                        <time class="info">2022년 11월</time>
-                                    </div>
-        
-                                    <div class="item">
-                                        <span class="btn-attach-photo">
-                                            <span class="photo-upload">
-                                                <i class="fa-solid fa-plus photo-plus" style="color: #777;"></i>
-                                                <input type="file" class="file-input">
-                                            </span>
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <ul class="album-images">
-                                    <li class="album-bottom">
-                                        <a href="#">
-                                            <img src="/resources/images/bond/album1.png" class="album-img">
-                                        </a>
-                                    </li>
-                                    <li class="album-bottom">
-                                        <a href="#">
-                                            <img src="/resources/images/bond/album2.png" class="album-img">
-                                        </a>
-                                    </li>
-                                    <li class="album-bottom">
-                                        <a href="#">
-                                            <img src="/resources/images/bond/album3.png" class="album-img">
-                                        </a>
-                                    </li>
-                                    <li class="album-bottom"><a href="#">4</a></li>
-                                </ul>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </main>
 
             <!-- 3번 영역 -->
             <div id="banner">
-                <div id="band-photo-area">
-                    <section class="band-photo">
-                        <h2 class="tit">최근 사진</h2>
-                        <div class="photo-body">
-                            <div class="photo-list">
-                                <a href="#" class="banner-box">
-                                    <img src="/resources/images/bond/banner.jpeg" class="banner-img">
-                                </a>
-                                <span class="no-img"></span>
-                                <span class="no-img"></span>
-                                <span class="no-img"></span>
-                                <span class="no-img"></span>
-                                <span class="no-img"></span>
-                            </div>
-                        </div>
-                        <a href="#" class="more-button">더보기</a>
-                    </section>
-                </div>
-
                 <!-- 다가오는 일정창 -->
                 <div id="band-soon-plan-area">
                     <section class="band-soon-plan">
