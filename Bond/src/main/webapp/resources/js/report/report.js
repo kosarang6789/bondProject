@@ -16,7 +16,7 @@ for(let item of reasonBtn){
         // 주소 만들기
         const pathName = location.pathname;
         const queryString = "/" + reasonCode;
-        const url =  pathName + queryString;
+        const url =  pathName + queryString + "/report";
 
         const reportFrm = document.getElementById("reportFrm");
         reportFrm.setAttribute("action", url)
@@ -30,3 +30,4 @@ const cancelBtn = document.getElementById("cancelBtn");
 cancelBtn.addEventListener("click", () => {
     modal.style.display="none";
 })
+

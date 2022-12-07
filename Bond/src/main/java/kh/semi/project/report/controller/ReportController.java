@@ -92,7 +92,7 @@ public class ReportController {
 	
 	
 	// 신고하기
-	@PostMapping("/{target}/{targetNoStr}/{reasonCode}")
+	@PostMapping("/{target}/{targetNoStr}/{reasonCode}/report")
 	public String makeReport(
 			@PathVariable("target") String target,
 			@PathVariable("targetNoStr") String targetNoStr,
@@ -119,72 +119,123 @@ public class ReportController {
 		infoMap.put("typeCode", typeCode);
 		infoMap.put("reasonCode", reasonCode);
 		infoMap.put("memberNo", memberNo);
-		
-		
-		
-		
-		// 리더가 탈퇴시키기
-		Group groupInfo = (Group)session.getAttribute("groupInfo");
-		GroupMemberList getMyLeaderYN = service.getMyLeaderYN(loginMember.getMemberNo(), groupInfo.getGroupNo());
-		
-//		int result2 = 0;
-//		int result = 0;
+			
 		String message = "";
 		
-		if(getMyLeaderYN.getLeaderYN().equals("Y")) { // 탈퇴시키기
-			int groupNo = groupInfo.getGroupNo();
-			int result2 = service.getout(targetNo, groupNo);
-			
-			if (result2>0) {
-				message = "탈퇴되었습니다.";
-			}else {
-				message = "탈퇴 과정에서 오류가 발생했습니다.";
-			}
-		}else {
-			
-			// 회원 신고
-			int result = service.makeReport(infoMap);
-			
-			if(result >= 0) {
-				message = "신고가 접수되었습니다.";
-			} else {
-				message = "신고 접수 과정에서 오류가 발생했습니다.";
-			}
+		// 회원 신고
+		int result = service.makeReport(infoMap);
+		
+		if(result >= 0) {
+			message = "신고가 접수되었습니다.";
+		} else {
+			message = "신고 접수 과정에서 오류가 발생했습니다.";
 		}
-		
-		
+	
 		// 트랜잭션 처리 필요
 		
 		String path = "";
 		
-
 		path = "report/{target}/{targetNoStr}";
-//		
-//		if(result >= 0) {
-//			message = "신고가 접수되었습니다.";
-//		} else if (result<0) {
-//			message = "신고 접수 과정에서 오류가 발생했습니다.";
-//		} else if (result2>0) {
-//			message = "탈퇴되었습니다.";
-//		}else {
-//			message = "탈퇴 과정에서 오류가 발생했습니다.";
-//		}
-		
-//		
-//		if(result >= 0) {
-//			message = "신고가 접수되었습니다.";
-//		} else {
-//			message = "신고 접수 과정에서 오류가 발생했습니다.";
-//		}
-//		
-//		if(result2>0) {
-//			message = "탈퇴되었습니다.";
-//		}else { message = "탈퇴 과정에서 오류가 발생했습니다."; }
-//		
+
 		ra.addFlashAttribute("message", message);
 		
 		return "redirect:/" + path;
 	}
+	
+	// 추방하기
+		@PostMapping("/{target}/{targetNoStr}/{reasonCode}/explusion")
+		public String makeExplusion(
+				@PathVariable("target") String target,
+				@PathVariable("targetNoStr") String targetNoStr,
+				@PathVariable("reasonCode") int reasonCode,
+				@RequestHeader("referer") String referer,
+				RedirectAttributes ra,
+				HttpSession session
+				) {
+			
+			Member loginMember = (Member)session.getAttribute("loginMember");
+			
+			int targetNo = Integer.parseInt(targetNoStr);
+			
+			int typeCode = 0;
+			
+			if(target.equals("member")) typeCode = 1;
+			if(target.equals("group")) typeCode = 2;
+			if(target.equals("post")) typeCode = 3;
+			
+			int memberNo = loginMember.getMemberNo();
+
+			Map<String, Object> infoMap = new HashMap<String, Object>();
+			infoMap.put("targetNo", targetNo);
+			infoMap.put("typeCode", typeCode);
+			infoMap.put("reasonCode", reasonCode);
+			infoMap.put("memberNo", memberNo);
+			
+			
+			
+			
+			// 리더가 탈퇴시키기
+			Group groupInfo = (Group)session.getAttribute("groupInfo");
+			GroupMemberList getMyLeaderYN = service.getMyLeaderYN(loginMember.getMemberNo(), groupInfo.getGroupNo());
+			
+//			int result2 = 0;
+//			int result = 0;
+			String message = "";
+			
+			if(getMyLeaderYN.getLeaderYN().equals("Y")) { // 탈퇴시키기
+				int groupNo = groupInfo.getGroupNo();
+				int result2 = service.getout(targetNo, groupNo);
+				
+				if (result2>0) {
+					message = "탈퇴되었습니다.";
+				}else {
+					message = "탈퇴 과정에서 오류가 발생했습니다.";
+				}
+			}else {
+				
+				// 회원 신고
+				int result = service.makeReport(infoMap);
+				
+				if(result >= 0) {
+					message = "신고가 접수되었습니다.";
+				} else {
+					message = "신고 접수 과정에서 오류가 발생했습니다.";
+				}
+			}
+			
+			
+			// 트랜잭션 처리 필요
+			
+			String path = "";
+			
+
+			path = "report/{target}/{targetNoStr}";
+//			
+//			if(result >= 0) {
+//				message = "신고가 접수되었습니다.";
+//			} else if (result<0) {
+//				message = "신고 접수 과정에서 오류가 발생했습니다.";
+//			} else if (result2>0) {
+//				message = "탈퇴되었습니다.";
+//			}else {
+//				message = "탈퇴 과정에서 오류가 발생했습니다.";
+//			}
+			
+//			
+//			if(result >= 0) {
+//				message = "신고가 접수되었습니다.";
+//			} else {
+//				message = "신고 접수 과정에서 오류가 발생했습니다.";
+//			}
+//			
+//			if(result2>0) {
+//				message = "탈퇴되었습니다.";
+//			}else { message = "탈퇴 과정에서 오류가 발생했습니다."; }
+//			
+			ra.addFlashAttribute("message", message);
+			
+			return "redirect:/" + path;
+		}
 	
 	
 	
