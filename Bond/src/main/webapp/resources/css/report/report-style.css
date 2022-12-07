@@ -28,6 +28,8 @@ body{
     justify-content: center;
     align-items: center;
 }
+
+
 /* 신고 페이지 본문 */
 #reportFrm{
     width: 100%;
@@ -41,7 +43,7 @@ body{
     border-top: 1px solid #E2E2E2;
     border-bottom: 1px solid #E2E2E2;
     padding: 0px 20px;
-    height: 80px;
+    min-height: 80px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -60,6 +62,12 @@ body{
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+#content{
+    height: auto;
+}
+
+
 /* 신고 페이지 사유 영역 */
 .report-why{
     list-style: none;

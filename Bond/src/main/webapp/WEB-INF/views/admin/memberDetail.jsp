@@ -81,7 +81,14 @@
                         </div>
                         <div class="detail-info-row">
                             <label>탈퇴일</label>
-                            <div class="detail-info-col">${memberInfo.member.delDate}</div>
+                            <div class="detail-info-col">
+                            <c:if test="${!empty memberInfo.member.delDate}">
+                                ${memberInfo.member.delDate}
+                            </c:if>
+                            <c:if test="${empty memberInfo.member.delDate}">
+                            -
+                            </c:if>
+                            </div>
                         </div>
                     </div>
 
