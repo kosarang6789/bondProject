@@ -32,94 +32,94 @@ document.getElementById("signUpFrm").addEventListener("submit", function(event){
 
 
 // 이메일 유효 검사
-// const memberEmail = document.getElementById("memberEmail");
-// const emailConfirm = document.getElementById("emailConfirm");
+const memberEmail = document.getElementById("memberEmail");
+const emailConfirm = document.getElementById("emailConfirm");
 
-// memberEmail.addEventListener("input", function(){
-//     if(memberEmail.value.trim().length == 0){
-//         emailConfirm.innerText="메일을 받을 수 있는 이메일을 입력해주세요.";
-//         memberEmail.value="";
-//         emailConfirm.classList.remove("confirm", "error");
-//         checkObj.memberEmail = false;
-//         return;
-//     }
+memberEmail.addEventListener("input", function(){
+    if(memberEmail.value.trim().length == 0){
+        emailConfirm.innerText="메일을 받을 수 있는 이메일을 입력해주세요.";
+        memberEmail.value="";
+        emailConfirm.classList.remove("confirm", "error");
+        checkObj.memberEmail = false;
+        return;
+    }
 
-//     const regEx = /^[a-zA-Z\d\_\-]{4,}@[가-힇\w\-\_]+(\.\w+){1,3}$/;
+    const regEx = /^[a-zA-Z\d\_\-]{4,}@[가-힇\w\-\_]+(\.\w+){1,3}$/;
 
-//     if(regEx.test(memberEmail.value)){
+    if(regEx.test(memberEmail.value)){
 
-//         $.ajax({
-//             url : "/emailDupCheck",
-//             data : {"memberEmail" : memberEmail.value},
-//             success : (result) => {
-//                 if(result == 0){
-//                     emailConfirm.innerText="사용 가능한 이메일입니다.";
-//                     emailConfirm.classList.add("confirm");
-//                     emailConfirm.classList.remove("error");
-//                     checkObj.memberEmail = true;
-//                 }else{
-//                     emailConfirm.innerText="이미 사용 중인 이메일입니다.";
-//                     emailConfirm.classList.add("error");
-//                     emailConfirm.classList.remove("confirm");
-//                     checkObj.memberEmail = false;
-//                 }
-//             },
-//             error : () => {console.log("ajax 통신 실패");},
-//             // complete : () => {console.log("중복 검사 수행 완료");}
+        $.ajax({
+            url : "/emailDupCheck",
+            data : {"memberEmail" : memberEmail.value},
+            success : (result) => {
+                if(result == 0){
+                    emailConfirm.innerText="사용 가능한 이메일입니다.";
+                    emailConfirm.classList.add("confirm");
+                    emailConfirm.classList.remove("error");
+                    checkObj.memberEmail = true;
+                }else{
+                    emailConfirm.innerText="이미 사용 중인 이메일입니다.";
+                    emailConfirm.classList.add("error");
+                    emailConfirm.classList.remove("confirm");
+                    checkObj.memberEmail = false;
+                }
+            },
+            error : () => {console.log("ajax 통신 실패");},
+            // complete : () => {console.log("중복 검사 수행 완료");}
 
-//         });
-//     }else{
-//         emailConfirm.innerText = "유효하지 않는 이메일 입니다.";
-//         emailConfirm.classList.add("error");
-//         emailConfirm.classList.remove("confirm");
-//         checkObj.memberEmail = false;
-//     }
-// });
+        });
+    }else{
+        emailConfirm.innerText = "유효하지 않는 이메일 입니다.";
+        emailConfirm.classList.add("error");
+        emailConfirm.classList.remove("confirm");
+        checkObj.memberEmail = false;
+    }
+});
 
 
 // 비밀번호 유효 검사
-// const memberPw = document.getElementById("memberPw");
-// const memberPwConfirm = document.getElementById("memberPwConfirm");
-// const pwConfirm = document.getElementById("pwConfirm");
+const memberPw = document.getElementById("memberPw");
+const memberPwConfirm = document.getElementById("memberPwConfirm");
+const pwConfirm = document.getElementById("pwConfirm");
 
-// memberPw.addEventListener("input", function(){
-//     if(memberPw.value.trim().length == 0){
-//         pwConfirm.innerText="영어, 숫자, 특수문자(!,@,#,-,_) 8~20글자 사이로 입력해주세요.";
-//         memberPw.value="";
-//         memberPw.classList.remove("error", "confrim");
-//         checkObj.memberPw = false;
-//         return;
-//     }
+memberPw.addEventListener("input", function(){
+    if(memberPw.value.trim().length == 0){
+        pwConfirm.innerText="영어, 숫자, 특수문자(!,@,#,-,_) 8~20글자 사이로 입력해주세요.";
+        memberPw.value="";
+        memberPw.classList.remove("error", "confrim");
+        checkObj.memberPw = false;
+        return;
+    }
 
-//     const regEx = /^[a-zA-Z\d!@#\-\_]{8,20}$/;
+    const regEx = /^[a-zA-Z\d!@#\-\_]{8,20}$/;
 
-//     if(regEx.test(memberPw.value)){
-//         checkObj.memberPw = true;
+    if(regEx.test(memberPw.value)){
+        checkObj.memberPw = true;
 
-//         if(memberPwConfirm.value.trim().length == 0){
-//             pwConfirm.innerText="유효한 비밀번호 입니다.";
-//             pwConfirm.classList.add("confirm");
-//             pwConfirm.classList.remove("error");
-//         }else{
-//             if(memberPw.value == memberPwConfirm.value){
-//                 checkObj.memberPwConfirm=true;
-//                 pwConfirm.innerText="비밀번호가 일치합니다.";
-//                 pwConfirm.classList.add("confirm");
-//                 pwConfirm.classList.remove("error");
-//             }else{
-//                 checkObj.memberPwConfirm=false;
-//                 pwConfirm.innerText="비밀번호가 일치하지 않습니다.";
-//                 pwConfirm.classList.add("error");
-//                 pwConfirm.classList.remove("confirm");
-//             }
-//         }
-//     }else{
-//         pwConfirm.innerText="비밀번호 형식이 유효하지 않습니다.";
-//         pwConfirm.classList.add("error");
-//         pwConfirm.classList.remove("confirm");
-//         checkObj.memberPw=false;
-//     }
-// });
+        if(memberPwConfirm.value.trim().length == 0){
+            pwConfirm.innerText="유효한 비밀번호 입니다.";
+            pwConfirm.classList.add("confirm");
+            pwConfirm.classList.remove("error");
+        }else{
+            if(memberPw.value == memberPwConfirm.value){
+                checkObj.memberPwConfirm=true;
+                pwConfirm.innerText="비밀번호가 일치합니다.";
+                pwConfirm.classList.add("confirm");
+                pwConfirm.classList.remove("error");
+            }else{
+                checkObj.memberPwConfirm=false;
+                pwConfirm.innerText="비밀번호가 일치하지 않습니다.";
+                pwConfirm.classList.add("error");
+                pwConfirm.classList.remove("confirm");
+            }
+        }
+    }else{
+        pwConfirm.innerText="비밀번호 형식이 유효하지 않습니다.";
+        pwConfirm.classList.add("error");
+        pwConfirm.classList.remove("confirm");
+        checkObj.memberPw=false;
+    }
+});
 
 memberPwConfirm.addEventListener("input", function(){
     if(checkObj.memberPw){
