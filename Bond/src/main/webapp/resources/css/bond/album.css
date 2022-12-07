@@ -374,6 +374,10 @@ body{
     padding: 0px 14px;
     margin: 5px 0px;
     height: 40px;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .left-part{
@@ -405,12 +409,20 @@ body{
     justify-content: center;
 
     margin-left: 10px;
-    color: dimgray
+    color: dimgray;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .oneTitle{
     font-size: 12px;
     font-weight: 600;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .onePeriod{

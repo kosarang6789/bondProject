@@ -1237,7 +1237,7 @@ iframe{
 /*  */
 /* board-list */
 
-#boardPlan{
+#board-list{
     width: 632px;
     margin-bottom: 11px;
     flex: 0 0 auto;
