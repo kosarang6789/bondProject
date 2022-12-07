@@ -171,16 +171,14 @@ nav li > a{
     display: inline-block;
 }
 
-.active{
+.active::after{
     color: white;
     position: relative;
+    font-weight: 800;
 }
 
-.active::after{
-    content: "";
-    border-bottom: 2px solid #fff;
-    width: 100%;
-    display: block;
-    position: absolute;
-    bottom: 2px;
+.active:hover{
+    color: white;
+    position: relative;
+    font-weight: 800;
 }
