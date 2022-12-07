@@ -346,6 +346,7 @@ body{
 /* 글쓰기 영역 */
 .post-write-form{
     padding-bottom: 46px;
+    width: 100%;
 }
 
 .board-search{

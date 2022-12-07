@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="/resources/css/bond/openYes.css">
     <link rel="stylesheet" href="/resources/css/bond/Modal-jose.css"><%-- 가입모달 --%>
+    <link rel="stylesheet" href="/resources/css/bond/modalBondIntro.css"><%-- 본드 정보 모달 --%>
 
     <script src="https://kit.fontawesome.com/1ce4f19a7a.js" crossorigin="anonymous"></script>
 
@@ -117,6 +118,11 @@
         <%-- 가입 모달 --%>
         <jsp:include page="/WEB-INF/views/bond/joinModal.jsp"/>
         <script src="/resources/js/bond/joinModal.js"></script>
+
+        <%-- 본드 정보 보기 모달 --%>
+        <jsp:include page="/WEB-INF/views/bond/modalBondIntro.jsp"/>
+        <script src="/resources/js/bond/modalBondIntro.js"></script>
+
 
         <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>    
 

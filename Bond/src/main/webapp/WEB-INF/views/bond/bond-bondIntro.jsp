@@ -13,6 +13,7 @@
     <title>${groupInfo.groupName} | BOND</title>
 
     <link rel="stylesheet" href="/resources/css/bond/samplePage.css">
+    <link rel="stylesheet" href="/resources/css/bond/modalBondIntro.css">
     <script src="https://kit.fontawesome.com/1ce4f19a7a.js" crossorigin="anonymous"></script>
 
 </head>

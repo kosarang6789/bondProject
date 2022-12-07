@@ -7,34 +7,30 @@
 
 <body>
     <main>
-        <%-- 모달 --%>
-        <div class="modal" id="modal">
-            <div class="profile1" id="modalProfile">
-                <button type="button" class="clickProfile close-btn">
-                    <i class="fa-solid fa-x" id="modalx"></i>
-                </button>
-                <section class="profile-area">
-
-                    <div class="profile-image" id="modalImgarea">
-                    </div>
-            
-                    <h3 class="memberName" name="memberName" id="modalName"></h3>
-                    <section class="member">
-                        <div class="leader-yn">
-                            <div class="profile-member" id="modalLeader">멤버</div>
-                        </div>
-                        <div class="join-date" id="modalJoinDate"></div>
-                    </section>
-            
-                    <div class="birth">
-                        <div class="birth-title">생일 : </div>
-                        <div class="memberBirth" id="modalBirth">
-                        </div>
-                    </div>
-                    <div class="reportBtn"></div>
-                </section>
-            </div>
+    <%-- 모달 --%>
+        <div class="modalBondIntro" id="modalBondIntro">
+			<div class="modalBondIntro">
+				<div class="modalBondImg" id="modalBondImg">
+					<button type="button" class="modalBondX">
+						<i class="fa-solid fa-x" id="modalx"></i>
+					</button>
+                    <c:choose>
+                        <c:when test="${not empty groupInfo.groupImage}">
+                            <img src="${groupInfo.groupImage}" id="cover-img">  
+                        </c:when>
+                        <c:otherwise>
+                            <img src="/resources/images/bond/profile/no-profile.png" id="cover-img">
+                        </c:otherwise>
+                    </c:choose>
+				</div>
+				<div class="modalBondContent">
+					<div class="modalBondName">${groupInfo.groupName}</div>
+					<div class="modalBondCount">멤버 ${groupInfo.memberCount}</div>
+					<div class="modalBondComment">${groupInfo.groupComment}</div>
+				</div>
+	
+			</div>
         </div>
-    </main>
+	</main>
 </body>
 </html>
