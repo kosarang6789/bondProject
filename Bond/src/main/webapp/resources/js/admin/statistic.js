@@ -91,7 +91,6 @@ function insertText(targetId, str) {
                 data: {
                     labels: topicNameArr,
                       datasets: [{
-                        label: 'My First Dataset',
                         data: topicCountArr,
                         backgroundColor: [
                             'rgb(255, 99, 132)', 
@@ -144,12 +143,12 @@ function weekelyMembersChart(){
             for(let i=0; i<weeklyMembersMap.signUpCounts.length; i++) {
                 weeklyDateArr[i] = weeklyMembersMap.signUpCounts[i].weeklyDate;
                 signUpCountArr[i] = weeklyMembersMap.signUpCounts[i].memberSignUpCount;
-                signUpCountTotal += weeklyMembersMap.signUpCounts[i].memberSignUpCount;
+                signUpCountTotal = signUpCountTotal + (Number)(weeklyMembersMap.signUpCounts[i].memberSignUpCount);
             }
 
             for(let i=0; i<weeklyMembersMap.delCounts.length; i++) {
                 delCountArr[i] = weeklyMembersMap.delCounts[i].memberDelCount;
-                delCountTotal += weeklyMembersMap.delCounts[i].memberDelCount;
+                delCountTotal = delCountTotal + (Number)(weeklyMembersMap.delCounts[i].memberDelCount);
             }
 
             // 4. 배열의 숫자를 인디케이터에 출력하기

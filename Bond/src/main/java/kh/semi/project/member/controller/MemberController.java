@@ -167,7 +167,7 @@ public class MemberController {
 		String message = null;
 		
 		if(result>0) {
-			path = "/member/signUpOk";
+			path = "/signUpOk";
 //			message="회원 가입 성공!";
 		}else { // 실패 시
 			path=referer;
@@ -187,7 +187,7 @@ public class MemberController {
 	/** 회원가입 후 페이지 이동
 	 * @return
 	 */
-	@GetMapping("/member/signUpOk")
+	@GetMapping("/signUpOk")
 	public String goSignUpOkPage() {
 		return "member/signUpOk";
 	}
