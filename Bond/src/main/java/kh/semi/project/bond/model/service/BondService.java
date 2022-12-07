@@ -6,7 +6,9 @@ import java.util.Map;
 import org.springframework.web.multipart.MultipartFile;
 
 import kh.semi.project.bond.model.vo.Group;
+import kh.semi.project.bond.model.vo.GroupImage;
 import kh.semi.project.bond.model.vo.GroupMemberList;
+import kh.semi.project.bond.model.vo.PostImage;
 import kh.semi.project.member.model.vo.Member;
 import kh.semi.project.plan.model.vo.Plan;
 
@@ -34,6 +36,9 @@ public interface BondService {
 	
 	// 모임 이미지 리스트
 	List<String> selectBondImageList();
+
+	// 그룹내 이미지 리스트
+	Map<String, Object> selectImageList(int groupNo);
 
 
 }
