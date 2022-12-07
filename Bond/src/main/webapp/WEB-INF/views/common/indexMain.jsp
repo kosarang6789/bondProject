@@ -78,16 +78,6 @@
                 </li>
             </ul>    
         </section>
-        
-    <h3>session scope 확인</h3>
-    이름 : "${loginMember.memberName}";
-    생일 : "${loginMember.memberBirth}";
-    전화번호 : "${loginMember.memberTel}";
-
-    <button>
-        <a href="/bond/postWrite">게시물작성테스트</a>
-    </button>
-
     </main>
     
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
