@@ -281,6 +281,7 @@
             </div>
 
             <a href="#">
+                <button type="button" class="btn-go-to-top">
                     <i class="fa-solid fa-arrow-up go-to-top-icon"></i>
                 </button>
             </a>

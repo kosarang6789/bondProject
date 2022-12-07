@@ -107,11 +107,6 @@
 
         <c:remove var="message"/>
     </c:if>
-    <script>
-        const oriName = "${loginMember.memberName}";
-        const oriBirth = "${loginMember.memberBirth}";
-        const oriTel = "${loginMember.memberTel}";
-    </script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="/resources/js/member/mainPage.js"></script>
     <script src="/resources/js/myPage/myPage.js"></script>

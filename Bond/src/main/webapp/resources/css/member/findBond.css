@@ -178,7 +178,7 @@ nav a{
 }
 
 nav>.mainPage-menu>a{
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 800;
     margin-right: 20px;
     color:#bbb;
@@ -254,6 +254,10 @@ nav>.mainPage-optionBox>a{
     display: flex;
 }
 
+.swiper-button{
+    color: #888;
+}
+
 .swiper-slide {
 background: #fff;
 
@@ -279,34 +283,6 @@ main{
     position: relative;
     display: block;
 }
-
-/* .group-category{
-    width: 1040px;
-    margin: 0 auto;
-    position: relative;
-} */
-
-/* .group-category>button{
-    border: none;
-    background-color: #fff;
-    display: inline-block;
-    height: 100%;
-    position: absolute;
-    top: -18px;
-    cursor: pointer;
-} */
-
-/* .group-category i{
-    font-size: 24px;
-    line-height: 100%;
-    vertical-align: middle;
-    color: #BFBFBF;
-} */
-
-/* .swiper-wrapper{
-    display: inline-block;
-    margin-left: 40px;
-} */
 
 .category{
     display: flex;
@@ -373,6 +349,8 @@ main{
     border: 2px solid #222;
     border-radius: 40px;
     overflow: hidden;
+    box-shadow: 4px 4px 20px 3px #cbcbcb;
+    height: 50px;
 }
 
 #query{
@@ -385,13 +363,51 @@ main{
 }
 
 #search-btn{
-    width:10%;
+    width:5%;
     background-color: white;
     border: none;
-    font-size: 1.2em;
+    font-size: 1.1em;
     color:#444;
     cursor: pointer;
+    height: 20px;
 }
+
+#search-key{
+    border: none;
+    height: 30px;
+    margin-left: 40px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.search-area{
+    position: relative;
+}
+
+#search-query{
+    border: none;
+    height: 30px;
+    width: 55%;
+    margin-left: 30px;
+    font-size: 15px;
+}
+
+#search-query:focus{
+    outline: none;
+}
+
+.search-line:focus{
+    border-style: none;
+}
+
+.search-line{
+    width: 600px;
+    margin-top: 6px;
+    margin-left: 50px;
+    height: 30px;
+
+}
+
 
 
 /* 모임 추천 영역 */
@@ -399,6 +415,7 @@ main{
 .recommend-area{
     background-color: #eef0f3;
     padding: 35px 0 25px 0;
+    min-height: 500px;
 }
 
 .group-recommend{
@@ -451,6 +468,10 @@ main{
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.group-comment{
+    width: 408px;
 }
 
 

@@ -220,6 +220,7 @@ public class MemberController {
 		if(groupJoinNo != null) { // 가입X 본드가 있을 경우 
 			model.addAttribute("groupJoinNo", groupJoinNo);
 		}
+		
 		return "member/findBond";
 	}
 	
@@ -250,6 +251,9 @@ public class MemberController {
 		
 		return "redirect:/bond/" + groupNo + "/plan";
 	}
+	
+	
+
 	
 	
 

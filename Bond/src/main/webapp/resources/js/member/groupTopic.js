@@ -16,28 +16,6 @@ window.onclick=function(e){
     }
 };
 
-// 검색을 한 경우 검색창에 검색 key, query 남겨놓기
-(() => {
-    const select = document.getElementById("search-key");
-    const input = document.getElementById("search-query");
-    const option = document.querySelectorAll("#search-key > option");
-
-    if(select != null) { 
-        const params = new URL(location.href).searchParams;
-
-        const key = params.get("key");
-        const query = params.get("query");
-
-        input.value = query;
-
-        for(let op of option){
-
-            if(op.value == key){
-                op.selected = true;
-            }
-        }
-    }
-})();
 
 // 본드 리스트 무한 스크롤
 const option = {
@@ -58,25 +36,29 @@ function searchPageScroll(){
         if(flag){
             console.log(cp);
             $.ajax({
-                url : "/member/search",
-                data : {"cp" : ++cp, "key" : key},
+                url : "/member/groupTopic/1",
+                data : {"cp" : ++cp},
                 type : "POST",
                 dataType : "JSON",
-                success : function(map2){
-                        console.log(map2);
-                        if( map2 != null ){
-                        const listWrapper = document.querySelector(".list-wrapper");
+                success : function(map){
+                        console.log(map);
+                        if( map != null ){
+                        const listWrap = document.querySelector(".list-wrap");
     
-                        for(let group of map2.allGroupList.groupList){
+                        for(let group of map){
                             const h3 = document.createElement("h3");
-                            const listItem = document.createElement("li");
-                            listItem.classList.add("list-item");
                             
                             if(group == null){
                                 h3.innerText = "본드가 존재하지 않습니다.";
                                 h3.classList.add("h3");
                             } else{
                                 
+                                const listWrapper = document.createElement("ul");
+                                listWrapper.classList.add("list-wrapper");
+
+                                const listItem = document.createElement("li");
+                                listItem.classList.add("list-item");
+
                                 const list = document.createElement("div");
                                 list.classList.add("list");
                                 
@@ -143,8 +125,9 @@ function searchPageScroll(){
                                 bondName.append(bondNameA)
                                 listBond.append(bondName, bondComment, bondCountLeader);
                                 list.append(groupNo, listBond);
-                                listItem.append(h3, list);
+                                listItem.append(list);
                                 listWrapper.append(listItem);
+                                listWrap.append(listWrapper);
 
                             }
                             
@@ -166,119 +149,3 @@ function searchPageScroll(){
         }
     }
 };
-
-
-// 가입중인 모든 모임의 일정 목록을 가져오는 ajax 함수
-function myAllPlans(){
-
-    const schedule = document.querySelector(".schedule");
-
-    if(schedule != null){
-
-    schedule.innerHTML = "";
-
-    $.ajax({
-        url:"/myAllPlans",
-        type:"GET",
-        dataType:"JSON",
-
-        success : (myAllPlanList) => {
-            console.log(myAllPlanList);
-
-            if(myAllPlanList.length != 0) {
-                for(plan of myAllPlanList) {
-
-                    // 1. plan을 담을 상자
-                    const planBox = document.createElement("a");
-                    planBox.setAttribute("href", "/goBondPlan/" + plan.groupNo);
-                    planBox.classList.add("planBox");
-
-                    // 2. 왼쪽 파트, 오른쪽 파트 분리
-                    const planLeftPart = document.createElement("div");
-                    planLeftPart.classList.add("planLeftPart");
-                    const planRightPart = document.createElement("div");
-                    planRightPart.classList.add("planRightPart");
-
-                    // 3. 왼쪽 파트에 월, 일 저장
-                    const planOneDay = document.createElement("div");
-                    planOneDay.innerText = plan.planStartDay;
-
-                    const planOneMonth = document.createElement("div");
-                    planOneMonth.classList.add("planOneMonth");
-                    planOneMonth.innerText = plan.planStartMonth + "월";
-
-                    planLeftPart.append(planOneDay, planOneMonth);
-
-                    // 4. 오른쪽 파트에 모임명, 일정 이름, 기간 저장
-
-
-                    //
-                    const planLinkBox = document.createElement("div");
-                    planLinkBox.classList.add('planLinkBox');
-                    
-
-                    // 4-1. 모임 이름
-                    const planGroupName = document.createElement("div");
-                    planGroupName.classList.add("planGroupName")
-                    planGroupName.innerText = plan.groupName;
-
-                    // 4-2 일정 제목 및 일정 제목 상자
-                    const planTitle = document.createElement("div");
-                    planTitle.classList.add("planTitle")
-                    planTitle.innerText = plan.planTitle;
-
-                    // 4-3 나누기
-                    const palette = document.createElement("div");
-                    palette.classList.add("palette");
-                    palette.setAttribute("style", "background-color:" + plan.planColor);
-
-
-                    // 4-3. 모임 이름과 일정 제목을 합침
-                    planLinkBox.append(planGroupName, palette, planTitle);
-                    
-                    // 4. 일정 기간 상자
-                    const planPeriodBox = document.createElement("div");
-                    planPeriodBox.classList.add('planPeriodBox');
-
-                    const planPeriod = document.createElement('div');
-                    if(plan.planStartTime != null) {
-                        planPeriod.innerText += plan.planStartTime;
-                    }
-                    planPeriod.innerText += " ~ " + plan.planEnd;
-
-                    if(plan.planEndTime != null) {
-                        planPeriod.innerText += " " + plan.planEndTime;
-                    }
-
-                    planPeriodBox.append(planPeriod);
-
-                    planRightPart.append(planLinkBox, planPeriodBox);
-
-                    // 조립하기
-                    planBox.append(planLeftPart, planRightPart);
-
-                    // 스케줄에 조립한 상자 넣기
-                    schedule.append(planBox);
-                }
-            } else {
-                const nonePlanBox = document.createElement("div");
-                nonePlanBox.id="nonePlanBox";
-                nonePlanBox.innerText = "일정이 없습니다. 모임에서 일정을 추가해보세요!";
-
-                schedule.append(nonePlanBox);
-            }
-                
-        },
-        error : () => {
-
-        }
-    })
-}
-
-
-}
-
-// 함수 실행
-(() => {
-    myAllPlans();
-})()
