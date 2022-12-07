@@ -23,12 +23,6 @@
                 <a class="active" href="/member/mainPage">내 모임</a>
                 <a href="/member/findBond">모임찾기</a>
             </div>
-
-            <!-- <div class="mainPage-optionBox">
-                <a href="#">목록 편집</a>
-                <a href="#">본드 가이드</a>
-            </div> -->
-
         </nav>
     </section>
 
@@ -100,13 +94,6 @@
             </div>
         </section>
     </main>
-    
-    <h3>session scope 확인</h3>
-    이름 : "${loginMember.memberName}";
-    생일 : "${loginMember.memberBirth}";
-    전화번호 : "${loginMember.memberTel}";
-
-    <a href="/logout">로그아웃</a>
 
     <c:if test="${!empty message}">
         <script>
@@ -116,7 +103,6 @@
         <c:remove var="message" />
     </c:if>
 
-    <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 </body>
 </html>

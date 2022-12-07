@@ -57,7 +57,7 @@ body{
     vertical-align: top;
     width: 232px;
     height: 174px;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 
@@ -66,6 +66,7 @@ body{
     height: 100%;
     border: 1px solid rgba(0,0,0,.05);
     border-radius: 3px;
+    object-fit: cover;
 }
 
 .band-name{

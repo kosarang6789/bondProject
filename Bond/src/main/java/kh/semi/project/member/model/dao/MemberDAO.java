@@ -3,10 +3,13 @@ package kh.semi.project.member.model.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kh.semi.project.bond.model.vo.Group;
+import kh.semi.project.bond.model.vo.Pagination;
 import kh.semi.project.member.model.vo.Member;
 import kh.semi.project.plan.model.vo.Plan;
 
@@ -43,6 +46,51 @@ public class MemberDAO {
 	public List<Map<String, Object>> selectJoinNo(int memberNo) {
 		return sqlSession.selectList("groupMapper.selectJoinNo", memberNo);
 	}
+	
+	/** 본드 수 조회 
+	 * @param groupNo
+	 * @return
+	 */
+	public int getListCount(int groupNo, int cp) {
+		return sqlSession.selectOne("groupMapper.getListCount", groupNo);
+	}
+
+	/** 본드 목록 조회 
+	 * @param pm
+	 * @param groupNo
+	 * @return
+	 */
+	public List<Group> selectGroupList(Pagination pagination, int groupNo) {
+		return sqlSession.selectList("groupMapper.selectGroupList", groupNo);
+	}
+	
+	/** 검색 조건이 일치하는 본드 수 조회 
+	 * @param pm
+	 * @return
+	 */
+	public int getListCount(Map<String, Object> pm) {
+		return sqlSession.selectOne("groupMapper.getListCount_search", pm);
+	}
+
+	
+	/** 검색 조건이 일치하는 본드 목록 조회 
+	 * @param pm
+	 * @param pagination
+	 * @return
+	 */
+	public List<Group> selectGroupList(Pagination pagination, Map<String, Object> pm) {
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("groupMapper.selectGroupList_search", pm, rowBounds);
+	}
+
+
+
+
+
+
+
 
 	// 가입중인 모임의 모든 일정 목록 가져오기
 	public List<Plan> getMyAllPlans(int memberNo) {
