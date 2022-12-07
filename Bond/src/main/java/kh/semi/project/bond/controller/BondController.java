@@ -224,7 +224,18 @@ public class BondController {
 		return "bond/bondPlan";
 	}
 	
-
+	@ResponseBody
+	@GetMapping("/bond/image")
+	public String selectImageDetail(
+			@RequestParam("imageNo") int imageNo, Model model) {
+		
+		PostImage image = service.selectImageDetail(imageNo);
+		
+		model.addAttribute("image", image);
+		
+		return new Gson().toJson(image);
+	}
+	
 	
 }
 

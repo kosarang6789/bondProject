@@ -20,6 +20,8 @@ public class PostImage {
 	private int imageNo;
 	private int postNo;
 	private int groupNo;
+	private String memberName;
+	private String memberImage;
 	private String imageRename;
 	private String imagePath;
 

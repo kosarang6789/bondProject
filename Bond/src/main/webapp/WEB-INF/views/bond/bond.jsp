@@ -145,7 +145,7 @@
                                                         <strong class="post-info-name">${post.memberName}</strong>
                                                         <%-- 작성 날짜 --%>
                                                         <div class="post-list-info">
-                                                            <a href="#" class="post-info-date">${post.postDate}</a>
+                                                            <span class="post-info-date">${post.postDate}</span>
                                                         </div>
                                                     </div>    
                                                 </div>
