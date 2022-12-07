@@ -39,7 +39,7 @@
                                     <img src="${groupInfo.groupImage}" id="cover-img">  
                                 </c:when>
                                 <c:otherwise>
-                                    <img src="/resources/images/bond/profile/non-profile.png">
+                                    <img src="/resources/images/bond/profile/no-profile.png" id="cover-img">
                                 </c:otherwise>
                             </c:choose>
                         </a>
@@ -59,12 +59,12 @@
                     </div>
 
                     <div class="sidebar-under-icon">
-                        <div class="band-setting-section">
+                        <%-- <div class="band-setting-section">
                             <c:if test="${groupInfo.leaderNo == loginMember.memberNo}">
                                 <a href="/bond/${groupNo}/bond-bondIntro" class="band-setting-link sidebar-font"> 
                                     <i class="fa-solid fa-gear sidbar-icon"></i>밴드 설정
                                 </a>
-                            </c:if>
+                            </c:if> --%>
                     </div>
                 </div>
             </aside>

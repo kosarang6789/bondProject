@@ -56,7 +56,7 @@
                     <div class="btn-box">
                         <button type="button" class="write-button">밴드 가입하기</button>
                         <div class="sidebar-under-icon">
-                            <div class="band-setting-section">
+                            <div class="band-setting-section2">
                                 <a href="#" class="band-setting-link sidebar-font"> 
                                     밴드 정보 보기 >
                                 </a>
@@ -76,15 +76,6 @@
                     <h2 class="band-intro-title">밴드 소개</h2>
                     <div class="band-intro-detail">
                         <p class="desc">${groupInfo.groupComment}</p>
-                        <%-- <div class="intro-option">
-                            <div class="intro-option-box">
-                                <ul class="select-keyword-list">
-                                    <li class="select-keyword-item">취미</li>
-                                    <li class="select-keyword-item">심리학</li>
-                                    <li class="select-keyword-item">운세</li>
-                                </ul>
-                            </div>
-                        </div> --%>
                     </div>
 
                     <ul class="intro-photo collage">
@@ -121,27 +112,12 @@
                                 멤버수
                                 <span class="intro-desc-data">${groupInfo.memberCount}명</span>
                             </p>
-                            <%-- <p class="intro-desc">
-                                최근 가입
-                                <span class="intro-desc-data">10명</span>
-                            </p> --%>
                         </div>
                     </div>
 
                 <!-- 2번 영역 -->
                     <main id="board-list">
                         <div class="post-write-form">
-                            <%-- <div class="board-search">
-                                <form action="#" class="search-form">
-                                    <div class="input-search-form">
-                                        <label class="gSrOnly" for="input-search" >글 내용, 작성자 검색</label>
-                                        <input type="text" id="input-search" placeholder="글 내용, 작성자 검색"
-                                            maxlength="20">
-                                        <button type="submit" class="searchbtn"><i class="fa-solid fa-magnifying-glass search-icon"></i></button>
-                                    </div>
-                                </form>
-                            </div> --%>
-
                             <%-- 게시물 조회 --%>
                             <div class="post-wrap">
                                 

@@ -30,7 +30,7 @@ main{
     font-weight: bold;
     color: #777;
     position: absolute;
-    margin: 2px 0 0 326px;
+    margin: 2px 0 0 150px;
 }
 
 .modalBondIntro .modalBondIntro{
@@ -39,6 +39,7 @@ main{
     text-align: center;
     display: block;
     margin: 260px auto;
+    min-height: 580px;
 }
 
 .cover{
@@ -55,7 +56,7 @@ main{
 
 .modalBondImg{
     width: 100%;
-    height: 50%;
+    height: 230px;
 }
 
 .modalBondContent{

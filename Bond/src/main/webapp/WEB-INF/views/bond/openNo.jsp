@@ -61,7 +61,7 @@
                     <div class="btn-box">
                         <button type="button" class="write-button">밴드 가입하기</button>
                         <div class="sidebar-under-icon">
-                            <div class="band-setting-section">
+                            <div class="band-setting-section2">
                                 <a href="#" class="band-setting-link sidebar-font"> 
                                     밴드 정보 보기 >
                                 </a>
