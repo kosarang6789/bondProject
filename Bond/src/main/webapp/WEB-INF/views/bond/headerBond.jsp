@@ -83,7 +83,6 @@
         <li><a href="/bond/${groupNo}/album">사진첩</a></li>
         <li><a href="/bond/${groupNo}/bondMemberList">멤버</a></li>
         <li><a href="/bond/${groupNo}/plan">일정</a></li>
-        <li><a href="/bond/${groupNo}/chatting">채팅</a></li>
         </ul>
     </div>
 </nav>

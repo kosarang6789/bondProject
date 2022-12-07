@@ -1,0 +1,257 @@
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+*{
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'nanumsquare', serif;
+}
+
+a{text-decoration: none;}
+
+#postSelect-view > main{
+    max-height: 100%;
+    overflow: auto;
+    background-color: white;
+}
+
+#postSelect-section{
+    min-width: 369px;
+    width: 600px;
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+/* 작성자 정보 */
+.postMemberAll{
+    width: 100%;
+    height: 100px;
+    padding: 20px;
+    display: flex;
+    border-bottom: 1px solid #E7E7E7;
+    position : sticky;
+}
+
+.postMember-img{
+    border-radius: 50%;
+    width: 38px;
+    min-width: 38px;
+    height: 38px;
+    margin-right: 20px;
+    /* border: 1px solid #777; */
+    background-color: white;
+    margin: 10px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.postMember-img>#profile-img{
+    width: 100%;  
+    height: 100%;
+}
+
+.postMember{
+    width: 82%;
+    min-width: 213px;
+    /* margin-right: 20px; */
+    padding-top: 13px;
+}
+
+.postMember>#memberName{
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.postMember>.postDate-read{
+    font-size: 12px;
+    color: #777;
+}
+
+.moreView{
+    text-align: center;
+    font-size: 16px;
+    align-items: center;
+    color: #D5D6E1;
+    position: relative;
+}
+
+.moreView:hover{
+    color: #999;
+}
+
+#postmoreView{
+    padding: 15px 0 0 25px;
+    width: 5%;
+}
+
+.fa-solid{
+    cursor: pointer;
+}
+
+
+.post-wrap{
+    padding-right: 20px;
+    border-top: 1px solid #E7E7E7;
+}
+.post-wrap>.post-wrap:first-child{
+    border-top: none;
+}
+
+/* 게시글 작성 */
+.post-content{
+    padding: 25px 40px 16px;
+    line-height: 23px;
+    min-height: 30px;
+    font-size: 14px;
+}
+
+/* 댓글, 좋아요 수 */
+.countLR{
+    margin: 25px 40px;
+    font-size: 13px;
+}
+
+.like-replyBtn{
+    text-align: center;
+    padding: 16px 40px 16px;
+    display: flex;
+    background-color: #FCFCFC;
+    border-top: 1px solid #E7E7E7;
+    border-bottom: 1px solid #E7E7E7;
+}
+
+.like-replyBtn>div{
+    width: 100%;
+}
+
+.like-replyBtn>div:hover{
+    cursor: pointer;
+}
+
+.checkLikeBtn {
+    color: #21c531;
+    font-weight: 800;
+}
+
+.like-replyBtn span{
+    font-size: 14px;
+}
+
+#replyList{
+    width: 100%;
+    padding: 13px 0;
+    background-color: #FCFCFC;
+}
+
+.firstReply-inform{
+    font-size: 14px;
+    text-align: center;
+}
+
+.replyOne{
+    display: flex;
+    width: 87%;
+    min-height: 64px;
+    margin: 0 auto;
+    flex-wrap: nowrap;
+    
+}
+
+.replyMember-img{
+    margin-top: 7px;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    border: 1px solid #ddd;
+}
+
+.reply-text{
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    padding: 4px 10px 6px;
+    line-height: 18px;
+}
+
+.reply-info{
+    display: flex;
+    color: #777;
+    justify-content: space-between;
+}
+
+.reply-info button{
+    color: #777;
+    font-size: 12px;
+}
+
+.reply-btn{
+    width: 70%;
+    display: flex;
+}
+
+#replymoreView{
+    padding-top: 30px;
+    width: 5%;
+}
+
+
+/* 덧글 */
+.child-comment{
+    padding-left: 38px;
+}
+
+.child-img{
+    margin-top: 14px;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    border: 1px solid #ddd;
+}
+
+.child-content{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+
+/* 더보기 리스트 */
+.moreView-menu{
+    display: none;
+    list-style: none;
+    border: 1px solid #D5D6E1;
+    background-color: white;
+    border-radius: 5px;
+    width: 110px;
+    position: absolute;
+    top: 4px;
+    right: 18px;
+    box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.15),
+    0px 0px 2px 1px rgba(0, 0, 0, 0.02);
+}
+
+.moreView-menu>button:nth-child(2){
+    border-top: 1px solid #ddd;
+}
+
+.moreView-menu>button{
+    font-size: 13px;
+    font-weight: 400;
+    color: #222;
+    display: block;
+    min-height: 37px;
+    padding: 10px 42px 11px 18px;
+    line-height: 1.2;
+    text-align: left;
+}
+
+.moreView-menu a:hover{
+    background-color: #eee;
+    font-weight: 600;
+}
+
+.showMenu{
+    display: block;
+}

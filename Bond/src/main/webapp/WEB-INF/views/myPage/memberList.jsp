@@ -129,7 +129,7 @@
                         </div>
                     </div>
 
-                    <div class="reportBtn"></div> <%-- 안되면 이거만 지우면 됨. --%>
+                    <div class="reportBtn"></div>
 
                 </section>
             </div>

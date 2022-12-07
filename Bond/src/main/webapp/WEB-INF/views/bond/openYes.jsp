@@ -10,8 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${groupInfo.groupName} | BOND</title>
 
-    <link rel="stylesheet" href="/resources/css/bond//openYes.css">
+    <link rel="stylesheet" href="/resources/css/bond/openYes.css">
     <link rel="stylesheet" href="/resources/css/bond/Modal-jose.css"><%-- 가입모달 --%>
+    <link rel="stylesheet" href="/resources/css/bond/modalBondIntro.css"><%-- 본드 정보 모달 --%>
     
     <script src="https://kit.fontawesome.com/1ce4f19a7a.js" crossorigin="anonymous"></script>
 
@@ -75,7 +76,7 @@
                     <h2 class="band-intro-title">밴드 소개</h2>
                     <div class="band-intro-detail">
                         <p class="desc">${groupInfo.groupComment}</p>
-                        <div class="intro-option">
+                        <%-- <div class="intro-option">
                             <div class="intro-option-box">
                                 <ul class="select-keyword-list">
                                     <li class="select-keyword-item">취미</li>
@@ -83,7 +84,7 @@
                                     <li class="select-keyword-item">운세</li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> --%>
                     </div>
 
                     <ul class="intro-photo collage">
@@ -117,20 +118,20 @@
                                 <span class="intro-desc-data">${groupInfo.groupDate}</span>
                             </p>
                             <p class="intro-desc">
-                                최근 새글
-                                <span class="intro-desc-data">1건</span>
+                                멤버수
+                                <span class="intro-desc-data">${groupInfo.memberCount}명</span>
                             </p>
-                            <p class="intro-desc">
+                            <%-- <p class="intro-desc">
                                 최근 가입
                                 <span class="intro-desc-data">10명</span>
-                            </p>
+                            </p> --%>
                         </div>
                     </div>
 
                 <!-- 2번 영역 -->
                     <main id="board-list">
                         <div class="post-write-form">
-                            <div class="board-search">
+                            <%-- <div class="board-search">
                                 <form action="#" class="search-form">
                                     <div class="input-search-form">
                                         <label class="gSrOnly" for="input-search" >글 내용, 작성자 검색</label>
@@ -139,7 +140,7 @@
                                         <button type="submit" class="searchbtn"><i class="fa-solid fa-magnifying-glass search-icon"></i></button>
                                     </div>
                                 </form>
-                            </div>
+                            </div> --%>
 
                             <%-- 게시물 조회 --%>
                             <div class="post-wrap">
@@ -233,14 +234,6 @@
                                                                             <span class="post-text">좋아요</span>
                                                                         </a>
                                                                     </div>
-                                                                    <div class="add-col">
-                                                                        <a href="#">
-                                                                            <span class="icon">
-                                                                                <i class="fa-solid fa-up-right-from-square"></i>
-                                                                            </span>
-                                                                            <span class="post-text">공유</span>
-                                                                        </a>
-                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -266,17 +259,34 @@
                 </button>
             </a>
         </div>
-                    <!-- 3번 영역 -->
-            <div id="banner">
-                <div id="band-photo-area"></div>
-            </div>
 
-    <%-- 탈퇴 모달 --%>
+        <%-- 게시글 상세조회 페이지 모달 --%>
+        <div id="postSelect-modal">
+            <div id="postSelect-view">
+                <jsp:include page="/WEB-INF/views/post/openYesPostSelect.jsp"/>
+            </div>
+            <button class="sModal-closeBtn">
+                <i class="fa-solid fa-x"></i>
+            </button>
+        </div>
+
+    <%-- 가입 모달 --%>
     <jsp:include page="/WEB-INF/views/bond/joinModal.jsp"/>
     <script src="/resources/js/bond/joinModal.js"></script>
 
+    <%-- 본드 정보 보기 모달 --%>
+    <jsp:include page="/WEB-INF/views/bond/modalBondIntro.jsp"/>
+    <script src="/resources/js/bond/modalBondIntro.js"></script>
+
+    <script>
+        let cp = 0;
+        const groupNo = "${groupNo}"
+        const memberNo = "${loginMember.memberNo}"
+        let selectPostNo;
+    </script>
+
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>    
 
-    <script src="/resources/js/bond/bond.js"></script>
+    <script src="/resources/js/bond/openYes.js"></script>
 
 </body>

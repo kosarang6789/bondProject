@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="/resources/css/bond/samplePage.css">
     <link rel="stylesheet" href="/resources/css/myPage/bondMemberList.css">
+    <link rel="stylesheet" href="/resources/css/bond/modalBondIntro.css">
     <script src="https://kit.fontawesome.com/1ce4f19a7a.js" crossorigin="anonymous"></script>
 
 </head>
@@ -51,35 +52,7 @@
                         <a href="#" class="more-link">...더보기</a>
                     </div>
 
-                    <div class="btn-box">
-                        <button type="button" class="write-button">글쓰기</button>
-                        <p class="box-desc">
-                            누구나 밴드를 검색해 찾을 수 있고, 밴드 소개와 게시글을 볼 수 있습니다.
-                        </p>
-                    </div>
-
-                    <div class="sidebar-under-icon">
-                        <div class="band-setting-section">
-                            <a href="/bond/${groupNo}/bond-bondIntro" class="band-setting-link sidebar-font"> 
-                                <i class="fa-solid fa-gear sidbar-icon"></i>밴드 설정
-                            </a>
-                            
-                        <div class="band-setting-list">
-                            <ul class="band-setting-item">
-                                <li>
-                                    <a href="#" id="reportBtn" class="report-band sidebar-font">
-                                        <i class="fa-solid fa-bell sidbar-icon"></i>신고하기
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#" class="leave-band sidebar-font">
-                                        <i class="fa-solid fa-person-walking-arrow-right sidbar-icon"></i>탈퇴하기
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>  
-                    </div>
+                    <div class="sidebar-under-icon"></div>
                 </div>
             </aside>
 
@@ -107,12 +80,15 @@
         <c:remove var="message" />
     </c:if>
 
+    <%-- 본드 정보 보기 모달 --%>
+    <jsp:include page="/WEB-INF/views/bond/modalBondIntro.jsp"/>
+    <script src="/resources/js/bond/modalBondIntro.js"></script>
+
     <script>
         let cp = 0;
         const groupNo = "${groupNo}";
         const myNo = "${memMap.loginMember.memberNo}";
     </script>
-
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>    
 
