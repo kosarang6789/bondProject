@@ -114,11 +114,13 @@
                         </div>
 
                         <ul class="album-images">
-                            <li class="album">
-                                <a href="#">
-                                    <img src="/resources/images/bond/album1.png" class="album-img">
-                                </a>
-                            </li>
+                            <c:forEach var="image" items="${postImageList}">
+                                <li class="album">
+                                    <a href="#">
+                                        <img src="${image.postImage}" class="album-img">
+                                    </a>
+                                </li>
+                            </c:forEach>
                             <li class="album">
                                 <a href="#">
                                     <img src="/resources/images/bond/album2.png" class="album-img">

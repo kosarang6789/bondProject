@@ -2,6 +2,7 @@ package kh.semi.project.bond.model.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,7 @@ import kh.semi.project.bond.model.vo.GroupImage;
 import kh.semi.project.bond.model.vo.GroupMemberList;
 import kh.semi.project.bond.model.vo.Pagination;
 import kh.semi.project.bond.model.vo.Post;
+import kh.semi.project.bond.model.vo.PostImage;
 import kh.semi.project.common.Util;
 import kh.semi.project.member.model.vo.Member;
 import kh.semi.project.plan.model.vo.Plan;
@@ -131,6 +133,14 @@ public class BondServiceImpl implements BondService{
 	@Override
 	public List<String> selectBondImageList() {
 		return dao.selectBondImageList();
+	}
+
+	// 그룹 내 이미지 리스트
+	@Override
+	public Map<String, Object> selectImageList(int groupNo) {
+		
+		
+		return null;
 	}
 
 
