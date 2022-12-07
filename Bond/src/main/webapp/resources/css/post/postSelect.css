@@ -15,7 +15,7 @@ a{text-decoration: none;}
 #postSelect-section{
     min-width: 369px;
     width: 600px;
-    /* height: 100%; */
+    height: 100%;
     display: flex;
     flex-direction: column;
     background-color: white;

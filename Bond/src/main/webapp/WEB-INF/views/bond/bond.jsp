@@ -206,6 +206,9 @@
                     <section class="band-photo">
                         <h2 class="tit">최근 사진</h2>
                         <div class="photo-body">
+                            <c:if test="${empty recentImages}">
+                                <span class="no-image-info">게시된 사진이 없습니다</span>
+                            </c:if>
                             <div class="photo-list">
                                 <ul>
                                     <c:forEach var="image" items="${recentImages}">
@@ -216,7 +219,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <a href="/bond/${groupNo}/plan" class="more-button">더보기</a>
+                        <a href="/bond/${groupNo}/album" class="more-button">더보기</a>
                     </section>
                 </div>
 
