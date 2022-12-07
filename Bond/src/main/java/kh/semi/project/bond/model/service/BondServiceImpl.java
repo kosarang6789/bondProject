@@ -135,12 +135,10 @@ public class BondServiceImpl implements BondService{
 		return dao.selectBondImageList();
 	}
 
-	// 그룹 내 이미지 리스트
+	// 그룹 내 이미지 리스트(앨범)
 	@Override
-	public Map<String, Object> selectImageList(int groupNo) {
-		
-		
-		return null;
+	public List<PostImage> selectImageList(int groupNo) {
+		return dao.selectImageList(groupNo);
 	}
 
 

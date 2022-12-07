@@ -221,36 +221,6 @@ body{
     font-weight: 600;
 }
 
-.btn-wrap{
-    flex: 0 0 auto;
-    display: inline-flex;
-    align-items: center;
-}
-
-.create-album{
-    color: #93D94E;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.ubutton{
-    position: relative;
-    min-width: 90px;
-    height: 34px;
-    padding: 0 15px;
-    border-radius: 1px;
-    font-size: 13px;
-    font-weight: 500;
-    vertical-align: top;
-    white-space: nowrap;
-
-    border: 1px solid #93D94E;
-}
-
-.ubutton:hover{
-    border-color: #34cc6c;
-}
-
 .album-wrap{
     width: 100%;
     padding: 0 22px 22px;
@@ -302,50 +272,6 @@ body{
     color: #777;
 }
 
-.album-section .album-header .info{
-    margin-top: 4px;
-    font-size: 12px;
-    font-weight: 400;
-    color: #777;
-}
-
-.album-section .album-header .item:last-child{
-    flex: 0 0 auto;
-    margin-left: 20px;
-}
-
-.album-section .album-header .btn-attach-photo{
-    position: relative;
-    cursor: pointer;
-    width: 18px;
-    height: 18px;
-    overflow: hidden;
-    display: inline-block;
-    
-}
-
-.photo-plus{
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.album-section .album-header .btn-attach-photo span {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    right: 0;
-    top: 0;
-}
-
-.album-section .album-header .btn-attach-photo input{
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 200%;
-    height: 100%;
-    opacity: 0;
-}
-
 .album-section .album-wrap .album-images{
     margin-top: 12px;
 }
@@ -395,61 +321,12 @@ body{
     background-color: #ccc;
 }
 
-.album-wrap-line{
-    border-top: 1px solid rgba(0,0,0,.1) ;
-}
-
-.album-sort{
-    position: relative;
-    padding-top: 25px;
-    align-items: center;
-}
-
-.album-sort .title{
-    font-size: 15px;
-    font-weight: 600;
-    color: #333;
-}
-
-.album-list{
-    margin-top: 18px;
-}
-
-.album-item-view{
-    border-top: 1px solid rgba(0,0,0,.1) ;
-}
-
-
 
 /* banner */
 #banner{
     display: flex;
     margin-left: 18px;
     width: 240px; 
-}
-
-#band-photo-area{
-    width: 240px; 
-    position: fixed;
-}
-
-.toolbar{
-    list-style: none;
-}
-
-.board-icon{
-    color:#888;
-}
-
-.board-icon:hover{
-    color: #555;
-}
-
-.band-photo{
-    position: relative;
-    margin-bottom: 13px;
-
-    background-color:  white;
 }
 
 #banner .tit{
@@ -460,48 +337,6 @@ body{
     font-size: 13px;
     font-weight: 600;
     
-}
-
-#banner .photo-body{
-    padding: 14px;
-    border-top: 1px solid #f0f2f4;
-}
-
-#banner .photo-list{
-    margin-top: -1px;
-    margin-left: -1px;
-    font-size: 0;
-}
-
-#banner .photo-list a{
-    display: inline-block;
-    position: relative;
-}
-
-.banner-img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;  
-    cursor: pointer;
-    aspect-ratio: auto 73 / 73;
-
-
-}
-
-#banner .photo-list .no-img{
-    display: inline-block;
-    width: 68px;
-    height: 68px;
-    background-color: #eef0f3;
-}
-
-.banner-box {
-    border: none;
-    width: 68px;
-    height: 68px;
-    overflow: hidden;
-    margin-top: 1px;
-    margin-right: 1px;
 }
 
 #banner .more-button{
@@ -524,7 +359,7 @@ body{
     position: fixed;
     min-height: 80px;
     width: 240px;
-    top: 320px;
+    /* top: 320px; */
     background-color: white;
 }
 

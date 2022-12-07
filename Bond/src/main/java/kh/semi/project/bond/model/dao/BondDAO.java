@@ -133,8 +133,9 @@ public class BondDAO {
 		return sqlSession.selectList("groupMapper.selectBondImageList");
 	}
 
-	public List<PostImage> selectImageList(List<PostImage> postImageList) {
-		return sqlSession.selectList("postMapper.selectImageList", postImageList);
+	// 밴드 내 모든 이미지 조회
+	public List<PostImage> selectImageList(int groupNo) {
+		return sqlSession.selectList("postMapper.selectImageList", groupNo);
 	}
 
 
