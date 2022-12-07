@@ -7,7 +7,7 @@ const rightSide2 = document.getElementById("band-soon-plan-area");
 
 const centerWidth = center.offsetWidth;
 const leftSideWidth = leftSide.offsetWidth;
-const righthideWidth = rightSide.offsetWidth;
+const righthideWidth = rightSide2.offsetWidth;
 
 window.addEventListener("load", function () {
     leftSide.style.left = center.getBoundingClientRect().x - 18 - leftSideWidth + 'px';
