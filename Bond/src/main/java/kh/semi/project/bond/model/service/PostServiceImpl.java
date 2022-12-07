@@ -100,6 +100,9 @@ public class PostServiceImpl implements PostService{
 	// 게시글 삭제
 	@Override
 	public int deletePost(int postNo) {
+		
+		int delResult = dao.deleteImage(postNo);
+		
 		return dao.deletePost(postNo);
 	}
 

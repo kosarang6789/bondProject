@@ -70,7 +70,7 @@ body{
     position: fixed;
     min-height: 80px;
     width: 240px;
-    top: 320px;
+    /* top: 320px; */
     background-color: white;
 }
 
@@ -1078,29 +1078,6 @@ button{
     margin-left: 18px;
 }
 
-#band-photo-area{
-    width: 240px; 
-    position: fixed;
-}
-
-.toolbar{
-    list-style: none;
-}
-
-.board-icon{
-    color:#888;
-}
-
-.board-icon:hover{
-    color: #555;
-}
-
-.band-photo{
-    position: relative;
-    margin-bottom: 13px;
-
-    background-color:  white;
-}
 
 #banner .tit{
     height: 34px;
@@ -1110,48 +1087,6 @@ button{
     font-size: 13px;
     font-weight: 600;
     
-}
-
-#banner .photo-body{
-    padding: 14px;
-    border-top: 1px solid #f0f2f4;
-}
-
-#banner .photo-list{
-    margin-top: -1px;
-    margin-left: -1px;
-    font-size: 0;
-}
-
-#banner .photo-list a{
-    display: inline-block;
-    position: relative;
-}
-
-.banner-img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;  
-    cursor: pointer;
-    aspect-ratio: auto 73 / 73;
-
-
-}
-
-#banner .photo-list .no-img{
-    display: inline-block;
-    width: 68px;
-    height: 68px;
-    background-color: #eef0f3;
-}
-
-.banner-box {
-    border: none;
-    width: 68px;
-    height: 68px;
-    overflow: hidden;
-    margin-top: 1px;
-    margin-right: 1px;
 }
 
 #banner .more-button{
