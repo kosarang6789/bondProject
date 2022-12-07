@@ -168,14 +168,19 @@ nav li > a{
     color: rgba(255,255,255,.8);
     transition-duration: 0.1s;
     padding-bottom: 2px;
+    display: inline-block;
 }
 
-
-nav li > a:focus {
-    border-bottom: 2px solid white; 
-    color: #fff;
+.active{
+    color: white;
+    position: relative;
 }
 
-nav li > a:hover {
-    color: #fff; 
+.active::after{
+    content: "";
+    border-bottom: 2px solid #fff;
+    width: 100%;
+    display: block;
+    position: absolute;
+    bottom: 2px;
 }

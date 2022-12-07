@@ -33,12 +33,12 @@
                     </a>
                 </li>
 
-                <li class="widget-item chat-icon">
+                <%-- <li class="widget-item chat-icon">
                     <!-- 채팅 -->
                     <a href="#">
                         <i class="fa-solid fa-comment-dots chat-icon" style="color: #999;"></i>
                     </a>
-                </li>
+                </li> --%>
 
                 <li class="widget-item">
                     <!-- 내 정보 사진 -->
@@ -79,11 +79,11 @@
 <nav class="bg nav-fixed">
     <div id="list-nav">
         <ul>
-        <li><a href="/bond/${groupNo}">게시글</a></li>
-        <li><a href="/bond/${groupNo}/album">사진첩</a></li>
-        <li><a href="/bond/${groupNo}/bondMemberList">멤버</a></li>
-        <li><a href="/bond/${groupNo}/plan">일정</a></li>
-        <li><a href="/bond/${groupNo}/chatting">채팅</a></li>
+            <li><a class="active" href="/bond/${groupNo}">게시글</a></li>
+            <li><a href="/bond/${groupNo}/album">사진첩</a></li>
+            <li><a href="/bond/${groupNo}/bondMemberList">멤버</a></li>
+            <li><a href="/bond/${groupNo}/plan">일정</a></li>
+            <%-- <li><a href="/bond/${groupNo}/chatting">채팅</a></li> --%>
         </ul>
     </div>
 </nav>

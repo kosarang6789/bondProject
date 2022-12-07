@@ -44,11 +44,25 @@ public class findBondController {
 		
 		if(groupTopic != null) { // 본드가 있을 경우 
 			model.addAttribute("groupTopic", groupTopic);
-			
 		}
-		
 		return "member/groupTopic";
 	}
+	
+//	@GetMapping("/member/groupTopic/{topicCode}")
+//	public String groupTopicPage(	
+//			@PathVariable("topicCode") int topicCode,
+//			@SessionAttribute("loginMember") Member loginMember,
+//			Model model,
+//			@RequestParam(value="cp", required=false, defaultValue= "1") int cp) {
+//		
+//		// 카테고리별 본드 조회(topicCode)
+//		Map<String, Object> groupTopic = service.groupTopic(topicCode, cp);
+//		
+//		if(groupTopic != null) { // 본드가 있을 경우 
+//			model.addAttribute("groupTopic", groupTopic);
+//		}
+//		return "member/groupTopic";
+//	}
 	
 //	@ResponseBody
 //	@PostMapping("/member/groupTopic/{topicCode}")
