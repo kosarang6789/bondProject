@@ -82,8 +82,12 @@ a{text-decoration: none;}
     padding: 15px 0 0 25px;
     width: 5%;
 }
-
+/* 
 .fa-solid{
+    cursor: pointer;
+} */
+
+[name=moreView] {
     cursor: pointer;
 }
 
