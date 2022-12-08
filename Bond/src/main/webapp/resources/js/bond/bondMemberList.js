@@ -128,10 +128,11 @@ function selectBoardScroll (){
                                 rm.addEventListener("click", ()=>{
                                     let memberNo = rm.getAttribute("id");
                                     
-                                    if(myNo != memPro.memberNo){
+                                    if(myNo != memberNo){
                                         const url = "/report/member/" + memberNo;
                                         open(url, "신고하기", "width=500px, height=600px")
-                                    } else {
+                                    }
+                                    if((myNo != memberNo) && myNo == leaderNo) {
                                         const url = "/report/member/" + memberNo  + "/explusion"; 
                                         open(url, "신고하기", "width=500px, height=600px")
                                     }

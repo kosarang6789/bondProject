@@ -46,10 +46,19 @@ public class AdminReportDAO {
 		return sqlSession.update("adminMapper.updateExpireDate", report);
 	}
 
+	/** 신고 : 게시글 삭제
+	 * @param targetNo
+	 * @return
+	 */
+	public int deleteReportedPost(int targetNo) {
+		return sqlSession.update("adminMapper.deleteReportedPost", targetNo);
+	}
+	
 	/** 미처리 신고업무 확인
 	 * @return
 	 */
 	public int findWaitingReports() {
 		return sqlSession.selectOne("adminMapper.findWaitingReports");
 	}
+
 }
