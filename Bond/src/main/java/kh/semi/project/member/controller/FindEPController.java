@@ -24,7 +24,6 @@ import kh.semi.project.member.model.vo.Member;
 // 이메일 비밀번호 찾기
 
 @Controller
-@RequestMapping("/member")
 @SessionAttributes({"authKey"})
 public class FindEPController {
 	
