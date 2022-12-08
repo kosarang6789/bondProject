@@ -29,7 +29,7 @@ public class LoginFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		System.out.println("[Login Filter] 로그인 필터 : ");
+		System.out.print("[Login Filter] 로그인 필터 : ");
 		// org.springframework.web.servlet
 		
 		// 필터는 클라이언트의 요청이 되자마자
