@@ -29,7 +29,7 @@ public class BondNavInterceptor implements HandlerInterceptor{
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		
-		System.out.println("[BondNavInterceptor] 모임 미가입 여부 확인 : ");
+		System.out.print("[BondNavInterceptor] 모임 미가입 여부 확인 : ");
 		
 		// 다운캐스팅 진행
 		HttpServletRequest req = (HttpServletRequest)request;
