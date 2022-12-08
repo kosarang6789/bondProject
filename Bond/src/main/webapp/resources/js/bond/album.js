@@ -54,3 +54,41 @@ window.onclick=function(e){
         }   
     }
 };
+
+// 사진 상세조회 모달
+(()=>{
+    const modal = document.getElementById("imageSelect-modal");
+    const closeBtn = document.querySelector(".sModal-closeBtn");
+    const image = document.getElementsByClassName("album");
+
+    for(let i of image){
+        i.addEventListener("click", ()=>{
+            modal.classList.toggle("show");
+            // document.body.style.overflow = "hidden";
+            // document.querySelector("#postSelect-view > main").scrollTop = 0;
+            selectImageDetail(i.getAttribute("id"));
+        });
+    }
+
+    closeBtn.addEventListener("click",()=>{
+        modal.classList.toggle("show");
+    });
+})();
+
+const imageView = document.getElementById("imageView");
+const profileImage = document.querySelector(".uprofile-inner");
+const profileName = document.querySelector(".post-info-name");
+
+const selectImageDetail = (imageNo)=>{
+    $.ajax({
+        url : "/bond/image",
+        type : "GET",
+        data : {"imageNo" : imageNo},
+        dataType : "JSON",
+        success : (image)=>{
+            imageView.setAttribute("src", image.postImage);
+            profileImage.setAttribute("src", image.memberImage);
+            profileName.innerText = image.memberName;
+        }
+    })
+};

@@ -138,6 +138,11 @@ public class BondDAO {
 		return sqlSession.selectList("postMapper.selectImageList", groupNo);
 	}
 
+	// 선택한 이미지 조회
+	public PostImage selectImageDetail(int imageNo) {
+		return sqlSession.selectOne("postMapper.selectImageDetail", imageNo);
+	}
+
 
 
 

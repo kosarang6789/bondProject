@@ -315,12 +315,12 @@ body{
     height: 65px;
     background-color: transparent;
     z-index: 11;
-    cursor: pointer;
     padding-top: 20px;
     align-items: flex-start;
 }
 
 .uprofile{
+    cursor: pointer;
     position: absolute;
     margin-left: 22px;
     margin-right: 10px;

@@ -113,6 +113,12 @@ function selectBoardScroll(){
                                 profileImage.setAttribute("src", "/resources/images/member/profile/defaultProfile.png");
                             }
                             profileImage.classList.add("uprofile-inner");
+                            const modalMemPro = document.querySelector(".modalMemPro");
+                            profileImage.addEventListener("click", ()=>{
+                                modalMemPro.classList.add("show");
+                                modalMemPro.classList.remove("hidden");
+                                selectMemPro(post.memberNo);
+                            });
                             
                             // 2-2) post-info
                             const postInfo = document.createElement("div");
@@ -127,7 +133,7 @@ function selectBoardScroll(){
                             const postListInfo = document.createElement("div");
                             postListInfo.classList.add("post-list-info");
                             
-                            const boardDate = document.createElement("a");
+                            const boardDate = document.createElement("div");
                             boardDate.classList.add("post-info-date");
                             boardDate.innerText = post.postDate;
                             
@@ -372,7 +378,7 @@ if(reportBtn != null) {
     //             window.location.reload(true);
     //         }
     //     };
-    // }
+    // }author
 
 })();
 
@@ -385,6 +391,8 @@ let postDate = document.getElementById("postDate");
 let profileImg = document.getElementById("profile-img");
 const likeBtn = document.getElementById("likeBtn");
 const moreViewMenu = document.querySelector(".moreView-menu");
+
+let postMemberImg = document.querySelector(".postMember-img");
 
 const selectPostDetail = (postNo)=>{
     $.ajax({
@@ -400,6 +408,8 @@ const selectPostDetail = (postNo)=>{
             postContent.innerHTML = post.postContent;
             memberName.innerText = post.memberName;
             postDate.innerText = post.postDate;
+
+            postMemberImg.setAttribute("id", post.memberNo);
             if(post.memberImage !=null) {
                 profileImg.setAttribute("src", post.memberImage);
             }else {
@@ -652,6 +662,10 @@ const selectReplyList=(postNo)=>{
 const addReply = document.getElementById("addReply");
 const replyWriteContent = document.getElementById("replyWrite-Content");
 
+document.getElementById("replyBtn").addEventListener("click", ()=>{
+    replyWriteContent.focus();
+});
+
 addReply.addEventListener("click", ()=>{
     if(replyWriteContent.value.trim().length==0){
         alert("댓글을 작성한 뒤 버튼을 클릭해주세요.");
@@ -881,3 +895,4 @@ const insertChildReply = (parentNo, btn)=>{
         }
     });
 };
+

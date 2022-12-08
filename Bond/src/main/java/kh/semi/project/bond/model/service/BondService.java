@@ -40,5 +40,8 @@ public interface BondService {
 	// 그룹내 이미지 리스트
 	List<PostImage> selectImageList(int groupNo);
 
+	// 선택한 이미지 조회
+	PostImage selectImageDetail(int imageNo);
+
 
 }
