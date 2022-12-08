@@ -391,7 +391,7 @@ button{
     border: 0;
     background-color: transparent;
     border-radius: 0;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .face-icon{
@@ -647,27 +647,6 @@ button{
     justify-content: space-between;
 }
 
-.face-comment{
-    font-size: 13px;
-    font-weight: 400;
-    color: #555;
-    position: relative;
-}
-
-.emotion-view{
-    margin-right: 7px;
-}
-
-button{
-    border: 0;
-    background-color: transparent;
-    border-radius: 0;
-    cursor: pointer;
-}
-
-.face-icon{
-    font-size: 1.1em;
-}
 
 .count{
     margin-left: 3px;
@@ -676,13 +655,6 @@ button{
     font-weight: 500;
 }
 
-.comment{
-    font-size: 13px;
-    font-weight: 400;
-    color: #555;
-    line-height: 23px;
-    vertical-align: top;
-}
 
 .comment-toggle{
     margin-top: 3px;
@@ -713,12 +685,14 @@ button{
     align-items: center;
 }
 
+*/
+
 .post-text{
     font-weight: 500;
-    font-size: 15px;
+    font-size: 14px;
     color: #222;
     cursor: pointer;
-} */
+}
 
 
 
@@ -773,6 +747,7 @@ iframe{
     right: 33px;
     font-size: 22px;
     color: #f0f2f4;
+    cursor: pointer;
 }
 
 
