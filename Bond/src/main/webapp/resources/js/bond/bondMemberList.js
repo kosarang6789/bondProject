@@ -128,8 +128,15 @@ function selectBoardScroll (){
                                 rm.addEventListener("click", ()=>{
                                     let memberNo = rm.getAttribute("id");
                                     
-                                    const url = "/report/member/" + memberNo; 
-                                    open(url, "신고하기", "width=500px, height=600px")
+                                    if(myNo != memberNo){
+                                        const url = "/report/member/" + memberNo;
+                                        open(url, "신고하기", "width=500px, height=600px")
+                                    }
+                                    if((myNo != memberNo) && myNo == leaderNo) {
+                                        const url = "/report/member/" + memberNo  + "/explusion"; 
+                                        open(url, "신고하기", "width=500px, height=600px")
+                                    }
+
                                 })
                             }
                         }
@@ -274,8 +281,8 @@ const selectMemPro = (memberNo) =>{
 
                     // 모달 창 신고
                     modalBtn1.addEventListener("click", () => {
-                        const url = "/report/member/" + memberNo; 
-                        open(url, "신고하기", "width=500px, height=600px")
+                        const url = "/report/member/" + memberNo +"/explusion"; 
+                        open(url, "탈퇴시키기", "width=500px, height=600px")
                     });
                 }else{ /* 나 */
                     modalReport.append(modalA);
@@ -328,7 +335,13 @@ for(let rm of reportMemList){
     rm.addEventListener("click", ()=>{
         let memberNo = rm.getAttribute("id");
         
-        const url = "/report/member/" + memberNo; 
-        open(url, "신고하기", "width=500px, height=600px")
+        if(myNo != memberNo){
+            const url = "/report/member/" + memberNo;
+            open(url, "신고하기", "width=500px, height=600px")
+        }
+        if((myNo != memberNo) && myNo == leaderNo) {
+            const url = "/report/member/" + memberNo  + "/explusion"; 
+            open(url, "신고하기", "width=500px, height=600px")
+        }
     })
 };

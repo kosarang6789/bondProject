@@ -16,7 +16,14 @@
 <body>
     <!-- 신고하기 영역 -->
     <div class="report-page">
-        <header class="report-head"> 신고하기 </header>
+        <c:if test="${target.equals('member')}">
+            <c:if test="${map.getMyLeaderYN.leaderYN.equals('Y')}">
+                <header class="report-head"> 탈퇴시키기 </header>
+            </c:if>
+            <c:if test="${map.getMyLeaderYN.leaderYN.equals('N')}">
+                <header class="report-head"> 신고하기 </header>
+            </c:if>
+        </c:if>
         <form id="reportFrm" method="POST">
             <div class="report-who">
                 <c:if test="${target.equals('member')}">
@@ -61,17 +68,43 @@
                 </ul> <!-- ul end -->
             </c:forEach>
 
-            <div class="modal">
-                <div class="window">
-                    <div>
-                        신고 내용은 이용약관 및 정책에 의해서 처리되며, 허위신고 시 서비스 이용이 제한될 수 있습니다.
-                    </div>
-                    <div class="report-confirm-btn">
-                        <button id="cancelBtn" type="button">취소</button>
-                        <button id="reportBtn" type="submit">신고하기</button>
+        <c:if test="${target.equals('member')}">
+            <c:if test="${map.getMyLeaderYN.leaderYN.equals('Y')}"> <%-- 탈퇴시키기 용 모달 --%>
+                <div 
+                <c:if test="${map.getMyLeaderYN.leaderYN.equals('Y')}">
+                    class="modal"
+                </c:if>
+                >
+                    <div class="window">
+                        <div>
+                            탈퇴 시 이용약관 및 정책에 의해서 처리되며, 허위신고 시 서비스 이용이 제한될 수 있습니다.
+                        </div>
+                        <div class="report-confirm-btn">
+                            <button id="cancelBtn" type="button">취소</button>
+                            <button id="reportBtn" typpe="submit">탈퇴 시키기</button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </c:if>
+            <c:if test="${map.getMyLeaderYN.leaderYN.equals('N')}">
+                <div
+                <c:if test="${map.getMyLeaderYN.leaderYN.equals('N')}">
+                    class="modal"
+                </c:if>
+                >
+                    <div class="window">
+                        <div>
+                            신고 내용은 이용약관 및 정책에 의해서 처리되며, 허위신고 시 서비스 이용이 제한될 수 있습니다.
+                        </div>
+                        <div class="report-confirm-btn">
+                            <button id="cancelBtn" type="button">취소</button>
+                            <button id="reportBtn" typpe="submit">신고하기</button>
+                        </div>
+                    </div>
+                </div>
+            </c:if>
+        </c:if>
+
 
         </form> <!-- report-frm end -->
     </div>

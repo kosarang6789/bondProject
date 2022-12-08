@@ -68,11 +68,13 @@
                             </c:if>   
                         <div class="band-setting-list">
                             <ul class="band-setting-item">
-                                <li>
-                                    <a href="#" id="reportBtn" class="report-band sidebar-font">
-                                        <i class="fa-solid fa-bell sidbar-icon"></i>신고하기
-                                    </a>
-                                </li>
+                                <c:if test="${loginMember.memberNo != groupInfo.leaderNo}">
+                                    <li>
+                                        <a href="#" id="reportBtn" class="report-band sidebar-font">
+                                            <i class="fa-solid fa-bell sidbar-icon"></i>신고하기
+                                        </a>
+                                    </li>
+                                </c:if>
 
                                 <li>
                                     <a href="#" class="leave-band sidebar-font">
