@@ -30,7 +30,7 @@ public class ImageDeleteScheduling {
 	@Autowired
 	private PostService postService;
 	
-	@Scheduled(cron="0 0/1 * * * *") // 정시마다 이미지 삭제
+	@Scheduled(cron="0 0 0/1 * * *") // 정시마다 이미지 삭제
 	public void autoDeleteImageFile() {
 		// 1. DB에서 이미지가 저장된 테이블의 모든 이미지 변경명을 조회함
 		
