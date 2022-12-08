@@ -51,6 +51,11 @@ public class AdminReportServiceImpl implements AdminReportService {
 			result = dao.updateExpireDate(report);
 		}
 		
+		if(report.getResultCode() == 5) {
+			result = dao.deleteReportedPost(report.getTargetNo());
+		}
+		
+		
 		return result;
 		
 	}
