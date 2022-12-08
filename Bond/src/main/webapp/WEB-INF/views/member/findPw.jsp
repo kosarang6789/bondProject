@@ -59,7 +59,7 @@
                 </div>
             </div> --%>
         </form>
-        <form action="changePw" method="post" id="changePw-frm">
+        <form action="/changePw" method="post" id="changePw-frm">
             <div id="modal" class="modal">
                 <div class="modalArea">
                     <div class="findPwTitle">비밀번호 변경</div>
