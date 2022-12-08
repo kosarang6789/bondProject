@@ -18,7 +18,7 @@
     </div>
     <main>
         <div class="find-title findEmail">이메일 찾기</div>
-        <form action="/member/findEmail" method="post" id="findEmail-frm">
+        <form action="/findEmail" method="post" id="findEmail-frm">
             <section class="inputbox">
                 <input type="text" name="memberName" placeholder="이름 입력" id="e-inputName"
                     autocomplete="off">
@@ -50,7 +50,7 @@
 
                     <div class="btnArea">
                         <a href="/" id="mainBtn">
-                            <div class="btns">
+                            <div class="btns1">
                                 메인페이지
                             </div>
                         </a>
@@ -58,12 +58,12 @@
                         <c:choose>
                             <c:when test="${!empty memberEmail}">
                                 <a href="/login">
-                                    <div class="btns">로그인</div>
+                                    <div class="btns1">로그인</div>
                                 </a>
                             </c:when>
                             <c:otherwise>
                                 <a href="/login">
-                                    <div class="btns">회원가입</div>
+                                    <div class="btns1">회원가입</div>
                                 </a>
                             </c:otherwise>
                         </c:choose>

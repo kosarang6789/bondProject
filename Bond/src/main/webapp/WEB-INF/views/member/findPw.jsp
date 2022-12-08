@@ -18,7 +18,7 @@
     </div>
     <main>
         <div class="find-title findPw">비밀번호 찾기</div>
-        <form action="/member/findPw" method="post" id="findPw-frm">
+        <form action="/findPw" method="post" id="findPw-frm">
             <section class="inputbox">
                 <input type="text" id="inputName" name="memberName"
                     placeholder="이름 입력" autocomplete="off">

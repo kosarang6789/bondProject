@@ -48,8 +48,8 @@
             <p class="text-area">
                 본드가 처음이신가요?
                 <a href="/signUp">회원가입</a> |
-                <a href="/member/findEmail">이메일 찾기</a> | 
-                <a href="/member/findPw">비밀번호 찾기</a>
+                <a href="/findEmail">이메일 찾기</a> | 
+                <a href="/findPw">비밀번호 찾기</a>
             </p>
         </form>
     </main>
