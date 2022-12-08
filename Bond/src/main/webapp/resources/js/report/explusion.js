@@ -16,7 +16,7 @@ for(let item of reasonBtn){
         // 주소 만들기
         const pathName = location.pathname;
         const queryString = "/" + reasonCode;
-        const url =  pathName + queryString + "/report";
+        const url =  pathName + queryString;
 
         const reportFrm = document.getElementById("reportFrm");
         reportFrm.setAttribute("action", url)

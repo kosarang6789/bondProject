@@ -146,3 +146,4 @@ Bond/src/.DS_Store
 Bond/src/main/.DS_Store
 Bond/src/main/webapp/.DS_Store
 Bond/src/main/webapp/resources/.DS_Store
+*.java
