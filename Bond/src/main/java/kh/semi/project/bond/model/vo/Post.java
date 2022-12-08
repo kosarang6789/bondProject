@@ -35,5 +35,5 @@ public class Post {
 	// 추가
 	private String groupName;
 	private String postImage;
-	private String targetName;
+//	private String targetName;
 }

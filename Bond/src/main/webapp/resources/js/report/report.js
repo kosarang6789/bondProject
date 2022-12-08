@@ -31,3 +31,24 @@ cancelBtn.addEventListener("click", () => {
     modal.style.display="none";
 })
 
+
+// content 정규식 자르기 즉시실행
+(function delRegEx(){
+    const content = document.getElementById("content");
+
+    if(content != null) {
+        const regEx = /<p>[ㄱ-힣\d\w\s\/\"\_\.\:\;\<\>\=\%\-\<\>]+<\/p>/;
+        const regEx2 = /<[^>]*>?/g;
+        const regEx3 = /\%/;
+        if(regEx.test(content.innerText)) {
+            content.innerText = content.innerText.replace(regEx, '');
+        }
+        if(regEx2.test(content.innerText)) {
+            content.innerText = content.innerText.replace(regEx2, '');
+        }
+        if(regEx3.test(content.innerHTML)) {
+            content.innerHTMl = content.innerHTML.replace(regEx3, '');
+        }
+
+    }
+})()
