@@ -24,7 +24,7 @@
 
         <div id="pageNotFoundBody">
             <div id="imgBox">
-                <img id="sadImage" src="/resources/images/common/sad-dog.jpg">
+                <img id="sadImage" src="/resources/images/admin/no-content.png">
             </div>
             <div id="comment">
                 페이지를 찾을 수 없습니다.

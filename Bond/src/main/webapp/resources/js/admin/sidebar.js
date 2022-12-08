@@ -38,7 +38,6 @@ function findWaitingReports (){
         type : "POST",
         dataType : "JSON",
         success : (waitingReports) => {
-            console.log(waitingReports);
             const alarmDot = document.getElementById("alarmDot");
             if(waitingReports > 0) {
                 alarmDot.style.display="block";

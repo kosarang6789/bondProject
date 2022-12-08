@@ -314,9 +314,17 @@
 			  	  		WHEN RESULT_CODE = 2 THEN SYSDATE + 7
 			  	  		WHEN RESULT_CODE = 3 THEN SYSDATE + 30
 			  	  		WHEN RESULT_CODE = 4 THEN TO_DATE('9999.12.31')
-			  	  		WHEN RESULT_CODE = 5 THEN NULL
+			  	  		WHEN RESULT_CODE = 5 THEN TO_DATE('9999.12.31')
 			  		  END
 		WHERE REPORT_NO = ${reportNo}
+	</update>
+	
+	<!-- 신고 : 게시글 삭제 -->
+	<update id="deleteReportedPost">
+		UPDATE "POST" SET
+		POST_DEL_YN = 'Y'
+		WHERE POST_NO = ${targetNo}
+		
 	</update>
 	
 	<!-- 미처리 신고 조회 -->

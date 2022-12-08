@@ -16,33 +16,15 @@
 <body>
     <!-- 신고하기 영역 -->
     <div class="report-page">
-        <header class="report-head"> 신고하기 </header>
+        <c:if test="${target.equals('member')}">
+                <header class="report-head"> 탈퇴시키기 </header>
+        </c:if>
         <form id="reportFrm" method="POST">
             <div class="report-who">
                 <c:if test="${target.equals('member')}">
                     <p>
                         <strong>회원명</strong>
                         <span id="who">${map.member.memberName}</span>
-                    </p>
-                </c:if>
-                <c:if test="${target.equals('group')}">
-                    <p>
-                        <strong>소모임명</strong>
-                        <span id="who">${map.group.groupName}</span>
-                    </p>
-                    <p>
-                        <strong>소개글</strong>
-                        <span id="content">${map.group.groupComment}</span>
-                    </p>
-                </c:if>
-                <c:if test="${target.equals('post')}">
-                    <p>
-                        <strong>작성자</strong>
-                        <span id="who">${map.post.memberName}</span>
-                    </p>
-                    <p>
-                        <strong>내용</strong>
-                        <span id="content">${map.post.postContent}</span>
                     </p>
                 </c:if>
             </div> <!-- report-who end -->
@@ -64,14 +46,15 @@
             <div class="modal">
                 <div class="window">
                     <div>
-                        신고 내용은 이용약관 및 정책에 의해서 처리되며, 허위신고 시 서비스 이용이 제한될 수 있습니다.
+                        불합리한 탈퇴 남용 시 서비스 이용이 제한될 수 있습니다.
                     </div>
                     <div class="report-confirm-btn">
                         <button id="cancelBtn" type="button">취소</button>
-                        <button id="reportBtn" type="submit">신고하기</button>
+                        <button id="reportBtn" typpe="submit">탈퇴 시키기</button>
                     </div>
                 </div>
             </div>
+
 
         </form> <!-- report-frm end -->
     </div>
@@ -84,7 +67,7 @@
         <c:remove var="message" />
     </c:if>
 
-    <script src="/resources/js/report/report.js"></script>
+    <script src="/resources/js/report/explusion.js"></script>
 
 </body>
 </html>
