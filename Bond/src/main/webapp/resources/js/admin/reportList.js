@@ -129,8 +129,29 @@ function ajax(keywordValue, optValue, countValue, cp){
                     const row4 = document.createElement("span");
                     row4.classList.add("targetName");
 
-                    if(item.typeCode == 3) row4.classList.add("postContent"); // 신고 대상이 게시글인 경우
+                    // <p>[ㄱ-힣\d\w\s\"=_.:!/<>]+<\/p>
+                    // <p>[ㄱ-힣\d\w\s\/\"\_\.\:\;\<\>\=]+<\/p>
+                    if(item.typeCode == 3) {
+                        row4.classList.add("postContent")
+                    }
+                    ; // 신고 대상이 게시글인 경우
 
+                    // 정규표현식
+                    const regEx = /<p>[ㄱ-힣\d\w\s\/\"\_\.\:\;\<\>\=\%\-\<\>]+<\/p>/;
+                    const regEx2 = /<[^>]*>?/g;
+                    // const regEx3 = /<\/p>/;
+                    if(regEx.test(item.targetName)) {
+                        item.targetName = item.targetName.replace(regEx, '');
+                    }
+                    if(regEx2.test(item.targetName)) {
+                        item.targetName = item.targetName.replace(regEx2, '');
+                    }
+                    if(item.targetName.trim().length == 0) {
+                        item.targetName = item.targetNo + '번 게시글입니다.';
+                    }
+                    // if(regEx3.test(item.targetName)) {
+                    //     item.targetName = item.targetName.replace(regEx3, '');
+                    // }
                     row4.innerText = item.targetName;
         
                     // 신고일

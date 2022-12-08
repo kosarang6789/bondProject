@@ -42,7 +42,9 @@
                     </p>
                     <p>
                         <strong>내용</strong>
-                        <span id="content">${map.post.postContent}</span>
+                        <span id="content">
+                            ${map.post.postContent}
+                        </span>
                     </p>
                 </c:if>
             </div> <!-- report-who end -->
