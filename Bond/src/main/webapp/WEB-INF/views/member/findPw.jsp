@@ -41,23 +41,6 @@
             </section>
             <button class="inputbox findPw-btn" id="findPw-btn">비밀번호 찾기</button>
             
-<%-- 
-            <div id="modal" class="modal">
-                <div class="modalArea">
-                    <div class="findPwTitle">비밀번호 변경</div>
-                    <div id="changePw">
-                        <input type="password" name="newPw" id="newPw" placeholder="변경 비밀번호 입력" maxlegnth="20">
-                        <input type="password" name="newPwConfirm" id="newPwConfirm" placeholder="비밀번호 확인" maxlegnth="20">
-                        <div id="pwConfirm" class="coner">영어, 숫자, 특수문자(!,@,#,-,_) 8~20글자로 입력해주세요.</div>
-                    </div>
-
-                    <div class="btnAreas">
-                        <div class="btnArea1">
-                                <button id="changePW">비밀번호 변경</button>
-                        </div>
-                    </div>
-                </div>
-            </div> --%>
         </form>
         <form action="/changePw" method="post" id="changePw-frm">
             <div id="modal" class="modal">
