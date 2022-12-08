@@ -73,11 +73,21 @@
                         </div>
                         <div class="detail-info-row">
                             <label>회원 상태</label>
-                            <div class="detail-info-col">${memberInfo.member.memberStatus}</div>
+                            <div class="detail-info-col">
+                                <c:if test="${memberInfo.member.memberStatus == 1}">
+                                    -
+                                </c:if>
+                                <c:if test="${memberInfo.member.memberStatus == 2}">
+                                    탈퇴
+                                </c:if>
+                                <!-- ${memberInfo.member.memberStatus} -->
+                            </div>
                         </div>
                         <div class="detail-info-row">
                             <label>가입일</label>
-                            <div class="detail-info-col">${memberInfo.member.signUpDate}</div>
+                            <div class="detail-info-col">
+                                ${memberInfo.member.signUpDate}
+                            </div>
                         </div>
                         <div class="detail-info-row">
                             <label>탈퇴일</label>
