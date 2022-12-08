@@ -71,7 +71,6 @@ public class ReportController {
 		
 		if(target.equals("group")) { // 타겟이 모임인 경우
 			Group group = service.getGroupInfo(input);
-			group.setGroupComment(AdminUtil.newLineClear2(group.getGroupComment()));
 			map.put("group", group);
 			typeCode = 2;
 		}

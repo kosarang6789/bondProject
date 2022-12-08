@@ -93,10 +93,9 @@ public class AdminDetailController {
 	 * @param model
 	 * @return
 	 */
-	@GetMapping("/report/{reportNo}/{cp}")
+	@GetMapping("/report/{reportNo}")
 	public String selectReportDetail(
 			@PathVariable("reportNo") String reportNo,
-			@PathVariable("cp") String nowCp,
 			Model model
 			) {
 		
@@ -105,7 +104,6 @@ public class AdminDetailController {
 		Report report = service.selectReportDetail(inputReportNo);
 		
 		model.addAttribute("report", report);
-		model.addAttribute("nowCp", nowCp);
 		
 		return "admin/reportDetail";
 		
