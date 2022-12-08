@@ -108,16 +108,7 @@ public class AdminListServiceImpl implements AdminListService{
 		// 3. 페이징 처리를 이용해서 게시글 목록을 조회
 		List<Post> reportList = dao.selectReportList(keyword, opt, pagination);
 		
-////		// 4. 게시글에서 개행문자 제거
-//		for( Repo post : reportList ) {
-//			post.setTargetName(AdminUtil.newLineClear2(post.getTargetName()));
-//		}
-//		
-//		// 5. 게시글에서 <P>태그 영역을 제거
-//		for( Post post : reportList ) {
-//			post.setTargetName(AdminUtil.pTagClear(post.getTargetName()));
-//		}
-		
+	
 		// 6. 값을 넣어서 전송
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("reportList", reportList);
