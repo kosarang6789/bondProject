@@ -53,7 +53,7 @@ sendKey.addEventListener("click", ()=>{
     authMin=4;
     authSec=59;
     $.ajax({
-        url:"/member/findPw/sendKey",
+        url:"/findPw/sendKey",
         data:{"inputEmail":inputEmail.value, "inputName":inputName.value, "inputTel":inputTel.value},
         success:(res)=>{
 
@@ -97,7 +97,7 @@ const checkKey = document.getElementById("checkKey");
 checkKey.addEventListener("click",(e)=>{
     if(authMin > 0 || authSec > 0){
         $.ajax({
-            url : "/member/findPw/checkKey",
+            url : "/findPw/checkKey",
             data : {"inputKey":inputKey.value},
             success : (res)=>{
                 if(res>0){
@@ -105,7 +105,7 @@ checkKey.addEventListener("click",(e)=>{
                     authKeyMessage.innerText="인증되었습니다.";
                     keyTF.inputKey = true;
                 }else{
-                    authKeyMessage.innerText="인증번호가 일치하지 않습니다."; 
+                    alert("인증번호가 일치하지 않습니다."); 
                     keyTF.inputKey = false;
                 }
             },

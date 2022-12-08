@@ -61,7 +61,7 @@ if(document.getElementById("findPw-frm") != null){
         authMin=4;
         authSec=59;
         $.ajax({
-            url:"/member/findPw/sendKey",
+            url:"/findPw/sendKey",
             data:{"inputEmail":memberEmail.value, "inputName":memberName.value, "inputTel":memberTel.value},
             success:(res)=>{
                 switch(res){
@@ -102,7 +102,7 @@ if(document.getElementById("findPw-frm") != null){
     checkKey.addEventListener("click",(e)=>{
         if(authMin > 0 || authSec > 0){
             $.ajax({
-                url : "/member/findPw/checkKey",
+                url : "/findPw/checkKey",
                 data : {"inputKey":inputKey.value},
                 success : (res)=>{
                     if(res>0){
@@ -123,7 +123,7 @@ if(document.getElementById("findPw-frm") != null){
             alert("인증시간이 만료되었습니다. 다시 시도해주세요.")
         }
     })
-    
+  
     // 비밀번호 유효 검사
     const memberPw = document.getElementById("memberPw");
     const memberPwConfirm = document.getElementById("memberPwConfirm");
@@ -190,4 +190,4 @@ if(document.getElementById("findPw-frm") != null){
             return;
         }
     })
-}
+} 
