@@ -36,7 +36,7 @@ public class Report {
 	private String resultDetails; // 신고 결과 세부 내용
 	
 	// 기타
-	private String targetName; // 신고 대상 이름
+	 private String targetName; // 신고 대상 이름
 	private int waitingReports; // 신고 여부
 	
 	
