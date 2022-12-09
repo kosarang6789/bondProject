@@ -25,22 +25,16 @@
             <aside id="info">
                 <div id="info-inner">
                     <div class="side-cover">
-                    <c:forEach var="groupJoin" items="${groupJoinNo}">
-                        <li class="group">
-                            <a href="/bond/${groupJoin.groupNo}">
-                                <div class="group-img">
-                                    <c:choose>
-                                        <c:when test="${not empty groupInfo.groupImage}">
-                                            <img src="${groupInfo.groupImage}" id="cover-img">  
-                                        </c:when>
-                                        <c:otherwise>
-                                            <img src="/resources/images/bond/profile/no-profile.png" id="cover-img">
-                                        </c:otherwise>
-                                    </c:choose>
-                                </div>
-                            </a>
-                        </li>
-                    </c:forEach>
+                    <a href="#" class="cover-img">
+                            <c:choose>
+                                <c:when test="${not empty groupInfo.groupImage}">
+                                    <img src="${groupInfo.groupImage}" id="cover-img">  
+                                </c:when>
+                                <c:otherwise>
+                                    <img src="/resources/images/bond/profile/no-profile.png" id="cover-img">
+                                </c:otherwise>
+                            </c:choose>
+                        </a>
                     </div>
 
                     <div class="band-name">
