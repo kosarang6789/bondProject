@@ -86,8 +86,10 @@
 
                         <div id="groupTopicData" class="chartBox">
                             <div class="title">모임 카테고리 비율</div>
-                            <canvas id="doughnut" class="chart"></canvas>
+                            <div id="doughnutBox">
+                                <canvas id="doughnut" class="chart"></canvas>
                                 <!-- 도넛차트 자리 -->
+                            </div>
                             <div class="indicatorsBox">
 
                                 <div id="hotTopic" class="indicators">
@@ -111,7 +113,7 @@
 
                         <div id="weeklyMembers" class="chartBox">
                             <div class="title">주간 회원 통계</div>
-                            <div>
+                            <div id="barBox">
                                 <!-- 바 차트 자리 -->
                                 <canvas id="bar" class="chart"></canvas>
                             </div>
