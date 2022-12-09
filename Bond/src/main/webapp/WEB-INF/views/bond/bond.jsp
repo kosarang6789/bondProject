@@ -55,7 +55,7 @@
                     <div class="btn-box">
                         <button type="button" id="write-button">글쓰기</button>
                         <p class="box-desc">
-                            누구나 밴드를 검색해 찾을 수 있고, 밴드 소개와 게시글을 볼 수 있습니다.
+                            누구나 본드를 검색해 찾을 수 있고, 본드 소개와 게시글을 볼 수 있습니다.
                         </p>
                     </div>
 
@@ -63,7 +63,7 @@
                         <div class="band-setting-section">
                             <c:if test="${groupInfo.leaderNo == loginMember.memberNo}">
                                 <a href="/bond/${groupNo}/bond-bondIntro" class="band-setting-link sidebar-font"> 
-                                    <i class="fa-solid fa-gear sidbar-icon"></i>밴드 설정
+                                    <i class="fa-solid fa-gear sidbar-icon"></i>본드 설정
                                 </a>
                             </c:if>   
                         <div class="band-setting-list">
@@ -106,7 +106,7 @@
                             <button id="postWrite-btn" class="content-button"></button>
                             <div class="content-editor">
                                 새로운 소식을 남겨보세요. <br>
-                                공개 밴드에 남긴 글은 누구나 볼 수 있습니다.
+                                공개 본드에 남긴 글은 누구나 볼 수 있습니다.
                             </div>
                         </div>
                     </div> 
