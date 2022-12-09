@@ -317,7 +317,10 @@
 <div align="center">
   <br>
   <h1>끝.</h1>
+  <h3>감사합니다</h3>
   <br>
-  
+  <br>
+  <br>
+  <br>
 </div>
 
