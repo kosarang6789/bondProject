@@ -25,22 +25,16 @@
             <aside id="info">
                 <div id="info-inner">
                     <div class="side-cover">
-                    <c:forEach var="groupJoin" items="${groupJoinNo}">
-                        <li class="group">
-                            <a href="/bond/${groupJoin.groupNo}">
-                                <div class="group-img">
-                                    <c:choose>
-                                        <c:when test="${not empty groupInfo.groupImage}">
-                                            <img src="${groupInfo.groupImage}" id="cover-img">  
-                                        </c:when>
-                                        <c:otherwise>
-                                            <img src="/resources/images/bond/profile/no-profile.png" id="cover-img">
-                                        </c:otherwise>
-                                    </c:choose>
-                                </div>
-                            </a>
-                        </li>
-                    </c:forEach>
+                    <a href="#" class="cover-img">
+                            <c:choose>
+                                <c:when test="${not empty groupInfo.groupImage}">
+                                    <img src="${groupInfo.groupImage}" id="cover-img">  
+                                </c:when>
+                                <c:otherwise>
+                                    <img src="/resources/images/bond/profile/no-profile.png" id="cover-img">
+                                </c:otherwise>
+                            </c:choose>
+                        </a>
                     </div>
 
                     <div class="band-name">
@@ -50,6 +44,11 @@
                     <p class="member">
                         <a href="#" class="member-count">멤버 ${groupInfo.memberCount}</a>
                     </p>
+
+                    <div class="band-info">
+                        <p class="band-description">${groupInfo.groupComment}</p>
+                        <a href="#" class="more-link modalInfo">...더보기</a>
+                    </div>
 
                     <div class="share">
                         <a href="#" class="share-address">
@@ -80,7 +79,7 @@
                 <div class="band-intro">
                     <h2 class="band-intro-title">밴드 소개</h2>
                     <div class="band-intro-detail">
-                        <p class="desc">${groupJoinNo.groupComment}</p>
+                        <p class="desc">${groupInfo.groupComment}</p>
                     </div>
 
                     <div class="intro-option-statics">

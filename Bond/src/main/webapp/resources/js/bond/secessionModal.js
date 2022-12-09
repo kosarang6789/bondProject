@@ -27,7 +27,7 @@ joSeNoBtn.addEventListener("click", ()=>{
 const joSeYesBtn = document.getElementById("joSeYesBtn");
 joSeYesBtn.addEventListener("click", (e)=>{
     if(confirm("정말 탈퇴 하시겠습니까?")){
-        alert("탈퇴되었습니다.");
+        // alert("탈퇴되었습니다.");
     }else{
         e.preventDefault();
         alert("탈퇴 취소 되었습니다");

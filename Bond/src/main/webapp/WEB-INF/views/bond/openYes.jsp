@@ -46,6 +46,11 @@
                         <a href="#" class="member-count">멤버 ${groupInfo.memberCount}</a>
                     </p>
 
+                    <div class="band-info">
+                        <p class="band-description">${groupInfo.groupComment}</p>
+                        <a href="#" class="more-link modalInfo">...더보기</a>
+                    </div>
+
                     <div class="share">
                         <a href="#" class="share-address">
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
