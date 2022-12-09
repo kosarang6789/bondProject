@@ -45,6 +45,11 @@
                         <a href="#" class="member-count">멤버 ${groupInfo.memberCount}</a>
                     </p>
 
+                    <div class="band-info">
+                        <p class="band-description">${groupInfo.groupComment}</p>
+                        <a href="#" class="more-link modalInfo">...더보기</a>
+                    </div>
+
                     <div class="share">
                         <a href="#" class="share-address">
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -74,7 +79,7 @@
                 <div class="band-intro">
                     <h2 class="band-intro-title">밴드 소개</h2>
                     <div class="band-intro-detail">
-                        <p class="desc">${groupJoinNo.groupComment}</p>
+                        <p class="desc">${groupInfo.groupComment}</p>
                     </div>
 
                     <div class="intro-option-statics">
