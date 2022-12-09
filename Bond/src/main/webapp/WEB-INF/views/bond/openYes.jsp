@@ -54,21 +54,21 @@
                     <div class="share">
                         <a href="#" class="share-address">
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            밴드 링크 복사
+                            본드 링크 복사
                         </a>
                     </div>    
                 
                     <div class="btn-box">
-                        <button type="button" class="write-button">밴드 가입하기</button>
+                        <button type="button" class="write-button">본드 가입하기</button>
                         <div class="sidebar-under-icon">
                             <div class="band-setting-section2">
                                 <a href="#" class="band-setting-link sidebar-font"> 
-                                    밴드 정보 보기 >
+                                    본드 정보 보기 >
                                 </a>
                             </div>
                         </div>
                         <p class="box-desc">
-                            누구나 밴드를 검색해 찾을 수 있고, 밴드 소개와 게시글을 볼 수 있습니다.
+                            누구나 본드를 검색해 찾을 수 있고, 본드 소개와 게시글을 볼 수 있습니다.
                         </p>
                     </div>
 
@@ -79,13 +79,13 @@
             <main id="board-list">
                 <div class="band-intro-list">
                     <div class="band-intro">
-                        <h2 class="band-intro-title">밴드 소개</h2>
+                        <h2 class="band-intro-title">본드 소개</h2>
                         <div class="band-intro-detail">
                             <p class="desc">${groupInfo.groupComment}</p>
                         </div>
 
                         <div class="intro-option-statics">
-                            <h2 class="intro-title">이 밴드의 활동 정보</h2>
+                            <h2 class="intro-title">이 본드의 활동 정보</h2>
                             <div class="intro-info-wrap">
                                 <p class="intro-desc">
                                     개설일

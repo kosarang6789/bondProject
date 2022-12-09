@@ -47,8 +47,8 @@
 
             <div class="images-section">
                 <h3 id="title">모임을 위한 공간, 본드</h3>
-                <p id="explanation">밴드는 그룹 멤버와 함께 하는 공간입니다. <br>
-                동호회, 스터디, 주제별 모임을 밴드로 시작하세요.</p>
+                <p id="explanation">본드는 그룹 멤버와 함께 하는 공간입니다. <br>
+                동호회, 스터디, 주제별 모임을 본드로 시작하세요.</p>
             </div>
             
             <ul class="intro-list">
@@ -73,7 +73,7 @@
                     <div class="list-text">
                         <h3>내가 원하는 모임 찾기</h3>
                         <p>취미, 스포츠, 또래 모임 등<br>
-                            나와 같은 관심사 밴드를 찾을 수 있어요.</p>
+                            나와 같은 관심사 본드를 찾을 수 있어요.</p>
                     </div>
                 </li>
             </ul>    
