@@ -30,7 +30,7 @@
         </aside>
         <main class="content-area">
             <div class="content-header">
-                <h2>비밀번호 수정</h2>
+                <h2>비밀번호 변경</h2>
             </div>
 
             <div class="content-body">
