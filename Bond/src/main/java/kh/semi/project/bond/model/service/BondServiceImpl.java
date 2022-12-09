@@ -109,7 +109,7 @@ public class BondServiceImpl implements BondService{
 		if(st != null ) {
 			if(st.equals("2")) {
 				result =-1;
-			} result = 1;
+			} else { result = 1; }
 		} else { // 가입 X
 			result = -1;
 		}
