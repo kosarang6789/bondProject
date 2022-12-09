@@ -4,7 +4,7 @@
   <h3>당신의 취미도 BOND로 시작하세요.</h3>
   <br>
   <h4>
-    <a href="github.com/Seo-de">🐷서도은🐷</a>  <a href="github.com/cy-shin">🐭신충영🐭</a>  <a href="[github.com/97siwon](https://github.com/97siwon)">🐮이시원🐮</a>  <a href="github.com/Hyunjae">🐶정현재🐶</a>
+    <a href="github.com/Seo-de">🐷서도은🐷</a>  <a href="github.com/cy-shin">🐭신충영🐭</a>  <a href="https://github.com/97siwon">🐮이시원🐮</a>  <a href="github.com/Hyunjae">🐶정현재🐶</a>
   </h4>
   <h6>(이름 클릭시 개인 깃허브로 이동됩니다.)</h6>
   <br>
