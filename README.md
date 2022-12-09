@@ -46,4 +46,14 @@ BOND는 같은 관심사를 가진 수많은 사람들이 모여 모임을 만�
 일정 기능을 통해 모임의 정모를 정할 수 있는 공간입니다. 
 <br><br>
 BenchMarking : 네이버 밴드, 소모임
+<br>
+<br>
+<br>
+<h4>📜ERD📜</h4>
+<img src="https://user-images.githubusercontent.com/110653581/206644146-b63977b9-e8ad-45f6-9d72-66abfcdd1c95.png"/>
+ERD 주소 : https://www.erdcloud.com/d/rH52AGzEpuXjv7vir
+<br>
+<br>
+
+
 
