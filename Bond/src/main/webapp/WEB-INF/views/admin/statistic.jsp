@@ -142,7 +142,7 @@
 
                         <div id="weeklyPosts" class="chartBox">
                             <div class="title">주간 게시글 통계</div>
-                            <%-- 차트 자리  --%>
+                            <!-- 주간 차트 자리 -->
                             <canvas id="line" class="chart"></canvas>
                         </div>
 
