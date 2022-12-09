@@ -1,4 +1,5 @@
 /* 숫자 데이터형 박스 */
+
 .dataBox{
     background-color: #f1f1f130;
     border-radius: 10px;
@@ -45,6 +46,7 @@
     align-items: center;
     height: 70%;
     width: 100%;
+    text-align: center;
 }
 
 .numbers{
@@ -61,8 +63,7 @@
     background-color: #f1f1f130;
     border-radius: 10px;
     
-    min-height : 300px;
-    max-height: 450px;
+    min-height : 200px;
     margin-bottom: 20px;
     padding: 20px;
     
@@ -84,21 +85,21 @@
 .indicatorsBox{
     border-radius: 10px;
 
-    height: 300px;
+    min-height: 250px;
     width: 300px; 
 
     padding: 20px;
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .indicators{
     background-color: white;
     border-radius: 10px;
 
-    height: 48%;
+    height: 100px;
     width: 100%;
 
     display: flex;
@@ -113,7 +114,7 @@
     font-size: 14px;
     letter-spacing: -1px;
     margin-bottom: 10px;
-
+    margin: 10px 0px 0px 15px;
     height: 30px;
     width: 100%;
 }
@@ -158,4 +159,15 @@
 
 #line{
     margin-bottom: 30px;
+}
+
+#doughnutBox{
+    width: 450px;
+}
+
+#barBox{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
