@@ -24,7 +24,7 @@
         </ul>
             
         <ul class="drop-down"> 
-            <div class="top-menu">밴드 관리</div>
+            <div class="top-menu">본드 관리</div>
             <li><a class="sub-menu hide" href="/admin/member/list">회원</a></li>
             <li><a class="sub-menu hide" href="/admin/group/list">소모임</a></li>
             <li><a class="sub-menu hide" href="/admin/post/list">게시글</a></li>
